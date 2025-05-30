@@ -1,0 +1,11 @@
+[build]
+command = "npm run build"
+publish = "dist"
+
+[dev]
+command = "npm run dev"
+
+[[headers]]
+for = "assets/*.pdf"
+[headers.values]
+Content-Type = "application/pdf"

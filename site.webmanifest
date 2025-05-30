@@ -1,0 +1,21 @@
+{
+  "name": "Another • Full-service digital studio",
+  "short_name": "Another • Full-service digital studio",
+  "description": "We create expertly crafted, beautiful products—designed and built from the ground up.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#222222",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/apple-touch-icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+<script>
+    import Logo from '../../components/Logo.svelte'
+    import LogoMobile from '../../components/LogoMobile.svelte'
+    import Icon from '../../components/Icon.svelte'
+    // Get the current pathname
+    let currentPath = window.location.pathname
+    let isWorkPage = false
+
+    // Function to check if a given path is active
+    function isActive(basePath) {
+        // Ensure basePath ends with a slash for consistent matching
+        const base = basePath.endsWith('/') ? basePath : `${basePath}/`
+
+        // Check if currentPath starts with basePath
+        return currentPath.startsWith(base)
+    }
+
+    // Update currentPath on client-side navigation
+    function updatePath() {
+        currentPath = window.location.pathname
+        console.log(currentPath)
+    }
+
+    window.addEventListener('popstate', updatePath)
+
+    import { onMount } from 'svelte'
+    onMount(() => {
+        currentPath = window.location.pathname
+    })
+
+    function openNav() {
+        document.body.classList.add('nav-open')
+    }
+    function closeNav() {
+        document.body.classList.remove('nav-open')
+    }
+
+    let credentials = {
+        url:
+            import.meta.env.MODE === 'development'
+                ? '/src/assets/Another-Studio-Credentials.pdf'
+                : '../assets/Another-Studio-Credentials.pdf',
+        format: 'PDF',
+        filesize: '', // Will be filled later
+    }
+
+    onMount(async () => {
+        const path = window.location.pathname
+        isWorkPage = path.endsWith('/work')
+
+        // // Fetch the PDF file and calculate size
+        // try {
+        //     const response = await fetch(credentials.url)
+        //     if (!response.ok) {
+        //         throw new Error(`Failed to fetch PDF: ${response.statusText}`)
+        //     }
+        //     const blob = await response.blob()
+        //     const sizeInMB = (blob.size / (1024 * 1024)).toFixed(2) + ' MB'
+        //     credentials.filesize = sizeInMB
+        // } catch (error) {
+        //     console.error('Failed to download PDF and calculate size:', error)
+        //     credentials.filesize = 'Unknown size'
+        // }
+    })
+</script>
+
+<header class="site-header spacing-x">
+    <div class="header-nav__overlay" on:click={closeNav}></div>
+    <div class="mw-container mx-auto w-100">
+        <div class="grid gutter-x h-100">
+            <div class="col-l relative header__logo-container">
+                <a href="/" class="header__logo-link no-outline" title="Go to homepage">
+                    <Logo />
+                    <!-- <div class="l-visible"></div> -->
+                    <!-- <div class="l-hidden"><LogoMobile /></div> -->
+                    <span class="visuallyhidden">Go to homepage</span>
+                </a>
+                <button class="header__toggler" on:click={openNav}>
+                    <Icon name="menu" />
+                    <span class="visuallyhidden">Open menu</span>
+                </button>
+            </div>
+            <div class="col-r flex items-center">
+                <nav class="header-nav">
+                    <button class="header__toggler --close" on:click={closeNav}>
+                        <Icon name="menu" extraClass="menu" />
+                        <span class="visuallyhidden">Close menu</span>
+                    </button>
+                    <ul>
+                        <li class={currentPath.includes('/services') ? 'active' : ''}>
+                            <a href="/services">Services</a>
+                        </li>
+                        <li class={currentPath.includes('/work') ? 'active' : ''}>
+                            <a href="/work">Work</a>
+                        </li>
+                        <li class={currentPath.includes('/about') ? 'active' : ''}>
+                            <a href="/about">About</a>
+                        </li>
+                        <li class={currentPath.includes('/contact') ? 'active' : ''}>
+                            <a href="/contact">Contact</a>
+                        </li>
+                        <li class="l-hidden mt-lg link--chat">
+                            <a
+                                class=""
+                                target="_blank"
+                                rel="noopener"
+                                href="https://wa.me/640272182988?text=Hello%20Another!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
+                                Let's chat <Icon name="social-whatsapp" />
+                            </a>
+                        </li>
+                        <li class="l-hidden link--chat mt--1">
+                            <a download class="" target="_blank" rel="noopener" href={credentials.url}>
+                                Another.pdf <Icon name="download" />
+                            </a>
+                            <div class="text--small mt--1 op-50">7.87 megabytes</div>
+                        </li>
+                        <li class="l-visible">
+                            <a
+                                class="link--on-hover"
+                                target="_blank"
+                                rel="noopener"
+                                href="https://wa.me/640272182988?text=Hello%20Another!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
+                                Let's chat <Icon name="social-whatsapp" />
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- <div class="header-backlay"></div> -->

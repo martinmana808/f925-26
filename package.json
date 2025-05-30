@@ -1,0 +1,20 @@
+{
+    "name": "vite-project",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "postbuild": "cp _redirects dist/_redirects && cp site.webmanifest dist/site.webmanifest && mkdir -p dist/assets/images/works--low dist/assets/images/works--high dist/js dist/styles && cp -R src/assets/images/works--low/* dist/assets/images/works--low/ && cp -R src/assets/images/works--high/* dist/assets/images/works--high/ && cp src/assets/Another-Studio-Credentials.pdf dist/assets/ && cp src/js/flickity.js dist/js/flickity.js && cp src/styles/flickity.css dist/styles/flickity.css && cp src/robots.txt dist/robots.txt"
+    },
+    "devDependencies": {
+        "@sveltejs/vite-plugin-svelte": "^3.1.1",
+        "less": "^4.2.0",
+        "less-loader": "^12.2.0",
+        "prettier": "^3.3.3",
+        "svelte": "^4.2.18",
+        "vite": "^5.4.1"
+    }
+}
