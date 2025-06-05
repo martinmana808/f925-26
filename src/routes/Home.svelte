@@ -7,8 +7,8 @@
     onDestroy(() => {
         document.body.classList.remove('template--home')
     })
-    let heading = "I am an ai-driven digital developer, crafting expertly designed and innovative solutions."
-    let subheading1 = "I love to integrate cutting-edge AI automation with UX, UI, and performance-focused design. I do create beautiful and intelligent products that people love and praise"
+    let heading = "I am an AI-driven digital developer, crafting expertly designed and innovative solutions."
+    let subheading1 = "I integrate cutting-edge AI automation with UX, UI, and performance-focused design. I create beautiful and intelligent products that people love and praise."
     let subheading2 = ''
     let cta1Label = "Book a free call"
     let cta1Url = "/contact"
