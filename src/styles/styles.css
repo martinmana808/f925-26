@@ -206,14 +206,6 @@ Base
     top: 25px;
   }
 }
-.page-loader svg {
-  width: 81.7px;
-}
-@media (min-width: 62.5em) {
-  .page-loader svg {
-    width: auto;
-  }
-}
 .loading .page-loader {
   opacity: 1;
 }
@@ -753,6 +745,12 @@ Library
   justify-content: flex-end;
 }
 /* margins */
+.ml-1 {
+  margin-left: 0.5rem;
+}
+.ml-2 {
+  margin-left: 1rem;
+}
 .mt-auto {
   margin-top: auto;
 }
@@ -994,10 +992,12 @@ Library
 .header__logo {
   position: relative;
   top: 0px;
+  width: 140px;
 }
 @media (min-width: 62.5em) {
   .header__logo {
-    top: -4px;
+    top: -2px;
+    width: 189px;
   }
 }
 .header__logo-link {
@@ -1129,7 +1129,7 @@ Library
   font-size: 4rem;
   line-height: 4.3125rem;
   letter-spacing: -0.05em;
-  font-weight: 600;
+  font-weight: normal;
 }
 @media (any-hover: hover) {
   .header-nav a:hover,

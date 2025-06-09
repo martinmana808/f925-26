@@ -78,11 +78,8 @@
             {#if formMessage.includes('Error') || formMessage.length === 0}
                 <h1 class="text--section">Drop me a line</h1>
                 <h2 class="text--subheadingSm">Take that first step. Just send me a message and I'll do the rest.</h2>
-                <div>
-                    <p>Just fill in the form and I will get back to you shortly, and we take it from there the best and most comfortable way for you.</p>
-                    <p>
+                <div class="text--small">
                     Or if you prefer, you can straight away <a class="link" href="contact">book a free consultation</a> and we can have a relaxed chat, no commitments, no pressure, no obligation.
-                    </p>
                 </div>
                 <!-- <div class="mt-md l-visible">
                     <img class="qrContact" src={qrContact} alt="QR code for contract" />
@@ -154,9 +151,6 @@
                 <div>
                     <div>
                         <a class="link--on-hover" href="tel:+64 027 218 2988">+64 027 218 2988</a>
-                    </div>
-                    <div>
-                        <a class="link--on-hover" href="tel:+54 9 11 6968 1247">+54 9 11 6968 1247</a>
                     </div>
                 </div>
             </div>

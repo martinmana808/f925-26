@@ -18,11 +18,11 @@
 <svelte:head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Another Studio</title>
+    <title>Martin Mana • AI-driven digital developer</title>
 
     <meta
         name="description"
-        content="A full-service studio creating expertly crafted, beautiful digital products. Your one-stop shop on your road to success." />
+        content="I integrate cutting-edge AI automation with UX, UI, and performance-focused design. I create beautiful and intelligent products that people love and praise." />
 
     <link rel="icon" href="/favicon.png" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

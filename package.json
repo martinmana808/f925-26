@@ -16,5 +16,8 @@
         "prettier": "^3.3.3",
         "svelte": "^4.2.18",
         "vite": "^5.4.1"
+    },
+    "dependencies": {
+        "papaparse": "^5.5.3"
     }
 }

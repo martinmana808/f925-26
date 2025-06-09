@@ -115,9 +115,12 @@ onMount(() => {
                         Let's chat <Icon name="social-whatsapp" />
                     </a>
                 </div>
-                <div class="l-visible text--small">
+                <div class="l-visible text--small flex">
                     <a class="link--on-hover" href="mailto:martinmana808@gmail.com">
                         martinmana808@gmail.com
+                    </a>
+                    <a href="tel:+640272182988" class="link--on-hover ml-2">
+                        +640272182988
                     </a>
                 </div>
                 <!-- <div class="spacer-4 l-hidden"></div> -->

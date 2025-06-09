@@ -1,64 +1,68 @@
 <script>
-    export let src = ''
-    export let isOpen = false
+    export let src = '';
+    export let isOpen = false;
+    export let data = {}; // Accepts the full work object (title, category, description, etc.)
 
-    import Loading from '../assets/icons/icon--loading.svg'
-    import { createEventDispatcher, onMount } from 'svelte'
+    import Loading from '../assets/icons/icon--loading.svg';
+    import { createEventDispatcher, onMount } from 'svelte';
 
-    const dispatch = createEventDispatcher()
-    let closeButton
-    let loading = true // Track loading state
-    let errorLoading = false // Track if there is an error
-    let previousSrc = '' // Track previous src to detect changes
+    const dispatch = createEventDispatcher();
+    let closeButton;
+    let loading = true;
+    let errorLoading = false;
+    let previousSrc = '';
 
     function close() {
-        dispatch('close')
+        dispatch('close');
     }
 
-    // Watch for changes to isOpen and set focus accordingly
+    // Focus the close button when modal opens
     $: if (isOpen && closeButton) {
         setTimeout(() => {
-            closeButton.focus()
-        }, 0)
+            closeButton.focus();
+        }, 0);
     }
 
     // Reset loading and error state when src changes
     $: if (src !== previousSrc) {
-        previousSrc = src // Update the previous src
-        loading = true // Reset loading state only when src changes
-        errorLoading = false // Reset error state only when src changes
+        previousSrc = src;
+        loading = true;
+        errorLoading = false;
     }
 
-    // Handle image load
     function handleImageLoad() {
-        loading = false // Image loaded successfully
+        loading = false;
     }
 
-    // Handle image load error
     function handleImageError() {
-        loading = false
-        errorLoading = true // Set error state when image fails to load
+        loading = false;
+        errorLoading = true;
     }
 
-    // Handle keyboard events
-    window.addEventListener('keydown', (event) => {
+    // Handle keyboard events for accessibility
+    function handleKeydown(event) {
         if (isOpen && event.key === 'Escape') {
-            close() // Close the modal when ESC key is pressed
+            close();
         }
-    })
+    }
 
-    // Cleanup event listener on component destruction
     onMount(() => {
+        window.addEventListener('keydown', handleKeydown);
         return () => {
-            window.removeEventListener('keydown', (event) => {
-                if (isOpen && event.key === 'Escape') {
-                    close() // Close the modal when ESC key is pressed
-                }
-            })
-        }
-    })
-</script>
+            window.removeEventListener('keydown', handleKeydown);
+        };
+    });
 
+    $: console.log('Modal data:', data);
+</script>
+<style>
+    .modal-meta {
+        position: absolute;
+        z-index: 33333333;
+        color: black;
+        background: white;
+    }
+</style>
 <button class="modal {isOpen ? 'modal--open' : ''}" aria-modal="true" on:click={close}>
     <button class="modal-close link--on-hover" bind:this={closeButton} on:click={close} aria-label="Close modal">
         Close
@@ -80,17 +84,26 @@
             </div>
         </div>
     {/if}
-
+ <div class="modal-meta c-1">
+            {#if data.title}
+                <h2>{data.title}</h2>
+            {/if}
+            {#if data.category}
+                <div class="modal-category">{data.category}</div>
+            {/if}
+            {#if data.description}
+                <p class="modal-description">{data.description}</p>
+            {/if}
+        </div>
     <!-- Image content -->
     <img class="modal-content" {src} alt="Modal image" on:load={handleImageLoad} on:error={handleImageError} />
 
-    <!-- Footer (optional) -->
-    <!-- {#if category}
+    <!-- {#if data.category}
       <footer class="site-footer spacing-x">
           <div class="site-footer__inner mw-container mx-auto w-100 h-100">
               <div class="grid gutter-x h-100">
                   <div class="col-l flex items-center text--eyebrow">
-                      <div class="modal-category">{category}</div>
+                      <div class="modal-category">{data.category}</div>
                   </div>
                   <div class="col-r flex items-center justify-between">
                       <nav class="icon--social-nav flex items-center">

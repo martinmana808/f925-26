@@ -303,11 +303,11 @@ Base
     }
 
     svg {
-        width: 81.7px;
+        // width: 81.7px;
 
-        @media (min-width: @mq-nav) {
-            width: auto;
-        }
+        // @media (min-width: @mq-nav) {
+        //     width: auto;
+        // }
     }
 
     .loading & {
@@ -958,6 +958,12 @@ Library
 }
 
 /* margins */
+.ml-1 {
+    margin-left: .5rem;
+}
+.ml-2 {
+    margin-left: 1rem;
+}
 .mt-auto {
     margin-top: auto;
 }
@@ -1237,9 +1243,11 @@ Library
 .header__logo {
     position: relative;
     top: 0px;
+    width: 140px;
 
     @media (min-width: @mq-nav) {
-        top: -4px;
+        top: -2px;
+        width: 189px;
     }
 }
 
@@ -1338,7 +1346,6 @@ Library
     left: auto;
     max-width: 31.25rem;
     transform: translateX(100%);
-    // background-color: @color-0;
     background-color: #5c229e;
     color: @color-1;
     padding: @header-height-sm @spacing-x @spacing-md;
@@ -1353,7 +1360,6 @@ Library
 
         ul {
             display: flex;
-            // gap: 2.5rem;
         }
 
         li {
@@ -1401,7 +1407,7 @@ Library
         font-size: 4rem;
         line-height: 4.3125rem;
         letter-spacing: -.05em;
-        font-weight: 600;
+        font-weight: normal;
 
         &:hover,
         &:focus {

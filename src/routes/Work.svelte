@@ -1,96 +1,80 @@
 <script>
+    import Papa from 'papaparse'
     import Layout from '../components/layout/Layout.svelte'
-    import Loading from '../assets/icons/icon--loading.svg'
     import Modal from '../components/Modal.svelte'
-    import { onMount, onDestroy } from 'svelte'
+    import Loading from '../assets/icons/icon--loading.svg'
+    import { onMount } from 'svelte'
 
     let displayedImages = []
     let loading = false
-    let modalImageSrc = ''
-    let modalCategory = ''
     let isModalOpen = false
+    let modalData = {}
     let workCol
-    let imageFiles
 
-    if (import.meta.env.MODE === 'development') {
-        imageFiles = import.meta.glob('/src/assets/images/works--low/*/*.{jpg,png,jpeg,gif,webp}')
-    } else {
-        imageFiles = import.meta.glob('../assets/images/works--low/*/*.{jpg,png,jpeg,gif,webp}')
+    let allWorks = []
+
+    async function loadCSVData() {
+    try {
+        const response = await fetch('/assets/data/works.csv')
+        if (!response.ok) {
+            throw new Error(`Failed to load CSV: ${response.statusText}`)
+        }
+        const csvText = await response.text()
+        console.log("RAW CSV TEXT:", csvText); // <---- ADD THIS LINE
+
+        return new Promise((resolve) => {
+            Papa.parse(csvText, {
+                header: true,
+                skipEmptyLines: true,
+                complete: (results) => {
+                    console.log('PapaParse raw results:', results); // <---- ADD THIS LINE
+                    // Add default values for missing properties
+                    const processedData = results.data.map(item => ({
+                        filename: item.filename || 'placeholder.jpg',
+                        title: item.title || 'Untitled',
+                        category: item.category || 'Unknown',
+                        description: item.description || ''
+                    }))
+                    resolve(processedData)
+                },
+                error: (error) => {
+                    console.error('CSV parsing error:', error)
+                    resolve([]) // Return empty array on error
+                }
+            })
+        })
+    } catch (error) {
+        console.error('Error loading CSV:', error)
+        return []
     }
-
-    let images = Object.keys(imageFiles)
-
-    async function preloadImages() {
-        document.body.classList.add('is-loading')
-
-        const imageDimensions = []
-
-        await Promise.all(
-            images.map(async (path) => {
-                const img = new Image()
-                img.src = path
-
-                return new Promise((resolve) => {
-                    img.onload = () => {
-                        const category = path.split('/')[5]
-                        imageDimensions.push({
-                            src: path,
-                            width: img.width,
-                            height: img.height,
-                            ratio: img.width / img.height,
-                            category: category,
-                        })
-                        resolve()
-                    }
-                })
-            }),
-        )
-
-        document.body.classList.remove('is-loading')
-
-        return imageDimensions
-    }
+}
 
     async function selectRandomImages(shouldScroll = false) {
-        setLoading(true)
-        const imageDimensions = await preloadImages()
-        const selectedImages = []
-        let availableImages = [...imageDimensions]
-
-        for (let i = 0; i < 60; i++) {
-            if (availableImages.length === 0) break
-            const randomIndex = Math.floor(Math.random() * availableImages.length)
-            selectedImages.push(availableImages.splice(randomIndex, 1)[0])
-        }
-
-        displayedImages = selectedImages
-        setLoading(false)
-
-        if (shouldScroll) {
-            const offset = 105
-            const viewportWidth = window.innerWidth
-
-            if (viewportWidth <= 500) {
-                const targetPosition = workCol.getBoundingClientRect().top + window.pageYOffset - offset
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth',
-                })
-            } else {
-                workCol.scrollIntoView({
-                    behavior: 'smooth',
-                })
+        try {
+            setLoading(true)
+            if (!allWorks || allWorks.length === 0) {
+                allWorks = await loadCSVData()
             }
+            
+            const randomItems = [...allWorks].sort(() => 0.5 - Math.random()).slice(0, 60)
+            displayedImages = randomItems
+            setLoading(false)
+
+            if (shouldScroll && workCol) {
+                workCol.scrollIntoView({ behavior: 'smooth' })
+            }
+        } catch (error) {
+            console.error('Error selecting random images:', error)
+            setLoading(false)
         }
     }
 
-    function setLoading(isLoading) {
-        loading = isLoading
+    function setLoading(value) {
+        loading = value
     }
 
-    function openModal(src, category) {
-        modalImageSrc = src
-        modalCategory = category
+    function openModal(data) {
+        modalData = data
         isModalOpen = true
         document.body.classList.add('work-modal-open')
     }
@@ -100,13 +84,11 @@
         document.body.classList.remove('work-modal-open')
     }
 
-    onMount(() => {
-        selectRandomImages(false) // No scrolling when the page reloads
+    onMount(async () => {
+        allWorks = await loadCSVData()
+        console.log("Primer item del CSV:", allWorks[0])
+        selectRandomImages()
         document.body.classList.add('template--work')
-    })
-
-    onDestroy(() => {
-        document.body.classList.remove('template--work')
     })
 </script>
 
@@ -161,15 +143,31 @@
             <div class="loading--desktop">
                 <img src={Loading} alt="Loading" />
             </div>
-            {#each displayedImages as { src, ratio, category }}
-                 
-                    <button
-                        class="work"
-                        style="aspect-ratio: {ratio};"
-                        on:click={() => openModal(src.replace('--low', '--high'), category)}
-                        aria-label="Open image in modal">
-                        <img {src} alt="Work Image" loading="lazy" />
-                    </button>
+            {#each displayedImages as work, i}
+                <button
+                    class="work"
+                    on:click={() => openModal(work)}
+                    style={`aspect-ratio: ${work.aspectRatio || '1 / 1'};`}
+                    aria-label="Open image modal">
+                    <img
+                        src={`/assets/images/works--low/${work.filename || 'placeholder.jpg'}`}
+                        alt={work.title || 'Untitled'}
+                        loading="lazy"
+                        on:load={(event) => {
+                            const img = event.target;
+                            // Calculate aspect ratio and update the work object
+                            work.aspectRatio = img.naturalWidth && img.naturalHeight
+                                ? `${img.naturalWidth} / ${img.naturalHeight}`
+                                : '1 / 1';
+                            // Force Svelte to update the UI
+                            displayedImages = [...displayedImages];
+                        }}
+                    />
+                    <div class="work__meta">
+                        <strong>{work.title}</strong><br>
+                        <small>{work.category}</small>
+                    </div>
+                </button>
             {/each}
         </div>
     </div>
@@ -184,4 +182,9 @@
     </div>
 </Layout>
 
-<Modal src={modalImageSrc} category={modalCategory} isOpen={isModalOpen} on:close={closeModal} />
+<Modal
+    data={modalData}
+    src={modalData.filename ? `/assets/images/works--high/${modalData.filename}` : ''}
+    isOpen={isModalOpen}
+    on:close={closeModal}
+/>
