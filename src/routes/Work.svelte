@@ -13,6 +13,12 @@
     let isModalOpen = false;
     let modalData = {};
     let workCol;
+    
+    const breakpoints = {
+        mq_s: 600,      // replace with your actual px value for @mq-s
+        mq_nav: 900,    // replace with your actual px value for @mq-nav
+        mq_xxl: 1400    // replace with your actual px value for @mq-xxl
+    };
 
     function shuffleArray(array) {
     // Fisher-Yates shuffle
@@ -83,6 +89,35 @@
         isModalOpen = false;
         document.body.classList.remove('work-modal-open');
     }
+
+    import { onDestroy } from 'svelte';
+
+    let numColumns = 2;
+
+    function updateColumns() {
+        const width = window.innerWidth;
+        if (width >= breakpoints.mq_xxl) {
+            numColumns = 5;
+        } else if (width >= breakpoints.mq_nav) {
+            numColumns = 4;
+        } else if (width >= breakpoints.mq_s) {
+            numColumns = 3;
+        } else {
+            numColumns = 2;
+        }
+    }
+
+    onMount(() => {
+        updateColumns();
+        window.addEventListener('resize', updateColumns);
+    });
+
+    onDestroy(() => {
+        window.removeEventListener('resize', updateColumns);
+    });
+    $: columns = Array.from({ length: numColumns }, (_, i) =>
+        displayedImages.filter((_, idx) => idx % numColumns === i)
+    );
 </script>
 
 <Layout>
@@ -132,29 +167,30 @@
                 <span>View more</span>
             </button>
         </div>
-        <div id="work-col" class="work-col" bind:this={workCol}>
-            <div class="loading--desktop" style:display={loading ? 'block' : 'none'}>
-                <img src={Loading} alt="Loading" />
-            </div>
-            {#each displayedImages as work, i}
-                <button
-                    class="work"
-                    on:click={() => openModal(work)}
-                    style={`aspect-ratio: ${work.aspect_ratio || '1 / 1'};`}
-                    aria-label="Open image modal"
-                >
-                    <LazyImage
-                        src={`/assets/images/works--low/${work.filename || 'placeholder.jpg'}`}
-                        alt={work.title || 'Untitled'}
-                        className=""
-                        onLoad={() => {}}
-                        onError={() => {}}
-                    />
-                    <!-- <div class="work__meta">
-                        <strong>{work.title}</strong><br>
-                        <small>{work.category}</small>
-                    </div> -->
-                </button>
+        <div class="masonry">
+            {#each columns as col}
+                <div class="masonry-col">
+                    {#each col as work}
+                        <button
+                            class="work"
+                            on:click={() => openModal(work)}
+                            style={`aspect-ratio: ${work.aspect_ratio || '1 / 1'};`}
+                            aria-label="Open image modal"
+                        >
+                            <LazyImage
+                                src={`/assets/images/works--low/${work.filename || 'placeholder.jpg'}`}
+                                alt={work.title || 'Untitled'}
+                                className=""
+                                onLoad={() => {}}
+                                onError={() => {}}
+                            />
+                            <!-- <div class="work__meta">
+                                <strong>{work.title}</strong><br>
+                                <small>{work.category}</small>
+                            </div> -->
+                        </button>
+                    {/each}
+                </div>
             {/each}
         </div>
         {#if displayedImages.length < allWorks.length}
