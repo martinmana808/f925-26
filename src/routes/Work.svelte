@@ -1,10 +1,10 @@
 <script>
     import LazyImage from '../components/LazyImage.svelte';
-    import Papa from 'papaparse'
-    import Layout from '../components/layout/Layout.svelte'
-    import Modal from '../components/Modal.svelte'
-    import Loading from '../assets/icons/icon--loading.svg'
-    import { onMount } from 'svelte'
+    import Papa from 'papaparse';
+    import Layout from '../components/layout/Layout.svelte';
+    import Modal from '../components/Modal.svelte';
+    import Loading from '../assets/icons/icon--loading.svg';
+    import { onMount, onDestroy } from 'svelte';
 
     let allWorks = [];
     let displayedImages = [];
@@ -13,7 +13,7 @@
     let isModalOpen = false;
     let modalData = {};
     let workCol;
-    
+
     const breakpoints = {
         mq_s: 600,      // replace with your actual px value for @mq-s
         mq_nav: 900,    // replace with your actual px value for @mq-nav
@@ -21,13 +21,14 @@
     };
 
     function shuffleArray(array) {
-    // Fisher-Yates shuffle
+        // Fisher-Yates shuffle
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
         }
         return array;
     }
+
     // CSV loading with aspect_ratio support
     async function loadCSVData() {
         try {
@@ -67,16 +68,18 @@
         allWorks = shuffleArray(allWorks); // Shuffle ONCE after loading
         displayedImages = allWorks.slice(0, imagesToShow);
         loading = false;
+        updateColumns();
+        window.addEventListener('resize', updateColumns);
+    });
+
+    onDestroy(() => {
+        window.removeEventListener('resize', updateColumns);
     });
 
     // "View More" loads more images at the bottom
     function loadMoreImages() {
         imagesToShow += 20;
         displayedImages = allWorks.slice(0, imagesToShow);
-        // Optionally scroll to the new images
-        // if (workCol) {
-        //     workCol.scrollIntoView({ behavior: 'smooth' });
-        // }
     }
 
     function openModal(data) {
@@ -90,9 +93,9 @@
         document.body.classList.remove('work-modal-open');
     }
 
-    import { onDestroy } from 'svelte';
-
+    // Responsive columns logic
     let numColumns = 2;
+    let columnWidth = 300; // You can adjust this to match your CSS or calculate dynamically
 
     function updateColumns() {
         const width = window.innerWidth;
@@ -105,19 +108,31 @@
         } else {
             numColumns = 2;
         }
+        // Optionally update columnWidth here if you want it to be dynamic
     }
 
-    onMount(() => {
-        updateColumns();
-        window.addEventListener('resize', updateColumns);
-    });
+    // True masonry: distribute images by estimated column heights
+    function distributeMasonry(images, numColumns, columnWidth = 300) {
+        const columns = Array.from({ length: numColumns }, () => ({ images: [], height: 0 }));
+        for (const img of images) {
+            let ratio = 1;
+            if (img.aspect_ratio && img.aspect_ratio.includes('/')) {
+                const [w, h] = img.aspect_ratio.split('/').map(Number);
+                if (w && h) ratio = h / w;
+            }
+            const estHeight = columnWidth * ratio;
+            // Find the column with the smallest height
+            let minCol = columns[0];
+            for (const col of columns) {
+                if (col.height < minCol.height) minCol = col;
+            }
+            minCol.images.push(img);
+            minCol.height += estHeight;
+        }
+        return columns.map(col => col.images);
+    }
 
-    onDestroy(() => {
-        window.removeEventListener('resize', updateColumns);
-    });
-    $: columns = Array.from({ length: numColumns }, (_, i) =>
-        displayedImages.filter((_, idx) => idx % numColumns === i)
-    );
+    $: columns = distributeMasonry(displayedImages, numColumns, columnWidth);
 </script>
 
 <Layout>
