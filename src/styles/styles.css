@@ -965,10 +965,11 @@ Library
   height: 5rem;
   z-index: 11;
   background: #191c1f;
+  position: absolute;
 }
 @media (min-width: 43.75em) {
-  .site-header {
-    position: fixed;
+  .site-header:not(.template--work .site-header) {
+    position: fixed!important;
   }
 }
 @media (min-width: 62.5em) {
@@ -1210,13 +1211,15 @@ input:-webkit-autofill:focus {
 }
 @media (min-width: 62.5em) {
   .site-footer {
-    position: fixed;
     height: 6.25rem;
     padding-block: 0;
     background-color: transparent;
     color: #ffffff;
     font-weight: unset;
     pointer-events: none;
+  }
+  .site-footer:not(.template--work .site-footer) {
+    position: fixed;
   }
 }
 @media (min-width: 62.5em) {
@@ -2203,9 +2206,22 @@ About
   padding-top: clamp(3.125rem, 5.4688vw, 5.4688rem);
   padding-bottom: clamp(3.125rem, 8.875vw, 8.875rem);
   margin-inline: calc(clamp(1.5rem, 5vw, 5rem) * -0.5);
-  overflow-y: scroll;
   columns: 2;
   column-gap: calc(clamp(1rem, 1.25vw, 1.25rem) / 2);
+  background: #ffffff;
+  margin-top: clamp(1.5rem, 5vw, 5rem);
+}
+.work-col::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: calc(clamp(1.5rem, 5vw, 5rem) * -1);
+  right: calc(clamp(1.5rem, 5vw, 5rem) * -1);
+  bottom: 0;
+  z-index: 0;
+  background: #ffffff;
+  border-top-right-radius: clamp(1.5rem, 5vw, 5rem);
+  border-top-left-radius: clamp(1.5rem, 5vw, 5rem);
 }
 @media (min-width: 31.25em) {
   .work-col {
@@ -2261,6 +2277,7 @@ About
 }
 .work {
   position: relative;
+  width: 100%;
   overflow: hidden;
   margin-bottom: calc(clamp(1rem, 1.25vw, 1.25rem) / 2);
   border-radius: clamp(0.25rem, 0.75vw, 0.625rem);
@@ -2273,7 +2290,7 @@ About
   }
 }
 .work img {
-  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 @media (any-hover: hover) {
   .work:not(.nda):hover img,

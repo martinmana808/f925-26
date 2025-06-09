@@ -1218,9 +1218,12 @@ Library
     height: @header-height-sm;
     z-index: 11;
     background: @color-0;
+    position: absolute;
 
     @media(min-width: @mq-m) {
-        position: fixed;
+        &:not(.template--work &){
+            position: fixed!important;
+        }
     }
 
     @media (min-width: @mq-nav) {
@@ -1523,13 +1526,16 @@ input:-webkit-autofill:focus {
     color: @color-0;
 
     @media (min-width: @mq-nav) {
-        position: fixed;
         height: @header-height;
         padding-block: 0;
         background-color: transparent;
         color: @color-1;
         font-weight: unset;
         pointer-events: none;
+        
+        &:not(.template--work &) {
+            position: fixed;
+        }
     }
 
     a,
@@ -2669,9 +2675,23 @@ About
     padding-top: @spacing-lg;
     padding-bottom: @spacing-top;
     margin-inline: calc(@spacing-x * -0.5);
-    overflow-y: scroll;
     columns: 2;
     column-gap: calc(@gutter / 2);
+    background: @color-1;
+    margin-top: @spacing-x;
+
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc(@spacing-x * -1);
+        right: calc(@spacing-x * -1);
+        bottom: 0;
+        z-index: 0;
+        background: @color-1;
+        border-top-right-radius: @spacing-x;
+        border-top-left-radius: @spacing-x;
+    }
 
     @media (min-width: @mq-s) {
         margin-inline: 0;
@@ -2729,7 +2749,7 @@ About
 
 .work {
     position: relative;
-    // display: block;
+    width: 100%;
     overflow: hidden;
     margin-bottom: calc(@gutter / 2);
     border-radius: clamp(0.25rem, 0.75vw, 0.625rem);
@@ -2744,7 +2764,8 @@ About
     }
 
     img {
-        transition: all 1s @default-easing;
+        transition: all 1.5s @default-easing, opacity 1.5s cubic-bezier(.4,0,.2,1);;
+        
     }
 
     &:not(.nda):hover,

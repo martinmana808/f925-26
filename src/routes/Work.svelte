@@ -1,98 +1,91 @@
 <script>
+    import LazyImage from '../components/LazyImage.svelte';
     import Papa from 'papaparse'
     import Layout from '../components/layout/Layout.svelte'
     import Modal from '../components/Modal.svelte'
     import Loading from '../assets/icons/icon--loading.svg'
     import { onMount } from 'svelte'
 
-    let displayedImages = []
-    let loading = false
-    let isModalOpen = false
-    let modalData = {}
-    let workCol
+    let allWorks = [];
+    let displayedImages = [];
+    let imagesToShow = 60; // Number of images to show initially and per "View More"
+    let loading = false;
+    let isModalOpen = false;
+    let modalData = {};
+    let workCol;
 
-    let allWorks = []
-
+    function shuffleArray(array) {
+    // Fisher-Yates shuffle
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+    // CSV loading with aspect_ratio support
     async function loadCSVData() {
-    try {
-        const response = await fetch('/assets/data/works.csv')
-        if (!response.ok) {
-            throw new Error(`Failed to load CSV: ${response.statusText}`)
-        }
-        const csvText = await response.text()
-        console.log("RAW CSV TEXT:", csvText); // <---- ADD THIS LINE
-
-        return new Promise((resolve) => {
-            Papa.parse(csvText, {
-                header: true,
-                skipEmptyLines: true,
-                complete: (results) => {
-                    console.log('PapaParse raw results:', results); // <---- ADD THIS LINE
-                    // Add default values for missing properties
-                    const processedData = results.data.map(item => ({
-                        filename: item.filename || 'placeholder.jpg',
-                        title: item.title || 'Untitled',
-                        category: item.category || 'Unknown',
-                        description: item.description || ''
-                    }))
-                    resolve(processedData)
-                },
-                error: (error) => {
-                    console.error('CSV parsing error:', error)
-                    resolve([]) // Return empty array on error
-                }
-            })
-        })
-    } catch (error) {
-        console.error('Error loading CSV:', error)
-        return []
-    }
-}
-
-    async function selectRandomImages(shouldScroll = false) {
         try {
-            setLoading(true)
-            if (!allWorks || allWorks.length === 0) {
-                allWorks = await loadCSVData()
-            }
-            
-            const randomItems = [...allWorks].sort(() => 0.5 - Math.random()).slice(0, 60)
-            displayedImages = randomItems
-            setLoading(false)
-
-            if (shouldScroll && workCol) {
-                workCol.scrollIntoView({ behavior: 'smooth' })
-            }
+            const response = await fetch('/assets/data/works.csv');
+            if (!response.ok) throw new Error(`Failed to load CSV: ${response.statusText}`);
+            const csvText = await response.text();
+            return new Promise((resolve) => {
+                Papa.parse(csvText, {
+                    header: true,
+                    skipEmptyLines: true,
+                    complete: (results) => {
+                        const processedData = results.data.map(item => ({
+                            filename: item.filename || 'placeholder.jpg',
+                            title: item.title || 'Untitled',
+                            category: item.category || 'Unknown',
+                            description: item.description || '',
+                            aspect_ratio: item.aspect_ratio || '1 / 1'
+                        }));
+                        resolve(processedData);
+                    },
+                    error: (error) => {
+                        console.error('CSV parsing error:', error);
+                        resolve([]);
+                    }
+                });
+            });
         } catch (error) {
-            console.error('Error selecting random images:', error)
-            setLoading(false)
+            console.error('Error loading CSV:', error);
+            return [];
         }
     }
 
-    function setLoading(value) {
-        loading = value
+    // Load initial images on mount
+    onMount(async () => {
+        loading = true;
+        allWorks = await loadCSVData();
+        allWorks = shuffleArray(allWorks); // Shuffle ONCE after loading
+        displayedImages = allWorks.slice(0, imagesToShow);
+        loading = false;
+    });
+
+    // "View More" loads more images at the bottom
+    function loadMoreImages() {
+        imagesToShow += 20;
+        displayedImages = allWorks.slice(0, imagesToShow);
+        // Optionally scroll to the new images
+        // if (workCol) {
+        //     workCol.scrollIntoView({ behavior: 'smooth' });
+        // }
     }
 
     function openModal(data) {
-        modalData = data
-        isModalOpen = true
-        document.body.classList.add('work-modal-open')
+        modalData = data;
+        isModalOpen = true;
+        document.body.classList.add('work-modal-open');
     }
 
     function closeModal() {
-        isModalOpen = false
-        document.body.classList.remove('work-modal-open')
+        isModalOpen = false;
+        document.body.classList.remove('work-modal-open');
     }
-
-    onMount(async () => {
-        allWorks = await loadCSVData()
-        console.log("Primer item del CSV:", allWorks[0])
-        selectRandomImages()
-        document.body.classList.add('template--work')
-    })
 </script>
 
-<Layout {selectRandomImages}>
+<Layout>
     <div class="works grid gutter-x h-100 relative">
         <div class="col-l">
             <h1 class="text--subheadingSm l-visible">The power of being<br> a jack of all trades.</h1>
@@ -125,13 +118,13 @@
                 <div class="s-visible">
                     <br />
 
-                    <button class="link" on:click={() => selectRandomImages(true)}>Click here</button> to shuffle through a fresh set of random images.
+                    <button class="link">Click here</button> to shuffle through a fresh set of random images.
                 </div>
             </div>
             
         </div>
         <div class="work-random__button s-hidden">
-            <button class="button --sm" on:click={() => selectRandomImages(true)}>
+            <button class="button --sm">
                 <!-- Scroll only when clicked -->
                 <div class="loading--mobile">
                     <img src={Loading} alt="Loading" />
@@ -140,46 +133,42 @@
             </button>
         </div>
         <div id="work-col" class="work-col" bind:this={workCol}>
-            <div class="loading--desktop">
+            <div class="loading--desktop" style:display={loading ? 'block' : 'none'}>
                 <img src={Loading} alt="Loading" />
             </div>
             {#each displayedImages as work, i}
                 <button
                     class="work"
                     on:click={() => openModal(work)}
-                    style={`aspect-ratio: ${work.aspectRatio || '1 / 1'};`}
-                    aria-label="Open image modal">
-                    <img
+                    style={`aspect-ratio: ${work.aspect_ratio || '1 / 1'};`}
+                    aria-label="Open image modal"
+                >
+                    <LazyImage
                         src={`/assets/images/works--low/${work.filename || 'placeholder.jpg'}`}
                         alt={work.title || 'Untitled'}
-                        loading="lazy"
-                        on:load={(event) => {
-                            const img = event.target;
-                            // Calculate aspect ratio and update the work object
-                            work.aspectRatio = img.naturalWidth && img.naturalHeight
-                                ? `${img.naturalWidth} / ${img.naturalHeight}`
-                                : '1 / 1';
-                            // Force Svelte to update the UI
-                            displayedImages = [...displayedImages];
-                        }}
+                        className=""
+                        onLoad={() => {}}
+                        onError={() => {}}
                     />
-                    <div class="work__meta">
+                    <!-- <div class="work__meta">
                         <strong>{work.title}</strong><br>
                         <small>{work.category}</small>
-                    </div>
+                    </div> -->
                 </button>
             {/each}
         </div>
-    </div>
-    <div class="s-visible">
-        <button class="button --1out mx-auto" on:click={() => selectRandomImages(true)}>
-            <!-- Scroll only when clicked -->
-            <div class="loading--mobile">
-                <img src={Loading} alt="Loading" />
+        {#if displayedImages.length < allWorks.length}
+            <div class="s-visible">
+                <button class="button --1out mx-auto" on:click={loadMoreImages}>
+                    <div class="loading--mobile">
+                        <img src={Loading} alt="Loading" />
+                    </div>
+                    <span>View more</span>
+                </button>
             </div>
-            <span>View more</span>
-        </button>
+        {/if}
     </div>
+   
 </Layout>
 
 <Modal
