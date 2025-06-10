@@ -5,7 +5,12 @@
     import Modal from '../components/Modal.svelte';
     import Loading from '../assets/icons/icon--loading.svg';
     import { onMount, onDestroy } from 'svelte';
-
+    onMount(() => {
+        document.body.classList.add('template--work')
+    })
+    onDestroy(() => {
+        document.body.classList.remove('template--work')
+    })
     let allWorks = [];
     let displayedImages = [];
     let imagesToShow = 60; // Number of images to show initially and per "View More"
@@ -138,12 +143,8 @@
 <Layout>
     <div class="works grid gutter-x h-100 relative">
         <div class="col-l">
-            <h1 class="text--subheadingSm l-visible">The power of being<br> a jack of all trades.</h1>
-            <!-- <p class=" mw-600 s-hidden">
-                Soon, we'll be showcasing new work, but we wouldn't have made it this far without our past. Take a look at some of what we've done before.
-                <br />
-                Refresh the page or touch the button at the bottom to stir up a fresh, eye-candy set of random images.
-            </p> -->
+            <h1 class="works-intro text--subheadingSm l-visible">The power of being<br> a jack of all trades.</h1>
+            <h1 class="text--subheadingSm l-visible op-0">The power of being<br> a jack of all trades.</h1>
         </div>
         <div class="col-r">
             <h1 class="text--section l-hidden">My work</h1>
@@ -153,23 +154,22 @@
                 <span class="small"></span>
                 <!-- <span class="emoji">😝</span> -->
             </h2>
-            <h2 class="text--section l-visible">
+            <h2 class="works-intro text--section l-visible">
                 Master of none? Maybe. But I know a hell of a lot.
-
-                <span class="small">
-                    <!-- <span class="emoji">😝</span> -->
-                </span>
+            </h2>
+            <h2 class="text--section l-visible op-0">
+                Master of none? Maybe. But I know a hell of a lot.
             </h2>
 
-            <div class=" mw-600">
+            <div class="works-intro mw-600">
                 I’ve worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.
                 <br>
                 Here’s a little pot-pourri of work I’ve done over the years—random, varied, and all mine.
-                <div class="s-visible">
-                    <br />
-
-                    <button class="link">Click here</button> to shuffle through a fresh set of random images.
-                </div>
+            </div>
+            <div class="mw-600 op-0 l-visible">
+                I’ve worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.
+                <br>
+                Here’s a little pot-pourri of work I’ve done over the years—random, varied, and all mine.
             </div>
             
         </div>
@@ -182,7 +182,7 @@
                 <span>View more</span>
             </button>
         </div>
-        <div class="masonry">
+        <div class="masonry" id="masonry">
             {#each columns as col}
                 <div class="masonry-col">
                     {#each col as work}
@@ -209,13 +209,19 @@
             {/each}
         </div>
         {#if displayedImages.length < allWorks.length}
-            <div class="s-visible">
-                <button class="button --1out mx-auto" on:click={loadMoreImages}>
+        <div class="flex justify-between items-center col relative">
+                <div class="op-0">
+                    ↑
+                </div>
+                <button class="button button--view-more --0out" on:click={loadMoreImages}>
                     <div class="loading--mobile">
                         <img src={Loading} alt="Loading" />
                     </div>
                     <span>View more</span>
                 </button>
+                <a href="#masonry" class="c-0">
+                    ↑
+                </a>
             </div>
         {/if}
     </div>
@@ -224,7 +230,7 @@
 
 <Modal
     data={modalData}
-    src={modalData.filename ? `/assets/images/works--high/${modalData.filename}` : ''}
+    src={modalData.filename ? `/assets/images/works/${modalData.filename}` : ''}
     isOpen={isModalOpen}
     on:close={closeModal}
 />

@@ -688,6 +688,13 @@ Text
     row-gap: calc(@gutter / 2);
 }
 
+.c-0 {
+    color: @color-0;
+}
+.c-1 {
+    color: @color-1;
+}
+
 .button {
     position: relative;
     display: inline-flex;
@@ -893,6 +900,9 @@ Library
 }
 
 /* opacities */
+.op-0 {
+    opacity: 0;
+}
 .op-50 {
     opacity: 0.5;
 }
@@ -1216,13 +1226,13 @@ Library
     display: flex;
     width: 100vw;
     height: @header-height-sm;
-    z-index: 11;
+    z-index: 0;
     background: @color-0;
-    position: absolute;
-
+    position: fixed!important;
+    
     @media(min-width: @mq-m) {
         &:not(.template--work &){
-            position: fixed!important;
+            z-index: 11;
         }
     }
 
@@ -1545,6 +1555,9 @@ input:-webkit-autofill:focus {
         }
     }
 
+    .template--work & { 
+        color: @color-0;
+    }
     .template--home & {
         @media(min-width: @mq-nav) and (max-width: 87.5em - .0625) {
             position: static;
@@ -1583,7 +1596,14 @@ input:-webkit-autofill:focus {
 
             background-color: @color-0;
             z-index: -1;
-            border-radius: 10px;
+            border-radius: 100px;
+        }
+    }
+
+    .template--work & {
+        &::before {
+            background-color: @color-1;
+            // border: 2px solid @color-0;
         }
     }
 }
@@ -2658,6 +2678,15 @@ About
         move;
 }
 
+
+.template--work {
+    background: linear-gradient(to bottom, @color-0 50%, @color-1 50%);
+}
+
+.button--view-more:before {
+    background-color: @color-0;
+}
+
 .masonry {
     position: relative;
     display: flex;
@@ -2666,7 +2695,7 @@ About
     padding-top: @spacing-lg;
     padding-bottom: @spacing-top;
     margin-inline: calc(@spacing-x * -0.5);
-    margin-top: @spacing-x;
+    margin-top: @spacing-top;
     
     @media (min-width: @mq-s) {
         margin-inline: 0;
@@ -2680,12 +2709,17 @@ About
         top: 0;
         left: calc(@spacing-x * -1);
         right: calc(@spacing-x * -1);
-        bottom: 0;
+        bottom: 0; 
         z-index: 0;
         background: @color-1;
-        border-top-right-radius: @spacing-x;
-        border-top-left-radius: @spacing-x;
+        border-top-right-radius: calc(@spacing-x / 2);
+        border-top-left-radius: calc(@spacing-x / 2);
+        
+        @media (min-width: @mq-s) {
+            bottom: calc((@spacing-top * -1) + (@header-height * -1)); 
+        }
     }
+    
 }
 .masonry-col {
     flex: 1 1 0;
@@ -2706,6 +2740,12 @@ About
     ::-webkit-scrollbar-thumb {
         border-radius: 0;
         border: 0 solid transparent;
+    }
+}
+
+.works-intro {
+    @media (min-width: @mq-l) {
+        position: fixed;
     }
 }
 

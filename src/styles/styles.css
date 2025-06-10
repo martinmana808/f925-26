@@ -526,6 +526,12 @@ Text
   column-gap: clamp(1rem, 1.25vw, 1.25rem);
   row-gap: calc(clamp(1rem, 1.25vw, 1.25rem) / 2);
 }
+.c-0 {
+  color: #191c1f;
+}
+.c-1 {
+  color: #ffffff;
+}
 .button {
   position: relative;
   display: inline-flex;
@@ -694,6 +700,9 @@ Library
   outline: none;
 }
 /* opacities */
+.op-0 {
+  opacity: 0;
+}
 .op-50 {
   opacity: 0.5;
 }
@@ -963,13 +972,13 @@ Library
   display: flex;
   width: 100vw;
   height: 5rem;
-  z-index: 11;
+  z-index: 0;
   background: #191c1f;
-  position: absolute;
+  position: fixed!important;
 }
 @media (min-width: 43.75em) {
   .site-header:not(.template--work .site-header) {
-    position: fixed!important;
+    z-index: 11;
   }
 }
 @media (min-width: 62.5em) {
@@ -1228,6 +1237,9 @@ input:-webkit-autofill:focus {
     pointer-events: initial;
   }
 }
+.template--work .site-footer {
+  color: #191c1f;
+}
 @media (min-width: 62.5em) and (max-width: 87.4375em) {
   .template--home .site-footer {
     position: static;
@@ -1259,8 +1271,11 @@ input:-webkit-autofill:focus {
     left: calc(clamp(1.5rem, 5vw, 5rem) / -2);
     background-color: #191c1f;
     z-index: -1;
-    border-radius: 10px;
+    border-radius: 100px;
   }
+}
+.template--work .site-footer__inner::before {
+  background-color: #ffffff;
 }
 @media (max-width: 62.4375em) {
   .footer-nav ul {
@@ -2193,6 +2208,12 @@ About
   max-width: 6.25rem;
   cursor: url(../assets/icons/icon--cursor-scan.svg) 35 35, move;
 }
+.template--work {
+  background: linear-gradient(to bottom, #191c1f 50%, #ffffff 50%);
+}
+.button--view-more:before {
+  background-color: #191c1f;
+}
 .masonry {
   position: relative;
   display: flex;
@@ -2201,7 +2222,7 @@ About
   padding-top: clamp(3.125rem, 5.4688vw, 5.4688rem);
   padding-bottom: clamp(3.125rem, 8.875vw, 8.875rem);
   margin-inline: calc(clamp(1.5rem, 5vw, 5rem) * -0.5);
-  margin-top: clamp(1.5rem, 5vw, 5rem);
+  margin-top: clamp(3.125rem, 8.875vw, 8.875rem);
 }
 @media (min-width: 31.25em) {
   .masonry {
@@ -2218,8 +2239,13 @@ About
   bottom: 0;
   z-index: 0;
   background: #ffffff;
-  border-top-right-radius: clamp(1.5rem, 5vw, 5rem);
-  border-top-left-radius: clamp(1.5rem, 5vw, 5rem);
+  border-top-right-radius: calc(clamp(1.5rem, 5vw, 5rem) / 2);
+  border-top-left-radius: calc(clamp(1.5rem, 5vw, 5rem) / 2);
+}
+@media (min-width: 31.25em) {
+  .masonry::before {
+    bottom: calc((clamp(3.125rem, 8.875vw, 8.875rem) * -1) + (6.25rem * -1));
+  }
 }
 .masonry-col {
   flex: 1 1 0;
@@ -2238,6 +2264,11 @@ About
 .works ::-webkit-scrollbar-thumb {
   border-radius: 0;
   border: 0 solid transparent;
+}
+@media (min-width: 62.5em) {
+  .works-intro {
+    position: fixed;
+  }
 }
 .work-col {
   position: relative;

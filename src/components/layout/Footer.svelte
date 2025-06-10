@@ -94,15 +94,7 @@ onMount(() => {
             </div>
             <div class="col-l l-visible">
                 <div class="flex items-center  h-100">
-                    {#if isWorkPage}
-                        <span class="text--eyebrow">
-                            <button class="link" on:click={selectRandomImages}>
-                                <span>Load new images</span>
-                            </button>
-                        </span>
-                    {:else}
-                        <span class="text--small">{currentTime.toUpperCase()} 🇳🇿</span>
-                    {/if}
+                    <span class="text--small">{currentTime.toUpperCase()} 🇳🇿</span>
                 </div>
             </div>
             <div class="col-r l-flex items-center justify-between">
