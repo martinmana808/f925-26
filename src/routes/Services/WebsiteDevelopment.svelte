@@ -50,7 +50,7 @@
             linkDemo: 'https://lighthouseco.in',
             linkLabel: 'lighthouseco.in',
             description:
-                "A bespoke custom boutique website is a meticulously crafted digital experience tailored to your brand's distinct needs, blending function and aesthetics seamlessly. It’s the most effective way to make a bold, meaningful impact, setting your brand apart and driving a significant leap forward for your business.",
+                "A bespoke custom boutique website is a meticulously crafted digital experience tailored to your brand's distinct needs, blending function and aesthetics seamlessly. I create these unique experiences to make a bold, meaningful impact, setting your brand apart and driving a significant leap forward for your business.",
             imageSrc: '/services--bespoke.png',
             type: 'mockup',
         },
@@ -60,7 +60,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                "A WordPress website offers unmatched flexibility and customization options, allowing us to craft a solution that perfectly aligns with your brand. Designed for scalability and SEO optimization, it's ideal for businesses looking for a robust, easy-to-manage online presence that can grow with them.",
+                "A WordPress website offers unmatched flexibility and customization options, allowing me to craft a solution that perfectly aligns with your brand. I design for scalability and SEO optimization, making it ideal for businesses looking for a robust, easy-to-manage online presence that can grow with them.",
             // imageSrc: '/path/to/seo-service-image.png',
         },
         {
@@ -69,7 +69,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                "WooCommerce brings powerful e-commerce capabilities to your website, tailored to your store's specific needs. Built within WordPress, it provides endless customization options and seamless integration. It’s the perfect platform for businesses that need to manage products, sales, and customers while maintaining a visually stunning and user-friendly site. With WooCommerce, you get the flexibility and performance of WordPress combined with top-tier e-commerce functionality.",
+                "I implement WooCommerce to bring powerful e-commerce capabilities to your website, tailored to your store's specific needs. Built within WordPress, I provide endless customization options and seamless integration. It's the perfect platform for businesses that need to manage products, sales, and customers while maintaining a visually stunning and user-friendly site. With my WooCommerce implementation, you get the flexibility and performance of WordPress combined with top-tier e-commerce functionality.",
             // imageSrc: '/path/to/seo-service-image.png',
         },
         {
@@ -78,7 +78,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                'Shopify offers a streamlined, user-friendly platform that allows your business to get up and running quickly while maintaining a professional look. Our custom Shopify stores blend beautiful design with powerful functionality, providing the perfect balance between aesthetics and performance to drive online sales and customer engagement.',
+                'Shopify offers a streamlined, user-friendly platform that allows your business to get up and running quickly while maintaining a professional look. I create custom Shopify stores that blend beautiful design with powerful functionality, providing the perfect balance between aesthetics and performance to drive online sales and customer engagement.',
             // imageSrc: '/path/to/seo-service-image.png',
         },
     ]

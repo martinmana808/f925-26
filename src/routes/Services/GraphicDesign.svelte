@@ -50,7 +50,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                'Branding is more than just a logo; it’s the essence of your business. We specialize in creating unique brand identities that resonate with your target audience. From logo design to comprehensive brand strategies, our approach combines creativity and market insight, ensuring your brand stands out and communicates your values effectively.',
+                "Branding is more than just a logo; it's the essence of your business. I specialize in creating unique brand identities that resonate with your target audience. From logo design to comprehensive brand strategies, my approach combines creativity and market insight, ensuring your brand stands out and communicates your values effectively.",
             imageSrc: '/services--branding.webp',
         },
         {
@@ -59,7 +59,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                'Packaging is your product’s first impression, and we believe it should be as remarkable as the product itself. Our team designs eye-catching and functional packaging that not only protects your products but also tells your brand story. With a focus on sustainability and user experience, we create packaging that captivates and engages customers from the shelf to their hands.',
+                "Packaging is your product's first impression, and I believe it should be as remarkable as the product itself. I design eye-catching and functional packaging that not only protects your products but also tells your brand story. With a focus on sustainability and user experience, I create packaging that captivates and engages customers from the shelf to their hands.",
             imageSrc: '/services--packaging.webp',
         },
         {
@@ -68,7 +68,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                'In a digital-first world, captivating visuals are essential for capturing attention. Our digital media services encompass everything from social media graphics to web design, ensuring your brand maintains a strong online presence. We create stunning visuals that resonate across platforms, helping you connect with your audience and drive engagement.',
+                'In a digital-first world, captivating visuals are essential for capturing attention. My digital media services encompass everything from social media graphics to web design, ensuring your brand maintains a strong online presence. I create stunning visuals that resonate across platforms, helping you connect with your audience and drive engagement.',
             imageSrc: '/services--digital-media.webp',
         },
         {
@@ -77,7 +77,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                'Effective promotional design grabs attention and drives action. We specialize in creating dynamic marketing materials—from flyers and brochures to banners and online ads—that amplify your message and promote your brand. Our designs are crafted to not only inform but also inspire, ensuring your promotions make a lasting impression.',
+                'Effective promotional design grabs attention and drives action. I specialize in creating dynamic marketing materials—from flyers and brochures to banners and online ads—that amplify your message and promote your brand. My designs are crafted to not only inform but also inspire, ensuring your promotions make a lasting impression.',
             imageSrc: '/services--promo-design.webp',
         },
     ]

@@ -50,7 +50,7 @@
             // linkDemo: 'https://lighthouseco.in',
             // linkLabel: 'lighthouseco.in',
             description:
-                'Wireframing is the blueprint of your digital product. It provides a clear, visual representation of the layout, structure, and functionality of your interface, allowing you to map out the user journey and prioritize essential features. This crucial step helps streamline the design process, ensuring a solid foundation for a user-friendly experience before diving into detailed design elements.',
+                'Wireframing is the blueprint of your digital product. I provide a clear, visual representation of the layout, structure, and functionality of your interface, allowing you to map out the user journey and prioritize essential features. This crucial step helps me streamline the design process, ensuring a solid foundation for a user-friendly experience before diving into detailed design elements.',
             imageSrc: '/services--wireframing.jpg',
         },
         {
@@ -59,7 +59,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                'Prototyping brings your ideas to life, transforming wireframes into interactive models that simulate user interactions. This stage allows you to test functionality, gather feedback, and refine the user experience early in the design process. With prototypes, you can validate concepts and make informed decisions, ultimately saving time and resources while enhancing the final product.',
+                'I bring your ideas to life through prototyping, transforming wireframes into interactive models that simulate user interactions. This stage allows you to test functionality, gather feedback, and refine the user experience early in the design process. With my prototypes, you can validate concepts and make informed decisions, ultimately saving time and resources while enhancing the final product.',
             imageSrc: '/services--prototyping.png',
             // imageSrc: '/path/to/seo-service-image.png',
         },
@@ -69,7 +69,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                'Visual design is where aesthetics meet functionality. This stage focuses on creating a cohesive and engaging visual language that aligns with your brand identity. From color schemes and typography to imagery and layout, effective visual design not only enhances the user experience but also reinforces brand recognition and trust, making your digital product both beautiful and user-friendly.',
+                'Visual design is where aesthetics meet functionality. I focus on creating a cohesive and engaging visual language that aligns with your brand identity. From color schemes and typography to imagery and layout, my visual design not only enhances the user experience but also reinforces brand recognition and trust, making your digital product both beautiful and user-friendly.',
             // imageSrc: '/path/to/seo-service-image.png',
         },
         {
@@ -78,7 +78,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                'Interaction design focuses on how users engage with your product. This involves crafting intuitive and seamless interactions that enhance the user experience, ensuring that every action feels natural and satisfying. By considering elements like feedback, transitions, and affordances, interaction design creates a responsive environment that keeps users engaged and encourages exploration, making your digital product a pleasure to use.',
+                'In interaction design, I focus on how users engage with your product. I craft intuitive and seamless interactions that enhance the user experience, ensuring that every action feels natural and satisfying. By considering elements like feedback, transitions, and affordances, I create a responsive environment that keeps users engaged and encourages exploration, making your digital product a pleasure to use.',
             // imageSrc: '/path/to/seo-service-image.png',
         },
     ]

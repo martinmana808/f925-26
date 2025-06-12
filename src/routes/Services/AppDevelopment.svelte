@@ -46,32 +46,20 @@
     let serviceDetails = [
         {
             title: 'iOS',
-            // altTitle: 'Unique & Boutique',
-            // linkDemo: '',
-            // linkLabel: '',
             description:
-                'iOS development brings your app to the millions of users on Apple devices. Our team specializes in creating intuitive, high-performance applications that not only meet Apple’s stringent guidelines but also deliver exceptional user experiences. With a focus on sleek design and seamless functionality, we help you stand out in the App Store and connect with your audience effectively.',
+                "iOS development brings your app to the millions of users on Apple devices. I specialize in creating intuitive, high-performance applications that not only meet Apple's stringent guidelines but also deliver exceptional user experiences. With a focus on sleek design and seamless functionality, I help you stand out in the App Store and connect with your audience effectively.",
             imageSrc: '/services--ios.webp',
         },
         {
             title: 'Android',
-            // altTitle: 'In control; within budget',
-            // linkDemo: '',
-            // linkLabel: '',
             description:
-                'Android development opens the door to a vast and diverse user base. We craft custom applications tailored to the unique needs of your brand while optimizing for performance across a wide range of devices. Our expertise in the latest Android technologies ensures that your app is not only visually appealing but also functional and user-friendly, ready to make an impact in the Google Play Store.',
+                'Android development opens the door to a vast and diverse user base. I craft custom applications tailored to the unique needs of your brand while optimizing for performance across a wide range of devices. My expertise in the latest Android technologies ensures that your app is not only visually appealing but also functional and user-friendly, ready to make an impact in the Google Play Store.',
             imageSrc: '/services--android.jpg',
-            // imageSrc: '/path/to/seo-service-image.png',
         },
         {
             title: 'Web progressive app (WPA)',
-            // altTitle: 'Who said good, great and affordable could not co-exist?',
-            // linkDemo: '',
-            // linkLabel: '',
             description:
-                'Web Progressive Apps combine the best of web and mobile applications, offering a seamless experience across devices. Our WPA solutions are designed to be fast, reliable, and engaging, ensuring that users can access your content effortlessly. With features like offline capabilities and push notifications, we help you create a dynamic presence that enhances user interaction and drives engagement.',
-            // imageSrc: '/services--wpa.jpg',
-            // imageSrc: '/path/to/seo-service-image.png',
+                'Web Progressive Apps combine the best of web and mobile applications, offering a seamless experience across devices. My WPA solutions are designed to be fast, reliable, and engaging, ensuring that users can access your content effortlessly. With features like offline capabilities and push notifications, I help you create a dynamic presence that enhances user interaction and drives engagement.',
         },
     ]
     function goBack() {
@@ -122,7 +110,7 @@
     }
 </script>
 
-<Layout>
+<Layout selectRandomImages={false}>
     <a class="service-detail__contact-button" on:click={focusFirstInput} href="#service-detail-form--mobile">
         <span>Questions? Get in touch</span>
         <Icon name="arrowDown" extraClass="" />
@@ -148,7 +136,7 @@
                 {setActiveTab}
                 lvl2pages={[{ title: 'iOS' }, { title: 'Android' }, { title: 'Web progressive app (WPA)' }]} />
 
-            <ServiceDetail {serviceDetails} {activeTab} {setActiveTab} />
+            <ServiceDetail {serviceDetails} {activeTab} {setActiveTab} type="app" />
 
             <div class="mt-lg text--small w-100 l-hidden">
                 {#if formMessage.includes('Error') || formMessage.length === 0}

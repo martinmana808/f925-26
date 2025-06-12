@@ -50,7 +50,7 @@
             // linkDemo: 'https://lighthouseco.in',
             // linkLabel: 'lighthouseco.in',
             description:
-                'We design intelligent, responsive chatbots that enhance your customer support. These AI-powered solutions handle inquiries, provide instant responses, and improve customer engagement. By automating interactions, we free up your team to focus on more complex tasks, while ensuring a consistent and efficient service experience for your customers.',
+                'I design intelligent, responsive chatbots that enhance your customer support. These AI-powered solutions handle inquiries, provide instant responses, and improve customer engagement. By automating interactions, I free up your team to focus on more complex tasks, while ensuring a consistent and efficient service experience for your customers.',
             // imageSrc: '/services--bespoke.png',
             // type: 'mockup',
         },
@@ -60,7 +60,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                'We streamline repetitive tasks with AI-powered automation, improving efficiency and reducing operational costs. Our solutions eliminate manual processes, enabling your team to focus on high-value work. From data entry to scheduling, our automation tools help you save time and boost productivity across every department.',
+                'I streamline repetitive tasks with AI-powered automation, improving efficiency and reducing operational costs. My solutions eliminate manual processes, enabling your team to focus on high-value work. From data entry to scheduling, my automation tools help you save time and boost productivity across every department.',
             // imageSrc: '/path/to/seo-service-image.png',
         },
         {
@@ -69,7 +69,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                "Harness the power of AI to analyze vast amounts of data and extract actionable insights. Our data-driven solutions help you make informed decisions, identify trends, and improve business strategies. By providing accurate, real-time analysis, we empower you to optimize operations and stay ahead of the competition.",
+                "I harness the power of AI to analyze vast amounts of data and extract actionable insights. My data-driven solutions help you make informed decisions, identify trends, and improve business strategies. By providing accurate, real-time analysis, I empower you to optimize operations and stay ahead of the competition.",
             // imageSrc: '/path/to/seo-service-image.png',
         },
         {
@@ -78,7 +78,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                'We leverage AI to optimize your marketing strategies for better engagement and conversion. By analyzing customer data, tracking behavior, and predicting trends, our solutions ensure that your marketing efforts are data-driven and highly effective. From targeting the right audience to maximizing ad spend, we help you achieve measurable results with AI.',
+                'I leverage AI to optimize your marketing strategies for better engagement and conversion. By analyzing customer data, tracking behavior, and predicting trends, my solutions ensure that your marketing efforts are data-driven and highly effective. From targeting the right audience to maximizing ad spend, I help you achieve measurable results with AI.',
             // imageSrc: '/path/to/seo-service-image.png',
         },
         {
@@ -87,7 +87,7 @@
             // linkDemo: '',
             // linkLabel: '',
             description:
-                'We create custom AI solutions tailored to the unique needs of your business. From advanced machine learning models to specialized algorithms, our bespoke AI development services are designed to solve specific challenges and unlock new opportunities. With tailored training and seamless integration, we ensure your AI solutions deliver real, tangible value to your operations.',
+                'I create custom AI solutions tailored to the unique needs of your business. From advanced machine learning models to specialized algorithms, my bespoke AI development services are designed to solve specific challenges and unlock new opportunities. With tailored training and seamless integration, I ensure your AI solutions deliver real, tangible value to your operations.',
             // imageSrc: '/path/to/seo-service-image.png',
         },
     ]
@@ -136,7 +136,7 @@
     }
 </script>
 
-<Layout>
+<Layout selectRandomImages={false}>
     <a class="service-detail__contact-button" on:click={focusFirstInput} href="#service-detail-form--mobile">
         <span>Questions? Get in touch</span>
         <Icon name="arrowDown" extraClass="" />
@@ -166,10 +166,9 @@
                     { title: 'Data Analysis' },
                     { title: 'Marketing Optimization' },
                     { title: 'Bespoke AI Development' },
-
                 ]} />
 
-            <ServiceDetail {serviceDetails} {activeTab} {setActiveTab} />
+            <ServiceDetail {serviceDetails} {activeTab} {setActiveTab} type="ai" />
 
             <div class="mt-lg text--small w-100 l-hidden">
                 {#if formMessage.includes('Error') || formMessage.length === 0}
