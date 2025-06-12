@@ -2,8 +2,8 @@ const sharp = require('sharp');
 const fs = require('fs-extra');
 const path = require('path');
 
-const inputDir = '../public/assets/images/works';
-const outputDir = '../public/assets/images/works--low';
+const inputDir = path.join(__dirname, '..', 'public', 'assets', 'images', 'works');
+const outputDir = path.join(__dirname, '..', 'public', 'assets', 'images', 'works--low');
 
 fs.ensureDirSync(outputDir);
 

@@ -1,7 +1,18 @@
-<script>
+<script lang="ts">
+    interface WorkData {
+        title?: string;
+        category?: string;
+        description?: string;
+        url?: string;
+        filename?: string;
+        [key: string]: any;
+    }
+
     export let src = '';
     export let isOpen = false;
-    export let data = {}; // Accepts the full work object (title, category, description, etc.)
+    export let data: WorkData = {}; // Accepts the full work object (title, category, description, etc.)
+    export let isYouTubeUrl = (url) => false;
+    export let getYouTubeEmbedUrl = (url) => '';
 
     import Loading from '../assets/icons/icon--loading.svg';
     import { createEventDispatcher, onMount } from 'svelte';
@@ -11,8 +22,12 @@
     let loading = true;
     let errorLoading = false;
     let previousSrc = '';
+    let youtubeIframe;
 
     function close() {
+        if (youtubeIframe) {
+            youtubeIframe.src = '';
+        }
         dispatch('close');
     }
 
@@ -55,14 +70,11 @@
 
     $: console.log('Modal data:', data);
 </script>
+
 <style>
-    .modal-meta {
-        position: absolute;
-        z-index: 33333333;
-        color: black;
-        background: white;
-    }
+    
 </style>
+
 <button class="modal {isOpen ? 'modal--open' : ''}" aria-modal="true" on:click={close}>
     <button class="modal-close link--on-hover" bind:this={closeButton} on:click={close} aria-label="Close modal">
         Close
@@ -80,44 +92,53 @@
         <div class="modal__loading">
             <div>
                 <span class="text--section">🐛</span>
-                <div class="mt-sm">Failed to load image</div>
+                <div class="mt-sm">Failed to load content</div>
             </div>
         </div>
     {/if}
- <div class="modal-meta c-1">
-            {#if data.title}
-                <h2>{data.title}</h2>
-            {/if}
-            {#if data.category}
-                <div class="modal-category">{data.category}</div>
-            {/if}
-            {#if data.description}
-                <p class="modal-description">{data.description}</p>
+
+    <div class="modal-meta c-1 pointer-none">
+        <div class="modal-meta__tags flex">
+            <!-- {#if data.title}
+                <span class="tag filter-button active">{data.title}</span> 
+            {/if} -->
+            {#if data.categories}
+                {#each data.categories as category}
+                    <span class="tag filter-button active">{category}</span>
+                {/each}
             {/if}
         </div>
-    <!-- Image content -->
-    <img class="modal-content" {src} alt="Modal image" on:load={handleImageLoad} on:error={handleImageError} />
+        {#if data.description} 
+            <div class="modal-meta__description tag filter-button">{data.description}</div>
+        {/if}
+    </div>
 
-    <!-- {#if data.category}
-      <footer class="site-footer spacing-x">
-          <div class="site-footer__inner mw-container mx-auto w-100 h-100">
-              <div class="grid gutter-x h-100">
-                  <div class="col-l flex items-center text--eyebrow">
-                      <div class="modal-category">{data.category}</div>
-                  </div>
-                  <div class="col-r flex items-center justify-between">
-                      <nav class="icon--social-nav flex items-center">
-                          <button
-                              class="modal-close link text--eyebrow"
-                              bind:this={closeButton}
-                              on:click={close}
-                              aria-label="Close modal">
-                              Close
-                          </button>
-                      </nav>
-                  </div>
-              </div>
-          </div>
-      </footer>
-  {/if} -->
+    <!-- Content -->
+    {#if data.url && isYouTubeUrl(data.url)}
+        <div class="modal-content youtube-container">
+            <iframe
+                bind:this={youtubeIframe}
+                width="100%"
+                height="100%"
+                src={getYouTubeEmbedUrl(data.url)}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                on:load={() => loading = false}
+                on:error={() => {
+                    loading = false;
+                    errorLoading = true;
+                }}
+            ></iframe>
+        </div>
+    {:else}
+        <img 
+            class="modal-content" 
+            {src} 
+            alt="Modal image" 
+            on:load={handleImageLoad} 
+            on:error={handleImageError} 
+        />
+    {/if}
 </button>
+

@@ -39,16 +39,12 @@
 
 @color-0: #191c1f;
 @color-1: #ffffff;
+
 // Define lightness
-@color-1aL: lighten(@color-0, 80%);
-@color-1bL: lighten(@color-0, 50%);
-@color-1cL: lighten(@color-0, 15%);
-@color-1dL: lighten(@color-0, 5%);
-// Define saturation
-@color-1a: desaturate(@color-1aL, 5%);
-@color-1b: desaturate(@color-1bL, 5%);
-@color-1c: desaturate(@color-1cL, 5%);
-@color-1d: desaturate(@color-1dL, 5%);
+@color-04: lighten(@color-0, 80%);
+@color-03: lighten(@color-0, 50%);
+@color-02: lighten(@color-0, 15%);
+@color-01: lighten(@color-0, 5%);
 
 @color-2: #aef9d1;
 
@@ -784,9 +780,9 @@ Text
     }
 
     &.--1d {
-        color: @color-1b;
-        background-color: @color-1d;
-        border-color: @color-1d;
+        color: @color-02;
+        background-color: @color-01;
+        border-color: @color-01;
 
         @media (any-hover: hover) {
 
@@ -850,7 +846,9 @@ Text
 /*/ //////////////////////////////////////////////////////////////////////
 Library
 ///////////////////////////////////////////////////////////////////////*/
-
+.pointer-none {
+    pointer-events: none;
+}
 .mw-300 {
     max-width: 300px;
 }
@@ -1481,7 +1479,7 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
     -webkit-text-fill-color: @color-1;
-    -webkit-box-shadow: 0 0 0px 40rem @color-1d inset;
+    -webkit-box-shadow: 0 0 0px 40rem @color-01 inset;
 }
 
 .link--chat {
@@ -1605,6 +1603,9 @@ input:-webkit-autofill:focus {
             background-color: @color-1;
             // border: 2px solid @color-0;
         }
+        a:hover, a:focus {
+            color: darken(@color-2, 50%);
+        }
     }
 }
 
@@ -1710,8 +1711,8 @@ input:-webkit-autofill:focus {
     ::-webkit-scrollbar-thumb {
         @media (pointer: fine) {
             @media (min-width: @mq-nav) {
-                background-color: @color-1c;
-                border: 2px solid @color-1c;
+                background-color: @color-03;
+                border: 2px solid @color-03;
                 border-radius: 4px;
                 background-clip: content-box;
             }
@@ -1721,7 +1722,7 @@ input:-webkit-autofill:focus {
     ::-webkit-scrollbar-thumb:hover {
         @media (any-hover: hover) {
             @media (min-width: @mq-nav) {
-                background-color: @color-1b;
+                background-color: @color-02;
             }
         }
     }
@@ -1859,7 +1860,7 @@ a:focus .icon-effect.--back,
     border-radius: 1000px;
     font-weight: 600;
     font-size: 12px;
-    background-color: @color-1a;
+    background-color: @color-04;
     color: @color-1;
     line-height: 1;
     transition: all 0.5s @default-easing;
@@ -1974,14 +1975,14 @@ Home
     padding: clamp(1.875rem, 3.625vw, 3.625rem);
     cursor: url(../assets/icons/slider-cursor.svg) 35 35, move;
     transition: all 0.5s @default-easing;
-    background-color: @color-1c;
+    background-color: @color-03;
     color: @color-1;
     margin-right: calc(@gutter / 2);
     border-radius: 16px;
 
     @media (min-width: @mq-s) {
         max-width: 28.125rem;
-        background-color: @color-1d;
+        background-color: @color-01;
         color: @color-1;
         margin-right: @gutter;
         width: 71.5%;
@@ -2041,7 +2042,7 @@ Home
         }
 
         .tag {
-            background-color: @color-1a;
+            background-color: @color-04;
             color: @color-0;
             opacity: 1;
         }
@@ -2088,13 +2089,13 @@ Home
 
     .tag {
         @media (max-width: (@mq-s-1)) {
-            // background-color: @color-1d  !important;
+            // background-color: @color-01  !important;
             // opacity: 1;
 
         }
 
         color: @color-0;
-        background-color: @color-1a;
+        background-color: @color-04;
         opacity: .5;
 
     }
@@ -2148,7 +2149,7 @@ Home
 .services-nav--lvl1,
 .services-nav--lvl2 {
     a {
-        color: @color-1c;
+        color: @color-03;
 
         &:hover,
         &:focus {
@@ -2220,18 +2221,18 @@ Home
         width: 100%;
         padding: 14px 21px;
         border-radius: 8px;
-        border: 1px solid @color-1d;
+        border: 1px solid @color-01;
         outline: 0;
         font-family: @font-body;
         font-weight: 500;
         font-size: @text-small-size;
         line-height: @text-small-height;
         color: @color-1;
-        background: @color-1d;
+        background: @color-01;
 
         &:focus,
         &:focus-within {
-            border-color: @color-1b;
+            border-color: @color-02;
         }
     }
 
@@ -2264,7 +2265,7 @@ Home
             transform: translateY(-50%);
             transform-origin: left;
             pointer-events: none;
-            color: @color-1b;
+            color: @color-02;
         }
 
         textarea:focus+label,
@@ -2273,7 +2274,7 @@ Home
         input:not(:placeholder-shown)+label {
             transform: scale(0.7);
             top: 0.4em;
-            color: @color-1a;
+            color: @color-04;
         }
     }
 }
@@ -2294,10 +2295,10 @@ Home
 
     .button {
         @media (min-width: @mq-nav) {
-            border-color: @color-1d;
+            border-color: @color-01;
 
             span {
-                color: @color-1b;
+                color: @color-02;
             }
 
             &:before {
@@ -2319,12 +2320,12 @@ Home
     }
 
     ::placeholder {
-        color: @color-1b;
+        color: @color-02;
         opacity: 1;
     }
 
     ::-ms-input-placeholder {
-        color: @color-1b;
+        color: @color-02;
     }
 }
 
@@ -2643,12 +2644,12 @@ About
     }
 
     ::placeholder {
-        color: @color-1b;
+        color: @color-02;
         opacity: 1;
     }
 
     ::-ms-input-placeholder {
-        color: @color-1b;
+        color: @color-02;
     }
 }
 
@@ -2680,11 +2681,42 @@ About
 
 
 .template--work {
-    background: linear-gradient(to bottom, @color-0 50%, @color-1 50%);
+    @media (min-width: @mq-l) {
+        background: linear-gradient(to bottom, @color-0 80%, @color-1 20%); 
+    }
 }
 
 .button--view-more:before {
     background-color: @color-0;
+}
+.category-filters {
+    flex-basis: 100%;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filter-button.tag {
+    color: @color-03;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: transparent;
+}
+
+.filter-button.tag:hover,
+.filter-button.tag:focus {
+    // background: @color-0;
+    color: @color-0;
+}
+
+.filter-button.tag.active {
+    background: @color-0;
+    color: white;
 }
 
 .masonry {
@@ -2696,6 +2728,7 @@ About
     padding-bottom: @spacing-top;
     margin-inline: calc(@spacing-x * -0.5);
     margin-top: @spacing-top;
+    flex-wrap: wrap;
     
     @media (min-width: @mq-s) {
         margin-inline: 0;
@@ -2821,7 +2854,7 @@ About
     width: 100%;
     overflow: hidden;
     border-radius: clamp(0.25rem, 0.75vw, 0.625rem);
-    background-color: @color-1c;
+    background-color: @color-03;
     background: #f6f6f6;
 
     img {
@@ -2852,7 +2885,7 @@ About
     a {
         font-size: 1rem;
         font-weight: 500;
-        color: @color-1b;
+        color: @color-02;
         white-space: nowrap;
 
         &.active {
@@ -2993,6 +3026,46 @@ About
         top: 1.1875rem;
         right: 4rem;
     }
+}
+
+.modal-meta {
+    position: absolute;
+    bottom: calc(@header-height / 2);
+    left: @spacing-x;
+    right: @spacing-x;
+    transform: translateY(-50%);
+    z-index: 33333333;
+    color: @color-0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: calc(@gutter / 2) ;
+}
+.modal-meta__tags {
+    display: flex;
+    gap: calc(@gutter / 2);
+    font-size: 0.875rem;
+}
+.modal-meta__description.tag.filter-button {
+    background-color: @color-1;
+    padding: 7px 12px;
+    border-radius: 0.9375rem;
+    font-size: 0.875rem;
+    color: @color-0;
+    display: inline-block;
+}
+.youtube-container {
+    width: 100%;
+    height: 80vh;
+    max-width: 1200px;
+    pointer-events: auto;
+}
+
+iframe.modal-content {
+    width: 100%;
+    height: 80vh;
+    max-width: 1200px;
+    pointer-events: auto;
 }
 
 .template--404 {

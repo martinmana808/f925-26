@@ -5,28 +5,34 @@
     import Modal from '../components/Modal.svelte';
     import Loading from '../assets/icons/icon--loading.svg';
     import { onMount, onDestroy } from 'svelte';
+
     onMount(() => {
-        document.body.classList.add('template--work')
-    })
+        document.body.classList.add('template--work');
+    });
+
     onDestroy(() => {
-        document.body.classList.remove('template--work')
-    })
+        document.body.classList.remove('template--work');
+    });
+
+    // State
     let allWorks = [];
     let displayedImages = [];
-    let imagesToShow = 60; // Number of images to show initially and per "View More"
+    let imagesToShow = 60;
     let loading = false;
     let isModalOpen = false;
     let modalData = {};
     let workCol;
+    let activeCategory = 'All';
+    let categories = ['All'];
 
     const breakpoints = {
-        mq_s: 600,      // replace with your actual px value for @mq-s
-        mq_nav: 900,    // replace with your actual px value for @mq-nav
-        mq_xxl: 1400    // replace with your actual px value for @mq-xxl
+        mq_s: 600,
+        mq_nav: 900,
+        mq_xxl: 1400
     };
 
+    // Shuffle array using Fisher-Yates algorithm
     function shuffleArray(array) {
-        // Fisher-Yates shuffle
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
@@ -34,24 +40,43 @@
         return array;
     }
 
-    // CSV loading with aspect_ratio support
+     // Update the loadCSVData function to handle multiple categories
     async function loadCSVData() {
         try {
             const response = await fetch('/assets/data/works.csv');
             if (!response.ok) throw new Error(`Failed to load CSV: ${response.statusText}`);
             const csvText = await response.text();
+            
             return new Promise((resolve) => {
                 Papa.parse(csvText, {
                     header: true,
                     skipEmptyLines: true,
                     complete: (results) => {
-                        const processedData = results.data.map(item => ({
-                            filename: item.filename || 'placeholder.jpg',
-                            title: item.title || 'Untitled',
-                            category: item.category || 'Unknown',
-                            description: item.description || '',
-                            aspect_ratio: item.aspect_ratio || '1 / 1'
-                        }));
+                        // Process each work's categories
+                        const processedData = results.data.map(item => {
+                            // Split categories by comma and trim whitespace
+                            const categories = item.category 
+                                ? item.category.split(',').map(cat => cat.trim())
+                                : ['Uncategorized'];
+                            
+                            return {
+                                filename: item.filename || 'placeholder.jpg',
+                                title: item.title || 'Untitled',
+                                categories: categories,
+                                description: item.description || '',
+                                aspect_ratio: item.aspect_ratio || '1 / 1',
+                                url: item.url || '' // Add URL from CSV
+                            };
+                        });
+
+                        // Extract all unique categories
+                        const allCategories = new Set(['All']);
+                        processedData.forEach(work => {
+                            work.categories.forEach(cat => allCategories.add(cat));
+                        });
+                        // Ensure 'All' is first and the rest are sorted
+                        const sortedCategories = Array.from(allCategories).filter(c => c !== 'All').sort();
+                        categories = ['All', ...sortedCategories];
                         resolve(processedData);
                     },
                     error: (error) => {
@@ -66,11 +91,17 @@
         }
     }
 
-    // Load initial images on mount
+    // Update filter function to check multiple categories
+    function filterByCategory(work) {
+        if (activeCategory === 'All') return true;
+        return work.categories.includes(activeCategory);
+    }
+
+    // Load initial data
     onMount(async () => {
         loading = true;
         allWorks = await loadCSVData();
-        allWorks = shuffleArray(allWorks); // Shuffle ONCE after loading
+        allWorks = shuffleArray(allWorks);
         displayedImages = allWorks.slice(0, imagesToShow);
         loading = false;
         updateColumns();
@@ -81,12 +112,25 @@
         window.removeEventListener('resize', updateColumns);
     });
 
-    // "View More" loads more images at the bottom
     function loadMoreImages() {
         imagesToShow += 20;
-        displayedImages = allWorks.slice(0, imagesToShow);
+        updateDisplayedImages();
     }
 
+    function updateDisplayedImages() {
+        displayedImages = activeCategory === 'All'
+            ? allWorks.slice(0, imagesToShow)
+            : allWorks.filter(work => work.categories.includes(activeCategory)).slice(0, imagesToShow);
+    }
+
+    // Call this when changing categories
+    function setActiveCategory(category) {
+        activeCategory = category;
+        imagesToShow = 60; // Reset pagination
+        updateDisplayedImages();
+    }
+
+    // Modal functions
     function openModal(data) {
         modalData = data;
         isModalOpen = true;
@@ -98,9 +142,26 @@
         document.body.classList.remove('work-modal-open');
     }
 
+    // YouTube video handling
+    function isYouTubeUrl(url) {
+        if (!url) return false;
+        const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
+        return youtubeRegex.test(url);
+    }
+
+    function getYouTubeEmbedUrl(url) {
+        if (!url) return '';
+        // Handle both youtube.com and youtu.be URLs
+        const videoId = url.includes('youtu.be') 
+            ? url.split('/').pop()
+            : url.split('v=')[1]?.split('&')[0];
+        if (!videoId) return '';
+        return `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=1&rel=0&showinfo=0&modestbranding=1`;
+    }
+
     // Responsive columns logic
     let numColumns = 2;
-    let columnWidth = 300; // You can adjust this to match your CSS or calculate dynamically
+    let columnWidth = 300;
 
     function updateColumns() {
         const width = window.innerWidth;
@@ -113,10 +174,9 @@
         } else {
             numColumns = 2;
         }
-        // Optionally update columnWidth here if you want it to be dynamic
     }
 
-    // True masonry: distribute images by estimated column heights
+    // Masonry distribution
     function distributeMasonry(images, numColumns, columnWidth = 300) {
         const columns = Array.from({ length: numColumns }, () => ({ images: [], height: 0 }));
         for (const img of images) {
@@ -126,7 +186,6 @@
                 if (w && h) ratio = h / w;
             }
             const estHeight = columnWidth * ratio;
-            // Find the column with the smallest height
             let minCol = columns[0];
             for (const col of columns) {
                 if (col.height < minCol.height) minCol = col;
@@ -137,9 +196,17 @@
         return columns.map(col => col.images);
     }
 
-    $: columns = distributeMasonry(displayedImages, numColumns, columnWidth);
+    // Reactive statements
+    $: filteredWorks = activeCategory === 'All' 
+    ? allWorks 
+    : allWorks.filter(work => work.categories.includes(activeCategory));
+    $: displayedFilteredWorks = filteredWorks.slice(0, imagesToShow);
+    $: columns = distributeMasonry(displayedFilteredWorks, numColumns, columnWidth);
+    $: hasMoreItems = displayedFilteredWorks.length < filteredWorks.length;
 </script>
-
+<style>
+    
+</style>
 <Layout>
     <div class="works grid gutter-x h-100 relative">
         <div class="col-l">
@@ -162,14 +229,14 @@
             </h2>
 
             <div class="works-intro mw-600">
-                I’ve worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.
+                I've worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.
                 <br>
-                Here’s a little pot-pourri of work I’ve done over the years—random, varied, and all mine.
+                Here's a little pot-pourri of work I've done over the years—random, varied, and all mine.
             </div>
             <div class="mw-600 op-0 l-visible">
-                I’ve worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.
+                I've worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.
                 <br>
-                Here’s a little pot-pourri of work I’ve done over the years—random, varied, and all mine.
+                Here's a little pot-pourri of work I've done over the years—random, varied, and all mine.
             </div>
             
         </div>
@@ -182,7 +249,22 @@
                 <span>View more</span>
             </button>
         </div>
+        <!-- Add category filters -->
+        
         <div class="masonry" id="masonry">
+            <div class="category-filters col-l">
+                <div class="filter-buttons">
+                    {#each categories as category}
+                    <button
+                            class="filter-button tag {activeCategory === category ? 'active' : ''}"
+                            on:click={() => setActiveCategory(category)}
+                            aria-label={`Filter by ${category}`}
+                        >
+                            {category}
+                        </button>
+                    {/each}
+                </div>
+            </div>
             {#each columns as col}
                 <div class="masonry-col">
                     {#each col as work}
@@ -233,4 +315,6 @@
     src={modalData.filename ? `/assets/images/works/${modalData.filename}` : ''}
     isOpen={isModalOpen}
     on:close={closeModal}
+    {isYouTubeUrl}
+    {getYouTubeEmbedUrl}
 />
