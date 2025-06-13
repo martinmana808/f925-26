@@ -1093,6 +1093,23 @@ Library
 .header__toggler svg line {
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
+.header-nav__logo {
+  position: absolute;
+  top: 24px;
+  left: clamp(1.5rem, 5vw, 5rem);
+  transition: all calc(0.3s * 2) cubic-bezier(0.22, 1, 0.36, 1) calc(0.3s * 0.65);
+  opacity: 0;
+  transform: translateX(2rem);
+}
+.nav-open .header-nav__logo {
+  opacity: 1;
+  transform: none;
+}
+@media (min-width: 62.5em) {
+  .header-nav__logo {
+    display: none;
+  }
+}
 .header-nav {
   width: 100%;
   position: fixed;
@@ -1105,11 +1122,14 @@ Library
   transform: translateX(100%);
   background-color: #191c1f;
   color: #ffffff;
-  padding: 5rem clamp(1.5rem, 5vw, 5rem) clamp(3.125rem, 4.375vw, 4.375rem);
+  padding: calc(clamp(3.125rem, 8.875vw, 8.875rem) + (clamp(3.125rem, 8.875vw, 8.875rem) * 1.5)) clamp(1.5rem, 5vw, 5rem) clamp(3.125rem, 4.375vw, 4.375rem);
   transition: all calc(0.3s * 2) cubic-bezier(0.22, 1, 0.36, 1);
 }
 @media (max-width: 62.4375em) {
   .header-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100vw;
     height: 100vh;
   }
@@ -1160,7 +1180,8 @@ Library
     opacity: 1;
   }
 }
-.header-nav a {
+.header-nav a:not([class]),
+.header-nav a[class=""] {
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.35em;
@@ -1173,18 +1194,22 @@ Library
   color: #ffffff;
 }
 @media (min-width: 62.5em) {
-  .header-nav a {
+  .header-nav a:not([class]),
+  .header-nav a[class=""] {
     font-weight: normal;
   }
 }
 @media (any-hover: hover) {
-  .header-nav a:hover,
-  .header-nav a:focus {
+  .header-nav a:not([class]):hover,
+  .header-nav a[class=""]:hover,
+  .header-nav a:not([class]):focus,
+  .header-nav a[class=""]:focus {
     color: #aef9d1;
   }
 }
 @media (min-width: 62.5em) {
-  .header-nav a {
+  .header-nav a:not([class]),
+  .header-nav a[class=""] {
     font-size: clamp(1rem, 1.1875vw, 1.1875rem);
     line-height: clamp(1.5rem, 2vw, 2rem);
     letter-spacing: initial;
@@ -1192,8 +1217,10 @@ Library
   }
 }
 @media (min-width: 62.5em) and (any-hover: hover) {
-  .header-nav a:hover,
-  .header-nav a:focus {
+  .header-nav a:not([class]):hover,
+  .header-nav a[class=""]:hover,
+  .header-nav a:not([class]):focus,
+  .header-nav a[class=""]:focus {
     text-decoration-color: inherit;
   }
 }
@@ -1213,11 +1240,14 @@ input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 40rem #24292d inset;
 }
 @media (max-width: 62.4375em) {
-  .link--chat a {
+  .link--chat {
     font-size: 3rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    line-height: 4.3125rem;
+    letter-spacing: -0.05em;
+    font-weight: 600;
   }
 }
 .link--chat .icon {

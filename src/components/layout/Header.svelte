@@ -56,6 +56,9 @@
             </div>
             <div class="col-r flex items-center">
                 <nav class="header-nav">
+                    <a href="/" class="header-nav__logo no-outline" title="Go to homepage">
+                        <Logo />
+                    </a>
                     <button class="header__toggler --close" on:click={closeNav}>
                         <Icon name="menu" extraClass="menu" />
                         <span class="visuallyhidden">Close menu</span>
@@ -73,18 +76,16 @@
                         <li class={currentPath.includes('/contact') ? 'active' : ''}>
                             <a href="/contact">Contact</a>
                         </li>
-                        <li class="l-hidden mt-lg link--chat">
+                        <li class="l-hidden mt-lg ">
                             <a
-                                class=""
+                                class="link--chat"
                                 target="_blank"
                                 rel="noopener"
                                 href="https://wa.me/640272182988?text=Hello%Martin!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
                                 Let's chat <Icon name="social-whatsapp" />
                             </a>
                         </li>
-                        <li class="l-hidden link--chat mt--1">
-                           
-                        </li>
+                    
                         <li class="l-visible">
                             <a
                                 class="link--on-hover"
@@ -94,7 +95,11 @@
                                 Let's chat <Icon name="social-whatsapp" />
                             </a>
                         </li>
+
                     </ul>
+                    <div class="buttons">
+                        <a class="button --1" href="/contact"><span>Book a free call</span></a> 
+                    </div>
                 </nav>
             </div>
         </div>

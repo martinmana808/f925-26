@@ -1363,9 +1363,28 @@ Library
         transition: all @default-duration @default-easing;
     }
 }
+.header-nav__logo {
+    position: absolute;
+    top: 24px;
+    left: @spacing-x;
+    transition: all calc(0.3s * 2) cubic-bezier(0.22, 1, 0.36, 1) calc(0.3s * 0.65);
+    opacity: 0;
+    transform: translateX(2rem);
 
+    .nav-open & {
+        opacity: 1;
+        transform: none;
+    }
+
+    @media(min-width: @mq-nav) {
+        display: none;
+    }
+}
 .header-nav {
     @media (max-width: (@mq-nav-1)) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         width: 100vw;
         height: 100vh;
 
@@ -1387,7 +1406,7 @@ Library
     transform: translateX(100%);
     background-color: @color-0;
     color: @color-1;
-    padding: @header-height-sm @spacing-x @spacing-md;
+    padding: calc(@spacing-top + (@spacing-top * 1.5)) @spacing-x @spacing-md;
     transition: all calc(@default-duration * 2) @default-easing;
 
     @media (min-width: @mq-nav) {
@@ -1437,7 +1456,7 @@ Library
         }
     }
 
-    a {
+    a:not([class]), a[class=""] { 
         text-decoration-line: underline;
         text-decoration-thickness: 1px;
         text-underline-offset: 0.35em;
@@ -1485,27 +1504,7 @@ Library
     }
 }
 
-// .header-backlay {
-//     display: none;
 
-//     @media(min-width: @mq-nav) {
-//         position: fixed;
-//         display: block;
-//         width: 100vw;
-//         left: 0;
-//         right: 0;
-//         height: @header-height;
-//         background-color: @color-0;
-//         transform: translateY(-100%);
-//         transition: all @default-duration @default-easing;
-//         z-index: 10;
-
-//         .site-header:hover+&,
-//         .site-header:focus+& {
-//             transform: none;
-//         }
-//     }
-// }
 
 
 input:-webkit-autofill,
@@ -1516,14 +1515,15 @@ input:-webkit-autofill:focus {
 }
 
 .link--chat {
-    a {
         @media (max-width: (@mq-l-1)) {
             font-size: 3rem;
             display: flex;
             align-items: center;
             gap: .5rem;
+            line-height: 4.3125rem;
+            letter-spacing: -0.05em;
+            font-weight: 600;
         }
-    }
 
     .icon {
         width: 42px;
