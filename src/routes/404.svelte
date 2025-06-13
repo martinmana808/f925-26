@@ -12,7 +12,7 @@
     })
 </script>
 
-<Layout selectRandomImages={false}>
+<Layout >
     <img src="/assets/tino.gif" alt="Tino waving hello!" class="tino-gif" />
     <div class="grid gutter-x h-100 z-3 relative">
         <div class="col-l">

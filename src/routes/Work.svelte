@@ -203,11 +203,11 @@
     $: displayedFilteredWorks = filteredWorks.slice(0, imagesToShow);
     $: columns = distributeMasonry(displayedFilteredWorks, numColumns, columnWidth);
     $: hasMoreItems = displayedFilteredWorks.length < filteredWorks.length;
+
 </script>
-<style>
-    
-</style>
+
 <Layout>
+    <div class="work-modal__overlay" ></div>
     <div class="works grid gutter-x h-100 relative">
         <div class="col-l">
             <h1 class="works-intro text--subheadingSm l-visible">The power of being<br> a jack of all trades.</h1>
@@ -251,20 +251,20 @@
         </div>
         <!-- Add category filters -->
         
-        <div class="masonry" id="masonry">
-            <div class="category-filters col-l">
-                <div class="filter-buttons">
-                    {#each categories as category}
-                    <button
-                            class="filter-button tag {activeCategory === category ? 'active' : ''}"
-                            on:click={() => setActiveCategory(category)}
-                            aria-label={`Filter by ${category}`}
-                        >
-                            {category}
-                        </button>
-                    {/each}
-                </div>
+        <div class="category-filters col-l">
+            <div class="filter-buttons">
+                {#each categories as category}
+                <button
+                        class="filter-button tag {activeCategory === category ? 'active' : ''}"
+                        on:click={() => setActiveCategory(category)}
+                        aria-label={`Filter by ${category}`}
+                    >
+                        {category}
+                    </button>
+                {/each}
             </div>
+        </div>
+        <div class="masonry" id="masonry">
             {#each columns as col}
                 <div class="masonry-col">
                     {#each col as work}

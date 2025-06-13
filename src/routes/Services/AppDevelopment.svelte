@@ -110,7 +110,7 @@
     }
 </script>
 
-<Layout selectRandomImages={false}>
+<Layout>
     <a class="service-detail__contact-button" on:click={focusFirstInput} href="#service-detail-form--mobile">
         <span>Questions? Get in touch</span>
         <Icon name="arrowDown" extraClass="" />

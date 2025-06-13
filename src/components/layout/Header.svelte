@@ -1,6 +1,5 @@
 <script>
     import Logo from '../../components/Logo.svelte'
-    import LogoMobile from '../../components/LogoMobile.svelte'
     import Icon from '../../components/Icon.svelte'
     // Get the current pathname
     let currentPath = window.location.pathname
@@ -35,32 +34,9 @@
         document.body.classList.remove('nav-open')
     }
 
-    let credentials = {
-        url:
-            import.meta.env.MODE === 'development'
-                ? '/src/assets/Another-Studio-Credentials.pdf'
-                : '../assets/Another-Studio-Credentials.pdf',
-        format: 'PDF',
-        filesize: '', // Will be filled later
-    }
-
     onMount(async () => {
         const path = window.location.pathname
         isWorkPage = path.endsWith('/work')
-
-        // // Fetch the PDF file and calculate size
-        // try {
-        //     const response = await fetch(credentials.url)
-        //     if (!response.ok) {
-        //         throw new Error(`Failed to fetch PDF: ${response.statusText}`)
-        //     }
-        //     const blob = await response.blob()
-        //     const sizeInMB = (blob.size / (1024 * 1024)).toFixed(2) + ' MB'
-        //     credentials.filesize = sizeInMB
-        // } catch (error) {
-        //     console.error('Failed to download PDF and calculate size:', error)
-        //     credentials.filesize = 'Unknown size'
-        // }
     })
 </script>
 
@@ -71,8 +47,6 @@
             <div class="col-l relative header__logo-container">
                 <a href="/" class="header__logo-link no-outline" title="Go to homepage">
                     <Logo />
-                    <!-- <div class="l-visible"></div> -->
-                    <!-- <div class="l-hidden"><LogoMobile /></div> -->
                     <span class="visuallyhidden">Go to homepage</span>
                 </a>
                 <button class="header__toggler" on:click={openNav}>
@@ -104,22 +78,19 @@
                                 class=""
                                 target="_blank"
                                 rel="noopener"
-                                href="https://wa.me/640272182988?text=Hello%20Another!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
+                                href="https://wa.me/640272182988?text=Hello%Martin!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
                                 Let's chat <Icon name="social-whatsapp" />
                             </a>
                         </li>
                         <li class="l-hidden link--chat mt--1">
-                            <a download class="" target="_blank" rel="noopener" href={credentials.url}>
-                                Another.pdf <Icon name="download" />
-                            </a>
-                            <div class="text--small mt--1 op-50">7.87 megabytes</div>
+                           
                         </li>
                         <li class="l-visible">
                             <a
                                 class="link--on-hover"
                                 target="_blank"
                                 rel="noopener"
-                                href="https://wa.me/640272182988?text=Hello%20Another!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
+                                href="https://wa.me/640272182988?text=Hello%Martin!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
                                 Let's chat <Icon name="social-whatsapp" />
                             </a>
                         </li>
@@ -129,4 +100,3 @@
         </div>
     </div>
 </header>
-<!-- <div class="header-backlay"></div> -->

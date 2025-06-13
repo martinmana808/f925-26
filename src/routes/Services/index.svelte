@@ -10,11 +10,7 @@
     onMount(() => {
         // Load external script after the component is mounted
         const script = document.createElement('script')
-        if (import.meta.env.MODE === 'development') {
-            script.src = '/src/js/flickity.js'
-        } else {
-            script.src = '../js/flickity.js'
-        }
+        script.src = '/js/flickity.js'  // This will work in both development and production
         script.async = true
         document.body.appendChild(script)
     })

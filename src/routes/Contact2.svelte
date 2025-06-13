@@ -3,10 +3,10 @@
     import Layout from '../components/layout/Layout.svelte'
     import { onMount, onDestroy } from 'svelte'
     onMount(() => {
-        document.body.classList.add('template--contact')
+        document.body.classList.add('template--contact2')
     })
     onDestroy(() => {
-        document.body.classList.remove('template--contact')
+        document.body.classList.remove('template--contact2')
     })
 
     // Get the current pathname

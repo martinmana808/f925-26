@@ -198,7 +198,7 @@
 
 {#if name == 'menu'}
     <svg
-        class="icon {extraClass}"
+        class="icon {extraClass} block"
         aria-hidden="true"
         focusable="false"
         width="24"

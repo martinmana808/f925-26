@@ -1,7 +1,6 @@
 <script>
     import Icon from '../../components/Icon.svelte'
     import siteFooterLogo from '../../assets/images/logo--footer.svg'
-    export let selectRandomImages
     let isWorkPage = false
 
     let credentials = {

@@ -20,20 +20,27 @@
 <Layout>
     <div class="grid gutter-x items-end h-100">
         <div class="col-l">
-            <div class="home-hero">
+            <div class="home-hero l-visible">
                 <h1 class="text--hero">
                     The nerdy stuff, but cool
+                </h1>
+            </div>
+            <div class="home-hero l-hidden">
+                <h1 class="text--hero">
+                    The nerdy stuff, <br>but cool
                 </h1>
             </div>
             <h2 class="text--subheadingLg l-hidden">
                 { heading }
             </h2>
             <div class="l-hidden">
+                <p>
                 { subheading1 }
                 {#if subheading2 !== ''}
                     <br /> vacio
                     { subheading2 }
                 {/if}
+                </p>
             </div>
         </div>
         <div class="col-r">
@@ -41,13 +48,15 @@
                 { heading }
             </h2>
             <div class="l-visible">
+                <p> 
                 { subheading1 }
                 {#if subheading2 !== ''}
                     <br /> vacio
                     { subheading2 }
                 {/if}
+                </p>
             </div>
-            <div class="l-visible">
+            <div class="">
                 <div class="buttons">
                     {#if cta1Label !== '' && cta1Url !== ''}
                         <a class="button --1" href="{cta1Url}"><span>{cta1Label}</span></a>
@@ -55,15 +64,6 @@
                     {#if cta2Label !== '' && cta2Url !== ''}
                         <a class="button --1out" href="{cta2Url}">
                             <span>{cta2Label}</span>
-                        </a>
-                    {/if}
-                </div>
-            </div>
-            <div class="l-hidden">
-                <div class="buttons">
-                    {#if cta1Label !== '' && cta1Url !== ''}
-                        <a class="button --1" href="{cta1Url}">
-                            <span>{cta1Label}</span>
                         </a>
                     {/if}
                 </div>
