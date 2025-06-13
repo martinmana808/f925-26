@@ -1613,6 +1613,7 @@ Home
 @media (min-width: 62.5em) {
   .service-cards .flickity-viewport {
     overflow: visible !important;
+    height: 100%!important;
   }
 }
 .service-cards .flickity-button {
@@ -1673,7 +1674,11 @@ Home
   .service-card {
     max-width: 38.75rem;
     width: 62%;
-    min-height: calc(100vh - 20.375rem);
+  }
+}
+@media (min-width: 87.5rem) {
+  .service-card {
+    width: 50%;
   }
 }
 .service-card:first-child {
@@ -1693,9 +1698,13 @@ Home
 .service-card.--link.is-selected {
   cursor: url(../assets/icons/slider-cursor--last-inverted.svg) 35 35, move;
 }
-.service-card.--link a {
-  position: relative;
-  bottom: -9px;
+.service-card.--link a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .service-card.is-selected {
   background-color: #ffffff;

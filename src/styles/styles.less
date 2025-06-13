@@ -1945,6 +1945,7 @@ Home
 
     @media (min-width: @mq-nav) {
         margin-top: -44px;
+        // margin-right: calc(@spacing-x * -1);
     }
 
     .flickity-slider {
@@ -1973,6 +1974,7 @@ Home
 
         @media (min-width: @mq-l) {
             overflow: visible !important;
+            height: 100%!important;
         }
     }
 
@@ -2039,7 +2041,10 @@ Home
     @media (min-width: @mq-nav) {
         max-width: 38.75rem;
         width: 62%;
-        min-height: calc(100vh - 20.375rem); // de donde salio este numero?
+    }
+
+    @media(min-width: 87.5rem) {
+        width: 50%;
     }
 
     &:first-child {
@@ -2064,8 +2069,14 @@ Home
         }
 
         a {
-            position: relative;
-            bottom: -9px;
+        }
+        a:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
     }
 

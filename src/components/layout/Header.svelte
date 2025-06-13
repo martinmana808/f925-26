@@ -97,8 +97,10 @@
                         </li>
 
                     </ul>
-                    <div class="buttons">
-                        <a class="button --1" href="/contact"><span>Book a free call</span></a> 
+                    <div class="l-hidden">
+                        <div class="buttons">
+                            <a class="button --1" href="/contact"><span>Book a free call</span></a> 
+                        </div>
                     </div>
                 </nav>
             </div>
