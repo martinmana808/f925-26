@@ -6,7 +6,7 @@
 </script>
 
 <div class="service-card">
-    <h2 class="text--subheadingLg">{title}</h2>
+    <h2 class="text--subheadingSm">{title}</h2>
     <div class="mb-sm">
         {@html description}
     </div>

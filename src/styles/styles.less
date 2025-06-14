@@ -46,7 +46,8 @@
 @color-02: lighten(@color-0, 15%);
 @color-01: lighten(@color-0, 5%);
 
-@color-2: #aef9d1;
+@color-gray: #87898A ;
+@color-2: #89ffc0;
 
 @font-body: 'Inter', sans-serif;
 
@@ -1926,10 +1927,19 @@ Home
 /*///////////////////////////////////////////////////////////////////////
     Services 
 ///////////////////////////////////////////////////////////////////////*/
+.flickity-slider {
+    // height: 100%;
+}
 
 .template--services {
     .site-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
         overflow: hidden;
+    }
+    .site-main__inner {
+        flex-grow: 1;
     }
 }
 
@@ -1940,28 +1950,89 @@ Home
 
 .service-cards {
     outline: 0;
+    position: relative;
+    top: -41px;
 }
 
 .service-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     border-radius: 25px;
     padding: calc(@spacing-x / 2);
+    width: 31.25rem;
+    margin-right: @gutter;
+    transition: all .5s cubic-bezier(.22,1,.36,1);
+    cursor: url(../assets/icons/slider-cursor.svg) 35 35, move;
+
+    &:first-child {cursor: url(../assets/icons/slider-cursor--first.svg) 35 35, move;}
+
+    &:last-child {cursor: url(../assets/icons/slider-cursor--last.svg) 35 35, move;}
+
+    &:before {
+        content: "";
+        position: absolute;
+        width: calc(@gutter * 1) ;
+        top: 0;
+        left: 100% ;  
+        bottom: 0;
+        background-color: @color-0;
+        transition: all .5s cubic-bezier(.22,1,.36,1);
+        z-index: -1;
+    }
 
     &:not(&.is-selected) {
         background-color: @color-01;
         color: @color-1;
+        
+        .button {
+            border-color: @color-1;
+            color: @color-1;
+            transition: all .5s cubic-bezier(.22,1,.36,1);
+        }
+        .tag{
+            background-color:@color-gray;
+        }
     }
-    &.is-selected {
-        background-color: @color-1;
+    &.is-selected:not(.--link) {
         color: @color-0;
+        background-color: @color-1;
+        background-image:  radial-gradient(@color-0 0.5px, transparent 0.5px), radial-gradient(@color-0 0.5px, @color-1 0.5px);
+        background-size: 20px 20px;
+        background-position: 0 0,10px 10px;
+        
+        .button {
+            border-color: @color-01;
+            background: @color-01;
+            color: @color-1;
+            transition: all .5s cubic-bezier(.22,1,.36,1);
+        }
+        .tag{
+            background-color: @color-04;
+        }
     }
-
+    &.--link {
+        a {
+            flex-grow: 1;
+            align-items: end;
+        }
+    }
+    &.is-selected.--link {
+        background-color: @color-2;
+        background-image: radial-gradient(circle at center center, lighten(@color-2, 100%), @color-2), repeating-radial-gradient(circle at center center, lighten(@color-2, 100%), lighten(@color-2, 100%), 10px, transparent 20px, transparent 10px);
+        background-blend-mode: multiply;
+        color: @color-0;
+        cursor: url(../assets/icons/slider-cursor--last-inverted.svg) 35 35, move;
+    }
+    .button:hover, .button:focus {
+        color: @color-0!important;
+        border-color: @color-2!important;
+    }
     .tag {
         color: @color-0;
     }
 }
-.service-card {
-    width: 500px;
-}
+
 .service-detail__contact-button {
     position: fixed;
     bottom: 0;

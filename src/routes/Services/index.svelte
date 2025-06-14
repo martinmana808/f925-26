@@ -3,34 +3,11 @@
     import Icon from '../../components/Icon.svelte'
     import ServicesCard from '../../components/ServiceCard.svelte'
 
-    let flickityOptions = { cellAlign: 'left' }
+    let flickityOptions = { cellAlign: 'left', adaptiveHeight: true }
 
     import { onMount, onDestroy } from 'svelte'
 
-    function setEqualHeights() {
-        // Wait for Flickity to initialize
-        setTimeout(() => {
-            const cards = document.querySelectorAll('.service-card')
-            let maxHeight = 0
-
-            // First pass: find the maximum height
-            cards.forEach(card => {
-                const cardHeight = card.scrollHeight
-                maxHeight = Math.max(maxHeight, cardHeight)
-            })
-
-            // Second pass: set all cards to the maximum height
-            cards.forEach(card => {
-                (card as HTMLElement).style.height = `${maxHeight}px`
-            })
-
-            // Set the viewport height to match
-            const viewport = document.querySelector('.flickity-viewport')
-            if (viewport) {
-                (viewport as HTMLElement).style.height = `${maxHeight}px`
-            }
-        }, 100) // Small delay to ensure Flickity is initialized
-    }
+    let setFlickityHeight: () => void
 
     onMount(() => {
         // Load external script after the component is mounted
@@ -41,11 +18,36 @@
             script.src = '../js/flickity.js'
         }
         script.async = true
-        script.onload = () => {
-            // Initialize Flickity and set equal heights
-            setEqualHeights()
-        }
         document.body.appendChild(script)
+
+        // Set flickity-viewport height based on site-main__inner height
+        setFlickityHeight = () => {
+            const mainInner = document.querySelector('.site-main__inner') as HTMLElement
+            const flickityViewport = document.querySelector('.flickity-viewport') as HTMLElement
+            const serviceCards = document.querySelectorAll('.service-card') as NodeListOf<HTMLElement>
+            
+            if (mainInner && flickityViewport && window.innerWidth >= 1000) {
+                const height = `${mainInner.offsetHeight + 44}px`
+                flickityViewport.style.height = height
+                
+                // Set height for each service card
+                serviceCards.forEach(card => {
+                    card.style.height = height
+                })
+            } else if (flickityViewport) {
+                // Reset heights when viewport is smaller than 1000px
+                flickityViewport.style.height = ''
+                serviceCards.forEach(card => {
+                    card.style.height = ''
+                })
+            }
+        }
+
+        // Initial set
+        setTimeout(setFlickityHeight, 100) // Small delay to ensure Flickity is initialized
+
+        // Update on window resize
+        window.addEventListener('resize', setFlickityHeight)
     })
 
     onMount(() => {
@@ -53,7 +55,10 @@
     })
     onDestroy(() => {
         document.body.classList.remove('template--services')
+        window.removeEventListener('resize', setFlickityHeight)
     })
+
+    
 </script>
 
 <svelte:head>
@@ -132,8 +137,8 @@
                     ]}
                     url="/services/graphic-design" />
 
-                <div class="service-card --link carousel-cell">
-                    <a class="flex justify-between items-center w-100 no-outline" href="/work">
+                <div class="service-card --link">
+                    <a class="flex justify-between items-center no-outline" href="/work">
                         <h2 class="text--subheadingLg mb-0">
                             View
                             <br />
