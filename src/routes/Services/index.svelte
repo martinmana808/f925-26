@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Layout from '../../components/layout/Layout.svelte'
     import Icon from '../../components/Icon.svelte'
     import ServicesCard from '../../components/ServiceCard.svelte'
@@ -7,11 +7,44 @@
 
     import { onMount, onDestroy } from 'svelte'
 
+    function setEqualHeights() {
+        // Wait for Flickity to initialize
+        setTimeout(() => {
+            const cards = document.querySelectorAll('.service-card')
+            let maxHeight = 0
+
+            // First pass: find the maximum height
+            cards.forEach(card => {
+                const cardHeight = card.scrollHeight
+                maxHeight = Math.max(maxHeight, cardHeight)
+            })
+
+            // Second pass: set all cards to the maximum height
+            cards.forEach(card => {
+                (card as HTMLElement).style.height = `${maxHeight}px`
+            })
+
+            // Set the viewport height to match
+            const viewport = document.querySelector('.flickity-viewport')
+            if (viewport) {
+                (viewport as HTMLElement).style.height = `${maxHeight}px`
+            }
+        }, 100) // Small delay to ensure Flickity is initialized
+    }
+
     onMount(() => {
         // Load external script after the component is mounted
         const script = document.createElement('script')
-        script.src = '/js/flickity.js'  // This will work in both development and production
+        if (import.meta.env.MODE === 'development') {
+            script.src = '/src/js/flickity.js'
+        } else {
+            script.src = '../js/flickity.js'
+        }
         script.async = true
+        script.onload = () => {
+            // Initialize Flickity and set equal heights
+            setEqualHeights()
+        }
         document.body.appendChild(script)
     })
 
@@ -34,7 +67,7 @@
             <h1 class="text--section">Services</h1>
             <h2 class="text--subheadingSm">A one-stop shop on your way to success</h2>
             <p>
-                I offer complete, end-to-end solutions tailored to your business needs. Thanks to the strong network and reliable on-demand team I’ve built over the years, I’m able to offer a wide range of services and ensure that no loose ends are left behind.
+                I offer complete, end-to-end solutions tailored to your business needs. Thanks to the strong network and reliable on-demand team I've built over the years, I'm able to offer a wide range of services and ensure that no loose ends are left behind.
             </p>
             <p>
                 <span class="text--small">You can read more about me and my background <a href="/about" class="link">here</a>.</span>

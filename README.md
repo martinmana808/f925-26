@@ -7,7 +7,6 @@
 
 ## 📋 Task List
 ### High Priority
-- [ x] Add Tino GIF image from `/public/assets/tino.gif` to the project
 - [ ] Allow for gifs in listing and detail pages
 - [ ] Implement different images for listing and detail pages
 - Services page responsive and flickity issues

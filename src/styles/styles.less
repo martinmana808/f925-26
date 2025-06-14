@@ -1696,7 +1696,7 @@ input:-webkit-autofill:focus {
 .site-main {
     width: 100vw;
     padding-top: @spacing-top;
-    padding-bottom: calc(@spacing-top * 1.5);
+    padding-bottom: calc(@spacing-top * 1.25);
     flex-grow: 1;
     flex-basis: 100%;
     margin-top: @header-height-sm;
@@ -1907,7 +1907,7 @@ a:focus .icon-effect.--back,
     font-weight: 600;
     font-size: 12px;
     background-color: @color-04;
-    color: @color-1;
+    color: inherit;
     line-height: 1;
     transition: all 0.5s @default-easing;
 }
@@ -1928,252 +1928,40 @@ Home
 ///////////////////////////////////////////////////////////////////////*/
 
 .template--services {
-    @media(min-width: @mq-nav) {
-        height: 100vh;
+    .site-main {
         overflow: hidden;
     }
 }
 
+.flickity-button,
+.flickity-page-dots {
+    display: none;
+}
+
 .service-cards {
     outline: 0;
-    margin-top: @spacing-lg;
-
-    @media (max-width: (@mq-l-1)) {
-        margin-left: calc(@spacing-x * -1);
-        margin-right: calc(@spacing-x * -1);
-    }
-
-    @media (min-width: @mq-nav) {
-        margin-top: -44px;
-        // margin-right: calc(@spacing-x * -1);
-    }
-
-    .flickity-slider {
-        @media (max-width: (@mq-l-1)) {
-            left: @spacing-x  !important;
-            right: @spacing-x  !important;
-            height: 100%;
-        }
-
-        @media(min-width: @mq-nav) {
-            min-height: calc(100vh - @header-height - @header-height - @spacing-top);
-        }
-    }
-
-    .flickity-slider,
-    .flickity-viewport,
-    .flickity-enabled.is-draggable .flickity-viewport {
-        // cursor: url(../assets/icons/slider-cursor.svg) 35 35, move;
-    }
-
-    .flickity-viewport {
-        @media (max-width: (@mq-l-1)) {
-            padding-left: @spacing-x;
-            padding-right: @spacing-x;
-        }
-
-        @media (min-width: @mq-l) {
-            overflow: visible !important;
-            height: 100%!important;
-        }
-    }
-
-    .flickity-button {
-        display: none;
-    }
-
-    .flickity-page-dots {
-        margin-left: -8px;
-        text-align: left;
-        display: none;
-    }
-
-    ::-webkit-scrollbar {
-        @media (pointer: fine) {
-            width: 0px;
-        }
-    }
-
-    ::-webkit-scrollbar-thumb {
-        @media (pointer: fine) {
-            background-color: transparent;
-            border: 2px solid transparent;
-            border-radius: 4px;
-            background-clip: content-box;
-        }
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        @media (any-hover: hover) {
-            background-color: transparent;
-        }
-    }
-
 }
 
 .service-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    flex-shrink: 0;
-    width: calc(100% - (@spacing-x * 0));
-    height: 30rem;
-    min-height: 26.25rem;
-    padding: clamp(1.875rem, 3.625vw, 3.625rem);
-    cursor: url(../assets/icons/slider-cursor.svg) 35 35, move;
-    transition: all 0.5s @default-easing;
-    background-color: @color-03;
-    color: @color-1;
-    margin-right: calc(@gutter / 2);
-    border-radius: 16px;
+    border-radius: 25px;
+    padding: calc(@spacing-x / 2);
 
-    @media (min-width: @mq-s) {
-        max-width: 28.125rem;
+    &:not(&.is-selected) {
         background-color: @color-01;
         color: @color-1;
-        margin-right: @gutter;
-        width: 71.5%;
-        height: 100%;
-        border-radius: 25px;
     }
-
-    @media (min-width: @mq-nav) {
-        max-width: 38.75rem;
-        width: 62%;
-    }
-
-    @media(min-width: 87.5rem) {
-        width: 50%;
-    }
-
-    &:first-child {
-        cursor: url(../assets/icons/slider-cursor--first.svg) 35 35, move;
-    }
-
-    &:last-child {
-        cursor: url(../assets/icons/slider-cursor--last.svg) 35 35, move;
-    }
-
-    &.--link {
-        justify-content: flex-end;
-        background-color: @color-0;
-        color: @color-1;
-
-        &.--view-all {
-            background-color: @color-0;
-        }
-
-        &.is-selected {
-            cursor: url(../assets/icons/slider-cursor--last-inverted.svg) 35 35, move;
-        }
-
-        a {
-        }
-        a:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-        }
-    }
-
     &.is-selected {
-
         background-color: @color-1;
         color: @color-0;
-        z-index: 9;
-
-        &.--link {
-            justify-content: flex-end;
-            color: @color-0;
-            background-color: @color-2;
-        }
-
-        .button {
-            border-color: @color-0;
-            background: @color-0;
-            color: @color-1;
-        }
-
-        .tag {
-            background-color: @color-04;
-            color: @color-0;
-            opacity: 1;
-        }
-    }
-
-    .button {
-        @media(max-width: @mq-s-1) {
-            background-color: @color-0;
-            color: @color-1;
-            border-color: transparent;
-        }
-
-        border-color: @color-1;
-
-        &:hover,
-        &:focus {
-            @media (any-hover: hover) {
-                border-color: @color-2;
-                color: @color-0;
-            }
-        }
-    }
-
-    .text--subheadingLg {
-        @media(max-height: 59.375rem) and (orientation: landscape) and (min-width: @mq-nav ) {
-            font-size: @text-subheadingSm-size;
-            line-height: @text-subheadingSm-height;
-        }
-    }
-
-    .tags {
-        @media(max-height: 53.125em) and (orientation: landscape) and (min-width: @mq-nav ) {
-            flex-wrap: nowrap;
-            white-space: nowrap;
-            padding-inline: clamp(1.875rem, 3.625vw, 3.625rem);
-            position: absolute;
-            right: 0;
-            left: 0;
-            overflow: auto;
-            bottom: 6.875rem; // magic number :) lol
-            display: none;
-        }
     }
 
     .tag {
-        @media (max-width: (@mq-s-1)) {
-            // background-color: @color-01  !important;
-            // opacity: 1;
-
-        }
-
         color: @color-0;
-        background-color: @color-04;
-        opacity: .5;
-
     }
-
-    &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 100%;
-        bottom: 0;
-        background-color: @color-0;
-        width: calc(@gutter / 2);
-
-        @media(min-width: @mq-s) {
-            width: @gutter;
-        }
-    }
-
-
 }
-
+.service-card {
+    width: 500px;
+}
 .service-detail__contact-button {
     position: fixed;
     bottom: 0;

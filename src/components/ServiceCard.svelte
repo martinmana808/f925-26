@@ -5,7 +5,7 @@
     export let url
 </script>
 
-<div class="service-card carousel-cell">
+<div class="service-card">
     <h2 class="text--subheadingLg">{title}</h2>
     <div class="mb-sm">
         {@html description}
@@ -22,9 +22,6 @@
     {#if url}
         <div class="m-visible">
             <a class="button mt-sm" href={url}><span>View details</span></a>
-        </div>
-        <div class="m-hidden w-100">
-            <a class="button mt-sm w-100" href={url}><span>View details</span></a>
         </div>
     {/if}
 </div>
