@@ -348,9 +348,9 @@ Text
 .text--hero {
   font-size: clamp(7rem, 11.3125vw, 11.3125rem);
   line-height: 0.82em;
-  text-transform: uppercase;
-  font-family: 'bentonsansultraCnBlk', 'Inter', sans-serif;
-  letter-spacing: 0;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.07em;
+  font-weight: 700;
   color: #89ffc0;
 }
 .text--hero:not([class*='mb']) {
@@ -373,11 +373,11 @@ Text
   }
 }
 .text--section {
-  font-size: clamp(4.75rem, 9.2238vw, 9.2238rem);
+  font-size: clamp(4.75rem, 8vw, 8rem);
   line-height: 0.9em;
-  text-transform: uppercase;
-  font-family: 'bentonsansultraCnBlk', 'Inter', sans-serif;
-  letter-spacing: 0;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.06em;
+  font-weight: 700;
   color: #89ffc0;
 }
 .text--section:not([class*='mw']) {
@@ -399,10 +399,10 @@ Text
 .text--block {
   font-size: clamp(1.375rem, 4.625vw, 4.625rem);
   line-height: 1.1em;
-  text-transform: uppercase;
-  font-family: 'bentonsanscondensed_black', 'Inter', sans-serif;
-  letter-spacing: -0.02em;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.07em;
   color: #89ffc0;
+  font-weight: 600;
 }
 .text--block:not([class*='mw']) {
   max-width: 40rem;
@@ -463,8 +463,8 @@ Text
   font-size: clamp(1rem, 1.25vw, 1.25rem);
   line-height: 1.1em;
   text-transform: uppercase;
-  font-family: 'bentonsanscondensed_black', 'Inter', sans-serif;
-  letter-spacing: -0.02em;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.07em;
 }
 .text--small {
   font-size: clamp(14px, 1vw, 1rem);
@@ -648,6 +648,7 @@ Text
 .button.--0out {
   color: #191c1f;
   border-color: #191c1f;
+  background-color: #ffffff;
 }
 @media (any-hover: hover) {
   .button.--0out:hover,
@@ -1954,6 +1955,15 @@ Contact
     background-color: #24292d;
   }
 }
+.calendlyContainer {
+  position: relative;
+}
+.calendly-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 /*/ //////////////////////////////////////////////////////////////////////
 About 
 ///////////////////////////////////////////////////////////////////////*/
@@ -2634,4 +2644,13 @@ About
   left: 2rem;
   z-index: 1000000;
   color: white;
+}
+.highest-new-image {
+  border: 15px solid red;
+}
+.texture--cross {
+  background-color: #ffffff;
+  opacity: 0.8;
+  background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 25px 25px, linear-gradient(#191c1f 2px, transparent 2px) 0 -1px, linear-gradient(90deg, #191c1f 2px, #ffffff 2px) -1px 0;
+  background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
 }

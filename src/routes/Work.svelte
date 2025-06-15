@@ -113,8 +113,41 @@
     });
 
     function loadMoreImages() {
+        console.log('loadMoreImages called');
+        const previousLength = displayedImages.length;
+        console.log('Previous length:', previousLength);
+        
+        // Mark the last image before loading more
+        const allWorkItems = document.querySelectorAll('.work');
+        const lastImage = allWorkItems[previousLength - 1];
+        if (lastImage) {
+            lastImage.classList.add('ultima');
+        }
+        
         imagesToShow += 20;
         updateDisplayedImages();
+        
+        // Wait for the new images to load and layout to complete
+        setTimeout(() => {
+            console.log('Timeout callback executing');
+            
+            // Find the marked image and scroll to it
+            const ultimaImage = document.querySelector('.ultima');
+            if (ultimaImage) {
+                console.log('Found ultima image, scrolling to it');
+                ultimaImage.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Remove the class after scrolling
+                setTimeout(() => {
+                    ultimaImage.classList.remove('ultima');
+                }, 1000);
+            } else {
+                console.log('No ultima image found');
+            }
+        }, 500); // Wait for images to be positioned
     }
 
     function updateDisplayedImages() {
@@ -291,7 +324,7 @@
             {/each}
         </div>
         {#if displayedImages.length < allWorks.length}
-        <div class="flex justify-between items-center col relative">
+        <div class="flex justify-between items-center col relative texture--cross spacing-t--sm spacing-b--sm">
                 <div class="op-0">
                     ↑
                 </div>

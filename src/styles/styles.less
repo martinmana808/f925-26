@@ -1,3 +1,7 @@
+html {
+    // filter: invert(1) brightness(1.5);
+}
+
 @spacing-x: clamp(1.5rem, 5vw, 5rem);
 @spacing-section: clamp(6.25rem, 13.75vw, 13.75rem);
 @spacing-block: clamp(3.75rem, 6.875vw, 6.875rem);
@@ -9,7 +13,7 @@
 @gutter: clamp(1rem, 1.25vw, 1.25rem);
 
 @text-hero-size: clamp(7rem, 11.3125vw, 11.3125rem);
-@text-section-size: clamp(4.75rem, 9.2238vw, 9.2238rem);
+@text-section-size: clamp(4.75rem, 8vw, 8rem);
 @text-block-size: clamp(1.375rem, 4.625vw, 4.625rem);
 @text-subheadingLg-size: clamp(25.8208px, 3.75vw, 60px);
 @text-subheadingSm-size: clamp(25.8208px, 2.75vw, 44px);
@@ -487,9 +491,9 @@ Text
 .text--hero {
     font-size: @text-hero-size;
     line-height: @text-hero-height;
-    text-transform: uppercase;
-    font-family: 'bentonsansultraCnBlk', 'Inter', sans-serif;
-    letter-spacing: 0;
+    font-family:  'Inter', sans-serif;
+    letter-spacing: -0.07em;
+    font-weight: 700;
     color: @color-2;
 
     &:not([class*='mb']) {
@@ -514,9 +518,9 @@ Text
 .text--section {
     font-size: @text-section-size;
     line-height: @text-section-height;
-    text-transform: uppercase;
-    font-family: 'bentonsansultraCnBlk', 'Inter', sans-serif;
-    letter-spacing: 0;
+    font-family:  'Inter', sans-serif;
+    letter-spacing: -.06em;
+    font-weight: 700;
     color: @color-2;
 
     &:not([class*='mw']) {
@@ -539,10 +543,10 @@ Text
 .text--block {
     font-size: @text-block-size;
     line-height: @text-block-height;
-    text-transform: uppercase;
-    font-family: 'bentonsanscondensed_black', 'Inter', sans-serif;
-    letter-spacing: -0.02em;
+    font-family:  'Inter', sans-serif;
+    letter-spacing: -0.07em;
     color: @color-2;
+    font-weight: 600;
 
     &:not([class*='mw']) {
         max-width: 40rem;
@@ -607,8 +611,8 @@ Text
     font-size: @text-breadcrumb-size;
     line-height: @text-breadcrumb-height;
     text-transform: uppercase;
-    font-family: 'bentonsanscondensed_black', 'Inter', sans-serif;
-    letter-spacing: -0.02em;
+    font-family:  'Inter', sans-serif;
+    letter-spacing: -0.07em;
 }
 
 .text--small {
@@ -821,6 +825,7 @@ Text
     &.--0out {
         color: @color-0;
         border-color: @color-0;
+        background-color: @color-1;
 
         @media (any-hover: hover) {
 
@@ -2354,6 +2359,16 @@ Contact
     }
 }
 
+.calendlyContainer {
+    position: relative;
+}
+.calendly-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /*/ //////////////////////////////////////////////////////////////////////
 About 
 ///////////////////////////////////////////////////////////////////////*/
@@ -3108,4 +3123,15 @@ About
         z-index: 1000000;
         color: white;
     }
+}
+
+ .highest-new-image {
+    border: 15px solid red;
+ }
+
+.texture--cross, {
+    background-color: @color-1;
+    opacity: 0.8;
+    background: radial-gradient(circle, transparent 20%, @color-1 20%, @color-1 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, @color-1 20%, @color-1 80%, transparent 80%, transparent) 25px 25px, linear-gradient(@color-0 2px, transparent 2px) 0 -1px, linear-gradient(90deg, @color-0 2px, @color-1 2px) -1px 0;
+    background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
 }
