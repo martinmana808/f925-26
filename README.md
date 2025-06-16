@@ -17,6 +17,5 @@ A generalist. Specialists are not needed.
 ### High Priority
 - Services page responsive
 - service detail page texts improvements
-- mobile footer is ugly
 ---
 *Last updated: [Current Date]*
