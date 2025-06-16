@@ -282,9 +282,8 @@ Be a jack of all trades.</h1>
                 Master of none? Maybe. But I've done a hell of a lot.
             </h2>
             <div class="mw-600">
-                I've worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.
-                <br>
-                Here's a little pot-pourri of work I've done over the years—random, varied, and all mine.
+                For years, I've worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.<br>
+                Here’s a glimpse into the work — random, varied, and 100% me.
             </div>
             
         </div>
