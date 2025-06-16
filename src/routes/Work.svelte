@@ -249,16 +249,16 @@
         <div class="col-r">
             <h1 class="text--section l-hidden">My work</h1>
             <h2 class="text--subheadingSm l-hidden">
-                Master of none? Maybe. But I know a hell of a lot.
+                Master of none? Maybe. But I've done a hell of a lot.
 
                 <span class="small"></span>
                 <!-- <span class="emoji">😝</span> -->
             </h2>
             <h2 class="works-intro text--section l-visible">
-                Master of none? Maybe. But I know a hell of a lot.
+                Master of none? Maybe. But I've done a hell of a lot.
             </h2>
             <h2 class="text--section l-visible op-0">
-                Master of none? Maybe. But I know a hell of a lot.
+                Master of none? Maybe. But I've done a hell of a lot.
             </h2>
 
             <div class="works-intro mw-600">

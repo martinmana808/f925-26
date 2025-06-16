@@ -7,7 +7,7 @@
 
 <div class="service-card">
     <h2 class="text--subheadingSm">{title}</h2>
-    <div class="mb-sm">
+    <div class="mb-md">
         {@html description}
     </div>
     {#if tags.length > 0}
@@ -20,7 +20,7 @@
         </div>
     {/if}
     {#if url}
-        <div class="m-visible">
+        <div >
             <a class="button mt-sm" href={url}><span>View details</span></a>
         </div>
     {/if}

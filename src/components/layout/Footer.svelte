@@ -1,16 +1,6 @@
 <script>
     import Icon from '../../components/Icon.svelte'
-    import siteFooterLogo from '../../assets/images/logo--footer.svg'
     let isWorkPage = false
-
-    let credentials = {
-        url:
-            import.meta.env.MODE === 'development'
-                ? '/src/assets/Another-Studio-Credentials.pdf'
-                : '../assets/Another-Studio-Credentials.pdf',
-        format: 'PDF',
-        filesize: '', // Will be filled later
-    }
 
     import { onMount } from 'svelte'
 

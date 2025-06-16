@@ -1,6 +1,7 @@
 <script>
     import Layout from '../components/layout/Layout.svelte'
     import Avatar from '../components/Avatar.svelte'
+    import Icon from '../components/Icon.svelte'
 
     import teamLinesDesktop from '../assets/images/team-lines-desktop.svg'
     import teamLinesMobile from '../assets/images/team-lines-mobile.svg'
@@ -99,6 +100,28 @@
                     I’m passionate about creating intelligent, beautiful products that clients love—and users truly enjoy.
                 </p>
             </div>
+
+            <div class="l-visible">
+                <div class="footer__social-nav flex gutter-x mt-4">
+                    <a
+                        class=""
+                        target="_blank"
+                        rel="noopener"
+                        href="https://wa.me/640272182988?text=Hello%Martin!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
+                        <Icon name="social-whatsapp" />
+                        <span class="visuallyhidden">Chat on WhatsApp</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/martinmana808/" target="_blank">
+                        <Icon name="social-li" />
+                        <span class="visuallyhidden">Visit Another LinkedIn</span>
+                    </a>
+                    <a href="https://www.instagram.com/martinmana/" target="_blank">
+                        <Icon name="social-ig" />
+                        <span class="visuallyhidden">Visit Another Instagram</span>
+                    </a>
+                </div>
+            </div>
+            
         </div>
     </div>
 </Layout>

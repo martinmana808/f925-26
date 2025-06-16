@@ -3,7 +3,7 @@
     import Icon from '../../components/Icon.svelte'
     import ServicesCard from '../../components/ServiceCard.svelte'
 
-    let flickityOptions = { cellAlign: 'left', adaptiveHeight: true }
+    let flickityOptions = { cellAlign: 'left' }
 
     import { onMount, onDestroy } from 'svelte'
 
@@ -26,20 +26,33 @@
             const flickityViewport = document.querySelector('.flickity-viewport') as HTMLElement
             const serviceCards = document.querySelectorAll('.service-card') as NodeListOf<HTMLElement>
             
-            if (mainInner && flickityViewport && window.innerWidth >= 1000) {
-                const height = `${mainInner.offsetHeight + 44}px`
-                flickityViewport.style.height = height
-                
-                // Set height for each service card
-                serviceCards.forEach(card => {
-                    card.style.height = height
-                })
-            } else if (flickityViewport) {
-                // Reset heights when viewport is smaller than 1000px
-                flickityViewport.style.height = ''
-                serviceCards.forEach(card => {
-                    card.style.height = ''
-                })
+            if (mainInner && flickityViewport) {
+                if (window.innerWidth >= 1000) {
+                    // For screens >= 1000px, use mainInner height + 44px
+                    const height = `${mainInner.offsetHeight + 44}px`
+                    flickityViewport.style.height = height
+                    
+                    // Set height for each service card
+                    serviceCards.forEach(card => {
+                        card.style.height = height
+                    })
+                } else {
+                    // For screens < 1000px, find the tallest card
+                    let maxHeight = 0
+                    serviceCards.forEach(card => {
+                        // Reset height to auto to get natural height
+                        card.style.height = 'auto'
+                        const cardHeight = card.offsetHeight
+                        maxHeight = Math.max(maxHeight, cardHeight)
+                    })
+                    
+                    // Set the tallest height to all cards and viewport
+                    const height = `${maxHeight}px`
+                    flickityViewport.style.height = height
+                    serviceCards.forEach(card => {
+                        card.style.height = height
+                    })
+                }
             }
         }
 

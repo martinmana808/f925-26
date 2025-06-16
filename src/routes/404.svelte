@@ -1,9 +1,6 @@
 <script>
     import Layout from '../components/layout/Layout.svelte'
-    import Icon from '../components/Icon.svelte'
-
     import { onMount, onDestroy } from 'svelte'
-
     onMount(() => {
         document.body.classList.add('template--404')
     })
@@ -17,7 +14,7 @@
     <div class="grid gutter-x h-100 z-3 relative">
         <div class="col-l">
             <div class="flex gutter-x items-end">
-                <h1 class="text--hero">error 404</h1>
+                <h1 class="text--hero">Error 404</h1>
             </div>
             <p>Oops! It looks like the page you're trying to access doesn't exist or has been moved.</p>
             <p>

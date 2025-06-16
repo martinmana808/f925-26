@@ -614,7 +614,7 @@ input:-webkit-autofill:focus {
         max-width: 40rem;
 
         @media (min-width: @mq-nav) {
-            max-width: @heading-mw;
+            max-width: 43.75rem;
         }
     }
 
@@ -1397,7 +1397,7 @@ input:-webkit-autofill:focus {
     transform: translateX(100%);
     background-color: @color-0;
     color: @color-1;
-    padding: calc(@spacing-top + (@spacing-top * 1.5)) @spacing-x @spacing-md;
+    padding: calc(@spacing-top + @header-height-sm) @spacing-x @spacing-md;
     transition: all calc(@default-duration * 2) @default-easing;
 
     @media (min-width: @mq-nav) {
@@ -1892,7 +1892,12 @@ a:focus .icon-effect.--back,
 .service-cards {
     outline: 0;
     position: relative;
-    top: -41px;
+    margin-top: @spacing-lg;
+
+    @media(min-width: @mq-nav){
+        top: -41px;
+        margin-top: 0;
+    }
 }
 
 .service-card {
@@ -1900,11 +1905,21 @@ a:focus .icon-effect.--back,
     flex-direction: column;
     justify-content: flex-start;
     border-radius: 25px;
-    padding: calc(@spacing-x / 1.75);
-    width: 31.25rem;
+    padding: 1.5rem;
+    width: calc(100% - @spacing-x - @gutter); 
     margin-right: @gutter;
     transition: all .5s cubic-bezier(.22,1,.36,1);
     cursor: url(../assets/icons/slider-cursor.svg) 35 35, move;
+    
+    @media(min-width: @mq-s){
+        padding: 2rem;
+        width: 22.25rem;
+    }
+    
+    @media(min-width: @mq-nav){
+        padding: calc(@spacing-x / 1.75);
+        width: 31.25rem;
+    }
 
     &:first-child {cursor: url(../assets/icons/slider-cursor--first.svg) 35 35, move;}
 
@@ -1975,8 +1990,33 @@ a:focus .icon-effect.--back,
         border-color: @color-2!important;
     }
 
+    .tags {
+        @media (max-width: (@mq-nav-1)) {
+            flex-wrap: nowrap;
+            overflow: auto;
+            margin-inline: -2rem;
+            padding-inline: 2rem;
+            scrollbar-width: none;         /* Firefox */
+            -ms-overflow-style: none;      /* IE and Edge */
+        }
+        @media (max-width: (@mq-s-1)) {
+            margin-inline: -1.5rem;
+            padding-inline: 1.5rem;
+        }
+    }
+    .tags::-webkit-scrollbar {
+        @media (max-width: (@mq-nav-1)) {
+            display: none;                 /* Chrome, Safari, Opera */
+        }
+    }
+
     .tag {
+        white-space: nowrap;
         color: @color-0;
+
+        @media(min-width: @mq-nav){
+            white-space: normal;
+        }
     }
 }
 
@@ -2818,7 +2858,7 @@ a:focus .icon-effect.--back,
     padding-top: @spacing-x;
     margin-bottom: calc(@spacing-x * -.75);
     margin-top: @spacing-top;
-    z-index: 2;
+    z-index: 3;
 }
 
 .filter-buttons {
@@ -2869,6 +2909,10 @@ a:focus .icon-effect.--back,
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 .template--404 {
+    .site-main {
+        margin: 0;
+        justify-content: center;
+    }
     
     .site-header,
     .site-footer {
