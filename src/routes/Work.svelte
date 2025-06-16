@@ -52,22 +52,25 @@
                     header: true,
                     skipEmptyLines: true,
                     complete: (results) => {
-                        // Process each work's categories
-                        const processedData = results.data.map(item => {
-                            // Split categories by comma and trim whitespace
-                            const categories = item.category 
-                                ? item.category.split(',').map(cat => cat.trim())
-                                : ['Uncategorized'];
-                            
-                            return {
-                                filename: item.filename || 'placeholder.jpg',
-                                title: item.title || 'Untitled',
-                                categories: categories,
-                                description: item.description || '',
-                                aspect_ratio: item.aspect_ratio || '1 / 1',
-                                url: item.url || '' // Add URL from CSV
-                            };
-                        });
+                        // Process each work's categories and filter out hidden works
+                        const processedData = results.data
+                            .filter(item => item.show !== 'no') // Filter out works with show='no'
+                            .map(item => {
+                                // Split categories by comma and trim whitespace
+                                const categories = item.category 
+                                    ? item.category.split(',').map(cat => cat.trim())
+                                    : ['Uncategorized'];
+                                
+                                return {
+                                    filename: item.filename || 'placeholder.jpg',
+                                    title: item.title || 'Untitled',
+                                    categories: categories,
+                                    description: item.description || '',
+                                    aspect_ratio: item.aspect_ratio || '1 / 1',
+                                    url: item.url || '', // Add URL from CSV
+                                    show: item.show || 'yes' // Add show field with default 'yes'
+                                };
+                            });
 
                         // Extract all unique categories
                         const allCategories = new Set(['All']);
@@ -97,11 +100,38 @@
         return work.categories.includes(activeCategory);
     }
 
-    // Load initial data
+    // Add URL handling functions
+    function getCategoryFromHash() {
+        const hash = window.location.hash;
+        const match = hash.match(/category=([^&]+)/);
+        return match ? decodeURIComponent(match[1]) : 'All';
+    }
+
+    function updateHash(category) {
+        const newHash = category === 'All' ? '' : `category=${encodeURIComponent(category)}`;
+        window.history.replaceState(null, '', newHash ? `#${newHash}` : window.location.pathname);
+    }
+
+    // Update setActiveCategory to handle URL updates
+    function setActiveCategory(category) {
+        activeCategory = category;
+        imagesToShow = 60; // Reset pagination
+        updateDisplayedImages();
+        updateHash(category);
+    }
+
+    // Update onMount to handle initial category from URL
     onMount(async () => {
         loading = true;
         allWorks = await loadCSVData();
         allWorks = shuffleArray(allWorks);
+        
+        // Set initial category from URL
+        const initialCategory = getCategoryFromHash();
+        if (categories.includes(initialCategory)) {
+            activeCategory = initialCategory;
+        }
+        
         displayedImages = allWorks.slice(0, imagesToShow);
         loading = false;
         updateColumns();
@@ -154,13 +184,6 @@
         displayedImages = activeCategory === 'All'
             ? allWorks.slice(0, imagesToShow)
             : allWorks.filter(work => work.categories.includes(activeCategory)).slice(0, imagesToShow);
-    }
-
-    // Call this when changing categories
-    function setActiveCategory(category) {
-        activeCategory = category;
-        imagesToShow = 60; // Reset pagination
-        updateDisplayedImages();
     }
 
     // Modal functions
@@ -243,8 +266,9 @@
     <div class="work-modal__overlay" ></div>
     <div class="works grid gutter-x h-100 relative">
         <div class="col-l">
-            <h1 class="works-intro text--subheadingSm l-visible">The power of being<br> a jack of all trades.</h1>
-            <h1 class="text--subheadingSm l-visible op-0">The power of being<br> a jack of all trades.</h1>
+            <h1 class="text--subheadingSm l-visible ">Work.<br/>
+Be resourceful.<br/>
+Be a jack of all trades.</h1>
         </div>
         <div class="col-r">
             <h1 class="text--section l-hidden">My work</h1>
@@ -254,19 +278,10 @@
                 <span class="small"></span>
                 <!-- <span class="emoji">😝</span> -->
             </h2>
-            <h2 class="works-intro text--section l-visible">
+            <h2 class="text--section l-visible ">
                 Master of none? Maybe. But I've done a hell of a lot.
             </h2>
-            <h2 class="text--section l-visible op-0">
-                Master of none? Maybe. But I've done a hell of a lot.
-            </h2>
-
-            <div class="works-intro mw-600">
-                I've worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.
-                <br>
-                Here's a little pot-pourri of work I've done over the years—random, varied, and all mine.
-            </div>
-            <div class="mw-600 op-0 l-visible">
+            <div class="mw-600">
                 I've worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.
                 <br>
                 Here's a little pot-pourri of work I've done over the years—random, varied, and all mine.
@@ -276,7 +291,7 @@
        
         <!-- Add category filters -->
         
-        <div class="category-filters col-l">
+        <div class="category-filters">
             <div class="filter-buttons">
                 {#each categories as category}
                 <button
@@ -315,9 +330,9 @@
                 </div>
             {/each}
         </div>
-        {#if displayedImages.length < allWorks.length}
-        <div class="flex justify-between items-center col relative">
-                <div class="op-0">
+        {#if hasMoreItems}
+        <div class="hasMoreItems flex justify-center l-justify-between items-center col relative">
+                <div class="op-0 m-visible">
                     ↑
                 </div>
                 <button class="button button--view-more --0out" on:click={loadMoreImages}>
@@ -326,7 +341,7 @@
                     </div>
                     <span>View more</span>
                 </button>
-                <a href="#masonry" class="c-0">
+                <a href="#masonry" class="c-0 m-visible">
                     ↑
                 </a>
             </div>

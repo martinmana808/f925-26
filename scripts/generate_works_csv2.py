@@ -38,7 +38,11 @@ def generate_csv(images_dir, csv_path):
     # Add existing rows that are still present
     for filename, row in existing_rows.items():
         if filename in files:
-            all_rows.append(row)
+            # Preserve the SHOW value if it exists, otherwise add 'yes'
+            if len(row) > 6:
+                all_rows.append(row)
+            else:
+                all_rows.append(row + ['yes'])
         else:
             deleted_files.append(filename)
             print(f"Removed missing image from CSV: {filename}")
@@ -50,7 +54,7 @@ def generate_csv(images_dir, csv_path):
             continue
         title = make_title(filename)
         aspect_ratio = get_aspect_ratio(os.path.join(images_dir, filename))
-        all_rows.append([filename, title, "", "", aspect_ratio, ""])
+        all_rows.append([filename, title, "", "", aspect_ratio, "", "yes"])
         new_files.append(filename)
 
     # Sort all rows by filename (first column)
@@ -59,7 +63,7 @@ def generate_csv(images_dir, csv_path):
     # Write sorted rows to CSV
     with open(csv_path, "w", newline='', encoding='utf-8') as csvfile:
         writer = csv.writer(csvfile)
-        writer.writerow(["filename", "title", "category", "description", "aspect_ratio", "url"])
+        writer.writerow(["filename", "title", "category", "description", "aspect_ratio", "url", "show"])
         writer.writerows(all_rows)
 
     if deleted_files:

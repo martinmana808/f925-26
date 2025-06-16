@@ -12,6 +12,8 @@
     import Contact from './routes/Contact.svelte'
     import Contact2 from './routes/Contact2.svelte'
     import FourOhFour from './routes/404.svelte'
+    import Stuff from './routes/Stuff/index.svelte'
+    import StuffLlms from './routes/Stuff/llms.svelte'
 
     let currentRoute = window.location.pathname
 
@@ -28,7 +30,9 @@
         '/services/graphic-design': GraphicDesign,
         '/work': Work,
         '/contact': Contact,
-        '/contact2': Contact2
+        '/contact2': Contact2,
+        '/stuff': Stuff,
+        '/stuff/llms': StuffLlms
     }
 
     // If the route exists, use it; otherwise, go to 404 page

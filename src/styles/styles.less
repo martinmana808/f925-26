@@ -1032,6 +1032,12 @@ input:-webkit-autofill:focus {
 .justify-center { justify-content: center; }
 .justify-end { justify-content: flex-end; }
 
+.l-justify-between { 
+    @media (min-width: @mq-l) {
+        justify-content: space-between;
+    }
+} 
+
 // : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
 // Margins
 
@@ -1581,9 +1587,12 @@ input:-webkit-autofill:focus {
         }
     }
 
-    .template--work & { 
-        color: @color-0;
+    .template--work & {
+        @media(min-width: @mq-nav) {
+            color: @color-0;
+        }
     }
+
     .template--home & {
         @media(min-width: @mq-nav) and (max-width: 87.5em - .0625) {
             position: static;
@@ -1615,7 +1624,9 @@ input:-webkit-autofill:focus {
         }
 
         a:hover, a:focus {
-            color: darken(@color-2, 50%);
+            @media(min-width: @mq-nav) {
+                color: darken(@color-2, 50%);
+            }
         }
     }
 }
@@ -2580,10 +2591,39 @@ a:focus .icon-effect.--back,
         bottom: 0; 
         z-index: 0;
         background: @color-1;
-        
-        @media (min-width: @mq-s) {
+        border-bottom-left-radius: calc(@spacing-x / 2);
+        border-bottom-right-radius: calc(@spacing-x / 2);
+
+        @media (min-width: @mq-l) {
             bottom: calc((@spacing-top * -1) + (@header-height * -1)); 
         }
+    }
+
+    &:has(+ .hasMoreItems):before {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    & + .hasMoreItems::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc(@spacing-x * -1);
+        right: calc(@spacing-x * -1);
+        bottom: calc(@spacing-top * -1); 
+        z-index: 0;
+        background: @color-1;
+        border-bottom-left-radius: calc(@spacing-x / 2);
+        border-bottom-right-radius: calc(@spacing-x / 2);
+        
+        @media (min-width: @mq-l) {
+            bottom: calc((@spacing-top * -1) + (@header-height * -1)); 
+        }
+    }
+
+    & + * {
+        z-index: 3;
+        pointer-events: initial;
     }
 }
 
@@ -2608,6 +2648,13 @@ a:focus .icon-effect.--back,
     ::-webkit-scrollbar-thumb {
         border-radius: 0;
         border: 0 solid transparent;
+    }
+
+    .col-l, .col-r{
+        @media (min-width: @mq-nav) {
+            position: sticky;
+            top: calc( @spacing-top + @header-height); 
+        }
     }
 }
 
