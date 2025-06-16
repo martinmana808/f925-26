@@ -99,7 +99,7 @@
                 <!-- <h1 class="text--section">🙌</h1> -->
             {:else}{/if}
             {#if formMessage.includes('Error') || formMessage.length === 0}
-                <h1 class="text--section">Book a call</h1>
+                <h1 class="text--section">Book a free call</h1>
                 <h2 class="text--subheadingSm">Take the first step — I'll take it from there.</h2>
                 <div>
                     <p>Tell me about your project, your business, or how you currently do things. There's always room to optimize, automate, and grow. Even if you're not sure what you need yet, that's okay — we'll talk it through, find the right direction, and map out the next steps. Whether we end up working together or not, you'll walk away with clarity.</p>

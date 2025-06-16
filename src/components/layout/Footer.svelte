@@ -17,20 +17,6 @@
     onMount(async () => {
         const path = window.location.pathname
         isWorkPage = path.endsWith('/work')
-
-        // // Fetch the PDF file and calculate size
-        // try {
-        //     const response = await fetch(credentials.url)
-        //     if (!response.ok) {
-        //         throw new Error(`Failed to fetch PDF: ${response.statusText}`)
-        //     }
-        //     const blob = await response.blob()
-        //     const sizeInMB = (blob.size / (1024 * 1024)).toFixed(2) + ' MB'
-        //     credentials.filesize = sizeInMB
-        // } catch (error) {
-        //     console.error('Failed to download PDF and calculate size:', error)
-        //     credentials.filesize = 'Unknown size'
-        // }
     })
 
     // Get the current year
@@ -67,13 +53,11 @@ onMount(() => {
     <div class="site-footer__inner mw-container mx-auto w-100 h-100">
         <div class="grid gutter-x h-100">
             <div class="col col-8 l-hidden">
-                <a class="inline-flex" href="/" title="Go to homepage">
+                <!-- <a class="inline-flex" href="/" title="Go to homepage">
                     <img class="" src={siteFooterLogo} alt="Another logo" width="182" height="104" />
                     <span class="visuallyhidden">Go to homepage</span>
-                </a>
-            </div>
-            <div class="col col-4 l-hidden">
-                <div class="spacer-4 s-hidden"></div>
+                </a> -->
+                <!-- <div class="spacer-4 s-hidden"></div> -->
                 <nav class="footer-nav">
                     <ul>
                         <li class="">
@@ -92,62 +76,54 @@ onMount(() => {
                 </nav>
             </div>
             <div class="col-l l-visible">
-                <div class="flex items-center  h-100">
+                <div class="flex items-center h-100">
                     <span class="text--small">{currentTime.toUpperCase()} 🇳🇿</span>
                 </div>
             </div>
             <div class="col-r l-flex items-center justify-between">
-                <div class="l-hidden mt-lg">
-                    <a
-                        class="button"
-                        target="_blank"
-                        rel="noopener"
-                        href="https://wa.me/640272182988?text=Hello%Martin!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
-                        Let's chat <Icon name="social-whatsapp" />
-                    </a>
+                <div class="l-hidden mt-3">
+                    <nav class="footer__social-nav flex items-center">
+                        <ul class="flex gutter-x">
+                            <li class="">
+                                <a
+                                class="flex items-center gutter"
+                                target="_blank"
+                                rel="noopener"
+                                href="https://wa.me/640272182988?text=Hello%Martin!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
+                                <Icon name="social-whatsapp" />
+                                <span class="visuallyhidden">Chat on WhatsApp</span>
+                            </a>
+                        </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/martinmana808/" target="_blank">
+                                    <Icon name="social-li" />
+                                    <span class="visuallyhidden">Visit Another LinkedIn</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/martinmana/" target="_blank">
+                                    <Icon name="social-ig" />
+                                    <span class="visuallyhidden">Visit Another Instagram</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-                <div class="l-visible text--small flex">
-                    <a class="link--on-hover" href="mailto:martinmana808@gmail.com">
-                        martinmana808@gmail.com
-                    </a>
-                    <a href="tel:+640272182988" class="link--on-hover ml-2">
-                        +640272182988
-                    </a>
+                <div class="text--small l-flex mt-1">
+                    <div>
+                        <a class="link--on-hover" href="mailto:martinmana808@gmail.com">
+                            martinmana808@gmail.com
+                        </a>
+                    </div>
+                    <div>
+                        <a href="tel:+640272182988" class="link--on-hover l-ml-2">
+                            +640272182988
+                        </a>
+                    </div>
                 </div>
-                <!-- <div class="spacer-4 l-hidden"></div> -->
-                <!-- <nav class="footer__social-nav flex items-center">
-                    <ul class="flex">
-                        <li>
-                            <a href="https://www.linkedin.com/company/weareanotherstudio" target="_blank">
-                                <Icon name="social-li" />
-                                <span class="visuallyhidden">Visit Another LinkedIn</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/weareanother.studio" target="_blank">
-                                <Icon name="social-ig" />
-                                <span class="visuallyhidden">Visit Another Instagram</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a
-                                href="https://www.facebook.com/people/Weareanotherstudio/61564888761626/"
-                                target="_blank">
-                                <Icon name="social-fb" />
-                                <span class="visuallyhidden">Visit Another Facebook</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://linktr.ee/weareanother.studio" target="_blank">
-                                <Icon name="social-linktree" />
-                                <span class="visuallyhidden">Another Linktr.ee</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav> -->
                 <div class="footer__copyright text--small l-visible">© {currentYear} martinmana.com</div>
             </div>
         </div>
-        <div class="footer__copyright text--small l-hidden mt-sm">© {currentYear} martinmana.com. All rights reserved.</div>
+        <div class="footer__copyright text--small hidden mt-1">© {currentYear} martinmana.com. All rights reserved.</div>
     </div>
 </footer>

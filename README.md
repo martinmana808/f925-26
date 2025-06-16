@@ -4,17 +4,19 @@
 
 # Project Tasks and Goals
 
+Adaptive. Be a generalist. 
+Today beinga  jack of all trades is the ebst.
+A generalist. Specialists are not needed. 
 
-## 📋 Task List
-### High Priority
+
+## 📋 Suggestions
 - [ ] Allow for gifs in listing and detail pages
 - [ ] Implement different images for listing and detail pages
-- Services page responsive and flickity issues
+
+
+### High Priority
+- Services page responsive
 - service detail page texts improvements
-- og images updates
-- fix loading logo
-- logo on nav in mobile
 - mobile footer is ugly
-- fix shit happening on works that work grids is transparent but on top of the nav when scrolling even a little bit down
 ---
 *Last updated: [Current Date]*

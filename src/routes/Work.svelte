@@ -273,15 +273,7 @@
             </div>
             
         </div>
-        <div class="work-random__button s-hidden">
-            <button class="button --sm">
-                <!-- Scroll only when clicked -->
-                <div class="loading--mobile">
-                    <img src={Loading} alt="Loading" />
-                </div>
-                <span>View more</span>
-            </button>
-        </div>
+       
         <!-- Add category filters -->
         
         <div class="category-filters col-l">
@@ -324,7 +316,7 @@
             {/each}
         </div>
         {#if displayedImages.length < allWorks.length}
-        <div class="flex justify-between items-center col relative texture--cross spacing-t--sm spacing-b--sm">
+        <div class="flex justify-between items-center col relative">
                 <div class="op-0">
                     ↑
                 </div>
