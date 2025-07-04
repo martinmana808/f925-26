@@ -24,12 +24,30 @@
     let workCol;
     let activeCategory = 'All';
     let categories = ['All'];
+    let enabledCategoriesSet = new Set(['All']);
 
     const breakpoints = {
         mq_s: 600,
         mq_nav: 900,
         mq_xxl: 1400
     };
+
+    // Define your preferred order
+    const categoryOrder = [
+        'All',
+        'UX / UI',
+        'Frontend development',
+        'Branding',
+        'Packaging',
+        'Logo',
+        'Flyers',
+        'Album artwork',
+        '3D design',
+        'Editorial',
+        'Signage',
+        'Video',
+        'Uncategorized'
+    ];
 
     // Shuffle array using Fisher-Yates algorithm
     function shuffleArray(array) {
@@ -40,13 +58,44 @@
         return array;
     }
 
-     // Update the loadCSVData function to handle multiple categories
+    // Helper to load and parse categories.csv
+    async function loadEnabledCategories() {
+        try {
+            const response = await fetch('/assets/data/categories.csv');
+            if (!response.ok) throw new Error(`Failed to load categories.csv: ${response.statusText}`);
+            const csvText = await response.text();
+            return new Promise((resolve) => {
+                Papa.parse(csvText, {
+                    header: true,
+                    skipEmptyLines: true,
+                    complete: (results) => {
+                        // Only include categories where show === 'yes' (case-insensitive)
+                        const enabled = results.data
+                            .filter(row => (row.show || '').trim().toLowerCase() === 'yes')
+                            .map(row => row.category && row.category.trim())
+                            .filter(Boolean);
+                        resolve(new Set(['All', ...enabled]));
+                    },
+                    error: (error) => {
+                        console.error('categories.csv parsing error:', error);
+                        resolve(new Set(['All']));
+                    }
+                });
+            });
+        } catch (error) {
+            console.error('Error loading categories.csv:', error);
+            return new Set(['All']);
+        }
+    }
+
+    // Update the loadCSVData function to handle multiple categories and filter by enabled categories
     async function loadCSVData() {
         try {
+            // Load enabled categories first
+            enabledCategoriesSet = await loadEnabledCategories();
             const response = await fetch('/assets/data/works.csv');
             if (!response.ok) throw new Error(`Failed to load CSV: ${response.statusText}`);
             const csvText = await response.text();
-            
             return new Promise((resolve) => {
                 Papa.parse(csvText, {
                     header: true,
@@ -60,7 +109,6 @@
                                 const categories = item.category 
                                     ? item.category.split(',').map(cat => cat.trim())
                                     : ['Uncategorized'];
-                                
                                 return {
                                     filename: item.filename || 'placeholder.jpg',
                                     title: item.title || 'Untitled',
@@ -72,14 +120,18 @@
                                 };
                             });
 
-                        // Extract all unique categories
+                        // Extract all unique categories that are enabled
                         const allCategories = new Set(['All']);
                         processedData.forEach(work => {
-                            work.categories.forEach(cat => allCategories.add(cat));
+                            work.categories.forEach(cat => {
+                                if (enabledCategoriesSet.has(cat)) {
+                                    allCategories.add(cat);
+                                }
+                            });
                         });
-                        // Ensure 'All' is first and the rest are sorted
-                        const sortedCategories = Array.from(allCategories).filter(c => c !== 'All').sort();
-                        categories = ['All', ...sortedCategories];
+                        // Replace the sorting logic with:
+                        const allCategoriesArray = Array.from(allCategories);
+                        categories = categoryOrder.filter(cat => allCategoriesArray.includes(cat));
                         resolve(processedData);
                     },
                     error: (error) => {
@@ -283,7 +335,7 @@ Be a jack of all trades.</h1>
             </h2>
             <div class="mw-600">
                 For years, I've worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.<br>
-                Here’s a glimpse into the work — random, varied, and 100% me.
+                Here's a glimpse into the work — random, varied, and 100% me.
             </div>
             
         </div>
