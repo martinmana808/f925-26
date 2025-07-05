@@ -88,7 +88,7 @@
                 I offer complete, end-to-end solutions tailored to your business needs. Thanks to the strong network and reliable on-demand team I've built over the years, I'm able to offer a wide range of services and ensure that no loose ends are left behind.
             </p>
             <p>
-                <span class="text--small">You can read more about me and my background <a href="/about" class="link">here</a>.</span>
+                <span class="text--small">You can <a href="/about" class="link">read more about me</a> in the about page.</span> 
             </p>
         </div>
         <div class="col-r">

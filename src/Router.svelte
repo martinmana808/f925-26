@@ -14,6 +14,8 @@
     import FourOhFour from './routes/404.svelte'
     import Stuff from './routes/Stuff/index.svelte'
     import StuffLlms from './routes/Stuff/llms.svelte'
+    import { headContent, seoConfig } from './stores/headContent.js'
+    import { onMount } from 'svelte'
 
     let currentRoute = window.location.pathname
 
@@ -37,6 +39,37 @@
 
     // If the route exists, use it; otherwise, go to 404 page
     let currentPage = routes[currentRoute] || FourOhFour
+
+    // Update SEO meta tags when route changes
+    function updateSEO() {
+        const seo = seoConfig[currentRoute] || seoConfig['/']
+        headContent.set({
+            title: seo.title,
+            description: seo.description,
+            canonical: seo.canonical,
+            ogImage: '/og-1200x630.png',
+            ogType: 'website',
+            links: [],
+            scripts: []
+        })
+    }
+
+    onMount(() => {
+        updateSEO()
+        
+        // Listen for route changes
+        const handleRouteChange = () => {
+            currentRoute = window.location.pathname
+            currentPage = routes[currentRoute] || FourOhFour
+            updateSEO()
+        }
+
+        window.addEventListener('popstate', handleRouteChange)
+        
+        return () => {
+            window.removeEventListener('popstate', handleRouteChange)
+        }
+    })
 </script>
 
 <svelte:component this={currentPage} />

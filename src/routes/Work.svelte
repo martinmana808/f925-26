@@ -103,7 +103,21 @@
                     complete: (results) => {
                         // Process each work's categories and filter out hidden works
                         const processedData = results.data
-                            .filter(item => item.show !== 'no') // Filter out works with show='no'
+                            .filter(item => {
+                                // Filter out works with show='no'
+                                if (item.show === 'no') return false;
+                                
+                                // Split categories by comma and trim whitespace
+                                const categories = item.category 
+                                    ? item.category.split(',').map(cat => cat.trim())
+                                    : ['Uncategorized'];
+                                
+                                // Filter out works that belong to hidden categories
+                                const hasHiddenCategory = categories.some(cat => !enabledCategoriesSet.has(cat));
+                                if (hasHiddenCategory) return false;
+                                
+                                return true;
+                            })
                             .map(item => {
                                 // Split categories by comma and trim whitespace
                                 const categories = item.category 
@@ -170,6 +184,19 @@
         imagesToShow = 60; // Reset pagination
         updateDisplayedImages();
         updateHash(category);
+        
+        // Scroll to the top of masonry
+        const masonry = document.querySelector('.masonry');
+        if (masonry) {
+            const rect = masonry.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const targetPosition = scrollTop + rect.top - 20; // 20px offset from top
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
     }
 
     // Update onMount to handle initial category from URL
@@ -239,8 +266,16 @@
     }
 
     // Modal functions
+    let modalIndex = 0;
+    let currentFilteredWorks = [];
+
     function openModal(data) {
         modalData = data;
+        // Find the index of the current work in the displayed list (what's actually shown on page)
+        modalIndex = displayedFilteredWorks.findIndex(work => work.filename === data.filename);
+        // Add index and total to modal data (based on displayed works, not all filtered works)
+        modalData.index = modalIndex;
+        modalData.total = displayedFilteredWorks.length;
         isModalOpen = true;
         document.body.classList.add('work-modal-open');
     }
@@ -248,6 +283,26 @@
     function closeModal() {
         isModalOpen = false;
         document.body.classList.remove('work-modal-open');
+    }
+
+    function openNextModal() {
+        if (modalIndex < displayedFilteredWorks.length - 1) {
+            modalIndex++;
+            modalData = displayedFilteredWorks[modalIndex];
+            // Update index and total (based on displayed works)
+            modalData.index = modalIndex;
+            modalData.total = displayedFilteredWorks.length;
+        }
+    }
+
+    function openPrevModal() {
+        if (modalIndex > 0) {
+            modalIndex--;
+            modalData = displayedFilteredWorks[modalIndex];
+            // Update index and total (based on displayed works)
+            modalData.index = modalIndex;
+            modalData.total = displayedFilteredWorks.length;
+        }
     }
 
     // YouTube video handling
@@ -309,6 +364,7 @@
     ? allWorks 
     : allWorks.filter(work => work.categories.includes(activeCategory));
     $: displayedFilteredWorks = filteredWorks.slice(0, imagesToShow);
+    $: currentFilteredWorks = filteredWorks; // Update the current filtered works for modal navigation
     $: columns = distributeMasonry(displayedFilteredWorks, numColumns, columnWidth);
     $: hasMoreItems = displayedFilteredWorks.length < filteredWorks.length;
 
@@ -406,6 +462,8 @@ Be a jack of all trades.</h1>
     src={modalData.filename ? `/assets/images/works/${modalData.filename}` : ''}
     isOpen={isModalOpen}
     on:close={closeModal}
+    on:next={openNextModal}
+    on:prev={openPrevModal}
     {isYouTubeUrl}
     {getYouTubeEmbedUrl}
 />

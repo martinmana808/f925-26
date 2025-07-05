@@ -7,7 +7,9 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "postbuild": "cp _redirects dist/_redirects && cp site.webmanifest dist/site.webmanifest && mkdir -p dist/assets/images/works--low dist/assets/images/works--high dist/js dist/styles && cp -R src/assets/images/works--low/* dist/assets/images/works--low/ && cp -R src/assets/images/works--high/* dist/assets/images/works--high/ && cp src/assets/Another-Studio-Credentials.pdf dist/assets/ && cp src/js/flickity.js dist/js/flickity.js && cp src/styles/flickity.css dist/styles/flickity.css && cp src/robots.txt dist/robots.txt"
+        "generate-sitemap": "node scripts/generate-sitemap.js",
+        "prerender": "node scripts/prerender.js",
+        "postbuild": "npm run generate-sitemap && cp _redirects dist/_redirects && cp site.webmanifest dist/site.webmanifest && mkdir -p dist/assets/images/works--low dist/assets/images/works--high dist/js dist/styles && cp -R public/assets/images/works--low/* dist/assets/images/works--low/ && cp -R public/assets/images/works/* dist/assets/images/works--high/ && cp src/assets/Another-Studio-Credentials.pdf dist/assets/ && cp src/js/flickity.js dist/js/flickity.js && cp src/styles/flickity.css dist/styles/flickity.css && cp public/robots.txt dist/robots.txt"
     },
     "devDependencies": {
         "@sveltejs/vite-plugin-svelte": "^3.1.1",

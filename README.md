@@ -1,6 +1,35 @@
-- npm dev run
-- npm dev build
-- npm dev preview
+## 🚀 Development & Deployment
+
+### Development
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+```
+
+### Deployment Process
+The build process now includes automatic SEO optimization:
+
+1. **Build the project:**
+   ```bash
+   npm run build
+   ```
+
+2. **What happens automatically during build:**
+   - ✅ Generates `/sitemap.xml` with all routes
+   - ✅ Creates prerendered static HTML files for all pages (improves SEO)
+   - ✅ Copies all assets and configuration files
+   - ✅ Optimizes images and generates low-res versions
+
+3. **Deploy the `dist/` folder** to your hosting platform (Netlify, Vercel, etc.)
+
+### SEO Features
+- **Sitemap**: Automatically generated at `/sitemap.xml`
+- **Prerendered Pages**: All routes have static HTML for better crawlability
+- **Meta Tags**: Dynamic titles, descriptions, and Open Graph tags
+- **Structured Data**: JSON-LD for better search engine understanding
+- **Canonical URLs**: Proper canonical links for all pages
+- **Robots.txt**: Configured with sitemap reference
 
 # Project Tasks and Goals
 
@@ -17,6 +46,7 @@ LOGO NUEVO, 2 versiones
 Editorial girondo
 Editorial revista faso
 Editorial vitis
+LOGO MUTANTES
 
 ## 📋 Suggestions
 - Blog/News/Pensamientos section.

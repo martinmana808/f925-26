@@ -56,8 +56,29 @@
 
     // Handle keyboard events for accessibility
     function handleKeydown(event) {
-        if (isOpen && event.key === 'Escape') {
-            close();
+        if (isOpen) {
+            if (event.key === 'Escape') {
+                close();
+            } else if (event.key === 'ArrowRight') {
+                event.preventDefault();
+                dispatch('next');
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                dispatch('prev');
+            }
+        }
+    }
+
+    // Handle button keydown events to prevent spacebar from closing modal
+    function handleButtonKeydown(event) {
+        if (event.key === ' ') {
+            event.preventDefault();
+            // Trigger the navigation based on which button was pressed
+            if (event.currentTarget.classList.contains('modal-nav-button--prev')) {
+                dispatch('prev');
+            } else if (event.currentTarget.classList.contains('modal-nav-button--next')) {
+                dispatch('next');
+            }
         }
     }
 
@@ -71,11 +92,39 @@
     $: console.log('Modal data:', data);
 </script>
 
-<style>
-    
-</style>
+
+
 
 <button class="modal {isOpen ? 'modal--open' : ''}" aria-modal="true" on:click={close}>
+    <!-- Navigation buttons -->
+    <div class="modal-nav-buttons">
+        <button 
+            class="modal-nav-button modal-nav-button--prev link--on-hover" 
+            on:click={(e) => {
+                e.stopPropagation();
+                dispatch('prev');
+            }} 
+            on:keydown={handleButtonKeydown}
+            aria-label="Previous work"
+        >
+            ←
+        </button>
+        <div class="modal-nav-counter">
+            {data.index + 1}/{data.total}
+        </div>
+        <button 
+            class="modal-nav-button modal-nav-button--next link--on-hover" 
+            on:click={(e) => {
+                e.stopPropagation();
+                dispatch('next');
+            }} 
+            on:keydown={handleButtonKeydown}
+            aria-label="Next work"
+        >
+            →
+        </button>
+    </div>
+
     <button class="modal-close link--on-hover" bind:this={closeButton} on:click={close} aria-label="Close modal">
         Close
     </button>

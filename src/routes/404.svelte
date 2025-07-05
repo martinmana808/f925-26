@@ -1,8 +1,20 @@
 <script>
     import Layout from '../components/layout/Layout.svelte'
     import { onMount, onDestroy } from 'svelte'
+    import { headContent } from '../stores/headContent.js'
+    
     onMount(() => {
         document.body.classList.add('template--404')
+        // Set 404-specific SEO
+        headContent.set({
+            title: 'Page Not Found • Martin Mana',
+            description: 'The page you are looking for could not be found. Please check the URL or return to the home page.',
+            canonical: 'https://martinmana.com/404',
+            ogImage: '/og-1200x630.png',
+            ogType: 'website',
+            links: [],
+            scripts: []
+        })
     })
     onDestroy(() => {
         document.body.classList.remove('template--404')
