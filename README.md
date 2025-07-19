@@ -47,6 +47,13 @@ Editorial girondo
 Editorial revista faso
 Editorial vitis
 LOGO MUTANTES
+meter mas laburos de frontend en gravitate. Meter los links, y los mockups extendidos. ocupar espacio. 
+     - harrisons
+     - spca
+     - arvida
+     - laser
+     -
+GO BACK works page to not be white masonry but body color
 
 ## 📋 Suggestions
 - Blog/News/Pensamientos section.
