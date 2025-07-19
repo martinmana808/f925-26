@@ -23,12 +23,29 @@
     let errorLoading = false;
     let previousSrc = '';
     let youtubeIframe;
+    let imageEl;
+    let canZoom = false;
+    let isZoomed = false;
+    let naturalWidth = 0;
+    let naturalHeight = 0;
+    let renderedWidth = 0;
+    let renderedHeight = 0;
+    let isPointerDevice = false;
+    let mouseMoved = false;
+    let suppressClick = false;
+    const DRAG_THRESHOLD = 5;
 
     function close() {
         if (youtubeIframe) {
             youtubeIframe.src = '';
         }
+        isZoomed = false; // Reset zoom on close
         dispatch('close');
+    }
+
+    function handleNav(direction) {
+        isZoomed = false;
+        dispatch(direction);
     }
 
     // Focus the close button when modal opens
@@ -45,13 +62,39 @@
         errorLoading = false;
     }
 
-    function handleImageLoad() {
+    function handleImageLoad(event) {
         loading = false;
+        // Get natural and rendered sizes
+        naturalWidth = event.target.naturalWidth;
+        naturalHeight = event.target.naturalHeight;
+        renderedWidth = event.target.clientWidth;
+        renderedHeight = event.target.clientHeight;
+        canZoom = isPointerDevice && ((naturalWidth > renderedWidth) || (naturalHeight > renderedHeight));
     }
 
     function handleImageError() {
         loading = false;
         errorLoading = true;
+    }
+
+    function handleImageClick(event) {
+        if (suppressClick) {
+            event.preventDefault();
+            event.stopPropagation();
+            suppressClick = false;
+            return;
+        }
+        if (!isPointerDevice || !canZoom) return;
+        // Only toggle zoom if not a drag
+        if (isZoomed) {
+            if (!mouseMoved) {
+                isZoomed = false;
+                event.stopPropagation();
+            }
+        } else {
+            isZoomed = true;
+            event.stopPropagation();
+        }
     }
 
     // Handle keyboard events for accessibility
@@ -84,12 +127,65 @@
 
     onMount(() => {
         window.addEventListener('keydown', handleKeydown);
+        // Detect pointer device
+        const mq = window.matchMedia('(pointer: fine)');
+        isPointerDevice = mq.matches;
+        const updatePointer = (e) => { isPointerDevice = e.matches; };
+        mq.addEventListener('change', updatePointer);
         return () => {
             window.removeEventListener('keydown', handleKeydown);
+            mq.removeEventListener('change', updatePointer);
         };
     });
 
     $: console.log('Modal data:', data);
+
+    // Grab-to-pan state
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let scrollStartLeft = 0;
+    let scrollStartTop = 0;
+
+    function handleWrapperMouseDown(event) {
+        if (!isPointerDevice || !isZoomed) return;
+        isDragging = true;
+        mouseMoved = false;
+        dragStartX = event.clientX;
+        dragStartY = event.clientY;
+        const wrapper = event.currentTarget;
+        scrollStartLeft = wrapper.scrollLeft;
+        scrollStartTop = wrapper.scrollTop;
+        document.body.style.cursor = 'grabbing';
+    }
+
+    function handleWrapperMouseMove(event) {
+        if (!isPointerDevice || !isZoomed || !isDragging) return;
+        const dx = event.clientX - dragStartX;
+        const dy = event.clientY - dragStartY;
+        if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
+            mouseMoved = true;
+        }
+        const wrapper = imageEl.parentElement;
+        wrapper.scrollLeft = scrollStartLeft - dx;
+        wrapper.scrollTop = scrollStartTop - dy;
+    }
+
+    function handleWrapperMouseUp(event) {
+        if (!isPointerDevice || !isZoomed) return;
+        isDragging = false;
+        document.body.style.cursor = '';
+        if (mouseMoved) {
+            event.stopPropagation();
+            suppressClick = true;
+        }
+    }
+
+    function handleWrapperMouseLeave() {
+        if (!isPointerDevice || !isZoomed) return;
+        isDragging = false;
+        document.body.style.cursor = '';
+    }
 </script>
 
 
@@ -102,7 +198,7 @@
             class="modal-nav-button modal-nav-button--prev link--on-hover" 
             on:click={(e) => {
                 e.stopPropagation();
-                dispatch('prev');
+                handleNav('prev');
             }} 
             on:keydown={handleButtonKeydown}
             aria-label="Previous work"
@@ -116,7 +212,7 @@
             class="modal-nav-button modal-nav-button--next link--on-hover" 
             on:click={(e) => {
                 e.stopPropagation();
-                dispatch('next');
+                handleNav('next');
             }} 
             on:keydown={handleButtonKeydown}
             aria-label="Next work"
@@ -181,13 +277,87 @@
             ></iframe>
         </div>
     {:else}
-        <img 
-            class="modal-content" 
-            {src} 
-            alt="Modal image" 
-            on:load={handleImageLoad} 
-            on:error={handleImageError} 
-        />
+        <div 
+            class="modal-image-wrapper {isZoomed ? 'zoomed' : ''}"
+            on:mousedown={isPointerDevice ? handleWrapperMouseDown : undefined}
+            on:mousemove={isPointerDevice ? handleWrapperMouseMove : undefined}
+            on:mouseup={isPointerDevice ? handleWrapperMouseUp : undefined}
+            on:mouseleave={isPointerDevice ? handleWrapperMouseLeave : undefined}
+            style={isPointerDevice && isZoomed ? `cursor: ${isDragging ? 'grabbing' : 'grab'};` : ''}
+        >
+            <img 
+                class="modal-content"
+                bind:this={imageEl}
+                {src}
+                alt="Modal image"
+                on:load={handleImageLoad}
+                on:error={handleImageError}
+                on:click={handleImageClick}
+                style="cursor: {isPointerDevice ? (canZoom ? (isZoomed ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in') : 'default') : 'default'};"
+                draggable="false"
+            />
+        </div>
     {/if}
 </button>
+
+<style>
+    .modal-image-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        /* fallback for non-zoomed */
+    }
+    .modal-image-wrapper.zoomed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,0.85);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+        cursor: grab;
+        overflow: auto;
+        margin: 0;
+        padding: 0;
+        user-select: none;
+        /* Hide scrollbars for all browsers */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE 10+ */
+    }
+    .modal-image-wrapper.zoomed::-webkit-scrollbar {
+        display: none; /* Chrome/Safari/Webkit */
+    }
+    .modal-image-wrapper.zoomed:active {
+        cursor: grabbing;
+    }
+    .modal-image-wrapper.zoomed img {
+        max-width: none;
+        max-height: none;
+        width: auto;
+        height: auto;
+        box-shadow: 0 0 32px #0008;
+        /* Show at natural size */
+        cursor: inherit;
+    }
+    .modal-content {
+        max-width: 90vw;
+        max-height: 80vh;
+        transition: box-shadow 0.2s;
+        background: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .modal-image-wrapper.zoomed .modal-content {
+        max-width: none;
+        max-height: none;
+        border-radius: 0;
+        background: transparent;
+    }
+</style>
 

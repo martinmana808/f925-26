@@ -54,6 +54,9 @@ meter mas laburos de frontend en gravitate. Meter los links, y los mockups exten
      - laser
      -
 GO BACK works page to not be white masonry but body color
+- hacer click sobre imagen que sea mas grande de lo q esta renderizada to real pixels size?
+
+::::::: ;; : : : : OOOPPPPTIIIIIMIIIIIZZZZZAAAAARRRR IMAGEEEENEEEEESSSSS
 
 ## 📋 Suggestions
 - Blog/News/Pensamientos section.
