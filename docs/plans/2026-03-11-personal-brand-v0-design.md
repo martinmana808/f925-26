@@ -2,41 +2,27 @@
 
 **Date:** 2026-03-11
 **Status:** Approved
-**Philosophy:** A living witness of what I'm building. Like a public GitHub profile, but designed and human.
+**Philosophy:** A living, self-updating witness of what I'm building. Powered by GitHub. Designed for humans.
 
 ## Tech Stack
 
-- **Framework:** Astro
+- **Framework:** Astro (SSG with on-demand rebuilds)
 - **Styling:** Tailwind CSS
-- **Content:** Markdown/MDX (one .md file per project — easy to update)
-- **Hosting:** Vercel
-- **Interactive bits:** Svelte islands where needed
+- **Content:** Markdown frontmatter (curation) + GitHub API (heartbeat)
+- **Hosting:** Vercel (with cron rebuilds)
+- **Interactive bits:** Svelte islands (activity calendar, project filters)
 
 ## Core Concept
 
-Not a portfolio. Not a resume. A **real-time dashboard of a builder's work**.
+Not a portfolio. A **real-time dashboard of a builder's work**, fed by actual GitHub activity.
 
-- What am I building right now?
-- What stage is each project at?
-- What shipped recently?
-- Want to try it? Here's the link.
-- Want to hire the person who builds all this? Here's how.
+Two layers:
+1. **Curation layer** — `.md` files you control (descriptions, status, tags, demo links)
+2. **Heartbeat layer** — GitHub API feeds in live data (last commit, commit count, activity heatmap)
 
-It's the developer equivalent of an artist's open studio — walk in, see what's on every easel, talk to the person making it.
-
-## v0 Principles
-
-- **Living document** — updates as projects evolve, not a static snapshot
-- **Projects ARE the content** — no descriptions of skills, the projects prove them
-- **Status-driven** — each project shows where it's at (shipping, building, exploring, live)
-- **Try it** — links to live demos, repos, or deployments wherever possible
-- **One CTA** — hire me / let's talk
-- **Fast** — loads instantly, no fluff
-- **Developer energy** — dark, typographic, dense, confident
+You push code → your website reflects it. Zero manual updates for the activity data. The site is alive because YOU are alive.
 
 ## Site Structure (Single Page)
-
-One page. Scroll down. That's it.
 
 ### 1. Hero (above the fold)
 
@@ -44,118 +30,178 @@ One page. Scroll down. That's it.
 Martin Mana
 
 I build AI products.
+You bring the problem. I build the solution.
 
 [Let's talk]
 ```
 
-No subtitle. No buzzwords. One sentence.
+Immediately below: **the activity calendar** — a GitHub-style contribution heatmap spanning the last 12 months across ALL your repos. Dense green squares. Visual proof before they even scroll.
 
-### 2. Projects (the dashboard)
+### 2. Activity Pulse (right below hero)
 
-Each project is a card/row with:
+A compact stats bar:
+
+```
+52 projects · 1,847 commits this year · 23 repos active · last push: 2 hours ago
+```
+
+These numbers pull from GitHub at build time. They update daily (Vercel cron) or on-demand (webhook on push).
+
+### 3. Latest Activity (optional ticker/feed)
+
+A small scrolling or static feed of most recent commits across all repos:
+
+```
+3h ago   braintube        feat: add quiz generation from timestamps
+5h ago   ragify           fix: chunk overlap calculation
+1d ago   808-music-tools  refactor: audio engine latency
+2d ago   martinmana-v0    style: project card hover states
+```
+
+Short, raw, real. Shows what you're actually doing right now. Limited to last ~5-10 commits.
+
+### 4. Projects (the dashboard — main section)
+
+Each project is a card with:
 - **Name**
-- **One-line description** (what it does, not what tech it uses)
-- **Status** — `live` / `building` / `exploring` / `paused`
-- **Last updated** — "2 days ago", "this week", "Mar 2026" — shows it's alive
-- **Links** — [try it] [repo] [demo] — whatever applies
-- **Tags** (subtle) — AI, music, productivity, macOS, etc. — for filtering, not decoration
+- **One-line description** (curated, from .md)
+- **Status badge** — `live` / `building` / `exploring` / `paused` (curated, from .md)
+- **Last commit** — "2 hours ago" (from GitHub API)
+- **Commit activity sparkline** — tiny inline chart showing commit frequency over last 3 months (from GitHub API)
+- **Links** — [try it] [repo] — whatever applies
+- **Tags** (subtle) — ai, music, productivity, etc. — for filtering
 
-Not grouped by category. Sorted by activity — most recently touched first. This is a feed of what's happening, not a static list.
+**Sorted by last GitHub commit by default.** Most active projects float to the top automatically. No manual reordering needed.
 
-**All projects (~20-25), not just the "best" ones.** The volume IS the message. This person never stops building.
-
-Example entries:
+Example:
 
 ```
-Braintube                                          live · updated 3 days ago
-AI-powered video learning — extract, organize,     [try it] [repo]
-and quiz yourself on any YouTube content
+Braintube                              live · last commit 3h ago  ▂▃▅▇▅▃▆▇
+AI-powered video learning — extract,                     [try it] [repo]
+organize, and quiz on any YouTube content
+#ai #education #productivity
 
-RAGify                                             building · updated today
-Build RAG pipelines visually                       [repo]
+RAGify                              building · last commit 5h ago  ▁▂▅▇▇▆▇▅
+Build RAG pipelines visually                                       [repo]
+#ai #developer-tools
 
-808 Music Tools                                    live · updated last week
-Browser-based drum machine and music production    [try it]
-
-Hands Orchestra                                    exploring · updated 2 weeks ago
-Control instruments with hand gestures             [demo]
-
-STIHL NZ                                           live · 2024
-Performance audit & rebuild for STIHL Shop NZ      [visit]
-
-Phlook                                             paused · updated Jan 2026
-macOS native image browser                         [repo]
+808 Music Tools                        live · last commit 1d ago  ▃▅▂▁▃▅▇▅
+Browser-based drum machine                              [try it] [repo]
+and music production
+#music #creative-tools
 ```
 
-Optional: a subtle filter row at top — `all` `ai` `tools` `music` `client` — to narrow down.
+Filter row at top: `all` `ai` `tools` `music` `apps` `client`
 
-### 3. Contact / CTA
+### 5. Contact / CTA
 
 ```
 Want to build something together?
 
-martin@email.com · github · linkedin
+hello@martinmana.com · github.com/martinmana808 · linkedin
 ```
 
-### 4. Minimal Footer
+### 6. Footer
 
-Maybe one line: "Built with Astro. Always building."
+```
+This site updates itself. Powered by what I push.
+Built with Astro. Always building.
+```
 
-## What v0 Deliberately Leaves Out
+## Data Architecture
 
-- No "How I Work" process section (that's v1)
-- No design archive / 200+ works gallery (that's v1)
-- No thought leadership / blog section (that's v1)
-- No about page / career story (that's v1)
-- No service descriptions
-- No testimonials
-- No animations beyond functional ones
-
-## Content Model (MDX per project)
-
-Each project is a `.md` file in `src/content/projects/`:
+### Curation Layer: `/src/content/projects/*.md`
 
 ```markdown
 ---
 name: Braintube
-description: AI-powered video learning — extract, organize, and quiz yourself on any YouTube content
-status: live          # live | building | exploring | paused
-updated: 2026-03-09
+description: "AI-powered video learning — extract, organize, and quiz yourself on any YouTube content"
+status: live
 tags: [ai, education, productivity]
+repo: martinmana808/braintube
 links:
   demo: https://braintube.app
-  repo: https://github.com/martinmana808/braintube
-order: 1              # optional manual override, otherwise sorted by `updated`
+featured: true
 ---
 ```
 
-No body content needed for v0. Just frontmatter. Adding a project = adding a file. Updating status = changing one line. This is meant to be maintainable by one person in 30 seconds.
+- `repo` links to GitHub for automatic activity data
+- `status` is manually set (you decide when something is "live" vs "building")
+- `description` is your words, not auto-generated
+- `featured: true` pins a project to the top regardless of activity
+- No body content needed for v0
 
-## Brand Voice (v0)
+### Heartbeat Layer: GitHub API (fetched at build time)
 
-- Terse. Almost curt.
-- The project list does the talking
-- No selling, no convincing — "here's what I build, here's how to reach me"
-- Confidence through restraint
-- The frequency of updates IS the flex
+For each project with a `repo` field, Astro fetches at build:
+- Last commit date + message
+- Commit count (last 90 days)
+- Weekly commit activity (for sparklines)
+
+Global data (fetched once):
+- Contribution calendar (last 12 months) — for the heatmap
+- Total commit count across all repos
+- Active repo count
+- Last push timestamp
+
+### Build Triggers
+
+1. **Daily cron** — Vercel scheduled rebuild (e.g., 6am UTC) keeps data fresh
+2. **Webhook on push** (optional, phase 2) — any push to your repos triggers a rebuild via Vercel Deploy Hook
+3. **Manual** — push to the site repo itself triggers standard Vercel build
+
+### Caching Strategy
+
+- GitHub API responses cached in Astro's build output
+- Rate limit friendly: ~20-25 repos × 2-3 API calls each = ~60 calls per build (well within GitHub's 5000/hour limit)
+- Personal access token for authenticated requests (higher rate limits, access to private repos if wanted)
 
 ## Design Direction
 
-- **Dark background** (#0a0a0a or similar near-black)
-- **Monospace for project names/status**, clean sans-serif for descriptions
-- **Minimal color** — one accent per status (green=live, yellow=building, blue=exploring, gray=paused)
-- **Dense but readable** — developer dashboard information density
-- **No hero images, no illustrations, no gradients**
-- **Responsive** — looks great on mobile
-- **The "updated X ago" timestamps are the heartbeat** — they prove this isn't a dead portfolio
+- **Dark background** — `#0a0a0a` base, `#111` cards
+- **Activity calendar** — GitHub-style green squares but with your brand accent color
+- **Status colors** — green=live, amber=building, blue=exploring, gray=paused
+- **Sparklines** — thin, single-color, showing commit rhythm
+- **Typography** — Monospace for project names, status, timestamps. Sans-serif (Inter) for descriptions
+- **Minimal color** — the activity data provides the visual interest, not decoration
+- **Dense** — developer dashboard density. Information-rich, not whitespace-heavy
+- **The green squares and sparklines ARE the design** — they prove everything
+
+## Brand Voice (v0)
+
+- Terse. The data speaks.
+- No selling. "Here's what I'm building right now."
+- The commit frequency IS the pitch
+- Confidence through output, not words
+
+## What v0 Deliberately Leaves Out
+
+- No "How I Work" process section (v1)
+- No design archive / 200+ works gallery (v1)
+- No blog / thought leadership (v1)
+- No about page / career story (v1)
+- No service descriptions
+- No testimonials
+- No animations beyond functional transitions
 
 ## Path from v0 to v1
 
-v0 ships fast. It's the living dashboard. Once it's live and projects are flowing:
-- Add case studies for flagship projects (v1 section 3) — expand the .md body content
-- Add the design archive (v1 section 4)
-- Add thought leadership / blog (v1 section 5)
-- Add the career story (v1 section 7)
+v0 ships fast as the living dashboard. Then:
+- Add case study pages (expand .md body content for flagship projects)
+- Add the design archive section
+- Add blog / thought leadership
+- Add the career story
 - Evolve from dashboard to full brand site
 
-v0 is the foundation. v1 is the evolution. Same URL. Same content model — just richer.
+Same URL. Same content model. v0's project .md files become v1's case study pages — just add body content.
+
+## Why This Works
+
+A potential client lands on the site. In 5 seconds they see:
+1. "I build AI products" — clear positioning
+2. A dense green activity calendar — this person ships constantly
+3. 20+ projects with live status and real commit data — this is not a dead portfolio
+4. Half of them have "try it" links — they can touch the work
+5. One CTA — "Let's talk"
+
+That's it. No convincing needed. The evidence is automated and self-updating.
