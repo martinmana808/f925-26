@@ -1,7 +1,15 @@
-# Personal Brand & Website Design — Martin Mana
+# Personal Brand & Website Design — Martin Mana (v1 — Full)
 
 **Date:** 2026-03-11
-**Status:** Approved
+**Status:** Approved (parked — building v0 first)
+
+## Tech Stack (applies to both v0 and v1)
+
+- **Framework:** Astro
+- **Styling:** Tailwind CSS
+- **Content:** Markdown/MDX files
+- **Hosting:** Vercel
+- **Interactive components:** Svelte islands
 
 ## Core Identity
 
