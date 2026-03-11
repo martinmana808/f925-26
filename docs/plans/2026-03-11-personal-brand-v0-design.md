@@ -1,37 +1,44 @@
-# Personal Brand — v0: The Developer Site
+# Personal Brand — v0: The Builder's Dashboard
 
 **Date:** 2026-03-11
 **Status:** Approved
-**Philosophy:** Fist to the face. Minimal. Let the work speak.
+**Philosophy:** A living witness of what I'm building. Like a public GitHub profile, but designed and human.
 
 ## Tech Stack
 
 - **Framework:** Astro
 - **Styling:** Tailwind CSS
-- **Content:** Markdown/MDX
+- **Content:** Markdown/MDX (one .md file per project — easy to update)
 - **Hosting:** Vercel
 - **Interactive bits:** Svelte islands where needed
 
-## Core Identity (same as v1)
+## Core Concept
 
-Martin Mana. AI product strategist who builds. Diagnoses the problem, designs the solution, ships it.
+Not a portfolio. Not a resume. A **real-time dashboard of a builder's work**.
+
+- What am I building right now?
+- What stage is each project at?
+- What shipped recently?
+- Want to try it? Here's the link.
+- Want to hire the person who builds all this? Here's how.
+
+It's the developer equivalent of an artist's open studio — walk in, see what's on every easel, talk to the person making it.
 
 ## v0 Principles
 
-- **Minimal content** — no walls of text, no service descriptions, no "about me" paragraphs
-- **Projects front and center** — this is what I build, judge me by it
+- **Living document** — updates as projects evolve, not a static snapshot
+- **Projects ARE the content** — no descriptions of skills, the projects prove them
+- **Status-driven** — each project shows where it's at (shipping, building, exploring, live)
+- **Try it** — links to live demos, repos, or deployments wherever possible
 - **One CTA** — hire me / let's talk
-- **Fast** — loads instantly, no fluff, no animations for the sake of it
-- **Developer energy** — clean, typographic, almost terminal-like confidence
-- **Dark mode default** — fits the dev aesthetic
+- **Fast** — loads instantly, no fluff
+- **Developer energy** — dark, typographic, dense, confident
 
 ## Site Structure (Single Page)
 
 One page. Scroll down. That's it.
 
 ### 1. Hero (above the fold)
-
-Name. One line. CTA.
 
 ```
 Martin Mana
@@ -41,50 +48,58 @@ I build AI products.
 [Let's talk]
 ```
 
-That's it. No subtitle. No "AI-driven digital developer crafting expertly designed innovative solutions." One sentence. Done.
+No subtitle. No buzzwords. One sentence.
 
-Optional: a subtle tagline underneath like "You bring the problem. I build the solution." — but only if it doesn't dilute.
+### 2. Projects (the dashboard)
 
-### 2. Projects (the meat)
-
-A grid/list of current and recent projects. Each one:
+Each project is a card/row with:
 - **Name**
 - **One-line description** (what it does, not what tech it uses)
-- **Status badge** (live / building / archived)
-- **Link** (demo or repo, where applicable)
+- **Status** — `live` / `building` / `exploring` / `paused`
+- **Last updated** — "2 days ago", "this week", "Mar 2026" — shows it's alive
+- **Links** — [try it] [repo] [demo] — whatever applies
+- **Tags** (subtle) — AI, music, productivity, macOS, etc. — for filtering, not decoration
 
-Curated to ~10-15 strongest projects. Grouped loosely:
+Not grouped by category. Sorted by activity — most recently touched first. This is a feed of what's happening, not a static list.
 
-**AI Products:**
-- Braintube — AI-powered video learning tool
-- RAGify — RAG pipeline builder
-- AI Chat Component — Embeddable AI chat
-- Gary Scout — AI testing framework
-- F925 — AI-powered productivity tool
-- AI Dev Tasks — AI development workflow
+**All projects (~20-25), not just the "best" ones.** The volume IS the message. This person never stops building.
 
-**Tools & Apps:**
-- 808 Music Tools — Browser-based music production
-- Hands Orchestra — Gesture-controlled instruments
-- Frello — Trello-inspired project management
-- Budget App — Personal finance tracker
-- Phlook — macOS native app
+Example entries:
 
-**Client Work (selected):**
-- STIHL NZ — Performance audit & web development
-- Other notable client projects
+```
+Braintube                                          live · updated 3 days ago
+AI-powered video learning — extract, organize,     [try it] [repo]
+and quiz yourself on any YouTube content
 
-No screenshots in the grid. Clean. Text-first. Maybe hover reveals a preview or accent color.
+RAGify                                             building · updated today
+Build RAG pipelines visually                       [repo]
+
+808 Music Tools                                    live · updated last week
+Browser-based drum machine and music production    [try it]
+
+Hands Orchestra                                    exploring · updated 2 weeks ago
+Control instruments with hand gestures             [demo]
+
+STIHL NZ                                           live · 2024
+Performance audit & rebuild for STIHL Shop NZ      [visit]
+
+Phlook                                             paused · updated Jan 2026
+macOS native image browser                         [repo]
+```
+
+Optional: a subtle filter row at top — `all` `ai` `tools` `music` `client` — to narrow down.
 
 ### 3. Contact / CTA
 
 ```
-Let's build something.
+Want to build something together?
 
-[email] [github] [linkedin]
+martin@email.com · github · linkedin
 ```
 
-Minimal footer. Email link. Social links. Done.
+### 4. Minimal Footer
+
+Maybe one line: "Built with Astro. Always building."
 
 ## What v0 Deliberately Leaves Out
 
@@ -93,33 +108,54 @@ Minimal footer. Email link. Social links. Done.
 - No thought leadership / blog section (that's v1)
 - No about page / career story (that's v1)
 - No service descriptions
-- No team mentions
 - No testimonials
-- No animations or transitions beyond functional ones
+- No animations beyond functional ones
+
+## Content Model (MDX per project)
+
+Each project is a `.md` file in `src/content/projects/`:
+
+```markdown
+---
+name: Braintube
+description: AI-powered video learning — extract, organize, and quiz yourself on any YouTube content
+status: live          # live | building | exploring | paused
+updated: 2026-03-09
+tags: [ai, education, productivity]
+links:
+  demo: https://braintube.app
+  repo: https://github.com/martinmana808/braintube
+order: 1              # optional manual override, otherwise sorted by `updated`
+---
+```
+
+No body content needed for v0. Just frontmatter. Adding a project = adding a file. Updating status = changing one line. This is meant to be maintainable by one person in 30 seconds.
 
 ## Brand Voice (v0)
 
 - Terse. Almost curt.
-- Let the project list do the talking
+- The project list does the talking
 - No selling, no convincing — "here's what I build, here's how to reach me"
 - Confidence through restraint
+- The frequency of updates IS the flex
 
 ## Design Direction
 
 - **Dark background** (#0a0a0a or similar near-black)
-- **Monospace or clean sans-serif** for headings (Inter is fine, or something with more edge)
-- **Minimal color** — one accent color for links/CTA, everything else is white/gray on dark
-- **Dense but readable** — developer-style information density
+- **Monospace for project names/status**, clean sans-serif for descriptions
+- **Minimal color** — one accent per status (green=live, yellow=building, blue=exploring, gray=paused)
+- **Dense but readable** — developer dashboard information density
 - **No hero images, no illustrations, no gradients**
-- **Responsive** — looks great on mobile, no compromises
+- **Responsive** — looks great on mobile
+- **The "updated X ago" timestamps are the heartbeat** — they prove this isn't a dead portfolio
 
 ## Path from v0 to v1
 
-v0 ships fast. It's the "I exist, here's my work, hire me" version. Once it's live:
-- Add case studies (v1 section 3)
-- Add the archive (v1 section 4)
-- Add thought leadership (v1 section 5)
-- Add the about/career story (v1 section 7)
-- Evolve the design from dev-minimal to polished-minimal
+v0 ships fast. It's the living dashboard. Once it's live and projects are flowing:
+- Add case studies for flagship projects (v1 section 3) — expand the .md body content
+- Add the design archive (v1 section 4)
+- Add thought leadership / blog (v1 section 5)
+- Add the career story (v1 section 7)
+- Evolve from dashboard to full brand site
 
-v0 is the foundation. v1 is the evolution. The URL stays the same.
+v0 is the foundation. v1 is the evolution. Same URL. Same content model — just richer.
