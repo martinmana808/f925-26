@@ -1,5 +1,6 @@
 <script>
     import Router from './Router.svelte'
+    import SpaceBackground from './components/SpaceBackground.svelte'
     import StructuredData from './components/StructuredData.svelte'
     import { onMount } from 'svelte'
     import { headContent } from './stores/headContent.js'
@@ -116,4 +117,5 @@
         crossorigin="anonymous" /> -->
 </svelte:head>
 
+<SpaceBackground image="tarantula" />
 <Router />
