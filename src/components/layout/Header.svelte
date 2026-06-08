@@ -67,8 +67,8 @@
                         <li class={currentPath.includes('/services') ? 'active' : ''}>
                             <a href="/services">Services</a>
                         </li>
-                        <li class={currentPath.includes('/work') ? 'active' : ''}>
-                            <a href="/work">Work</a>
+                        <li class={currentPath.includes('/portfolio') ? 'active' : ''}>
+                            <a href="/portfolio">Portfolio</a>
                         </li>
                         <li class={currentPath.includes('/about') ? 'active' : ''}>
                             <a href="/about">About</a>
@@ -81,7 +81,7 @@
                                 class="link--chat"
                                 target="_blank"
                                 rel="noopener"
-                                href="https://wa.me/640272182988?text=Hello%Martin!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
+                                href="https://wa.me/640272182988?text=Hello%20F925!%20:)%0AI%20would%20like%20to%20chat%20about%20a%20project.">
                                 Let's chat <Icon name="social-whatsapp" />
                             </a>
                         </li>
@@ -91,7 +91,7 @@
                                 class="link--on-hover"
                                 target="_blank"
                                 rel="noopener"
-                                href="https://wa.me/640272182988?text=Hello%Martin!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
+                                href="https://wa.me/640272182988?text=Hello%20F925!%20:)%0AI%20would%20like%20to%20chat%20about%20a%20project.">
                                 Let's chat <Icon name="social-whatsapp" />
                             </a>
                         </li>

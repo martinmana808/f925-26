@@ -83,12 +83,12 @@
     <div class="grid gutter-x h-100">
         <div class="col-l">
             <h1 class="text--section">Services</h1>
-            <h2 class="text--subheadingSm">A one-stop shop on your way to success</h2>
+            <h2 class="text--subheadingSm">We build website products that actually work</h2>
             <p>
-                I offer complete, end-to-end solutions tailored to your business needs. Thanks to the strong network and reliable on-demand team I've built over the years, I'm able to offer a wide range of services and ensure that no loose ends are left behind.
+                F925 designs and builds website products, platforms, and AI systems — end to end. We don't do throwaway brochure sites. We build complex solutions that have to work properly, with AI woven through everything we ship.
             </p>
             <p>
-                <span class="text--small">You can <a href="/about" class="link">read more about me</a> in the about page.</span> 
+                <span class="text--small">Learn more <a href="/about" class="link">about F925</a> on the about page.</span>
             </p>
         </div>
         <div class="col-r">
@@ -96,66 +96,48 @@
                 class="service-cards list-reset gutter-x main-carousel"
                 data-flickity={JSON.stringify(flickityOptions)}>
                 <ServicesCard
-                    title="AI solutions"
-                    description="'There's an easier, faster, and more efficient way to get things done.'<br>
-                    AI can enhance almost every aspect of your business. I implement AI-powered solutions to streamline workflows, reduce costs, and deliver measurable results."
+                    title="Website Products & Platforms"
+                    description="We design and build websites, web apps, and platforms that actually work — fast, intelligent, and woven through with AI. Not brochures. Real products people use, with the performance, accessibility, and detail to match."
                     tags={[
-                        { title: 'Task Automation' },
-                        { title: 'Chatbots & Support' },
-                        { title: 'Data Analysis & Decision Making' },
-                        { title: 'Marketing Optimization' },
-                        { title: 'Employee & Client Onboarding' },
-                        { title: 'Bespoke AI Developments' },
+                        { title: 'Bespoke websites' },
+                        { title: 'Web apps & platforms' },
+                        { title: 'E-commerce' },
+                        { title: 'AI built in' },
+                        { title: 'Performance & SEO' },
+                        { title: 'Accessibility' },
+                    ]}
+                    url="/services/website-products" />
+                <ServicesCard
+                    title="AI Agents & Chatbots"
+                    description="Custom AI assistants like Gary — trained on your business. RAG plus actions, lead-generation chat, and support agents that don't just talk, they do things. A site without a chatbot today is already falling behind."
+                    tags={[
+                        { title: 'Custom chatbots' },
+                        { title: 'RAG + actions' },
                         { title: 'Lead generation' },
-                        { title: 'Email marketing' },
+                        { title: 'Support agents' },
+                        { title: 'Agentic workflows' },
+                        { title: 'Bespoke AI' },
                     ]}
-                    url="/services/ai-solutions" />
-                    <!-- HIS NEEDS REWORK same as the following items. I should put a link to process and how we do it  -->
+                    url="/services/ai-agents" />
                 <ServicesCard
-                    title="UI/UX design"
-                    description="I design interfaces that are not only visually striking but also user-friendly to ensure a seamless interaction and optimal usability for an intuitive digital experience."
+                    title="Automation & Systems"
+                    description="Processes without automation are just work. We automate the repetitive and connect your systems — CRM, ERP, POS, pipelines — so the computer does what a computer should, and your team does what only people can."
                     tags={[
-                        { title: 'Wireframing' },
-                        { title: 'Prototyping' },
-                        { title: 'Visual Design' },
-                        { title: 'Interaction Design' },
+                        { title: 'Process automation' },
+                        { title: 'CRM / ERP / POS' },
+                        { title: 'Integrations' },
+                        { title: 'Data pipelines' },
+                        { title: 'Dashboards' },
+                        { title: 'Workflow design' },
                     ]}
-                    url="/services/ux-ui-design" />
-                <ServicesCard
-                    title="Website development"
-                    description="I build websites that amplify your brand, engage users, and drive business growth. I mix fluid and engaging UX with sleek and clean UI. I pay attention to detail. Accessibility, performance, and security are key."
-                    tags={[
-                        { title: 'Bespoke website' },
-                        { title: 'Wordpress' },
-                        { title: 'WooCommerce' },
-                        { title: 'Shopify' },
-                        { title: 'SEO' },
-                        { title: 'Performance optimization' },
-                    ]}
-                    url="/services/website-development" />
-                <ServicesCard
-                    title="App development"
-                    description="I design and build apps with my team to enhance user experiences and streamline operations, delivering intuitive and powerful tools that bring your ideas to life on any platform."
-                    tags={[{ title: 'iOS' }, { title: 'Android' }, { title: 'Cross-Platform' }, { title: 'WPA' }]}
-                    url="/services/app-development" />
-                
-                <ServicesCard
-                    title="Graphic design"
-                    description="From branding to marketing materials, I create compelling visuals that resonate with your audience. My designs communicate your message and elevate your brand identity."
-                    tags={[
-                        { title: 'Branding' },
-                        { title: 'Packaging' },
-                        { title: 'Digital media' },
-                        { title: 'Promotional Design' },
-                    ]}
-                    url="/services/graphic-design" />
+                    url="/services/automation" />
 
                 <div class="service-card --link">
-                    <a class="flex justify-between items-center no-outline" href="/work">
+                    <a class="flex justify-between items-center no-outline" href="/portfolio">
                         <h2 class="text--subheadingLg mb-0">
                             View
                             <br />
-                            my work
+                            our work
                         </h2>
                         <div class="icon-effect flex items-end">
                             <Icon name="arrowBig" extraClass="icon-effect--1" />

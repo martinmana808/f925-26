@@ -6,14 +6,10 @@
     import AiSolutions from './routes/Services/AiSolutions.svelte'
     import WebsiteDevelopment from './routes/Services/WebsiteDevelopment.svelte'
     import AppDevelopment from './routes/Services/AppDevelopment.svelte'
-    import UXUIDesign from './routes/Services/UXUIDesign.svelte'
-    import GraphicDesign from './routes/Services/GraphicDesign.svelte'
     import Work from './routes/Work.svelte'
     import Contact from './routes/Contact.svelte'
     import Contact2 from './routes/Contact2.svelte'
     import FourOhFour from './routes/404.svelte'
-    import Stuff from './routes/Stuff/index.svelte'
-    import StuffLlms from './routes/Stuff/llms.svelte'
     import { headContent, seoConfig } from './stores/headContent.js'
     import { onMount } from 'svelte'
 
@@ -25,16 +21,12 @@
         '/': Home,
         '/about': About,
         '/services': Services,
-        '/services/ai-solutions': AiSolutions,
-        '/services/website-development': WebsiteDevelopment,
-        '/services/app-development': AppDevelopment,
-        '/services/ux-ui-design': UXUIDesign,
-        '/services/graphic-design': GraphicDesign,
-        '/work': Work,
+        '/services/website-products': WebsiteDevelopment,
+        '/services/ai-agents': AiSolutions,
+        '/services/automation': AppDevelopment,
+        '/portfolio': Work,
         '/contact': Contact,
-        '/contact2': Contact2,
-        '/stuff': Stuff,
-        '/stuff/llms': StuffLlms
+        '/contact2': Contact2
     }
 
     // If the route exists, use it; otherwise, go to 404 page

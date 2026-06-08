@@ -46,49 +46,28 @@
     let serviceDetails = [
         {
             title: 'Support Chatbots',
-            // altTitle: 'Unique & Boutique',
-            // linkDemo: 'https://lighthouseco.in',
-            // linkLabel: 'lighthouseco.in',
             description:
-                'I design intelligent, responsive chatbots that enhance your customer support. These AI-powered solutions handle inquiries, provide instant responses, and improve customer engagement. By automating interactions, I free up your team to focus on more complex tasks, while ensuring a consistent and efficient service experience for your customers.',
-            // imageSrc: '/services--bespoke.png',
-            // type: 'mockup',
+                "We design intelligent, responsive chatbots that handle customer inquiries, give instant answers, and keep service consistent around the clock — like Gary, our own AI interface. By automating the repetitive conversations, we free your team to focus on the complex ones.",
         },
         {
-            title: 'Task Automation',
-            // altTitle: 'In control; within budget',
-            // linkDemo: '',
-            // linkLabel: '',
+            title: 'Lead generation',
             description:
-                'I streamline repetitive tasks with AI-powered automation, improving efficiency and reducing operational costs. My solutions eliminate manual processes, enabling your team to focus on high-value work. From data entry to scheduling, my automation tools help you save time and boost productivity across every department.',
-            // imageSrc: '/path/to/seo-service-image.png',
+                "Our chat agents don't just answer questions — they qualify leads. They learn what a visitor needs, make the case for your business, and capture the details your team needs to follow up, turning your website into an always-on sales conversation.",
         },
         {
-            title: 'Data Analysis',
-            // altTitle: 'Good, great and affordable',
-            // linkDemo: '',
-            // linkLabel: '',
+            title: 'RAG agents',
             description:
-                "I harness the power of AI to analyze vast amounts of data and extract actionable insights. My data-driven solutions help you make informed decisions, identify trends, and improve business strategies. By providing accurate, real-time analysis, I empower you to optimize operations and stay ahead of the competition.",
-            // imageSrc: '/path/to/seo-service-image.png',
+                "We build private, secure agents that learn from your manuals, documents, and data using retrieval-augmented generation. They give accurate, source-referenced answers grounded in your business — no hallucinated slop.",
         },
         {
-            title: 'Marketing Optimization',
-            // altTitle: 'Bespoke, on the most commonly used platform',
-            // linkDemo: '',
-            // linkLabel: '',
+            title: 'Agentic workflows',
             description:
-                'I leverage AI to optimize your marketing strategies for better engagement and conversion. By analyzing customer data, tracking behavior, and predicting trends, my solutions ensure that your marketing efforts are data-driven and highly effective. From targeting the right audience to maximizing ad spend, I help you achieve measurable results with AI.',
-            // imageSrc: '/path/to/seo-service-image.png',
+                "Agents that do things, not just chat. Diagnose, recommend, act — full multi-step workflows that read your systems, make decisions, and execute tasks across email, CRM, and forms.",
         },
         {
-            title: 'Bespoke AI Development',
-            // altTitle: 'Bespoke, on the most commonly used platform',
-            // linkDemo: '',
-            // linkLabel: '',
+            title: 'Bespoke AI',
             description:
-                'I create custom AI solutions tailored to the unique needs of your business. From advanced machine learning models to specialized algorithms, my bespoke AI development services are designed to solve specific challenges and unlock new opportunities. With tailored training and seamless integration, I ensure your AI solutions deliver real, tangible value to your operations.',
-            // imageSrc: '/path/to/seo-service-image.png',
+                "Custom AI built around a specific problem in your business. From specialized assistants to tailored models and integrations, we design and ship AI that delivers real, measurable value — not a demo.",
         },
     ]
     let formMessage = ''
@@ -154,7 +133,7 @@
                 <span class="visuallyhidden">Go back</span>
             </a>
             <div class="spacer-1"></div>
-            <h1 class="text--section">Website Development</h1>
+            <h1 class="text--section">AI Agents &amp; Chatbots</h1>
         </div>
         <div class="col-r">
             <ServiceDetailLvl2Nav
@@ -162,10 +141,10 @@
                 {setActiveTab}
                 lvl2pages={[
                     { title: 'Support Chatbots' },
-                    { title: 'Task Automation' },
-                    { title: 'Data Analysis' },
-                    { title: 'Marketing Optimization' },
-                    { title: 'Bespoke AI Development' },
+                    { title: 'Lead generation' },
+                    { title: 'RAG agents' },
+                    { title: 'Agentic workflows' },
+                    { title: 'Bespoke AI' },
                 ]} />
 
             <ServiceDetail {serviceDetails} {activeTab} {setActiveTab} type="ai" />
@@ -226,8 +205,8 @@
                         <br />
                         <div class="spacer-1"></div>
                         <div class="text--small">
-                            Until then, feel free to visit our
-                            <a class="link" href="https://linktr.ee/weareanother.studio" target="_blank">linktr.ee</a>
+                            In the meantime, you can also
+                            <a class="link" href="/contact">book a free call</a>
                             .
                         </div>
                     {/if}

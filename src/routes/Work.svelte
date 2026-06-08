@@ -374,24 +374,23 @@
     <div class="work-modal__overlay" ></div>
     <div class="works grid gutter-x h-100 relative">
         <div class="col-l">
-            <h1 class="text--subheadingSm l-visible ">Work.<br/>
-Be resourceful.<br/>
-Be a jack of all trades.</h1>
+            <h1 class="text--subheadingSm l-visible ">Portfolio.<br/>
+Design that earns trust.<br/>
+Built to actually work.</h1>
         </div>
         <div class="col-r">
-            <h1 class="text--section l-hidden">My work</h1>
+            <h1 class="text--section l-hidden">Our work</h1>
             <h2 class="text--subheadingSm l-hidden">
-                Master of none? Maybe. But I've done a hell of a lot.
+                A look at what we make.
 
                 <span class="small"></span>
-                <!-- <span class="emoji">😝</span> -->
             </h2>
             <h2 class="text--section l-visible ">
-                Master of none? Maybe. But I've done a hell of a lot.
+                A look at what we make.
             </h2>
             <div class="mw-600">
-                For years, I've worn many hats, taken on all kinds of projects, and learned heaps along the way. That variety is what fuels my creativity and problem-solving.<br>
-                Here's a glimpse into the work — random, varied, and 100% me.
+                Every piece here was designed and built by F925 — websites, products, brands, and the details in between. This is the bar we hold ourselves to.<br>
+                Deep, written case studies are on the way. For now, here's the work.
             </div>
             
         </div>

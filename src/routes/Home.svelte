@@ -1,5 +1,6 @@
 <script>
     import Layout from '../components/layout/Layout.svelte'
+    import { openGary } from '../stores/gary.js'
     import { onMount, onDestroy } from 'svelte'
     onMount(() => {
         document.body.classList.add('template--home')
@@ -7,12 +8,12 @@
     onDestroy(() => {
         document.body.classList.remove('template--home')
     })
-    let heading = "I am an AI-driven digital developer, crafting expertly designed and innovative solutions."
-    let subheading1 = "I integrate cutting-edge AI automation with UX, UI, and performance-focused design. I create beautiful and intelligent products that people love and praise."
+    let heading = "We design and build website products, platforms, and AI systems that actually work."
+    let subheading1 = "F925 weaves AI through everything we ship — chatbots, automation, and intelligent products. A site without a chatbot today is already falling behind. We make sure yours isn't."
     let subheading2 = ''
     let cta1Label = "Book a free call"
     let cta1Url = "/contact"
-    let cta2Label = "What I do"
+    let cta2Label = "What we do"
     let cta2Url = "/services"
 
 </script>
@@ -22,12 +23,12 @@
         <div class="col-l">
             <div class="home-hero l-visible">
                 <h1 class="text--hero">
-                    The nerdy stuff, but cool
+                    Sites that think.
                 </h1>
             </div>
             <div class="home-hero l-hidden">
                 <h1 class="text--hero">
-                    The nerdy stuff, <br>but cool
+                    Sites <br>that think.
                 </h1>
             </div>
             <h2 class="text--subheadingLg l-hidden">
@@ -58,8 +59,11 @@
             </div>
             <div class="">
                 <div class="buttons">
+                    <button class="button --1" type="button" on:click={() => openGary('Hi Gary — what does F925 build?')}>
+                        <span>Talk to Gary</span>
+                    </button>
                     {#if cta1Label !== '' && cta1Url !== ''}
-                        <a class="button --1" href="{cta1Url}"><span>{cta1Label}</span></a>
+                        <a class="button --1out" href="{cta1Url}"><span>{cta1Label}</span></a>
                     {/if}
                     {#if cta2Label !== '' && cta2Url !== ''}
                         <a class="button --1out" href="{cta2Url}">

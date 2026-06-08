@@ -1,11 +1,11 @@
 {
-  "name": "Another • Full-service digital studio",
-  "short_name": "Another • Full-service digital studio",
-  "description": "We create expertly crafted, beautiful products—designed and built from the ground up.",
+  "name": "F925 • AI-native website products & platforms",
+  "short_name": "F925",
+  "description": "F925 designs and builds website products, platforms, and AI systems that actually work — chatbots, automation, and intelligent products woven through with AI.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#222222",
-  "theme_color": "#ffffff",
+  "background_color": "#191c1f",
+  "theme_color": "#191c1f",
   "icons": [
     {
       "src": "/apple-touch-icon-192x192.png",

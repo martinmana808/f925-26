@@ -7,9 +7,9 @@
         document.body.classList.add('template--404')
         // Set 404-specific SEO
         headContent.set({
-            title: 'Page Not Found • Martin Mana',
+            title: 'Page Not Found • F925',
             description: 'The page you are looking for could not be found. Please check the URL or return to the home page.',
-            canonical: 'https://martinmana.com/404',
+            canonical: 'https://f925.ai/404',
             ogImage: '/og-1200x630.png',
             ogType: 'website',
             links: [],
@@ -34,7 +34,7 @@
                 .
             </p>
             <p class="text--small mt-sm">
-                If you believe this is a mistake, feel free to <a class="link" href="/contact">contact me</a>
+                If you believe this is a mistake, feel free to <a class="link" href="/contact">contact us</a>
                 and let us know.
             </p>
         </div>

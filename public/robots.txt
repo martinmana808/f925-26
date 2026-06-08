@@ -4,4 +4,4 @@ Disallow: /login/
 Allow: /
 
 # Sitemap
-Sitemap: https://martinmana.com/sitemap.xml
+Sitemap: https://f925.ai/sitemap.xml

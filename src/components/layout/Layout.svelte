@@ -2,6 +2,7 @@
     import Header from './Header.svelte'
     import Footer from './Footer.svelte'
     import PageLoader from '../PageLoader.svelte'
+    import GaryChat from '../GaryChat.svelte'
     export let bodyClass = ''
     import '../../styles/styles.less'
 </script>
@@ -24,3 +25,5 @@
 </main>
 
 <Footer  />
+
+<GaryChat />

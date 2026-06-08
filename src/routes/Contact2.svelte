@@ -76,8 +76,8 @@
                 <!-- <h1 class="text--section">🙌</h1> -->
             {:else}{/if}
             {#if formMessage.includes('Error') || formMessage.length === 0}
-                <h1 class="text--section">Drop me a line</h1>
-                <h2 class="text--subheadingSm">Take that first step. Just send me a message and I'll do the rest.</h2>
+                <h1 class="text--section">Drop us a line</h1>
+                <h2 class="text--subheadingSm">Take that first step. Just send us a message and we'll do the rest.</h2>
                 <div class="text--small">
                     Or if you prefer, you can straight away <a class="link" href="contact">book a free consultation</a> and we can have a relaxed chat, no commitments, no pressure, no obligation.
                 </div>
@@ -136,17 +136,15 @@
                     <div class="mt-sm">
                         <p>You are a legend. We will be in touch shortly.</p>
                         <p>
-                            Until then, feel free to <a class="link" href={credentials.url} download>
-                                download our credentials document
-                            </a>
-                            and get to know even more about us.
+                            In the meantime, feel free to <a class="link" href="/contact">book a free call</a>
+                            and we can talk it through, no pressure.
                         </p>
                     </div>
                 {/if}
             </form>
             <div class="contact__bottom gutter-x mt-lg">
                 <div class="">
-                    <a class="link--on-hover" href="mailto:martinmana808@gmail.com">martinmana808@gmail.com</a>
+                    <a class="link--on-hover" href="mailto:f925.limited@gmail.com">f925.limited@gmail.com</a>
                 </div>
                 <div>
                     <div>

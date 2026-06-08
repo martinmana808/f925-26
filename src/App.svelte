@@ -30,14 +30,14 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={$headContent.ogType} />
-    <meta property="og:url" content={$headContent.canonical || 'https://martinmana.com'} />
+    <meta property="og:url" content={$headContent.canonical || 'https://f925.ai'} />
     <meta property="og:title" content={$headContent.title} />
     <meta property="og:description" content={$headContent.description} />
     <meta property="og:image" content={$headContent.ogImage} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={$headContent.canonical || 'https://martinmana.com'} />
+    <meta property="twitter:url" content={$headContent.canonical || 'https://f925.ai'} />
     <meta property="twitter:title" content={$headContent.title} />
     <meta property="twitter:description" content={$headContent.description} />
     <meta property="twitter:image" content={$headContent.ogImage} />
@@ -46,7 +46,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#222222" />
+    <meta name="theme-color" content="#191c1f" />
     
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
@@ -56,7 +56,7 @@
         type="website"
         title={$headContent.title}
         description={$headContent.description}
-        url={$headContent.canonical || 'https://martinmana.com'}
+        url={$headContent.canonical || 'https://f925.ai'}
         image={$headContent.ogImage}
     />
     

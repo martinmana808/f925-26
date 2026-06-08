@@ -41,28 +41,18 @@
 <!-- <h1 class="text--breadcrumb l-visible">Services</h1> -->
 <ul class="services-nav--lvl1 text--small list-reset l-visible">
     <li>
-        <a href="/services/ai-solutions" class={currentPath.includes('/ai-solutions') ? 'active' : ''}>
-            AI solutions
+        <a href="/services/website-products" class={currentPath.includes('/website-products') ? 'active' : ''}>
+            Website Products & Platforms
         </a>
     </li>
     <li>
-        <a href="/services/website-development" class={currentPath.includes('/website-development') ? 'active' : ''}>
-            Website development
+        <a href="/services/ai-agents" class={currentPath.includes('/ai-agents') ? 'active' : ''}>
+            AI Agents & Chatbots
         </a>
     </li>
     <li>
-        <a href="/services/app-development" class={currentPath.includes('/app-development') ? 'active' : ''}>
-            App development
-        </a>
-    </li>
-    <li>
-        <a href="/services/ux-ui-design" class={currentPath.includes('/ux-ui-design') ? 'active' : ''}>
-            UX / UI design
-        </a>
-    </li>
-    <li>
-        <a href="/services/graphic-design" class={currentPath.includes('/graphic-design') ? 'active' : ''}>
-            Graphic design
+        <a href="/services/automation" class={currentPath.includes('/automation') ? 'active' : ''}>
+            Automation & Systems
         </a>
     </li>
 </ul>
@@ -116,8 +106,8 @@
             <br />
             <div class="spacer-1"></div>
             <div class="text--small">
-                Until then, feel free to visit our
-                <a class="link" href="https://linktr.ee/weareanother.studio" target="_blank">linktr.ee</a>
+                In the meantime, you can also
+                <a class="link" href="/contact">book a free call</a>
                 .
             </div>
         {/if}

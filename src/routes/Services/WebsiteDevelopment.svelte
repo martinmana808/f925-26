@@ -5,7 +5,7 @@
     import ServiceDetailLvl2Nav from '../../components/ServiceDetailLvl2Nav.svelte'
     import Icon from '../../components/Icon.svelte'
 
-    let activeTab = 'services-lvl2--bespoke-website'
+    let activeTab = 'services-lvl2--bespoke-websites'
 
     function setActiveTab(tabId) {
         activeTab = tabId
@@ -45,41 +45,32 @@
 
     let serviceDetails = [
         {
-            title: 'Bespoke Website',
-            altTitle: 'Unique & Boutique',
+            title: 'Bespoke websites',
+            altTitle: 'Designed to stand out',
             linkDemo: 'https://lighthouseco.in',
             linkLabel: 'lighthouseco.in',
             description:
-                "A bespoke custom boutique website is a meticulously crafted digital experience tailored to your brand's distinct needs, blending function and aesthetics seamlessly. I create these unique experiences to make a bold, meaningful impact, setting your brand apart and driving a significant leap forward for your business.",
+                "A bespoke website is a meticulously crafted digital experience, built around your brand and your goals. We blend fluid UX with sharp, clean UI and obsess over the details — performance, accessibility, and security included. The result is a site that makes a bold, meaningful impact and moves your business forward.",
             imageSrc: '/services--bespoke.png',
             type: 'mockup',
         },
         {
-            title: 'Wordpress',
-            altTitle: 'In control; within budget',
-            // linkDemo: '',
-            // linkLabel: '',
+            title: 'Web platforms',
+            altTitle: 'Apps that do real work',
             description:
-                "A WordPress website offers unmatched flexibility and customization options, allowing me to craft a solution that perfectly aligns with your brand. I design for scalability and SEO optimization, making it ideal for businesses looking for a robust, easy-to-manage online presence that can grow with them.",
-            // imageSrc: '/path/to/seo-service-image.png',
+                "When a website isn't enough, we build platforms — web apps, dashboards, portals, and tools your business actually runs on. Designed for scale and built to work properly, with the same care for speed and usability as everything else we ship.",
         },
         {
-            title: 'WooCommerce',
-            altTitle: 'Good, great and affordable',
-            // linkDemo: '',
-            // linkLabel: '',
+            title: 'E-commerce',
+            altTitle: 'Built to sell',
             description:
-                "I implement WooCommerce to bring powerful e-commerce capabilities to your website, tailored to your store's specific needs. Built within WordPress, I provide endless customization options and seamless integration. It's the perfect platform for businesses that need to manage products, sales, and customers while maintaining a visually stunning and user-friendly site. With my WooCommerce implementation, you get the flexibility and performance of WordPress combined with top-tier e-commerce functionality.",
-            // imageSrc: '/path/to/seo-service-image.png',
+                "From custom storefronts to Shopify and WooCommerce, we build e-commerce that balances beautiful design with serious performance. Easy to manage, fast to load, and engineered to turn visitors into customers.",
         },
         {
-            title: 'Shopify',
-            altTitle: 'Bespoke, on the most commonly used platform',
-            // linkDemo: '',
-            // linkLabel: '',
+            title: 'AI built in',
+            altTitle: 'Intelligence on every page',
             description:
-                'Shopify offers a streamlined, user-friendly platform that allows your business to get up and running quickly while maintaining a professional look. I create custom Shopify stores that blend beautiful design with powerful functionality, providing the perfect balance between aesthetics and performance to drive online sales and customer engagement.',
-            // imageSrc: '/path/to/seo-service-image.png',
+                "Every site we build can come with AI woven through it — a chatbot like Gary, smart search, personalization, and automation behind the scenes. A site without a chatbot today is already falling behind; we make sure yours isn't.",
         },
     ]
     let formMessage = ''
@@ -145,17 +136,17 @@
                 <span class="visuallyhidden">Go back</span>
             </a>
             <div class="spacer-1"></div>
-            <h1 class="text--section">Website Development</h1>
+            <h1 class="text--section">Website Products &amp; Platforms</h1>
         </div>
         <div class="col-r">
             <ServiceDetailLvl2Nav
                 {activeTab}
                 {setActiveTab}
                 lvl2pages={[
-                    { title: 'Bespoke website' },
-                    { title: 'Wordpress' },
-                    { title: 'WooCommerce' },
-                    { title: 'Shopify' },
+                    { title: 'Bespoke websites' },
+                    { title: 'Web platforms' },
+                    { title: 'E-commerce' },
+                    { title: 'AI built in' },
                 ]} />
 
             <ServiceDetail {serviceDetails} {activeTab} {setActiveTab} />
@@ -216,8 +207,8 @@
                         <br />
                         <div class="spacer-1"></div>
                         <div class="text--small">
-                            Until then, feel free to visit our
-                            <a class="link" href="https://linktr.ee/weareanother.studio" target="_blank">linktr.ee</a>
+                            In the meantime, you can also
+                            <a class="link" href="/contact">book a free call</a>
                             .
                         </div>
                     {/if}

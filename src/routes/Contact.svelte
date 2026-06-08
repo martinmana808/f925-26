@@ -100,12 +100,12 @@
             {:else}{/if}
             {#if formMessage.includes('Error') || formMessage.length === 0}
                 <h1 class="text--section">Book a free call</h1>
-                <h2 class="text--subheadingSm">Take the first step — I'll take it from there.</h2>
+                <h2 class="text--subheadingSm">Take the first step — we'll take it from there.</h2>
                 <div>
-                    <p>Tell me about your project, your business, or how you currently do things. There's always room to optimize, automate, and grow. Even if you're not sure what you need yet, that's okay — we'll talk it through, find the right direction, and map out the next steps. Whether we end up working together or not, you'll walk away with clarity.</p>
+                    <p>Tell us about your project, your business, or how you currently do things. There's always room to optimize, automate, and grow. Even if you're not sure what you need yet, that's okay — we'll talk it through, find the right direction, and map out the next steps. Whether we end up working together or not, you'll walk away with clarity.</p>
                     <br>
                     <p class="text--small">
-                    Prefer the old-school way? <a class="link" href="contact2">Send me a message</a> and I'll get back to you.
+                    Prefer the old-school way? <a class="link" href="contact2">Send us a message</a> and we'll get back to you.
                     </p>
                 </div>
             {/if}

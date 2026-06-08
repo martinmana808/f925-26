@@ -4,11 +4,11 @@
     export let description = '';
     export let url = '';
     export let image = '';
-    export let author = 'Martin Mana';
+    export let author = 'F925';
     export let organization = {
-        name: 'Martin Mana',
-        url: 'https://martinmana.com',
-        logo: 'https://martinmana.com/logo.svg'
+        name: 'F925',
+        url: 'https://f925.ai',
+        logo: 'https://f925.ai/logo.svg'
     };
 
     // Generate structured data based on type
@@ -48,9 +48,9 @@
                 '@type': 'Person',
                 name: author,
                 url: organization.url,
-                jobTitle: 'AI-driven digital developer',
+                jobTitle: 'AI-native digital studio',
                 description: description,
-                knowsAbout: ['AI Automation', 'UX Design', 'UI Design', 'Web Development', 'App Development', 'Graphic Design'],
+                knowsAbout: ['AI Automation', 'AI Agents', 'Chatbots', 'Web Development', 'Web Platforms', 'Product Design'],
                 worksFor: {
                     '@type': 'Organization',
                     name: organization.name,

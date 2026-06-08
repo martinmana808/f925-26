@@ -5,7 +5,7 @@
     import ServiceDetailLvl2Nav from '../../components/ServiceDetailLvl2Nav.svelte'
     import Icon from '../../components/Icon.svelte'
 
-    let activeTab = 'services-lvl2--ios'
+    let activeTab = 'services-lvl2--process-automation'
 
     function setActiveTab(tabId) {
         activeTab = tabId
@@ -45,21 +45,24 @@
 
     let serviceDetails = [
         {
-            title: 'iOS',
+            title: 'Process automation',
             description:
-                "iOS development brings your app to the millions of users on Apple devices. I specialize in creating intuitive, high-performance applications that not only meet Apple's stringent guidelines but also deliver exceptional user experiences. With a focus on sleek design and seamless functionality, I help you stand out in the App Store and connect with your audience effectively.",
-            imageSrc: '/services--ios.webp',
+                "Processes without automation are just work. We map the repetitive tasks your team does by hand — data entry, scheduling, reporting — and hand them to a computer that does them faster, cheaper, and without mistakes.",
         },
         {
-            title: 'Android',
+            title: 'Integrations',
             description:
-                'Android development opens the door to a vast and diverse user base. I craft custom applications tailored to the unique needs of your brand while optimizing for performance across a wide range of devices. My expertise in the latest Android technologies ensures that your app is not only visually appealing but also functional and user-friendly, ready to make an impact in the Google Play Store.',
-            imageSrc: '/services--android.jpg',
+                "We connect the tools you already use — CRM, ERP, POS, Google Workspace — so data flows between them automatically instead of being copied by hand. One connected system, not ten disconnected ones.",
         },
         {
-            title: 'Web progressive app (WPA)',
+            title: 'Data pipelines',
             description:
-                'Web Progressive Apps combine the best of web and mobile applications, offering a seamless experience across devices. My WPA solutions are designed to be fast, reliable, and engaging, ensuring that users can access your content effortlessly. With features like offline capabilities and push notifications, I help you create a dynamic presence that enhances user interaction and drives engagement.',
+                "We build pipelines that ingest, clean, and move your data where it needs to be, on schedule. Reliable, observable, and ready to feed dashboards, AI agents, or whatever comes next.",
+        },
+        {
+            title: 'Dashboards',
+            description:
+                "Custom dashboards and internal tools that turn raw data into decisions — real-time, tailored to how your business actually works, and accessible to the people who need them.",
         },
     ]
     function goBack() {
@@ -128,13 +131,18 @@
                 <span class="visuallyhidden">Go back</span>
             </a>
             <div class="spacer-1"></div>
-            <h1 class="text--section">App development</h1>
+            <h1 class="text--section">Automation &amp; Systems</h1>
         </div>
         <div class="col-r">
             <ServiceDetailLvl2Nav
                 {activeTab}
                 {setActiveTab}
-                lvl2pages={[{ title: 'iOS' }, { title: 'Android' }, { title: 'Web progressive app (WPA)' }]} />
+                lvl2pages={[
+                    { title: 'Process automation' },
+                    { title: 'Integrations' },
+                    { title: 'Data pipelines' },
+                    { title: 'Dashboards' },
+                ]} />
 
             <ServiceDetail {serviceDetails} {activeTab} {setActiveTab} type="app" />
 
@@ -194,8 +202,8 @@
                         <br />
                         <div class="spacer-1"></div>
                         <div class="text--small">
-                            Until then, feel free to visit our
-                            <a class="link" href="https://linktr.ee/weareanother.studio" target="_blank">linktr.ee</a>
+                            In the meantime, you can also
+                            <a class="link" href="/contact">book a free call</a>
                             .
                         </div>
                     {/if}

@@ -22,37 +22,25 @@ const routes = [
         priority: '0.9'
     },
     {
-        url: '/services/ai-solutions',
+        url: '/services/website-products',
         lastmod: new Date().toISOString(),
         changefreq: 'monthly',
         priority: '0.8'
     },
     {
-        url: '/services/website-development',
+        url: '/services/ai-agents',
         lastmod: new Date().toISOString(),
         changefreq: 'monthly',
         priority: '0.8'
     },
     {
-        url: '/services/app-development',
+        url: '/services/automation',
         lastmod: new Date().toISOString(),
         changefreq: 'monthly',
         priority: '0.8'
     },
     {
-        url: '/services/ux-ui-design',
-        lastmod: new Date().toISOString(),
-        changefreq: 'monthly',
-        priority: '0.8'
-    },
-    {
-        url: '/services/graphic-design',
-        lastmod: new Date().toISOString(),
-        changefreq: 'monthly',
-        priority: '0.8'
-    },
-    {
-        url: '/work',
+        url: '/portfolio',
         lastmod: new Date().toISOString(),
         changefreq: 'weekly',
         priority: '0.9'
@@ -68,23 +56,11 @@ const routes = [
         lastmod: new Date().toISOString(),
         changefreq: 'monthly',
         priority: '0.7'
-    },
-    {
-        url: '/stuff',
-        lastmod: new Date().toISOString(),
-        changefreq: 'monthly',
-        priority: '0.6'
-    },
-    {
-        url: '/stuff/llms',
-        lastmod: new Date().toISOString(),
-        changefreq: 'monthly',
-        priority: '0.6'
     }
 ];
 
 // Base URL - replace with your actual domain
-const baseUrl = 'https://martinmana.com';
+const baseUrl = 'https://f925.ai';
 
 // Generate sitemap XML
 function generateSitemap() {

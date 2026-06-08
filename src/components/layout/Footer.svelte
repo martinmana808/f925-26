@@ -54,7 +54,7 @@ onMount(() => {
                             <a class="link--on-hover" href="/services">Services</a>
                         </li>
                         <li class="">
-                            <a class="link--on-hover" href="/work">Work</a>
+                            <a class="link--on-hover" href="/portfolio">Portfolio</a>
                         </li>
                         <li class="">
                             <a class="link--on-hover" href="/about">About</a>
@@ -79,7 +79,7 @@ onMount(() => {
                                 class="flex items-center gutter"
                                 target="_blank"
                                 rel="noopener"
-                                href="https://wa.me/640272182988?text=Hello%Martin!%20:)%0AI%20would%20like%20to%20chat%20with%20you.">
+                                href="https://wa.me/640272182988?text=Hello%20F925!%20:)%0AI%20would%20like%20to%20chat%20about%20a%20project.">
                                 <Icon name="social-whatsapp" />
                                 <span class="visuallyhidden">Chat on WhatsApp</span>
                             </a>
@@ -87,13 +87,13 @@ onMount(() => {
                             <li>
                                 <a href="https://www.linkedin.com/in/martinmana808/" target="_blank">
                                     <Icon name="social-li" />
-                                    <span class="visuallyhidden">Visit Another LinkedIn</span>
+                                    <span class="visuallyhidden">Visit F925 on LinkedIn</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="https://www.instagram.com/martinmana/" target="_blank">
                                     <Icon name="social-ig" />
-                                    <span class="visuallyhidden">Visit Another Instagram</span>
+                                    <span class="visuallyhidden">Visit F925 on Instagram</span>
                                 </a>
                             </li>
                         </ul>
@@ -101,8 +101,8 @@ onMount(() => {
                 </div>
                 <div class="text--small l-flex mt-1">
                     <div>
-                        <a class="link--on-hover" href="mailto:martinmana808@gmail.com">
-                            martinmana808@gmail.com
+                        <a class="link--on-hover" href="mailto:f925.limited@gmail.com">
+                            f925.limited@gmail.com
                         </a>
                     </div>
                     <div>
@@ -111,9 +111,9 @@ onMount(() => {
                         </a>
                     </div>
                 </div>
-                <div class="footer__copyright text--small l-visible">© {currentYear} martinmana.com</div>
+                <div class="footer__copyright text--small l-visible">© {currentYear} F925</div>
             </div>
         </div>
-        <div class="footer__copyright text--small hidden mt-1">© {currentYear} martinmana.com. All rights reserved.</div>
+        <div class="footer__copyright text--small hidden mt-1">© {currentYear} F925. All rights reserved.</div>
     </div>
 </footer>

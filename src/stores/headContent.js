@@ -2,8 +2,8 @@
 import { writable } from 'svelte/store';
 
 export const headContent = writable({
-    title: 'Martin Mana • AI-driven digital developer',
-    description: 'I integrate cutting-edge AI automation with UX, UI, and performance-focused design. I create beautiful and intelligent products that people love and praise.',
+    title: 'F925 • AI-native website products & platforms',
+    description: 'F925 designs and builds website products, platforms, and AI systems that actually work — chatbots, automation, and intelligent products woven through with AI.',
     canonical: '',
     ogImage: '/og-1200x630.png',
     ogType: 'website',
@@ -14,73 +14,53 @@ export const headContent = writable({
 // SEO configuration for each route
 export const seoConfig = {
     '/': {
-        title: 'Martin Mana • AI-driven digital developer',
-        description: 'I integrate cutting-edge AI automation with UX, UI, and performance-focused design. I create beautiful and intelligent products that people love and praise.',
-        canonical: 'https://martinmana.com/'
+        title: 'F925 • AI-native website products & platforms',
+        description: 'F925 designs and builds website products, platforms, and AI systems that actually work — chatbots, automation, and intelligent products woven through with AI.',
+        canonical: 'https://f925.ai/'
     },
     '/about': {
-        title: 'About • Martin Mana',
-        description: 'Learn about Martin Mana, an AI-driven digital developer specializing in UX, UI, and performance-focused design.',
-        canonical: 'https://martinmana.com/about'
+        title: 'About • F925',
+        description: 'F925 is an AI-native studio. We build website products, platforms, and AI systems — chatbots, agents, and automation — for businesses that need things to work properly.',
+        canonical: 'https://f925.ai/about'
     },
     '/services': {
-        title: 'Services • Martin Mana',
-        description: 'Explore our comprehensive digital services including AI solutions, web development, app development, UX/UI design, and graphic design.',
-        canonical: 'https://martinmana.com/services'
+        title: 'Services • F925',
+        description: 'Website products & platforms, AI agents & chatbots, and automation & systems — outcome-led, AI-native builds from F925.',
+        canonical: 'https://f925.ai/services'
     },
-    '/services/ai-solutions': {
-        title: 'AI Solutions • Martin Mana',
-        description: 'Cutting-edge AI automation solutions that enhance user experience and streamline business processes.',
-        canonical: 'https://martinmana.com/services/ai-solutions'
+    '/services/website-products': {
+        title: 'Website Products & Platforms • F925',
+        description: 'We design and build websites, web apps, and platforms that actually work — fast, intelligent, and woven through with AI. Not brochures.',
+        canonical: 'https://f925.ai/services/website-products'
     },
-    '/services/website-development': {
-        title: 'Website Development • Martin Mana',
-        description: 'Performance-focused website development with modern technologies and best practices.',
-        canonical: 'https://martinmana.com/services/website-development'
+    '/services/ai-agents': {
+        title: 'AI Agents & Chatbots • F925',
+        description: 'Custom AI assistants like Gary: RAG + actions, lead-generation chat, and support agents trained on your business.',
+        canonical: 'https://f925.ai/services/ai-agents'
     },
-    '/services/app-development': {
-        title: 'App Development • Martin Mana',
-        description: 'Native and cross-platform mobile app development with intuitive user interfaces.',
-        canonical: 'https://martinmana.com/services/app-development'
+    '/services/automation': {
+        title: 'Automation & Systems • F925',
+        description: 'Process automation and deep integrations — CRM, ERP, POS, pipelines. Processes without automation are just work.',
+        canonical: 'https://f925.ai/services/automation'
     },
-    '/services/ux-ui-design': {
-        title: 'UX/UI Design • Martin Mana',
-        description: 'User-centered design solutions that create engaging and intuitive digital experiences.',
-        canonical: 'https://martinmana.com/services/ux-ui-design'
-    },
-    '/services/graphic-design': {
-        title: 'Graphic Design • Martin Mana',
-        description: 'Creative graphic design solutions for branding, marketing, and visual communication.',
-        canonical: 'https://martinmana.com/services/graphic-design'
-    },
-    '/work': {
-        title: 'Work • Martin Mana',
-        description: 'Portfolio showcasing innovative digital projects and creative solutions.',
-        canonical: 'https://martinmana.com/work'
+    '/portfolio': {
+        title: 'Portfolio • F925',
+        description: 'A look at the work — websites, products, branding, and design built by F925.',
+        canonical: 'https://f925.ai/portfolio'
     },
     '/contact': {
-        title: 'Book a Free Call • Martin Mana',
-        description: 'Schedule a free consultation call to discuss your next digital project or collaboration opportunity.',
-        canonical: 'https://martinmana.com/contact'
+        title: 'Book a Free Call • F925',
+        description: 'Schedule a free consultation to discuss your website product, platform, or AI build with F925.',
+        canonical: 'https://f925.ai/contact'
     },
     '/contact2': {
-        title: 'Drop Me a Line • Martin Mana',
-        description: 'Send me a message directly. I\'ll get back to you as soon as possible to discuss your project.',
-        canonical: 'https://martinmana.com/contact2'
-    },
-    '/stuff': {
-        title: 'Stuff • Martin Mana',
-        description: 'Thoughts, experiments, and insights on technology and design.',
-        canonical: 'https://martinmana.com/stuff'
-    },
-    '/stuff/llms': {
-        title: 'LLMs • Martin Mana',
-        description: 'Exploring large language models and their applications in modern development.',
-        canonical: 'https://martinmana.com/stuff/llms'
+        title: 'Drop Us a Line • F925',
+        description: 'Send F925 a message. We\'ll get back to you as soon as possible to discuss your project.',
+        canonical: 'https://f925.ai/contact2'
     },
     '/404': {
-        title: 'Page Not Found • Martin Mana',
+        title: 'Page Not Found • F925',
         description: 'The page you are looking for could not be found. Please check the URL or return to the home page.',
-        canonical: 'https://martinmana.com/404'
+        canonical: 'https://f925.ai/404'
     }
 };
