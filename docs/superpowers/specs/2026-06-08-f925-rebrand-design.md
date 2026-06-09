@@ -14,7 +14,7 @@ Stack stays: **Svelte 4 + Vite + Less**, deployed on Netlify.
 - **Scope:** Full rebrand of every page now, plus the chatbot.
 - **Offering:** Outcome-led, few AI-first categories (collapse the 5 personal service pages into 3).
 - **Portfolio:** Rename Work → Portfolio. Keep the CSV-driven masonry gallery + zoom modal and all of Martin's work AS-IS. Only rewrite intro copy. (Martin builds everything in F925; his work is F925's body of work until real case studies exist.)
-- **Identity:** Fresh F925 brand. Dark base (`#191c1f`) + **electric blue** accent (`#2D6BFF`, replacing current mint `#89ffc0`). Keep Inter. New clean **F925 wordmark** (SVG).
+- **Identity:** Fresh F925 brand. Dark base (`#191c1f`) + **electric blue** accent (`#2dffb3`, replacing current mint `#89ffc0`). Keep Inter. New clean **F925 wordmark** (SVG).
 - **About/Team:** F925 as a studio with a small core team (Martin, Leo, Mike). Drop the large personal team grid.
 - **Gary chatbot:** Port to native Svelte; floating widget site-wide + homepage hero "Talk to Gary" CTA.
 

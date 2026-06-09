@@ -1,6 +1,6 @@
 <script>
     import { tick, onMount } from 'svelte';
-    import { fly, fade } from 'svelte/transition';
+    import { scale, fade } from 'svelte/transition';
     import { garyOpen, garyPrime } from '../stores/gary.js';
 
     // Platform-neutral endpoint. On Vercel this hits /api/chat directly;
@@ -24,7 +24,6 @@
     let isTyping = false;
     let scrollEl;
     let inputEl;
-    let unread = false;
 
     let nextId = 1;
     function makeId() {
@@ -60,7 +59,6 @@
 
             messages = [...messages, { id: makeId(), role: 'assistant', content: parsed.reply }];
             suggestions = Array.isArray(parsed.suggestions) ? parsed.suggestions : [];
-            if (!$garyOpen) unread = true;
         } catch (error) {
             messages = [
                 ...messages,
@@ -91,17 +89,12 @@
         send(value);
     }
 
-    function toggle() {
-        garyOpen.update((v) => !v);
-    }
-
     function close() {
         garyOpen.set(false);
     }
 
-    // React to open state: clear unread, focus input, and send any primed message
+    // React to open state: focus input, and send any primed message
     $: if ($garyOpen) {
-        unread = false;
         focusInput();
     }
 
@@ -128,32 +121,12 @@
     });
 </script>
 
-<!-- Launcher -->
-{#if !$garyOpen}
-    <button
-        class="gary-launcher"
-        on:click={toggle}
-        in:fade={{ duration: 150 }}
-        aria-label="Chat with Gary, F925's AI assistant">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path
-                d="M12 3C7.03 3 3 6.58 3 11c0 2.38 1.19 4.51 3.06 5.96L5.5 21l4.2-2.1c.73.13 1.5.2 2.3.2 4.97 0 9-3.58 9-8s-4.03-8-9-8Z"
-                fill="currentColor" />
-            <circle cx="8.5" cy="11" r="1.2" fill="#191c1f" />
-            <circle cx="12" cy="11" r="1.2" fill="#191c1f" />
-            <circle cx="15.5" cy="11" r="1.2" fill="#191c1f" />
-        </svg>
-        <span>Ask Gary</span>
-        {#if unread}<span class="gary-launcher__dot" aria-hidden="true"></span>{/if}
-    </button>
-{/if}
-
-<!-- Panel -->
+<!-- Panel (grows from the top-right, anchored under the nav trigger) -->
 {#if $garyOpen}
     <div class="gary-overlay" on:click={close} transition:fade={{ duration: 150 }} aria-hidden="true"></div>
     <section
         class="gary-panel"
-        transition:fly={{ y: 24, duration: 220 }}
+        transition:scale={{ duration: 220, start: 0.85, opacity: 0 }}
         role="dialog"
         aria-label="Chat with Gary">
         <header class="gary-panel__header">
@@ -213,45 +186,6 @@
 {/if}
 
 <style>
-    /* ---- Launcher ---- */
-    .gary-launcher {
-        position: fixed;
-        right: 24px;
-        bottom: 24px;
-        z-index: 9000;
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 12px 18px 12px 14px;
-        border: none;
-        border-radius: 999px;
-        background: #2dffb3;
-        color: #1f2327;
-        font-family: inherit;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        box-shadow: 0 8px 30px rgba(45, 255, 179, 0.4);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .gary-launcher:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 36px rgba(45, 255, 179, 0.5);
-    }
-    .gary-launcher svg {
-        color: #fff;
-    }
-    .gary-launcher__dot {
-        position: absolute;
-        top: 8px;
-        right: 10px;
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: #89ffc0;
-        box-shadow: 0 0 0 2px #2dffb3;
-    }
-
     /* ---- Overlay ---- */
     .gary-overlay {
         position: fixed;
@@ -261,16 +195,17 @@
         backdrop-filter: blur(2px);
     }
 
-    /* ---- Panel ---- */
+    /* ---- Panel (anchored top-right, grows from the nav trigger) ---- */
     .gary-panel {
         position: fixed;
-        right: 24px;
-        bottom: 24px;
+        right: 20px;
+        top: 76px;
+        transform-origin: top right;
         z-index: 9001;
         width: 390px;
         max-width: calc(100vw - 32px);
         height: 600px;
-        max-height: calc(100vh - 48px);
+        max-height: calc(100vh - 96px);
         display: flex;
         flex-direction: column;
         background: #1f2327;
@@ -286,7 +221,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 16px 18px;
+        padding: 8px 18px;
         background: #191c1f;
         border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
@@ -418,7 +353,7 @@
         justify-content: flex-end;
     }
     .gary-suggestion {
-        padding: 8px 13px;
+        padding: 2px 12px;
         border-radius: 999px;
         border: 1px solid rgba(255, 255, 255, 0.16);
         background: transparent;
@@ -482,14 +417,10 @@
         .gary-panel {
             right: 8px;
             left: 8px;
-            bottom: 8px;
+            top: 64px;
             width: auto;
-            height: calc(100vh - 16px);
+            height: calc(100vh - 80px);
             max-height: none;
-        }
-        .gary-launcher {
-            right: 16px;
-            bottom: 16px;
         }
     }
 </style>

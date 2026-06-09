@@ -1315,7 +1315,7 @@ input:-webkit-autofill:focus {
 }
 @media (min-width: 62.5em) {
   .site-footer__inner:before {
-    content: '';
+    /* content: ''; */
     position: absolute;
     top: 24px;
     bottom: 24px;

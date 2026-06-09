@@ -1,7 +1,16 @@
 <script>
     import Layout from '../components/layout/Layout.svelte'
-    import Avatar from '../components/Avatar.svelte'
     import Icon from '../components/Icon.svelte'
+
+    import martinImg from '../assets/images/team--Martin.png'
+    import leoImg from '../assets/images/team--Leonel.png'
+    import mikeImg from '../assets/images/team--Mike.png'
+
+    const core = [
+        { img: martinImg, first: 'Martin', last: 'Mana', flag: '🇳🇿' },
+        { img: leoImg, first: 'Leonel', last: 'Orsi', flag: '🇦🇷' },
+        { img: mikeImg, first: 'Michael', last: 'McLarnon', flag: '🇳🇿' },
+    ]
 
     import { onMount, onDestroy } from 'svelte'
     onMount(() => {
@@ -15,11 +24,13 @@
 <Layout>
     <div class="grid gutter-x h-100 relative">
         <div class="col-l l-visible">
-            <div class="team">
-                <div class="team__col">
-                    <Avatar name="Martin" surname="Mana" big location="🇳🇿" />
-                    <Avatar name="Leonel" surname="Orsi" location="🇦🇷" />
-                </div>
+            <div class="core-team">
+                {#each core as m}
+                    <figure class="core-member">
+                        <img src={m.img} alt={`${m.first} ${m.last}`.trim() + ', F925'} />
+                        <figcaption class="core-name">{`${m.first} ${m.last}`.trim()} {m.flag}</figcaption>
+                    </figure>
+                {/each}
             </div>
         </div>
         <div class="col-r">
@@ -36,11 +47,13 @@
                     We design and build website products, platforms, and AI systems. Not throwaway brochure sites — complex solutions that have to work properly, for businesses that care about the difference. A website without a chatbot is already falling behind. A process without automation is just work waiting to be removed.
                 </p>
                 <div class="l-hidden">
-                    <div class="team">
-                        <div class="team__col">
-                            <Avatar name="Martin" surname="Mana" big location="🇳🇿" />
-                            <Avatar name="Leonel" surname="Orsi" location="🇦🇷" />
-                        </div>
+                    <div class="core-team">
+                        {#each core as m}
+                            <figure class="core-member">
+                                <img src={m.img} alt={`${m.name}, F925`} />
+                                <span class="core-flag" aria-hidden="true">{m.flag}</span>
+                            </figure>
+                        {/each}
                     </div>
                 </div>
                 <p>
@@ -51,7 +64,7 @@
                 </p>
             </div>
 
-            <div class="l-visible">
+            <!-- <div class="l-visible">
                 <div class="footer__social-nav flex gutter-x mt-4">
                     <a
                         class=""
@@ -61,17 +74,73 @@
                         <Icon name="social-whatsapp" />
                         <span class="visuallyhidden">Chat on WhatsApp</span>
                     </a>
-                    <a href="https://www.linkedin.com/in/martinmana808/" target="_blank">
-                        <Icon name="social-li" />
-                        <span class="visuallyhidden">Visit F925 on LinkedIn</span>
-                    </a>
-                    <a href="https://www.instagram.com/martinmana/" target="_blank">
-                        <Icon name="social-ig" />
-                        <span class="visuallyhidden">Visit F925 on Instagram</span>
-                    </a>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>
 </Layout>
+
+<style>
+    .core-team {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 16px;
+        margin: 1rem 0 2rem;
+    }
+    
+    @media(min-width: 64em){
+        .core-team {
+            flex-direction: column;
+        }
+    }
+
+    /* Mobile duplicate sits inside the text column */
+    :global(.template--about) .l-hidden .core-team {
+        justify-content: center;
+        margin: 2rem 0;
+    }
+
+    .core-member {
+        position: relative;
+        flex: 1 1 0;
+        max-width: 180px;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .core-member img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        border: 4px solid #191c1f;
+        background: #191c1f;
+    }
+
+    .core-name {
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 1.25;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    @media (max-width: 600px) {
+        .core-team {
+            gap: 12px;
+        }
+        .core-member {
+            max-width: 104px;
+        }
+        .core-name {
+            font-size: 11px;
+            margin-top: 6px;
+        }
+    }
+</style>

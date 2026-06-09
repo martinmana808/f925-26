@@ -61,7 +61,7 @@
     // Helper to load and parse categories.csv
     async function loadEnabledCategories() {
         try {
-            const response = await fetch('/assets/data/categories.csv');
+            const response = await fetch('/assets/data/categories.csv', { cache: 'no-store' });
             if (!response.ok) throw new Error(`Failed to load categories.csv: ${response.statusText}`);
             const csvText = await response.text();
             return new Promise((resolve) => {
@@ -93,7 +93,7 @@
         try {
             // Load enabled categories first
             enabledCategoriesSet = await loadEnabledCategories();
-            const response = await fetch('/assets/data/works.csv');
+            const response = await fetch('/assets/data/works.csv', { cache: 'no-store' });
             if (!response.ok) throw new Error(`Failed to load CSV: ${response.statusText}`);
             const csvText = await response.text();
             return new Promise((resolve) => {

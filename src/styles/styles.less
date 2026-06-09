@@ -1503,6 +1503,15 @@ input:-webkit-autofill:focus {
         @media (min-width: @mq-nav) {
             color: @color-1;
             text-decoration-color: @color-1;
+            text-decoration-line: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.35em;
+            text-decoration-color: inherit !important;
+        }
+        &.link--chat:hover, &.link--chat:focus  {
+            @media (min-width: @mq-nav) {
+                color: @color-2;
+            }
         }
     }
 }

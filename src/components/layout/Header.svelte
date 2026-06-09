@@ -1,6 +1,7 @@
 <script>
     import Logo from '../../components/Logo.svelte'
     import Icon from '../../components/Icon.svelte'
+    import { openGary } from '../../stores/gary.js'
     // Get the current pathname
     let currentPath = window.location.pathname
     let isWorkPage = false
@@ -34,6 +35,11 @@
         document.body.classList.remove('nav-open')
     }
 
+    function chatWithGary() {
+        closeNav()
+        openGary()
+    }
+
     onMount(async () => {
         const path = window.location.pathname
         isWorkPage = path.endsWith('/work')
@@ -65,35 +71,27 @@
                     </button>
                     <ul>
                         <li class={currentPath.includes('/services') ? 'active' : ''}>
-                            <a href="/services">Services</a>
+                            <a class="link--chat" href="/services">Services</a>
                         </li>
                         <li class={currentPath.includes('/portfolio') ? 'active' : ''}>
-                            <a href="/portfolio">Portfolio</a>
+                            <a class="link--chat" href="/portfolio">Portfolio</a>
                         </li>
                         <li class={currentPath.includes('/about') ? 'active' : ''}>
-                            <a href="/about">About</a>
+                            <a class="link--chat" href="/about">About</a>
                         </li>
                         <li class={currentPath.includes('/contact') ? 'active' : ''}>
-                            <a href="/contact">Contact</a>
+                            <a class="link--chat" href="/contact">Contact</a>
                         </li>
                         <li class="l-hidden mt-lg ">
-                            <a
-                                class="link--chat"
-                                target="_blank"
-                                rel="noopener"
-                                href="https://wa.me/640272182988?text=Hello%20F925!%20:)%0AI%20would%20like%20to%20chat%20about%20a%20project.">
-                                Let's chat <Icon name="social-whatsapp" />
-                            </a>
+                            <button type="button" class=" gary-nav-trigger" on:click={chatWithGary}>
+                                Chat with Gary
+                            </button>
                         </li>
-                    
+
                         <li class="l-visible">
-                            <a
-                                class="link--on-hover"
-                                target="_blank"
-                                rel="noopener"
-                                href="https://wa.me/640272182988?text=Hello%20F925!%20:)%0AI%20would%20like%20to%20chat%20about%20a%20project.">
-                                Let's chat <Icon name="social-whatsapp" />
-                            </a>
+                            <button type="button" class=" gary-nav-trigger" on:click={chatWithGary}>
+                                <span class="gary-nav-dot" aria-hidden="true"></span>Chat with Gary
+                            </button>
                         </li>
 
                     </ul>
@@ -107,3 +105,37 @@
         </div>
     </div>
 </header>
+
+<style>
+    .gary-nav-trigger:hover, .gary-nav-trigger:focus {
+            border-color: #2dffb3;
+    background: #2dffb324;
+    color: #fff;
+    }
+    .gary-nav-trigger {
+        background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    line-height: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    border: 1px solid white;
+    border-radius: 100rem;
+    padding-inline: 1rem;
+        transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .gary-nav-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #2dffb3;
+        box-shadow: 0 0 8px rgba(45, 255, 179, 0.85);
+        flex: 0 0 auto;
+    }
+</style>

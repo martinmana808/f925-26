@@ -84,14 +84,14 @@ onMount(() => {
                                 <span class="visuallyhidden">Chat on WhatsApp</span>
                             </a>
                         </li>
-                            <li>
+                            <!-- <li>
                                 <a href="https://www.linkedin.com/in/martinmana808/" target="_blank">
                                     <Icon name="social-li" />
                                     <span class="visuallyhidden">Visit F925 on LinkedIn</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
-                                <a href="https://www.instagram.com/martinmana/" target="_blank">
+                                <a href="https://www.instagram.com/f925studio/" target="_blank">
                                     <Icon name="social-ig" />
                                     <span class="visuallyhidden">Visit F925 on Instagram</span>
                                 </a>
@@ -108,6 +108,11 @@ onMount(() => {
                     <div>
                         <a href="tel:+640272182988" class="link--on-hover l-ml-2">
                             +640272182988
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://www.instagram.com/f925studio/" target="_blank" rel="noopener" class="link--on-hover l-ml-2">
+                            @f925studio
                         </a>
                     </div>
                 </div>
