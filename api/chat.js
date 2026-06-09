@@ -1,21 +1,21 @@
-import { SYSTEM_PROMPT } from '../../lib/gary-system-prompt.js';
+import { SYSTEM_PROMPT } from '../lib/gary-system-prompt.js';
 
-const GROQ_API_KEY = process.env.GROQ_API_KEY;
-
-export const handler = async (event) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
+// Vercel serverless function — mirrors netlify/functions/chat.js
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    res.status(405).send('Method Not Allowed');
+    return;
   }
 
+  const GROQ_API_KEY = process.env.GROQ_API_KEY;
   if (!GROQ_API_KEY) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Missing GROQ_API_KEY environment variable' }),
-    };
+    res.status(500).json({ error: 'Missing GROQ_API_KEY environment variable' });
+    return;
   }
 
   try {
-    const { messages } = JSON.parse(event.body || '{}');
+    const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
+    const { messages } = body;
 
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
@@ -27,7 +27,7 @@ export const handler = async (event) => {
         model: 'llama-3.3-70b-versatile',
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
-          ...messages,
+          ...(messages || []),
         ],
         temperature: 0.7,
         max_tokens: 1024,
@@ -38,19 +38,14 @@ export const handler = async (event) => {
     if (!response.ok) {
       const errorText = await response.text();
       console.error('Groq API Error:', errorText);
-      return { statusCode: response.status, body: `Groq API Error: ${errorText}` };
+      res.status(response.status).send(`Groq API Error: ${errorText}`);
+      return;
     }
 
     const data = await response.json();
-    return {
-      statusCode: 200,
-      body: JSON.stringify(data),
-    };
+    res.status(200).json(data);
   } catch (error) {
     console.error('Error:', error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Internal Server Error' }),
-    };
+    res.status(500).json({ error: 'Internal Server Error' });
   }
-};
+}

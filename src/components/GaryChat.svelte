@@ -3,7 +3,9 @@
     import { fly, fade } from 'svelte/transition';
     import { garyOpen, garyPrime } from '../stores/gary.js';
 
-    const ENDPOINT = '/.netlify/functions/chat';
+    // Platform-neutral endpoint. On Vercel this hits /api/chat directly;
+    // on Netlify a redirect maps /api/* to /.netlify/functions/*.
+    const ENDPOINT = '/api/chat';
 
     const INITIAL_MESSAGE = {
         id: 'init-1',
@@ -223,18 +225,18 @@
         padding: 12px 18px 12px 14px;
         border: none;
         border-radius: 999px;
-        background: #2d6bff;
-        color: #fff;
+        background: #2dffb3;
+        color: #1f2327;
         font-family: inherit;
         font-size: 15px;
         font-weight: 600;
         cursor: pointer;
-        box-shadow: 0 8px 30px rgba(45, 107, 255, 0.4);
+        box-shadow: 0 8px 30px rgba(45, 255, 179, 0.4);
         transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .gary-launcher:hover {
         transform: translateY(-2px);
-        box-shadow: 0 12px 36px rgba(45, 107, 255, 0.5);
+        box-shadow: 0 12px 36px rgba(45, 255, 179, 0.5);
     }
     .gary-launcher svg {
         color: #fff;
@@ -247,7 +249,7 @@
         height: 9px;
         border-radius: 50%;
         background: #89ffc0;
-        box-shadow: 0 0 0 2px #2d6bff;
+        box-shadow: 0 0 0 2px #2dffb3;
     }
 
     /* ---- Overlay ---- */
@@ -352,7 +354,7 @@
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #5b8bff;
+        color: #2dffb3;
         margin: 0 0 5px 2px;
     }
     .gary-msg__bubble {
@@ -369,7 +371,7 @@
         border-bottom-left-radius: 4px;
     }
     .gary-msg--user .gary-msg__bubble {
-        background: #2d6bff;
+        background: #2dffb3;
         color: #fff;
         border-bottom-right-radius: 4px;
     }
@@ -427,8 +429,8 @@
         transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
     }
     .gary-suggestion:hover {
-        border-color: #2d6bff;
-        background: rgba(45, 107, 255, 0.12);
+        border-color: #2dffb3;
+        background: #2dffb324;
         color: #fff;
     }
 
@@ -446,7 +448,7 @@
         background: transparent;
         border: none;
         outline: none;
-        color: #fff;
+        color: white;
         font-family: inherit;
         font-size: 14.5px;
         padding: 9px 0;
@@ -463,8 +465,8 @@
         flex: 0 0 38px;
         border: none;
         border-radius: 50%;
-        background: #2d6bff;
-        color: #fff;
+        background: #2dffb3;
+        color: #191c1f;
         cursor: pointer;
         transition: background 0.15s ease, opacity 0.15s ease;
     }
@@ -473,7 +475,7 @@
         cursor: default;
     }
     .gary-input button:not(:disabled):hover {
-        background: #1f5af0;
+        background: #46c697;
     }
 
     @media (max-width: 600px) {

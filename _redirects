@@ -6,5 +6,6 @@
 /services/website-development /services/website-products    301
 /services/app-development     /services/website-products    301
 /services/ai-solutions        /services/ai-agents           301
+/api/*           /.netlify/functions/:splat    200
 /*    /index.html   200
 /404    /404.html    404
