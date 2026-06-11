@@ -49,8 +49,8 @@ export const seoConfig = {
         canonical: 'https://f925.ai/portfolio'
     },
     '/contact': {
-        title: 'Book a Free Call • F925',
-        description: 'Schedule a free consultation to discuss your website product, platform, or AI build with F925.',
+        title: 'Contact • F925',
+        description: 'Contact us to discuss your website product, platform, or AI build with F925.',
         canonical: 'https://f925.ai/contact'
     },
     '/contact2': {

@@ -99,7 +99,7 @@ onMount(() => {
                         </ul>
                     </nav>
                 </div>
-                <div class="text--small l-flex mt-1">
+                <div class="text--small l-flex">
                     <div>
                         <a class="link--on-hover" href="mailto:f925.limited@gmail.com">
                             f925.limited@gmail.com

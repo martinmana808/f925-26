@@ -126,7 +126,7 @@
     gap: 8px;
     font-weight: 500;
     font-size: 14px;
-    border: 2px solid rgba(25, 28, 31, 0.22);
+    border: 2px solid #8daaa1;
     border-radius: 100rem;
     padding-inline: 1rem;
         transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;

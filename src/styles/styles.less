@@ -62,9 +62,10 @@
 // Light theme: @color-0 is the light base/background, @color-1 is the dark ink.
 @color-0: #ffffff;
 @color-1: #191c1f;
-@color-2: #16b585; // mint, deepened for contrast on a light background
-@color-3: #dafee1; // mint, deepened for contrast on a light background
+@color-2: #1ebc8c; // mint, deepened for contrast on a light background
+@color-3: #e3ffe9; // mint, deepened for contrast on a light background
 @color-gray: #87898A;
+@color-greengray: #8daaa1;
 
 // : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
 //  Colors - Variations (darker shades of the light base)
@@ -424,7 +425,8 @@ h6 {
         font-size: @text-small-size;
         line-height: @text-small-height;
         color: @color-1;
-        background: @color-01;
+        // background: @color-01;
+        background: @color-0;
 
         &:focus,
         &:focus-within {
@@ -461,23 +463,24 @@ h6 {
             transform: translateY(-50%);
             transform-origin: left;
             pointer-events: none;
-            color: @color-03;
+            // color: @color-03;
+            color: @color-greengray;
         }
-
+        
         textarea:focus+label,
         input:focus+label,
         textarea:not(:placeholder-shown)+label,
         input:not(:placeholder-shown)+label {
             transform: scale(0.7);
             top: 0.4em;
-            color: @color-04;
+            color: @color-greengray;
         }
     }
 }
 
 .field--submit {
     display: flex;
-    margin-top: 1rem !important;
+    margin-top: 2rem !important;
 }
 
 input:-webkit-autofill,
@@ -1240,7 +1243,7 @@ input:-webkit-autofill:focus {
     inset: 8px;
     z-index: -1;
     // background-color: rgb(208, 255, 217);
-    background-color: rgb(218, 254, 225);
+    background-color: @color-3;
     border-radius: 8px;
 }
 
@@ -1654,10 +1657,10 @@ input:-webkit-autofill:focus {
             bottom: 24px;
             right: calc(@spacing-x / -2);
             left: calc(@spacing-x / -2);
-
-            background-color: @color-0;
+            background-color: (@color-3)8a;
             z-index: -1;
             border-radius: 100px;
+            backdrop-filter: blur(11px);
         }
     }
 
@@ -2144,6 +2147,7 @@ a:focus .icon-effect.--back,
 }
 
 .services-nav--lvl1 {
+    font-weight: 500;
     *+& {
         margin-top: 0.5rem;
     }
@@ -2152,7 +2156,8 @@ a:focus .icon-effect.--back,
 .services-nav--lvl1,
 .services-nav--lvl2 {
     a {
-        color: @color-03;
+        // color: @color-03;
+        color: @color-greengray;
 
         &:hover,
         &:focus {
@@ -2221,10 +2226,10 @@ a:focus .icon-effect.--back,
 
     .button {
         @media (min-width: @mq-nav) {
-            border-color: @color-01;
+            border-color: fade(@color-greengray, 22%);
 
             span {
-                color: @color-02;
+                color: fade(@color-greengray, 33%);
             }
 
             &:before {
@@ -2246,12 +2251,12 @@ a:focus .icon-effect.--back,
     }
 
     ::placeholder {
-        color: @color-03;
+        color: @color-greengray;
         opacity: 1;
     }
 
     ::-ms-input-placeholder {
-        color: @color-03;
+        color: @color-greengray;
     }
 }
 
@@ -2709,7 +2714,9 @@ a:focus .icon-effect.--back,
         border-bottom-right-radius: calc(@spacing-x / 2);
         
         @media (min-width: @mq-l) {
-            bottom: calc((@spacing-top * -1) + (@header-height * -1)); 
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            bottom: calc((@spacing-top * -1) + (@header-height * -1) - 25px); 
         }
     }
 

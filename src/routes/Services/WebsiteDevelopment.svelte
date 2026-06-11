@@ -209,11 +209,11 @@
                         You are a legend. We will be in touch shortly.
                         <br />
                         <div class="spacer-1"></div>
-                        <div class="text--small">
+                        <!-- <div class="text--small">
                             In the meantime, you can also
                             <a class="link" href="/contact">book a free call</a>
                             .
-                        </div>
+                        </div> -->
                     {/if}
                 </form>
             </div>

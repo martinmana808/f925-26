@@ -135,10 +135,10 @@
 
                     <div class="mt-sm">
                         <p>You are a legend. We will be in touch shortly.</p>
-                        <p>
+                        <!-- <p>
                             In the meantime, feel free to <a class="link" href="/contact">book a free call</a>
                             and we can talk it through, no pressure.
-                        </p>
+                        </p> -->
                     </div>
                 {/if}
             </form>

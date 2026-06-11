@@ -111,7 +111,7 @@
                         <textarea name="Message" placeholder=" "></textarea>
                         <label for="Message" class="label">Message</label>
                     </div>
-                    <div class="form-field field--submit">
+                    <div class="form-field field--submit mt-2">
                         <button type="submit" class="button --1">
                             <span>Send message</span>
                         </button>
