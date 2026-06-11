@@ -15,18 +15,16 @@
     let cta1Url = "/contact"
     let cta2Label = "What we do"
     let cta2Url = "/services"
-
+import isoImg from '../assets/images/iso.svg'
 </script>
 
 <Layout>
+    <div class="hero-hotfix"></div>
     <div class="grid gutter-x items-end h-100">
-        <div class="col-l">
-            <div class="home-hero l-visible">
-                <h1 class="text--hero">
-                    Sites that think.
-                </h1>
-            </div>
+        <div class="col-l relative">
+            <img src="{isoImg}" class="hero-iso l-visible">
             <div class="home-hero l-hidden">
+                <img src="{isoImg}" class="hero-iso">
                 <h1 class="text--hero">
                     Sites <br>that think.
                 </h1>
@@ -45,6 +43,11 @@
             </div>
         </div>
         <div class="col-r">
+            <div class="home-hero l-visible">
+                <h1 class="text--hero">
+                    Sites that think.
+                </h1>
+            </div>
             <h2 class="text--subheadingLg l-visible">
                 { heading }
             </h2>

@@ -14,7 +14,7 @@
 // : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
 //   Typography - Sizes
 
-@text-hero-size: clamp(6rem, 11.3125vw, 11.3125rem);
+@text-hero-size: clamp(4.75rem, 11.3125vw, 11.3125rem);
 @text-section-size: clamp(4.75rem, 8vw, 8rem);
 @text-block-size: clamp(1.375rem, 4.625vw, 4.625rem);
 @text-subheadingLg-size: clamp(28.8208px, 3.75vw, 60px);
@@ -530,9 +530,7 @@ input:-webkit-autofill:focus {
     
     .template--home & {
         @media (min-width: @mq-nav) {
-            width: 0;
-            position: relative;
-            bottom: -2.3vw;
+            // width: 0;
         }
         @media (min-width: 87.5em) {
         }
@@ -1237,6 +1235,14 @@ input:-webkit-autofill:focus {
     background-color: white!important;
 }
 
+.site-main:after{
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 11;
+    border: 8px solid white;
+    pointer-events: none;
+}
 .site-main:before{
     content: "";
     position: fixed;
@@ -1245,6 +1251,7 @@ input:-webkit-autofill:focus {
     // background-color: rgb(208, 255, 217);
     background-color: @color-3;
     border-radius: 8px;
+    pointer-events: none;
 }
 
 .site-footer,
@@ -1713,15 +1720,16 @@ input:-webkit-autofill:focus {
     flex-direction: column;
     justify-content: flex-end;
     width: 100vw;
-    padding-top: @spacing-top;
+    padding-top: calc(@spacing-top + @header-height-sm);
     padding-bottom: calc(@spacing-top * 1);
     flex-grow: 1;
     flex-basis: 100%;
-    margin-top: @header-height-sm;
+    // margin-top: @header-height-sm;
     
     @media (min-width: @mq-nav) {
         justify-content: flex-start;
-        margin-top: @header-height;
+        padding-top: calc(@spacing-top + @header-height);
+        // margin-top: @header-height;
         padding-bottom: calc(@spacing-top * 1.25);
     }
 
@@ -1922,7 +1930,37 @@ a:focus .icon-effect.--back,
     }
 }
 
-
+.hero-iso {
+    margin-bottom: 4em;
+    max-width: 200px;
+    width: 100%;
+    margin-inline: auto;
+    @media(min-width: @mq-s){
+        max-width: 360px;
+        width: 100%;
+        margin-inline: unset;
+    }
+    @media(min-width: @mq-l){
+        margin-bottom: 0;
+        max-width: none;
+        position: fixed;
+        top: 50%;
+        right: 70%;
+        transform: translateY(-50%);
+        left: auto;
+        width: auto;
+        height: calc(100dvh - (@spacing-top * 1.25) - (@spacing-top * 1.25));
+    }
+}
+.hero-hotfix {
+    position: absolute;
+    left: 0;
+    width: 8px;
+    height: 100dvh;
+    top: 0;
+    background-color: white;
+    z-index: 2;
+}
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // Services template

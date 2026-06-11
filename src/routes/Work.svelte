@@ -389,7 +389,7 @@ Built to actually work.</h1>
                 A look at what we make.
             </h2>
             <div class="mw-600">
-                Every piece here was designed and built by F925 — websites, products, brands, and the details in between. This is the bar we hold ourselves to.<br>
+                Every piece here was designed and built by the people in F925 — websites, products, brands, and the details in between. This is the bar we hold ourselves to.<br>
                 Deep, written case studies are on the way. For now, here's the work.
             </div>
             
