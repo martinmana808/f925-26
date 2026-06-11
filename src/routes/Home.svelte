@@ -11,7 +11,7 @@
     let heading = "We design and build website products, platforms, and AI systems that actually work."
     let subheading1 = "F925 weaves AI through everything we ship — chatbots, automation, and intelligent products. A site without a chatbot today is already falling behind. We make sure yours isn't."
     let subheading2 = ''
-    let cta1Label = "Book a free call"
+    let cta1Label = "Get in touch"
     let cta1Url = "/contact"
     let cta2Label = "What we do"
     let cta2Url = "/services"
@@ -62,11 +62,11 @@
                     <button class="button --1" type="button" on:click={() => openGary('Hi Gary — what does F925 build?')}>
                         <span>Talk to Gary</span>
                     </button>
-                    {#if cta1Label !== '' && cta1Url !== ''}
+                    <!-- {#if cta1Label !== '' && cta1Url !== ''}
                         <a class="button --1out" href="{cta1Url}"><span>{cta1Label}</span></a>
-                    {/if}
+                    {/if} -->
                     {#if cta2Label !== '' && cta2Url !== ''}
-                        <a class="button --1out" href="{cta2Url}">
+                        <a class="button --0" href="{cta2Url}">
                             <span>{cta2Label}</span>
                         </a>
                     {/if}

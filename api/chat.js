@@ -1,4 +1,5 @@
 import { SYSTEM_PROMPT } from '../lib/gary-system-prompt.js';
+import { completeWithFallback } from '../lib/gary-models.js';
 
 // Vercel serverless function — mirrors netlify/functions/chat.js
 export default async function handler(req, res) {
@@ -17,33 +18,19 @@ export default async function handler(req, res) {
     const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
     const { messages } = body;
 
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${GROQ_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          ...(messages || []),
-        ],
-        temperature: 0.7,
-        max_tokens: 1024,
-        response_format: { type: 'json_object' },
-      }),
+    const result = await completeWithFallback({
+      apiKey: GROQ_API_KEY,
+      systemPrompt: SYSTEM_PROMPT,
+      messages,
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Groq API Error:', errorText);
-      res.status(response.status).send(`Groq API Error: ${errorText}`);
+    if (!result.ok) {
+      console.error('All Groq models failed:', result.error);
+      res.status(result.status).send(`Groq API Error: ${result.error}`);
       return;
     }
 
-    const data = await response.json();
-    res.status(200).json(data);
+    res.status(200).json(result.data);
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'Internal Server Error' });

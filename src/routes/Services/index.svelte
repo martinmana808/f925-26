@@ -134,6 +134,10 @@
 
                 <div class="service-card --link">
                     <a class="flex justify-between items-center no-outline" href="/portfolio">
+                    <div class="overlay"></div>
+                        <video autoplay loop muted playsinline src="/assets/images/view-all-work.mp4">
+                            <track kind="metadata" />
+                        </video>
                         <h2 class="text--subheadingLg mb-0">
                             View
                             <br />

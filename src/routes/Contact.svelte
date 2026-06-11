@@ -2,30 +2,26 @@
     import Icon from '../components/Icon.svelte'
     import Layout from '../components/layout/Layout.svelte'
     import { onMount, onDestroy } from 'svelte'
-    
-    let calendlyContainer;
 
     onMount(() => {
         document.body.classList.add('template--contact')
-        
-        // Load Calendly script
-        const script = document.createElement('script')
-        script.src = 'https://assets.calendly.com/assets/external/widget.js'
-        script.async = true
-        document.head.appendChild(script)
 
-        // Initialize Calendly after a short delay to ensure the script is loaded
-        setTimeout(() => {
-            if (calendlyContainer) {
-                // @ts-ignore
-                window.Calendly?.initInlineWidget({
-                    url: 'https://calendly.com/martinmana808/martinmana-15m?hide_event_type_details=1&hide_gdpr_banner=1',
-                    parentElement: calendlyContainer,
-                    prefill: {},
-                    utm: {}
-                });
-            }
-        }, 1000);
+        // --- Book a free call (Calendly) — commented out, kept for easy restore ---
+        // const script = document.createElement('script')
+        // script.src = 'https://assets.calendly.com/assets/external/widget.js'
+        // script.async = true
+        // document.head.appendChild(script)
+        // setTimeout(() => {
+        //     if (calendlyContainer) {
+        //         // @ts-ignore
+        //         window.Calendly?.initInlineWidget({
+        //             url: 'https://calendly.com/martinmana808/martinmana-15m?hide_event_type_details=1&hide_gdpr_banner=1',
+        //             parentElement: calendlyContainer,
+        //             prefill: {},
+        //             utm: {}
+        //         });
+        //     }
+        // }, 1000);
     })
 
     onDestroy(() => {
@@ -35,19 +31,13 @@
     // Get the current pathname
     let currentPath = window.location.pathname
 
-    // Function to check if a given path is active
     function isActive(basePath) {
-        // Ensure basePath ends with a slash for consistent matching
         const base = basePath.endsWith('/') ? basePath : `${basePath}/`
-
-        // Check if currentPath starts with basePath
         return currentPath.startsWith(base)
     }
 
-    // Update currentPath on client-side navigation
     function updatePath() {
         currentPath = window.location.pathname
-        console.log(currentPath)
     }
 
     window.addEventListener('popstate', updatePath)
@@ -80,41 +70,79 @@
                 formMessage = `Error: ${error.message}`
             })
     }
-    import qrContact from '../assets/images/qrContact.svg'
-
-    let credentials = {
-        url:
-            import.meta.env.MODE === 'development'
-                ? '/src/assets/Another-Studio-Credentials.pdf'
-                : '../assets/Another-Studio-Credentials.pdf',
-        format: 'PDF',
-        filesize: '', // Will be filled later
-    }
 </script>
 
 <Layout>
     <div class="grid gutter-x h-100 relative">
         <div class="col-l">
-            {#if !formMessage.includes('Error') && formMessage.length > 0}
-                <!-- <h1 class="text--section">🙌</h1> -->
-            {:else}{/if}
             {#if formMessage.includes('Error') || formMessage.length === 0}
-                <h1 class="text--section">Book a free call</h1>
-                <h2 class="text--subheadingSm">Take the first step — we'll take it from there.</h2>
-                <div>
-                    <p>Tell us about your project, your business, or how you currently do things. There's always room to optimize, automate, and grow. Even if you're not sure what you need yet, that's okay — we'll talk it through, find the right direction, and map out the next steps. Whether we end up working together or not, you'll walk away with clarity.</p>
-                    <br>
-                    <p class="text--small">
-                    Prefer the old-school way? <a class="link" href="contact2">Send us a message</a> and we'll get back to you.
-                    </p>
+                <h1 class="text--section">Drop us a line</h1>
+                <h2 class="text--subheadingSm">Take that first step — tell us what you're thinking and we'll take it from there.</h2>
+                <div class="wysiwyg text--small">
+                    <p>Tell us about your project, your business, or how you currently do things. There's always room to optimize, automate, and grow. Even if you're not sure what you need yet, that's okay — send us a message and we'll talk it through, find the right direction, and map out the next steps. Whether we end up working together or not, you'll walk away with clarity.</p>
                 </div>
             {/if}
         </div>
 
         <div class="col-r">
-            <div class="calendlyContainer"
-                bind:this={calendlyContainer}
-                style="min-width:320px;height:700px;">
+            <form
+                class="form contact-form --inline-labels"
+                action="https://usebasin.com/f/ffd6ed74ada9"
+                on:submit={handleSubmit}
+                id="my-contact-form"
+                method="POST">
+                {#if formMessage.includes('Error') || formMessage.length === 0}
+                    <input name="Location" class="visuallyhidden" type="text" value={currentPath} />
+                    <div class="form-field field--text">
+                        <input name="Name" class="input--txt" type="text" value="" placeholder=" " required />
+                        <label for="Name" class="label">
+                            Name
+                            <span class="field-required" title="This field is required">*</span>
+                        </label>
+                    </div>
+                    <div class="form-field field--text">
+                        <input name="Email" class="input--txt" type="email" value="" placeholder=" " required />
+                        <label for="Email" class="label">
+                            Email
+                            <span class="field-required" title="This field is required">*</span>
+                        </label>
+                    </div>
+                    <div class="form-field field--text">
+                        <textarea name="Message" placeholder=" "></textarea>
+                        <label for="Message" class="label">Message</label>
+                    </div>
+                    <div class="form-field field--submit">
+                        <button type="submit" class="button --1">
+                            <span>Send message</span>
+                        </button>
+                    </div>
+                    {#if formMessage.includes('Error')}
+                        <div class="formMessage --error">
+                            {formMessage}
+                        </div>
+                    {/if}
+                {/if}
+                {#if !formMessage.includes('Error') && formMessage.length > 0}
+                    <div class="text--subheadingLg mb-0">
+                        Thank you
+                        <br />
+                        for your message
+                    </div>
+
+                    <div class="mt-sm">
+                        <p>You are a legend. We will be in touch shortly.</p>
+                    </div>
+                {/if}
+            </form>
+            <div class="contact__bottom gutter-x mt-lg">
+                <div class="">
+                    <a class="link--on-hover" href="mailto:f925.limited@gmail.com">f925.limited@gmail.com</a>
+                </div>
+                <div>
+                    <div>
+                        <a class="link--on-hover" href="tel:+64 027 218 2988">+64 027 218 2988</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

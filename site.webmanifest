@@ -4,8 +4,8 @@
   "description": "F925 designs and builds website products, platforms, and AI systems that actually work — chatbots, automation, and intelligent products woven through with AI.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#191c1f",
-  "theme_color": "#191c1f",
+  "background_color": "#f4f5f9",
+  "theme_color": "#f4f5f9",
   "icons": [
     {
       "src": "/apple-touch-icon-192x192.png",

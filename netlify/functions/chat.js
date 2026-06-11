@@ -1,4 +1,5 @@
 import { SYSTEM_PROMPT } from '../../lib/gary-system-prompt.js';
+import { completeWithFallback } from '../../lib/gary-models.js';
 
 const GROQ_API_KEY = process.env.GROQ_API_KEY;
 
@@ -17,34 +18,20 @@ export const handler = async (event) => {
   try {
     const { messages } = JSON.parse(event.body || '{}');
 
-    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${GROQ_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          ...messages,
-        ],
-        temperature: 0.7,
-        max_tokens: 1024,
-        response_format: { type: 'json_object' },
-      }),
+    const result = await completeWithFallback({
+      apiKey: GROQ_API_KEY,
+      systemPrompt: SYSTEM_PROMPT,
+      messages,
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Groq API Error:', errorText);
-      return { statusCode: response.status, body: `Groq API Error: ${errorText}` };
+    if (!result.ok) {
+      console.error('All Groq models failed:', result.error);
+      return { statusCode: result.status, body: `Groq API Error: ${result.error}` };
     }
 
-    const data = await response.json();
     return {
       statusCode: 200,
-      body: JSON.stringify(data),
+      body: JSON.stringify(result.data),
     };
   } catch (error) {
     console.error('Error:', error);

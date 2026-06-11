@@ -59,18 +59,20 @@
 // : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
 //  Colors - Base
 
-@color-0: #191c1f;
-@color-1: #ffffff;
-@color-2: #2dffb3;
+// Light theme: @color-0 is the light base/background, @color-1 is the dark ink.
+@color-0: #ffffff;
+@color-1: #191c1f;
+@color-2: #16b585; // mint, deepened for contrast on a light background
+@color-3: #dafee1; // mint, deepened for contrast on a light background
 @color-gray: #87898A;
 
 // : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :
-//  Colors - Variations
+//  Colors - Variations (darker shades of the light base)
 
-@color-004: lighten(@color-0, 80%);
-@color-003: lighten(@color-0, 50%);
-@color-002: lighten(@color-0, 15%);
-@color-001: lighten(@color-0, 5%);
+@color-004: darken(@color-0, 60%);
+@color-003: darken(@color-0, 42%);
+@color-002: darken(@color-0, 14%);
+@color-001: darken(@color-0, 1%);
 @color-04: desaturate(@color-004, 50%);
 @color-03: desaturate(@color-003, 50%);
 @color-02: desaturate(@color-002, 50%);
@@ -459,7 +461,7 @@ h6 {
             transform: translateY(-50%);
             transform-origin: left;
             pointer-events: none;
-            color: @color-02;
+            color: @color-03;
         }
 
         textarea:focus+label,
@@ -795,6 +797,20 @@ input:-webkit-autofill:focus {
         }
     }
 
+    &.--0 {
+        color: @color-1;
+        background-color: @color-0;
+        border-color: @color-0;
+
+        @media (any-hover: hover) {
+
+            &:hover,
+            &:focus {
+                color: @color-0  !important;
+                border-color: @color-2;
+            }
+        }
+    }
     &.--1 {
         color: @color-0;
         background-color: @color-1;
@@ -1168,7 +1184,7 @@ input:-webkit-autofill:focus {
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    background-color: @color-0;
+    background-color: white;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.3s;
@@ -1180,12 +1196,13 @@ input:-webkit-autofill:focus {
 
 .loader__logo {
     position: relative;
-    top: 24px;
+    top: 28px;
     width: 70px;
     height: auto;
     z-index: -1;
-
+    
     @media (min-width: @mq-nav) {
+        top: 36px;
         width: 89px;
     }
 }
@@ -1213,6 +1230,19 @@ input:-webkit-autofill:focus {
 // Header
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+.template--home {
+    background-color: white!important;
+}
+
+.site-main:before{
+    content: "";
+    position: fixed;
+    inset: 8px;
+    z-index: -1;
+    // background-color: rgb(208, 255, 217);
+    background-color: rgb(218, 254, 225);
+    border-radius: 8px;
+}
 
 .site-footer,
 .site-main,
@@ -1276,17 +1306,17 @@ input:-webkit-autofill:focus {
 
 .header__logo-container {
     display: flex!important;
+    align-items: center;
 }
 
 .header__logo {
-    position: relative;
+    display: block;
     top: 0px;
     width: 70px;
     height: auto;
     z-index: -1;
 
     @media (min-width: @mq-nav) {
-        top: -5px;
         width: 89px;
     }
 }
@@ -1295,18 +1325,9 @@ input:-webkit-autofill:focus {
     position: relative;
     display: inline-flex;
     align-items: center;
+    svg{
 
-    @media (min-width: @mq-nav) {
-
-       
-       
-        svg {
-            transition: all .5s @default-easing;
-        }
-
-        svg {
-            filter: drop-shadow(3px 3px 0px @color-0);
-        }
+        mix-blend-mode: multiply;
     }
 }
 
@@ -1421,10 +1442,15 @@ input:-webkit-autofill:focus {
 
         ul {
             display: flex;
+            a {
+                font-weight: 500;
+            }
         }
 
         li {
-            padding: .5rem 1.5rem;
+            &:not(&:has(.gary-nav-trigger)) {
+                padding: .5rem 1.5rem;
+            }
             // background-color: @color-0;
 
             &:first-child {
@@ -1444,6 +1470,8 @@ input:-webkit-autofill:focus {
             border-top-left-radius: 10px;
             border-bottom-left-radius: 10px;
             padding-right: 0;
+            display: flex;
+            align-items: center;
         }
     }
 
@@ -1620,7 +1648,7 @@ input:-webkit-autofill:focus {
 
     &:before {
         @media(min-width: @mq-nav) {
-            // content: '';
+            content: '';
             position: absolute;
             top: 24px;
             bottom: 24px;
@@ -1927,6 +1955,7 @@ a:focus .icon-effect.--back,
 }
 
 .service-card {
+    
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -1958,15 +1987,15 @@ a:focus .icon-effect.--back,
         top: 0;
         left: 100% ;  
         bottom: 0;
-        background-color: @color-0;
+        background-color: @color-3;
         transition: all .5s cubic-bezier(.22,1,.36,1);
         z-index: -1;
     }
 
-    &:not(&.is-selected) {
-            color: #ffffff;
-    backdrop-filter: blur(37px);
-    box-shadow: inset 0 0 0 3px #ffffff00;
+    &:not(&.is-selected):not(.--link) {
+        backdrop-filter: blur(37px);
+        box-shadow: inset 0 0 0 3px #ffffff00;
+        background: white;
         
         .button {
             border-color: @color-1;
@@ -1974,40 +2003,84 @@ a:focus .icon-effect.--back,
             transition: all .5s cubic-bezier(.22,1,.36,1);
         }
         .tag{
-            background-color:@color-gray;
+            background-color:#d2e6e1;
+            color: @color-1;
         }
     }
 
     &.is-selected:not(.--link) {
         color: @color-0;
         background-color: @color-1;
-        background-image:  radial-gradient(@color-0 0.5px, transparent 0.5px), radial-gradient(@color-0 0.5px, @color-1 0.5px);
         background-size: 20px 20px;
         background-position: 0 0,10px 10px;
         
         .button {
             border-color: @color-01;
-            background: @color-01;
+            background: @color-0;
             color: @color-1;
             transition: all .5s cubic-bezier(.22,1,.36,1);
         }
 
         .tag{
-            background-color: @color-04;
+            background-color: #333333;
         }
     }
 
     &.--link {
+        overflow: hidden;
+        .overlay {
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(3deg, #191c1f 0%, #ffffff 32%);
+            mix-blend-mode: multiply;
+            opacity: 0;
+            transition: opacity .5s cubic-bezier(.22,1,.36,1);
+        }
+        h2 {
+            position: relative;
+            z-index: 1;
+        }
         a {
             flex-grow: 1;
             align-items: end;
+            
+        }
+        img, video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0;
+            transition: all .5s cubic-bezier(.22,1,.36,1);
         }
     }
 
+    &.is-selected.--link:hover, &.is-selected.--link:focus  {
+        video{
+            filter: brightness(50%)
+        }
+    }
     &.is-selected.--link {
-        background-color: @color-2;
-        background-image: radial-gradient(circle at center center, lighten(@color-2, 100%), @color-2), repeating-radial-gradient(circle at center center, lighten(@color-2, 100%), lighten(@color-2, 100%), 10px, transparent 20px, transparent 10px);
-        background-blend-mode: multiply;
+        overflow: hidden;
+        .overlay { 
+            opacity: 1;
+        }
+        img, video {
+            opacity: 1;
+            z-index: -1;
+        }
+        // background-color: @color-2;
         color: @color-0;
         cursor: url(../assets/icons/slider-cursor--last-inverted.svg) 35 35, move;
     }
@@ -2173,12 +2246,12 @@ a:focus .icon-effect.--back,
     }
 
     ::placeholder {
-        color: @color-02;
+        color: @color-03;
         opacity: 1;
     }
 
     ::-ms-input-placeholder {
-        color: @color-02;
+        color: @color-03;
     }
 }
 
@@ -2252,18 +2325,18 @@ a:focus .icon-effect.--back,
 //::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 .template--contact {
-    .site-main .col-r {
-        border-radius: @spacing-sm;
-        border-radius: 25px;
-        overflow: hidden;
-        background-color: @color-1;
-        margin-top: @spacing-top;
+    // .site-main .col-r {
+    //     border-radius: @spacing-sm;
+    //     border-radius: 25px;
+    //     overflow: hidden;
+    //     background-color: @color-1;
+    //     margin-top: @spacing-top;
         
-        @media(min-width: 74em) {
-            margin-top: 0;
-            background-color: @color-01;
-        }
-    }
+    //     @media(min-width: 74em) {
+    //         margin-top: 0;
+    //         background-color: @color-01;
+    //     }
+    // }
 }
 
 .calendly-inline-widget {
@@ -2603,8 +2676,8 @@ a:focus .icon-effect.--back,
         content: '';
         position: absolute;
         top: 0;
-        left: calc(@spacing-x * -1);
-        right: calc(@spacing-x * -1);
+        left: calc((@spacing-x * -1) + 8px);
+        right: calc((@spacing-x * -1) + 8px);
         bottom: 0; 
         z-index: 0;
         background: @color-1;
@@ -2627,8 +2700,8 @@ a:focus .icon-effect.--back,
         content: '';
         position: absolute;
         top: 0;
-        left: calc(@spacing-x * -1);
-        right: calc(@spacing-x * -1);
+        left: calc((@spacing-x * -1) + 8px);
+        right: calc((@spacing-x * -1) + 8px);
         bottom: calc(@spacing-top * -1); 
         z-index: 0;
         background: @color-1;
@@ -2963,7 +3036,7 @@ a:focus .icon-effect.--back,
     pointer-events: initial;
     grid-column: span 13;
     overflow: auto;
-    margin-inline: calc(@spacing-x * -1);
+    margin-inline: calc((@spacing-x * -1) + 8px);
     background: @color-1;
     border-top-right-radius: calc(@spacing-x / 2);
     border-top-left-radius: calc(@spacing-x / 2);
@@ -3011,7 +3084,7 @@ a:focus .icon-effect.--back,
 
 .filter-button.tag.active {
     background: @color-0;
-    color: white;
+    color: @color-1;
 }
 
 

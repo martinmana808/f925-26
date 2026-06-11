@@ -1,6 +1,6 @@
 <script>
     import Router from './Router.svelte'
-    import SpaceBackground from './components/SpaceBackground.svelte'
+    import GradientBackground from './components/GradientBackground.svelte'
     import StructuredData from './components/StructuredData.svelte'
     import { onMount } from 'svelte'
     import { headContent } from './stores/headContent.js'
@@ -47,7 +47,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#191c1f" />
+    <meta name="theme-color" content="#f4f5f9" />
     
     <!-- Sitemap -->
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
@@ -117,5 +117,5 @@
         crossorigin="anonymous" /> -->
 </svelte:head>
 
-<SpaceBackground image="tarantula" />
+<GradientBackground />
 <Router />

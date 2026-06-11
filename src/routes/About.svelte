@@ -5,11 +5,12 @@
     import martinImg from '../assets/images/team--Martin.png'
     import leoImg from '../assets/images/team--Leonel.png'
     import mikeImg from '../assets/images/team--Mike.png'
+    import isoImg from '../assets/images/iso.svg'
 
     const core = [
-        { img: martinImg, first: 'Martin', last: 'Mana', flag: '🇳🇿' },
-        { img: leoImg, first: 'Leonel', last: 'Orsi', flag: '🇦🇷' },
-        { img: mikeImg, first: 'Michael', last: 'McLarnon', flag: '🇳🇿' },
+        { img: martinImg, first: 'Martin', last: 'Mana', flag: '🇳🇿', role: 'Product & AI' },
+        { img: leoImg, first: 'Leonel', last: 'Orsi', flag: '🇦🇷', role: 'Infrastructure & Systems' },
+        { img: mikeImg, first: 'Michael', last: 'McLarnon', flag: '🇳🇿', role: 'Operations' },
     ]
 
     import { onMount, onDestroy } from 'svelte'
@@ -24,13 +25,8 @@
 <Layout>
     <div class="grid gutter-x h-100 relative">
         <div class="col-l l-visible">
-            <div class="core-team">
-                {#each core as m}
-                    <figure class="core-member">
-                        <img src={m.img} alt={`${m.first} ${m.last}`.trim() + ', F925'} />
-                        <figcaption class="core-name">{`${m.first} ${m.last}`.trim()} {m.flag}</figcaption>
-                    </figure>
-                {/each}
+            <div class="about-iso">
+                <img src={isoImg} alt="F925 isotype" />
             </div>
         </div>
         <div class="col-r">
@@ -41,106 +37,97 @@
 
             <div class="wysiwyg text--small">
                 <p>
-                    F925 is a design-and-build studio founded by Martin Mana. After two decades in art direction, design, and front-end development — from co-founding the agency Manada in Argentina to high-impact digital work in New Zealand — Martin built F925 around a simple conviction: AI isn't the future, it's the present, and everything we make should be threaded with it.
+                    F925 is the work of three founders whose paths have crossed for more than three decades. Martin Mana and Leonel Orsi first met in Argentina and have collaborated, on and off, ever since — a partnership grounded in a shared standard for craft and a conviction that the best products are built by people who trust one another.
                 </p>
                 <p>
-                    We design and build website products, platforms, and AI systems. Not throwaway brochure sites — complex solutions that have to work properly, for businesses that care about the difference. A website without a chatbot is already falling behind. A process without automation is just work waiting to be removed.
-                </p>
-                <div class="l-hidden">
-                    <div class="core-team">
-                        {#each core as m}
-                            <figure class="core-member">
-                                <img src={m.img} alt={`${m.name}, F925`} />
-                                <span class="core-flag" aria-hidden="true">{m.flag}</span>
-                            </figure>
-                        {/each}
-                    </div>
-                </div>
-                <p>
-                    We're small and senior by design. A tight core team — Martin on product and AI, Leo on infrastructure and systems, Mike on operations — backed by a trusted network we've built over twenty years. That keeps us fast, hands-on, and accountable for everything we ship.
+                    Their careers took them in complementary directions. Leonel built deep technical expertise across IoT and e-commerce while leading engineering teams in Taiwan. Martin co-founded the agency Manada in Argentina before relocating to New Zealand in 2018, where he moved from design into front-end development and delivered high-profile projects across a range of industries.
                 </p>
                 <p>
-                    AI is our tool, our material, and our objective. We use it to build better and faster — and we make sure our clients get products that are genuinely intelligent, not just decorated with the word.
+                    Reunited around a common ambition, they founded F925 on decades of combined experience in UX, UI, design, and engineering — and on a shared commitment to artificial intelligence and automation. We treat AI not as an add-on but as a core material of how we design and build, applied with discipline to create products that are genuinely intelligent.
+                </p>
+                <p>
+                    Michael McLarnon completes the founding team, leading operations from New Zealand and ensuring that every engagement is delivered to the standard our clients expect — on scope, on time, and accountable from start to finish.
+                </p>
+                <p>
+                    Today, F925 brings together a multicultural team drawn from a global network of senior professionals, combining AI automation with performance-driven UX, UI, and design. Our objective is simple: to build intelligent, well-engineered, and beautifully crafted products that our clients trust and their users value.
                 </p>
             </div>
 
-            <!-- <div class="l-visible">
-                <div class="footer__social-nav flex gutter-x mt-4">
-                    <a
-                        class=""
-                        target="_blank"
-                        rel="noopener"
-                        href="https://wa.me/640272182988?text=Hello%20F925!%20:)%0AI%20would%20like%20to%20chat%20about%20a%20project.">
-                        <Icon name="social-whatsapp" />
-                        <span class="visuallyhidden">Chat on WhatsApp</span>
-                    </a>
-                </div>
-            </div> -->
+            <ul class="team-list">
+                {#each core as m}
+                    <li class="team-member">
+                        <img src={m.img} alt={`${m.first} ${m.last}`.trim() + ', F925'} />
+                        <div class="team-text">
+                            <span class="team-name">{`${m.first} ${m.last}`.trim()} {m.flag}</span>
+                            <span class="team-role">{m.role}</span>
+                        </div>
+                    </li>
+                {/each}
+            </ul>
 
         </div>
     </div>
 </Layout>
 
 <style>
-    .core-team {
+    .about-iso {
         display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 16px;
-        margin: 1rem 0 2rem;
-    }
-    
-    @media(min-width: 64em){
-        .core-team {
-            flex-direction: column;
-        }
-    }
-
-    /* Mobile duplicate sits inside the text column */
-    :global(.template--about) .l-hidden .core-team {
+        align-items: flex-start;
         justify-content: center;
-        margin: 2rem 0;
+        height: 100%;
+        padding-right: 2rem;
     }
 
-    .core-member {
-        position: relative;
-        flex: 1 1 0;
-        max-width: 180px;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .core-member img {
+    .about-iso img {
         display: block;
         width: 100%;
-        aspect-ratio: 1 / 1;
+        max-width: 260px;
+        height: auto;
+        opacity: 0.92;
+    }
+
+    .team-list {
+        list-style: none;
+        margin: 2.5rem 0 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .team-member {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .team-member img {
+        display: block;
+        width: 64px;
+        height: 64px;
+        flex: 0 0 auto;
         border-radius: 50%;
         object-fit: cover;
         object-position: center top;
-        border: 4px solid #191c1f;
-        background: #191c1f;
+        border: 2px solid #ffffff;
+        background: #e9ebf1;
+        box-shadow: 0 6px 18px rgba(20, 30, 60, 0.12);
     }
 
-    .core-name {
-        margin-top: 10px;
+    .team-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.3;
+    }
+
+    .team-name {
+        font-size: 15px;
+        font-weight: 600;
+        color: #191c1f;
+    }
+
+    .team-role {
         font-size: 13px;
-        line-height: 1.25;
-        text-align: center;
-        color: rgba(255, 255, 255, 0.75);
-    }
-
-    @media (max-width: 600px) {
-        .core-team {
-            gap: 12px;
-        }
-        .core-member {
-            max-width: 104px;
-        }
-        .core-name {
-            font-size: 11px;
-            margin-top: 6px;
-        }
+        color: rgba(25, 28, 31, 0.55);
     }
 </style>

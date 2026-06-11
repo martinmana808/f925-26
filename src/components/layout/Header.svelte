@@ -97,7 +97,7 @@
                     </ul>
                     <div class="l-hidden">
                         <div class="buttons">
-                            <a class="button --1" href="/contact"><span>Book a free call</span></a> 
+                            <a class="button --1" href="/contact"><span>Get in touch</span></a>
                         </div>
                     </div>
                 </nav>
@@ -108,9 +108,9 @@
 
 <style>
     .gary-nav-trigger:hover, .gary-nav-trigger:focus {
-            border-color: #2dffb3;
-    background: #2dffb324;
-    color: #fff;
+            border-color: #16b585;
+    background: rgba(22, 181, 133, 0.12);
+    color: #0f8a64;
     }
     .gary-nav-trigger {
         background: none;
@@ -124,8 +124,9 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    font-weight: 500;
     font-size: 14px;
-    border: 1px solid white;
+    border: 2px solid rgba(25, 28, 31, 0.22);
     border-radius: 100rem;
     padding-inline: 1rem;
         transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
@@ -134,8 +135,8 @@
         width: 7px;
         height: 7px;
         border-radius: 50%;
-        background: #2dffb3;
-        box-shadow: 0 0 8px rgba(45, 255, 179, 0.85);
+        background: #16b585;
+        box-shadow: 0 0 8px rgba(22, 181, 133, 0.6);
         flex: 0 0 auto;
     }
 </style>

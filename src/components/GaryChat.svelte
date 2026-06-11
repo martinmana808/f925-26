@@ -191,7 +191,7 @@
         position: fixed;
         inset: 0;
         z-index: 8999;
-        background: rgba(10, 12, 14, 0.5);
+        background: rgba(20, 24, 34, 0.25);
         backdrop-filter: blur(2px);
     }
 
@@ -208,12 +208,12 @@
         max-height: calc(100vh - 96px);
         display: flex;
         flex-direction: column;
-        background: #1f2327;
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: #ffffff;
+        color: #191c1f;
+        border: 1px solid rgba(0, 0, 0, 0.08);
         border-radius: 18px;
         overflow: hidden;
-        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55);
+        box-shadow: 0 24px 70px rgba(20, 30, 60, 0.18);
         font-family: inherit;
     }
 
@@ -222,8 +222,8 @@
         align-items: center;
         justify-content: space-between;
         padding: 8px 18px;
-        background: #191c1f;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        background: #f4f5f9;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
     }
     .gary-panel__id {
         display: flex;
@@ -239,28 +239,28 @@
         font-size: 11px;
         letter-spacing: 0.04em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.45);
+        color: rgba(25, 28, 31, 0.5);
     }
     .gary-panel__status {
         width: 9px;
         height: 9px;
         border-radius: 50%;
-        background: #89ffc0;
-        box-shadow: 0 0 10px rgba(137, 255, 192, 0.8);
+        background: #16b585;
+        box-shadow: 0 0 10px rgba(22, 181, 133, 0.5);
     }
     .gary-panel__close {
         display: inline-flex;
         padding: 6px;
         border: none;
         background: transparent;
-        color: rgba(255, 255, 255, 0.6);
+        color: rgba(25, 28, 31, 0.55);
         cursor: pointer;
         border-radius: 8px;
         transition: background 0.15s ease, color 0.15s ease;
     }
     .gary-panel__close:hover {
-        background: rgba(255, 255, 255, 0.08);
-        color: #fff;
+        background: rgba(0, 0, 0, 0.06);
+        color: #191c1f;
     }
 
     .gary-panel__messages {
@@ -289,7 +289,7 @@
         font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: #2dffb3;
+        color: #16b585;
         margin: 0 0 5px 2px;
     }
     .gary-msg__bubble {
@@ -301,12 +301,12 @@
         word-wrap: break-word;
     }
     .gary-msg--assistant .gary-msg__bubble {
-        background: #2a2f34;
-        color: #eef1f4;
+        background: #eef0f5;
+        color: #191c1f;
         border-bottom-left-radius: 4px;
     }
     .gary-msg--user .gary-msg__bubble {
-        background: #2dffb3;
+        background: #16b585;
         color: #fff;
         border-bottom-right-radius: 4px;
     }
@@ -320,7 +320,7 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(25, 28, 31, 0.35);
         animation: gary-bounce 1.2s infinite ease-in-out;
     }
     .gary-typing span:nth-child(2) {
@@ -342,8 +342,8 @@
 
     .gary-panel__footer {
         padding: 12px 14px 14px;
-        border-top: 1px solid rgba(255, 255, 255, 0.06);
-        background: #1f2327;
+        border-top: 1px solid rgba(0, 0, 0, 0.07);
+        background: #ffffff;
     }
     .gary-suggestions {
         display: flex;
@@ -355,26 +355,26 @@
     .gary-suggestion {
         padding: 2px 12px;
         border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(0, 0, 0, 0.16);
         background: transparent;
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(25, 28, 31, 0.75);
         font-family: inherit;
         font-size: 12.5px;
         cursor: pointer;
         transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
     }
     .gary-suggestion:hover {
-        border-color: #2dffb3;
-        background: #2dffb324;
-        color: #fff;
+        border-color: #16b585;
+        background: rgba(22, 181, 133, 0.12);
+        color: #0f8a64;
     }
 
     .gary-input {
         display: flex;
         align-items: center;
         gap: 8px;
-        background: #14181b;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: #f4f5f9;
+        border: 1px solid rgba(0, 0, 0, 0.12);
         border-radius: 999px;
         padding: 5px 5px 5px 18px;
     }
@@ -383,13 +383,13 @@
         background: transparent;
         border: none;
         outline: none;
-        color: white;
+        color: #191c1f;
         font-family: inherit;
         font-size: 14.5px;
         padding: 9px 0;
     }
     .gary-input input::placeholder {
-        color: rgba(255, 255, 255, 0.4);
+        color: rgba(25, 28, 31, 0.4);
     }
     .gary-input button {
         display: inline-flex;
@@ -400,8 +400,8 @@
         flex: 0 0 38px;
         border: none;
         border-radius: 50%;
-        background: #2dffb3;
-        color: #191c1f;
+        background: #16b585;
+        color: #fff;
         cursor: pointer;
         transition: background 0.15s ease, opacity 0.15s ease;
     }
@@ -410,7 +410,7 @@
         cursor: default;
     }
     .gary-input button:not(:disabled):hover {
-        background: #46c697;
+        background: #0f9f74;
     }
 
     @media (max-width: 600px) {

@@ -58,19 +58,22 @@
             title: 'Web platforms',
             altTitle: 'Apps that do real work',
             description:
-                "When a website isn't enough, we build platforms — web apps, dashboards, portals, and tools your business actually runs on. Designed for scale and built to work properly, with the same care for speed and usability as everything else we ship.",
+            "When a website isn't enough, we build platforms — web apps, dashboards, portals, and tools your business actually runs on. Designed for scale and built to work properly, with the same care for speed and usability as everything else we ship.",
+            imageSrc: '/services--platforms.webp',
         },
         {
             title: 'E-commerce',
             altTitle: 'Built to sell',
             description:
-                "From custom storefronts to Shopify and WooCommerce, we build e-commerce that balances beautiful design with serious performance. Easy to manage, fast to load, and engineered to turn visitors into customers.",
+            "From custom storefronts to Shopify and WooCommerce, we build e-commerce that balances beautiful design with serious performance. Easy to manage, fast to load, and engineered to turn visitors into customers.",
+            imageSrc: '/services--ecommerce.webp',
         },
         {
             title: 'AI built in',
             altTitle: 'Intelligence on every page',
             description:
-                "Every site we build can come with AI woven through it — a chatbot like Gary, smart search, personalization, and automation behind the scenes. A site without a chatbot today is already falling behind; we make sure yours isn't.",
+            "Every site we build can come with AI woven through it — a chatbot like Gary, smart search, personalization, and automation behind the scenes. A site without a chatbot today is already falling behind; we make sure yours isn't.",
+            imageSrc: '/services--ai.jpg',
         },
     ]
     let formMessage = ''
