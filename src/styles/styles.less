@@ -355,6 +355,15 @@ body {
     &.work-modal-open {
         overflow: hidden;
     }
+
+    // Services detail locks the viewport on desktop: only .col-r scrolls
+    // internally, so the document itself must not scroll (no outer scrollbar).
+    &.template--services-detail {
+        @media (min-width: @mq-nav) {
+            height: 100vh;
+            overflow: hidden;
+        }
+    }
 }
 
 p {
@@ -1759,7 +1768,16 @@ input:-webkit-autofill:focus {
 
     .template--services-detail & .col-r {
         @media (min-width: @mq-nav) {
+            // The scroll viewport is pulled UP into site-main's top padding (margin-top
+            // -@spacing-top) and spans from the header down to the viewport bottom, so
+            // content can scroll up THROUGH the top gap (passing under the header)
+            // instead of being clipped at the padded box edge. The resting gap is then
+            // re-created as inner padding-top — and because it's inner padding, it
+            // scrolls away with the content (overflow-visible feel). Net height stays
+            // exactly 100vh − @header-height, so there's still no outer scrollbar.
             height: calc(100vh - @header-height);
+            margin-top: calc(@spacing-top * -1);
+            padding-top: @spacing-top;
             overflow-y: scroll;
             margin-left: -100px;
             margin-right: calc(@spacing-x * -1);
@@ -2908,7 +2926,7 @@ a:focus .icon-effect.--back,
     height: 100vh;
     z-index: 20;
     transform: translateX(100%);
-    background-color: @color-1;
+    background-color: @color-0;
     transition: all calc(@default-duration * 2) @default-easing;
     overflow: hidden;
     cursor: pointer;
@@ -2940,8 +2958,13 @@ a:focus .icon-effect.--back,
     top: 0.125rem;
     right: calc(@spacing-x - 1rem);
     z-index: 44444;
-    mix-blend-mode: difference;
     cursor: pointer;
+    color: @color-0;
+
+    &:hover, &:focus {
+        transform: scale(1);
+        text-decoration: none!important;
+    }
 
     @media (min-width: @mq-nav) {
         top: 1.1875rem;
@@ -2994,9 +3017,8 @@ a:focus .icon-effect.--back,
 
 .modal-nav-button {
     padding: 1rem;
-    background: rgba(0, 0, 0, 0.5);
     border-radius: 50%;
-    color: @color-1;
+    color: @color-0;
     font-size: 1.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -3005,15 +3027,14 @@ a:focus .icon-effect.--back,
     align-items: center;
     justify-content: center;
     
-    &:hover {
-        background: rgba(0, 0, 0, 0.8);
-        transform: scale(1.1);
+    &:hover,&:focus {
+        transform: scale(1);
+        text-decoration: none!important;
     }
 }
 
 .modal-nav-counter {
-    background: rgba(0, 0, 0, 0.5);
-    color: @color-1;
+    color: @color-0;
     font-size: 12px;
     padding: 0.5rem 0.75rem;
     display: flex;
