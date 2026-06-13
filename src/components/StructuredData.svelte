@@ -7,8 +7,8 @@
     export let author = 'F925';
     export let organization = {
         name: 'F925',
-        url: 'https://f925.ai',
-        logo: 'https://f925.ai/logo.svg'
+        url: 'https://f925.works',
+        logo: 'https://f925.works/logo.svg'
     };
 
     // Generate structured data based on type

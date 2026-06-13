@@ -9,7 +9,7 @@
         headContent.set({
             title: 'Page Not Found • F925',
             description: 'The page you are looking for could not be found. Please check the URL or return to the home page.',
-            canonical: 'https://f925.ai/404',
+            canonical: 'https://f925.works/404',
             ogImage: '/og-1200x630.png',
             ogType: 'website',
             links: [],

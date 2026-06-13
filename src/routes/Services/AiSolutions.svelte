@@ -5,6 +5,12 @@
     import ServiceDetailLvl2Nav from '../../components/ServiceDetailLvl2Nav.svelte'
     import Icon from '../../components/Icon.svelte'
 
+    import illoSupportChatbots from '../../assets/images/illustrations/support-chatbots.svg'
+    import illoLeadGeneration from '../../assets/images/illustrations/lead-generation.svg'
+    import illoRagAgents from '../../assets/images/illustrations/rag-agents.svg'
+    import illoAgenticWorkflows from '../../assets/images/illustrations/agentic-workflows.svg'
+    import illoBespokeAi from '../../assets/images/illustrations/bespoke-ai.svg'
+
     let activeTab = 'services-lvl2--support-chatbots'
 
     function setActiveTab(tabId) {
@@ -48,26 +54,36 @@
             title: 'Support Chatbots',
             description:
                 "We design intelligent, responsive chatbots that handle customer inquiries, give instant answers, and keep service consistent around the clock — like Gary, our own AI interface. By automating the repetitive conversations, we free your team to focus on the complex ones.",
+            imageSrc: illoSupportChatbots,
+            type: 'illustration',
         },
         {
             title: 'Lead generation',
             description:
                 "Our chat agents don't just answer questions — they qualify leads. They learn what a visitor needs, make the case for your business, and capture the details your team needs to follow up, turning your website into an always-on sales conversation.",
+            imageSrc: illoLeadGeneration,
+            type: 'illustration',
         },
         {
             title: 'RAG agents',
             description:
                 "We build private, secure agents that learn from your manuals, documents, and data using retrieval-augmented generation. They give accurate, source-referenced answers grounded in your business — no hallucinated slop.",
+            imageSrc: illoRagAgents,
+            type: 'illustration',
         },
         {
             title: 'Agentic workflows',
             description:
                 "Agents that do things, not just chat. Diagnose, recommend, act — full multi-step workflows that read your systems, make decisions, and execute tasks across email, CRM, and forms.",
+            imageSrc: illoAgenticWorkflows,
+            type: 'illustration',
         },
         {
             title: 'Bespoke AI',
             description:
                 "Custom AI built around a specific problem in your business. From specialized assistants to tailored models and integrations, we design and ship AI that delivers real, measurable value — not a demo.",
+            imageSrc: illoBespokeAi,
+            type: 'illustration',
         },
     ]
     let formMessage = ''

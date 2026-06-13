@@ -5,6 +5,11 @@
     import ServiceDetailLvl2Nav from '../../components/ServiceDetailLvl2Nav.svelte'
     import Icon from '../../components/Icon.svelte'
 
+    import illoProcessAutomation from '../../assets/images/illustrations/process-automation.svg'
+    import illoIntegrations from '../../assets/images/illustrations/integrations.svg'
+    import illoDataPipelines from '../../assets/images/illustrations/data-pipelines.svg'
+    import illoDashboards from '../../assets/images/illustrations/dashboards.svg'
+
     let activeTab = 'services-lvl2--process-automation'
 
     function setActiveTab(tabId) {
@@ -48,21 +53,29 @@
             title: 'Process automation',
             description:
                 "Processes without automation are just work. We map the repetitive tasks your team does by hand — data entry, scheduling, reporting — and hand them to a computer that does them faster, cheaper, and without mistakes.",
+            imageSrc: illoProcessAutomation,
+            type: 'illustration',
         },
         {
             title: 'Integrations',
             description:
                 "We connect the tools you already use — CRM, ERP, POS, Google Workspace — so data flows between them automatically instead of being copied by hand. One connected system, not ten disconnected ones.",
+            imageSrc: illoIntegrations,
+            type: 'illustration',
         },
         {
             title: 'Data pipelines',
             description:
                 "We build pipelines that ingest, clean, and move your data where it needs to be, on schedule. Reliable, observable, and ready to feed dashboards, AI agents, or whatever comes next.",
+            imageSrc: illoDataPipelines,
+            type: 'illustration',
         },
         {
             title: 'Dashboards',
             description:
                 "Custom dashboards and internal tools that turn raw data into decisions — real-time, tailored to how your business actually works, and accessible to the people who need them.",
+            imageSrc: illoDashboards,
+            type: 'illustration',
         },
     ]
     function goBack() {

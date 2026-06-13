@@ -136,7 +136,7 @@
             </form>
             <div class="contact__bottom gutter-x mt-lg">
                 <div class="">
-                    <a class="link--on-hover" href="mailto:f925.limited@gmail.com">f925.limited@gmail.com</a>
+                    <a class="link--on-hover" href="mailto:hello@f925.works">hello@f925.works</a>
                 </div>
                 <div>
                     <div>

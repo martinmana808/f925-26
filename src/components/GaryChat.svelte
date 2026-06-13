@@ -66,7 +66,7 @@
                     id: makeId(),
                     role: 'assistant',
                     content:
-                        "I'm having trouble connecting to my neural core right now. Try again in a moment, or reach the team at f925.limited@gmail.com.",
+                        "I'm having trouble connecting to my neural core right now. Try again in a moment, or reach the team at hello@f925.works.",
                 },
             ];
         } finally {

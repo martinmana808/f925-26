@@ -1,0 +1,17 @@
+<svg width="480" height="320" viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M454 2H26C12.7452 2 2 12.7452 2 26V294C2 307.255 12.7452 318 26 318H454C467.255 318 478 307.255 478 294V26C478 12.7452 467.255 2 454 2Z" fill="white"/>
+<path d="M150 118C152.122 94.1305 163.639 72.0815 182.017 56.7035C200.396 41.3256 224.131 33.8783 248 36C271.869 38.1217 293.918 49.6387 309.296 68.0172C324.674 86.3958 332.122 110.131 330 134" stroke="#191C1F" stroke-width="3" stroke-linecap="round"/>
+<path d="M334 108L330 134L356 138" stroke="#191C1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M330 202C327.878 225.869 316.361 247.918 297.983 263.296C279.604 278.674 255.87 286.122 232 284C208.131 281.878 186.082 270.361 170.704 251.983C155.326 233.604 147.878 209.869 150 186" stroke="#191C1F" stroke-width="3" stroke-linecap="round"/>
+<path d="M146 212L150 186L124 182" stroke="#191C1F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M240 202C263.196 202 282 183.196 282 160C282 136.804 263.196 118 240 118C216.804 118 198 136.804 198 160C198 183.196 216.804 202 240 202Z" stroke="#16B585" stroke-width="3" stroke-linecap="round"/>
+<path d="M240 176C248.837 176 256 168.837 256 160C256 151.163 248.837 144 240 144C231.163 144 224 151.163 224 160C224 168.837 231.163 176 240 176Z" stroke="#16B585" stroke-width="3" stroke-linecap="round"/>
+<path d="M240 118V104" stroke="#16B585" stroke-width="3" stroke-linecap="round"/>
+<path d="M240 202V216" stroke="#16B585" stroke-width="3" stroke-linecap="round"/>
+<path d="M198 160H184" stroke="#16B585" stroke-width="3" stroke-linecap="round"/>
+<path d="M282 160H296" stroke="#16B585" stroke-width="3" stroke-linecap="round"/>
+<path d="M210 130L200 120" stroke="#16B585" stroke-width="3" stroke-linecap="round"/>
+<path d="M270 190L280 200" stroke="#16B585" stroke-width="3" stroke-linecap="round"/>
+<path d="M270 130L280 120" stroke="#16B585" stroke-width="3" stroke-linecap="round"/>
+<path d="M210 190L200 200" stroke="#16B585" stroke-width="3" stroke-linecap="round"/>
+</svg>

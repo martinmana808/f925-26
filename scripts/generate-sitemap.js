@@ -60,7 +60,7 @@ const routes = [
 ];
 
 // Base URL - replace with your actual domain
-const baseUrl = 'https://f925.ai';
+const baseUrl = 'https://f925.works';
 
 // Generate sitemap XML
 function generateSitemap() {

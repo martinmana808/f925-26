@@ -4,4 +4,4 @@ Disallow: /login/
 Allow: /
 
 # Sitemap
-Sitemap: https://f925.ai/sitemap.xml
+Sitemap: https://f925.works/sitemap.xml

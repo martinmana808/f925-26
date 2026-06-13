@@ -87,9 +87,9 @@
             </div>
             {#if serviceDetail.imageSrc}
                 <img
-                    class={`services-lvl2__image ${serviceDetail.type === 'mockup' ? 'services-lvl2__image--web' : ''}`}
+                    class={`services-lvl2__image ${serviceDetail.type === 'mockup' ? 'services-lvl2__image--web' : ''} ${serviceDetail.type === 'illustration' ? 'services-lvl2__image--illustration' : ''}`}
                     src={serviceDetail.imageSrc}
-                    alt={serviceDetail.altTitle} />
+                    alt={serviceDetail.altTitle || serviceDetail.title} />
             {/if}
         </div>
     {/each}

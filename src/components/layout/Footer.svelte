@@ -101,13 +101,13 @@ onMount(() => {
                 </div>
                 <div class="text--small l-flex">
                     <div>
-                        <a class="link--on-hover" href="mailto:f925.limited@gmail.com">
-                            f925.limited@gmail.com
+                        <a class="link--on-hover" href="mailto:hello@f925.works">
+                            hello@f925.works
                         </a>
                     </div>
                     <div>
-                        <a href="tel:+640272182988" class="link--on-hover l-ml-2">
-                            +640272182988
+                        <a href="tel:+64272182988" class="link--on-hover l-ml-2">
+                            +64272182988
                         </a>
                     </div>
                     <div>

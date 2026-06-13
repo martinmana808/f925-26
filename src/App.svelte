@@ -31,20 +31,22 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={$headContent.ogType} />
-    <meta property="og:url" content={$headContent.canonical || 'https://f925.ai'} />
+    <meta property="og:url" content={$headContent.canonical || 'https://f925.works'} />
     <meta property="og:title" content={$headContent.title} />
     <meta property="og:description" content={$headContent.description} />
     <meta property="og:image" content={$headContent.ogImage} />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={$headContent.canonical || 'https://f925.ai'} />
+    <meta property="twitter:url" content={$headContent.canonical || 'https://f925.works'} />
     <meta property="twitter:title" content={$headContent.title} />
     <meta property="twitter:description" content={$headContent.description} />
     <meta property="twitter:image" content={$headContent.ogImage} />
 
-    <link rel="icon" href="/favicon.png" sizes="any" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#f4f5f9" />
@@ -57,7 +59,7 @@
         type="website"
         title={$headContent.title}
         description={$headContent.description}
-        url={$headContent.canonical || 'https://f925.ai'}
+        url={$headContent.canonical || 'https://f925.works'}
         image={$headContent.ogImage}
     />
     
