@@ -117,8 +117,6 @@
         as="font"
         type="font/woff2"
         crossorigin="anonymous" /> -->
-
-    <meta name="facebook-domain-verification" content="dzqgajv7puz5o00inzfq23a9rvznq2" />
 </svelte:head>
 
 <GradientBackground />
