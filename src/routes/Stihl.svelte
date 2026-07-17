@@ -61,7 +61,7 @@
         <div class="col-l">
             <div class="flex flex-column items-start h-100">
                 <h1 class="text--section">Effortless socials</h1>
-                <h2 class="text--subheadingSm">STIHL tells you what to post. We post if for you. Easy.</h2>
+                <h2 class="text--subheadingSm">STIHL tells you what to post. We post it for you. Easy.</h2>
                 <p class="">
                     Every STIHL brand-kit post, published to your Facebook and Instagram for you — on
                     STIHL's schedule, exactly as designed. It's marketing you already pay for; we make sure it
