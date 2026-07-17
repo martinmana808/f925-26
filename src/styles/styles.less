@@ -3198,9 +3198,358 @@ a:focus .icon-effect.--back,
         filter: brightness(80%);
         
         @media(min-width: @mq-l){
-            height: calc(100% + @header-height); 
+            height: calc(100% + @header-height);
             top: calc(@header-height * -1);
         }
     }
+}
+
+
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+// STIHL landing template
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+//::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+// Scroll-pinned before/after shop slider. The spacer below the sticky stage is
+// the distance it stays pinned while scroll drives the reveal — it must be a
+// real element (sticky travel is bounded by the parent's CONTENT box; padding
+// on the wrapper adds no travel and silently disables the pin).
+.stihl-shopslider-pin {
+    margin-bottom: @spacing-block;
+}
+
+.stihl-shopslider-pin__space {
+    height: 90vh;
+
+    @media (min-width: @mq-nav) {
+        height: 130vh;
+    }
+
+    .stihl-shopslider-pin.--static & {
+        height: 0;
+    }
+}
+
+.stihl-shopslider {
+    position: sticky;
+    top: 0;
+}
+
+.stihl-shopslider__stage {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    aspect-ratio: 4 / 3;
+
+    picture,
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+// Each layer carries its own image, legibility scrim, and title, so the reveal
+// clip-path wipes all three together — the title swaps under the divider.
+.stihl-shopslider__layer {
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 55%, fade(#000, 45%));
+        pointer-events: none;
+    }
+}
+
+.stihl-shopslider__layer--reveal {
+    position: absolute;
+    inset: 0;
+    // Above the base layer's title (which carries its own z-index), so the wipe
+    // genuinely covers the old title as it crosses.
+    z-index: 1;
+}
+
+// Caption below the image, still driven by the same wipe: the two texts wear
+// complementary clip-paths, so the old line hides exactly where the new one
+// shows and the divider effectively continues through the words.
+.stihl-shopslider__caption {
+    position: relative;
+    margin-top: clamp(0.875rem, 1.25vw, 1.25rem);
+    min-height: 1.4em;
+}
+
+.stihl-shopslider__caption-text {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    font-weight: 600;
+
+    &.--before {
+        color: @color-gray;
+    }
+
+    &.--after {
+        position: absolute;
+        inset: 0;
+        color: @color-1;
+    }
+
+    .stihl-shopslider-pin.--static & {
+        position: static;
+        clip-path: none;
+    }
+}
+
+.stihl-shopslider__hint {
+    position: absolute;
+    right: clamp(1.25rem, 2.5vw, 2.25rem);
+    bottom: clamp(1rem, 2.25vw, 2rem);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: @color-0;
+    color: @color-1;
+    box-shadow: 0 2px 12px fade(#000, 30%);
+    animation: translateY 1.5s @default-easing infinite;
+    transition: opacity @default-duration @default-easing;
+
+    &.--hidden {
+        opacity: 0;
+    }
+}
+
+.stihl-shopslider__divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 2px;
+    background: fade(@color-0, 85%);
+    transform: translateX(-50%);
+}
+
+.stihl-shopslider__handle {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+    background: @color-0;
+    box-shadow: 0 2px 12px fade(#000, 30%);
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border-block: 5px solid transparent;
+    }
+
+    &:before {
+        left: 8px;
+        transform: translateY(-50%);
+        border-right: 6px solid @color-1;
+    }
+
+    &:after {
+        right: 8px;
+        transform: translateY(-50%);
+        border-left: 6px solid @color-1;
+    }
+}
+
+.stihl-hero__sub {
+    font-size: clamp(1.125rem, 1.35vw, 1.35rem);
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+}
+
+.stihl-hero__note {
+    margin-top: @spacing-xsm;
+    color: @color-gray;
+}
+
+.stihl-section {
+    & + & {
+        margin-top: @spacing-block;
+    }
+}
+
+.stihl-steps {
+    display: grid;
+    row-gap: @spacing-sm;
+    max-width: @text-mw;
+    counter-reset: stihl-step;
+
+    li {
+        counter-increment: stihl-step;
+        position: relative;
+        padding-left: 3.75rem;
+
+        &:before {
+            content: counter(stihl-step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: @color-2;
+            color: @color-0;
+            font-weight: 700;
+        }
+    }
+
+    h3 {
+        font-weight: 600;
+        margin-bottom: 0.35em;
+    }
+}
+
+.stihl-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: @gutter;
+
+    @media (min-width: @mq-nav) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 80em ){
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.stihl-stat {
+    background-color: @color-0;
+    border-radius: 20px;
+    padding: clamp(1.25rem, 1.75vw, 1.75rem);
+}
+
+.stihl-stat__value {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(2.25rem, 3.25vw, 3.25rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+    color: @color-1;
+    margin-bottom: 0.5rem;
+}
+
+.stihl-stat__label {
+    font-size: @text-small-size;
+    line-height: 1.4;
+    color: @color-gray;
+}
+
+.stihl-stats__source {
+    margin-top: @spacing-xsm;
+    color: @color-gray;
+    font-size: 12px;
+}
+
+.stihl-compare {
+    display: grid;
+    gap: @gutter;
+    max-width: @heading-mw;
+
+    @media (min-width: @mq-m) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.stihl-compare__card {
+    background-color: @color-0;
+    border-radius: 20px;
+    padding: clamp(1.5rem, 2.5vw, 2.5rem);
+
+    h3 {
+        font-weight: 600;
+        margin-bottom: 0.75em;
+    }
+
+    li {
+        position: relative;
+        padding-left: 1.5rem;
+        font-size: @text-small-size;
+        line-height: @text-small-height;
+
+        & + li {
+            margin-top: 0.5em;
+        }
+    }
+
+    &.--get li:before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: @color-2;
+        font-weight: 700;
+    }
+}
+
+.stihl-price {
+    max-width: @text-mw;
+    background-color: @color-0;
+    border-radius: 20px;
+    padding: clamp(2rem, 3.5vw, 3.5rem);
+}
+
+.stihl-price__amount {
+    font-size: clamp(3.25rem, 5.5vw, 5.5rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    font-weight: 700;
+    color: @color-1;
+    margin-bottom: @spacing-xsm;
+
+    span {
+        font-size: @text-body-size;
+        font-weight: 500;
+        letter-spacing: normal;
+        color: @color-gray;
+    }
+}
+
+.stihl-price__fine {
+    margin-top: @spacing-xsm;
+    color: @color-gray;
+}
+
+// Secondary/disclaimer information — deliberately lower hierarchy than sections
+.stihl-note {
+    max-width: @text-mw;
+    padding: clamp(1.25rem, 1.75vw, 1.75rem);
+    border-radius: 16px;
+    background-color: fade(@color-1, 6%);
+    line-height: 1.55;
+
+    strong {
+        font-weight: 600;
+    }
+}
+
+.stihl-footer {
+    margin-top: @spacing-block;
+    padding-top: @spacing-sm;
+    border-top: 1px solid @color-01;
+    color: @color-gray;
 }
 

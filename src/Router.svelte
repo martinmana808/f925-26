@@ -9,6 +9,7 @@
     import Work from './routes/Work.svelte'
     import Contact from './routes/Contact.svelte'
     import Contact2 from './routes/Contact2.svelte'
+    import Stihl from './routes/Stihl.svelte'
     import FourOhFour from './routes/404.svelte'
     import { headContent, seoConfig } from './stores/headContent.js'
     import { onMount } from 'svelte'
@@ -26,7 +27,8 @@
         '/services/automation': AppDevelopment,
         '/portfolio': Work,
         '/contact': Contact,
-        '/contact2': Contact2
+        '/contact2': Contact2,
+        '/stihl-brand-kit-posting': Stihl
     }
 
     // If the route exists, use it; otherwise, go to 404 page

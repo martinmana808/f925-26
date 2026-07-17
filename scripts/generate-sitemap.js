@@ -56,6 +56,12 @@ const routes = [
         lastmod: new Date().toISOString(),
         changefreq: 'monthly',
         priority: '0.7'
+    },
+    {
+        url: '/stihl-brand-kit-posting',
+        lastmod: new Date().toISOString(),
+        changefreq: 'monthly',
+        priority: '0.8'
     }
 ];
 

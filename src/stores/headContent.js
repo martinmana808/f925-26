@@ -58,6 +58,11 @@ export const seoConfig = {
         description: 'Send F925 a message. We\'ll get back to you as soon as possible to discuss your project.',
         canonical: 'https://f925.works/contact2'
     },
+    '/stihl-brand-kit-posting': {
+        title: 'STIHL brand-kit posting for dealers — F925',
+        description: 'STIHL tells you exactly what to post each month. F925 makes sure it actually happens — published to your Facebook and Instagram for you. $50/month, nothing to do.',
+        canonical: 'https://f925.works/stihl-brand-kit-posting'
+    },
     '/404': {
         title: 'Page Not Found • F925',
         description: 'The page you are looking for could not be found. Please check the URL or return to the home page.',
