@@ -51,7 +51,8 @@
 
     $: pct = progress * 100
     $: dividerOpacity = Math.min(1, progress * 25)
-    $: hintHidden = progress > 0.25
+    // keep the hint bouncing until the slider ride is fully done
+    $: hintHidden = progress >= 1
 
     function mime(format) {
         return `image/${format === 'jpg' ? 'jpeg' : format}`
@@ -95,23 +96,25 @@
                 <span class="stihl-shopslider__handle"></span>
             </div>
             <div class="stihl-shopslider__hint" class:--hidden={hintHidden || reduceMotion} aria-hidden="true">
+                <span>Scroll down here</span>
                 <Icon name="arrowDown" extraClass="" />
             </div>
         </div>
+        <!-- STIHL tells you what to post. We post it for you. Easy. -->
         <figcaption class="stihl-shopslider__caption">
             {#if reduceMotion}
                 <span class="stihl-shopslider__caption-text --after">
-                    You trusting us to handle your socials for you
+                    You trusting us to handle your socials for you.
                 </span>
             {:else}
                 <span class="stihl-shopslider__caption-text --before" style="clip-path: inset(0 0 0 {pct}%);">
-                    You trying to keep up with your socials yourself
+                    You trying to keep up with your socials yourself.
                 </span>
                 <span
                     class="stihl-shopslider__caption-text --after"
                     style="clip-path: inset(0 {100 - pct}% 0 0);"
                     aria-hidden="true">
-                    You trusting us to handle your socials for you
+                    You trusting us to handle your socials for you.
                 </span>
             {/if}
         </figcaption>

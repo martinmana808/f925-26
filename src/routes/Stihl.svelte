@@ -6,6 +6,11 @@
 
     onMount(() => {
         document.body.classList.add('template--services-detail')
+        // On a hot-reload swap the OLD instance's onDestroy fires after this
+        // mount and strips the class; re-assert it on the next tick so dev
+        // edits never unlock the template layout.
+        const t = setTimeout(() => document.body.classList.add('template--services-detail'), 0)
+        return () => clearTimeout(t)
     })
     onDestroy(() => {
         document.body.classList.remove('template--services-detail')
@@ -15,6 +20,18 @@
 
     let businessName = ''
     let formMessage = ''
+
+    // Privacy / Terms open in an in-page modal (iframed) so visitors never
+    // leave the page. null | 'privacy' | 'terms'
+    let legalModal = null
+    const legalUrls = {
+        privacy: 'https://stihl-social-posting.netlify.app/privacy',
+        terms: 'https://stihl-social-posting.netlify.app/terms',
+    }
+
+    function onKeydown(event) {
+        if (event.key === 'Escape') legalModal = null
+    }
 
     function handleSubmit(event) {
         event.preventDefault()
@@ -54,25 +71,26 @@
 
 <Layout>
     <a class="service-detail__contact-button" href="#stihl-form">
-        <span>Get set up — $50/month</span>
+        <span>Get set up — $89/month</span>
         <Icon name="arrowDown" extraClass="" />
     </a>
     <div class="grid gutter-x h-100 relative">
         <div class="col-l">
             <div class="flex flex-column items-start h-100">
-                <h1 class="text--section">Effortless socials</h1>
-                <h2 class="text--subheadingSm">STIHL tells you what to post. We post it for you. Easy.</h2>
-                <p class="">
-                    Every STIHL brand-kit post, published to your Facebook and Instagram for you — on
-                    STIHL's schedule, exactly as designed. It's marketing you already pay for; we make sure it
-                    actually goes out. Nothing for you to do.
+                <h1 class="text--section">Brandkit posting</h1>
+                <!-- <h2 class="text--subheadingSm"></h2> -->
+                <p>
+                    If you don't post the designed, scheduled marketing STIHL hands you every month, you're
+                    wasting money, wasting reach, wasting potential. We make sure none of it goes to waste:
+                    every brand-kit post, published to your Facebook and Instagram for you, exactly as
+                    designed. Nothing for you to do.
                 </p>
                 <div class="buttons">
                     <a href="#stihl-form" class="button --1">
                         <span>Get set up</span>
                     </a>
                 </div>
-                <div class="text--small stihl-hero__note">$50/month. No setup fee.</div>
+                <div class="text--small stihl-hero__note">$89/month. No setup fee.</div>
             </div>
         </div>
 
@@ -81,8 +99,18 @@
 
             <StihlShopSlider />
 
+            <!-- <section class="stihl-section">
+                <div class="wysiwyg">
+                    <p>
+                        Every STIHL brand-kit post, published to your Facebook and Instagram for you — on
+                        STIHL's schedule, exactly as designed. It's marketing you already pay for; we make
+                        sure it actually goes out. Nothing for you to do.
+                    </p>
+                </div>
+            </section> -->
+
             <section class="stihl-section">
-                <h2 class="text--block">An outdated, inconsistent feed destroys trust in your shop</h2>
+                <h2 class="text--subheadingSm">An outdated, inconsistent feed destroys trust in your shop</h2>
                 <p>
                     Before anyone walks through your door, they've already looked you up. A feed that's
                     months old reads as unprofessional at best — closed at worst.
@@ -162,25 +190,32 @@
             </section>
 
             <section class="stihl-section">
-                <h2 class="text--subheadingSm">What you get — and what it's not</h2>
+                <h2 class="text--subheadingSm">What you get</h2>
                 <div class="stihl-compare">
                     <div class="stihl-compare__card --get">
-                        <h3>You get</h3>
                         <ul class="list-reset">
                             <li>Posts on STIHL's dates, identical to the official brand kit</li>
+                        </ul>
+                    </div>
+                    <div class="stihl-compare__card --get">
+                        <ul class="list-reset">
                             <li>Facebook and Instagram, both covered</li>
+                        </ul>
+                    </div>
+                    <div class="stihl-compare__card --get">
+                        <ul class="list-reset">
                             <li>A feed that's never empty or out of date</li>
+                        </ul>
+                    </div>
+                    <div class="stihl-compare__card --get">
+                        <ul class="list-reset">
                             <li>Zero effort, nothing to manage</li>
                         </ul>
                     </div>
-                    <div class="stihl-compare__card">
-                        <h3>What it's not</h3>
-                        <p class="text--small">
-                            This isn't a marketing agency and it isn't custom content. It publishes STIHL's
-                            official calendar exactly as STIHL designed it — that consistency is the whole
-                            idea.
-                        </p>
-                    </div>
+                    <div class="spacer-2"></div>
+                        <div class="stihl-note2 text--small">
+<strong>Consistency is the exactly what we want</strong>, so we publish STIHL's official calendar exactly as STIHL designed it, that way stay 100% in sync and consistent with the brand. This brandkit is a marketing tool you already have, but you don't use.
+                        </div>
                 </div>
             </section>
 
@@ -188,23 +223,31 @@
                 <h2 class="text--subheadingSm">Price</h2>
                 <div class="stihl-price">
                     <div class="stihl-price__amount">
-                        $50
-                        <span>/ month per location</span>
+                        $89
+                        <span>/ month per store</span>
                     </div>
                     <div class="text--subheadingSm mb-0">No setup fee.</div>
-                    <div class="text--small stihl-price__fine">
+
+                    <div class="text--small ">
+                    🥳 That's $3 bucks a day!
+                    </div>
+                    <div class="text--xsmall stihl-price__fine">
                         Minimum term 3 months; after that, month-to-month — cancel anytime.
                     </div>
                 </div>
-            </section>
-
-            <section class="stihl-section">
-                <aside class="stihl-note text--small">
-                    <strong>One thing to check:</strong> to publish to Instagram you'll need an Instagram
-                    Business or Creator account linked to your Facebook Page. A personal Instagram can't be
-                    posted to — if you're not set up, we'll help you switch over.
+                <div class="spacer-2"></div>
+                
+                <aside class="stihl-note2 text--small">
+                    <strong>And it compounds.</strong> Every post stays on your feed, so month after month your shop looks
+                    more established, more active, more trustworthy — while the price stays the same.
+                    The longer it runs, the more every dollar buys.
+                    
                 </aside>
+               
             </section>
+            
+
+           
 
             <section class="stihl-section" id="stihl-form">
                 {#if formMessage.includes('Error') || formMessage.length === 0}
@@ -212,7 +255,11 @@
                     <p>Tell us your details and we'll get you posting.</p>
                     <div class="spacer-2"></div>
                 {/if}
-                <form class="stihl-form form" action="https://usebasin.com/f/ffd6ed74ada9" on:submit={handleSubmit}>
+                <form
+                    class="stihl-form form"
+                    action="https://usebasin.com/f/ffd6ed74ada9"
+                    method="POST"
+                    on:submit={handleSubmit}>
                     {#if formMessage.includes('Error') || formMessage.length === 0}
                         <input type="hidden" name="Location" value={currentPath} />
                         <input
@@ -305,25 +352,54 @@
                         <p>We'll be in touch to get you set up.</p>
                     {/if}
                 </form>
-            </section>
-
-            <div class="mt-4 stihl-hero__note text--small">
+                <div class="mt-4 stihl-hero__note text--small">
                 <a
                     class="link"
-                    href="https://stihl-social-posting.netlify.app/privacy"
-                    target="_blank"
-                    rel="noopener">
+                    href={legalUrls.privacy}
+                    on:click|preventDefault={() => (legalModal = 'privacy')}>
                     Privacy
                 </a>
                 ·
                 <a
                     class="link"
-                    href="https://stihl-social-posting.netlify.app/terms"
-                    target="_blank"
-                    rel="noopener">
+                    href={legalUrls.terms}
+                    on:click|preventDefault={() => (legalModal = 'terms')}>
                     Terms
                 </a>
             </div>
+            </section>
+
+             
+
+            
         </div>
     </div>
+
+    {#if legalModal}
+        <div
+            class="stihl-legal-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={legalModal === 'privacy' ? 'Privacy policy' : 'Terms of service'}>
+            <button
+                class="stihl-legal-modal__backdrop"
+                type="button"
+                aria-label="Close"
+                on:click={() => (legalModal = null)}></button>
+            <div class="stihl-legal-modal__panel">
+                <button
+                    class="stihl-legal-modal__close"
+                    type="button"
+                    on:click={() => (legalModal = null)}>
+                    <span aria-hidden="true">×</span>
+                    <span class="visuallyhidden">Close</span>
+                </button>
+                <iframe
+                    src={legalUrls[legalModal]}
+                    title={legalModal === 'privacy' ? 'Privacy policy' : 'Terms of service'} />
+            </div>
+        </div>
+    {/if}
 </Layout>
+
+<svelte:window on:keydown={onKeydown} />

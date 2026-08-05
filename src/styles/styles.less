@@ -660,6 +660,18 @@ input:-webkit-autofill:focus {
         }
     }
 }
+.text--xsmall {
+    font-size: 12px;
+    line-height: calc(@text-small-height * .75);
+
+    &:not([class*='mw']) {
+        max-width: 30rem;
+
+        @media (min-width: @mq-nav) {
+            max-width: @text-mw;
+        }
+    }
+}
 
 .text--eyebrow {
     font-size: @text-eyebrow-size;
@@ -1328,7 +1340,7 @@ input:-webkit-autofill:focus {
     display: flex!important;
     align-items: center;
 }
-
+ 
 .header__logo {
     display: block;
     top: 0px;
@@ -1340,14 +1352,17 @@ input:-webkit-autofill:focus {
         width: 89px;
     }
 }
-
+  
 .header__logo-link {
     position: relative;
     display: inline-flex;
     align-items: center;
+    background-color: @color-3;
+    padding: 4px;
+    border-radius: 4px;
     svg{
-
-        mix-blend-mode: multiply;
+        z-index: 2;
+        // mix-blend-mode: multiply;
     }
 }
 
@@ -1459,6 +1474,7 @@ input:-webkit-autofill:focus {
         transform: none;
         background-color: transparent;
         padding: 0;
+        background-color: @color-3;
 
         ul {
             display: flex;
@@ -1468,6 +1484,7 @@ input:-webkit-autofill:focus {
         }
 
         li {
+            background-color: @color-3;
             &:not(&:has(.gary-nav-trigger)) {
                 padding: .5rem 1.5rem;
             }
@@ -1479,7 +1496,7 @@ input:-webkit-autofill:focus {
                 border-bottom-left-radius: 10px;
             }
 
-            &:nth-last-child(4) {
+            &:nth-last-child(3) {
                 border-top-right-radius: 10px;
                 border-bottom-right-radius: 10px;
             }
@@ -1674,10 +1691,9 @@ input:-webkit-autofill:focus {
             bottom: 24px;
             right: calc(@spacing-x / -2);
             left: calc(@spacing-x / -2);
-            background-color: (@color-3)8a;
+            background-color: @color-3;
             z-index: -1;
             border-radius: 100px;
-            backdrop-filter: blur(11px);
         }
     }
 
@@ -1767,6 +1783,68 @@ input:-webkit-autofill:focus {
         padding-bottom: 0;
     }
 
+    // The viewport is locked on this template and the footer is fixed at the
+    // bottom, so the left column gets a hard height that stops above the
+    // footer's band (footer is @header-height tall, anchored at bottom: 0).
+    // overflow-y is the safety valve for short viewports. The negative
+    // margin/padding pair widens the scrollport into the empty spacer track
+    // between the columns: display headings intentionally spill past the
+    // column edge, and a scrollport cut at the track edge would clip them.
+    .template--services-detail & .col-l {
+        @media (min-width: @mq-nav) {
+            // Same scrollport geometry as .col-r below (keep the two in sync):
+            // the paint area is pulled up under the header and extends past
+            // the viewport bottom, resting gaps live as interior padding, so
+            // overflowing content is visible at both ends — exiting under the
+            // header when scrolled, running behind the fixed footer at rest.
+            height: calc(100vh + 22px);
+            max-height: none;
+            overflow-y: auto;
+            overflow-x: hidden;
+            margin-top: calc((@spacing-top + @header-height-sm) * -1);
+            padding-top: calc(@spacing-top + @header-height-sm);
+            padding-bottom: calc(@spacing-top * 1.5);
+            margin-right: calc(-25% - (@gutter * 2));
+            padding-right: calc(25% + (@gutter * 2));
+            // The left edge extends into the page margin so the (rtl) left
+            // scrollbar sits out there, clear of the content's left grid line.
+            margin-left: calc(@spacing-x / -3);
+            padding-left: calc(@spacing-x / 3);
+            // rtl puts the scrollbar on the LEFT edge — the right edge of this
+            // scrollport is widened under the right column, which was hiding
+            // it. The direct child flips back to ltr so content is unaffected.
+            direction: rtl;
+            // Scrollbar theme (Firefox + WebKit): slim, translucent-ink thumb.
+            scrollbar-width: thin;
+            scrollbar-color: fade(@color-1, 25%) transparent;
+
+            &::-webkit-scrollbar {
+                width: 4px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: fade(@color-1, 25%);
+                border: 0;
+                border-radius: 4px;
+                background-clip: border-box;
+            }
+
+            > * {
+                direction: ltr;
+                // the wrapper uses the h-100 utility; a fixed 100% height
+                // makes its content spill past the box and past the scroll
+                // container's bottom padding — let it grow instead, so the
+                // padding always lands after the last element
+                height: auto;
+                min-height: 100%;
+            }
+        }
+    }
+
     .template--services-detail & .col-r {
         @media (min-width: @mq-nav) {
             // The scroll viewport is pulled UP into site-main's top padding (margin-top
@@ -1776,9 +1854,9 @@ input:-webkit-autofill:focus {
             // re-created as inner padding-top — and because it's inner padding, it
             // scrolls away with the content (overflow-visible feel). Net height stays
             // exactly 100vh − @header-height, so there's still no outer scrollbar.
-            height: calc(100vh - @header-height);
-            margin-top: calc(@spacing-top * -1);
-            padding-top: @spacing-top;
+            height: calc(100vh + 22px);
+            margin-top: calc((@spacing-top + @header-height-sm) * -1);
+            padding-top: calc(@spacing-top + @header-height-sm);
             overflow-y: scroll;
             margin-left: -100px;
             margin-right: calc(@spacing-x * -1);
@@ -3240,7 +3318,19 @@ a:focus .icon-effect.--back,
     position: relative;
     overflow: hidden;
     border-radius: 20px;
+    // Width always fills the column; the max-height keeps stage + caption
+    // inside the viewport while pinned (mobile pins at the viewport top and
+    // has the fixed bottom CTA bar; desktop pins below the header and clears
+    // the fixed footer band). With the width pinned to 100%, a bitten
+    // max-height cover-crops the images to a wider box instead of shrinking.
+    width: 100%;
     aspect-ratio: 4 / 3;
+    max-height: calc(100vh - 9rem);
+
+    @media (min-width: @mq-nav) {
+        // header + resting offset above, fixed footer band + caption below
+        max-height: calc(100vh - (@header-height * 2) - @spacing-top - 5rem);
+    }
 
     picture,
     img {
@@ -3248,6 +3338,7 @@ a:focus .icon-effect.--back,
         width: 100%;
         height: 100%;
         object-fit: cover;
+        background-color: rgba(0, 0, 0, 0.158);
     }
 }
 
@@ -3313,15 +3404,22 @@ a:focus .icon-effect.--back,
     z-index: 3;
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
+    gap: 0.375rem;
+    padding: 0.625rem 0.75rem 0.625rem 1.125rem;
+    border-radius: 100px;
     background: @color-0;
     color: @color-1;
+    font-size: @text-small-size;
+    font-weight: 600;
+    white-space: nowrap;
     box-shadow: 0 2px 12px fade(#000, 30%);
     animation: translateY 1.5s @default-easing infinite;
     transition: opacity @default-duration @default-easing;
+
+    .icon {
+        width: 24px;
+        height: 24px;
+    }
 
     &.--hidden {
         opacity: 0;
@@ -3439,6 +3537,12 @@ a:focus .icon-effect.--back,
 
 .stihl-stat {
     background-color: @color-0;
+    // background-color: fade(@color-1, 6%);
+    border-radius: 20px;
+    padding: clamp(1.5rem, 2.5vw, 2.5rem);
+    padding: clamp(1.25rem, 1.75vw, 1.75rem);
+    border-radius: 16px;
+    line-height: 1.55;
     border-radius: 20px;
     padding: clamp(1.25rem, 1.75vw, 1.75rem);
 }
@@ -3456,17 +3560,15 @@ a:focus .icon-effect.--back,
 .stihl-stat__label {
     font-size: @text-small-size;
     line-height: 1.4;
-    color: @color-gray;
 }
 
 .stihl-stats__source {
     margin-top: @spacing-xsm;
-    color: @color-gray;
     font-size: 12px;
 }
 
 .stihl-compare {
-    display: grid;
+    // display: grid;
     gap: @gutter;
     max-width: @heading-mw;
 
@@ -3479,6 +3581,14 @@ a:focus .icon-effect.--back,
     background-color: @color-0;
     border-radius: 20px;
     padding: clamp(1.5rem, 2.5vw, 2.5rem);
+    padding: clamp(1.25rem, 1.75vw, 1.75rem);
+    border-radius: 16px;
+    line-height: 1.55;
+    font-weight: 500;
+
+    & + & {
+        margin-top: 0.5em;
+    }
 
     h3 {
         font-weight: 600;
@@ -3534,15 +3644,92 @@ a:focus .icon-effect.--back,
 }
 
 // Secondary/disclaimer information — deliberately lower hierarchy than sections
+.stihl-note2 {
+    max-width: @text-mw;
+    padding: clamp(1.25rem, 1.75vw, 1.75rem);
+    border-radius: 16px;
+    // background-color: @color-2;
+    background-color: fade(@color-1, 6%);
+    line-height: 1.55;
+    // color: white;
+
+    strong {
+        font-weight: 600;
+    }
+}
 .stihl-note {
     max-width: @text-mw;
     padding: clamp(1.25rem, 1.75vw, 1.75rem);
     border-radius: 16px;
-    background-color: fade(@color-1, 6%);
+    
     line-height: 1.55;
 
     strong {
         font-weight: 600;
+    }
+}
+
+// In-page Privacy/Terms modal — iframes the service's legal pages so the
+// visitor never leaves this page.
+.stihl-legal-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(1rem, 3vw, 3rem);
+}
+
+.stihl-legal-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: fade(@color-1, 55%);
+    cursor: pointer;
+}
+
+.stihl-legal-modal__panel {
+    position: relative;
+    width: min(100%, 50rem);
+    height: min(100%, 85vh);
+    background: @color-0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px fade(#000, 35%);
+
+    iframe {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: @color-0;
+    }
+}
+
+.stihl-legal-modal__close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: @color-0;
+    color: @color-1;
+    font-size: 1.5rem;
+    line-height: 1;
+    box-shadow: 0 2px 12px fade(#000, 25%);
+    cursor: pointer;
+
+    @media (any-hover: hover) {
+        &:hover,
+        &:focus {
+            background: @color-1;
+            color: @color-0;
+        }
     }
 }
 

@@ -60,7 +60,7 @@ export const seoConfig = {
     },
     '/stihl-brand-kit-posting': {
         title: 'STIHL brand-kit posting for dealers — F925',
-        description: 'STIHL tells you exactly what to post each month. F925 makes sure it actually happens — published to your Facebook and Instagram for you. $50/month, nothing to do.',
+        description: 'STIHL tells you exactly what to post each month. F925 makes sure it actually happens — published to your Facebook and Instagram for you. $89/month, nothing to do.',
         canonical: 'https://f925.works/stihl-brand-kit-posting'
     },
     '/404': {
