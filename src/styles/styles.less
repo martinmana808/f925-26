@@ -2074,6 +2074,18 @@ a:focus .icon-effect.--back,
     .site-main__inner {
         flex-grow: 1;
     }
+
+    // The carousel sits inside the right column, but its cells are meant to
+    // bleed past both column edges: the next card runs off the right of the
+    // window at rest, and cards scrolled out to the left pass over the left
+    // column. Flickity's own viewport would clip them at the column edge, so
+    // it is opened up and .site-main's overflow:hidden does the clipping at
+    // the window instead.
+    @media (min-width: @mq-nav) {
+        .flickity-viewport {
+            overflow: visible;
+        }
+    }
 }
 
 .flickity-button,

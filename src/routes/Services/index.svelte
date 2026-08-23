@@ -7,7 +7,8 @@
 
     import { onMount, onDestroy } from 'svelte'
 
-    let setFlickityHeight: () => void
+    let syncCardHeights: () => void
+    let cleanupHeightSync: () => void = () => {}
 
     onMount(() => {
         // Load external script after the component is mounted
@@ -20,47 +21,79 @@
         script.async = true
         document.body.appendChild(script)
 
-        // Set flickity-viewport height based on site-main__inner height
-        setFlickityHeight = () => {
+        // Every cell has to be the same height: on desktop they all take the
+        // column area's height, on mobile the tallest card's height. The
+        // cards are measured with their heights reset first, so re-running
+        // this (resize, reflow) always lands on the same number instead of
+        // feeding last run's height back into the measurement.
+        let syncing = false
+        syncCardHeights = () => {
+            if (syncing) return
+
+            const carousel = document.querySelector('.main-carousel') as HTMLElement
             const mainInner = document.querySelector('.site-main__inner') as HTMLElement
             const flickityViewport = document.querySelector('.flickity-viewport') as HTMLElement
             const serviceCards = document.querySelectorAll('.service-card') as NodeListOf<HTMLElement>
-            
-            if (mainInner && flickityViewport) {
-                if (window.innerWidth >= 1000) {
-                    // For screens >= 1000px, use mainInner height + 44px
-                    const height = `${mainInner.offsetHeight + 44}px`
-                    flickityViewport.style.height = height
-                    
-                    // Set height for each service card
-                    serviceCards.forEach(card => {
-                        card.style.height = height
-                    })
-                } else {
-                    // For screens < 1000px, find the tallest card
-                    let maxHeight = 0
-                    serviceCards.forEach(card => {
-                        // Reset height to auto to get natural height
-                        card.style.height = 'auto'
-                        const cardHeight = card.offsetHeight
-                        maxHeight = Math.max(maxHeight, cardHeight)
-                    })
-                    
-                    // Set the tallest height to all cards and viewport
-                    const height = `${maxHeight}px`
-                    flickityViewport.style.height = height
-                    serviceCards.forEach(card => {
-                        card.style.height = height
-                    })
-                }
+
+            if (!mainInner || !flickityViewport || !serviceCards.length) return
+
+            syncing = true
+
+            let naturalMax = 0
+            serviceCards.forEach(card => {
+                card.style.height = 'auto'
+                naturalMax = Math.max(naturalMax, card.offsetHeight)
+            })
+
+            // Let Flickity collapse the viewport back onto the natural cards
+            // before reading the column height off the layout.
+            const Flickity = (window as any).Flickity
+            const flkty = Flickity && carousel ? Flickity.data(carousel) : null
+            if (flkty) {
+                flkty.resize()
+            } else {
+                flickityViewport.style.height = `${naturalMax}px`
             }
+
+            const height =
+                window.innerWidth >= 1000 ? `${mainInner.offsetHeight + 44}px` : `${naturalMax}px`
+
+            flickityViewport.style.height = height
+            serviceCards.forEach(card => {
+                card.style.height = height
+            })
+
+            syncing = false
         }
 
-        // Initial set
-        setTimeout(setFlickityHeight, 100) // Small delay to ensure Flickity is initialized
+        // Flickity is loaded async, so the viewport it creates may not exist
+        // for a while. Keep trying each frame until it does, then keep the
+        // heights in sync with the left column and the window.
+        let frame = 0
+        const waitForFlickity = () => {
+            if (document.querySelector('.flickity-viewport')) {
+                syncCardHeights()
+                return
+            }
+            frame = requestAnimationFrame(waitForFlickity)
+        }
+        frame = requestAnimationFrame(waitForFlickity)
 
-        // Update on window resize
-        window.addEventListener('resize', setFlickityHeight)
+        window.addEventListener('resize', syncCardHeights)
+        window.addEventListener('load', syncCardHeights)
+
+        // The left column drives the desktop height, so re-sync whenever it
+        // reflows (webfonts landing, text rewrapping).
+        const mainInner = document.querySelector('.site-main__inner')
+        const observer = mainInner ? new ResizeObserver(() => syncCardHeights()) : null
+        if (mainInner && observer) observer.observe(mainInner)
+
+        cleanupHeightSync = () => {
+            cancelAnimationFrame(frame)
+            window.removeEventListener('resize', syncCardHeights)
+            window.removeEventListener('load', syncCardHeights)
+            observer?.disconnect()
+        }
     })
 
     onMount(() => {
@@ -68,7 +101,7 @@
     })
     onDestroy(() => {
         document.body.classList.remove('template--services')
-        window.removeEventListener('resize', setFlickityHeight)
+        cleanupHeightSync()
     })
 
     
