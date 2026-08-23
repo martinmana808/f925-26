@@ -63,6 +63,12 @@ export const seoConfig = {
         description: 'STIHL tells you exactly what to post each month. F925 makes sure it actually happens — published to your Facebook and Instagram for you. $89/month, nothing to do.',
         canonical: 'https://f925.works/stihl-brand-kit-posting'
     },
+    '/unify': {
+        title: 'UNIFY — the website platform for STIHL Shop dealers',
+        description: 'A managed website, dealer portal and marketing programme built for STIHL Shop dealers in New Zealand. Live in a week, $2,000 setup, $600/month, everything included — including Gary, your 24/7 AI sales assistant.',
+        canonical: 'https://f925.works/unify',
+        ogImage: '/og-unify-1200x630.png'
+    },
     '/404': {
         title: 'Page Not Found • F925',
         description: 'The page you are looking for could not be found. Please check the URL or return to the home page.',

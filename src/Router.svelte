@@ -10,6 +10,7 @@
     import Contact from './routes/Contact.svelte'
     import Contact2 from './routes/Contact2.svelte'
     import Stihl from './routes/Stihl.svelte'
+    import Unify from './routes/Unify.svelte'
     import FourOhFour from './routes/404.svelte'
     import { headContent, seoConfig } from './stores/headContent.js'
     import { onMount } from 'svelte'
@@ -28,7 +29,8 @@
         '/portfolio': Work,
         '/contact': Contact,
         '/contact2': Contact2,
-        '/stihl-brand-kit-posting': Stihl
+        '/stihl-brand-kit-posting': Stihl,
+        '/unify': Unify
     }
 
     // If the route exists, use it; otherwise, go to 404 page
@@ -41,7 +43,7 @@
             title: seo.title,
             description: seo.description,
             canonical: seo.canonical,
-            ogImage: '/og-1200x630.png',
+            ogImage: seo.ogImage || '/og-1200x630.png',
             ogType: 'website',
             links: [],
             scripts: []

@@ -62,6 +62,12 @@ const routes = [
         lastmod: new Date().toISOString(),
         changefreq: 'monthly',
         priority: '0.8'
+    },
+    {
+        url: '/unify',
+        lastmod: new Date().toISOString(),
+        changefreq: 'monthly',
+        priority: '0.9'
     }
 ];
 
