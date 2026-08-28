@@ -16,7 +16,11 @@
     import { headContent, seoConfig } from './stores/headContent.js'
     import { onMount } from 'svelte'
 
-    let currentRoute = window.location.pathname
+    // Normalise a trailing slash (e.g. "/unify/" -> "/unify") so deep links that
+    // resolve to a real directory index still match a route. Root "/" is kept.
+    const normalize = (p) => (p.length > 1 ? p.replace(/\/+$/, '') : p)
+
+    let currentRoute = normalize(window.location.pathname)
 
     // Define the routes
     const routes = {
@@ -57,7 +61,7 @@
         
         // Listen for route changes
         const handleRouteChange = () => {
-            currentRoute = window.location.pathname
+            currentRoute = normalize(window.location.pathname)
             currentPage = routes[currentRoute] || FourOhFour
             updateSEO()
         }
