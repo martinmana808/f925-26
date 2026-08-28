@@ -21,14 +21,6 @@ const pages = [
         image: '/og-unify-1200x630.png',
         imageAlt: 'UNIFY — your store, online, done properly.',
     },
-    {
-        route: '/social-automated-posting',
-        title: 'Socials sorted — F925',
-        description:
-            'Done-for-you social media. F925 designs and publishes on-brand posts to your Facebook and Instagram on a consistent schedule, so your business always looks active. From $59/month, nothing to do.',
-        image: '/og-1200x630.png',
-        imageAlt: 'F925 — social media, handled.',
-    },
 ]
 
 const SITE = 'https://f925.works'
