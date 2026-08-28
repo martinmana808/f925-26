@@ -51,13 +51,13 @@
 
 <Layout>
     <a class="service-detail__contact-button" href="#social-form">
-        <span>Get started — from $199/mo</span>
+        <span>Get started — from $59/mo</span>
         <Icon name="arrowDown" extraClass="" />
     </a>
     <div class="grid gutter-x h-100 relative">
         <div class="col-l">
             <div class="flex flex-column items-start h-100">
-                <h1 class="text--section">Social media, handled</h1>
+                <h1 class="text--section">Socials sorted</h1>
                 <p>
                     Your customers check your Facebook and Instagram before they ever call, click or walk in.
                     We keep those feeds professionally active — designed posts, published on a consistent
@@ -68,7 +68,7 @@
                         <span>See pricing</span>
                     </a>
                 </div>
-                <div class="text--small sp-hero__note">Done-for-you. From $199/month.</div>
+                <div class="text--small sp-hero__note">Done-for-you. From $59/month.</div>
             </div>
         </div>
 
@@ -175,7 +175,7 @@
                 <div class="sp-tiers">
                     <div class="sp-tier">
                         <div class="sp-tier__name">Publish</div>
-                        <div class="sp-tier__price">$199<span>/mo</span></div>
+                        <div class="sp-tier__price">$59<span>/mo</span></div>
                         <div class="sp-tier__tag">You create, we run it</div>
                         <ul class="sp-tier__list list-reset">
                             <li>Up to <strong>12 posts / month</strong> (3 a week)</li>
@@ -189,7 +189,7 @@
                     <div class="sp-tier --featured">
                         <div class="sp-tier__flag">Most popular</div>
                         <div class="sp-tier__name">Managed</div>
-                        <div class="sp-tier__price">$449<span>/mo</span></div>
+                        <div class="sp-tier__price">$149<span>/mo</span></div>
                         <div class="sp-tier__tag">We create and run it</div>
                         <ul class="sp-tier__list list-reset">
                             <li><strong>16 posts / month</strong> (4 a week)</li>
@@ -203,7 +203,7 @@
 
                     <div class="sp-tier">
                         <div class="sp-tier__name">Full Studio</div>
-                        <div class="sp-tier__price">$849<span>/mo</span></div>
+                        <div class="sp-tier__price">$499<span>/mo</span></div>
                         <div class="sp-tier__tag">Your whole presence, handled</div>
                         <ul class="sp-tier__list list-reset">
                             <li><strong>Daily posting</strong> (20+ / month)</li>
@@ -217,7 +217,7 @@
                 </div>
 
                 <div class="text--xsmall sp-fine">
-                    Prices in NZD, ex GST. One-off $250 onboarding. Minimum term 3 months, then month-to-month —
+                    Prices in NZD, ex GST. Minimum term 3 months, then month-to-month —
                     cancel anytime. Need something in between, or a multi-location rate? Just ask.
                 </div>
             </section>

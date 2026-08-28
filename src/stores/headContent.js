@@ -64,8 +64,8 @@ export const seoConfig = {
         canonical: 'https://f925.works/stihl-brand-kit-posting'
     },
     '/social-automated-posting': {
-        title: 'Social media, handled — F925',
-        description: 'Done-for-you social media. F925 designs and publishes on-brand posts to your Facebook and Instagram on a consistent schedule, so your business always looks active. From $199/month, nothing to do.',
+        title: 'Socials sorted — F925',
+        description: 'Done-for-you social media. F925 designs and publishes on-brand posts to your Facebook and Instagram on a consistent schedule, so your business always looks active. From $59/month, nothing to do.',
         canonical: 'https://f925.works/social-automated-posting'
     },
     '/unify': {
