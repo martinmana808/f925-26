@@ -64,6 +64,12 @@ const routes = [
         priority: '0.8'
     },
     {
+        url: '/social-automated-posting',
+        lastmod: new Date().toISOString(),
+        changefreq: 'monthly',
+        priority: '0.9'
+    },
+    {
         url: '/unify',
         lastmod: new Date().toISOString(),
         changefreq: 'monthly',

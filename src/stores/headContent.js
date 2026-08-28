@@ -63,6 +63,11 @@ export const seoConfig = {
         description: 'STIHL tells you exactly what to post each month. F925 makes sure it actually happens — published to your Facebook and Instagram for you. $89/month, nothing to do.',
         canonical: 'https://f925.works/stihl-brand-kit-posting'
     },
+    '/social-automated-posting': {
+        title: 'Social media, handled — F925',
+        description: 'Done-for-you social media. F925 designs and publishes on-brand posts to your Facebook and Instagram on a consistent schedule, so your business always looks active. From $199/month, nothing to do.',
+        canonical: 'https://f925.works/social-automated-posting'
+    },
     '/unify': {
         title: 'UNIFY — the website platform for STIHL Shop dealers',
         description: 'A managed website, dealer portal and marketing programme built for STIHL Shop dealers in New Zealand. Live in a week, $2,000 setup, $600/month, everything included — including Gary, your 24/7 AI sales assistant.',

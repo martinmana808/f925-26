@@ -10,6 +10,7 @@
     import Contact from './routes/Contact.svelte'
     import Contact2 from './routes/Contact2.svelte'
     import Stihl from './routes/Stihl.svelte'
+    import SocialPosting from './routes/SocialPosting.svelte'
     import Unify from './routes/Unify.svelte'
     import FourOhFour from './routes/404.svelte'
     import { headContent, seoConfig } from './stores/headContent.js'
@@ -30,6 +31,7 @@
         '/contact': Contact,
         '/contact2': Contact2,
         '/stihl-brand-kit-posting': Stihl,
+        '/social-automated-posting': SocialPosting,
         '/unify': Unify
     }
 
