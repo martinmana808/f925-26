@@ -1,0 +1,55 @@
+{
+  "slug": "howick",
+  "url": "https://stihlshophowick.co.nz",
+  "at": "2026-09-21T17:51:14.245Z",
+  "reasons": [
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "-12 stale (newest year on page 2014)",
+    "-10 slow load 7.0s"
+  ],
+  "loadMs": 6967,
+  "finalUrl": "https://stihlshophowick.co.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "WordPress",
+  "bytes": 69434,
+  "title": "StihlShop Howick – Auckland",
+  "description": "",
+  "viewport": true,
+  "pagesLinked": 7,
+  "navItems": [
+    "/",
+    "/service",
+    "/products",
+    "/tool-hire",
+    "/woodfires-bbqs",
+    "/lawn-mowers",
+    "/contact-us"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 2,
+  "localCatalogue": false,
+  "copyrightYear": null,
+  "newestYear": 2014,
+  "wordCount": 432,
+  "images": 5,
+  "h1": "home",
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "about": "Check out our battery-powered or petrol range of mowers, trimmers, blowers, and chainsaws — the favourites with homeowners!\n\nPlus, with our fully equipped workshop and expert technicians, you can trust us to keep your tools running their best.\n\nSTIHL SHOP™ HOWICK — Howick & Pakuranga’s Mower Experts!",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 36
+}

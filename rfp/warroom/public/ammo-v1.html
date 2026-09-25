@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Proposal Ammo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --code-bg:#EFE9DD; --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+  --p-a:#6847B8; --p-a-bg:#EDE7FA; --p-b:#0A6C4F; --p-b-bg:#DCF2E9; --p-c:#1B5FAE; --p-c-bg:#DDEAF8;
+  --diff-add:#DCF2E9; --diff-del:#F9E2DE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+    --p-a:#A78BFA; --p-a-bg:#2A2340; --p-b:#4CC9A2; --p-b-bg:#12352A; --p-c:#6FB1F0; --p-c-bg:#172A40;
+    --diff-add:#12352A; --diff-del:#43201A;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  --p-a:#A78BFA; --p-a-bg:#2A2340; --p-b:#4CC9A2; --p-b-bg:#12352A; --p-c:#6FB1F0; --p-c-bg:#172A40;
+  --diff-add:#12352A; --diff-del:#43201A;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+h1,h2,h3,h4{font-family:"Barlow Condensed",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:.5em 0}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:9px;padding-bottom:9px}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+header{padding:50px 0 10px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-size:clamp(36px,5.6vw,56px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:66ch;margin-top:12px}
+.srcnote{margin:18px 0 0;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--part);border-radius:8px;padding:12px 16px;font-size:14px;box-shadow:var(--shadow)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;box-shadow:var(--shadow)}
+.stat b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:34px;font-weight:700;line-height:1}
+.stat span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stat.q b{color:var(--part)} .stat.iq b{color:var(--muted)} .stat.ed b{color:var(--sup)}
+/* the lifecycle strip */
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0 0}
+.flow a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow);color:var(--ink)}
+.flow a:hover{text-decoration:none;border-color:var(--accent)}
+.flow .n{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent)}
+.flow b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:20px;text-transform:uppercase;line-height:1.1;margin:2px 0}
+.flow span{font-size:12.5px;color:var(--muted)}
+main{padding:10px 0 40px}
+.gh{font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:7px;margin:38px 0 4px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.gh small{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0}
+.gh .gdesc{width:100%;font-family:"IBM Plex Sans",sans-serif;font-size:13.5px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0;margin-top:-2px}
+/* section card */
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);margin:16px 0;overflow:hidden}
+.sec .sbody{padding:16px 20px}
+.sec .shead{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+.sec .sid{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);font-weight:500}
+.sec h3{font-size:21px;font-weight:700}
+.sec .custom-tag{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--surface2);color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:0 7px}
+.sec .content{margin-top:8px;font-size:15px}
+.sec .content p{margin:.55em 0}
+.sec .content ul{margin:.45em 0;padding-left:22px}
+.sec .content li{margin:.25em 0}
+.sec .content h4{font-size:16px;letter-spacing:.04em;text-transform:uppercase;margin:.9em 0 .2em;color:var(--muted)}
+.callout{border-left:4px solid var(--part);background:var(--part-bg);border-radius:0 8px 8px 0;padding:8px 12px;margin:.6em 0;font-size:14.5px}
+.callout .ct{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--part);margin-bottom:1px}
+.callout.qi{border-color:var(--muted);background:var(--surface2)} .callout.qi .ct{color:var(--muted)}
+.callout.pain{border-color:var(--gap);background:var(--gap-bg)} .callout.pain .ct{color:var(--gap)}
+.chips{margin:.35em 0}.chip{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.04em;border-radius:5px;padding:1px 8px;margin-right:6px;vertical-align:middle}.chip.where{background:var(--accent-soft);color:var(--accent)}.chip.status.notyet{background:var(--gap-bg);color:var(--gap)}.chip.status.partly{background:var(--part-bg);color:var(--part)}.chip.status.in{background:var(--sup-bg);color:var(--sup)}
+.callout .qn{font-family:"IBM Plex Mono",monospace;font-size:11px;color:inherit;opacity:.7;margin-left:6px}
+.sec .smeta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:8px 20px;border-top:1px solid var(--line);background:var(--surface2);font-size:12.5px;color:var(--muted)}
+.sec .smeta .by{font-weight:700}
+.by.pa{color:var(--p-a)} .by.pb{color:var(--p-b)} .by.pc{color:var(--p-c)}
+.sec .smeta .ebtn{margin-left:auto}
+.ebtn,.abtn{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:3px 12px;cursor:pointer}
+.ebtn:hover,.abtn:hover{border-color:var(--accent);color:var(--accent)}
+.abtn{margin:4px 0 0;color:var(--muted);border-style:dashed;background:none}
+/* edit form */
+.eform{padding:14px 20px 16px;border-top:1px solid var(--line);background:var(--surface2)}
+.eform input,.eform textarea{width:100%;font:inherit;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:8px 10px;color:var(--ink);line-height:1.5}
+.eform input{margin-bottom:8px;font-weight:700}
+.eform textarea{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;min-height:160px;resize:vertical}
+.eform .hint{font-size:12px;color:var(--muted);margin:6px 0 8px}
+.eform .hint code{font-size:11.5px}
+.eform .ebar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.eform .ebar button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:5px 16px;cursor:pointer;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
+.eform .ebar button.save{background:var(--accent);border-color:var(--accent);color:#fff}
+.eform .ebar button.del{margin-left:auto;color:var(--gap)}
+.eform .enote{font-size:12.5px;color:var(--gap);margin:.4em 0 0}
+/* open questions */
+.oq{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:16px 20px;margin:16px 0}
+.oq h3{font-size:19px;text-transform:uppercase;letter-spacing:.03em;color:var(--part)}
+.oq.internal h3{color:var(--muted)}
+.oq ol{margin:.5em 0 0;padding-left:26px}
+.oq li{margin:.35em 0;font-size:14.5px}
+.oq li small{color:var(--muted);font-size:12px}
+.oq .empty{color:var(--muted);font-style:italic;font-size:14px}
+.vqlink{margin-top:14px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--sup);border-radius:8px;padding:12px 16px;font-size:14px;box-shadow:var(--shadow)}
+/* edit log */
+.log{margin-top:8px}
+.lg{background:var(--surface);border:1px solid var(--line);border-radius:8px;margin:8px 0;padding:10px 14px;font-size:13.5px;box-shadow:var(--shadow)}
+.lg .lhead{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.lg .lhead time{color:var(--muted);font-size:12.5px}
+.lg .lhead .v{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);background:var(--code-bg);padding:0 6px;border-radius:4px}
+.lg .lhead .lb{margin-left:auto;display:flex;gap:6px}
+.lg .lhead button{font-size:11.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 8px;cursor:pointer;font-family:"IBM Plex Sans",system-ui,sans-serif}
+.lg .lhead button:hover{border-color:var(--ink);color:var(--ink)}
+.diff{margin-top:8px;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;line-height:1.5;white-space:pre-wrap;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.diff div{padding:1px 10px}
+.diff .add{background:var(--diff-add)} .diff .del{background:var(--diff-del);text-decoration:line-through;opacity:.85} .diff .ctx{color:var(--muted)}
+.log .lempty{color:var(--muted);font-style:italic;font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 42px;color:var(--muted);font-size:13px}
+/* review layer (same as the other pages) */
+.rdock{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);padding:6px 12px;font-size:12.5px;max-width:calc(100vw - 28px)}
+.rdock .rstat{color:var(--muted);white-space:nowrap}
+.rdock .rlive{font-weight:600;white-space:nowrap;color:var(--muted)}
+.rdock .rlive.live{color:var(--sup)}
+.rdock .rlive.local{color:var(--gap)}
+.rw{display:inline-flex;align-items:center;gap:5px;margin-left:10px;vertical-align:middle}
+.rw button{font-size:11.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 8px;cursor:pointer;line-height:1.5;font-family:"IBM Plex Sans",system-ui,sans-serif}
+.rw .rwf.on{color:#fff;background:var(--gap);border-color:var(--gap)}
+.rw .rwc.has{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);font-weight:700;background:var(--accent-soft)}
+.rw-flagged{box-shadow:0 0 0 2px var(--gap);border-radius:10px}
+.rw-panel{margin:10px 20px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:10px 12px;font-size:13.5px;line-height:1.55}
+.rw-panel .citem{border-bottom:1px solid var(--line);padding:6px 0}
+.rw-panel .citem:last-child{border-bottom:none}
+.rw-panel .citem b{font-size:13px}
+.rw-panel .citem time{font-size:11.5px;color:var(--muted);margin-left:6px}
+.rw-panel .citem p{margin:.15em 0 0;font-size:13.5px;white-space:pre-wrap}
+.rw-panel .cform{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
+.rw-panel .cform input,.rw-panel .cform textarea{flex:1;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);min-width:0;resize:none;line-height:1.45}
+.rw-panel .cform button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.rw-panel .cnote{font-size:12.5px;color:var(--gap);margin:.4em 0 0}
+.rw-panel .cflag{font-size:12px;color:var(--gap);font-weight:600;margin:0 0 .3em}
+html{scroll-behavior:smooth}
+@media (max-width:600px){.wrap{padding:0 16px}.sec .sbody{padding:14px 16px}.sec .smeta{padding:8px 16px}.flow{grid-template-columns:1fr}}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="ammo">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">U4R <em>·</em> Proposal Ammo</span>
+    <div class="wrs-menu">
+      <button type="button" class="wrs-menubtn" aria-haspopup="true">Sections ▾</button>
+      <nav class="wrs-drop" aria-label="Sections">
+        <a href="#g-platform">Platform &amp; product</a>
+        <a href="#g-engineering">Engineering practice</a>
+        <a href="#g-infra">Infrastructure &amp; uptime</a>
+        <a href="#g-service">Service &amp; process</a>
+        <a href="#questions">Still to write</a>
+        <a href="#log">Edit log</a>
+      </nav>
+    </div>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">F925 internal · STIHL RFP 2026 · feeds the <a href="/proposal.html">proposal</a></p>
+    <h1>Proposal Ammo</h1>
+    <p class="sub">The things we have, do, or are about to have that make us the obvious choice — and that are <b>not yet written anywhere in the RFP pages</b>. A notetaker so nothing gets forgotten when the proposal is actually assembled. Anyone can add an item or edit one; every edit is logged below.</p>
+    <div class="srcnote"><b>How to use it:</b> one card per thing. Say what it is, why it matters to STIHL, and where in the proposal it should land (<code>Where: §6</code>). Mark <code>Status: not yet</code> / <code>partly</code> / <code>in</code> so we can see at a glance what still has to be written. Questions to ourselves go in as <code>Qi:</code>. When an item is fully in the proposal, set its status to <code>in</code> rather than deleting it — the card is the evidence trail.</div>
+    <div class="stats">
+      <div class="stat"><b id="st-secs">–</b><span>items</span></div>
+      <div class="stat q"><b id="st-q">–</b><span>not yet in the proposal</span></div>
+      <div class="stat iq"><b id="st-iq">–</b><span>questions to ourselves</span></div>
+      <div class="stat ed"><b id="st-ed">–</b><span>edits logged</span></div>
+    </div>
+  </div>
+</header>
+
+<main><div class="wrap" id="main"></div></main>
+
+<footer>
+  <div class="wrap">
+    <p>F925 internal · Proposal ammo — what we have that is not yet written down · started 16 Sep 2026 · edits, flags and threads sync live for the whole team · related: <a href="/proposal.html">proposal</a> · <a href="/scenarios.html">scenarios</a> · <a href="/process.html">The Process</a>.</p>
+  </div>
+</footer>
+
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+<script>
+(function(){
+  var API='/api/state?page=ammo', APIKEY='XPFmcH2RSsza';
+  var PEOPLE=[
+    {id:'martin', name:'Martin', cls:'pa'},
+    {id:'leonel', name:'Leo',    cls:'pb'},
+    {id:'mike',   name:'Mike',   cls:'pc'}
+  ];
+  var NAME={}, CLS={}; PEOPLE.forEach(function(p){NAME[p.id]=p.name;CLS[p.id]=p.cls;});
+
+  /* ---------- the seed: groups + sections. Once anyone edits a section, the
+     saved text wins over the seed; the seed stays as "version 0" for the log. ---------- */
+  var GROUPS=[
+    {id:'platform',    title:'Platform & product',      desc:'Things the platform does or will do that STIHL should know about.'},
+    {id:'engineering', title:'Engineering practice',    desc:'How we build: the discipline behind the product.'},
+    {id:'infra',       title:'Infrastructure & uptime', desc:'How it stays up, and how we prove it.'},
+    {id:'service',     title:'Service & process',       desc:'How dealers and STIHL experience working with us.'}
+  ];
+  var SEED=[
+    {key:'am-platform-gary', group:'platform', label:'Platform', title:'Gary — the AI assistant we are not talking about', text:
+'Where: §5 Proposed solution (roadmap) · §1.1 differentiators\n'+
+'Status: not yet\n\n'+
+'Gary was removed from the war room on 16 Sep because he is not part of this bid as it stands — but he is real, he is built, and he has massive potential. Keep him here so he is not forgotten when the proposal is assembled.\n\n'+
+'- **What exists**: a chat assistant on the dealer template with a Kiwi-mechanic personality, RAG over the STIHL catalogue, currently disabled.\n'+
+'- **Dealer-platform assistant** (the safe first step): helps a dealer through onboarding ("what do I put here?"), answers "how do I change my opening hours", drafts a change request from a sentence. No customer exposure, no brand-policy risk.\n'+
+'- **Customer-facing** (later, if STIHL\'s AI policy allows): a disclosed AI assistant on the dealer site doing product and spare-parts lookup on fresh feed data, opening hours, "which chainsaw for this job" — what a good counter person does.\n'+
+'- **Guardrails already identified**: disclosed as an AI (no more "I am a technical expert"), prices stripped from its context, fresh data only.\n\n'+
+'Qi: Do we show Gary as a roadmap item in §5, as a "beyond the RFP" appendix, or keep him for the presentation on 22–23 Oct?'},
+
+    {key:'am-engineering-ci', group:'engineering', label:'Engineering', title:'Every change is checked by machines and by a person before it ships', text:
+'Where: §6 Hosting model (change management) · §5.2 Governance · §7 Support\n'+
+'Status: partly (Sentry is mentioned; the rest is not)\n\n'+
+'Probably half-said in the drafts but nowhere as a story. STIHL is buying a managed service for ~90 sites; how changes get made safely is the whole point.\n\n'+
+'- **CI on every pull request**: typecheck, the full test suite and a production build must pass before anything can merge (GitHub Actions on both repos).\n'+
+'- **Automated code review on every PR** (AI review bot) plus **peer review** by a second engineer before merge. Nothing reaches the dealers on one person\'s say-so.\n'+
+'- **Dependency security updates** arrive automatically as PRs (Dependabot) and go through the same checks.\n'+
+'- **Error tracking in production**: Sentry on the platform and the dealer sites, with a permanent verification endpoint so we know the wire is live — not just "we have Sentry".\n'+
+'- **Continuous checks**: uptime monitoring and alerting (I-01, to build), backup verification (I-03), a rehearsed restore (I-09).\n'+
+'- **Evidence, not claims**: every PR carries a test plan and screenshots of the real thing working. We can show STIHL actual PRs.\n\n'+
+'Qi: Which review bot runs on both repos, and can we quote a real PR (e.g. the reCAPTCHA one) in the proposal appendix?'},
+
+    {key:'am-infra-redundancy', group:'infra', label:'Infrastructure', title:'Two production servers plus a staging server — front and back each', text:
+'Where: §6 Hosting model · §7 Support (uptime commitment)\n'+
+'Status: not yet (today: one production instance; staging not built — I-xmu0hw5a2)\n\n'+
+'The target topology, so uptime is not only high but **consistent**:\n\n'+
+'- **2 × production** for the dealer sites (front) and 2 × production for the platform (back), behind the edge. If one instance fails, the other carries the network and the dealer never notices.\n'+
+'- **1 × staging** for each, kept in step with production. Every change is rehearsed there before it touches a dealer — and it is the third fallback: if both production instances were lost, staging can be promoted.\n'+
+'- What this buys STIHL: a rollout that never goes straight to live, UAT links for dealers on real infrastructure (the helpdesk already has the Waiting-for-UAT → Approve flow), and an honest answer to "what happens when it breaks", which the audit currently marks as a gap.\n'+
+'- Cost is small at this scale (the capacity report has the numbers); the handoff doc estimates the dev/staging/prod split at about US$70/month.\n\n'+
+'!! Do not claim this as built until it is. Describe it as the rollout topology with a date, and run the pilot on it.'},
+
+    {key:'am-service-uat', group:'service', label:'Service', title:'The helpdesk\'s UAT → Approve flow is governance evidence', text:
+'Where: §5.2 Governance · §7 Support model\n'+
+'Status: not yet (helpdesk v1 is live; v2 with UAT/approve is PR #14)\n\n'+
+'A dealer never gets a change pushed on them: for anything with judgement in it, the helpdesk sends a staging link, the dealer clicks **Approve — it works**, and only then does it go live. Every step is time-stamped in the ticket. That is a governance story STIHL can audit, not a promise.\n\n'+
+'- Statuses the dealer sees: New → In progress → Waiting on dealer / Waiting for UAT → Approved → Resolved → Closed.\n'+
+'- Internal-only states are masked from the dealer, so the dealer view is always clean.\n'+
+'- Screenshot the real thing for §7 once #14 is merged.'},
+
+    {key:'am-platform-fortnightly', group:'platform', label:'Platform', title:'A fortnightly “how your STIHL SHOP did” email to every dealer', text:
+'Where: §5 Proposed solution (reporting) · §1.1 differentiators · §7 Support model\n'+
+'Status: not yet (not built; the data side exists — see the analytics card)\n\n'+
+'Every two weeks, every dealer gets an email: **“This is how your STIHL SHOP did this fortnight.”** People who visited, first-time visitors, pages looked at, how many got in touch, where they came from, phone vs computer — the same plain words as the portal, in five lines. One button: **“Want to dive deeper?”** → their portal analytics (deeper, but not so deep). They never have to log in, never have to remember to check; the numbers come to them.\n\n'+
+'- **Fully automated** (Google Analytics via the one service account + our own enquiry counts, rendered per dealer, sent by Resend) — and it never has to say so. To the dealer it reads like their agency wrote it.\n'+
+'- **Why it wins the comparison**: the RFP asks for a monthly report. Every other bidder will promise a PDF or a dashboard the dealer has to go and find. We make it a habit that arrives in the inbox — and it is exactly the “dealers hear from us” evidence §7 needs.\n'+
+'- **Cheap to build**: the analytics reads and the plain-English copy already exist (PR #19); this is a scheduled job + an email template. Roughly two days.\n'+
+'- Pairs with the analytics card: the email is the push, the portal page is the pull. Same numbers, same words.\n\n'+
+'Qi: Fortnightly or monthly? The RFP says monthly; fortnightly feels more alive but doubles the inbox. Could be fortnightly by default with a dealer setting.\n'+
+'Qi: Do we build the sender before 22–23 Oct so we can show a real one on stage, or only describe it?\n'+
+'Qi: A roll-up to STIHL NZ (“the network did X this fortnight”) is one more query — offer it?'},
+
+    {key:'am-platform-brandkit', group:'platform', label:'Platform', title:'BRANDKIT social posting is live with a real STIHL dealer', text:
+'Where: §1.1 differentiators · §5 Proposed solution\n'+
+'Status: not yet (still a roadmap line in the proposal)\n\n'+
+'Meta Tech Provider verification came through on 14 Sep and STIHL SHOP Tauranga is connected (Facebook page + Instagram). Month builder, Reels publishing and a background publish runner shipped the same day. This is an operating product with a STIHL dealer on it, not a roadmap item — it belongs with the differentiators, with a screenshot.\n\n'+
+'Qi: Does STIHL NZ want national campaigns pushed to every dealer\'s socials from one place? That is the obvious next sentence.'}
+  ];
+  var SEEDMAP={}; SEED.forEach(function(s){SEEDMAP[s.key]=s;});
+
+  var me=(window.WR?WR.me:'');
+  if(window.WR)WR.onIdentity(function(id){me=id;renderAll();});
+  var mode='connecting';
+  var marks={}, comments={}, docs={}, revs=[], items={};
+  var lastRev='', applied=false, pendingWrites=0, chain=Promise.resolve();
+  var editing={}, openDiffs={};
+  function enqueue(op){
+    pendingWrites++;
+    var p=chain.then(function(){return apiPost(op);});
+    chain=p.then(function(){pendingWrites--;if(pendingWrites===0)refresh();},function(){pendingWrites--;setMode('local');});
+    return p;
+  }
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(undefined,{day:'numeric',month:'short'});}catch(e){return '';}}
+  function fmtWhen(iso){try{var d=new Date(iso);return d.toLocaleDateString(undefined,{day:'numeric',month:'short'})+' '+d.toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit'});}catch(e){return '';}}
+  function apiGet(){
+    return fetch(API,{headers:{'x-warroom-key':APIKEY}}).then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();});
+  }
+  function apiPost(op){
+    return fetch(API,{method:'POST',headers:{'x-warroom-key':APIKEY,'content-type':'application/json'},body:JSON.stringify(op)}).then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();});
+  }
+
+  /* ---------- dock ---------- */
+  var dock=document.createElement('div');
+  dock.className='rdock';
+  dock.innerHTML='<span class="rstat" id="rd-stat">⚑ 0 · 💬 0</span><span class="rlive" id="rd-live">Connecting…</span>';
+  document.body.appendChild(dock);
+  function needIdentity(noteEl,msg){
+    if(me)return false;
+    if(noteEl){noteEl.textContent=msg;noteEl.hidden=false;}
+    if(window.WR)WR.nudge();
+    return true;
+  }
+  function setMode(m){
+    mode=m;
+    var el=document.getElementById('rd-live');
+    el.className='rlive '+m;
+    el.textContent = m==='live'?'● Live':(m==='local'?'○ Offline — read-only':'Connecting…');
+  }
+
+  /* ---------- markdown-lite: paragraphs, - bullets, **bold**, `code`,
+     "Q:" question for STIHL, "Qi:" internal question, "!!" pain point, "#" heading ---------- */
+  function inline(t){
+    var h=window.WR?WR.mentionify(t):esc(t);
+    return h.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/`([^`]+)`/g,'<code>$1</code>');
+  }
+  function renderBody(text,key,qcount){
+    var lines=String(text||'').split('\n'), html='', para=[], list=null;
+    function flushPara(){if(para.length){html+='<p>'+inline(para.join(' '))+'</p>';para=[];}}
+    function flushList(){if(list!==null){html+='<ul>'+list+'</ul>';list=null;}}
+    lines.forEach(function(raw){
+      var l=raw.trim(), m;
+      if(!l){flushPara();flushList();return;}
+      if((m=l.match(/^Where:\s*(.*)$/i))){flushPara();flushList();html+='<div class="chips"><span class="chip where">📍 '+inline(m[1])+'</span></div>';return;}
+      if((m=l.match(/^Status:\s*(.*)$/i))){flushPara();flushList();var st=m[1].trim().toLowerCase();var cls=/^in\b/.test(st)?'in':(/^partly/.test(st)?'partly':'notyet');html+='<div class="chips"><span class="chip status '+cls+'">'+(cls==='in'?'✓ ':(cls==='partly'?'◐ ':'○ '))+inline(m[1])+'</span></div>';return;}
+      if((m=l.match(/^Qi:\s*(.*)$/i))){flushPara();flushList();qcount.iq++;html+='<div class="callout qi" id="'+key+'-iq'+qcount.iq+'"><span class="ct">🔒 Internal question</span>'+inline(m[1])+'</div>';return;}
+      if((m=l.match(/^Q:\s*(.*)$/i))){flushPara();flushList();qcount.q++;html+='<div class="callout q" id="'+key+'-q'+qcount.q+'"><span class="ct">❓ Question for STIHL</span>'+inline(m[1])+'</div>';return;}
+      if((m=l.match(/^!!\s*(.*)$/))){flushPara();flushList();html+='<div class="callout pain"><span class="ct">⚠ Pain point</span>'+inline(m[1])+'</div>';return;}
+      if((m=l.match(/^[-*]\s+(.*)$/))){flushPara();list=(list||'')+'<li>'+inline(m[1])+'</li>';return;}
+      if((m=l.match(/^#+\s*(.*)$/))){flushPara();flushList();html+='<h4>'+inline(m[1])+'</h4>';return;}
+      flushList(); para.push(l);
+    });
+    flushPara(); flushList();
+    return html;
+  }
+  function collectQuestions(){
+    var out={q:[],iq:[]};
+    orderedSections().forEach(function(s){
+      var text=currentText(s.key), nq=0, niq=0;
+      String(text).split('\n').forEach(function(raw){
+        var l=raw.trim(), m;
+        if((m=l.match(/^Qi:\s*(.*)$/i))){niq++;out.iq.push({text:m[1],sec:s,anchor:s.key+'-iq'+niq});}
+        else if((m=l.match(/^Status:\s*(.*)$/i))&&!/^in\b/i.test(m[1].trim())){out.q.push({text:sectionMeta(s.key).title+' <small>('+m[1].trim()+')</small>',sec:s,anchor:s.key,raw:true});}
+      });
+    });
+    return out;
+  }
+
+  /* ---------- sections: seed + custom (from state), in group order ---------- */
+  function currentText(key){
+    if(docs[key]&&typeof docs[key].text==='string')return docs[key].text;
+    return SEEDMAP[key]?SEEDMAP[key].text:'';
+  }
+  function sectionMeta(key){
+    var d=docs[key], s=SEEDMAP[key];
+    if(d)return {custom:!!d.custom,title:d.custom?d.title:(s?s.title:key),label:s?s.label:'Added',group:d.group||(s?s.group:'platform'),by:d.by,at:d.at,n:d.n||1,createdBy:d.createdBy,createdAt:d.createdAt};
+    return {custom:false,title:s.title,label:s.label,group:s.group,by:null,at:null,n:0};
+  }
+  function orderedSections(){
+    var out=[];
+    GROUPS.forEach(function(g){
+      SEED.forEach(function(s){if(s.group===g.id)out.push({key:s.key,group:g.id});});
+      Object.keys(docs).filter(function(k){return docs[k].custom&&(docs[k].group||'platform')===g.id&&!SEEDMAP[k];})
+        .sort(function(a,b){return (docs[a].createdAt||'')<(docs[b].createdAt||'')?-1:1;})
+        .forEach(function(k){out.push({key:k,group:g.id});});
+    });
+    return out;
+  }
+
+  var main=document.getElementById('main');
+  function build(){
+    /* full rebuild of the DOM; called on structural change (new/removed section) */
+    items={};
+    main.innerHTML='';
+    var qcount={q:0,iq:0};
+    GROUPS.forEach(function(g){
+      var h=document.createElement('h2'); h.className='gh'; h.id='g-'+g.id;
+      h.innerHTML=esc(g.title)+'<span class="gdesc">'+esc(g.desc)+'</span>';
+      main.appendChild(h);
+      orderedSections().filter(function(s){return s.group===g.id;}).forEach(function(s){
+        main.appendChild(makeSection(s.key,qcount));
+      });
+      var add=document.createElement('button'); add.type='button'; add.className='abtn'; add.dataset.group=g.id;
+      add.textContent='+ Add an item to '+g.title;
+      main.appendChild(add);
+    });
+    /* open questions */
+    var oqh=document.createElement('h2'); oqh.className='gh'; oqh.id='questions';
+    oqh.innerHTML='Still to write<span class="gdesc">Collected live from the cards: every item whose Status is not <code>in</code>, and every <code>Qi:</code> line.</span>';
+    main.appendChild(oqh);
+    var oq=document.createElement('div'); oq.id='oq'; main.appendChild(oq);
+    /* log */
+    var lh=document.createElement('h2'); lh.className='gh'; lh.id='log';
+    lh.innerHTML='Edit log<span class="gdesc">Every save, newest first. Show the change, or restore an older version (that is logged too).</span>';
+    main.appendChild(lh);
+    var lg=document.createElement('div'); lg.className='log'; lg.id='logbox'; main.appendChild(lg);
+    renderAll();
+  }
+
+  function makeSection(key,qcount){
+    var m=sectionMeta(key);
+    var host=document.createElement('section'); host.className='sec'; host.id=key; host.dataset.key=key;
+    host.innerHTML='<div class="sbody"><div class="shead"><span class="sid">'+esc(m.label)+'</span><h3></h3></div><div class="content"></div></div>'
+      +'<div class="smeta"><span class="lastedit"></span><button type="button" class="ebtn">✎ Edit</button></div>';
+    var h3=host.querySelector('h3');
+    var w=document.createElement('span'); w.className='rw';
+    w.innerHTML='<button type="button" class="rwf" title="Flag for attention">⚑</button><button type="button" class="rwc" title="Comments">💬 <span>0</span></button>';
+    var panel=document.createElement('div'); panel.className='rw-panel'; panel.hidden=true;
+    panel.innerHTML='<p class="cflag" hidden></p><div class="clist"></div>'
+      +'<form class="cform"><textarea rows="1" placeholder="Comment on this step — disagree, add, question… (Shift+Enter for a new line)" aria-label="Comment"></textarea><button type="submit">Post</button></form>'
+      +'<p class="cnote" hidden></p>';
+    host.appendChild(panel);
+    if(window.WR)WR.wireCommentBox(panel.querySelector('.cform textarea'));
+    var fbtn=w.querySelector('.rwf'), cbtn=w.querySelector('.rwc'), note=panel.querySelector('.cnote');
+    fbtn.addEventListener('click',function(){
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.')){panel.hidden=false;return;}
+      var next=!(marks[key]&&marks[key].flagged);
+      marks[key]={flagged:next,by:me,at:new Date().toISOString()};
+      render(key); renderTotals();
+      enqueue({t:'mark',key:key,flagged:next,by:me}).catch(function(){});
+    });
+    cbtn.addEventListener('click',function(){panel.hidden=!panel.hidden;});
+    panel.querySelector('form').addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var inp=panel.querySelector('textarea'), txt=inp.value.trim();
+      if(!txt)return;
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.'))return;
+      note.hidden=true;
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString()};
+      (comments[key]=comments[key]||[]).push(temp);
+      render(key); renderTotals(); inp.value='';
+      enqueue({t:'comment',key:key,author:me,text:txt}).catch(function(){
+        var arr=comments[key]||[], ix=arr.indexOf(temp); if(ix>=0)arr.splice(ix,1);
+        render(key); renderTotals(); note.textContent='Could not post — try again in a moment.'; note.hidden=false;
+      });
+    });
+    host.querySelector('.ebtn').addEventListener('click',function(){openEditor(key);});
+    items[key]={block:host,h3:h3,rw:w,content:host.querySelector('.content'),lastedit:host.querySelector('.lastedit'),ebtn:host.querySelector('.ebtn'),
+      fbtn:fbtn,cbtn:cbtn,cnum:cbtn.querySelector('span'),panel:panel,clist:panel.querySelector('.clist'),cflag:panel.querySelector('.cflag')};
+    return host;
+  }
+
+  /* ---------- editing ---------- */
+  function openEditor(key){
+    var it=items[key]; if(!it||it.block.querySelector('.eform'))return;
+    if(!me){if(window.WR)WR.nudge();return;}
+    var m=sectionMeta(key);
+    var f=document.createElement('form'); f.className='eform';
+    f.innerHTML=(m.custom?'<input type="text" class="etitle" placeholder="Item title" aria-label="Title" maxlength="140">':'')
+      +'<textarea aria-label="Section text"></textarea>'
+      +'<p class="hint">Plain text. <code>Where: §n</code> and <code>Status: not yet | partly | in</code> render as chips · blank line = paragraph · <code>- </code>bullet · <code>**bold**</code> · <code>Qi: …</code> question to ourselves · <code>!! …</code> warning · <code># </code>sub-heading · URLs and @names work.</p>'
+      +'<div class="ebar"><button type="submit" class="save">Save</button><button type="button" class="cancel">Cancel</button>'
+      +(m.custom&&m.createdBy===me?'<button type="button" class="del">Delete item</button>':'')+'</div><p class="enote" hidden></p>';
+    it.block.appendChild(f);
+    var ta=f.querySelector('textarea'); ta.value=currentText(key);
+    if(m.custom)f.querySelector('.etitle').value=m.title||'';
+    it.ebtn.disabled=true; editing[key]=true;
+    ta.style.height=Math.max(160,Math.min(600,ta.scrollHeight+8))+'px';
+    ta.focus();
+    function close(){f.remove();it.ebtn.disabled=false;delete editing[key];}
+    f.querySelector('.cancel').addEventListener('click',close);
+    ta.addEventListener('keydown',function(e){if((e.metaKey||e.ctrlKey)&&e.key==='Enter'){e.preventDefault();f.requestSubmit();}});
+    f.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var txt=ta.value.trim(), note=f.querySelector('.enote');
+      if(!txt){note.textContent='Nothing to save.';note.hidden=false;return;}
+      var title=m.custom?f.querySelector('.etitle').value.trim():null;
+      if(m.custom&&!title){note.textContent='Give the step a title.';note.hidden=false;return;}
+      if(txt===currentText(key)&&(!m.custom||title===m.title)){close();return;}
+      saveDoc(key,txt,title);
+      close();
+    });
+    var del=f.querySelector('.del');
+    if(del)del.addEventListener('click',function(){
+      if(!confirm('Delete this item for everyone? (It stays in the edit log.)'))return;
+      var prev=currentText(key);
+      revs.push({id:'tmp-'+Date.now(),key:key,by:me,at:new Date().toISOString(),n:(docs[key]&&docs[key].n||0)+1,text:'',prev:prev,title:m.title,deleted:true});
+      delete docs[key];
+      close(); build();
+      enqueue({t:'doc-del',key:key,by:me}).catch(function(){});
+    });
+  }
+  function saveDoc(key,txt,title,fromRestore){
+    var cur=docs[key], seed=SEEDMAP[key];
+    var prev=cur?cur.text:(seed?seed.text:null);
+    var now=new Date().toISOString();
+    var next={key:key,text:txt,by:me,at:now,n:(cur&&cur.n||0)+1};
+    if(cur&&cur.custom||title!=null){next.custom=true;next.title=title!=null?title:(cur&&cur.title);next.group=cur&&cur.group;next.createdBy=cur&&cur.createdBy||me;next.createdAt=cur&&cur.createdAt||now;}
+    docs[key]=next;
+    revs.push({id:'tmp-'+Date.now(),key:key,by:me,at:now,n:next.n,text:txt,prev:prev,title:next.title,restored:!!fromRestore});
+    render(key); renderTotals();
+    var op={t:'doc',key:key,by:me,text:txt};
+    if(!cur&&seed)op.prev=seed.text;
+    if(next.custom){op.title=next.title;op.group=next.group;}
+    enqueue(op).catch(function(){});
+  }
+  /* add a custom step */
+  main.addEventListener('click',function(ev){
+    var b=ev.target.closest('.abtn'); if(!b)return;
+    if(!me){if(window.WR)WR.nudge();return;}
+    if(b.nextElementSibling&&b.nextElementSibling.classList.contains('addform'))return;
+    var f=document.createElement('form'); f.className='eform addform';
+    f.innerHTML='<input type="text" class="etitle" placeholder="What is it? (one line)" aria-label="Title" maxlength="140">'
+      +'<textarea aria-label="Text" placeholder="Where: §n&#10;Status: not yet&#10;&#10;What it is, why STIHL should care, what to show. Qi: for questions to ourselves."></textarea>'
+      +'<div class="ebar"><button type="submit" class="save">Add item</button><button type="button" class="cancel">Cancel</button></div><p class="enote" hidden></p>';
+    b.after(f);
+    f.querySelector('.etitle').focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var title=f.querySelector('.etitle').value.trim(), txt=f.querySelector('textarea').value.trim(), note=f.querySelector('.enote');
+      if(!title||!txt){note.textContent='Title and text, please.';note.hidden=false;return;}
+      var key='am-'+b.dataset.group+'-'+Math.random().toString(36).slice(2,8);
+      var now=new Date().toISOString();
+      docs[key]={key:key,text:txt,by:me,at:now,n:1,custom:true,title:title,group:b.dataset.group,createdBy:me,createdAt:now};
+      revs.push({id:'tmp-'+Date.now(),key:key,by:me,at:now,n:1,text:txt,prev:null,title:title});
+      f.remove(); build();
+      enqueue({t:'doc',key:key,by:me,text:txt,title:title,group:b.dataset.group}).catch(function(){});
+    });
+  });
+
+  /* ---------- render ---------- */
+  function render(key){
+    var it=items[key]; if(!it)return;
+    var m=sectionMeta(key);
+    it.h3.innerHTML=esc(m.title)+(m.custom?' <span class="custom-tag">added by '+esc(NAME[m.createdBy]||'?')+'</span>':'');
+    it.h3.appendChild(it.rw);
+    var qc={q:0,iq:0};
+    it.content.innerHTML=renderBody(currentText(key),key,qc);
+    it.lastedit.innerHTML=m.at?('Last edited by <span class="by '+(CLS[m.by]||'')+'">'+esc(NAME[m.by]||m.by)+'</span> · '+esc(fmtWhen(m.at))+' · v'+m.n):'Seed text (Martin, 16 Sep) — not edited yet';
+    var mk=marks[key]||{};
+    it.fbtn.classList.toggle('on',!!mk.flagged);
+    it.block.classList.toggle('rw-flagged',!!mk.flagged);
+    it.cflag.hidden=!mk.flagged;
+    if(mk.flagged)it.cflag.textContent='⚑ Flagged by '+(NAME[mk.by]||mk.by||'?')+(mk.at?' · '+fmtDate(mk.at):'');
+    var cm=comments[key]||[];
+    it.cnum.textContent=cm.length;
+    it.cbtn.classList.toggle('has',cm.length>0);
+    if(!it.clist.querySelector('.ceform'))it.clist.innerHTML=window.WR?WR.commentListHTML(cm,key):'';
+  }
+  function renderAll(){
+    /* structural drift (a custom section appeared/vanished remotely) → rebuild */
+    var want=orderedSections().map(function(s){return s.key;}).join('|');
+    var have=Object.keys(items).join('|');
+    if(want!==have&&!Object.keys(editing).length){build();return;}
+    Object.keys(items).forEach(render);
+    renderTotals();
+  }
+  function renderTotals(){
+    var f=0,c=0;
+    Object.keys(items).forEach(function(k){if(marks[k]&&marks[k].flagged)f++;c+=(comments[k]||[]).length;});
+    document.getElementById('rd-stat').textContent='⚑ '+f+' · 💬 '+c;
+    document.getElementById('st-secs').textContent=Object.keys(items).length;
+    var qs=collectQuestions();
+    document.getElementById('st-q').textContent=qs.q.length;
+    document.getElementById('st-iq').textContent=qs.iq.length;
+    document.getElementById('st-ed').textContent=revs.length;
+    renderQuestions(qs);
+    renderLog();
+  }
+  function renderQuestions(qs){
+    var box=document.getElementById('oq'); if(!box)return;
+    function list(arr,cls,label){
+      var h='<div class="oq '+cls+'"><h3>'+label+' <small style="font-family:IBM Plex Mono,monospace;font-size:12px;font-weight:400;color:var(--muted)">'+arr.length+'</small></h3>';
+      if(!arr.length)h+='<p class="empty">None right now.</p>';
+      else{h+='<ol>';arr.forEach(function(q){h+='<li>'+(q.raw?q.text:inline(q.text))+' <small>— <a href="#'+esc(q.anchor)+'">'+esc(q.raw?'open the card':sectionMeta(q.sec.key).label+' · '+sectionMeta(q.sec.key).title)+'</a></small></li>';});h+='</ol>';}
+      return h+'</div>';
+    }
+    box.innerHTML=list(qs.q,'stihl','📝 Not yet in the proposal')+list(qs.iq,'internal','🔒 Questions to ourselves')
+      +'<div class="vqlink"><b>When the proposal is assembled</b> (V3 pass, week of 28 Sep): walk this list top to bottom, write each item into the section its 📍 chip names, then set its Status to <code>in</code>.</div>';
+  }
+
+  /* ---------- edit log with line diffs ---------- */
+  function lineDiff(a,b){
+    var A=String(a||'').split('\n'), B=String(b||'').split('\n');
+    var n=A.length, m=B.length, i, j;
+    if(n*m>250000){ /* absurdly large: fall back to del-all/add-all */
+      return A.map(function(l){return {t:'del',l:l};}).concat(B.map(function(l){return {t:'add',l:l};}));
+    }
+    var L=[]; for(i=0;i<=n;i++){L.push(new Array(m+1).fill(0));}
+    for(i=n-1;i>=0;i--)for(j=m-1;j>=0;j--)L[i][j]=A[i]===B[j]?L[i+1][j+1]+1:Math.max(L[i+1][j],L[i][j+1]);
+    var out=[]; i=0; j=0;
+    while(i<n&&j<m){
+      if(A[i]===B[j]){out.push({t:'ctx',l:A[i]});i++;j++;}
+      else if(L[i+1][j]>=L[i][j+1]){out.push({t:'del',l:A[i]});i++;}
+      else{out.push({t:'add',l:B[j]});j++;}
+    }
+    while(i<n){out.push({t:'del',l:A[i++]});}
+    while(j<m){out.push({t:'add',l:B[j++]});}
+    return out;
+  }
+  function diffHTML(prev,next){
+    var d=lineDiff(prev,next), h='';
+    /* collapse long unchanged runs */
+    var keep=[]; d.forEach(function(x,ix){if(x.t!=='ctx')for(var k=Math.max(0,ix-1);k<=Math.min(d.length-1,ix+1);k++)keep[k]=true;});
+    var skipped=0;
+    d.forEach(function(x,ix){
+      if(x.t==='ctx'&&!keep[ix]){skipped++;return;}
+      if(skipped){h+='<div class="ctx">… '+skipped+' unchanged line'+(skipped===1?'':'s')+' …</div>';skipped=0;}
+      h+='<div class="'+x.t+'">'+(x.t==='add'?'+ ':x.t==='del'?'− ':'  ')+esc(x.l)+'</div>';
+    });
+    if(skipped)h+='<div class="ctx">… '+skipped+' unchanged line'+(skipped===1?'':'s')+' …</div>';
+    return h||'<div class="ctx">(no textual change)</div>';
+  }
+  function renderLog(){
+    var box=document.getElementById('logbox'); if(!box)return;
+    if(!revs.length){box.innerHTML='<p class="lempty">No edits yet. Click ✎ Edit on any item, or + Add an item under a group.</p>';return;}
+    var h='';
+    revs.slice().sort(function(a,b){return a.at<b.at?1:-1;}).forEach(function(r){
+      var m=SEEDMAP[r.key]?SEEDMAP[r.key]:null;
+      var title=r.title||(m?m.title:r.key), label=m?m.label:'Added';
+      var verb=r.deleted?'deleted':(r.n===1&&!m?'added':(r.restored?'restored':'edited'));
+      var live=!!(items[r.key]);
+      h+='<div class="lg" data-rid="'+esc(r.id)+'"><div class="lhead"><span class="by '+(CLS[r.by]||'')+'">'+esc(NAME[r.by]||r.by)+'</span> '+verb+' '
+        +(live?'<a href="#'+esc(r.key)+'">':'<span>')+esc(label+' · '+title)+(live?'</a>':'</span>')
+        +' <time>'+esc(fmtWhen(r.at))+'</time><span class="v">v'+(r.n||'?')+'</span>'
+        +'<span class="lb"><button type="button" class="ldiff">'+(openDiffs[r.id]?'Hide change':'Show change')+'</button>'
+        +(live&&!r.deleted&&r.text&&r.text!==currentText(r.key)?'<button type="button" class="lrest">Restore this version</button>':'')+'</span></div>'
+        +(openDiffs[r.id]?'<div class="diff">'+diffHTML(r.prev,r.text)+'</div>':'')+'</div>';
+    });
+    box.innerHTML=h;
+  }
+  main.addEventListener('click',function(ev){
+    var b=ev.target.closest('.ldiff,.lrest'); if(!b)return;
+    var rid=b.closest('.lg').dataset.rid, r=null;
+    revs.forEach(function(x){if(x.id===rid)r=x;});
+    if(!r)return;
+    if(b.classList.contains('ldiff')){openDiffs[rid]=!openDiffs[rid];renderLog();return;}
+    if(!me){if(window.WR)WR.nudge();return;}
+    if(!confirm('Restore this version of "'+(r.title||(SEEDMAP[r.key]||{}).title||r.key)+'"? The current text is kept in the log.'))return;
+    var m=sectionMeta(r.key);
+    saveDoc(r.key,r.text,m.custom?(r.title||m.title):null,true);
+  });
+
+  /* ---------- comment delete / reply / react / edit (shared pattern) ---------- */
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cdel'); if(!b)return;
+    if(!confirm('Delete this comment for everyone?'))return;
+    var id=b.dataset.cid, key=b.dataset.key, arr=comments[key]||[];
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id){arr.splice(i,1);break;}}
+    render(key); renderTotals();
+    enqueue({t:'comment-del',id:id,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crply'); if(!b)return;
+    var citem=b.closest('.citem'); if(citem.querySelector('.crform'))return;
+    var key=b.dataset.key, pid=b.dataset.cid;
+    var f=document.createElement('form'); f.className='cform ceform crform';
+    f.innerHTML='<textarea rows="1" placeholder="Reply… (Shift+Enter for a new line)" aria-label="Reply"></textarea><button type="submit">Reply</button><button type="button" class="cancel">Cancel</button>';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea'); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);renderTotals();});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim(); if(!txt)return;
+      if(!me){if(window.WR)WR.nudge();return;}
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString(),parent:pid};
+      (comments[key]=comments[key]||[]).push(temp);
+      f.remove(); render(key); renderTotals();
+      enqueue({t:'comment',key:key,author:me,text:txt,parent:pid}).catch(function(){
+        var arr=comments[key]||[], ix=arr.indexOf(temp); if(ix>=0)arr.splice(ix,1); render(key); renderTotals();
+      });
+    });
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crb'); if(!b)return;
+    if(!me){if(window.WR)WR.nudge();return;}
+    var id=b.dataset.cid, key=b.dataset.key, e=b.dataset.remoji, arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    c.reactions=c.reactions||{}; var l=c.reactions[e]=c.reactions[e]||[]; var ix=l.indexOf(me);
+    if(ix>=0)l.splice(ix,1); else l.push(me);
+    render(key);
+    enqueue({t:'react',id:id,emoji:e,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cedit'); if(!b)return;
+    var citem=b.closest('.citem'); if(citem.querySelector('.ceform'))return;
+    var id=b.dataset.cid, key=b.dataset.key, arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    var f=document.createElement('form'); f.className='cform ceform';
+    f.innerHTML='<textarea rows="1" aria-label="Edit comment"></textarea><button type="submit">Save</button><button type="button" class="cancel">Cancel</button>';
+    f.querySelector('textarea').value=c.text||'';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea'); ta.dispatchEvent(new Event('input')); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim(); if(!txt)return;
+      c.text=txt; c.edited=new Date().toISOString();
+      f.remove(); render(key); renderTotals();
+      enqueue({t:'comment-edit',id:id,by:me,text:txt}).catch(function(){});
+    });
+  });
+
+  if(window.WR)WR.registerLocator(function(key){
+    var it=items[key]; if(!it)return false;
+    it.panel.hidden=false;
+    it.block.scrollIntoView({block:'center'});
+    it.block.classList.remove('wr-flash'); void it.block.offsetWidth; it.block.classList.add('wr-flash');
+    return true;
+  });
+
+  /* ---------- sync loop ---------- */
+  function applyState(data,fromPost){
+    if(!data||typeof data!=='object')return;
+    var rev=(typeof data.rev==='string')?data.rev:'';
+    if(applied&&rev&&rev<lastRev)return;
+    if(!fromPost&&pendingWrites>0)return;
+    if(rev>lastRev)lastRev=rev; applied=true;
+    marks=data.marks||{};
+    docs=data.docs||{};
+    revs=Array.isArray(data.revs)?data.revs:[];
+    var by={};
+    (data.comments||[]).forEach(function(c){if(!c.key)return;(by[c.key]=by[c.key]||[]).push(c);});
+    comments=by;
+    setMode('live');
+    renderAll();
+  }
+  function refresh(){
+    if(pendingWrites>0||Object.keys(editing).length)return;
+    apiGet().then(function(d){applyState(d,false);}).catch(function(){setMode('local');});
+  }
+  setMode('connecting');
+  build();
+  refresh();
+  setInterval(refresh,12000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh();});
+})();
+</script>
+</body>
+</html>

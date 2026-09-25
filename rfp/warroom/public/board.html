@@ -1,0 +1,1745 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Unify-for-RFP Runbook</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --code-bg:#EFE9DD; --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+h1,h2,h3,h4{font-family:"Barlow Condensed","Arial Narrow",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:.5em 0}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:18px;padding-top:9px;padding-bottom:9px;overflow-x:auto}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+.topbar nav{display:flex;gap:14px}
+.topbar nav a{color:var(--muted);font-size:13px;font-weight:500;white-space:nowrap}
+.topbar nav a:hover{color:var(--ink);text-decoration:none}
+.filters{display:flex;gap:6px;margin-left:auto}
+.filters button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--surface);border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:3px 12px;cursor:pointer}
+.filters button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* masthead */
+.masthead{padding:56px 0 36px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.masthead h1{font-size:clamp(42px,6.5vw,70px);font-weight:700;text-transform:uppercase}
+.masthead .sub{max-width:66ch;font-size:16.5px;color:var(--muted);margin-top:16px}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:28px}
+.meta-grid>div{background:var(--surface);padding:12px 15px}
+.meta-grid .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.meta-grid .v{font-family:"Barlow Condensed",sans-serif;font-size:21px;font-weight:600;margin-top:2px}
+.meta-grid .v small{font-family:"IBM Plex Sans",sans-serif;font-size:12px;color:var(--muted);font-weight:500}
+
+/* overall progress */
+.bigprog{margin-top:26px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;box-shadow:var(--shadow)}
+.bigprog .row{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.bigprog .t{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:22px;text-transform:uppercase;letter-spacing:.04em}
+.bigprog .n{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;color:var(--accent);font-variant-numeric:tabular-nums}
+.bar{height:12px;background:var(--surface2);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:5px;transition:width .25s ease}
+.phase-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-top:14px}
+.ptile{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:12px 14px}
+.ptile .pt{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ptile .pn{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:24px;font-variant-numeric:tabular-nums;margin-top:2px}
+.ptile .bar{height:8px;margin-top:8px}
+
+/* sections */
+section{padding:46px 0 6px}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:9px;margin-bottom:6px}
+.sec-head .num{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;color:var(--accent)}
+.sec-head h2{font-size:clamp(26px,3.6vw,36px);font-weight:700;text-transform:uppercase}
+.sec-intro{max-width:74ch;color:var(--muted);margin:12px 0 6px}
+.sec-intro strong{color:var(--ink)}
+
+/* week map table */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:var(--shadow);margin:18px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:680px}
+th{font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:var(--muted);padding:9px 13px;border-bottom:2px solid var(--line);background:var(--surface2)}
+td{padding:9px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td .mono{white-space:nowrap}
+td.mile{color:var(--gap);font-weight:600}
+
+/* task groups */
+.tgroup{margin:26px 0 10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
+.tgroup-head{border-radius:9px 9px 0 0;position:sticky;top:var(--wr-topbar-h,46px);z-index:20;box-shadow:0 1px 0 var(--line)}
+.tgroup-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:14px 18px;background:var(--surface2);border-bottom:1px solid var(--line)}
+.tgroup-head h3{font-size:21px;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+.tgroup-head .gsub{font-size:12.5px;color:var(--muted)}
+.tgroup-head .gprog{margin-left:auto;display:flex;align-items:center;gap:10px;min-width:170px}
+.tgroup-head .gprog .bar{flex:1;height:8px;margin:0}
+.tgroup-head .gprog .gnum{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* task rows */
+.task{display:grid;grid-template-columns:30px 1fr;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line)}
+.task:last-child{border-bottom:none}
+.task input[type=checkbox]{width:18px;height:18px;margin-top:3px;accent-color:var(--accent);cursor:pointer}
+.task .tt{font-weight:600;cursor:pointer}
+.task .tt .tid{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--accent);margin-right:8px}
+.task .td{font-size:13.5px;color:var(--muted);margin:.25em 0 0}
+.task .tmeta{display:flex;flex-wrap:wrap;gap:6px;margin:.45em 0 0}
+/* long-form write-ups (section 10): bullets, internal questions, warnings */
+.task ul.tdl{font-size:13.5px;color:var(--muted);margin:.35em 0 0;padding-left:1.2em}
+.task ul.tdl li{margin:.2em 0}
+.task .qi{font-size:13px;margin:.45em 0 0;padding:6px 10px;border-left:3px solid var(--part);background:var(--surface2);border-radius:0 6px 6px 0;color:var(--ink)}
+.task .qi::before{content:"Q to ourselves · ";font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--part)}
+.task .warn{font-size:13px;margin:.45em 0 0;padding:6px 10px;border-left:3px solid var(--gap);background:var(--gap-bg);border-radius:0 6px 6px 0;color:var(--ink)}
+.m.where{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,transparent);text-transform:none;letter-spacing:.02em}
+.m{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);border-radius:5px;padding:1px 7px;color:var(--muted)}
+.m.repo{color:var(--muted);border-color:var(--line);background:var(--surface)}
+.m.dep{color:var(--part);border-color:color-mix(in srgb,var(--part) 40%,transparent)}
+.m.due{color:var(--gap);border-color:color-mix(in srgb,var(--gap) 40%,transparent);background:var(--gap-bg)}
+.task.done .tt,.task.done .td{text-decoration:line-through;opacity:.55}
+/* animated fold: grid-rows 1fr→0fr so content slides shut instead of jumping */
+.tfold{display:grid;grid-template-rows:1fr;transition:grid-template-rows .24s ease}
+.tfold>.tfoldin{overflow:hidden;min-width:0}
+.task.collapsed .tfold{grid-template-rows:0fr}
+.task.collapsed .tt::after{content:" ▸";color:var(--muted);font-weight:400}
+@media (prefers-reduced-motion:reduce){.tfold{transition:none}}
+.task.done .tmeta{opacity:.55}
+body.f-open .task.done{display:none}
+body.f-done .task:not(.done){display:none}
+body.f-blocked .task:not(.blocked){display:none}
+/* blocked tasks */
+.task.blocked{box-shadow:inset 4px 0 0 var(--gap);background:color-mix(in srgb,var(--gap) 4%,transparent)}
+.bkbtn{font-size:12px;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 9px;cursor:pointer}
+.bkbtn:hover{color:var(--gap);border-color:color-mix(in srgb,var(--gap) 45%,transparent)}
+.bkbtn.on{color:#fff;background:var(--gap);border-color:var(--gap);font-weight:700}
+.bkmeta{margin:.55em 0 0;border:1px solid color-mix(in srgb,var(--gap) 35%,transparent);background:var(--gap-bg);border-radius:8px;padding:8px 12px;font-size:13px}
+.bkmeta .bkwho{font-weight:700;color:var(--gap)}
+.bkmeta .bkwho time{font-weight:500;color:var(--muted);margin-left:6px;font-size:12px}
+.bkmeta p{margin:.2em 0 0;white-space:pre-wrap}
+.bkmeta .bkon{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:.4em;font-size:12px;color:var(--muted)}
+.bkchip{font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;border:1px solid color-mix(in srgb,var(--gap) 40%,transparent);color:var(--gap);border-radius:5px;padding:0 7px;background:var(--surface);cursor:pointer}
+.bkchip.done{color:var(--sup);border-color:color-mix(in srgb,var(--sup) 40%,transparent);text-decoration:line-through}
+.bkmeta.clear{border-color:color-mix(in srgb,var(--sup) 40%,transparent);background:color-mix(in srgb,var(--sup) 7%,transparent)}
+.bkmeta.clear .bkwho{color:var(--sup)}
+.bkmeta .bkact{display:flex;gap:8px;margin-top:.5em}
+.bkform{margin:.55em 0 0;border:1px solid color-mix(in srgb,var(--gap) 35%,transparent);border-radius:8px;background:var(--surface2);padding:10px 12px}
+.bkform textarea{width:100%;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);resize:none;line-height:1.45;display:block}
+.bkform .bklab{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:.6em 0 .3em}
+.bkform .bklab:first-child{margin-top:0}
+.bkform input{width:100%;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink)}
+.bkpick{max-height:180px;overflow:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface);margin-top:6px}
+.bkpick label{display:flex;gap:8px;align-items:baseline;padding:4px 10px;font-size:13px;cursor:pointer;border-bottom:1px solid var(--line)}
+.bkpick label:last-child{border-bottom:none}
+.bkpick label:hover{background:var(--surface2)}
+.bkpick label .tid{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);flex:none}
+.bkpick label.isdone{opacity:.5}
+.bkpick input{width:auto;accent-color:var(--gap)}
+.bkpick .bkempty{padding:8px 10px;font-size:12.5px;color:var(--muted)}
+.bkform .bkbtns{display:flex;gap:8px;margin-top:8px}
+.bkform .bkbtns button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--gap);border:1px solid var(--gap);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.bkform .bkbtns button.cancel{background:var(--surface2);border-color:var(--line);color:var(--muted)}
+.bkform .cnote{margin:.4em 0 0}
+/* reverse side: this task is holding someone up */
+.blocks{display:inline-flex;flex-wrap:wrap;gap:5px;align-items:center;font-size:11.5px;color:var(--gap);font-weight:600}
+.blocks .bkchip{background:var(--gap-bg)}
+.task.done .blocks{opacity:.55}
+.tgroup-head .gblk{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--gap);font-weight:600;white-space:nowrap}
+.tgroup-head .gblk[hidden]{display:none}
+
+.callout{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--surface);border-radius:8px;padding:14px 18px;margin:18px 0;box-shadow:var(--shadow)}
+.callout.red{border-left-color:var(--gap)}
+.callout h4{font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:3px}
+.callout p{margin:.3em 0}
+
+
+/* identity + sync */
+.idbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.idlabel{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.idbtns{display:flex;gap:6px}
+.idbtn{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase;background:var(--surface);border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:3px 12px;cursor:pointer}
+.idbtn.active{color:#fff}
+.idbtn.pa.active{background:var(--accent);border-color:var(--accent)}
+.idbtn.pb.active{background:var(--sup);border-color:var(--sup)}
+.idbtn.pc.active{background:var(--part);border-color:var(--part)}
+.sync{margin-left:auto;font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--muted)}
+.sync.dot{font-size:16px;line-height:1;cursor:default;margin-left:0}
+.sync.live{color:var(--sup)}
+.sync.local{color:var(--gap)}
+/* assignees + comments */
+.taskbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:.55em}
+.asg{position:relative;display:inline-flex}
+.asgsel{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:var(--surface2);border:1px solid var(--line);color:var(--muted);border-radius:5px;padding:1px 8px;cursor:pointer}
+.asgsel.on{color:#fff}
+.asgsel.pa{background:var(--p-a);border-color:var(--p-a)}
+.asgsel.pb{background:var(--p-b);border-color:var(--p-b)}
+.asgsel.pc{background:var(--p-c);border-color:var(--p-c)}
+.asgsel.pt{background:transparent;border-color:color-mix(in srgb,var(--accent) 45%,transparent);color:var(--accent)}
+.asgmenu{position:absolute;left:0;top:calc(100% + 3px);display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow);z-index:40;padding:4px;min-width:110px}
+.asgmenu button{text-align:left;background:none;border:none;font:inherit;font-size:12.5px;font-weight:500;padding:4px 9px;border-radius:5px;cursor:pointer;color:var(--muted)}
+.asgmenu button:hover{background:var(--surface2)}
+.asgmenu button.cur{font-weight:700}
+.asgmenu button.pa.cur{color:var(--p-a)}
+.asgmenu button.pb.cur{color:var(--p-b)}
+.asgmenu button.pc.cur{color:var(--p-c)}
+.asgmenu button.pt.cur{color:var(--accent)}
+.cbtn{font-size:12px;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 9px;cursor:pointer}
+.cbtn.has{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);font-weight:700;background:var(--accent-soft)}
+.dmeta{font-size:12px;color:var(--sup);font-weight:600}
+.dmeta.pa{color:var(--p-a)}
+.dmeta.pb{color:var(--p-b)}
+.dmeta.pc{color:var(--p-c)}
+.cpanel{margin-top:.6em;border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:10px 12px}
+.citem{border-bottom:1px solid var(--line);padding:6px 0}
+.citem:last-child{border-bottom:none}
+.citem b{font-size:13px}
+.citem time{font-size:11.5px;color:var(--muted);margin-left:6px}
+.citem p{margin:.15em 0 0;font-size:13.5px;white-space:pre-wrap}
+.cform{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
+.cform input,.cform textarea{flex:1;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);resize:none;line-height:1.45}
+.cform button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.cnote{font-size:12.5px;color:var(--gap);margin:.4em 0 0}
+.task.done .taskbar{opacity:.8}
+/* per-group tools: add task, expand/collapse comments */
+.cxbtn{font-size:12px;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 9px;cursor:pointer;white-space:nowrap}
+.cxbtn:hover{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+.addbar{padding:10px 18px;border-top:1px dashed var(--line)}
+.addbtn{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:none;border:1px dashed var(--line);color:var(--muted);border-radius:6px;padding:3px 12px;cursor:pointer}
+.addbtn:hover{color:var(--accent);border-color:var(--accent)}
+.addform{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.addform input,.addform textarea{flex:1;min-width:180px;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);resize:none;line-height:1.45}
+.addform .cancel{background:var(--surface2);border-color:var(--line);color:var(--muted)}
+.editform{margin:.5em 0 0}
+.td.tdx{white-space:pre-wrap}
+.addform button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.delx{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 7px;cursor:pointer}
+.delx:hover{color:var(--gap);border-color:var(--gap)}
+
+.howto{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;box-shadow:var(--shadow);padding:14px 20px;margin:24px 0 0;font-size:14px;line-height:1.6}
+.howto>b{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:18px;letter-spacing:.05em;text-transform:uppercase}
+.howto p{margin:.35em 0 .2em;color:var(--muted)}
+.howto p i{font-style:normal;color:var(--ink);font-weight:600}
+.howto ol{margin:.4em 0 0;padding-left:20px}
+.howto li{margin:.3em 0}
+.howto li b{color:var(--ink)}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:24px 0 44px;color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}.bar i{transition:none}}
+html{scroll-behavior:smooth}
+@media (max-width:680px){.tgroup-head .gprog{min-width:100%;order:3}}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="board">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">U4R <em>·</em> Runbook</span>
+    <div class="wrs-menu">
+      <button type="button" class="wrs-menubtn" aria-haspopup="true">Sections ▾</button>
+      <nav class="wrs-drop" aria-label="Sections">
+        <a href="#weeks">Week map</a>
+        <a href="#now">Now</a>
+        <a href="#site">Site fixes</a>
+        <a href="#infra">Infra &amp; ops</a>
+        <a href="#docs">Docs &amp; commercial</a>
+        <a href="#proposal">Proposal</a>
+        <a href="#builds">P1 builds</a>
+        <a href="#hardening">Hardening</a>
+        <a href="#demo">Presentation</a>
+        <a href="#rollout">P2</a>
+        <a href="#beyond">Beyond the RFP</a>
+        <span class="wrs-sep"></span>
+        <a href="/audit.html">→ The audit</a>
+        <a href="/proposal.html">→ The proposal</a>
+        <a href="/questions.html">→ Mike’s questions</a>
+        <a href="/wk1-report.html">→ Week 1 report</a>
+        <a href="/capacity.html">→ Capacity report</a>
+      </nav>
+    </div>
+    <div class="filters" role="group" aria-label="Filter tasks">
+      <button type="button" data-filter="all" class="active">All</button>
+      <button type="button" data-filter="open">Open</button>
+      <button type="button" data-filter="done">Done</button>
+      <button type="button" data-filter="blocked">Blocked</button>
+    </div>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span><span class="sync" id="syncchip">Connecting…</span></span>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">F925 internal · Execution plan · Companion to the RFP audit</p>
+    <h1>The Unify-for-RFP<br>Runbook</h1>
+    <p class="sub">Every finding from the <a href="/audit.html">audit</a> converted into a checkable task — with file references, estimates, dependencies, and hard dates. Ticks, assignees, and comments are saved in a shared team database — Martin, Leonel, and Mike all see the same board, live. Work top to bottom inside each phase; the week map shows what must land when.</p>
+    <div class="howto">
+      <b>How to use this board</b>
+      <p>This is our shared tasklist for winning the STIHL RFP — every task from the <a href="/audit.html">audit</a>, organised by phase, with estimates, dependencies and hard dates. Whatever you do here, the whole team sees it instantly.</p>
+      <ol>
+        <li><b>Say who you are</b> — the &ldquo;I am&rdquo; dropdown in the header. Your ticks and comments carry your name.</li>
+        <li><b>Tick a task done</b> — click its checkbox; it shows &ldquo;✓ your name · date&rdquo; for everyone. Untick to reopen it.</li>
+        <li><b>Assign a task</b> — every task belongs to the <b>Team</b> by default; use the dropdown on the task to hand it to one person (pick Team to give it back to everyone).</li>
+        <li><b>Add a task</b> — &ldquo;＋ Add task&rdquo; at the bottom of any group; everyone sees it live. Added tasks (and only those) can be deleted.</li>
+        <li><b>Discuss</b> — 💬 opens a comment thread on that exact task. Type <b>@</b> to tag someone (e.g. @leonel) — tagged people get a notification.</li>
+        <li><b>Notifications</b> — the 🔔 in the header collects your mentions and replies from all three pages, plus everything assigned to you.</li>
+        <li><b>Filter</b> — All / Open / Done and Team / Martin / Leonel / Mike, in the top bar.</li>
+      </ol>
+    </div>
+    <div class="meta-grid">
+      <div><div class="k">Board</div><div class="v">V2 <small>· updated 10 Sep</small></div></div>
+      <div><div class="k">Confirm participation</div><div class="v">11 Sep <small>hard date</small></div></div>
+      <div><div class="k">Questions due</div><div class="v">18 Sep</div></div>
+      <div><div class="k">Proposal due</div><div class="v">9 Oct</div></div>
+      <div><div class="k">Presentations</div><div class="v">22–23 Oct</div></div>
+    </div>
+    <div class="bigprog">
+      <div class="row"><span class="t">Overall progress</span><span class="n" id="prog-all">0 / 0</span></div>
+      <div class="bar"><i id="bar-all"></i></div>
+      <div class="phase-tiles">
+        <div class="ptile"><div class="pt">Now · this week</div><div class="pn" data-phase-n="now">0/0</div><div class="bar"><i data-phase-bar="now"></i></div></div>
+        <div class="ptile"><div class="pt">P0 · proposal</div><div class="pn" data-phase-n="p0">0/0</div><div class="bar"><i data-phase-bar="p0"></i></div></div>
+        <div class="ptile"><div class="pt">P1 · presentations</div><div class="pn" data-phase-n="p1">0/0</div><div class="bar"><i data-phase-bar="p1"></i></div></div>
+        <div class="ptile"><div class="pt">P2 · rollout</div><div class="pn" data-phase-n="p2">0/0</div><div class="bar"><i data-phase-bar="p2"></i></div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="weeks">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">00</span><h2>The week map</h2></div>
+    <p class="sec-intro">Five working weeks to the proposal, two more to the presentations. <strong>The critical path is infrastructure (I-group) and the two product builds (B-01, B-03)</strong> — everything else flexes around them. Uptime monitoring must start in week 1 so there are ~7 weeks of green history by presentation day.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Week</th><th>Focus</th><th>Tasks landing</th><th>RFP milestone</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Wk 1</strong> · 3–9 Sep</td><td>Unblock everything: decisions, quick wins, monitoring ON</td><td><span class="mono">A-01…A-07, S-01…S-04, I-01…I-03</span></td><td></td></tr>
+        <tr><td><strong>Wk 2</strong> · 10–16 Sep</td><td>Perf &amp; SEO integrity, leads, legal</td><td><span class="mono">S-05…S-11, I-04…I-07</span></td><td class="mile">11 Sep — confirm participation</td></tr>
+        <tr><td><strong>Wk 3</strong> · 17–23 Sep</td><td>Docs sprint: SLA, governance, pricing; DR rehearsal</td><td><span class="mono">A-03 sent, D-01…D-08, I-08</span></td><td class="mile">18 Sep — questions due</td></tr>
+        <tr><td><strong>Wk 4</strong> · 24–30 Sep</td><td>Proposal writing; NZ re-measure; adjust to STIHL's answers</td><td><span class="mono">S-12, W-01…W-05</span></td><td>25 Sep — STIHL answers</td></tr>
+        <tr><td><strong>Wk 5</strong> · 1–8 Oct</td><td>Proposal production, review, submit</td><td><span class="mono">W-06…W-09</span></td><td class="mile">9 Oct — proposal due</td></tr>
+        <tr><td><strong>Wk 6</strong> · 10–16 Oct</td><td>P1 build sprint: promotions, events, analytics</td><td><span class="mono">B-01…B-08</span></td><td>16 Oct — shortlist</td></tr>
+        <tr><td><strong>Wk 7</strong> · 17–21 Oct</td><td>Demo fleet, hardening, rehearsals</td><td><span class="mono">B-09…B-11, H-01…H-06, P-01…P-05</span></td><td class="mile">22–23 Oct — presentations</td></tr>
+        <tr><td><strong>Nov–Dec</strong></td><td>Contract → pilot expansion; P2 tooling</td><td><span class="mono">R-01…R-06</span></td><td>13 Nov contract · Dec pilot</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout red">
+      <h4>Two rules for the next five weeks</h4>
+      <p><strong>1 · Nothing ships into the proposal that isn't true.</strong> Every claim gets its checkbox here first, then its sentence there.</p>
+      <p><strong>2 · The pilot site is the demo.</strong> Any change to stihlshoptauranga.co.nz gets verified live after deploy — an evaluator may visit at any hour from 4 Sep onward.</p>
+    </div>
+  </div>
+</section>
+
+<section id="now">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>Now — this week</h2></div>
+    <p class="sec-intro">Everything here unblocks something else. The <strong>decisions</strong> (pricing, hosting narrative) gate the documents workstream — make them early, in one sitting if possible.</p>
+
+    <div class="tgroup" data-phase="now">
+      <div class="tgroup-head"><h3>A · Bid admin &amp; decisions</h3><span class="gsub">Wk 1 · 3–9 Sep</span>
+        <div class="gprog"><div class="bar"><i></i></div><span class="gnum">0/0</span></div></div>
+
+      <div class="task"><input type="checkbox" id="t-A01" data-tid="A-01"><div>
+        <label class="tt" for="t-A01"><span class="tid">A-01</span>Confirm participation with STIHL</label>
+        <p class="td">Short formal email: F925 confirms participation in the STIHL SHOP Dealer Website RFP 2026. Costs nothing, hard deadline. Send it this week, not on the 11th.</p>
+        <p class="tmeta"><span class="m repo">ops</span><span class="m">~30 min</span><span class="m due">Due 11 Sep</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-A02" data-tid="A-02"><div>
+        <label class="tt" for="t-A02"><span class="tid">A-02</span>Set up the bid war-room</label>
+        <p class="td">One folder: RFP PDF, the audit, this runbook, a decision log, and the proposal draft. Every decision (A-04…A-07) gets one line in the log with a date. Prevents the three-prices problem from ever recurring.</p>
+        <p class="tmeta"><span class="m repo">ops</span><span class="m">~1 h</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-A03" data-tid="A-03"><div>
+        <label class="tt" for="t-A03"><span class="tid">A-03</span>Finalise and submit the vendor questions</label>
+        <p class="td">The seven strategic questions from audit §07 (product feed/API access, portal publish-vs-approve semantics, GA4 ownership, migration scope, measurable technical standards, AI-assistant policy, dealer-paid vs HQ-paid commercials) <strong>plus the team’s ten in this task’s comment thread</strong> — MIKE-1/2, MARTIN-1/2, LEONEL-1/2 and four Claude suggestions, each written and formatted ready to lift into the email. Pick the final set, finalise wording and SEND — due 18 Sep.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">~2 h</span><span class="m due">Due 18 Sep</span><span class="m dep">after A-06</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-A04" data-tid="A-04"><div>
+        <label class="tt" for="t-A04"><span class="tid">A-04</span>DECIDE — the price</label>
+        <p class="td"><strong>DECIDED 8 Sep:</strong> $2,500 + GST setup, $600 + GST monthly (STIHL-side feedback: “price is sweet”). <strong>Still open — idea on the table since 15 Sep:</strong> a second table for a network commitment (if STIHL makes the framework a brand standard) at roughly 35–45% below dealer-direct, plus volume bands for dealer-direct. Drafted into proposal §9 as “proposed”; the reasoning and the decision tree are on the <a href="/scenarios.html">scenarios page</a>. Final shape once STIHL answers CQ-01. The old $500/$599 offers become historical bundles under optional services.</p>
+        <p class="tmeta"><span class="m repo">decision</span><span class="m">½ day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-A05" data-tid="A-05"><div>
+        <label class="tt" for="t-A05"><span class="tid">A-05</span>DECIDE — the hosting narrative</label>
+        <p class="td"><strong>DECIDED &amp; DONE 8 Sep:</strong> Cloudflare edge + DigitalOcean App Platform origin + managed Postgres + Spaces; all Netlify remnants removed (Leo). Failover reality for the narrative: containers self-heal in roughly seconds-to-minutes; a second origin instance buys zero-downtime and gets provisioned at rollout, not before vendor selection. Leo’s DR artifact has the full story.</p>
+        <p class="tmeta"><span class="m repo">decision</span><span class="m">~1 h</span></p>
+      </div></div>
+
+
+      <div class="task"><input type="checkbox" id="t-A07" data-tid="A-07"><div>
+        <label class="tt" for="t-A07"><span class="tid">A-07</span>Verify the "collaboration with STIHL" footer claim</label>
+        <p class="td"><strong>DONE 7 Sep:</strong> footer is now “© 2026 STIHL SHOP [DEALER_NAME]. All rights reserved. Site built by F925.” — the collaboration claim is gone platform-wide (Leo).</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">~30 min</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-A08" data-tid="A-08"><div>
+        <label class="tt" for="t-A08"><span class="tid">A-08</span>Reconcile working copies with production repos</label>
+        <p class="td">The audited snapshots had no .git and the platform handoff admits local branches were never merged to origin/main. Before any fix ships: confirm what production actually runs, merge/rebase the real branches, and make <span class="mono">main</span> deployable truth in both repos.</p>
+        <p class="tmeta"><span class="m repo">both repos</span><span class="m">~2 h</span><span class="m dep">blocks all S/I tasks</span></p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="site">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>P0 · Live-site fixes</h2></div>
+    <p class="sec-intro">Template repo (<code>stihl-dealers-website-template-main</code>), deployed to the live pilot. Ordered: embarrassments first, then SEO integrity, then performance. <strong>S-13 (NZ re-measurement) is the payoff</strong> — no performance number enters the proposal until it passes.</p>
+
+    <div class="tgroup" data-phase="p0">
+      <div class="tgroup-head"><h3>S · Pilot &amp; template</h3><span class="gsub">Wk 1–4 · audit refs P0-01, P0-07, P0-08, P0-09</span>
+        <div class="gprog"><div class="bar"><i></i></div><span class="gnum">0/0</span></div></div>
+
+      <div class="task"><input type="checkbox" id="t-S01" data-tid="S-01"><div>
+        <label class="tt" for="t-S01"><span class="tid">S-01</span>Fix "All rights reverved"</label>
+        <p class="td"><span class="mono">SiteFooter.svelte:127</span>. Live on the pilot today; also fix the misspelled <span class="mono">stilhshop-products.ts</span> filename while in there.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">~15 min</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S02" data-tid="S-02"><div>
+        <label class="tt" for="t-S02"><span class="tid">S-02</span>Render Sunday hours from dealer data</label>
+        <p class="td"><span class="mono">contact/+page.svelte</span> hardcodes "Sunday: Closed" and derives Mon–Fri from Monday only — render the whole week from <span class="mono">workingHours</span>/<span class="mono">weekDisplay</span> like the header does.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">~1 h</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S03" data-tid="S-03"><div>
+        <label class="tt" for="t-S03"><span class="tid">S-03</span>Strip production console noise</label>
+        <p class="td">36 <span class="mono">console.log</span> calls across src — carousel events on every interaction (<span class="mono">flickityFactory.ts</span>), blog image resolution on every post view. Gate behind a debug flag or delete.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">~1 h</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S04" data-tid="S-04"><div>
+        <label class="tt" for="t-S04"><span class="tid">S-04</span>Remove dead &amp; leaky routes from the tenant template</label>
+        <p class="td">Delete <span class="mono">/login</span> (broken Supabase page → drop <span class="mono">@supabase/supabase-js</span> dep), <span class="mono">/content</span> (editor posting to a nonexistent API), and move <span class="mono">/report</span> — our competitive teardown of other STIHL dealers — out of the customer-facing template entirely.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">½ day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S05" data-tid="S-05"><div>
+        <label class="tt" for="t-S05"><span class="tid">S-05</span>Fix the broken LocalBusiness JSON-LD</label>
+        <p class="td">The live homepage ships the literal text <span class="mono">{localBusinessSchema}</span> — the schema in <span class="mono">+page.svelte:19-70</span> never interpolates in the production build. Fix, fill the empty <span class="mono">postalCode</span> from <span class="mono">profile.businessEssentials</span>, deploy, then verify the <em>live</em> HTML and Google's Rich Results test. Screenshot the pass for the proposal.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">~2 h</span><span class="m">Highest-priority bug</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S06" data-tid="S-06"><div>
+        <label class="tt" for="t-S06"><span class="tid">S-06</span>Open Graph + Twitter Cards, site-wide</label>
+        <p class="td">Zero <span class="mono">og:</span> tags exist today on a retail site. Add og:title/description/image/url + twitter:card in the layout head, per-dealer og:image (storefront photo from payload), per-page overrides on blog posts. Verify with the Facebook sharing debugger.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">½–1 day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S07" data-tid="S-07"><div>
+        <label class="tt" for="t-S07"><span class="tid">S-07</span>robots.txt + index hygiene</label>
+        <p class="td">Add the <span class="mono">Sitemap:</span> line to robots.txt; noindex anything that survives S-04; confirm sitemap.xml still lists partner + blog pages correctly per host.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">~30 min</span><span class="m dep">after S-04</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S08" data-tid="S-08"><div>
+        <label class="tt" for="t-S08"><span class="tid">S-08</span>Fix the LCP animation bug</label>
+        <p class="td">The hero <span class="mono">&lt;h1 class="text--hero animate-on-scroll"&gt;</span> is the LCP element and its fade-in adds ~16 s of render delay in lab. Render it painted (opacity 1) and animate a non-LCP decoration instead, or use an animation that starts from a visible state. This single fix moves mobile Lighthouse more than everything else combined.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">2–4 h</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S09" data-tid="S-09"><div>
+        <label class="tt" for="t-S09"><span class="tid">S-09</span>Hero video diet</label>
+        <p class="td">Five MP4s, 2.2–8.1 MB each, empty <span class="mono">poster=""</span>, no preload strategy. Add real poster frames (from the enhanced-img pipeline), <span class="mono">preload="metadata"</span>, re-encode the 8 MB files (shorter loop, 1080p, higher CRF), and don't autoload offscreen slides' videos.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">½ day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S10" data-tid="S-10"><div>
+        <label class="tt" for="t-S10"><span class="tid">S-10</span>Dealer uploads through the image pipeline</label>
+        <p class="td">Portal-uploaded photos serve as raw JPEGs from Spaces (measured: one 450 KB hero, 1-hour cache, no srcset). Process on upload — resize ladder + AVIF/WebP + immutable cache — or front Spaces with an image-resizing proxy. Fixes W8/C4 findings and most of the remaining page weight.</p>
+        <p class="tmeta"><span class="m repo">platform + template</span><span class="m">1–2 days</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S11" data-tid="S-11"><div>
+        <label class="tt" for="t-S11"><span class="tid">S-11</span>Security headers on the pilot</label>
+        <p class="td">Currently zero (the corporate site has HSTS; we don't — bad look). Add HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, and a CSP (report-only first, enforce after a week of clean reports). Set at the edge or in <span class="mono">hooks.server.ts</span>.</p>
+        <p class="tmeta"><span class="m repo">template / edge</span><span class="m">½ day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S12" data-tid="S-12"><div>
+        <label class="tt" for="t-S12"><span class="tid">S-12</span>Edge-cache the HTML</label>
+        <p class="td">Homepage currently serves <span class="mono">cache-control: private / cf-cache-status: BYPASS</span> while the marketing says "edge-cached worldwide." Add Cloudflare cache rules + <span class="mono">s-maxage</span> with stale-while-revalidate for anonymous pages, purge-on-publish from the platform. Verify HITs.</p>
+        <p class="tmeta"><span class="m repo">infra</span><span class="m">½ day</span><span class="m dep">after S-05…S-09</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S13" data-tid="S-13"><div>
+        <label class="tt" for="t-S13"><span class="tid">S-13</span>Re-measure from New Zealand — the gate</label>
+        <p class="td">PageSpeed Insights with an API key (or an NZ-based runner), mobile + desktop, three runs, median recorded with methodology. Target: mobile 90+ reproducible by anyone. <strong>Only numbers from this task go into the proposal and the /unify page.</strong></p>
+        <p class="tmeta"><span class="m repo">QA</span><span class="m">½ day</span><span class="m dep">after S-05…S-12</span><span class="m due">Before W-02</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-S14" data-tid="S-14"><div>
+        <label class="tt" for="t-S14"><span class="tid">S-14</span>Bonus schema: BlogPosting + BreadcrumbList</label>
+        <p class="td">Article schema on the ~55 blog posts and breadcrumbs site-wide — cheap credibility for the technical-SEO section. Optional if time is tight.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">½ day</span><span class="m">optional</span></p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="infra">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>P0 · Infrastructure, leads &amp; legal</h2></div>
+    <p class="sec-intro">This workstream makes the /unify claims true. <strong>I-01 starts the uptime evidence clock — do it in week 1.</strong> The lead-capture chain (I-04 → I-06) also answers the RFP's data-ownership clause.</p>
+
+    <div class="tgroup" data-phase="p0">
+      <div class="tgroup-head"><h3>I · Infra &amp; ops</h3><span class="gsub">Wk 1–3 · audit refs P0-04, P0-05, P0-06</span>
+        <div class="gprog"><div class="bar"><i></i></div><span class="gnum">0/0</span></div></div>
+
+      <div class="task"><input type="checkbox" id="t-I01" data-tid="I-01"><div>
+        <label class="tt" for="t-I01"><span class="tid">I-01</span>Uptime monitoring + public status page — TODAY</label>
+        <p class="td">Checks on the pilot domain, platform API, and portal; alerting to phone; public status page. Every day this runs is a day of green history to show on 22–23 Oct. Seven weeks of data is possible if this lands in week 1.</p>
+        <p class="tmeta"><span class="m repo">ops</span><span class="m">2–3 h</span><span class="m due">Wk 1</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-I02" data-tid="I-02"><div>
+        <label class="tt" for="t-I02"><span class="tid">I-02</span>Error tracking everywhere</label>
+        <p class="td">Sentry (or equivalent) on the template SSR, the platform Express server, and the portal SPA. This is what makes a 2-hour critical response commitment honest — we find out before the dealer does.</p>
+        <p class="tmeta"><span class="m repo">both repos</span><span class="m">½ day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-I03" data-tid="I-03"><div>
+        <label class="tt" for="t-I03"><span class="tid">I-03</span>Backups: managed Postgres PITR + Spaces versioning</label>
+        <p class="td">Audit found zero backup configuration. Move to (or verify) managed Postgres with point-in-time recovery and daily snapshots; enable versioning on the DO Spaces media bucket; document retention. The "daily backups" claim becomes true here.</p>
+        <p class="tmeta"><span class="m repo">infra</span><span class="m">1–2 days</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-I04" data-tid="I-04"><div>
+        <label class="tt" for="t-I04"><span class="tid">I-04</span>First-party lead capture endpoint</label>
+        <p class="td">Contact form posts to our own endpoint → platform API → <span class="mono">leads</span> table (dealer_id, department, payload, timestamps). Replaces the third-party relay and creates the lead record STIHL's data-ownership clause requires.</p>
+        <p class="tmeta"><span class="m repo">platform + template</span><span class="m">1 day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-I05" data-tid="I-05"><div>
+        <label class="tt" for="t-I05"><span class="tid">I-05</span>Lead routing, spam protection, export</label>
+        <p class="td">Route each lead to the dealer's department emails (already in the schema, currently unused) via Resend; honeypot + Cloudflare Turnstile; CSV export per dealer for data portability. Lead events also feed the B-05 conversion tracking.</p>
+        <p class="tmeta"><span class="m repo">platform</span><span class="m">1 day</span><span class="m dep">after I-04</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-I06" data-tid="I-06"><div>
+        <label class="tt" for="t-I06"><span class="tid">I-06</span>Purge the old form stack + secrets hygiene</label>
+        <p class="td">Remove and revoke the hardcoded Web3Forms key (<span class="mono">contact/+page.svelte:181</span>); fix or delete the newsletter endpoint that silently drops signups; purge <span class="mono">subscribers.txt</span> (real PII) from the repo and its git history; while at it, remove the fallback JWT secret (<span class="mono">auth.ts:5</span>) and hardcoded DB fallback (<span class="mono">db.ts:6</span>) — fail fast on missing env instead.</p>
+        <p class="tmeta"><span class="m repo">both repos</span><span class="m">½ day</span><span class="m dep">after I-04</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-I07" data-tid="I-07"><div>
+        <label class="tt" for="t-I07"><span class="tid">I-07</span>Per-dealer privacy policy + terms</label>
+        <p class="td">Dealer sites collect PII with no privacy policy of their own (footer borrows stihlshop.co.nz corporate pages). Add template pages populated per dealer (entity name, contact, what we collect, NZ Privacy Act rights), swap footer links. Legal review before publish.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">1 day + review</span></p>
+      </div></div>
+
+
+      <div class="task"><input type="checkbox" id="t-I09" data-tid="I-09"><div>
+        <label class="tt" for="t-I09"><span class="tid">I-09</span>Disaster-recovery rehearsal + document</label>
+        <p class="td">One full rehearsal: restore the DB snapshot to a fresh instance, redeploy the origin from git, re-point. Record actual timings. Write the DR doc with RPO ≤ 24 h / RTO ≤ 4 h and the runbook. "We rehearsed it on [date]; restore took N minutes" beats any promise.</p>
+        <p class="tmeta"><span class="m repo">ops</span><span class="m">1 day</span><span class="m dep">after I-03</span><span class="m due">Wk 3</span></p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="docs">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2>P0 · Documents &amp; commercial</h2></div>
+    <p class="sec-intro">Pure writing and decisions — no code — yet it defends 35% of the score (Governance 20% + Support 15%). Everything here depends on the A-group decisions.</p>
+
+    <div class="tgroup" data-phase="p0">
+      <div class="tgroup-head"><h3>D · Docs &amp; commercial</h3><span class="gsub">Wk 2–3 · audit refs P0-02, P0-03, P0-10</span>
+        <div class="gprog"><div class="bar"><i></i></div><span class="gnum">0/0</span></div></div>
+
+      <div class="task"><input type="checkbox" id="t-D01" data-tid="D-01"><div>
+        <label class="tt" for="t-D01"><span class="tid">D-01</span>The rate card</label>
+        <p class="td">One page: setup fee, monthly fee, volume bands, HQ-pays option — itemised exactly as RFP §17 demands (setup / migration / monthly / hosting / content management / optional), even where a line is "included, $0".</p>
+        <p class="tmeta"><span class="m repo">commercial</span><span class="m">1 day</span><span class="m dep">after A-04</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-D02" data-tid="D-02"><div>
+        <label class="tt" for="t-D02"><span class="tid">D-02</span>Migration fee schedule</label>
+        <p class="td">Three tiers: no existing site (onboarding only) / simple migration (content import + 301 map + DNS cutover) / complex (e-commerce-entangled, e.g. dealers currently selling online). Include the SEO-equity preservation method — redirect maps, Search Console handover.</p>
+        <p class="tmeta"><span class="m repo">commercial</span><span class="m">½ day</span><span class="m dep">after A-04</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-D03" data-tid="D-03"><div>
+        <label class="tt" for="t-D03"><span class="tid">D-03</span>Optional services menu</label>
+        <p class="td">Bespoke photography, premium module configurations, extra local content. Priced. The old $500/$599 offers get absorbed here as historical bundles.</p>
+        <p class="tmeta"><span class="m repo">commercial</span><span class="m">½ day</span><span class="m dep">after A-04</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-D04" data-tid="D-04"><div>
+        <label class="tt" for="t-D04"><span class="tid">D-04</span>Fix every public pricing surface</label>
+        <p class="td">/unify page, the netlify proposal hub (fix its dead document-card links or take it down), and any other public pitch page — all to the D-01 numbers. An evaluator who googles us must find one price.</p>
+        <p class="tmeta"><span class="m repo">site-f925</span><span class="m">½ day</span><span class="m dep">after D-01</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-D05" data-tid="D-05"><div>
+        <label class="tt" for="t-D05"><span class="tid">D-05</span>The SLA pack</label>
+        <p class="td">Commit to STIHL's exact preferred matrix — Critical 2 h / High 4 h / Medium 1 business day / Low 3 business days — defined as acknowledge-and-triage, backed by I-01/I-02 detection. Plus: 99.9% uptime with service credits, the 48-hour content guarantee, support hours, escalation matrix, emergency line.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">1–2 days</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-D06" data-tid="D-06"><div>
+        <label class="tt" for="t-D06"><span class="tid">D-06</span>Helpdesk live</label>
+        <p class="td">Pick a lightweight tool, wire intake (support email + portal messages), define triage → resolve flow matching D-05. Screenshot it for the proposal's support section — evidence, not description.</p>
+        <p class="tmeta"><span class="m repo">ops</span><span class="m">½ day</span><span class="m dep">after D-05</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-D07" data-tid="D-07"><div>
+        <label class="tt" for="t-D07"><span class="tid">D-07</span>Continuity plan</label>
+        <p class="td">The small-studio answer, written before it's asked: documented runbooks, repo escrow or STIHL-accessible repositories, named backup operating capacity, and the fact that the platform is standard-stack (SvelteKit/Postgres) — any competent team could operate it. Honesty beats headcount theatre.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">½ day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-D08" data-tid="D-08"><div>
+        <label class="tt" for="t-D08"><span class="tid">D-08</span>Governance pack</label>
+        <p class="td">Matrix mapping every RFP §5 element (brand standards, structure, templates, nav, product presentation, compliance, supplier standards) to its enforcement mechanism in the platform; approved-supplier content rules; the change-request approval workflow diagram with its audit trail.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">1–2 days</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-D09" data-tid="D-09"><div>
+        <label class="tt" for="t-D09"><span class="tid">D-09</span>Rehabilitate the public story</label>
+        <p class="td">Un-hide the /unify "Platform" section (our best technical evidence is currently commented out); add analytics &amp; reporting to the offer copy (currently absent everywhere); prerender/SSR f925.works so the pitch site stops serving an empty <span class="mono">&lt;body&gt;</span> to crawlers — a vendor selling SEO must pass view-source.</p>
+        <p class="tmeta"><span class="m repo">site-f925</span><span class="m">1 day</span><span class="m dep">after D-04</span></p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="proposal">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05</span><h2>P0 · The proposal itself</h2></div>
+    <p class="sec-intro">Weeks 4–5. The skeleton maps RFP §15 one-to-one; the evidence comes from everything above. <strong>W-08 (red-team) is non-negotiable</strong> — the audit's gap list is the attacker's script.</p>
+
+    <div class="tgroup" data-phase="p0">
+      <div class="tgroup-head"><h3>W · Writing &amp; submission</h3><span class="gsub">Wk 4–5 · due 9 Oct</span>
+        <div class="gprog"><div class="bar"><i></i></div><span class="gnum">0/0</span></div></div>
+
+      <div class="task"><input type="checkbox" id="t-W01" data-tid="W-01"><div>
+        <label class="tt" for="t-W01"><span class="tid">W-01</span>Proposal skeleton</label>
+        <p class="td">Sections in RFP §15 order: company + continuity → experience (pilot case study, demo fleet, landscape research) → proposed solution → hosting model → support model → timeline (their 5 phases, compressed) → pricing → legal → minimum-standards appendix. Open with RFP §19 answered clause-by-clause.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">~2 h</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-W02" data-tid="W-02"><div>
+        <label class="tt" for="t-W02"><span class="tid">W-02</span>The Tauranga case study</label>
+        <p class="td">NZ-measured performance (from S-13 only), the 16 five-star reviews, ~55 maintained blog posts, the change-request history from the portal, owner quotes. This is the centrepiece — no other bidder has a live anything.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">1 day</span><span class="m dep">after S-13</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-W03" data-tid="W-03"><div>
+        <label class="tt" for="t-W03"><span class="tid">W-03</span>Hosting-model diagram</label>
+        <p class="td">Cloudflare edge → DO App Platform origin → managed Postgres + Spaces, with the backup/DR flows and the multi-tenant request path (host → dealer resolution). One diagram, reused in the presentation.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">½ day</span><span class="m dep">after I-09</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-W04" data-tid="W-04"><div>
+        <label class="tt" for="t-W04"><span class="tid">W-04</span>Minimum technical standards appendix</label>
+        <p class="td">The quiet kill-shot: propose that all vendors be held to Core Web Vitals thresholds, security headers, valid structured data, WCAG 2.1 AA targets, and uptime SLAs — with our own measured results against each line. We pass; a WordPress fleet mostly can't.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">½ day</span><span class="m dep">after S-13</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-W05" data-tid="W-05"><div>
+        <label class="tt" for="t-W05"><span class="tid">W-05</span>Legal &amp; data-ownership schedule</label>
+        <p class="td">NZ Privacy Act / Fair Trading Act / Consumer Guarantees Act compliance statement, cybersecurity reference point (NZISM-aligned controls), and the data-ownership schedule: STIHL owns branding, customer data (leads exportable per I-05), dealer content, digital assets; GA4 properties under a STIHL-ownable org.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">½ day</span><span class="m dep">after I-05, I-07</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-W06" data-tid="W-06"><div>
+        <label class="tt" for="t-W06"><span class="tid">W-06</span>Incorporate STIHL's answers</label>
+        <p class="td">25 Sep: STIHL responds to vendor questions. Adjust pricing model (dealer-pays vs HQ-pays), product-data approach (feed vs sync) and portal semantics accordingly. Log decisions in the war-room.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">½ day</span><span class="m due">25–26 Sep</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-W07" data-tid="W-07"><div>
+        <label class="tt" for="t-W07"><span class="tid">W-07</span>Full assembly + itemised commercials</label>
+        <p class="td">Complete draft with the D-01…D-03 commercial pack itemised per RFP §17. Every claim cross-checked against a ticked box in this runbook.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">1 day</span><span class="m dep">after W-02…W-06</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-W08" data-tid="W-08"><div>
+        <label class="tt" for="t-W08"><span class="tid">W-08</span>Red-team review</label>
+        <p class="td">Someone plays the hostile evaluator armed with the audit's gap list and Little Rocket's incumbency: checks every URL, runs Lighthouse, view-sources the pitch page, multiplies the price by 88, asks the bus-factor question. Fix everything found.</p>
+        <p class="tmeta"><span class="m repo">review</span><span class="m">1 day</span><span class="m dep">after W-07</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-W09" data-tid="W-09"><div>
+        <label class="tt" for="t-W09"><span class="tid">W-09</span>Production design + submit</label>
+        <p class="td">Design pass worthy of a studio selling design (the proposal document is itself a design sample), PDF production, and submission with at least 24 h of margin before 9 Oct.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">1 day</span><span class="m due">Submit by 8 Oct</span></p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="builds">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">06</span><h2>P1 · Product builds</h2></div>
+    <p class="sec-intro">Between submission (9 Oct) and presentations (22–23 Oct): the demoable answers to the scored gaps. <strong>Promotions (B-01…B-03) and analytics (B-05…B-08) are the two that must demo live.</strong> Start B-01 before submission if capacity allows — the proposal can then say "in final testing" instead of "planned."</p>
+
+    <div class="tgroup" data-phase="p1">
+      <div class="tgroup-head"><h3>B · Platform &amp; template builds</h3><span class="gsub">Wk 6–7 · audit refs P1-11…15, P1-19</span>
+        <div class="gprog"><div class="bar"><i></i></div><span class="gnum">0/0</span></div></div>
+
+      <div class="task"><input type="checkbox" id="t-B01" data-tid="B-01"><div>
+        <label class="tt" for="t-B01"><span class="tid">B-01</span>Promotions: schema + admin scheduling</label>
+        <p class="td">Promo entity: title, copy, image, CTA, start/end dates, scope (network-wide push vs dealer-local). Admin UI to create and schedule; auto-expiry. Extends the existing <span class="mono">platform_campaigns</span> table rather than replacing it.</p>
+        <p class="tmeta"><span class="m repo">platform</span><span class="m">2–3 days</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-B02" data-tid="B-02"><div>
+        <label class="tt" for="t-B02"><span class="tid">B-02</span>Promotions: portal fields + approval flow</label>
+        <p class="td">Dealers propose local promos through the existing change-request workflow (per-field approval carries over for free); toggle participation in network promos. Closes the G2 "local promotions" dealer-ownership gap.</p>
+        <p class="tmeta"><span class="m repo">platform</span><span class="m">1–2 days</span><span class="m dep">after B-01</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-B03" data-tid="B-03"><div>
+        <label class="tt" for="t-B03"><span class="tid">B-03</span>Promotions: template rendering</label>
+        <p class="td">Homepage banner slot + a real /promotions listing page (replacing the outbound-only nav link), scheduled show/hide, generalising the Fieldays one-off (<span class="mono">PromoSection.svelte</span>) into the reusable component. This is the star of the P-02 demo.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">2 days</span><span class="m dep">after B-01</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-B04" data-tid="B-04"><div>
+        <label class="tt" for="t-B04"><span class="tid">B-04</span>Events + community sponsorships module</label>
+        <p class="td">Event entity (date, venue, copy, image, auto-expiry) + structured community-sponsorship entries; portal fields; template listing page. Shares B-01's scheduling plumbing. Closes W10 and the rest of G2.</p>
+        <p class="tmeta"><span class="m repo">both repos</span><span class="m">3–5 days</span><span class="m dep">after B-01</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-B05" data-tid="B-05"><div>
+        <label class="tt" for="t-B05"><span class="tid">B-05</span>Wire the five conversion events</label>
+        <p class="td">Form submission, <span class="mono">tel:</span> tap, outbound stihlshop.co.nz click, product-enquiry CTA, review-link click — through the existing <span class="mono">trackEvent</span> helper (currently only wired to Fieldays CTAs). The purchase-referral journey STIHL cares about becomes measurable.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">1 day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-B06" data-tid="B-06"><div>
+        <label class="tt" for="t-B06"><span class="tid">B-06</span>GA4 under a STIHL-ownable org + BigQuery export</label>
+        <p class="td">Restructure per-dealer GA4 properties under one organisation that can be transferred to STIHL SHOP (answers L1); enable BigQuery export for the rollup. Confirm approach against STIHL's answer to the A-03 analytics question.</p>
+        <p class="tmeta"><span class="m repo">ops</span><span class="m">½ day</span><span class="m dep">after W-06</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-B07" data-tid="B-07"><div>
+        <label class="tt" for="t-B07"><span class="tid">B-07</span>Reporting dashboards ×2 + the attribution report</label>
+        <p class="td">Looker Studio templates: per-dealer monthly (traffic, leads, conversions, top content) and the network rollup for head office. Headline artifact: the outbound-attribution report — "dealer sites referred N shoppers into stihlshop.co.nz this month." Closes M3/M5/M6/M7.</p>
+        <p class="tmeta"><span class="m repo">analytics</span><span class="m">2–3 days</span><span class="m dep">after B-05, B-06</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-B08" data-tid="B-08"><div>
+        <label class="tt" for="t-B08"><span class="tid">B-08</span>Keyword + compliance reporting</label>
+        <p class="td">Search Console API pull per dealer domain (closes M4 keyword monitoring) feeding the dashboards; quarterly brand-compliance report generated from the change-request audit trail already sitting in Postgres (closes C7's reporting half).</p>
+        <p class="tmeta"><span class="m repo">platform</span><span class="m">1–2 days</span><span class="m dep">after B-07</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-B09" data-tid="B-09"><div>
+        <label class="tt" for="t-B09"><span class="tid">B-09</span>Content differentiation pipeline</label>
+        <p class="td">Kills the duplicate-content liability (56 identical posts × N dealers): per-dealer localized intros/outros and metadata on shared posts, staggered/curated post subsets per dealer, and the monthly town-specific local SEO post (AI-drafted from town/soil/microclimate context, human-reviewed) as a working pipeline — it's promised on /unify, so it must exist.</p>
+        <p class="tmeta"><span class="m repo">both repos</span><span class="m">~1 week</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-B10" data-tid="B-10"><div>
+        <label class="tt" for="t-B10"><span class="tid">B-10</span>Product-data freshness</label>
+        <p class="td">Weekly scheduled re-run of the scraper → re-ingest → deploy; never quote stale prices (the "Special Price $985.00" from Jan 2026 must not resurface); "catalogue last synced" stamp. Superseded entirely if STIHL grants feed access (A-03) — then build the feed adapter instead.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">2–3 days</span><span class="m dep">after W-06</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-B11" data-tid="B-11"><div>
+        <label class="tt" for="t-B11"><span class="tid">B-11</span>Portal: multi-user roles + instant-publish fields</label>
+        <p class="td">Owner/staff accounts per dealership (today: one login, the <span class="mono">tier</span> column was dropped) — closes C10's permissions ask. Instant-publish for zero-risk fields (hours, phone) with post-hoc review — defuses "48 hours to change my hours?" while keeping the governance story intact.</p>
+        <p class="tmeta"><span class="m repo">platform</span><span class="m">~1 week</span><span class="m">stretch — can be live-roadmap in the demo</span></p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="hardening">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">07</span><h2>P1 · Hardening</h2></div>
+    <p class="sec-intro">Security and pipeline debt an evaluator's technical due diligence would find. None of it is architectural — all of it is finishable in week 7.</p>
+
+    <div class="tgroup" data-phase="p1">
+      <div class="tgroup-head"><h3>H · Security &amp; pipeline</h3><span class="gsub">Wk 6–7 · audit refs P1-16, P1-17, P1-18</span>
+        <div class="gprog"><div class="bar"><i></i></div><span class="gnum">0/0</span></div></div>
+
+      <div class="task"><input type="checkbox" id="t-H01" data-tid="H-01"><div>
+        <label class="tt" for="t-H01"><span class="tid">H-01</span>Rate limiting + OTP lockout</label>
+        <p class="td">Nothing is throttled today — the 6-digit email OTP is brute-forceable inside its 10-minute window. Add per-IP and per-account rate limits on login/OTP/reset endpoints, attempt counters, lockout with cooldown.</p>
+        <p class="tmeta"><span class="m repo">platform</span><span class="m">1–2 days</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-H02" data-tid="H-02"><div>
+        <label class="tt" for="t-H02"><span class="tid">H-02</span>Secrets: fail fast, no fallbacks</label>
+        <p class="td">Remove the hardcoded fallback JWT secret (<span class="mono">auth.ts:5</span> — also the token-HMAC fallback in <span class="mono">secureTokens.ts:4</span>) and the personal DB fallback (<span class="mono">db.ts:6</span>); boot-time env validation that refuses to start incomplete. Raise admin password minimum from 6.</p>
+        <p class="tmeta"><span class="m repo">platform</span><span class="m">½ day</span><span class="m dep">partly done in I-06</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-H03" data-tid="H-03"><div>
+        <label class="tt" for="t-H03"><span class="tid">H-03</span>SSE token out of the query string</label>
+        <p class="td"><span class="mono">?token=</span> in the SSE URL lands in server logs. Move to a short-lived ticket exchanged via header, or cookie auth for the event stream.</p>
+        <p class="tmeta"><span class="m repo">platform</span><span class="m">½ day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-H04" data-tid="H-04"><div>
+        <label class="tt" for="t-H04"><span class="tid">H-04</span>Helmet/CSP on portal + API, sanitize {@html}</label>
+        <p class="td">Security headers on the platform (the S-11 pass covers dealer sites); DOMPurify the two raw-HTML injections in the template (<span class="mono">ShopStatus.svelte</span> AI output, <span class="mono">ProductsListCard.svelte</span> markdown) — an XSS surface a security reviewer will flag.</p>
+        <p class="tmeta"><span class="m repo">both repos</span><span class="m">½–1 day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-H05" data-tid="H-05"><div>
+        <label class="tt" for="t-H05"><span class="tid">H-05</span>CI that actually gates</label>
+        <p class="td">Run the test suite in CI (fix the 1 failing <span class="mono">openingHours</span> test first), add <span class="mono">svelte-check</span> and dependency audit; add the deploy step with preview + documented rollback; delete the dead Netlify config (<span class="mono">netlify.toml</span> ×2, unused adapters) per A-05.</p>
+        <p class="tmeta"><span class="m repo">both repos</span><span class="m">1–2 days</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-H06" data-tid="H-06"><div>
+        <label class="tt" for="t-H06"><span class="tid">H-06</span>Accessibility pass + WCAG statement</label>
+        <p class="td">Keyboard path for the hover-only megamenu; fix inverted heading order (eyebrow <span class="mono">&lt;h3&gt;</span> above <span class="mono">&lt;h2&gt;</span>); focus management + aria-live on the cookie banner; then publish a WCAG 2.1 AA-target accessibility statement — referenced in the W-04 standards appendix.</p>
+        <p class="tmeta"><span class="m repo">template</span><span class="m">3–4 days</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-H07" data-tid="H-07"><div>
+        <label class="tt" for="t-H07"><span class="tid">H-07</span>API caching between site SSR and platform</label>
+        <p class="td">Every page view is currently a live platform-API call → Postgres. Add a short-TTL cache with purge-on-publish so 88 dealers don't turn every crawl into database load. Also stop <span class="mono">initDb</span> rewriting every dealer profile on each boot.</p>
+        <p class="tmeta"><span class="m repo">both repos</span><span class="m">1–2 days</span></p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">08</span><h2>P1 · Presentation prep</h2></div>
+    <p class="sec-intro">22–23 October is won by <strong>showing, not telling</strong> — the demo fleet turns "n=1 pilot" into "working network." Ask for the reference letter early; owners are busy people.</p>
+
+    <div class="tgroup" data-phase="p1">
+      <div class="tgroup-head"><h3>P · Demo &amp; rehearsal</h3><span class="gsub">Wk 7 · audit ref P1-21</span>
+        <div class="gprog"><div class="bar"><i></i></div><span class="gnum">0/0</span></div></div>
+
+      <div class="task"><input type="checkbox" id="t-P01" data-tid="P-01"><div>
+        <label class="tt" for="t-P01"><span class="tid">P-01</span>Stand up the demo fleet</label>
+        <p class="td">3–5 fictional dealers (different towns, hours, teams, partner-brand mixes) created through the REAL onboarding flow onto preview domains. This is simultaneously the multi-site proof (V4), the onboarding demo (I3), and the stage for the promo push.</p>
+        <p class="tmeta"><span class="m repo">ops</span><span class="m">2–3 days</span><span class="m dep">after B-03</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-P02" data-tid="P-02"><div>
+        <label class="tt" for="t-P02"><span class="tid">P-02</span>Script the six live demos</label>
+        <p class="td">1 · Onboarding wizard walkthrough. 2 · One edit → every fleet site updates. 3 · National promo published once → live on all sites → auto-expires. 4 · Portal change request → per-field approval → live, with audit trail. 5 · Dashboards incl. the attribution report. 6 · Status page with weeks of green uptime. Timed, with fallback recordings for venue-wifi failure.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">1 day</span><span class="m dep">after P-01, B-07</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-P03" data-tid="P-03"><div>
+        <label class="tt" for="t-P03"><span class="tid">P-03</span>Reference letter from the Tauranga owners</label>
+        <p class="td"><strong>Mike’s call (9 Sep): not needed</strong> — he is the client and STIHL knows it. Keep only if a natural pull-quote lands. Treat as closed unless someone reopens it.</p>
+        <p class="tmeta"><span class="m repo">ops</span><span class="m">ask in Wk 2, receive by Wk 6</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-P04" data-tid="P-04"><div>
+        <label class="tt" for="t-P04"><span class="tid">P-04</span>Two rehearsals with hostile Q&amp;A</label>
+        <p class="td">Drill the hard questions: bus factor / continuity, price × 88 dealers, "our people know WordPress," "why not extend the incumbent's ten sites," AI policy, migration risk, who owns the data. Every answer exists in the proposal — rehearse retrieving them under pressure.</p>
+        <p class="tmeta"><span class="m repo">team</span><span class="m">½ day ×2</span><span class="m dep">after P-02</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-P05" data-tid="P-05"><div>
+        <label class="tt" for="t-P05"><span class="tid">P-05</span>Leave-behind one-pager</label>
+        <p class="td">Scorecard against the W-04 minimum standards (us, measured), the rate card, the SLA matrix, and the pilot URL. The document that argues for us in the room after we leave.</p>
+        <p class="tmeta"><span class="m repo">docs</span><span class="m">½ day</span></p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section id="rollout">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">09</span><h2>P2 · Pilot → rollout commitments</h2></div>
+    <p class="sec-intro">Promised in the proposal, built during Phases 2–5 (Dec 2026 → 2027). Listed here so the commitments are tracked from day one — these become the delivery plan if we win.</p>
+
+    <div class="tgroup" data-phase="p2">
+      <div class="tgroup-head"><h3>R · Rollout &amp; roadmap</h3><span class="gsub">Nov 2026 onward · audit refs P2-20, P2-22, P2-23</span>
+        <div class="gprog"><div class="bar"><i></i></div><span class="gnum">0/0</span></div></div>
+
+      <div class="task"><input type="checkbox" id="t-R01" data-tid="R-01"><div>
+        <label class="tt" for="t-R01"><span class="tid">R-01</span>Migration importers + 301 tooling</label>
+        <p class="td">Content importers for the incumbent platforms (WordPress ×2 suppliers, Zeald, Turboweb, Elementor) into the dealer schema; 301-map generator; Search Console handover checklist per dealer. Sized by STIHL's answer to the A-03 migration question.</p>
+        <p class="tmeta"><span class="m repo">platform</span><span class="m">Phase 3–4</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-R02" data-tid="R-02"><div>
+        <label class="tt" for="t-R02"><span class="tid">R-02</span>Scripted domain/DNS/cert onboarding</label>
+        <p class="td">Cloudflare API automation for adding dealer domains, DNS records, and certificates — today it's manual and out-of-band; at 88 dealers it must be a script with a checklist.</p>
+        <p class="tmeta"><span class="m repo">infra</span><span class="m">Phase 3</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-R03" data-tid="R-03"><div>
+        <label class="tt" for="t-R03"><span class="tid">R-03</span>Load test at network scale</label>
+        <p class="td">k6 (or similar) against the platform API and site SSR at 88-dealer traffic models, with H-07's caching in place. Publish the numbers internally; fix what falls over before wave 2 of rollout.</p>
+        <p class="tmeta"><span class="m repo">QA</span><span class="m">Phase 4</span><span class="m dep">after H-07</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-R04" data-tid="R-04"><div>
+        <label class="tt" for="t-R04"><span class="tid">R-04</span>Dealer analytics inside the portal</label>
+        <p class="td">Surface each dealer's traffic, leads, and attribution in the portal they already log into — turns the monthly report into a living product feature and deepens lock-in.</p>
+        <p class="tmeta"><span class="m repo">platform</span><span class="m">Phase 5</span><span class="m dep">after B-07</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-R05" data-tid="R-05"><div>
+        <label class="tt" for="t-R05"><span class="tid">R-05</span>Workshop drop-off booking</label>
+        <p class="td">Live slot booking for service drop-offs (today: form-to-inbox). The roadmap feature that answers dealers' biggest operational pain and makes the platform indispensable.</p>
+        <p class="tmeta"><span class="m repo">product</span><span class="m">Phase 5</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-R06" data-tid="R-06"><div>
+        <label class="tt" for="t-R06"><span class="tid">R-06</span>Google Business Profile sync</label>
+        <p class="td">GBP API integration syncing hours/posts from the portal — one edit updates the website AND the Google listing.</p>
+        <p class="tmeta"><span class="m repo">product</span><span class="m">Phase 5</span><span class="m dep">after B-10</span></p>
+      </div></div>
+    </div>
+
+    <div class="callout">
+      <h4>Definition of done, for every task on this page</h4>
+      <p>Deployed (or delivered) · verified on the live surface it affects · its claim added to the proposal only after the checkbox is ticked · and, where it changes the pilot site, spot-checked on stihlshoptauranga.co.nz within an hour of deploy.</p>
+    </div>
+  </div>
+</section>
+
+<section id="beyond">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">10</span><h2>Beyond the RFP — ours to add</h2></div>
+    <p class="sec-intro">Things the RFP never asked for but we have (or want) — parked here so they are <strong>never forgotten</strong> when the proposal is assembled. The things we have, do, or are about to have that make us the obvious choice — and that are <b>not yet written into the proposal</b>. One task per thing, with the full write-up: what it is, why it matters to STIHL, where it lands (<span class="m where">§n</span>). Tick it once it is actually in the proposal. Questions to ourselves are marked; answer them in the comments.</p>
+    <div class="tgroup">
+      <div class="tgroup-head"><h3>X · Extras &amp; differentiators</h3><span class="gsub">no deadline · mention, demo or roadmap them</span>
+        <div class="gprog"><div class="bar"><i></i></div><span class="gnum">0/0</span></div></div>
+
+      <div class="task"><input type="checkbox" id="t-X02" data-tid="X-02"><div>
+        <label class="tt" for="t-X02"><span class="tid">X-02</span>Onboarding wizard — make it a demo star</label>
+        <p class="td">The guided ten-step wizard exists and is already in proposal §5.5 and demo P-02. Task: polish it with Mike's onboarding questions (A-xmtrztzc6) and rehearse it as the opening live demo — no other vendor can onboard a dealer on stage.</p>
+        <p class="tmeta"><span class="m where">§5.5 · demo</span><span class="m repo">platform</span><span class="m">~half day</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-X03" data-tid="X-03"><div>
+        <label class="tt" for="t-X03"><span class="tid">X-03</span>BRANDKIT — STIHL social posting is live with a real STIHL dealer</label>
+        <p class="td">Meta Tech Provider verification came through on 14 Sep and STIHL SHOP Tauranga is connected (Facebook page + Instagram). Month builder, Reels publishing and a background publish runner shipped the same day. This is an operating product with a STIHL dealer on it, not a roadmap item — it belongs with the differentiators, with a screenshot. Decide its place in the bid: optional service line in D-03, a demo moment, or a roadmap flagship — but it must appear somewhere; nobody else has it.</p>
+        <p class="qi">Does STIHL NZ want national campaigns pushed to every dealer's socials from one place? That is the obvious next sentence.</p>
+        <p class="tmeta"><span class="m where">§1.1 · §5</span><span class="m repo">brandkit</span><span class="m">~1 h</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-X04" data-tid="X-04"><div>
+        <label class="tt" for="t-X04"><span class="tid">X-04</span>Live weather widget on dealer sites</label>
+        <p class="td">open-meteo is already integrated in the stack. Local weather on a chainsaw shop's site is exactly the "locally alive" feel HQ wants.</p>
+        <p class="warn">Its free tier is non-commercial — licence or swap providers before this ships commercially.</p>
+        <p class="tmeta"><span class="m where">§5</span><span class="m repo">template</span><span class="m">~2 h</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-X05" data-tid="X-05"><div>
+        <label class="tt" for="t-X05"><span class="tid">X-05</span>AI-written STIHL welcome message that reacts to the weather</label>
+        <p class="td">"Southerly rolling in — good day to service the log splitter." The Groq-backed shop-status line already exists; extend it into a weather-aware, STIHL-flavoured welcome, human-reviewed templates, per dealer. Pairs with X-04.</p>
+        <p class="tmeta"><span class="m where">§5</span><span class="m repo">template</span><span class="m dep">after X-04</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-X06" data-tid="X-06"><div>
+        <label class="tt" for="t-X06"><span class="tid">X-06</span>Fortnightly “how your STIHL SHOP did” email to every dealer</label>
+        <p class="td">Every two weeks, every dealer gets an email: <b>“This is how your STIHL SHOP did this fortnight.”</b> People who visited, first-time visitors, pages looked at, how many got in touch, where they came from, phone vs computer — the same plain words as the portal, in five lines. One button, <b>“Want to dive deeper?”</b>, opens their portal analytics (deeper, but not so deep — X-11). They never have to log in, never have to remember to check; the numbers come to them.</p>
+        <ul class="tdl">
+          <li><b>Fully automated</b> (Google Analytics via the one service account + our own enquiry counts, rendered per dealer, sent by Resend) — and it never has to say so. To the dealer it reads like their agency wrote it.</li>
+          <li><b>Why it wins the comparison:</b> the RFP asks for a monthly report. Every other bidder will promise a PDF or a dashboard the dealer has to go and find. We make it a habit that arrives in the inbox — and it is exactly the “dealers hear from us” evidence §7 needs.</li>
+          <li><b>Cheap to build:</b> the analytics reads and the plain-English copy already exist (PR #19); this is a scheduled job + an email template. Roughly two days.</li>
+          <li>Pairs with X-11: the email is the push, the portal page is the pull. Same numbers, same words.</li>
+        </ul>
+        <p class="qi">Fortnightly or monthly? The RFP says monthly; fortnightly feels more alive but doubles the inbox. Could be fortnightly by default with a dealer setting.</p>
+        <p class="qi">Do we build the sender before 22–23 Oct so we can show a real one on stage, or only describe it?</p>
+        <p class="qi">A roll-up to STIHL NZ (“the network did X this fortnight”) is one more query — offer it?</p>
+        <p class="tmeta"><span class="m where">§5 reporting · §1.1 · §7</span><span class="m repo">platform</span><span class="m">proposal ~2 h · build ~2 d</span><span class="m dep">pairs with X-11</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-X07" data-tid="X-07"><div>
+        <label class="tt" for="t-X07"><span class="tid">X-07</span>Gary — the AI assistant we are not talking about</label>
+        <p class="td">Gary was removed from the war room on 16 Sep because he is not part of this bid as it stands — but he is real, he is built, and he has massive potential. Kept here so he is not forgotten when the proposal is assembled.</p>
+        <ul class="tdl">
+          <li><b>What exists:</b> a chat assistant on the dealer template with a Kiwi-mechanic personality, RAG over the STIHL catalogue, currently disabled.</li>
+          <li><b>Dealer-platform assistant</b> (the safe first step): helps a dealer through onboarding ("what do I put here?"), answers "how do I change my opening hours", drafts a change request from a sentence. No customer exposure, no brand-policy risk.</li>
+          <li><b>Customer-facing</b> (later, if STIHL's AI policy allows): a disclosed AI assistant on the dealer site doing product and spare-parts lookup on fresh feed data, opening hours, "which chainsaw for this job" — what a good counter person does.</li>
+          <li><b>Guardrails already identified:</b> disclosed as an AI (no more "I am a technical expert"), prices stripped from its context, fresh data only.</li>
+        </ul>
+        <p class="qi">Do we show Gary as a roadmap item in §5, as a "beyond the RFP" appendix, or keep him for the presentation on 22–23 Oct?</p>
+        <p class="tmeta"><span class="m where">§5 roadmap · §1.1</span><span class="m repo">platform</span><span class="m">~1 h</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-X08" data-tid="X-08"><div>
+        <label class="tt" for="t-X08"><span class="tid">X-08</span>Every change is checked by machines and by a person before it ships</label>
+        <p class="td">Probably half-said in the drafts but nowhere as a story. STIHL is buying a managed service for ~90 sites; how changes get made safely is the whole point. Sentry is mentioned; the rest is not.</p>
+        <ul class="tdl">
+          <li><b>CI on every pull request:</b> typecheck, the full test suite and a production build must pass before anything can merge (GitHub Actions on both repos).</li>
+          <li><b>Automated code review on every PR</b> (AI review bot) plus <b>peer review</b> by a second engineer before merge. Nothing reaches the dealers on one person's say-so.</li>
+          <li><b>Dependency security updates</b> arrive automatically as PRs (Dependabot) and go through the same checks.</li>
+          <li><b>Error tracking in production:</b> Sentry on the platform and the dealer sites, with a permanent verification endpoint so we know the wire is live — not just "we have Sentry".</li>
+          <li><b>Continuous checks:</b> uptime monitoring and alerting (I-01), backup verification (I-03), a rehearsed restore (I-09).</li>
+          <li><b>Evidence, not claims:</b> every PR carries a test plan and screenshots of the real thing working. We can show STIHL actual PRs.</li>
+        </ul>
+        <p class="qi">Which review bot runs on both repos, and can we quote a real PR (e.g. the reCAPTCHA one) in the proposal appendix?</p>
+        <p class="tmeta"><span class="m where">§6 change mgmt · §5.2 · §7</span><span class="m repo">proposal</span><span class="m">~2 h</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-X09" data-tid="X-09"><div>
+        <label class="tt" for="t-X09"><span class="tid">X-09</span>Two production servers plus a staging server — front and back each</label>
+        <p class="td">The target topology, so uptime is not only high but <b>consistent</b>. Today: one production instance; staging not built (I-xmu0hw5a2).</p>
+        <ul class="tdl">
+          <li><b>2 × production</b> for the dealer sites (front) and 2 × production for the platform (back), behind the edge. If one instance fails, the other carries the network and the dealer never notices.</li>
+          <li><b>1 × staging</b> for each, kept in step with production. Every change is rehearsed there before it touches a dealer — and it is the third fallback: if both production instances were lost, staging can be promoted.</li>
+          <li>What this buys STIHL: a rollout that never goes straight to live, UAT links for dealers on real infrastructure (X-10), and an honest answer to "what happens when it breaks", which the audit currently marks as a gap.</li>
+          <li>Cost is small at this scale (the capacity report has the numbers); the handoff doc estimates the dev/staging/prod split at about US$70/month.</li>
+        </ul>
+        <p class="warn">Do not claim this as built until it is. Describe it as the rollout topology with a date, and run the pilot on it.</p>
+        <p class="tmeta"><span class="m where">§6 hosting · §7 uptime</span><span class="m repo">infra</span><span class="m">~1 h</span><span class="m dep">after I-xmu0hw5a2</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-X10" data-tid="X-10"><div>
+        <label class="tt" for="t-X10"><span class="tid">X-10</span>The helpdesk's UAT → Approve flow is governance evidence</label>
+        <p class="td">A dealer never gets a change pushed on them: for anything with judgement in it, the helpdesk sends a staging link, the dealer clicks <b>Approve — it works</b>, and only then does it go live. Every step is time-stamped in the ticket. That is a governance story STIHL can audit, not a promise. Helpdesk v1 is live; v2 with UAT/approve is PR #14.</p>
+        <ul class="tdl">
+          <li>Statuses the dealer sees: New → In progress → Waiting on dealer / Waiting for UAT → Approved → Resolved → Closed.</li>
+          <li>Internal-only states are masked from the dealer, so the dealer view is always clean.</li>
+          <li>Screenshot the real thing for §7 once #14 is merged.</li>
+        </ul>
+        <p class="tmeta"><span class="m where">§5.2 governance · §7</span><span class="m repo">helpdesk</span><span class="m">~1 h</span><span class="m dep">after PR #14</span></p>
+      </div></div>
+
+      <div class="task"><input type="checkbox" id="t-X11" data-tid="X-11"><div>
+        <label class="tt" for="t-X11"><span class="tid">X-11</span>Dealer analytics in the portal + the HQ operations dashboard</label>
+        <p class="td"><b>Dealers see their own numbers inside the portal they already use</b> — people who visited, first-time visitors, pages looked at, how many got in touch, where visitors came from, phone vs computer. Plain words, no analytics jargon, 7/30/90 days. This turns the RFP's "monthly report" into a living feature: the dealer never waits for a PDF. Built 16 Sep, PR #19.</p>
+        <ul class="tdl">
+          <li>Zero per-dealer setup: F925 creates the GA property, one service account reads them all.</li>
+          <li>"Got in touch" is counted by our own platform (contact-form submissions), not inferred.</li>
+          <li><b>HQ:</b> F925 runs a single operations dashboard over everything that serves the network — hosting, database, storage, email, every third-party API and free tier — with usage against each limit and the monthly cost. We see a service approaching its limit weeks before a dealer would notice. Governance evidence for §5.2 and the "how do you know when things are getting complicated" question.</li>
+        </ul>
+        <p class="qi">Do we show STIHL a screenshot of HQ, or only describe it? It shows costs; maybe a redacted version.</p>
+        <p class="tmeta"><span class="m where">§5 reporting · §5.2 · §7</span><span class="m repo">platform</span><span class="m">~2 h</span><span class="m dep">feeds X-06</span></p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>How this page works.</strong> Ticks, assignees, and comments live in this page's shared database — everyone with access sees the same state, live (a ● Live chip at the top confirms the connection; ○ Local-only means changes stay in this browser). Pick who you are in the “I am” dropdown in the header so comments and ticks carry your name; tasks belong to the Team by default — use the dropdown on a task to hand it to one person; tag a teammate with @name in a comment and it lands in their 🔔. Stuck? Hit <i>⛔ Blocked</i> on the task, say why and tick which other tasks are holding you up — the task turns red, those tasks show a “blocks …” chip, and the people assigned to them get it in their 🔔. Filters: All / Open / Done / Blocked and Team / Martin / Leonel / Mike in the top bar. Task IDs are stable — reference them in commits and the war-room log (e.g. <code>S-05</code>). Companion document: the <a href="/audit.html">full RFP audit</a> — every task here traces to an audit finding and a requirement ID.</p>
+    <p>Prepared for F925 · internal · V2 of 10 September 2026 (V1: 3 Sep, archived at /board-v1.html) · 80 fixed tasks + team-added ones.</p>
+  </div>
+</footer>
+
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+<script>
+(function(){
+  var API='/api/state?page=board', APIKEY='XPFmcH2RSsza';
+  var LS_DONE='u4r-tasks-v1', LS_WHO='u4r-who-v1';
+  var PEOPLE=[
+    {id:'martin', name:'Martin', cls:'pa'},
+    {id:'leonel', name:'Leonel', cls:'pb'},
+    {id:'mike',   name:'Mike',   cls:'pc'}
+  ];
+  var NAME={}; PEOPLE.forEach(function(p){NAME[p.id]=p.name;});
+  NAME.team='Team';
+  var ASSIGNEES=PEOPLE.concat([{id:'team',name:'Team',cls:'pt'}]);
+  var boxes=Array.prototype.slice.call(document.querySelectorAll('.task input[type=checkbox]'));
+  var rows={}, state={}, comments={}, blockersIdx={};
+  var mode='connecting', everLive=false, migrated=false;
+  var statusFilter='all', whoFilter='all';
+  var me=(window.WR?WR.me:'');
+  if(window.WR)WR.onIdentity(function(id){me=id;});
+  var lastRev='', applied=false, pendingWrites=0, chain=Promise.resolve();
+  function enqueue(op){
+    pendingWrites++;
+    var p=chain.then(function(){return apiPost(op);});
+    chain=p.then(function(){pendingWrites--;if(pendingWrites===0)refresh();},function(){pendingWrites--;setMode('local');persistLocal();});
+    return p;
+  }
+
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(undefined,{day:'numeric',month:'short'});}catch(e){return '';}}
+  function merge(a,b){var o={},k;for(k in a)o[k]=a[k];for(k in b)o[k]=b[k];return o;}
+
+  function apiGet(){
+    return fetch(API,{headers:{'x-warroom-key':APIKEY}}).then(function(r){
+      if(!r.ok)throw new Error('http '+r.status);
+      return r.json();
+    });
+  }
+  function apiPost(op){
+    return fetch(API,{method:'POST',headers:{'x-warroom-key':APIKEY,'content-type':'application/json'},body:JSON.stringify(op)}).then(function(r){
+      if(!r.ok)throw new Error('http '+r.status);
+      return r.json();
+    });
+  }
+
+  /* ---------- sync chip (identity lives in the wr-shell header) ---------- */
+  function setMode(m){
+    mode=m;
+    var chip=document.getElementById('syncchip');
+    if(!chip)return;
+    chip.className='sync dot '+m;
+    var txt = m==='live' ? 'Live — shared with the team'
+      : m==='local' ? 'Offline — changes stay in this browser'
+      : 'Connecting…';
+    chip.textContent='●';
+    chip.title=txt;
+    chip.setAttribute('aria-label',txt);
+  }
+
+  /* ---------- assignee filter ---------- */
+  var filtersHost=document.querySelector('.topbar .filters');
+  var wf=document.createElement('div');
+  wf.className='filters whofilters';
+  wf.setAttribute('role','group'); wf.setAttribute('aria-label','Filter by assignee');
+  ['all','martin','leonel','mike'].forEach(function(w){
+    var b=document.createElement('button');
+    b.type='button'; b.dataset.who=w;
+    b.textContent = w==='all'?'Team':NAME[w];
+    if(w==='all')b.classList.add('active');
+    b.addEventListener('click',function(){
+      whoFilter=w;
+      wf.querySelectorAll('button').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      applyFilters();
+    });
+    wf.appendChild(b);
+  });
+  if(filtersHost)filtersHost.insertAdjacentElement('afterend',wf);
+  document.querySelectorAll('.filters button[data-filter]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      statusFilter=btn.dataset.filter;
+      document.querySelectorAll('.filters button[data-filter]').forEach(function(x){x.classList.remove('active');});
+      btn.classList.add('active');
+      applyFilters();
+    });
+  });
+
+  /* ---------- per-task UI ---------- */
+  function wireTask(b){
+    var tid=b.dataset.tid;
+    var taskEl=b.closest('.task');
+    var bodyEl=taskEl.querySelector('div');
+    b.setAttribute('aria-label','Done: '+tid);
+    var tt=taskEl.querySelector('.tt');
+    if(tt)tt.addEventListener('click',function(ev){
+      ev.preventDefault(); // the title no longer toggles the checkbox — it collapses/expands
+      taskEl.classList.toggle('collapsed');
+    });
+    // wrap everything below the title in an animatable fold
+    var fold=document.createElement('div'); fold.className='tfold';
+    var foldin=document.createElement('div'); foldin.className='tfoldin';
+    fold.appendChild(foldin);
+    Array.prototype.slice.call(bodyEl.children).forEach(function(ch){
+      if(ch!==tt)foldin.appendChild(ch);
+    });
+    bodyEl.appendChild(fold);
+    var bar=document.createElement('div');
+    bar.className='taskbar';
+    var asg=document.createElement('span'); asg.className='asg';
+    var sel=document.createElement('button');
+    sel.type='button'; sel.className='asgsel pt'; sel.textContent='Team';
+    sel.setAttribute('aria-haspopup','true'); sel.title='Assign '+tid;
+    var am=document.createElement('div'); am.className='asgmenu'; am.hidden=true;
+    ASSIGNEES.forEach(function(p){
+      var o=document.createElement('button');
+      o.type='button'; o.className=p.cls; o.dataset.pid=p.id; o.textContent=p.name;
+      o.addEventListener('click',function(ev){
+        ev.stopPropagation();
+        // Team is the default: assigning "team" clears back to everyone.
+        writeTask(tid,{assignee: p.id==='team'?null:p.id});
+        am.hidden=true;
+      });
+      am.appendChild(o);
+    });
+    sel.addEventListener('click',function(ev){
+      ev.stopPropagation();
+      var wasHidden=am.hidden;
+      document.querySelectorAll('.asgmenu').forEach(function(x){x.hidden=true;});
+      am.hidden=!wasHidden;
+    });
+    asg.appendChild(sel); asg.appendChild(am);
+    var cbtn=document.createElement('button');
+    cbtn.type='button'; cbtn.className='cbtn';
+    cbtn.innerHTML='Comment<span class="cnum"></span>';
+    cbtn.setAttribute('aria-label','Comments on '+tid);
+    var dmeta=document.createElement('span'); dmeta.className='dmeta';
+    var bkbtn=document.createElement('button');
+    bkbtn.type='button'; bkbtn.className='bkbtn'; bkbtn.textContent='⛔ Blocked';
+    bkbtn.setAttribute('aria-label','Mark '+tid+' as blocked');
+    var blocks=document.createElement('span'); blocks.className='blocks'; blocks.hidden=true;
+    bar.appendChild(asg); bar.appendChild(cbtn); bar.appendChild(bkbtn); bar.appendChild(blocks); bar.appendChild(dmeta);
+    var bkmeta=document.createElement('div'); bkmeta.className='bkmeta'; bkmeta.hidden=true;
+    var bkform=document.createElement('div'); bkform.className='bkform'; bkform.hidden=true;
+    bkbtn.addEventListener('click',function(){
+      var s=state[tid]||{};
+      if(s.blocked){bkmeta.hidden=!bkmeta.hidden;return;}
+      if(!bkform.hidden){bkform.hidden=true;return;}
+      // reopen keeps whatever was typed; a fresh form is built only the first time
+      if(bkform.querySelector('textarea'))bkform.hidden=false; else openBlockForm(tid);
+    });
+    var cpanel=document.createElement('div'); cpanel.className='cpanel'; cpanel.hidden=true;
+    cpanel.innerHTML='<div class="clist"></div>'
+      +'<form class="cform"><textarea rows="1" placeholder="Add a comment… (Shift+Enter for a new line)" aria-label="Comment on '+tid+'"></textarea><button type="submit">Post</button></form>'
+      +'<p class="cnote" hidden></p>';
+    cbtn.addEventListener('click',function(){cpanel.hidden=!cpanel.hidden;renderTask(tid);});
+    var form=cpanel.querySelector('form');
+    form.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var inp=form.querySelector('textarea');
+      var note=cpanel.querySelector('.cnote');
+      var txt=inp.value.trim();
+      if(!txt)return;
+      if(!me){note.textContent='Pick who you are first — "I am" in the header.';note.hidden=false;if(window.WR)WR.nudge();return;}
+      note.hidden=true;
+      var temp={key:tid,author:me,text:txt,at:new Date().toISOString()};
+      (comments[tid]=comments[tid]||[]).push(temp);
+      renderTask(tid);
+      inp.value='';
+      enqueue({t:'comment',key:tid,author:me,text:txt})
+        .catch(function(){
+          var arr=comments[tid]||[], ix=arr.indexOf(temp);
+          if(ix>=0)arr.splice(ix,1);
+          renderTask(tid);
+          note.textContent='Could not post — try again in a moment.';note.hidden=false;
+        });
+    });
+    foldin.appendChild(bar);
+    foldin.appendChild(bkmeta);
+    foldin.appendChild(bkform);
+    foldin.appendChild(cpanel);
+    if(window.WR)WR.wireCommentBox(form.querySelector('textarea'));
+    rows[tid]={box:b,task:taskEl,asg:asg,asgsel:sel,cbtn:cbtn,clist:cpanel.querySelector('.clist'),dmeta:dmeta,panel:cpanel,bkbtn:bkbtn,bkmeta:bkmeta,bkform:bkform,blocks:blocks};
+    b.addEventListener('change',function(){
+      var patch={done:b.checked};
+      if(b.checked){patch.doneBy=me||null;patch.doneAt=new Date().toISOString();patch.blocked=false;}
+      else{patch.doneBy=null;patch.doneAt=null;}
+      writeTask(tid,patch);
+    });
+  }
+  /* ---------- blocked: form + reverse index ---------- */
+  function taskTitle(tid){
+    var r=rows[tid]; if(!r)return '';
+    var lab=r.task.querySelector('.tt');
+    return lab?lab.textContent.replace(tid,'').replace(/\s*▸\s*$/,'').trim():'';
+  }
+  function openBlockForm(tid){
+    var r=rows[tid], s=state[tid]||{}, f=r.bkform;
+    if(!me){
+      f.hidden=false;
+      f.innerHTML='<p class="cnote">Pick who you are first — "I am" in the header.</p>';
+      if(window.WR)WR.nudge();
+      return;
+    }
+    var cur=s.blockedOn||[];
+    f.innerHTML='<div class="bklab">Why are you blocked?</div>'
+      +'<textarea rows="2" placeholder="What is stopping this task from moving? (Shift+Enter for a new line)" aria-label="Reason '+esc(tid)+' is blocked"></textarea>'
+      +'<div class="bklab">Blocked on which tasks? <span style="font-weight:400;letter-spacing:0;text-transform:none">(optional — leave empty for external blockers)</span></div>'
+      +'<input type="search" placeholder="Filter by ID or title…" aria-label="Filter tasks">'
+      +'<div class="bkpick"></div>'
+      +'<div class="bkbtns"><button type="button" class="save">Mark blocked</button><button type="button" class="cancel">Cancel</button></div>';
+    var ta=f.querySelector('textarea'), q=f.querySelector('input[type=search]'), pick=f.querySelector('.bkpick');
+    ta.value=s.blockedWhy||'';
+    var picked={}; cur.forEach(function(x){picked[x]=true;});
+    function renderPick(){
+      var needle=q.value.trim().toLowerCase();
+      var html='';
+      boxes.forEach(function(b){
+        var t=b.dataset.tid; if(t===tid)return;
+        var title=taskTitle(t), st=state[t]||{};
+        if(needle&&(t+' '+title).toLowerCase().indexOf(needle)<0&&!picked[t])return;
+        html+='<label'+(st.done?' class="isdone"':'')+'><input type="checkbox" value="'+esc(t)+'"'+(picked[t]?' checked':'')+'><span class="tid">'+esc(t)+'</span><span>'+esc(title)+(st.done?' ✓':'')+'</span></label>';
+      });
+      pick.innerHTML=html||'<div class="bkempty">No task matches.</div>';
+    }
+    renderPick();
+    q.addEventListener('input',renderPick);
+    pick.addEventListener('change',function(ev){
+      var cb=ev.target; if(cb.type!=='checkbox')return;
+      if(cb.checked)picked[cb.value]=true; else delete picked[cb.value];
+    });
+    ta.addEventListener('keydown',function(ev){
+      if(ev.key==='Enter'&&!ev.shiftKey){ev.preventDefault();f.querySelector('.save').click();}
+    });
+    f.querySelector('.cancel').addEventListener('click',function(){f.hidden=true;f.innerHTML='';});
+    f.querySelector('.save').addEventListener('click',function(){
+      var why=ta.value.trim(), on=Object.keys(picked).slice(0,10);
+      if(!why&&!on.length){ta.focus();return;}
+      f.hidden=true; f.innerHTML='';
+      writeTask(tid,{blocked:true,blockedWhy:why,blockedOn:on,blockedBy:me,blockedAt:s.blockedAt||new Date().toISOString()});
+    });
+    f.hidden=false;
+    ta.focus();
+  }
+  // tid -> [tids it is blocking]
+  function blockersIndex(){
+    var idx={};
+    Object.keys(state).forEach(function(t){
+      var s=state[t]; if(!s||!s.blocked)return;
+      (s.blockedOn||[]).forEach(function(on){(idx[on]=idx[on]||[]).push(t);});
+    });
+    return idx;
+  }
+  function gotoTask(key){
+    var r=rows[key]; if(!r)return;
+    r.task.hidden=false; r.task.classList.remove('collapsed');
+    var g=r.task.closest('.tgroup'); if(g)g.hidden=false;
+    var sec=r.task.closest('section'); if(sec)sec.hidden=false;
+    r.task.scrollIntoView({block:'center'});
+    r.task.classList.remove('wr-flash'); void r.task.offsetWidth; r.task.classList.add('wr-flash');
+  }
+  document.addEventListener('click',function(ev){
+    var c=ev.target.closest('.bkchip[data-go], a.wr-tref[data-go]'); if(!c)return;
+    // On the board itself a task reference jumps in-page (no reload); on other pages the
+    // href (/board.html?wrgo=KEY) does the same via the shell's deep-link locator.
+    if(rows[c.dataset.go]){ev.preventDefault(); gotoTask(c.dataset.go);}
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.bkunblock'); if(!b)return;
+    writeTask(b.dataset.tid,{blocked:false});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.bkedit'); if(!b)return;
+    openBlockForm(b.dataset.tid);
+  });
+  boxes.forEach(wireTask);
+  // Turn every task id mentioned in the fixed task descriptions / meta chips ("after D-01",
+  // "gates S-13", "see I-04") into a link. Text nodes only, so existing markup is untouched.
+  (function linkStaticRefs(){
+    var RE=(window.WR&&WR.TASK_REF_RE)||/\b([A-Z])-(\d{2,3}|[a-z][a-z0-9]{8})\b/g;
+    document.querySelectorAll('.task .td, .task .tmeta .m').forEach(function(el){
+      var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null), nodes=[];
+      while(walker.nextNode()){ if(!walker.currentNode.parentNode.closest('a'))nodes.push(walker.currentNode); }
+      nodes.forEach(function(n){
+        var self=n.parentNode.closest('.task'), selfId=self?self.querySelector('[data-tid]')&&self.querySelector('[data-tid]').dataset.tid:null;
+        RE.lastIndex=0; if(!RE.test(n.nodeValue))return; RE.lastIndex=0;
+        var frag=document.createDocumentFragment(), last=0, m;
+        while((m=RE.exec(n.nodeValue))){
+          var ref=m[0];
+          frag.appendChild(document.createTextNode(n.nodeValue.slice(last,m.index)));
+          if(rows[ref]&&ref!==selfId){
+            var a=document.createElement('a'); a.className='wr-tref'; a.href='/board.html?wrgo='+ref; a.dataset.go=ref; a.textContent=ref;
+            frag.appendChild(a);
+          }else frag.appendChild(document.createTextNode(ref));
+          last=m.index+ref.length;
+        }
+        frag.appendChild(document.createTextNode(n.nodeValue.slice(last)));
+        n.parentNode.replaceChild(frag,n);
+      });
+    });
+  })();
+  document.addEventListener('click',function(){
+    document.querySelectorAll('.asgmenu').forEach(function(x){x.hidden=true;});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cdel'); if(!b)return;
+    if(!confirm('Delete this comment for everyone?'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[];
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id){arr.splice(i,1);break;}}
+    renderTask(key);
+    enqueue({t:'comment-del',id:id,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crply'); if(!b)return;
+    var citem=b.closest('.citem');
+    if(citem.querySelector('.crform'))return;
+    var key=b.dataset.key, pid=b.dataset.cid;
+    var f=document.createElement('form');
+    f.className='cform ceform crform';
+    f.innerHTML='<textarea rows="1" placeholder="Reply… (Shift+Enter for a new line)" aria-label="Reply"></textarea><button type="submit">Reply</button><button type="button" class="cancel">Cancel</button>';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea');
+    ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();renderTask(key);});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim();
+      if(!txt)return;
+      if(!me){if(window.WR)WR.nudge();return;}
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString(),parent:pid};
+      (comments[key]=comments[key]||[]).push(temp);
+      f.remove();
+      renderTask(key);
+      enqueue({t:'comment',key:key,author:me,text:txt,parent:pid})
+        .catch(function(){
+          var arr=comments[key]||[], ix=arr.indexOf(temp);
+          if(ix>=0)arr.splice(ix,1);
+          renderTask(key);
+        });
+    });
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crb'); if(!b)return;
+    if(!me){if(window.WR)WR.nudge();return;}
+    var id=b.dataset.cid, key=b.dataset.key, e=b.dataset.remoji;
+    var arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    c.reactions=c.reactions||{};
+    var l=c.reactions[e]=c.reactions[e]||[];
+    var ix=l.indexOf(me);
+    if(ix>=0)l.splice(ix,1); else l.push(me);
+    renderTask(key);
+    enqueue({t:'react',id:id,emoji:e,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cedit'); if(!b)return;
+    var citem=b.closest('.citem');
+    if(citem.querySelector('.ceform'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    var f=document.createElement('form');
+    f.className='cform ceform';
+    f.innerHTML='<textarea rows="1" aria-label="Edit comment"></textarea><button type="submit">Save</button><button type="button" class="cancel">Cancel</button>';
+    f.querySelector('textarea').value=c.text||'';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea');
+    ta.dispatchEvent(new Event('input')); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();renderTask(key);});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim();
+      if(!txt)return;
+      c.text=txt; c.edited=new Date().toISOString();
+      f.remove();
+      renderTask(key);
+      enqueue({t:'comment-edit',id:id,by:me,text:txt}).catch(function(){});
+    });
+  });
+
+  /* ---------- per-group tools: add task, expand/collapse comments ---------- */
+  function setCustomContent(id,title,desc){
+    var r=rows[id]; if(!r||!r.custom)return;
+    r.cv={title:title,desc:desc};
+    r.ttx.textContent=title;
+    r.tdx.innerHTML=window.WR?WR.mentionify(desc):esc(desc);
+    r.tdx.hidden=!desc;
+  }
+  function addCustomRow(id,v){
+    if(rows[id])return;
+    var grp=document.querySelector('.tgroup[data-g="'+(v.group||'')+'"]')||document.querySelector('.tgroup');
+    var wrap=document.createElement('div');
+    wrap.className='task';
+    var boxId='t-x'+id.replace(/[^A-Za-z0-9]/g,'');
+    wrap.innerHTML='<input type="checkbox" id="'+boxId+'"><div>'
+      +'<label class="tt" for="'+boxId+'"><span class="tid">'+esc(id)+'</span><span class="ttx"></span></label>'
+      +'<p class="td tdx" hidden></p>'
+      +'<p class="tmeta"><span class="m">added by '+esc(NAME[v.createdBy]||v.createdBy||'?')+'</span></p></div>';
+    var b=wrap.querySelector('input');
+    b.dataset.tid=id;
+    grp.insertBefore(wrap,grp.querySelector('.addbar'));
+    var tmeta=wrap.querySelector('.tmeta');
+    var edt=document.createElement('button');
+    edt.type='button'; edt.className='delx'; edt.textContent='edit';
+    var del=document.createElement('button');
+    del.type='button'; del.className='delx'; del.textContent='delete';
+    tmeta.appendChild(edt); tmeta.appendChild(del);
+    var ef=document.createElement('form');
+    ef.className='addform editform'; ef.hidden=true;
+    ef.innerHTML='<input type="text" maxlength="200" aria-label="Task title"><textarea class="dtl" rows="1" placeholder="Detail (optional, Shift+Enter for a new line)" aria-label="Task detail"></textarea><button type="submit">Save</button><button type="button" class="cancel">Cancel</button>';
+    wrap.querySelector('div').appendChild(ef);
+    if(window.WR)WR.wireCommentBox(ef.querySelector('textarea'));
+    edt.addEventListener('click',function(){
+      ef.hidden=!ef.hidden;
+      if(!ef.hidden){
+        ef.querySelector('input').value=rows[id].cv.title;
+        ef.querySelector('textarea').value=rows[id].cv.desc;
+        ef.querySelector('input').focus();
+      }
+    });
+    ef.querySelector('.cancel').addEventListener('click',function(){ef.hidden=true;});
+    ef.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var nt=ef.querySelector('input').value.trim();
+      if(!nt)return;
+      var nd=ef.querySelector('textarea').value.trim();
+      setCustomContent(id,nt,nd);
+      ef.hidden=true;
+      enqueue({t:'task',id:id,patch:{title:nt,desc:nd}}).catch(function(){});
+    });
+    del.addEventListener('click',function(){
+      if(!confirm('Delete task '+id+' ("'+(rows[id]?rows[id].cv.title:'')+'") for everyone?'))return;
+      delete state[id]; delete rows[id];
+      var ix=boxes.indexOf(b); if(ix>=0)boxes.splice(ix,1);
+      wrap.remove(); updateProgress(); applyFilters();
+      enqueue({t:'task-del',id:id}).catch(function(){});
+    });
+    boxes.push(b);
+    wireTask(b);
+    rows[id].custom=true;
+    rows[id].cv={title:'',desc:''};
+    rows[id].ttx=wrap.querySelector('.ttx');
+    rows[id].tdx=wrap.querySelector('.td.tdx');
+    setCustomContent(id,v.title||id,v.desc||'');
+  }
+  document.querySelectorAll('.tgroup').forEach(function(g){
+    var h3=g.querySelector('.tgroup-head h3');
+    g.dataset.g=h3?h3.textContent.trim().charAt(0):'';
+    var head=g.querySelector('.tgroup-head');
+    if(head){
+      var cx=document.createElement('button');
+      cx.type='button'; cx.className='cxbtn'; cx.textContent='💬 Expand all';
+      cx.addEventListener('click',function(){
+        var panels=g.querySelectorAll('.cpanel');
+        var anyHidden=false;
+        panels.forEach(function(p){if(p.hidden)anyHidden=true;});
+        panels.forEach(function(p){p.hidden=!anyHidden;});
+        g.querySelectorAll('.task input[data-tid]').forEach(function(b){renderTask(b.dataset.tid);});
+        cx.textContent=anyHidden?'💬 Collapse all':'💬 Expand all';
+      });
+      head.insertBefore(cx,head.querySelector('.gprog'));
+    }
+    var addbar=document.createElement('div');
+    addbar.className='addbar';
+    addbar.innerHTML='<button type="button" class="addbtn">＋ Add task</button>'
+      +'<form class="addform" hidden><input type="text" maxlength="200" placeholder="Task title" aria-label="New task title"><textarea class="dtl" rows="1" placeholder="Detail (optional, Shift+Enter for a new line)" aria-label="New task detail"></textarea><button type="submit">Add</button></form>'
+      +'<p class="cnote" hidden></p>';
+    g.appendChild(addbar);
+    if(window.WR)WR.wireCommentBox(addbar.querySelector('textarea'));
+    var abtn=addbar.querySelector('.addbtn'), aform=addbar.querySelector('.addform'), anote=addbar.querySelector('.cnote');
+    abtn.addEventListener('click',function(){
+      aform.hidden=!aform.hidden;
+      if(!aform.hidden)aform.querySelector('input').focus();
+    });
+    aform.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var ti=aform.querySelector('input'), di=aform.querySelector('.dtl');
+      var title=ti.value.trim();
+      if(!title)return;
+      if(!me){anote.textContent='Pick who you are first — "I am" in the header.';anote.hidden=false;if(window.WR)WR.nudge();return;}
+      anote.hidden=true;
+      var id=g.dataset.g+'-x'+Date.now().toString(36);
+      var v={title:title,desc:di.value.trim(),group:g.dataset.g,custom:true,createdBy:me};
+      addCustomRow(id,v);
+      state[id]={done:false,assignee:null};
+      renderTask(id); updateProgress(); applyFilters();
+      ti.value=''; di.value=''; aform.hidden=true;
+      enqueue({t:'task',id:id,patch:{title:v.title,desc:v.desc,group:v.group,custom:true,createdBy:me}}).catch(function(){});
+    });
+  });
+
+  /* ---------- state + rendering ---------- */
+  function writeTask(tid,patch){
+    state[tid]=merge(state[tid]||{},patch);
+    if('blocked' in patch||'blockedOn' in patch){blockersIdx=blockersIndex();renderAll();}
+    else{renderTask(tid); updateProgress(); applyFilters();}
+    persistLocal();
+    enqueue({t:'task',id:tid,patch:patch}).catch(function(){});
+  }
+  function renderTask(tid){
+    var r=rows[tid]; if(!r)return;
+    var s=state[tid]||{};
+    r.box.checked=!!s.done;
+    r.task.classList.toggle('done',!!s.done);
+    var acls={martin:'pa',leonel:'pb',mike:'pc'}[s.assignee]||'';
+    r.asgsel.className=acls?('asgsel on '+acls):'asgsel pt';
+    r.asgsel.textContent=acls?(NAME[s.assignee]||s.assignee):'Team';
+    r.asg.querySelectorAll('.asgmenu button[data-pid]').forEach(function(o){
+      o.classList.toggle('cur',o.dataset.pid===(acls?s.assignee:'team'));
+    });
+    var cm=comments[tid]||[];
+    r.cbtn.classList.toggle('has',cm.length>0);
+    r.cbtn.innerHTML = cm.length
+      ? ((r.panel.hidden?'View':'Hide')+'<span class="cnum"> Comments ('+cm.length+')</span>')
+      : 'Comment<span class="cnum"></span>';
+    if(!r.clist.querySelector('.ceform'))r.clist.innerHTML=window.WR?WR.commentListHTML(cm,tid):'';
+    r.dmeta.textContent = (s.done&&s.doneBy) ? ('✓ '+(NAME[s.doneBy]||s.doneBy)+(s.doneAt?' · '+fmtDate(s.doneAt):'')) : '';
+    r.dmeta.className='dmeta '+({martin:'pa',leonel:'pb',mike:'pc'}[s.doneBy]||'');
+    // blocked state
+    var blocked=!!s.blocked&&!s.done;
+    r.task.classList.toggle('blocked',blocked);
+    r.bkbtn.classList.toggle('on',blocked);
+    r.bkbtn.textContent=blocked?'⛔ Blocked':'⛔ I’m blocked';
+    r.bkbtn.title=blocked?'Show why '+tid+' is blocked':'Mark '+tid+' as blocked';
+    if(blocked){
+      var on=s.blockedOn||[], allClear=on.length>0&&on.every(function(t){return state[t]&&state[t].done;});
+      var html='<div class="bkwho">⛔ Blocked'+(s.blockedBy?' by '+esc(NAME[s.blockedBy]||s.blockedBy):'')+(s.blockedAt?'<time>'+esc(fmtDate(s.blockedAt))+'</time>':'')+'</div>';
+      if(s.blockedWhy)html+='<p>'+(window.WR?WR.mentionify(s.blockedWhy):esc(s.blockedWhy))+'</p>';
+      if(on.length){
+        html+='<div class="bkon">Blocked on '+on.map(function(t){
+          var d=state[t]&&state[t].done;
+          return '<span class="bkchip'+(d?' done':'')+'" data-go="'+esc(t)+'" title="'+esc(taskTitle(t))+'">'+esc(t)+(d?' ✓':'')+'</span>';
+        }).join('')+(allClear?' <b style="color:var(--sup)">— all done. Unblock?</b>':'')+'</div>';
+      }
+      html+='<div class="bkact"><button type="button" class="cxbtn bkunblock" data-tid="'+esc(tid)+'">Unblock</button><button type="button" class="cxbtn bkedit" data-tid="'+esc(tid)+'">Edit</button></div>';
+      r.bkmeta.innerHTML=html;
+      r.bkmeta.classList.toggle('clear',allClear);
+      r.bkmeta.hidden=false;
+    }else{
+      r.bkmeta.hidden=true; r.bkmeta.innerHTML='';
+    }
+    var holding=(blockersIdx[tid]||[]).filter(function(t){return rows[t];});
+    r.blocks.hidden=!holding.length;
+    r.blocks.innerHTML=holding.length?'⛔ blocks '+holding.map(function(t){return '<span class="bkchip" data-go="'+esc(t)+'" title="'+esc(taskTitle(t))+'">'+esc(t)+'</span>';}).join(''):'';
+  }
+  function renderAll(){
+    blockersIdx=blockersIndex();
+    boxes.forEach(function(b){renderTask(b.dataset.tid);});
+    updateProgress(); applyFilters();
+  }
+  function applyFilters(){
+    boxes.forEach(function(b){
+      var tid=b.dataset.tid, s=state[tid]||{};
+      var ok=true;
+      if(statusFilter==='open'&&s.done)ok=false;
+      if(statusFilter==='done'&&!s.done)ok=false;
+      if(statusFilter==='blocked'&&!(s.blocked&&!s.done))ok=false;
+      if(whoFilter!=='all'&&s.assignee!==whoFilter)ok=false;
+      rows[tid].task.hidden=!ok;
+    });
+    document.querySelectorAll('.tgroup').forEach(function(g){
+      g.hidden=!g.querySelector('.task:not([hidden])');
+    });
+    document.querySelectorAll('section').forEach(function(sec){
+      var gs=sec.querySelectorAll('.tgroup');
+      if(!gs.length)return;
+      var any=false;
+      gs.forEach(function(g){if(!g.hidden)any=true;});
+      sec.hidden=!any;
+    });
+  }
+  function setBar(el,done,total){
+    if(el)el.style.width=(total?Math.round(done/total*100):0)+'%';
+  }
+  function updateProgress(){
+    var allDone=0;
+    var phases={};
+    document.querySelectorAll('.tgroup').forEach(function(g){
+      var gb=g.querySelectorAll('.task input[type=checkbox]');
+      var gd=0;
+      gb.forEach(function(b){if(b.checked)gd++;});
+      setBar(g.querySelector('.gprog .bar i'),gd,gb.length);
+      var n=g.querySelector('.gprog .gnum');
+      if(n)n.textContent=gd+'/'+gb.length;
+      var gbl=0; gb.forEach(function(b){var s=state[b.dataset.tid]; if(s&&s.blocked&&!s.done)gbl++;});
+      var bl=g.querySelector('.gprog .gblk');
+      if(!bl&&n){bl=document.createElement('span');bl.className='gblk';n.insertAdjacentElement('beforebegin',bl);}
+      if(bl){bl.hidden=!gbl;bl.textContent='⛔ '+gbl;}
+      var ph=g.dataset.phase||'other';
+      if(!phases[ph])phases[ph]={d:0,t:0};
+      phases[ph].d+=gd; phases[ph].t+=gb.length; allDone+=gd;
+    });
+    Object.keys(phases).forEach(function(ph){
+      var n=document.querySelector('[data-phase-n="'+ph+'"]');
+      if(n)n.textContent=phases[ph].d+'/'+phases[ph].t;
+      setBar(document.querySelector('[data-phase-bar="'+ph+'"]'),phases[ph].d,phases[ph].t);
+    });
+    var totalEl=document.getElementById('prog-all');
+    if(totalEl)totalEl.textContent=allDone+' / '+boxes.length;
+    setBar(document.getElementById('bar-all'),allDone,boxes.length);
+  }
+
+  /* ---------- persistence + sync loop ---------- */
+  function persistLocal(){
+    try{
+      var arr=Object.keys(state).filter(function(t){return state[t]&&state[t].done;});
+      localStorage.setItem(LS_DONE,JSON.stringify(arr));
+    }catch(e){}
+  }
+  function loadLocal(){
+    try{return JSON.parse(localStorage.getItem(LS_DONE)||'[]');}catch(e){return [];}
+  }
+  function applyState(data,fromPost){
+    if(!data||typeof data!=='object')return;
+    var rev=(typeof data.rev==='string')?data.rev:'';
+    if(applied&&rev&&rev<lastRev)return;
+    if(!fromPost&&pendingWrites>0)return;
+    if(rev>lastRev)lastRev=rev; applied=true;
+    var tasks=data.tasks||{};
+    Object.keys(tasks).forEach(function(tid){
+      var v=tasks[tid];
+      if(!v||!v.custom||!v.title)return;
+      if(!rows[tid])addCustomRow(tid,v);
+      else if(rows[tid].custom&&(rows[tid].cv.title!==v.title||rows[tid].cv.desc!==(v.desc||'')))setCustomContent(tid,v.title,v.desc||'');
+    });
+    Object.keys(rows).forEach(function(tid){
+      if(rows[tid].custom&&!tasks[tid]){
+        var r=rows[tid], ix=boxes.indexOf(r.box);
+        if(ix>=0)boxes.splice(ix,1);
+        r.task.remove(); delete rows[tid]; delete state[tid];
+      }
+    });
+    Object.keys(rows).forEach(function(tid){
+      var v=tasks[tid];
+      state[tid]=v?{done:!!v.done,assignee:v.assignee||null,doneBy:v.doneBy||null,doneAt:v.doneAt||null,
+        blocked:!!v.blocked,blockedWhy:v.blockedWhy||'',blockedOn:Array.isArray(v.blockedOn)?v.blockedOn:[],blockedBy:v.blockedBy||null,blockedAt:v.blockedAt||null}:{done:false,assignee:null};
+    });
+    var by={};
+    (data.comments||[]).forEach(function(c){
+      if(!c.key)return;
+      (by[c.key]=by[c.key]||[]).push(c);
+    });
+    comments=by;
+    setMode('live'); everLive=true;
+    renderAll();
+  }
+  function refresh(){
+    if(pendingWrites>0)return;
+    apiGet().then(function(data){
+      if(pendingWrites>0)return;
+      if(!migrated){
+        migrated=true;
+        var local=loadLocal();
+        if(Object.keys(data.tasks||{}).length===0&&local.length){
+          var bulk={};
+          local.forEach(function(tid){if(rows[tid])bulk[tid]={done:true};});
+          apiPost({t:'tasks-bulk',tasks:bulk}).then(function(){refresh();}).catch(function(){applyState(data);});
+          return;
+        }
+      }
+      applyState(data);
+    }).catch(function(){
+      if(!everLive){
+        setMode('local');
+        loadLocal().forEach(function(tid){
+          if(rows[tid])state[tid]=merge(state[tid]||{},{done:true});
+        });
+        renderAll();
+      }else{
+        setMode('local');
+      }
+    });
+  }
+  if(window.WR)WR.registerLocator(function(key){
+    var r=rows[key]; if(!r)return false;
+    r.task.hidden=false;
+    r.task.classList.remove('collapsed');
+    var g=r.task.closest('.tgroup'); if(g)g.hidden=false;
+    var sec=r.task.closest('section'); if(sec)sec.hidden=false;
+    r.panel.hidden=false;
+    renderTask(key);
+    r.task.scrollIntoView({block:'center'});
+    r.task.classList.remove('wr-flash'); void r.task.offsetWidth; r.task.classList.add('wr-flash');
+    return true;
+  });
+  setMode('connecting');
+  renderAll();
+  refresh();
+  setInterval(refresh,12000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh();});
+})();
+</script>
+</body>
+</html>

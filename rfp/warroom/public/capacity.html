@@ -1,0 +1,900 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Unify at 100 Dealers · War Room</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --code-bg:#EFE9DD; --star:#C9930A; --pre-bg:#221D15; --pre-ink:#EDE7DA; --series:#1B5FAE;
+  --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --code-bg:#2B261B; --star:#E4B85B; --pre-bg:#0E0C08; --pre-ink:#D9D2C2; --series:#6FB1F0;
+    --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --code-bg:#2B261B; --star:#E4B85B; --pre-bg:#0E0C08; --pre-ink:#D9D2C2; --series:#6FB1F0;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:15.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+code{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.86em;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+pre{background:var(--pre-bg);color:var(--pre-ink);border-radius:8px;padding:12px 16px;overflow-x:auto;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;line-height:1.55;margin:10px 0}
+pre code{background:none;padding:0;font-size:inherit}
+h1,h2,h3,h4{font-family:"Barlow Condensed","Arial Narrow",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:.6em 0}
+ul,ol{margin:.5em 0;padding-left:22px}
+li{margin:.3em 0}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.9em}
+
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:9px;padding-bottom:9px}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+.draftbar{background:var(--part-bg);color:var(--part);border-bottom:1px solid color-mix(in srgb,var(--part) 35%,transparent);font-size:13px;font-weight:600;letter-spacing:.06em;text-align:center;padding:6px 16px}
+.draftbar b{text-transform:uppercase}
+
+.cover{padding:64px 0 40px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+.cover h1{font-size:clamp(42px,6.5vw,72px);font-weight:700;text-transform:uppercase}
+.cover .sub{font-size:18px;color:var(--muted);margin-top:16px;max-width:62ch}
+.cover-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:32px}
+.cover-meta>div{background:var(--surface);padding:14px 16px}
+.cover-meta .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.cover-meta .v{font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:600;margin-top:2px}
+.cover-meta .v small{display:block;font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;font-weight:500;color:var(--muted);text-transform:none;letter-spacing:0;line-height:1.4;margin-top:3px}
+
+.howto{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;box-shadow:var(--shadow);padding:14px 20px;margin:24px 0 0;font-size:14px;line-height:1.6}
+.howto>b{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:18px;letter-spacing:.05em;text-transform:uppercase}
+.howto p{margin:.35em 0 .2em;color:var(--muted)}
+.howto ol{margin:.4em 0 0;padding-left:20px}
+.howto li b{color:var(--ink)}
+
+section{padding:44px 0 10px}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:9px;margin-bottom:10px;flex-wrap:wrap}
+.sec-head .num{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.1em;color:var(--accent)}
+.sec-head h2{font-size:clamp(26px,3.6vw,36px);font-weight:700;text-transform:uppercase}
+h3{font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin:26px 0 6px}
+.lede{font-size:16.5px;max-width:72ch}
+
+.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:1px 9px;border:1px solid transparent;white-space:nowrap;vertical-align:middle}
+.pill.ok{color:var(--sup);background:var(--sup-bg);border-color:color-mix(in srgb,var(--sup) 40%,transparent)}
+.pill.warn{color:var(--part);background:var(--part-bg);border-color:color-mix(in srgb,var(--part) 40%,transparent)}
+.pill.crit{color:var(--gap);background:var(--gap-bg);border-color:color-mix(in srgb,var(--gap) 40%,transparent)}
+.pill.na{color:var(--muted);background:var(--surface2);border-color:var(--line)}
+
+.callout{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--surface);border-radius:8px;padding:14px 20px;margin:18px 0;box-shadow:var(--shadow)}
+.callout.red{border-left-color:var(--gap)}
+.callout.green{border-left-color:var(--sup)}
+.callout p{margin:.35em 0}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:var(--shadow);margin:18px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:620px}
+th{font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:var(--muted);padding:10px 14px;border-bottom:2px solid var(--line);background:var(--surface2)}
+td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tr.rw-panelrow td{background:var(--surface2);padding:0 14px 10px}
+tr.rw-panelrow .rw-panel{margin:0}
+td small,p small{color:var(--muted)}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:18px 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow)}
+.stat .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stat .v{font-family:"Barlow Condensed",sans-serif;font-size:30px;font-weight:700;margin-top:2px;line-height:1.1}
+.stat .s{font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.45}
+
+.topo{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px;margin:16px 0;overflow-x:auto;box-shadow:var(--shadow)}
+.topo svg{display:block;width:100%;height:auto;min-width:640px;font-family:"IBM Plex Sans",sans-serif}
+.topo .box{fill:var(--surface2);stroke:var(--line)}
+.topo .box.core{fill:var(--surface);stroke:var(--accent);stroke-width:1.5}
+.topo text{fill:var(--ink);font-size:12px}
+.topo text.t{font-weight:600;font-size:13px}
+.topo text.s{fill:var(--muted);font-size:11px;font-family:"IBM Plex Mono",monospace}
+.topo .edge{stroke:var(--ink);stroke-width:1.2;fill:none;opacity:.7}
+.topo .edge.soft{stroke:var(--muted);stroke-dasharray:4 3}
+
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px 8px;margin:16px 0;box-shadow:var(--shadow)}
+.chart .row{display:grid;grid-template-columns:minmax(150px,1.1fr) minmax(160px,2fr) auto;gap:10px;align-items:center;padding:7px 0;border-bottom:1px solid var(--line)}
+.chart .row:last-of-type{border-bottom:0}
+.chart .lbl{font-size:13px;line-height:1.25}
+.chart .lbl small{display:block;color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:11px;margin-top:2px}
+.chart .track{position:relative;height:14px;background:var(--surface2);border-radius:0 4px 4px 0}
+.chart .fill{position:absolute;left:0;top:0;bottom:0;background:var(--series);border-radius:0 4px 4px 0}
+.chart .fill.over{background:var(--gap)}
+.chart .lim{position:absolute;top:-4px;bottom:-4px;width:0;border-left:2px solid var(--ink)}
+.chart .lim::after{content:"limit";position:absolute;top:-14px;left:-14px;font-family:"IBM Plex Mono",monospace;font-size:9px;color:var(--muted);letter-spacing:.08em}
+.chart .val{font-family:"IBM Plex Mono",monospace;font-size:12px;font-variant-numeric:tabular-nums;min-width:4.5ch;text-align:right}
+.chart .note{font-size:12px;color:var(--muted);margin:10px 0 4px}
+@media (max-width:520px){.chart .row{grid-template-columns:1fr;gap:4px}.chart .val{text-align:left}}
+
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;margin:16px 0;box-shadow:var(--shadow)}
+.calc .inputs{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px 16px}
+.calc label{display:flex;flex-direction:column;gap:4px;font-size:11.5px;color:var(--muted);font-family:"IBM Plex Mono",monospace;letter-spacing:.03em}
+.calc input,.calc select{font:14px "IBM Plex Mono",monospace;padding:7px 9px;border:1px solid var(--line);background:var(--surface2);color:var(--ink);border-radius:6px}
+.calc .totals{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:18px}
+.calc .totals .t{border-top:2px solid var(--ink);padding-top:8px}
+.calc .totals .t .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.calc .totals .t .v{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:32px;line-height:1.1;font-variant-numeric:tabular-nums}
+.calc .totals .t .s{font-size:12px;color:var(--muted)}
+.calc .totals .t .v .share{display:inline-block;vertical-align:middle;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;border-radius:999px;padding:2px 10px;margin-left:8px;border:1px solid transparent}
+.calc .totals .t .v .share.ok{color:var(--sup);background:var(--sup-bg);border-color:color-mix(in srgb,var(--sup) 40%,transparent)}
+.calc .totals .t .v .share.warn{color:var(--part);background:var(--part-bg);border-color:color-mix(in srgb,var(--part) 40%,transparent)}
+.calc .totals .t .v .share.crit{color:var(--gap);background:var(--gap-bg);border-color:color-mix(in srgb,var(--gap) 40%,transparent)}
+
+.calc .tablewrap{margin:16px 0 0}
+
+.chg{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0;box-shadow:var(--shadow);display:grid;grid-template-columns:2.2rem 1fr;gap:10px}
+.chg .n{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:24px;color:var(--accent);line-height:1.1}
+.chg .h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chg .h b{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:.02em}
+.chg p{margin:.3em 0 0;font-size:14px}
+
+.step{display:grid;grid-template-columns:2.4rem 1fr;gap:10px;margin:18px 0}
+.step .n{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;color:var(--accent);line-height:1;padding-top:2px}
+.step h3{margin-top:0}
+.pass{margin-top:8px;padding:8px 12px;background:var(--sup-bg);border-left:3px solid var(--sup);border-radius:0 6px 6px 0;font-size:14px}
+.pass b{color:var(--sup);font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:12px;letter-spacing:.06em}
+
+.sources{font-size:13px;color:var(--muted)}
+.sources a{color:var(--muted);text-decoration:underline}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:26px 0 70px;color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+html{scroll-behavior:smooth}
+
+/* ---------- scores ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 14px;margin:18px 0 6px}
+.legend .stars{font-size:15px}
+td.sc,th.sc{white-space:nowrap;width:1%}
+.stars{display:inline-block;font-size:17px;line-height:1;letter-spacing:1px;font-family:"IBM Plex Sans",system-ui,sans-serif;background:linear-gradient(90deg,var(--star) calc(var(--s,0)*20%),var(--line) calc(var(--s,0)*20%));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stars::before{content:"★★★★★"}
+td.sc .stars{vertical-align:middle}
+td.sc[data-s="0"] .stars,td.sc[data-s="0.5"] .stars,td.sc[data-s="1"] .stars,td.sc[data-s="1.5"] .stars{--star:var(--gap)}
+
+/* ---------- review layer ---------- */
+.rdock{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);padding:6px 12px;font-size:12.5px;max-width:calc(100vw - 28px)}
+.rdock .rstat{color:var(--muted);white-space:nowrap}
+.rdock .rlive{font-weight:600;white-space:nowrap;color:var(--muted)}
+.rdock .rlive.live{color:var(--sup)}
+.rdock .rlive.local{color:var(--gap)}
+.rw{display:inline-flex;align-items:center;gap:5px;margin-left:10px;vertical-align:middle;font-family:"IBM Plex Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;font-weight:400}
+.rw button{font-size:11.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 8px;cursor:pointer;line-height:1.5}
+.rw .rwf.on{color:#fff;background:var(--gap);border-color:var(--gap)}
+.rw .rwc.has{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);font-weight:700;background:var(--accent-soft)}
+td .rw{margin-left:6px}
+.rw-flagged{box-shadow:0 0 0 2px var(--gap);border-radius:8px}
+tr.rw-flagged{box-shadow:inset 3px 0 0 var(--gap);border-radius:0}
+.rw-panel{margin:10px 0 4px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:10px 12px;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13.5px;font-weight:400;letter-spacing:0;text-transform:none;text-align:left;line-height:1.55}
+.rw-panel .citem{border-bottom:1px solid var(--line);padding:6px 0}
+.rw-panel .citem:last-child{border-bottom:none}
+.rw-panel .citem b{font-size:13px}
+.rw-panel .citem time{font-size:11.5px;color:var(--muted);margin-left:6px}
+.rw-panel .citem p{margin:.15em 0 0;font-size:13.5px;white-space:pre-wrap}
+.rw-panel .cform{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
+.rw-panel .cform input,.rw-panel .cform textarea{flex:1;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);min-width:0;resize:none;line-height:1.45}
+.rw-panel .cform button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.rw-panel .cnote{font-size:12.5px;color:var(--gap);margin:.4em 0 0}
+.rw-panel .cflag{font-size:12px;color:var(--gap);font-weight:600;margin:0 0 .3em}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="capacity">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">U4R <em>·</em> Capacity report</span>
+    <div class="wrs-menu">
+      <button type="button" class="wrs-menubtn" aria-haspopup="true">Sections ▾</button>
+      <nav class="wrs-drop" aria-label="Sections">
+        <a href="#verdict">Verdict</a>
+        <a href="#topology">What runs where</a>
+        <a href="#inventory">Every service we depend on</a>
+        <a href="#results">Test results</a>
+        <a href="#changes">Changes before 100</a>
+        <a href="#cost">Cost at 100 dealers</a>
+        <a href="#runbook">Runbook to repeat this</a>
+        <a href="#unverified">Not verified</a>
+        <span class="wrs-sep"></span>
+        <a href="/board.html">→ The runbook</a>
+        <a href="/audit.html">→ The audit</a>
+        <a href="/proposal.html">→ The proposal</a>
+        <a href="/questions.html">→ Mike’s questions</a>
+        <a href="/wk1-report.html">→ Week 1 report</a>
+      </nav>
+    </div>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+  </div>
+</div>
+<div class="draftbar"><b>Internal · V1 · 10 Sep 2026</b> — measured against production and a 106-dealer local copy. Feeds proposal §6 (hosting), the A-05 DR explainer, Leo’s 100-dealer cost model and runbook items I-01…I-03 and the H-group stress test.</div>
+
+<header class="cover">
+  <div class="wrap">
+    <p class="eyebrow">Capacity &amp; cost review</p>
+    <h1>Unify at<br>100 Dealers</h1>
+    <p class="sub">Can the infrastructure behind stihlshoptauranga.co.nz, waihi and rotorua carry the whole STIHL SHOP network? Measured on 10 September 2026 against production (read-only) and against a local copy of both repos seeded with 106 dealers.</p>
+    <div class="cover-meta">
+      <div><div class="k">Answer</div><div class="v">Yes, with 4 changes<small>uploads, email tier, monitoring, second site instance</small></div></div>
+      <div><div class="k">Public API ceiling</div><div class="v">≈ 120 req/s<small>100 dealers need ≈ 3 req/s</small></div></div>
+      <div><div class="k">Dealer site ceiling</div><div class="v">≈ 35 pages/s<small>average ≈ 0.4/s, campaign peaks 5–10/s</small></div></div>
+      <div><div class="k">Infra cost</div><div class="v">NZ$73 → ≈ NZ$400 /mo<small>today → recommended shape at 100</small></div></div>
+      <div><div class="k">Code tested</div><div class="v">multi-tenancy @ 7e71245<small>dealer template @ e87372f</small></div></div>
+      <div><div class="k">Re-run kit</div><div class="v">rfp/loadtest/<small>README with every command and pass criteria</small></div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="howto">
+    <b>What this is &amp; how to work on it</b>
+    <p>The stress test Martin asked for, plus the full list of everything the platform depends on and what it costs at 100 dealers. Nothing here is final: the numbers are measurements, the recommendations are a first cut for the three of us to argue with.</p>
+    <ol>
+      <li><b>Say who you are</b> — pick your name with the &ldquo;I am&rdquo; dropdown in the header.</li>
+      <li><b>Flag</b> — ⚑ any section, finding, service row or change you disagree with or want to own. Everyone sees the red outline and who flagged it.</li>
+      <li><b>Comment</b> — 💬 opens a thread on that exact item. Type <b>@</b> to tag a teammate; it lands in their 🔔 notifications on every page.</li>
+      <li><b>Turn it into tasks</b> — anything in “Changes before 100” that we agree on becomes a task on the <a href="/board.html">runbook</a> (H-group stress test, I-01…I-03).</li>
+    </ol>
+  </div>
+</div>
+
+<section id="verdict">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>Verdict</h2></div>
+    <p class="lede"><strong>Yes, with four changes.</strong> The architecture already treats 100 dealers as 100 domains on one shared site application, not 100 separate deployments, so adding a dealer costs a DNS record and a database row. The public traffic path has real headroom today. The parts that do not survive a 100-dealer rollout untouched are image uploads on the platform instance, the free email tier on onboarding days, the free AI and weather quotas behind the “shop is open” widget, and the absence of any monitoring.</p>
+    <div class="stats">
+      <div class="stat"><div class="k">Public API ceiling</div><div class="v">~120 req/s</div><div class="s">platform site payload, production, zero errors at 150 connections. 100 dealers need ≈ 3 req/s.</div></div>
+      <div class="stat"><div class="k">Dealer site ceiling</div><div class="v">~35 pages/s</div><div class="s">SSR homepage on the current 1 shared vCPU. 100 dealers average ≈ 0.4/s, campaign peaks ≈ 5–10/s.</div></div>
+      <div class="stat"><div class="k">One photo upload</div><div class="v">≈ 70 CPU-s</div><div class="s">24 derivatives encoded in-process; peak memory 570–720 MB on a 1 GB instance.</div></div>
+      <div class="stat"><div class="k">Infra cost, today</div><div class="v">≈ NZ$73 /mo</div><div class="s">Recommended shape at 100 dealers ≈ NZ$400 /mo. See the calculator.</div></div>
+    </div>
+    <div class="callout red"><p><b>Blocking before an onboarding wave:</b> move derivative generation off the request path (or serialize it) and give the platform instance 2 GB; upgrade Resend from the free plan (100 emails per day cap); add uptime and error monitoring. Everything else is a tuning knob.</p></div>
+  </div>
+</section>
+
+<section id="topology">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>What runs where</h2></div>
+    <p>Two DigitalOcean App Platform services in Sydney, one Postgres database, one Spaces bucket, and a ring of third-party APIs. Every dealer domain points at the same site application, which asks the platform for that dealer’s content by hostname and caches it for 30 seconds.</p>
+    <div class="topo">
+      <svg viewBox="0 0 900 420" role="img" aria-label="Topology: browsers reach the DigitalOcean edge, which routes dealer domains to the unify-dealer-site app and the platform domain to the unify-platform app; the platform talks to Postgres, Spaces, Resend and Google Places; the site talks to Groq, open-meteo, Spaces CDN and Web3Forms">
+        <rect class="box" x="20" y="30" width="170" height="60" rx="6"/>
+        <text class="t" x="35" y="55">Dealer customers</text>
+        <text class="s" x="35" y="74">100 × dealer .co.nz domains</text>
+        <rect class="box" x="20" y="120" width="170" height="60" rx="6"/>
+        <text class="t" x="35" y="145">Dealers + F925 admin</text>
+        <text class="s" x="35" y="164">stihlshop-platform.f925.works</text>
+        <rect class="box" x="240" y="30" width="150" height="150" rx="6"/>
+        <text class="t" x="255" y="55">DO edge (Cloudflare)</text>
+        <text class="s" x="255" y="74">TLS, DDoS, HTTP/2</text>
+        <text class="s" x="255" y="92">HTML: cache BYPASS</text>
+        <text class="s" x="255" y="110">/img: cached 1 year</text>
+        <text class="s" x="255" y="128">DNS: DO (dealers)</text>
+        <text class="s" x="255" y="146">GoDaddy (f925.works)</text>
+        <rect class="box core" x="440" y="20" width="200" height="82" rx="6"/>
+        <text class="t" x="455" y="42">unify-dealer-site</text>
+        <text class="s" x="455" y="60">SvelteKit SSR · Node 20</text>
+        <text class="s" x="455" y="76">1 × apps-s-1vcpu-1gb · syd</text>
+        <text class="s" x="455" y="92">sharp /img proxy · 30 s site cache</text>
+        <rect class="box core" x="440" y="130" width="200" height="82" rx="6"/>
+        <text class="t" x="455" y="152">unify-platform</text>
+        <text class="s" x="455" y="170">Express API + React · Node 20</text>
+        <text class="s" x="455" y="186">1 × apps-s-1vcpu-1gb · syd</text>
+        <text class="s" x="455" y="202">SSE realtime · sharp derivatives</text>
+        <rect class="box" x="700" y="130" width="180" height="60" rx="6"/>
+        <text class="t" x="715" y="152">PostgreSQL</text>
+        <text class="s" x="715" y="170">DATABASE_URL (DO secret)</text>
+        <text class="s" x="715" y="184">type not confirmed</text>
+        <rect class="box" x="700" y="30" width="180" height="60" rx="6"/>
+        <text class="t" x="715" y="52">DO Spaces + CDN</text>
+        <text class="s" x="715" y="70">f925-dealer-images · syd1</text>
+        <text class="s" x="715" y="84">248 MB today</text>
+        <rect class="box" x="440" y="250" width="95" height="44" rx="6"/><text class="t" x="450" y="268">Resend</text><text class="s" x="450" y="284">OTP, invites</text>
+        <rect class="box" x="545" y="250" width="95" height="44" rx="6"/><text class="t" x="555" y="268">Google</text><text class="s" x="555" y="284">Places API</text>
+        <rect class="box" x="650" y="250" width="110" height="44" rx="6"/><text class="t" x="660" y="268">Groq</text><text class="s" x="660" y="284">16-model cascade</text>
+        <rect class="box" x="770" y="250" width="110" height="44" rx="6"/><text class="t" x="780" y="268">open-meteo</text><text class="s" x="780" y="284">weather, free tier</text>
+        <rect class="box" x="440" y="310" width="95" height="44" rx="6"/><text class="t" x="450" y="328">Web3Forms</text><text class="s" x="450" y="344">contact form</text>
+        <rect class="box" x="545" y="310" width="95" height="44" rx="6"/><text class="t" x="555" y="328">ImageKit</text><text class="s" x="555" y="344">product photos</text>
+        <rect class="box" x="650" y="310" width="110" height="44" rx="6"/><text class="t" x="660" y="328">GA4 + Meta Pixel</text><text class="s" x="660" y="344">after consent</text>
+        <rect class="box" x="770" y="310" width="110" height="44" rx="6"/><text class="t" x="780" y="328">GitHub</text><text class="s" x="780" y="344">CI, Dependabot, Qodo</text>
+        <path class="edge" d="M190 60 H240"/><path class="edge" d="M190 150 H240"/><path class="edge" d="M390 60 H440"/><path class="edge" d="M390 170 H440"/>
+        <path class="edge" d="M540 102 V130"/><text class="s" x="548" y="120">/api/public/site?host=</text>
+        <path class="edge" d="M640 170 H700"/><path class="edge" d="M640 150 C670 150, 670 60, 700 60"/>
+        <path class="edge soft" d="M640 40 C670 40, 670 45, 700 45"/><path class="edge soft" d="M487 212 V250"/><path class="edge soft" d="M592 212 V250"/>
+        <path class="edge soft" d="M600 102 C620 120, 700 200, 705 250"/><path class="edge soft" d="M620 102 C660 140, 800 200, 825 250"/><path class="edge soft" d="M470 102 C420 180, 420 300, 440 332"/>
+        <text class="s" x="20" y="400">solid = every request · dashed = per event (upload, login, widget refresh, form)</text>
+      </svg>
+    </div>
+    <p>Two things follow from this shape. First, the <b>dealer-site instance is the customer-facing bottleneck</b>: every page of every dealer is rendered on that one shared vCPU, and nothing is cached at the edge except images. Second, the <b>platform instance is a shared dependency</b>: if it is busy encoding a dealer’s photos, the 30-second cache is all that stands between a slow upload and slow pages on every dealer site.</p>
+  </div>
+</section>
+
+<section id="inventory">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>Every service we depend on</h2></div>
+    <p>Pulled from both repos (app specs, env templates, server code, workflows) and confirmed with DNS and HTTP probes. Flag a row if the plan or owner is wrong, or if you know something the code doesn’t.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Service</th><th>Used for</th><th>Where in code</th><th>Plan today</th><th>At 100 dealers</th></tr></thead>
+      <tbody>
+        <tr data-rw="svc-do-platform" data-rw-label="DigitalOcean · unify-platform"><td><b>DigitalOcean App Platform</b> · unify-platform</td><td>Admin + dealer portal, public site API, image uploads</td><td><code>multi-tenancy/.do/app.yaml</code></td><td class="num">apps-s-1vcpu-1gb · NZ$20</td><td><span class="pill warn">resize</span> 2 GB and serialized uploads</td></tr>
+        <tr data-rw="svc-do-site" data-rw-label="DigitalOcean · unify-dealer-site"><td><b>DigitalOcean App Platform</b> · unify-dealer-site</td><td>All dealer websites (host-based), /img proxy, shop-status, chatbot</td><td><code>stihl-dealers-website-template/.do/app.yaml</code></td><td class="num">apps-s-1vcpu-1gb · NZ$20</td><td><span class="pill warn">2 instances</span> 500-domain limit per app is fine</td></tr>
+        <tr data-rw="svc-postgres" data-rw-label="PostgreSQL"><td><b>PostgreSQL</b></td><td>All dealer, request, message and campaign data</td><td><code>platform/server/db.ts</code></td><td class="num">unknown (NZ$12 dev or NZ$25 managed)</td><td><span class="pill warn">confirm</span> managed + standby; 22 conns at 1 GB</td></tr>
+        <tr data-rw="svc-spaces" data-rw-label="DO Spaces"><td><b>DigitalOcean Spaces + CDN</b></td><td>Dealer photos and the 24 pre-generated sizes per photo</td><td><code>platform/server/spaces.ts</code>, <code>imageDerivatives.ts</code></td><td class="num">NZ$8 · 250 GiB</td><td><span class="pill ok">fits</span> ≈ 12 GB at 100 dealers</td></tr>
+        <tr data-rw="svc-do-dns" data-rw-label="DO DNS"><td><b>DigitalOcean DNS</b></td><td>Dealer .co.nz zones (tauranga, waihi, rotorua)</td><td>app spec <code>zone:</code> entries</td><td class="num">free</td><td><span class="pill ok">fits</span> 100 zones; dealers keep registrar ownership</td></tr>
+        <tr data-rw="svc-godaddy-vercel" data-rw-label="GoDaddy + Vercel"><td><b>GoDaddy</b> + <b>Vercel</b></td><td>f925.works DNS; apex serves the F925 marketing site</td><td>DNS: ns15/16.domaincontrol.com; A → 76.76.21.21</td><td class="num">domain + hobby/pro</td><td><span class="pill na">outside</span> wildcard *.preview.f925.works is on DO</td></tr>
+        <tr data-rw="svc-resend" data-rw-label="Resend"><td><b>Resend</b></td><td>Admin/dealer OTP, invites, password reset, F925 notifications</td><td><code>platform/server/email.ts</code></td><td class="num">free · 3,000/mo · 100/day</td><td><span class="pill crit">upgrade</span> 100/day cap breaks on invite days → Pro NZ$33/mo</td></tr>
+        <tr data-rw="svc-google-places" data-rw-label="Google Places"><td><b>Google Maps Platform</b> (Places)</td><td>Address autocomplete during onboarding, via server proxy</td><td><code>platform/server/routes/places.ts</code></td><td class="num">pay-as-you-go</td><td><span class="pill ok">fits</span> ≈ NZ$17 one-off for 100 onboardings</td></tr>
+        <tr data-rw="svc-groq" data-rw-label="Groq"><td><b>Groq</b></td><td>“Shop open” AI sentence every 5 min per dealer; chatbot (off); PR reviews</td><td><code>frontend/src/lib/server/services/ai.ts</code>, <code>.pr_agent.toml</code></td><td class="num">free tier</td><td><span class="pill crit">quota</span> up to 28,800 calls/day → Developer tier + longer cache</td></tr>
+        <tr data-rw="svc-open-meteo" data-rw-label="open-meteo"><td><b>open-meteo</b></td><td>Weather for the shop-status widget</td><td><code>routes/api/shop-status/+server.ts</code></td><td class="num">free, non-commercial</td><td><span class="pill crit">licence</span> 10,000/day cap and commercial use needs a paid plan</td></tr>
+        <tr data-rw="svc-web3forms" data-rw-label="Web3Forms"><td><b>Web3Forms</b></td><td>Contact-form delivery (shared key)</td><td><code>routes/contact/+page.svelte</code></td><td class="num">free</td><td><span class="pill warn">replace</span> already decided: route through Resend</td></tr>
+        <tr data-rw="svc-imagekit" data-rw-label="ImageKit"><td><b>ImageKit</b></td><td>STIHL product imagery in blog posts (ik.imagekit.io/mf4kktmyvw)</td><td>84 references in <code>src/lib/posts</code></td><td class="num">free · 20–25 GB/mo</td><td><span class="pill warn">watch</span> shared across all dealers; move to Spaces if it trips</td></tr>
+        <tr data-rw="svc-analytics" data-rw-label="GA4 + Meta Pixel"><td><b>Google Analytics 4</b> + <b>Meta Pixel</b></td><td>Per-dealer analytics after cookie consent</td><td><code>src/lib/analytics.ts</code>, layout</td><td class="num">free</td><td><span class="pill ok">fits</span> one GA property per dealer to manage</td></tr>
+        <tr data-rw="svc-github" data-rw-label="GitHub"><td><b>GitHub</b> (org f925-limited)</td><td>Both private repos, Actions CI, Dependabot, nightly image-cache warmer</td><td><code>.github/workflows/*</code></td><td class="num">free org</td><td><span class="pill ok">fits</span> 2,000 Actions minutes/mo; warmer must list 100 domains</td></tr>
+        <tr data-rw="svc-qodo" data-rw-label="Qodo PR-Agent"><td><b>Qodo PR-Agent</b></td><td>AI code review on PRs (runs on the Groq key)</td><td><code>.github/workflows/pr_agent.yml</code></td><td class="num">free action</td><td><span class="pill ok">fits</span></td></tr>
+        <tr data-rw="svc-axiom" data-rw-label="Axiom"><td><b>Axiom</b></td><td>Log shipping for chatbot usage (code exists, no key in prod)</td><td><code>services/logger.ts</code></td><td class="num">not configured</td><td><span class="pill na">unused</span> logs currently go to the container disk</td></tr>
+        <tr data-rw="svc-monitoring" data-rw-label="Uptime / error tracking"><td><b>Uptime / error tracking</b></td><td>None. No Sentry, no uptime checks, no alert rules found</td><td>—</td><td class="num">—</td><td><span class="pill crit">add</span> RFP asks for it (runbook I-01…I-03)</td></tr>
+      </tbody>
+    </table></div>
+    <p><small>Local ingredients the team must also have: Node 20 (both repos pin <code>&gt;=20 &lt;23</code>), PostgreSQL 14+, the DO Spaces and Google keys in <code>platform/.env</code>, and <code>doctl</code> for spec exports. Dealer domains are registered by the dealers; F925 only hosts the zone.</small></p>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2>Test results</h2></div>
+    <p>Two test beds. <b>Production</b> was hit read-only (GET only, no emails, no uploads) from Santiago, so absolute latency carries ≈ 500 ms of distance; throughput and error counts are the signal. <b>Local</b> was a fresh clone of both repos, the platform capped at 800 MB heap, a copy of the dev database seeded to 106 dealers (with domains, five change requests and five messages each), and the site pointed at it. Local CPU is Apple Silicon; the production run showed a DO shared vCPU delivers about <b>1/4.6</b> of it (5.4 ms local per homepage predicted 40 pages/s; production measured 34–36).</p>
+
+    <div class="legend"><span class="stars" style="--s:5"></span> nothing to do, huge headroom · <span class="stars" style="--s:3"></span> fine today, watch it at 100 · <span class="stars" style="--s:1"></span> breaks at 100 dealers · <span class="stars" style="--s:0"></span> breaks today</div>
+    <h3>Production, read-only</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th class="sc">Score</th><th>Target</th><th class="num">Conns</th><th class="num">req/s</th><th class="num">p50</th><th class="num">p97.5</th><th class="num">non-2xx</th><th class="num">timeouts</th><th>Read</th></tr></thead>
+      <tbody>
+        <tr><td class="sc" data-s="5"></td><td>platform <span class="mono">/api/public/site</span> (133 KB)</td><td class="num">10</td><td class="num">14.2</td><td class="num">624 ms</td><td class="num">2.2 s</td><td class="num">0</td><td class="num">0</td><td>latency-bound by distance</td></tr>
+        <tr><td class="sc" data-s="5"></td><td>platform <span class="mono">/api/public/site</span></td><td class="num">50</td><td class="num">59.3</td><td class="num">717 ms</td><td class="num">2.4 s</td><td class="num">0</td><td class="num">0</td><td>clean</td></tr>
+        <tr><td class="sc" data-s="4.5"></td><td>platform <span class="mono">/api/public/site</span></td><td class="num">150</td><td class="num">115.7</td><td class="num">1.14 s</td><td class="num">2.7 s</td><td class="num">0</td><td class="num">1</td><td>near ceiling, still healthy</td></tr>
+        <tr data-rw="res-platform-ceiling" data-rw-label="Platform API ceiling"><td class="sc" data-s="4"></td><td>platform <span class="mono">/api/public/site</span></td><td class="num">300</td><td class="num">127.6</td><td class="num">1.98 s</td><td class="num">4.5 s</td><td class="num">0</td><td class="num">31</td><td><b>ceiling ≈ 120–128 req/s</b>, queues rather than fails</td></tr>
+        <tr><td class="sc" data-s="5"></td><td>dealer homepage (323 KB HTML)</td><td class="num">10</td><td class="num">12.3</td><td class="num">686 ms</td><td class="num">3.0 s</td><td class="num">0</td><td class="num">0</td><td>clean</td></tr>
+        <tr><td class="sc" data-s="3.5"></td><td>dealer homepage</td><td class="num">50</td><td class="num">35.8</td><td class="num">1.22 s</td><td class="num">3.6 s</td><td class="num">0</td><td class="num">0</td><td>CPU-bound, p50 doubles</td></tr>
+        <tr data-rw="res-site-ceiling" data-rw-label="Dealer site ceiling"><td class="sc" data-s="2.5"></td><td>dealer homepage</td><td class="num">150</td><td class="num">33.6</td><td class="num">1.66 s</td><td class="num">3.5 s</td><td class="num">0</td><td class="num">217</td><td><b>ceiling ≈ 35 pages/s</b>; 18 % of requests waited &gt; 10 s</td></tr>
+        <tr><td class="sc" data-s="3.5"></td><td>dealer <span class="mono">/products</span> (464 KB)</td><td class="num">50</td><td class="num">33.6</td><td class="num">1.18 s</td><td class="num">4.1 s</td><td class="num">0</td><td class="num">0</td><td>same ceiling as homepage</td></tr>
+        <tr><td class="sc" data-s="4.5"></td><td>dealer <span class="mono">/api/shop-status</span></td><td class="num">50</td><td class="num">88.4</td><td class="num">503 ms</td><td class="num">3.0 s</td><td class="num">0</td><td class="num">0</td><td>served from the 5-minute cache</td></tr>
+      </tbody>
+    </table></div>
+    <p>Health checks on both apps answered within 0.55–0.72 s throughout, and the sites stayed up. No 5xx was produced at any stage.</p>
+
+    <h3>Local, 106 dealers, writes and realtime</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th class="sc">Score</th><th>Scenario</th><th class="num">Conns</th><th class="num">req/s</th><th class="num">p50</th><th class="num">CPU/req (local)</th><th class="num">CPU/req (DO est.)</th><th>Read</th></tr></thead>
+      <tbody>
+        <tr><td class="sc" data-s="5"></td><td>public site payload, 100 different hosts</td><td class="num">100</td><td class="num">735</td><td class="num">131 ms</td><td class="num">1.4 ms</td><td class="num">≈ 6.5 ms</td><td>matches the 120 req/s seen in production</td></tr>
+        <tr><td class="sc" data-s="5"></td><td>admin dealer list (106 rows)</td><td class="num">20</td><td class="num">98</td><td class="num">165 ms</td><td class="num">1.9 ms</td><td class="num">≈ 9 ms</td><td>fine</td></tr>
+        <tr><td class="sc" data-s="4.5"></td><td>admin pending change requests</td><td class="num">20</td><td class="num">330</td><td class="num">57 ms</td><td class="num">3.7 ms</td><td class="num">≈ 17 ms</td><td>fine</td></tr>
+        <tr><td class="sc" data-s="4.5"></td><td>admin messages inbox</td><td class="num">20</td><td class="num">421</td><td class="num">45 ms</td><td class="num">2.4 ms</td><td class="num">≈ 11 ms</td><td>fine</td></tr>
+        <tr data-rw="res-report" data-rw-label="/report endpoint cost"><td class="sc" data-s="3"></td><td>cross-dealer <span class="mono">/report</span></td><td class="num">20</td><td class="num">35</td><td class="num">550 ms</td><td class="num">42 ms</td><td class="num">≈ 190 ms</td><td>heavy but admin-only; RSS grew to 238 MB</td></tr>
+        <tr><td class="sc" data-s="5"></td><td>dealer portal mix (me, profile, requests, messages)</td><td class="num">200</td><td class="num">1,886</td><td class="num">107 ms</td><td class="num">0.7 ms</td><td class="num">≈ 3 ms</td><td>200 dealers logged in at once is trivial</td></tr>
+        <tr><td class="sc" data-s="5"></td><td>dealer draft autosave (JSONB write)</td><td class="num">50</td><td class="num">4,216</td><td class="num">10 ms</td><td class="num">0.2 ms</td><td class="num">≈ 1 ms</td><td>fine</td></tr>
+        <tr data-rw="res-sse" data-rw-label="SSE realtime fan-out"><td class="sc" data-s="4.5"></td><td>SSE realtime: 200 open dealer tabs, 1 broadcast</td><td class="num">200</td><td class="num">—</td><td class="num">107 ms</td><td class="num">—</td><td class="num">—</td><td>all 200 received</td></tr>
+        <tr><td class="sc" data-s="4.5"></td><td>SSE realtime: 500 open tabs, 1 broadcast</td><td class="num">500</td><td class="num">—</td><td class="num">25 ms</td><td class="num">—</td><td class="num">—</td><td>all 500 received; memory flat</td></tr>
+        <tr><td class="sc" data-s="4"></td><td>argon2 password verify (login)</td><td class="num">—</td><td class="num">—</td><td class="num">36 ms</td><td class="num">128 ms</td><td class="num">≈ 0.6 s</td><td>100 simultaneous logins ≈ 1 CPU-minute; acceptable</td></tr>
+        <tr><td class="sc" data-s="4"></td><td>boot with 106 dealers (rewrites every profile on start)</td><td class="num">—</td><td class="num">—</td><td class="num">4.2 s</td><td class="num">—</td><td class="num">≈ 15 s</td><td>within the DO health-check window; grows linearly</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Local, dealer site SSR across 100 hosts</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th class="sc">Score</th><th>Page</th><th class="num">Conns</th><th class="num">pages/s</th><th class="num">p50</th><th class="num">CPU/page (local)</th><th class="num">DO est. ceiling</th></tr></thead>
+      <tbody>
+        <tr><td class="sc" data-s="3.5"></td><td>/ (homepage, 205 KB)</td><td class="num">20</td><td class="num">227</td><td class="num">75 ms</td><td class="num">5.4 ms</td><td class="num">≈ 40 /s</td></tr>
+        <tr><td class="sc" data-s="3"></td><td>/products</td><td class="num">20</td><td class="num">165</td><td class="num">105 ms</td><td class="num">7.0 ms</td><td class="num">≈ 31 /s</td></tr>
+        <tr><td class="sc" data-s="4"></td><td>/about</td><td class="num">20</td><td class="num">362</td><td class="num">48 ms</td><td class="num">3.3 ms</td><td class="num">≈ 66 /s</td></tr>
+        <tr><td class="sc" data-s="3.5"></td><td>/ with 100 connections</td><td class="num">100</td><td class="num">272</td><td class="num">296 ms</td><td class="num">4.6 ms</td><td class="num">≈ 45 /s</td></tr>
+      </tbody>
+    </table></div>
+    <p>The 30-second site cache holds 200 hosts, so 100 dealers fit; the platform spent only 2.5 CPU-seconds serving 4,545 site pages. The site never re-fetches the platform more than twice a minute per dealer.</p>
+
+    <h3>Local, one photo upload</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th class="sc">Score</th><th>Case</th><th class="num">Wall (local)</th><th class="num">CPU</th><th class="num">Peak RSS</th><th class="num">Written</th><th>Read</th></tr></thead>
+      <tbody>
+        <tr><td class="sc" data-s="1.5"></td><td>1 upload, 4.8 MB photo, 8 threads</td><td class="num">2.5 s</td><td class="num">15.7 s</td><td class="num">573 MB</td><td class="num">24 files · 2.7 MB</td><td>on DO: ≈ 70 CPU-seconds on the one vCPU</td></tr>
+        <tr data-rw="res-upload-oom" data-rw-label="Three concurrent uploads"><td class="sc" data-s="0.5"></td><td>3 uploads at once</td><td class="num">7.1 s</td><td class="num">47.3 s</td><td class="num">719 MB</td><td class="num">72 files · 8.2 MB</td><td><b>+ ~150 MB server baseline ≈ the 1 GB limit</b></td></tr>
+        <tr><td class="sc" data-s="1"></td><td>1 upload, 1 thread (≈ 1 vCPU)</td><td class="num">17.6 s</td><td class="num">15.0 s</td><td class="num">357 MB</td><td class="num">24 files</td><td>the request holds the connection the whole time</td></tr>
+      </tbody>
+    </table></div>
+    <p>This is the one place the numbers point at a failure, not a slowdown. A dealer uploading ten photos during onboarding ties up the platform’s only vCPU for roughly ten minutes; two or three dealers uploading in the same minute can push the 1 GB instance into an out-of-memory restart, which would also drop every open admin and dealer realtime connection and, for up to 30 seconds, the content feed to all 100 sites.</p>
+
+    <h3>Headroom at 100 dealers</h3>
+    <div class="chart" role="img" aria-label="Bar chart: expected 100-dealer load as a percentage of each measured or documented limit. Platform API 3 percent, dealer site SSR at peak 29 percent, Spaces storage 5 percent, database size under 1 percent, Postgres connections 91 percent, platform memory with two concurrent uploads 85 percent, Resend daily emails on an invite day 200 percent, Groq free daily calls 200 percent, open-meteo free daily calls 288 percent.">
+      <div class="row"><div class="lbl">Platform API<small>3 req/s of ≈120</small></div><div class="track"><div class="fill" style="width:3%"></div><div class="lim" style="left:50%"></div></div><div class="val">3 %</div></div>
+      <div class="row"><div class="lbl">Dealer site SSR, campaign peak<small>10 pages/s of ≈35</small></div><div class="track"><div class="fill" style="width:14.5%"></div><div class="lim" style="left:50%"></div></div><div class="val">29 %</div></div>
+      <div class="row"><div class="lbl">Spaces storage<small>≈12 GB of 250 GB</small></div><div class="track"><div class="fill" style="width:2.5%"></div><div class="lim" style="left:50%"></div></div><div class="val">5 %</div></div>
+      <div class="row"><div class="lbl">Database size<small>19 MB at 106 dealers</small></div><div class="track"><div class="fill" style="width:0.5%"></div><div class="lim" style="left:50%"></div></div><div class="val">&lt;1 %</div></div>
+      <div class="row"><div class="lbl">Postgres connections<small>2 instances × pool 10 of 22 (1 GB managed)</small></div><div class="track"><div class="fill" style="width:45.5%"></div><div class="lim" style="left:50%"></div></div><div class="val">91 %</div></div>
+      <div class="row"><div class="lbl">Platform memory, 2 uploads at once<small>≈870 MB of 1,024 MB</small></div><div class="track"><div class="fill" style="width:42.5%"></div><div class="lim" style="left:50%"></div></div><div class="val">85 %</div></div>
+      <div class="row"><div class="lbl">Resend, invite day<small>≈200 emails of 100/day (free)</small></div><div class="track"><div class="fill over" style="width:100%"></div><div class="lim" style="left:50%"></div></div><div class="val">▲ 200 %</div></div>
+      <div class="row"><div class="lbl">Groq free tier, daily calls<small>up to 28,800 of 14,400</small></div><div class="track"><div class="fill over" style="width:100%"></div><div class="lim" style="left:50%"></div></div><div class="val">▲ 200 %</div></div>
+      <div class="row"><div class="lbl">open-meteo free tier, daily calls<small>up to 28,800 of 10,000</small></div><div class="track"><div class="fill over" style="width:100%"></div><div class="lim" style="left:50%"></div></div><div class="val">▲ 288 %</div></div>
+      <p class="note">Bar = expected load at 100 dealers as a share of the limit; the tick is 100 %. Red with ▲ = over the limit. Assumes 1,500 visits per dealer per month and every dealer refreshing the shop-status widget every 5 minutes; both are editable in the calculator.</p>
+    </div>
+  </div>
+</section>
+
+<section id="changes">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05</span><h2>Changes before 100 dealers</h2></div>
+    <p>Ordered by what breaks first. The first three are needed before the pilot in December; the rest before the January rollout. Flag the ones you’ll own, comment where you disagree with the priority.</p>
+
+    <div class="chg" data-rw="chg-01" data-rw-label="Change 1 · derivatives off the request path"><div class="n">1</div><div><div class="h"><b>Take image derivatives off the request path</b><span class="pill crit">critical</span></div><p><code>uploadDealerAsset()</code> in <code>platform/server/spaces.ts</code> runs 24 sharp encodes before answering. Return after the original is stored, and generate derivatives in a queue with concurrency 1 (a <code>setImmediate</code> loop over a table of pending keys is enough at this scale). The site’s <code>/img</code> proxy already falls back to on-demand resizing, so nothing breaks while a derivative is missing. Also resize the platform to <code>apps-s-1vcpu-2gb</code> or <code>apps-d-1vcpu-2gb</code>.</p></div></div>
+    <div class="chg" data-rw="chg-02" data-rw-label="Change 2 · Resend Pro"><div class="n">2</div><div><div class="h"><b>Resend Pro</b><span class="pill crit">critical</span></div><p>The free plan’s 100 emails per day is below one onboarding day (100 invites plus 100 OTP logins). NZ$33/month.</p></div></div>
+    <div class="chg" data-rw="chg-03" data-rw-label="Change 3 · monitoring, alerts, error tracking"><div class="n">3</div><div><div class="h"><b>Monitoring, alerts, error tracking</b><span class="pill crit">critical</span></div><p>Uptime checks on all dealer domains plus both health endpoints; DO alert rules for CPU, memory and restarts; an error tracker in both apps. These are runbook items I-01 to I-03 and the RFP scores them.</p></div></div>
+    <div class="chg" data-rw="chg-04" data-rw-label="Change 4 · second dealer-site instance"><div class="n">4</div><div><div class="h"><b>Second dealer-site instance with request-based autoscaling</b><span class="pill warn">high</span></div><p>Today one deploy, one crash or one crawler burst affects all 100 sites at once. Two instances (min 2, max 4) give zero-downtime deploys and ~70 pages/s. Dedicated CPU also unlocks CPU-based autoscaling.</p></div></div>
+    <div class="chg" data-rw="chg-05" data-rw-label="Change 5 · rate limiting"><div class="n">5</div><div><div class="h"><b>Rate-limit the auth and proxy routes</b><span class="pill warn">high</span></div><p>There is no rate limiting on <code>/api/dealer/login</code>, <code>/forgot-password</code>, the OTP endpoints, Places proxy or <code>/img</code>. Each login costs ≈ 0.6 CPU-seconds and one Resend email; a script can burn the email quota and the vCPU. Add per-IP limits (express-rate-limit or the DO WAF).</p></div></div>
+    <div class="chg" data-rw="chg-06" data-rw-label="Change 6 · shop-status refresh and quotas"><div class="n">6</div><div><div class="h"><b>Cut the shop-status refresh</b><span class="pill warn">high</span></div><p>Raise <code>STATUS_CACHE_TTL_MS</code> from 5 to 30–60 minutes and move Groq to the Developer tier; either license open-meteo commercially or swap in a free-for-commercial weather source. This also removes the “AI sentence” cost line from the model.</p></div></div>
+    <div class="chg" data-rw="chg-07" data-rw-label="Change 7 · managed database + standby"><div class="n">7</div><div><div class="h"><b>Confirm the database is a managed cluster and add a standby</b><span class="pill warn">high</span></div><p>Point-in-time recovery is 7 days on managed; a NZ$12 dev database has no backups. Keep the platform to one instance or add a pooler: managed 1 GB allows 22 connections and each platform instance opens up to 10.</p></div></div>
+    <div class="chg" data-rw="chg-08" data-rw-label="Change 8 · realtime is in-memory"><div class="n">8</div><div><div class="h"><b>Realtime is in-memory</b><span class="pill warn">medium</span></div><p>SSE clients live in a Map inside the process, so a second platform instance would split dealers and admins across two islands. Either keep the platform vertically scaled (recommended) or fan out through Postgres <code>LISTEN/NOTIFY</code>.</p></div></div>
+    <div class="chg" data-rw="chg-09" data-rw-label="Change 9 · per-route body limits"><div class="n">9</div><div><div class="h"><b>Per-route body limits</b><span class="pill warn">medium</span></div><p><code>express.json({ limit: '100mb' })</code> applies before authentication on every route. Move the large limit to the two upload routes only.</p></div></div>
+    <div class="chg" data-rw="chg-10" data-rw-label="Change 10 · ephemeral files"><div class="n">10</div><div><div class="h"><b>Ephemeral files</b><span class="pill warn">medium</span></div><p>Newsletter sign-ups append to <code>subscribers.txt</code> and the chatbot logs to disk inside the site container; both vanish on every deploy. Already tracked as the lead-capture gap; worth closing before the pilot because it is a visible data loss.</p></div></div>
+    <div class="chg" data-rw="chg-11" data-rw-label="Change 11 · housekeeping that grows with dealers"><div class="n">11</div><div><div class="h"><b>Housekeeping that grows with dealers</b><span class="pill na">low</span></div><p>The boot-time profile rewrite (<code>syncStoredDealerProfiles</code>) took 4 s at 106 dealers and runs on every deploy; the image-cache warmer and the shop-status town table hardcode the three current dealers; the site’s host cache holds 200 entries. All fine at 100, all worth a note in the roadmap.</p></div></div>
+  </div>
+</section>
+
+<section id="cost">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">06</span><h2>Cost at 100 dealers</h2></div>
+    <p>Everything is in NZ dollars. The providers bill in US dollars, so their September 2026 list prices (sources at the end) are converted at the rate in the calculator, NZ$1.65 per US$1 by default. The calculator recomputes with your own assumptions; nothing here is a quote. Leo: this should replace or feed the DO + Resend inputs in your 100-dealer cost model.</p>
+    <div class="calc">
+      <div class="inputs">
+        <label>dealers at scale <input id="dealers" type="number" min="1" max="500" value="100"></label>
+        <label>dealers live today <input id="today" type="number" min="0" max="500" value="3"></label>
+        <label>visits / dealer / month <input id="visits" type="number" min="0" step="100" value="1500"></label>
+        <label>pages / visit <input id="ppv" type="number" min="1" step="0.5" value="3"></label>
+        <label>page weight (MB, incl. images) <input id="mb" type="number" min="0.1" step="0.1" value="1.2"></label>
+        <label>photos uploaded / dealer <input id="photos" type="number" min="0" value="15"></label>
+        <label>shop-status cache (minutes) <input id="ttl" type="number" min="1" value="5"></label>
+        <label>share of 5-min windows with a visit <input id="share" type="number" min="0" max="1" step="0.05" value="0.4"></label>
+        <label>Groq price, NZ$ per M tokens <input id="tok" type="number" min="0" step="0.05" value="0.50"></label>
+        <label>NZ$ per US$ (providers bill in USD) <input id="fx" type="number" min="0.5" step="0.01" value="1.65"></label>
+        <label>platform instance
+          <select id="plat">
+            <option value="12" data-l="apps-s-1vcpu-1gb (today)">apps-s-1vcpu-1gb (today)</option>
+            <option value="25" selected data-l="apps-s-1vcpu-2gb">apps-s-1vcpu-2gb</option>
+            <option value="39" data-l="apps-d-1vcpu-2gb">apps-d-1vcpu-2gb</option>
+            <option value="49" data-l="apps-d-1vcpu-4gb">apps-d-1vcpu-4gb</option>
+          </select></label>
+        <label>dealer-site instances
+          <select id="site">
+            <option value="12" data-l="1 × apps-s-1vcpu-1gb (today)">1 × apps-s-1vcpu-1gb (today)</option>
+            <option value="24" data-l="2 × apps-s-1vcpu-1gb">2 × apps-s-1vcpu-1gb</option>
+            <option value="68" selected data-l="2 × apps-d-1vcpu-1gb">2 × apps-d-1vcpu-1gb</option>
+            <option value="78" data-l="2 × apps-d-1vcpu-2gb">2 × apps-d-1vcpu-2gb</option>
+          </select></label>
+        <label>database
+          <select id="db">
+            <option value="7" data-l="DO dev database (no backups)">DO dev database (no backups)</option>
+            <option value="15" data-l="Managed 1 GB, single node">Managed 1 GB, single node</option>
+            <option value="30" selected data-l="Managed 1 GB + standby">Managed 1 GB + standby</option>
+            <option value="60" data-l="Managed 2 GB + standby">Managed 2 GB + standby</option>
+          </select></label>
+      </div>
+      <div class="tablewrap"><table id="costTable">
+        <thead><tr><th>Line</th><th>Basis</th><th class="num">Today (NZ$/mo)</th><th class="num">At scale (NZ$/mo)</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <div class="totals">
+        <div class="t"><div class="k">Today, per month</div><div class="v"><span id="tToday">—</span> <span class="share" id="tTodayShare" hidden></span></div><div class="s" id="tTodayNzd">—</div></div>
+        <div class="t"><div class="k">At scale, per month</div><div class="v"><span id="tScale">—</span> <span class="share" id="tShare" hidden></span></div><div class="s" id="tScaleNzd">—</div></div>
+        <div class="t"><div class="k">Per dealer, per month</div><div class="v"><span id="tPer">—</span> <span class="share" id="tPerShare" hidden></span></div><div class="s" id="tPerNzd">—</div></div>
+      </div>
+    </div>
+    <p>The infrastructure bill is under one percent of the platform fee at any of these shapes. The real cost of 100 dealers is people: the onboarding reviews, change requests and messages that the platform routes to the F925 inbox. At the seeded rate (five requests and five messages per dealer) that is 1,000 items of admin work, which no instance size changes.</p>
+  </div>
+</section>
+
+<section id="runbook">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">07</span><h2>Runbook to repeat this</h2></div>
+    <p>Everything below is in <code>rfp/loadtest/</code> in the f925-26 repo with a README. Read-only production tests are safe at these levels; run them outside NZ business hours and keep the DigitalOcean Insights tab open on both apps. Never run the local upload or email scenarios against production.</p>
+
+    <div class="step"><div class="n">1</div><div>
+      <h3>Read-only load on production</h3>
+<pre><code>cd rfp/loadtest &amp;&amp; npm install
+node prod.mjs "https://stihlshop-platform.f925.works/api/public/site?host=stihlshoptauranga.co.nz" 50 30
+node prod.mjs "https://stihlshop-platform.f925.works/api/public/site?host=stihlshoptauranga.co.nz" 150 30
+node prod.mjs "https://stihlshoptauranga.co.nz/" 50 30
+node prod.mjs "https://stihlshoptauranga.co.nz/" 150 30</code></pre>
+      <div class="pass"><b>PASS</b> zero non-2xx at every stage; platform p97.5 under 3 s at 150; homepage p97.5 under 4 s at 50; health endpoints answer during the run; no restart shown in DO Insights.</div>
+    </div></div>
+
+    <div class="step"><div class="n">2</div><div>
+      <h3>100 seeded dealers, locally</h3>
+<pre><code># in multi-tenancy/platform with local Postgres
+createdb -T stihl_mt_leo stihl_lt
+cp ../../f925-26/rfp/loadtest/seedLoadTest.ts scripts/ &amp;&amp; npx tsx scripts/seedLoadTest.ts   # 100 dealers
+NODE_OPTIONS=--max-old-space-size=800 npx tsx server/index.ts &amp;      # same 1 GB cap as DO
+cd ../../f925-26/rfp/loadtest &amp;&amp; bash runall.sh                      # all scenarios + SSE fan-out</code></pre>
+      <div class="pass"><b>PASS</b> every scenario reports non2xx 0; SSE fan-out delivers to all 200 and 500 tabs; RSS stays under 400 MB; <code>cpuMsPerReq</code> × 4.6 stays under 10 ms for every dealer-facing route.</div>
+    </div></div>
+
+    <div class="step"><div class="n">3</div><div>
+      <h3>Upload burst</h3>
+<pre><code>cp ../../f925-26/rfp/loadtest/sharpBench.ts scripts/
+CONC=1 npx tsx scripts/sharpBench.ts
+CONC=3 npx tsx scripts/sharpBench.ts
+UV_THREADPOOL_SIZE=1 VIPS_CONCURRENCY=1 CONC=1 npx tsx scripts/sharpBench.ts</code></pre>
+      <div class="pass"><b>PASS (after change 1)</b> the upload request returns in under 2 s and <code>peakRssMB</code> for three concurrent uploads stays under 500 MB. Today this step fails.</div>
+    </div></div>
+
+    <div class="step"><div class="n">4</div><div>
+      <h3>Dealer-site SSR across 100 hosts</h3>
+<pre><code># in stihl-dealers-website-template/frontend, platform running on :3101
+npm install &amp;&amp; npm run build
+PLATFORM_API_URL=http://localhost:3101 PORT=3200 NODE_ENV=production node build/index.js &amp;
+cd ../../f925-26/rfp/loadtest &amp;&amp; node ssr.mjs / 20 20 100 &amp;&amp; node ssr.mjs /products 20 20 100</code></pre>
+      <div class="pass"><b>PASS</b> non2xx 0 for all 100 hosts; <code>siteCpuMsPerReq</code> under 8 ms local (≈ 35 pages/s per DO shared vCPU); platform CPU during the run under 5 s.</div>
+    </div></div>
+
+    <div class="step"><div class="n">5</div><div>
+      <h3>Onboarding-day drill (manual, staging)</h3>
+      <p>Clone both DO apps to a staging app pair (<code>doctl apps create --spec .do/app.yaml</code> with new names and a copy of the database), then with three people: invite 20 dealers from the admin, activate 10 accounts within ten minutes, and have three of them upload 10 photos each at the same time while a fourth person reloads a dealer site every few seconds.</p>
+      <div class="pass"><b>PASS</b> every invite and OTP email arrives (watch the Resend dashboard for the daily cap), uploads complete, the platform does not restart (DO Insights), the dealer site keeps answering under 3 s, and the admin inbox shows all 20 onboarding requests.</div>
+    </div></div>
+
+    <div class="step"><div class="n">6</div><div>
+      <h3>What to check in the dashboards after any run</h3>
+      <ul>
+        <li>DigitalOcean → each app → Insights: CPU, memory, restarts, bandwidth used against the 150 GiB allowance.</li>
+        <li>DigitalOcean → Databases: confirm the cluster type, connections in use, backup schedule, PITR window.</li>
+        <li>Resend → Emails: delivered vs. bounced, daily count against the plan cap.</li>
+        <li>Groq console → Limits: requests per day used by the shop-status key.</li>
+        <li>Google Cloud → Maps Platform → Quotas: Places requests and spend.</li>
+      </ul>
+    </div></div>
+  </div>
+</section>
+
+<section id="unverified">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">08</span><h2>Not verified</h2></div>
+    <p>These need someone with DigitalOcean, Resend, Groq and Google console access. Installing <code>doctl</code> and running <code>doctl auth init</code> would let the next pass confirm most of them automatically. Comment on a line if you already know the answer.</p>
+    <ul>
+      <li data-rw="unv-db" data-rw-label="Database type and backups">Whether <code>DATABASE_URL</code> points at a managed cluster (and its size, backups, PITR) or a NZ$12 dev database. Nothing in either repo says.</li>
+      <li data-rw="unv-bandwidth" data-rw-label="Bandwidth usage">Current DO bandwidth consumption on the dealer-site app; the 150 GiB allowance is the one line in the cost model that depends on real traffic.</li>
+      <li data-rw="unv-resend" data-rw-label="Resend plan and domain">Resend plan and whether contact.f925.works is verified with DKIM and a DMARC policy.</li>
+      <li data-rw="unv-groq-google" data-rw-label="Groq tier and Google billing">Groq tier for the site key and the Google Maps billing account behind the Places key.</li>
+      <li data-rw="unv-imagekit" data-rw-label="ImageKit account">Who owns the ImageKit account serving product photos, and its bandwidth to date.</li>
+      <li data-rw="unv-alerts" data-rw-label="DO alert policies">Whether the App Platform apps have any alert policies configured (none are in the specs).</li>
+      <li data-rw="unv-nz-origin" data-rw-label="NZ-origin measurement">Behaviour of DigitalOcean’s edge under a real Australia/NZ-origin load; this test ran from Chile, which adds ≈ 500 ms per request but does not change the per-request server cost.</li>
+    </ul>
+    <h3>Sources</h3>
+    <p class="sources">DigitalOcean <a href="https://docs.digitalocean.com/products/app-platform/details/pricing/">App Platform pricing</a>, <a href="https://docs.digitalocean.com/products/app-platform/details/limits/">limits</a> (500 domains per app), <a href="https://docs.digitalocean.com/products/app-platform/how-to/scale-app/">scaling</a>, <a href="https://docs.digitalocean.com/products/databases/postgresql/details/limits/">PostgreSQL limits</a>, <a href="https://docs.digitalocean.com/products/spaces/details/pricing/">Spaces pricing</a>; <a href="https://resend.com/pricing">Resend pricing</a>; <a href="https://developers.google.com/maps/documentation/places/web-service/usage-and-billing">Places API billing</a>; <a href="https://www.cloudzero.com/blog/groq-pricing/">Groq pricing summary</a>; <a href="https://open-meteo.com/en/terms">open-meteo terms</a> and <a href="https://open-meteo.com/en/pricing">pricing</a>; <a href="https://imagekit.io/plans/">ImageKit plans</a>.</p>
+  </div>
+</section>
+
+<footer><div class="wrap">
+  <p>Measured 10 September 2026 · F925 internal · <a href="/board.html">runbook</a> · <a href="/audit.html">audit</a> · <a href="/proposal.html">proposal</a> · <a href="/wk1-report.html">week 1 report</a></p>
+</div></footer>
+
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+<script>
+/* ---------- star scores ---------- */
+(function(){
+  document.querySelectorAll('td.sc[data-s]').forEach(function(td){
+    var v=parseFloat(td.getAttribute('data-s'))||0;
+    td.innerHTML='<span class="stars" style="--s:'+v+'" role="img" aria-label="'+v+' out of 5" title="'+v+' / 5"></span>';
+  });
+})();
+
+/* ---------- cost calculator ---------- */
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var ids = ['dealers','today','visits','ppv','mb','photos','ttl','share','tok','fx','plat','site','db'];
+  var fmt = function (n) { return 'NZ$' + Math.round(n).toLocaleString('en-US'); };
+  var nz = function (n) { return 'NZ$' + (n < 100 ? n.toFixed(2) : Math.round(n).toLocaleString('en-US')); };
+  var fxNow = function () { return +$('fx').value || 1; };
+  function labelOptions () { var fx = fxNow(); ['plat','site','db'].forEach(function (id) { Array.prototype.forEach.call($(id).options, function (o) { o.textContent = o.getAttribute('data-l') + ' — NZ$' + Math.round(+o.value * fx); }); }); }
+  function calc () {
+    var D = +$('dealers').value || 0, V = +$('visits').value || 0, P = +$('ppv').value || 0, MB = +$('mb').value || 0;
+    var photos = +$('photos').value || 0, ttl = Math.max(1, +$('ttl').value || 5), share = Math.min(1, Math.max(0, +$('share').value || 0));
+    var fx = +$('fx').value || 1, tok = (+$('tok').value || 0) / fx;
+    var plat = +$('plat').value, site = +$('site').value, db = +$('db').value;
+    var pages = D * V * P;
+    var egressGB = pages * MB / 1024;
+    var includedGiB = site >= 68 ? 400 : (site >= 24 ? 300 : 150);
+    var overGB = Math.max(0, egressGB - includedGiB);
+    var bandwidth = overGB * 0.02;
+    var storageGB = D * photos * (4.8 + 2.7) / 1024;
+    var spaces = 5 + Math.max(0, storageGB - 250) * 0.02;
+    var callsPerDay = D * (1440 / ttl) * share;
+    var groqTokens = callsPerDay * 30 * 340 / 1e6;
+    var groq = groqTokens * tok;
+    var meteo = 32;
+    var emailsMo = D * 8 + 60 + D * 4 + D * 6;
+    var resend = (emailsMo > 3000 || D >= 50) ? 20 : 0;
+    var places = (D * 30 * 2.83 / 1000) / 12;
+    var monitoring = 26;
+    var rows = [
+      ['unify-platform (DO App Platform)', 'instance selected above', 12, plat],
+      ['unify-dealer-site (DO App Platform)', 'instances selected above', 12, site],
+      ['PostgreSQL', 'plan selected above (today: unconfirmed, managed single node assumed)', 15, db],
+      ['DO Spaces', 'NZ$' + Math.round(5 * fx) + ' base · ≈ ' + storageGB.toFixed(1) + ' GB used', 5, spaces],
+      ['Bandwidth overage', Math.round(egressGB).toLocaleString() + ' GB/mo egress vs ' + includedGiB + ' GiB included · NZ$' + (0.02 * fx).toFixed(3) + '/GiB', 0, bandwidth],
+      ['Resend', '≈ ' + emailsMo.toLocaleString() + ' emails/mo; Pro needed for the 100/day cap', 0, resend],
+      ['Groq (shop-status sentence)', '≈ ' + Math.round(callsPerDay).toLocaleString() + ' calls/day · ' + groqTokens.toFixed(0) + ' M tokens/mo', 0, groq],
+      ['open-meteo commercial plan', 'required for commercial use; verify price', 0, meteo],
+      ['Google Places', '≈ ' + (D * 30) + ' autocomplete requests per onboarding cohort, spread over 12 months', 0, places],
+      ['Uptime + error tracking', 'e.g. Better Stack + Sentry Team, or DO alerts + a free tier', 0, monitoring],
+      ['GitHub, DO DNS, GA4, Meta Pixel, Web3Forms/ImageKit free tiers', '', 0, 0]
+    ];
+    var tb = $('costTable').querySelector('tbody'); tb.innerHTML = '';
+    var today = 0, scale = 0;
+    rows.forEach(function (r) {
+      today += r[2]; scale += r[3];
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td>' + r[0] + '</td><td><small>' + r[1] + '</small></td><td class="num">' + fmt(r[2] * fx) + '</td><td class="num">' + fmt(r[3] * fx) + '</td>';
+      tb.appendChild(tr);
+    });
+    var T = +$('today').value || 0;
+    var pill = function (id, costUsd, feesNzd) {
+      var el = $(id), pct = feesNzd ? (costUsd * fx) / feesNzd * 100 : 0;
+      el.hidden = !feesNzd;
+      el.textContent = (pct < 10 ? pct.toFixed(1) : Math.round(pct)) + '% of fees';
+      el.className = 'share ' + (pct < 5 ? 'ok' : (pct < 15 ? 'warn' : 'crit'));
+      el.title = nz(costUsd * fx) + ' ÷ ' + nz(feesNzd);
+      return pct;
+    };
+    labelOptions();
+    $('tToday').textContent = nz(today * fx);
+    pill('tTodayShare', today, T * 600);
+    $('tTodayNzd').textContent = T ? (nz(today * fx) + ' ÷ ' + nz(T * 600) + ' fees from ' + T + ' live dealer' + (T === 1 ? '' : 's')) : '2 shared instances, managed DB assumed, Spaces';
+    $('tScale').textContent = nz(scale * fx);
+    pill('tShare', scale, D * 600);
+    $('tScaleNzd').textContent = nz(scale * fx) + ' ÷ ' + nz(D * 600) + ' fees from ' + D + ' dealers';
+    var per = D ? scale / D : 0;
+    $('tPer').textContent = D ? nz(per * fx) : '—';
+    pill('tPerShare', per, D ? 600 : 0);
+    $('tPerNzd').textContent = D ? (nz(per * fx) + ' ÷ NZ$600 monthly fee (excl. GST)') : 'against NZ$600 + GST monthly fee';
+  }
+  ids.forEach(function (id) { $(id).addEventListener('input', calc); });
+  calc();
+})();
+
+/* ---------- review layer (flags + comments, synced through /api/state?page=capacity) ---------- */
+(function(){
+  var API='/api/state?page=capacity', APIKEY='XPFmcH2RSsza';
+  var PEOPLE=[
+    {id:'martin', name:'Martin', cls:'pa'},
+    {id:'leonel', name:'Leonel', cls:'pb'},
+    {id:'mike',   name:'Mike',   cls:'pc'}
+  ];
+  var NAME={}; PEOPLE.forEach(function(p){NAME[p.id]=p.name;});
+  var me=(window.WR?WR.me:'');
+  if(window.WR)WR.onIdentity(function(id){me=id;});
+  var mode='connecting';
+  var marks={}, comments={}, items={};
+  var lastRev='', applied=false, pendingWrites=0, chain=Promise.resolve();
+  function enqueue(op){
+    pendingWrites++;
+    var p=chain.then(function(){return apiPost(op);});
+    chain=p.then(function(){pendingWrites--;if(pendingWrites===0)refresh();},function(){pendingWrites--;setMode('local');});
+    return p;
+  }
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function san(t){return String(t).trim().replace(/[^A-Za-z0-9_.~:@+-]+/g,'_').replace(/^[_.]+|[_.]+$/g,'').slice(0,60)||'x';}
+  function slug(t){return san(String(t).toLowerCase().replace(/\s+/g,'-'));}
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(undefined,{day:'numeric',month:'short'});}catch(e){return '';}}
+  function apiGet(){
+    return fetch(API,{headers:{'x-warroom-key':APIKEY}}).then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();});
+  }
+  function apiPost(op){
+    return fetch(API,{method:'POST',headers:{'x-warroom-key':APIKEY,'content-type':'application/json'},body:JSON.stringify(op)}).then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();});
+  }
+
+  var dock=document.createElement('div');
+  dock.className='rdock';
+  dock.innerHTML='<span class="rstat" id="rd-stat">⚑ 0 · 💬 0</span><span class="rlive" id="rd-live">Connecting…</span>';
+  document.body.appendChild(dock);
+  function needIdentity(noteEl,msg){
+    if(me)return false;
+    if(noteEl){noteEl.textContent=msg;noteEl.hidden=false;}
+    if(window.WR)WR.nudge();
+    return true;
+  }
+  function setMode(m){
+    mode=m;
+    var el=document.getElementById('rd-live');
+    el.className='rlive '+m;
+    el.textContent = m==='live'?'● Live':(m==='local'?'○ Offline — read-only':'Connecting…');
+  }
+
+  /* widgetHost: where the ⚑/💬 buttons go; panelHost: element the thread panel is placed after; block: what gets the red outline */
+  function addTarget(key,label,widgetHost,panelHost,block){
+    if(items[key]||!widgetHost)return;
+    var w=document.createElement('span');
+    w.className='rw';
+    w.innerHTML='<button type="button" class="rwf" title="Flag for attention">⚑</button><button type="button" class="rwc" title="Comments">💬 <span>0</span></button>';
+    widgetHost.appendChild(w);
+    var panel=document.createElement('div');
+    panel.className='rw-panel'; panel.hidden=true;
+    panel.innerHTML='<p class="cflag" hidden></p><div class="clist"></div>'
+      +'<form class="cform"><textarea rows="1" placeholder="Comment on '+esc(label)+'… (Shift+Enter for a new line)" aria-label="Comment on '+esc(label)+'"></textarea><button type="submit">Post</button></form>'
+      +'<p class="cnote" hidden></p>';
+    var panelRow=null;
+    if(panelHost&&panelHost.tagName==='TR'){
+      panelRow=document.createElement('tr');
+      panelRow.className='rw-panelrow'; panelRow.hidden=true;
+      var td=document.createElement('td'); td.colSpan=panelHost.children.length||8;
+      td.appendChild(panel); panelRow.appendChild(td);
+      panelHost.insertAdjacentElement('afterend',panelRow);
+      panel.hidden=false;
+    } else if(panelHost&&panelHost!==widgetHost){panelHost.insertAdjacentElement('afterend',panel);}
+    else{widgetHost.appendChild(panel);}
+    if(window.WR)WR.wireCommentBox(panel.querySelector('.cform textarea'));
+    var fbtn=w.querySelector('.rwf'), cbtn=w.querySelector('.rwc');
+    var note=panel.querySelector('.cnote');
+    var shown=function(){return panelRow?!panelRow.hidden:!panel.hidden;};
+    var show=function(v){if(panelRow)panelRow.hidden=!v;else panel.hidden=!v;};
+    fbtn.addEventListener('click',function(){
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.')){show(true);return;}
+      var cur=marks[key]||{};
+      var next=!cur.flagged;
+      marks[key]={flagged:next,by:me,at:new Date().toISOString()};
+      render(key); renderTotals();
+      enqueue({t:'mark',key:key,flagged:next,by:me}).catch(function(){});
+    });
+    cbtn.addEventListener('click',function(){show(!shown());});
+    panel.querySelector('form').addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var inp=panel.querySelector('textarea');
+      var txt=inp.value.trim();
+      if(!txt)return;
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.'))return;
+      note.hidden=true;
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString()};
+      (comments[key]=comments[key]||[]).push(temp);
+      render(key); renderTotals();
+      inp.value='';
+      enqueue({t:'comment',key:key,author:me,text:txt})
+        .catch(function(){
+          var arr=comments[key]||[], ix=arr.indexOf(temp);
+          if(ix>=0)arr.splice(ix,1);
+          render(key); renderTotals();
+          note.textContent='Could not post — try again in a moment.';note.hidden=false;
+        });
+    });
+    items[key]={w:w,fbtn:fbtn,cbtn:cbtn,cnum:cbtn.querySelector('span'),panel:panel,show:show,clist:panel.querySelector('.clist'),cflag:panel.querySelector('.cflag'),block:block||widgetHost};
+  }
+
+  /* sections */
+  document.querySelectorAll('section[id]').forEach(function(sec){
+    var head=sec.querySelector('.sec-head'); if(!head)return;
+    var h2=head.querySelector('h2');
+    addTarget('sec-'+san(sec.id),(h2?h2.textContent:sec.id),head,head,head);
+  });
+  /* h3 subsections */
+  document.querySelectorAll('section h3').forEach(function(h3){
+    var t=h3.textContent.trim();
+    if(/^Sources$/i.test(t))return;
+    addTarget('h3-'+slug(t).slice(0,40),t.slice(0,60),h3,h3,h3);
+  });
+  /* rows, changes, unverified items: anything with data-rw */
+  document.querySelectorAll('[data-rw]').forEach(function(el){
+    var key=san(el.getAttribute('data-rw')), label=el.getAttribute('data-rw-label')||key;
+    var host=el;
+    if(el.tagName==='TR')host=el.querySelector('td')||el;
+    else if(el.classList.contains('chg'))host=el.querySelector('.h')||el;
+    addTarget(key,label,host,el,el);
+  });
+
+  function render(key){
+    var it=items[key]; if(!it)return;
+    var m=marks[key]||{};
+    it.fbtn.classList.toggle('on',!!m.flagged);
+    it.block.classList.toggle('rw-flagged',!!m.flagged);
+    it.cflag.hidden=!m.flagged;
+    if(m.flagged)it.cflag.textContent='⚑ Flagged by '+(NAME[m.by]||m.by||'?')+(m.at?' · '+fmtDate(m.at):'');
+    var cm=comments[key]||[];
+    it.cnum.textContent=cm.length;
+    it.cbtn.classList.toggle('has',cm.length>0);
+    if(!it.clist.querySelector('.ceform'))it.clist.innerHTML=cm.map(function(c){
+      var own=(c.author===me&&c.id);
+      var btns=own?('<button type="button" class="cdel" data-cid="'+esc(c.id)+'" data-key="'+esc(key)+'" title="Delete comment" aria-label="Delete comment">✕</button>'
+        +'<button type="button" class="cedit" data-cid="'+esc(c.id)+'" data-key="'+esc(key)+'" title="Edit comment">edit</button>'):'';
+      return '<div class="citem">'+btns+'<b>'+esc(NAME[c.author]||c.author||'?')+'</b> <time>'+esc(fmtDate(c.at))+(c.edited?' · edited':'')+'</time>'+(window.WR?WR.commentBody(c):'<p>'+esc(c.text||'')+'</p>')+'</div>';
+    }).join('');
+  }
+  function renderAll(){Object.keys(items).forEach(render);renderTotals();}
+  function renderTotals(){
+    var f=0,c=0;
+    Object.keys(items).forEach(function(k){
+      if(marks[k]&&marks[k].flagged)f++;
+      c+=(comments[k]||[]).length;
+    });
+    document.getElementById('rd-stat').textContent='⚑ '+f+' · 💬 '+c;
+  }
+  function applyState(data,fromPost){
+    if(!data||typeof data!=='object')return;
+    var rev=(typeof data.rev==='string')?data.rev:'';
+    if(applied&&rev&&rev<lastRev)return;
+    if(!fromPost&&pendingWrites>0)return;
+    if(rev>lastRev)lastRev=rev; applied=true;
+    marks=data.marks||{};
+    var by={};
+    (data.comments||[]).forEach(function(c){if(!c.key)return;(by[c.key]=by[c.key]||[]).push(c);});
+    comments=by;
+    setMode('live');
+    renderAll();
+  }
+  function refresh(){
+    if(pendingWrites>0)return;
+    apiGet().then(function(d){applyState(d,false);}).catch(function(){setMode('local');});
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cdel'); if(!b)return;
+    if(!confirm('Delete this comment for everyone?'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[];
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id){arr.splice(i,1);break;}}
+    render(key); renderTotals();
+    enqueue({t:'comment-del',id:id,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cedit'); if(!b)return;
+    var citem=b.closest('.citem');
+    if(citem.querySelector('.ceform'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    var f=document.createElement('form');
+    f.className='cform ceform';
+    f.innerHTML='<textarea rows="1" aria-label="Edit comment"></textarea><button type="submit">Save</button><button type="button" class="cancel">Cancel</button>';
+    f.querySelector('textarea').value=c.text||'';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea');
+    ta.dispatchEvent(new Event('input')); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim();
+      if(!txt)return;
+      c.text=txt; c.edited=new Date().toISOString();
+      f.remove();
+      render(key); renderTotals();
+      enqueue({t:'comment-edit',id:id,by:me,text:txt}).catch(function(){});
+    });
+  });
+  if(window.WR)WR.registerLocator(function(key){
+    var it=items[key]; if(!it)return false;
+    it.show(true);
+    var el=it.block||it.w;
+    el.scrollIntoView({block:'center'});
+    el.classList.remove('wr-flash'); void el.offsetWidth; el.classList.add('wr-flash');
+    return true;
+  });
+  setMode('connecting');
+  renderTotals();
+  refresh();
+  setInterval(refresh,12000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh();});
+})();
+</script>
+</body>
+</html>

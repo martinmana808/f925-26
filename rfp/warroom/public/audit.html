@@ -1,0 +1,1419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>UNIFY vs the STIHL RFP</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --ok:#2F7D33; --ok-bg:#E5F1E0;
+  --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --code-bg:#EFE9DD; --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --ok:#8BC97F; --ok-bg:#1D3319;
+    --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --ok:#8BC97F; --ok-bg:#1D3319;
+  --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:15.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+h1,h2,h3,h4{font-family:"Barlow Condensed","Arial Narrow",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:.55em 0}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:20px;padding-top:10px;padding-bottom:10px;overflow-x:auto}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:17px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+.topbar nav{display:flex;gap:16px}
+.topbar nav a{color:var(--muted);font-size:13px;font-weight:500;white-space:nowrap}
+.topbar nav a:hover{color:var(--ink);text-decoration:none}
+
+/* masthead */
+.masthead{padding:64px 0 40px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+.masthead h1{font-size:clamp(44px,7vw,76px);font-weight:700;text-transform:uppercase;letter-spacing:.01em}
+.masthead .sub{max-width:64ch;font-size:17px;color:var(--muted);margin-top:18px}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:32px}
+.meta-grid>div{background:var(--surface);padding:14px 16px}
+.meta-grid .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.meta-grid .v{font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:600;margin-top:2px}
+.meta-grid .v small{font-family:"IBM Plex Sans",sans-serif;font-size:12px;color:var(--muted);font-weight:500}
+
+/* status chips */
+.chip{display:inline-block;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;padding:2px 9px 3px;border-radius:5px;border:1px solid transparent;white-space:nowrap}
+.chip.sup{color:var(--sup);background:var(--sup-bg);border-color:color-mix(in srgb,var(--sup) 35%,transparent)}
+.chip.ok{color:var(--ok);background:var(--ok-bg);border-color:color-mix(in srgb,var(--ok) 35%,transparent)}
+.chip.part{color:var(--part);background:var(--part-bg);border-color:color-mix(in srgb,var(--part) 35%,transparent)}
+.chip.gap{color:var(--gap);background:var(--gap-bg);border-color:color-mix(in srgb,var(--gap) 35%,transparent)}
+
+/* scoreboard */
+.scoreboard{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:26px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;box-shadow:var(--shadow)}
+.stat .n{font-family:"Barlow Condensed",sans-serif;font-size:44px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.stat .l{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-top:4px}
+.stat.sup .n{color:var(--sup)}.stat.ok .n{color:var(--ok)}.stat.part .n{color:var(--part)}.stat.gap .n{color:var(--gap)}
+.stackbar{display:flex;height:12px;border-radius:6px;overflow:hidden;margin-top:18px;border:1px solid var(--line)}
+.stackbar span{display:block;height:100%}
+.stackbar .b-sup{background:var(--sup)}.stackbar .b-ok{background:var(--ok)}.stackbar .b-part{background:var(--part)}.stackbar .b-gap{background:var(--gap)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:10px;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* sections */
+section{padding:56px 0 8px}
+.sec-head{display:flex;align-items:baseline;gap:16px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:8px}
+.sec-head .num{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:30px;color:var(--accent)}
+.sec-head h2{font-size:clamp(28px,4vw,40px);font-weight:700;text-transform:uppercase}
+.sec-intro{max-width:76ch;color:var(--muted);margin:14px 0 8px}
+.sec-intro strong{color:var(--ink)}
+
+/* callouts */
+.callout{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--surface);border-radius:8px;padding:16px 20px;margin:20px 0;box-shadow:var(--shadow)}
+.callout.red{border-left-color:var(--gap)}
+.callout.green{border-left-color:var(--sup)}
+.callout h4{font-size:19px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.callout p{margin:.35em 0}
+
+/* tables */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:var(--shadow);margin:20px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:640px}
+th{font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:var(--muted);padding:10px 14px;border-bottom:2px solid var(--line);background:var(--surface2)}
+td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+td.good{color:var(--sup);font-weight:600}
+td.bad{color:var(--gap);font-weight:600}
+td.warn{color:var(--part);font-weight:600}
+
+/* criteria bars */
+.crit{display:grid;gap:12px;margin:20px 0}
+.crit-row{display:grid;grid-template-columns:minmax(180px,240px) 60px 1fr 52px;gap:12px;align-items:center}
+.crit-row .name{font-weight:600;font-size:14px}
+.crit-row .w{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.crit-row .bar{height:10px;background:var(--surface2);border:1px solid var(--line);border-radius:5px;overflow:hidden}
+.crit-row .bar i{display:block;height:100%;border-radius:4px}
+.crit-row .score{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:19px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* requirement matrix */
+.rfp-part{margin:30px 0 6px}
+.rfp-part-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px}
+.rfp-part-head h3{font-size:25px;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+.rfp-part-head .tally{display:flex;gap:6px;font-size:12px}
+.req{display:grid;grid-template-columns:64px 1fr 130px;gap:14px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-bottom:8px}
+.req .rid{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:500;color:var(--accent);padding-top:2px}
+.req .rbody .rt{font-weight:600;margin:0}
+.req .rbody .now{margin:.4em 0 0;font-size:13.5px;color:var(--muted)}
+.req .rbody .now b,.req .rbody .todo b{font-family:"Barlow Condensed",sans-serif;letter-spacing:.1em;font-size:12.5px;text-transform:uppercase;font-weight:600;color:var(--ink)}
+.req .rbody .todo{margin:.35em 0 0;font-size:13.5px}
+.req .rbody .todo b{color:var(--accent)}
+.req .rchip{text-align:right}
+@media (max-width:680px){.req{grid-template-columns:1fr}.req .rchip{text-align:left}.crit-row{grid-template-columns:1fr 48px;grid-template-rows:auto auto}.crit-row .bar{grid-column:1/-1}}
+
+/* gap cards */
+.gapcard{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--gap);border-radius:10px;padding:18px 22px;margin:14px 0;box-shadow:var(--shadow)}
+.gapcard h4{font-size:21px;font-weight:600}
+.gapcard .refs{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);margin-top:2px}
+.gapcard .fix{margin-top:8px}
+.gapcard .fix b{color:var(--sup)}
+.effort{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:1px 8px;margin-left:8px;vertical-align:2px}
+
+/* tickets */
+.ticketgroup{margin:26px 0 10px}
+.ticketgroup>h3{font-size:24px;font-weight:700;text-transform:uppercase;margin-bottom:4px}
+.ticketgroup>.tg-sub{color:var(--muted);font-size:14px;margin:0 0 14px}
+.ticket{display:grid;grid-template-columns:92px 1fr auto;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:13px 16px;margin-bottom:8px}
+.ticket .tid{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--accent);padding-top:2px}
+.ticket .tt{font-weight:600}
+.ticket .td{font-size:13.5px;color:var(--muted);margin-top:2px}
+.ticket .td .mono{font-size:.92em}
+@media (max-width:680px){.ticket{grid-template-columns:1fr}}
+
+/* timeline */
+.timeline{border-left:2px solid var(--line);margin:24px 0 10px 8px;padding-left:24px}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-item::before{content:"";position:absolute;left:-30px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--muted)}
+.tl-item.hot::before{background:var(--gap)}
+.tl-item.us::before{background:var(--accent)}
+.tl-item .d{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:17px;letter-spacing:.04em;text-transform:uppercase}
+.tl-item .d small{color:var(--gap);font-family:"IBM Plex Sans",sans-serif;font-size:12px;font-weight:600;letter-spacing:.02em;text-transform:none}
+.tl-item p{margin:.2em 0 0;font-size:14px;color:var(--muted)}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:820px){.two-col{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 22px;box-shadow:var(--shadow)}
+.panel h4{font-size:20px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;margin-bottom:8px}
+.panel ul{margin:.4em 0;padding-left:20px}
+.panel li{margin:.35em 0;font-size:14px}
+ul.tight{margin:.4em 0;padding-left:20px}
+ul.tight li{margin:.3em 0}
+
+.howto{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;box-shadow:var(--shadow);padding:14px 20px;margin:24px 0 0;font-size:14px;line-height:1.6}
+.howto>b{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:18px;letter-spacing:.05em;text-transform:uppercase}
+.howto p{margin:.35em 0 .2em;color:var(--muted)}
+.howto p i{font-style:normal;color:var(--ink);font-weight:600}
+.howto ol{margin:.4em 0 0;padding-left:20px}
+.howto li{margin:.3em 0}
+.howto li b{color:var(--ink)}
+footer{border-top:1px solid var(--line);margin-top:64px;padding:28px 0 48px;color:var(--muted);font-size:13px}
+footer .wrap{max-width:1120px}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+html{scroll-behavior:smooth}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="audit">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">UNIFY <em>×</em> STIHL RFP</span>
+    <div class="wrs-menu">
+      <button type="button" class="wrs-menubtn" aria-haspopup="true">Sections ▾</button>
+      <nav class="wrs-drop" aria-label="Sections">
+        <a href="#exec">Verdict</a>
+        <a href="#bench">Benchmarks</a>
+        <a href="#matrix">Point-by-point</a>
+        <a href="#gaps">Critical gaps</a>
+        <a href="#war">Little Rocket</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#bid">Bid mechanics</a>
+        <span class="wrs-sep"></span>
+        <a href="/board.html">→ The runbook</a>
+        <a href="/proposal.html">→ The proposal</a>
+        <a href="/questions.html">→ Mike’s questions</a>
+        <a href="/wk1-report.html">→ Week 1 report</a>
+        <a href="/capacity.html">→ Capacity report</a>
+      </nav>
+    </div>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="eyebrow">F925 internal · Bid audit · Confidential</p>
+    <h1>UNIFY vs the<br>STIHL SHOP Dealer Website RFP</h1>
+    <p class="sub">Every requirement in the STIHL SHOP Dealer Website RFP 2026 (v1.0, issued 4 September 2026), audited against the UNIFY platform, the dealer template codebase, and the live Tauranga pilot — with measured evidence, an honest gap list, and the build plan for <code>unify-for-rfp</code>.</p>
+    <div class="howto">
+      <b>What this is &amp; how to use it</b>
+      <p>Our point-by-point analysis of STIHL&rsquo;s RFP: all 84 requirements, each with an honest verdict — <i>Superior</i>, <i>Compliant</i>, <i>Partial</i> or <i>Gap</i> — plus the evidence and what to do about it. Use it to agree on where we stand before the proposal ships.</p>
+      <ol>
+        <li><b>Say who you are</b> — pick your name with the &ldquo;I am&rdquo; dropdown in the header.</li>
+        <li><b>Flag</b> — ⚑ on any requirement, gap or section marks it &ldquo;needs discussion&rdquo; for everyone (red outline, with your name). Click ⚑ again to clear it once dealt with.</li>
+        <li><b>Comment</b> — 💬 opens a thread right on that item; every comment carries your name and date. Type <b>@</b> to tag a teammate — it lands in their 🔔 notifications.</li>
+        <li><b>Track</b> — the dock counts total flags and comments; the fixes themselves are tracked on the <a href="/board.html">task board</a>.</li>
+      </ol>
+    </div>
+    <div class="meta-grid">
+      <div><div class="k">Audit date</div><div class="v">3 Sep 2026</div></div>
+      <div><div class="k">Confirm participation</div><div class="v">11 Sep <small>— 8 days</small></div></div>
+      <div><div class="k">Questions due</div><div class="v">18 Sep <small>— 15 days</small></div></div>
+      <div><div class="k">Proposal due</div><div class="v">9 Oct <small>— 36 days</small></div></div>
+      <div><div class="k">Presentations</div><div class="v">22–23 Oct</div></div>
+      <div><div class="k">Pilot deployment</div><div class="v">Dec 2026</div></div>
+    </div>
+
+    <div class="scoreboard" aria-label="Compliance scoreboard">
+      <div class="stat sup"><div class="n">19</div><div class="l">Superior</div></div>
+      <div class="stat ok"><div class="n">24</div><div class="l">Compliant</div></div>
+      <div class="stat part"><div class="n">25</div><div class="l">Partial</div></div>
+      <div class="stat gap"><div class="n">16</div><div class="l">Gap</div></div>
+    </div>
+    <div class="stackbar" role="img" aria-label="19 superior, 24 compliant, 25 partial, 16 gap out of 84 assessed points">
+      <span class="b-sup" style="width:22.6%"></span><span class="b-ok" style="width:28.6%"></span><span class="b-part" style="width:29.8%"></span><span class="b-gap" style="width:19%"></span>
+    </div>
+    <div class="legend">
+      <span><i style="background:var(--sup)"></i>Superior — we exceed the ask, with evidence</span>
+      <span><i style="background:var(--ok)"></i>Compliant — met as-is</span>
+      <span><i style="background:var(--part)"></i>Partial — real base, work required</span>
+      <span><i style="background:var(--gap)"></i>Gap — must build or document</span>
+    </div>
+  </div>
+</header>
+
+<section id="exec">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>Executive verdict</h2></div>
+    <p class="sec-intro"><strong>This RFP describes the platform we already built.</strong> Managed framework, locked brand, dealer flexibility inside approved areas, no dealer e-commerce, purchase journeys redirected to stihlshop.co.nz — section by section, the RFP reads like a spec of UNIFY's architecture. Of 84 assessed requirement points, 43 are already met or exceeded. That is a winning starting position nobody bidding a fresh WordPress build can match.</p>
+
+    <div class="callout red">
+      <h4>But we are not the favourite — we are the challenger</h4>
+      <p>Little Rocket is not just "a competitor studio." Their own case study says they built a custom WordPress theme <em>rolled out across 10 STIHL SHOP franchise websites</em>, with a monthly retail campaign pipeline run with The Ideas Company. <strong>They are the incumbent.</strong> This RFP was very likely written with them in the room. We do not win by matching them — we win by making the evaluation about the things a 10-site WordPress operation cannot do: one codebase, measured performance, governed self-service, network-wide campaign deployment in one deploy, and a pilot that is already live.</p>
+    </div>
+
+    <div class="callout">
+      <h4>The three battles that decide this bid</h4>
+      <p><strong>1 · Governance &amp; Compliance (20%)</strong> — our approval workflow is genuinely superior, but nothing is documented, and the legal surface (privacy policy, data ownership, the chatbot's "I'm not an AI" instruction) currently works against us. Highest-leverage fix.</p>
+      <p><strong>2 · Support Model (15%)</strong> — the RFP wants a 2-hour critical response matrix, escalation, and an emergency process. We publicly offer one number: 48-hour content changes. This is our weakest scored category and it is pure documentation + ops commitment to fix.</p>
+      <p><strong>3 · Claims vs reality</strong> — the /unify page promises daily backups, 24/7 monitoring, and 99.9% uptime; none of that is implemented today. An evaluator who checks — and this one will, they wrote a 9-page RFP — must find every claim true. We make the claims true before we submit, not after.</p>
+    </div>
+
+    <h3 style="font-size:24px;text-transform:uppercase;margin-top:34px">Where we'd score today — evaluation criteria readiness</h3>
+    <p class="sec-intro">Weights are STIHL's (RFP §16). Readiness is this audit's honest estimate of how each category scores if the evaluator saw everything as it stands on 3 September.</p>
+    <div class="crit">
+      <div class="crit-row"><span class="name">Digital Strategy Alignment</span><span class="w">20%</span><div class="bar"><i style="width:85%;background:var(--sup)"></i></div><span class="score">85</span></div>
+      <div class="crit-row"><span class="name">Design &amp; Customer Experience</span><span class="w">20%</span><div class="bar"><i style="width:80%;background:var(--sup)"></i></div><span class="score">80</span></div>
+      <div class="crit-row"><span class="name">Governance &amp; Compliance</span><span class="w">20%</span><div class="bar"><i style="width:55%;background:var(--part)"></i></div><span class="score">55</span></div>
+      <div class="crit-row"><span class="name">Support Model</span><span class="w">15%</span><div class="bar"><i style="width:40%;background:var(--gap)"></i></div><span class="score">40</span></div>
+      <div class="crit-row"><span class="name">Technical Capability</span><span class="w">15%</span><div class="bar"><i style="width:70%;background:var(--part)"></i></div><span class="score">70</span></div>
+      <div class="crit-row"><span class="name">Cost &amp; Commercials</span><span class="w">10%</span><div class="bar"><i style="width:60%;background:var(--part)"></i></div><span class="score">60</span></div>
+    </div>
+    <p><strong>Weighted: ~66/100 today.</strong> Every point of the missing 34 is closable before 9 October — almost none of it requires new architecture. The roadmap in <a href="#roadmap">§06</a> is sequenced to close Support and Governance first because they carry 35% of the score and are mostly documentation, process, and small builds.</p>
+  </div>
+</section>
+
+<section id="bench">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>Measured benchmarks</h2></div>
+    <p class="sec-intro">Fresh Lighthouse 12.8.2 lab runs, 3 September 2026, one run per site per strategy. The PageSpeed Insights API was quota-exhausted (all keyless calls returned HTTP 429), so these were run locally through a South American network path — <strong>absolute numbers are inflated equally for all three sites; the comparison is fair, the absolutes are not NZ-representative.</strong> Re-run from an NZ vantage point before quoting any number in the proposal.</p>
+
+    <div class="tablewrap"><table>
+      <thead><tr><th>Metric</th><th>Tauranga pilot<br>mobile</th><th>Tauranga pilot<br>desktop</th><th>stihlshop.co.nz<br>mobile</th><th>stihlshop.co.nz<br>desktop</th><th>littlerocket.co.nz<br>mobile</th><th>littlerocket.co.nz<br>desktop</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Performance score</strong></td><td class="good">66</td><td class="good">80</td><td class="bad">19</td><td>66</td><td class="bad">38</td><td>59</td></tr>
+        <tr><td>First Contentful Paint</td><td>2.5 s</td><td class="good">0.4 s</td><td>1.9 s</td><td>0.4 s</td><td class="bad">8.6 s</td><td>2.4 s</td></tr>
+        <tr><td>Largest Contentful Paint</td><td class="warn">17.9 s ①</td><td>2.8 s</td><td class="bad">12.6 s</td><td>1.7 s</td><td class="bad">15.6 s</td><td>5.0 s</td></tr>
+        <tr><td>Cumulative Layout Shift</td><td class="good">0.000</td><td class="good">0.02</td><td class="bad">0.442</td><td class="bad">0.359</td><td>0.012</td><td>0.008</td></tr>
+        <tr><td>Total Blocking Time</td><td class="good">50 ms</td><td class="good">0 ms</td><td class="bad">1,430 ms</td><td>10 ms</td><td class="warn">670 ms</td><td>0 ms</td></tr>
+        <tr><td>Speed Index</td><td>6.4 s</td><td>2.1 s</td><td class="bad">19.8 s</td><td>4.9 s</td><td class="bad">14.9 s</td><td>4.5 s</td></tr>
+        <tr><td>Server response (TTFB)</td><td class="good">526 ms</td><td class="good">574 ms</td><td class="bad">3,158 ms</td><td class="bad">1,994 ms</td><td class="bad">3,252 ms</td><td>682 ms</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:13px;color:var(--muted)">① The pilot's mobile LCP is an artefact of one bug, not the network: the LCP element is the hero <code>&lt;h1&gt;</code> with an <code>animate-on-scroll</code> fade-in — Lighthouse measured 1.7 s of TTFB and <strong>16.3 s of render delay caused by the entrance animation</strong>. Fix the animation to start from a painted state and mobile LCP collapses to ~2–3 s. This is ticket <a href="#roadmap">P0-08</a>.</p>
+
+    <div class="two-col">
+      <div class="panel">
+        <h4>Ammunition — the corporate site, measured</h4>
+        <ul>
+          <li>Mobile Lighthouse <strong>19/100</strong>; CLS <strong>0.442</strong> — 4× over Google's 0.1 "good" threshold, on both mobile and desktop.</li>
+          <li>Its own <code>server-timing</code> header self-reports a <strong>3.0 s origin first byte</strong>; Magento marks the HTML <code>UNCACHEABLE</code>.</li>
+          <li>241 images and 80 scripts on the homepage; one merged CSS file of 683 KB raw.</li>
+          <li>The LCP hero image is itself <code>loading="lazy"</code> — a textbook anti-pattern.</li>
+          <li><code>og:site_name</code> is "Main Website Store" — the unedited Magento default, visible in every social share.</li>
+          <li>CSP exists but is report-only with bare <code>*</code> wildcards — decorative, not protective.</li>
+        </ul>
+        <p style="font-size:13px;color:var(--muted)">Use with care: we complement this site, we don't trash it. Frame as "the dealer layer should protect the brand where the national platform can't move fast."</p>
+      </div>
+      <div class="panel">
+        <h4>Ammunition — Little Rocket's own site, measured</h4>
+        <ul>
+          <li>Mobile Lighthouse <strong>38/100</strong>; FCP 8.6 s; LCP 15.6 s; TTFB 3.3 s.</li>
+          <li>WordPress with generator meta exposed, <code>x-powered-by: PHP/8.2.33</code> leaking, <strong>zero security headers</strong>, no CDN evidence, jQuery served with no cache-control at all.</li>
+          <li>35 stylesheets + 46 scripts on the homepage; zero structured data.</li>
+          <li>Their WP user sitemap allows author enumeration.</li>
+        </ul>
+        <p style="font-size:13px;color:var(--muted)">This is the stack and practice pattern their 10 dealer sites inherit. We never name it in the proposal — we let a "minimum technical standards" appendix (security headers, CWV thresholds, structured data) do the scoring for us.</p>
+      </div>
+    </div>
+
+    <div class="callout red">
+      <h4>Claim integrity — fix before anyone else measures us</h4>
+      <p><strong>The pilot's homepage ships broken structured data:</strong> the live HTML contains the literal text <code>{localBusinessSchema}</code> — an un-interpolated template variable where the LocalBusiness JSON-LD should be. The schema exists in the code (<code>+page.svelte</code>) but never renders in production. Trivial fix, terrible look in a technical evaluation of a vendor selling SEO.</p>
+      <p><strong>The "96/100 mobile" claim did not reproduce</strong> in these runs (66 from this vantage; the LCP animation bug alone explains most of it). After fixing P0-08, re-measure from NZ and only then put the number in the proposal — with methodology stated.</p>
+      <p><strong>Also measured on the pilot:</strong> zero security headers (no HSTS/CSP/X-Frame-Options — the corporate site has HSTS; we look worse); homepage lab transfer 9.7 MiB, driven by five hero MP4s (26 MiB on disk, empty <code>poster</code>, no <code>preload</code> strategy) and dealer-uploaded 450 KB raw JPEGs that bypass the AVIF/WebP pipeline; <code>cache-control: private</code> / <code>cf-cache-status: BYPASS</code> on HTML while the marketing copy says "edge-cached worldwide."</p>
+      <p><strong>What measured genuinely well:</strong> CLS 0.000–0.02 (the feared 0.13 carousel shift did not reproduce — the CSS work held); TTFB 5–6× faster than corporate and Little Rocket; immutable 1-year caching on built assets with Cloudflare HITs; correct 301 HTTP→HTTPS; valid certs; brotli everywhere; 24 responsive <code>&lt;picture&gt;</code> elements with AVIF+WebP.</p>
+    </div>
+
+    <p><strong>Hosting truth, settled by measurement:</strong> production is SvelteKit (adapter-node) on DigitalOcean App Platform behind Cloudflare — not Netlify. The repo's <code>netlify.toml</code> and its cache-header rules are dead config. The proposal's hosting model section should say Cloudflare edge + DigitalOcean origin, and the repo should be cleaned to match (P1-18).</p>
+  </div>
+</section>
+
+<section id="matrix">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>Point-by-point audit matrix</h2></div>
+    <p class="sec-intro">Every requirement extracted from the RFP, in RFP order, with our honest status. <strong>Now</strong> = what exists today, with evidence from the codebases (<code>multi-tenancy-main</code> = platform, <code>template</code> = dealer site) and from live measurement. <strong>Do</strong> = what closes the gap; ticket references point to <a href="#roadmap">§06</a>.</p>
+
+    <!-- ============ RFP §1–4 ============ -->
+    <div class="rfp-part" id="m-strategy">
+      <div class="rfp-part-head"><h3>RFP §1–4 · Strategy, objectives &amp; scope</h3>
+        <span class="tally"><span class="chip sup">6 superior</span><span class="chip ok">3 compliant</span></span></div>
+
+      <div class="req"><span class="rid">S1</span><div class="rbody">
+        <p class="rt">Dealer sites are local marketing &amp; information platforms — not e-commerce. No online transactions or order processing.</p>
+        <p class="now"><b>Now —</b> Verified by code sweep: zero cart, checkout, or payment code anywhere in the template. In-store partner products (Honda, Masport, Cub Cadet, Hansa, Gravely) resolve to pre-filled contact-form enquiries, not sales.</p>
+        <p class="todo"><b>Do —</b> Nothing. State it as an architectural guarantee, not a policy: "our platform cannot transact — by design."</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">S2</span><div class="rbody">
+        <p class="rt">The solution must complement the national website, not compete with it.</p>
+        <p class="now"><b>Now —</b> Every catalogue, promotion, clearance, and legal link on the pilot lands inside the dealer-scoped national namespace (<code>stihlshop.co.nz/tauranga/…</code>) — preserving the dealer's sales attribution on the national platform. The rewriter (<code>template: src/lib/dealer/stihlShop.ts</code>) re-slugs every URL per dealer automatically.</p>
+        <p class="todo"><b>Do —</b> Make this a named feature in the proposal ("attribution-preserving deep links"). No build work.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">S3</span><div class="rbody">
+        <p class="rt">Deliver a managed dealer website framework aligned to the national STIHL SHOP digital strategy.</p>
+        <p class="now"><b>Now —</b> The entire UNIFY model is managed-service: dealers never touch the site; all changes flow through F925. But every public asset sells this to individual dealers — nothing addresses head office, network strategy, or migration of a fragmented dealer estate.</p>
+        <p class="todo"><b>Do —</b> Write the HQ-level narrative: one framework, N dealers, five incumbent platforms retired (P0-02, P0-10).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">S4a</span><div class="rbody">
+        <p class="rt">Objective — brand consistency: a common STIHL SHOP look and feel across all dealer websites.</p>
+        <p class="now"><b>Now —</b> Structural, not procedural: one template serves every dealer; design, typography (licensed STIHL Contraface + Inter), and layout live in code dealers cannot access. Only content and imagery vary, through a fixed schema.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">S4b</span><div class="rbody">
+        <p class="rt">Objective — customer experience: premium digital experience consistent with stihlshop.co.nz.</p>
+        <p class="now"><b>Now —</b> The pilot credibly reads as an extension of the national brand (same design language, same product taxonomy, dealer-scoped links into the national store). Minor deductions an evaluator could make: footer typo "All rights reverved", no on-site search, no accessibility statement.</p>
+        <p class="todo"><b>Do —</b> Fix the typo today (P0-01); add an accessibility statement (P1-16).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">S4c</span><div class="rbody">
+        <p class="rt">Objective — dealer flexibility: allow dealers to personalise approved content areas.</p>
+        <p class="now"><b>Now —</b> Schema v2 (<code>platform/shared/dealerProfile.ts</code>, 886 lines) defines 20+ dealer-personalisable areas: story, team, services, hours, departments, partner brands, in-store products, gallery, socials, highlights.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">S4d</span><div class="rbody">
+        <p class="rt">Objective — governance: central control of standards and brand compliance.</p>
+        <p class="now"><b>Now —</b> Every dealer change is a per-field change request reviewed by an admin before publishing, with mandatory rejection reasons and a full audit trail (<code>platform/server/routes/admin.ts</code>). Stronger than any self-service CMS can promise.</p>
+        <p class="todo"><b>Do —</b> Document it as a formal governance model — the workflow exists, the document doesn't (P0-10).</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">S4e</span><div class="rbody">
+        <p class="rt">Objective — reduced administration: minimise website management requirements for dealers.</p>
+        <p class="now"><b>Now —</b> The core sell: unlimited change requests handled by F925 inside 48 hours; dealers manage nothing. The RFP's "minimise dealer admin" objective is UNIFY's founding premise.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">S4f</span><div class="rbody">
+        <p class="rt">Objective — performance: improve SEO, visibility, website speed and customer engagement.</p>
+        <p class="now"><b>Now —</b> Measured this week: the pilot beats the corporate site and Little Rocket's site on every Lighthouse metric head-to-head (see <a href="#bench">§02</a>) — 5–6× faster TTFB, near-zero CLS vs corporate's 0.442. One real bug (hero-animation LCP delay) and one broken JSON-LD block hold back the score today.</p>
+        <p class="todo"><b>Do —</b> P0-07, P0-08 — then re-measure from NZ and lead the proposal with verified numbers.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+    </div>
+
+    <!-- ============ RFP §5 ============ -->
+    <div class="rfp-part" id="m-gov">
+      <div class="rfp-part-head"><h3>RFP §5 · Website governance model</h3>
+        <span class="tally"><span class="chip sup">1 superior</span><span class="chip ok">1 compliant</span><span class="chip part">1 partial</span></span></div>
+
+      <div class="req"><span class="rid">G1</span><div class="rbody">
+        <p class="rt">National ownership: brand standards, website structure, templates, navigation standards, STIHL product presentation, digital compliance, approved supplier standards.</p>
+        <p class="now"><b>Now —</b> Enforced structurally: structure, templates, navigation, and product presentation live in the template repo; dealers have no path to alter them. STIHL catalogue presentation is fixed and non-editable — only the dealer's national-store slug is injected (<code>platform/server/publicSite.ts:276–345</code>).</p>
+        <p class="todo"><b>Do —</b> Map each RFP-named element to its enforcement mechanism in a one-page governance matrix (P0-10).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">G2</span><div class="rbody">
+        <p class="rt">Dealer ownership: store information, team profiles, service capabilities, community involvement, local promotions, approved supplier content.</p>
+        <p class="now"><b>Now —</b> Four of six are structured schema areas (store info, team, services, supplier/partner content). <strong>Community involvement</strong> is free-text only; <strong>local promotions</strong> exist only as admin-run network campaigns dealers can toggle (<code>platform_campaigns</code>) — there is no dealer-local promotion model.</p>
+        <p class="todo"><b>Do —</b> Add structured community-sponsorship and local-promotion models to schema + portal + template (P1-11, P1-12).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">G3</span><div class="rbody">
+        <p class="rt">All local content must comply with STIHL SHOP standards.</p>
+        <p class="now"><b>Now —</b> Guaranteed by the approval gate: no dealer content reaches a live site without human review, per-field approve/reject, and an audit trail. A WordPress-per-dealer bid can only promise this contractually; we enforce it mechanically.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+    </div>
+
+    <!-- ============ RFP §6–7 ============ -->
+    <div class="rfp-part" id="m-product">
+      <div class="rfp-part-head"><h3>RFP §6–7 · STIHL product rules &amp; supplier governance</h3>
+        <span class="tally"><span class="chip sup">3 superior</span><span class="chip ok">2 compliant</span><span class="chip part">1 partial</span></span></div>
+
+      <div class="req"><span class="rid">P1</span><div class="rbody">
+        <p class="rt">Any STIHL product information, specs, imagery, pricing, promotional content must be accurate and kept current at all times.</p>
+        <p class="now"><b>Now —</b> The rendered catalogue is category-level tiles linking out — nothing on-page to go stale. But the site chatbot's answer index is a manual scrape of stihlshop.co.nz from <strong>January 2026, with embedded prices</strong> ("Special Price $985.00") — 8 months stale, and the chatbot can quote them. The chatbot is currently disabled, which contains the risk.</p>
+        <p class="todo"><b>Do —</b> Scheduled weekly re-sync + strip prices from the index + "last synced" stamp (P1-15). Better: use the vendor-questions window to request an official product feed/API — that answer wins this requirement permanently (see §07).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">P2</span><div class="rbody">
+        <p class="rt">STIHL recommends directing customers to stihlshop.co.nz at category or product level rather than maintaining a local STIHL catalogue.</p>
+        <p class="now"><b>Now —</b> Exactly our architecture: 20 category cards, every one an external CTA into the dealer's own national sub-store (141 mapped stihlshop.co.nz URLs in <code>template: src/lib/data/stilhshop-products.ts</code>). The RFP's "recommended" pattern is our implemented default.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">P3</span><div class="rbody">
+        <p class="rt">Dealer websites must not facilitate direct online sale or transaction of STIHL products.</p>
+        <p class="now"><b>Now —</b> No transaction path exists in the codebase — grep-verified. Cannot be violated by a dealer, an editor, or an accident.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">P4</span><div class="rbody">
+        <p class="rt">Buy Now clicks, product detail views, and purchase journeys must redirect to the relevant product page on www.stihlshop.co.nz.</p>
+        <p class="now"><b>Now —</b> Every STIHL CTA resolves through <code>resolveOfficialStihlShopUrl</code> to the dealer-scoped national page — nav, megamenu, category cards, blog related-product cards, even the chatbot's links. This is the RFP's hard rule, engineered as a platform primitive.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">P5</span><div class="rbody">
+        <p class="rt">All STIHL product transactions completed through the STIHL SHOP eCommerce platform.</p>
+        <p class="now"><b>Now —</b> Follows from P3/P4 — the only purchase path leads to the national platform, with the dealer attributed.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">P6</span><div class="rbody">
+        <p class="rt">Dealers may promote and sell non-STIHL products/services; the governance framework must accommodate dealer-specific ranges while ensuring quality, legal compliance and brand adherence.</p>
+        <p class="now"><b>Now —</b> Configurable partner-brand module (5 brands live on the pilot, each with an approved brand page) plus dealer in-store product listings with prices and enquiry CTAs — all admin-approved before publishing. "Sell" happens in-store/by enquiry, consistent with the RFP's no-e-commerce scope.</p>
+        <p class="todo"><b>Do —</b> Document the approved-supplier onboarding rules (which brands, what content standard) in the governance pack (P0-10).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+    </div>
+
+    <!-- ============ RFP §8 ============ -->
+    <div class="rfp-part" id="m-web">
+      <div class="rfp-part-head"><h3>RFP §8 · Website requirements</h3>
+        <span class="tally"><span class="chip sup">2 superior</span><span class="chip ok">4 compliant</span><span class="chip part">3 partial</span><span class="chip gap">2 gap</span></span></div>
+
+      <div class="req"><span class="rid">W1</span><div class="rbody">
+        <p class="rt">Mobile-first design.</p>
+        <p class="now"><b>Now —</b> Responsive mobile-first build throughout; measured mobile CLS 0.000 and TBT 50 ms. Held back on mobile only by the LCP animation bug (P0-08) and hero video weight (P0-09).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">W2</span><div class="rbody">
+        <p class="rt">Fast page loading.</p>
+        <p class="now"><b>Now —</b> Wins every head-to-head lab metric vs corporate and Little Rocket (see <a href="#bench">§02</a>): TTFB 526 ms vs 3.1–3.3 s, immutable 1-year edge-cached assets, AVIF/WebP pipeline, brotli, HTTP/2+3.</p>
+        <p class="todo"><b>Do —</b> P0-08/P0-09 to make the mobile score match the desktop story; then publish methodology-stated numbers.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">W3</span><div class="rbody">
+        <p class="rt">Secure cloud hosting.</p>
+        <p class="now"><b>Now —</b> Cloud, yes: Cloudflare edge + DigitalOcean App Platform origin, valid TLS, forced HTTPS. "Secure" is under-evidenced: <strong>zero security headers</strong> on the pilot (corporate has HSTS; we don't), no rate limiting on any platform endpoint, a hardcoded fallback JWT secret (<code>platform/server/auth.ts:5</code>), and a hardcoded DB fallback (<code>db.ts:6</code>).</p>
+        <p class="todo"><b>Do —</b> Security-hardening pass: headers, rate limits, secrets, OTP lockout (P0-06, P1-17).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">W4</span><div class="rbody">
+        <p class="rt">Local content capability.</p>
+        <p class="now"><b>Now —</b> Deep: per-dealer story, team, services, hours, departments, partner brands, gallery, in-store products, local highlights — the pilot carries the owners' 1998-to-today story and 16 local five-star reviews.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">W5</span><div class="rbody">
+        <p class="rt">Contact forms.</p>
+        <p class="now"><b>Now —</b> Department-aware form (Sales / Parts / per-service, with machine model + serial fields for parts, URL-prefill from service CTAs) — good UX. But it posts to third-party Web3Forms with <strong>one shared access key hardcoded in the page source for all dealers</strong>, no spam protection, no per-dealer routing to the department emails the platform painstakingly collects, and no stored lead record. The newsletter endpoint silently discards signups on production hosts.</p>
+        <p class="todo"><b>Do —</b> First-party form handler → Postgres lead store → route to dealer department emails, honeypot + Turnstile; fix or remove newsletter (P0-05). Also answers L1 data ownership.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">W6</span><div class="rbody">
+        <p class="rt">Interactive maps.</p>
+        <p class="now"><b>Now —</b> Lazy-loaded Google Maps embed per dealer plus a "View in Google Maps" deep link; address data from the platform payload.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">W7</span><div class="rbody">
+        <p class="rt">Store information.</p>
+        <p class="now"><b>Now —</b> Full NAP, per-day hours with a <strong>live open/closed indicator</strong>, departments with separate contacts, socials. One blemish: the contact page hardcodes "Sunday: Closed" regardless of dealer data.</p>
+        <p class="todo"><b>Do —</b> Render Sunday from <code>workingHours</code> (fold into P0-01 cleanup).</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">W8</span><div class="rbody">
+        <p class="rt">Staff profiles.</p>
+        <p class="now"><b>Now —</b> Team model (name/role/bio/photo) in schema, editable via portal, rendered on About. Note: the template's built-in team image map has exactly one hardcoded key — new dealers rely on portal photo uploads, which bypass the image-optimization pipeline.</p>
+        <p class="todo"><b>Do —</b> Route uploaded images through the resize/AVIF pipeline (P0-09).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">W9</span><div class="rbody">
+        <p class="rt">Promotion management.</p>
+        <p class="now"><b>Now —</b> <strong>The widest product gap.</strong> No promotions module: the "Promotions" nav item links out to stihlshop.co.nz; the only campaign machinery is a hardcoded Fieldays page gated by a <code>campaigns</code> flag, with dates and offers in a TS data file. Admin "campaigns" exist in the platform DB but currently zero are seeded and the rendering layer is one-off.</p>
+        <p class="todo"><b>Do —</b> Build the promotions module: scheduled promos (start/end), national push + dealer-local promos, portal fields, template listing/banner components (P1-11). Named RFP requirement — treat as must-have before presentations.</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">W10</span><div class="rbody">
+        <p class="rt">Event management.</p>
+        <p class="now"><b>Now —</b> Absent. No event model, page, or portal fields; RFP §4 also names "promote local events" as a core dealer-site purpose.</p>
+        <p class="todo"><b>Do —</b> Events module: schema + portal + template listing with dates/expiry, sharing the promotions plumbing (P1-12).</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">W11</span><div class="rbody">
+        <p class="rt">Analytics reporting.</p>
+        <p class="now"><b>Now —</b> Collection is wired: per-dealer GA4 ID from the platform, loaded after cookie consent, plus a <code>trackEvent</code> helper. But the helper fires only on Fieldays CTAs — form submissions, phone clicks, and outbound stihlshop.co.nz clicks are unmeasured — and <em>reporting</em> (dashboards, monthly reports) doesn't exist anywhere.</p>
+        <p class="todo"><b>Do —</b> Wire conversion events + build the reporting layer (P1-13) — see M3–M7.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+    </div>
+
+    <!-- ============ RFP §9 ============ -->
+    <div class="rfp-part" id="m-cms">
+      <div class="rfp-part-head"><h3>RFP §9 · Content management</h3>
+        <span class="tally"><span class="chip sup">2 superior</span><span class="chip ok">1 compliant</span><span class="chip part">7 partial</span></span></div>
+
+      <div class="req"><span class="rid">C1</span><div class="rbody">
+        <p class="rt">A managed content service designed to minimise the time dealers spend maintaining their websites.</p>
+        <p class="now"><b>Now —</b> This is UNIFY's founding thesis, live in production: dealers submit requests, F925 does the work, 48-hour guarantee, unlimited requests. The RFP asks for exactly the model we operate.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">C2</span><div class="rbody">
+        <p class="rt">Supplier responsible for website content updates, including national promotions and campaigns.</p>
+        <p class="now"><b>Now —</b> Operationally true (F925 makes all updates), and the admin campaigns table exists — but the promo rendering layer is the one-off Fieldays page (see W9).</p>
+        <p class="todo"><b>Do —</b> P1-11 gives this a real mechanism to point at.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">C3</span><div class="rbody">
+        <p class="rt">Seasonal campaign deployment across all dealer websites.</p>
+        <p class="now"><b>Now —</b> The architecture is the differentiator: one deploy updates every dealer site simultaneously — versus logging into 88 WordPress admins. Demonstrated once (Fieldays) but not yet productised as repeatable campaign tooling.</p>
+        <p class="todo"><b>Do —</b> P1-11; then demo "campaign live on N sites in one action" in the vendor presentation.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">C4</span><div class="rbody">
+        <p class="rt">Image and digital asset management.</p>
+        <p class="now"><b>Now —</b> Admin/portal uploads go to DigitalOcean Spaces; built assets run through a sharp/AVIF/WebP pipeline. But dealer-uploaded images bypass optimization — the pilot serves raw 450 KB JPEGs with 1-hour cache — and there's no asset library UI, tagging, or rights tracking.</p>
+        <p class="todo"><b>Do —</b> Optimize-on-upload (resize + AVIF + long cache) (P0-09); describe the asset workflow honestly in the proposal.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">C5</span><div class="rbody">
+        <p class="rt">Promotional content updates.</p>
+        <p class="now"><b>Now —</b> Same substrate as C2/W9 — managed service covers it operationally; module missing.</p>
+        <p class="todo"><b>Do —</b> P1-11.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">C6</span><div class="rbody">
+        <p class="rt">SEO optimisation and ongoing performance improvements.</p>
+        <p class="now"><b>Now —</b> Real foundations (per-page managed meta, per-host sitemap.xml with lastmod, canonicals, ~55 genuinely maintained blog posts Nov 2025–Jun 2026). Undercut by: <strong>broken LocalBusiness JSON-LD in production</strong>, zero Open Graph/Twitter tags, robots.txt not referencing the sitemap, and the duplicate-content liability (M1/M2).</p>
+        <p class="todo"><b>Do —</b> P0-07 (fix schema + OG + robots) immediately; P1-14 for the content strategy.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">C7</span><div class="rbody">
+        <p class="rt">Brand compliance monitoring and reporting.</p>
+        <p class="now"><b>Now —</b> Monitoring is inherent — nothing publishes without review. Reporting doesn't exist, but the change-request audit trail already stores every decision with timestamps and reasons: the data for a compliance report is sitting in Postgres.</p>
+        <p class="todo"><b>Do —</b> Generate a quarterly brand-compliance report from the audit trail (P1-13 shares the reporting plumbing). Cheap build, big §16 governance points.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">C8</span><div class="rbody">
+        <p class="rt">Network-wide content updates and maintenance where changes apply across multiple or all dealer websites.</p>
+        <p class="now"><b>Now —</b> The single-codebase, single-deploy architecture makes network-wide change a constant-time operation. This is the deepest structural advantage over any per-site CMS bid and should be demonstrated live (edit once → N sites update).</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">C9</span><div class="rbody">
+        <p class="rt">Dealers should have access to a secure content management portal enabling approved local updates (product ranges, promotions &amp; events, store info, staff profiles, community sponsorships).</p>
+        <p class="now"><b>Now —</b> The portal exists and is real: email+password with mandatory email-OTP second factor, server-side drafts, per-field change requests, dealer↔admin messaging, realtime updates (SSE), plus a no-login training sandbox at <code>/demo</code>. Positioning matters: the RFP implies dealers <em>make</em> updates; ours stages every update for approval before publishing. Framed right, that's not a shortfall — it's how "approved local updates" (their words) should work, and it's why brand compliance is guaranteeable. Field coverage gaps: no events or community-sponsorship fields yet (G2).</p>
+        <p class="todo"><b>Do —</b> Frame as "governed self-service." Add the missing field groups (P1-11/12). Consider instant-publish for zero-risk fields (hours, phone) to defuse the "48h for everything?" question (P1-19).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">C10</span><div class="rbody">
+        <p class="rt">Appropriate user permissions, training and support so dealers can update while maintaining brand standards.</p>
+        <p class="now"><b>Now —</b> Training story is strong (interactive <code>/demo</code> sandbox + guided 10-step onboarding wizard). Permissions story is thin: <strong>one login per dealership, no roles or access tiers</strong> — the platform's <code>tier</code> column was deliberately dropped. A multi-user dealership (owner + workshop manager) can't be modelled.</p>
+        <p class="todo"><b>Do —</b> Multi-user dealer accounts with roles (P1-19). Present /demo prominently — it's a differentiator nobody expects from a small studio.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+    </div>
+
+    <!-- ============ RFP §10 ============ -->
+    <div class="rfp-part" id="m-design">
+      <div class="rfp-part-head"><h3>RFP §10 · Design requirements</h3>
+        <span class="tally"><span class="chip sup">2 superior</span><span class="chip ok">5 compliant</span></span></div>
+
+      <div class="req"><span class="rid">D1</span><div class="rbody">
+        <p class="rt">Reflect STIHL SHOP retail positioning.</p>
+        <p class="now"><b>Now —</b> The pilot reads unmistakably as a STIHL SHOP retail site: national colour language, licensed STIHL Contraface type, national product taxonomy, dealer-scoped links into the national store.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">D2</span><div class="rbody">
+        <p class="rt">National design standards.</p>
+        <p class="now"><b>Now —</b> Standards are encoded in the template, not in a guidelines PDF someone may ignore. Every dealer inherits them automatically and permanently.</p>
+        <p class="todo"><b>Do —</b> Get the actual STIHL brand guidelines during discovery and certify the template against them formally — pre-empts the compliance question.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">D3</span><div class="rbody">
+        <p class="rt">Premium customer experience.</p>
+        <p class="now"><b>Now —</b> High polish on the pilot: video hero, live shop-status, curated galleries, 16 five-star reviews, substantive editorial. Deductions: "reverved" typo, no site search, hover-only megamenu keyboard path.</p>
+        <p class="todo"><b>Do —</b> P0-01; keyboard nav for megamenu in the a11y pass (P1-16).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">D4</span><div class="rbody">
+        <p class="rt">Consistent navigation.</p>
+        <p class="now"><b>Now —</b> Identical navigation on every dealer site by construction — dealers cannot restructure menus. Corporate-set nav standards propagate in one deploy.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">D5</span><div class="rbody">
+        <p class="rt">Consistent visual hierarchy.</p>
+        <p class="now"><b>Now —</b> Locked type scale and section system across all pages. Internal nit: eyebrow labels are marked up as <code>&lt;h3&gt;</code> above their section's <code>&lt;h2&gt;</code> — invisible to users, visible to an audit tool.</p>
+        <p class="todo"><b>Do —</b> Swap eyebrows to <code>&lt;p&gt;</code> in the a11y pass (P1-16).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">D6</span><div class="rbody">
+        <p class="rt">Consistent product presentation.</p>
+        <p class="now"><b>Now —</b> Product presentation is template-locked and mirrors the national category structure; dealers can't invent their own product layouts. Approved-supplier products render through one consistent card system.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">D7</span><div class="rbody">
+        <p class="rt">The design should feel like an extension of the national website.</p>
+        <p class="now"><b>Now —</b> Credibly achieved — same design language and taxonomy, plus genuine integration (attribution-preserving links into dealer-scoped national pages) that goes beyond visual resemblance.</p>
+        <p class="todo"><b>Do —</b> Side-by-side screenshots in the proposal: national page ↔ pilot page.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+    </div>
+
+    <!-- ============ RFP §11 ============ -->
+    <div class="rfp-part" id="m-seo">
+      <div class="rfp-part-head"><h3>RFP §11 · SEO &amp; analytics</h3>
+        <span class="tally"><span class="chip part">3 partial</span><span class="chip gap">4 gap</span></span></div>
+
+      <div class="req"><span class="rid">M1</span><div class="rbody">
+        <p class="rt">Local SEO capability.</p>
+        <p class="now"><b>Now —</b> Real local assets: NAP everywhere, per-dealer canonical domain, local reviews, locally-relevant editorial, Google Business Profile linkage — and the "#1 organic in Tauranga inside a week" claim. Undercut by the LocalBusiness schema being broken in production and by 56 identical blog posts destined for every dealer domain, which at network scale actively hurts local rankings.</p>
+        <p class="todo"><b>Do —</b> P0-07 (schema), P1-14 (per-dealer content differentiation — the promised monthly AI local post, town/soil/climate-specific, is designed but not built; build it).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">M2</span><div class="rbody">
+        <p class="rt">Technical SEO expertise.</p>
+        <p class="now"><b>Now —</b> Good bones: per-host sitemap with lastmod, canonicals, managed meta, clean URLs, fast TTFB. Against that: broken JSON-LD live, <strong>zero Open Graph or Twitter Card tags on a retail site</strong>, robots.txt missing the sitemap reference, crawlable dead routes (<code>/login</code>, <code>/content</code>, <code>/report</code> — the last one being our own competitive teardown, indexable on a customer's domain).</p>
+        <p class="todo"><b>Do —</b> P0-07 fixes all of the above in a day. The /report page must come out of the tenant template regardless.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">M3</span><div class="rbody">
+        <p class="rt">Reporting dashboards.</p>
+        <p class="now"><b>Now —</b> None. The platform's <code>/report</code> ops page counts requests/messages — not marketing analytics. Nothing dealer-facing, nothing for head office. Also absent from every public marketing asset — the word "analytics" doesn't appear on the /unify page.</p>
+        <p class="todo"><b>Do —</b> P1-13: GA4 → BigQuery/Looker Studio templates — one dashboard per dealer + one network rollup for head office.</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">M4</span><div class="rbody">
+        <p class="rt">Keyword monitoring.</p>
+        <p class="now"><b>Now —</b> Nothing. No rank tracking, no Search Console integration.</p>
+        <p class="todo"><b>Do —</b> Search Console API pull per dealer domain into the reporting layer (P1-13); a rank-tracker subscription covers the rest. Small spend, closes a named requirement.</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">M5</span><div class="rbody">
+        <p class="rt">Traffic reporting.</p>
+        <p class="now"><b>Now —</b> GA4 collects per dealer (consent-gated) — data exists, reporting doesn't.</p>
+        <p class="todo"><b>Do —</b> Monthly automated per-dealer report + network summary (P1-13).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">M6</span><div class="rbody">
+        <p class="rt">Conversion reporting.</p>
+        <p class="now"><b>Now —</b> The conversions that matter — form submissions, phone taps, outbound clicks to the national store (the purchase-referral journey STIHL cares about most) — are not instrumented. <code>trackEvent</code> exists but only fires on Fieldays CTAs.</p>
+        <p class="todo"><b>Do —</b> Wire the five conversion events (P1-13). The outbound-attribution report — "your dealer sites sent N shoppers into stihlshop.co.nz this month" — is the single most persuasive artifact we can show head office.</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">M7</span><div class="rbody">
+        <p class="rt">Dealer-level analytics and network-level analytics are both required.</p>
+        <p class="now"><b>Now —</b> Dealer-level collection exists; network-level nothing — no rollup property, no aggregation.</p>
+        <p class="todo"><b>Do —</b> P1-13. This pair ("dealer-level and network-level") is the RFP's clearest single unmet sentence — treat it as a headline build.</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+    </div>
+
+    <!-- ============ RFP §12 ============ -->
+    <div class="rfp-part" id="m-hosting">
+      <div class="rfp-part-head"><h3>RFP §12 · Hosting &amp; security</h3>
+        <span class="tally"><span class="chip ok">2 compliant</span><span class="chip part">1 partial</span><span class="chip gap">4 gap</span></span></div>
+
+      <div class="req"><span class="rid">H1</span><div class="rbody">
+        <p class="rt">Cloud hosting.</p>
+        <p class="now"><b>Now —</b> Measured and settled: Cloudflare edge + DigitalOcean App Platform origin, HTTP/2 with HTTP/3 advertised, brotli. Repo still carries dead Netlify config that contradicts the real stack.</p>
+        <p class="todo"><b>Do —</b> Clean the config drift; write the definitive hosting-model diagram for the proposal (P1-18).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">H2</span><div class="rbody">
+        <p class="rt">SSL certificates.</p>
+        <p class="now"><b>Now —</b> Valid cert (Google Trust Services via Cloudflare), HTTP→HTTPS 301 verified. Caveat at scale: domain/DNS/cert onboarding is manual and out-of-band today — nothing in code provisions the 88 custom domains.</p>
+        <p class="todo"><b>Do —</b> Scripted domain onboarding via Cloudflare API as part of rollout tooling (P2-20).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">H3</span><div class="rbody">
+        <p class="rt">Daily backups.</p>
+        <p class="now"><b>Now —</b> <strong>Not implemented.</strong> Zero backup configuration or documentation in either repo — while the /unify page publicly claims "daily backups." Worst kind of gap: a checkable claim.</p>
+        <p class="todo"><b>Do —</b> Managed Postgres with PITR + daily snapshots, Spaces versioning/replication, config in git. Days of work (P0-04). Then the claim is true.</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">H4</span><div class="rbody">
+        <p class="rt">Security monitoring.</p>
+        <p class="now"><b>Now —</b> Nothing — no error tracking, no intrusion/anomaly alerting, no dependency scanning beyond defaults.</p>
+        <p class="todo"><b>Do —</b> Sentry + Cloudflare WAF/security events + dependency audit in CI (P0-04, P1-17).</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">H5</span><div class="rbody">
+        <p class="rt">Uptime monitoring.</p>
+        <p class="now"><b>Now —</b> Nothing — while the /unify page claims "monitored 24/7."</p>
+        <p class="todo"><b>Do —</b> Uptime checks on every dealer domain + platform API, public status page, alerting (P0-04). The status page itself becomes proposal evidence.</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">H6</span><div class="rbody">
+        <p class="rt">Disaster recovery capability.</p>
+        <p class="now"><b>Now —</b> No DR plan, no RPO/RTO, no restore runbook. The honest raw materials are good — stateless SSR origin redeployable from git in minutes, all content in one Postgres, assets in Spaces, Cloudflare able to re-point — but none of it is written down or rehearsed.</p>
+        <p class="todo"><b>Do —</b> DR document with RPO ≤ 24 h / RTO ≤ 4 h targets, plus one rehearsed restore with timings recorded (P0-04). A rehearsal log beats a promise.</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">H7</span><div class="rbody">
+        <p class="rt">Minimum availability target: 99.9% uptime.</p>
+        <p class="now"><b>Now —</b> The stack (Cloudflare + DO App Platform + managed Postgres) is realistically capable of 99.9%; we simply have no monitoring history to evidence it and no formal commitment.</p>
+        <p class="todo"><b>Do —</b> Commit to 99.9% in the SLA with service credits; start the uptime record NOW so we have weeks of data by presentation day (P0-04).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+    </div>
+
+    <!-- ============ RFP §13 ============ -->
+    <div class="rfp-part" id="m-support">
+      <div class="rfp-part-head"><h3>RFP §13 · Support requirements</h3>
+        <span class="tally"><span class="chip sup">1 superior</span><span class="chip part">3 partial</span><span class="chip gap">2 gap</span></span></div>
+
+      <div class="req"><span class="rid">U1</span><div class="rbody">
+        <p class="rt">Service desk model.</p>
+        <p class="now"><b>Now —</b> Real support surfaces exist — portal messaging with realtime delivery, threaded dealer↔admin conversations, "one inbox, one number, real humans" — but no described desk model: intake channels, hours, triage, ticket lifecycle.</p>
+        <p class="todo"><b>Do —</b> Adopt a lightweight helpdesk, define intake → triage → resolve, publish support hours (P0-03).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">U2</span><div class="rbody">
+        <p class="rt">Escalation process.</p>
+        <p class="now"><b>Now —</b> Undocumented, and as a small studio the unasked question behind it is continuity/key-person risk. It will be asked at presentations.</p>
+        <p class="todo"><b>Do —</b> Escalation matrix + continuity answer: documented runbooks, code in escrow / STIHL-accessible repos, named backup operator (P0-03).</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">U3</span><div class="rbody">
+        <p class="rt">SLA commitments.</p>
+        <p class="now"><b>Now —</b> One public SLA: 48-hour content-change guarantee. Nothing on incident response, availability, or resolution targets.</p>
+        <p class="todo"><b>Do —</b> Full SLA schedule: availability 99.9%, response matrix per U6, content 48 h, service credits (P0-03).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">U4</span><div class="rbody">
+        <p class="rt">Content update turnarounds.</p>
+        <p class="now"><b>Now —</b> 48-hour guaranteed turnaround on unlimited requests, timestamped in the portal — a stronger, more auditable commitment than any agency's "we'll get to it." Lean on the portal's change history as proof.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">U5</span><div class="rbody">
+        <p class="rt">Emergency support process.</p>
+        <p class="now"><b>Now —</b> None defined — no out-of-hours channel, no on-call.</p>
+        <p class="todo"><b>Do —</b> Emergency line + paging for Critical incidents, defined in the SLA (P0-03).</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">U6</span><div class="rbody">
+        <p class="rt">Preferred response times: Critical 2 h · High 4 h · Medium 1 business day · Low 3 business days.</p>
+        <p class="now"><b>Now —</b> No commitment exists. The matrix is achievable for a small team <em>if</em> "response" is defined as acknowledge-and-triage and monitoring does the detecting (H5) — Critical events should page us before the dealer notices.</p>
+        <p class="todo"><b>Do —</b> Commit to the exact preferred matrix in the proposal — matching their stated preference verbatim is free scoring — backed by the on-call setup (P0-03/P0-04).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+    </div>
+
+    <!-- ============ RFP §14 ============ -->
+    <div class="rfp-part" id="m-impl">
+      <div class="rfp-part-head"><h3>RFP §14 · Implementation plan</h3>
+        <span class="tally"><span class="chip sup">2 superior</span><span class="chip ok">2 compliant</span><span class="chip part">1 partial</span></span></div>
+
+      <div class="req"><span class="rid">I1</span><div class="rbody">
+        <p class="rt">Phase 1 — Discovery and platform design.</p>
+        <p class="now"><b>Now —</b> Our discovery is compressed because the platform exists: Phase 1 becomes brand-guideline certification, governance sign-off, and feed/data access — weeks, not months.</p>
+        <p class="todo"><b>Do —</b> Write the phase plan; sell the compression as risk removal.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">I2</span><div class="rbody">
+        <p class="rt">Phase 2 — Pilot deployment (STIHL's timeline: December 2026).</p>
+        <p class="now"><b>Now —</b> <strong>Our pilot has been live for months.</strong> While every other vendor proposes a December pilot, we walk in with stihlshoptauranga.co.nz, its measured performance, its 16 five-star reviews, and its change-request history. Nobody else can de-risk Phase 2 to zero.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">I3</span><div class="rbody">
+        <p class="rt">Phase 3 — Dealer onboarding.</p>
+        <p class="now"><b>Now —</b> Already engineered: invite email → activation → 10-step wizard with Google Places autocomplete → admin review → go-live gate, with resumable drafts and a training sandbox. This is the platform's single most impressive demo.</p>
+      </div><span class="rchip"><span class="chip sup">Superior</span></span></div>
+
+      <div class="req"><span class="rid">I4</span><div class="rbody">
+        <p class="rt">Phase 4 — Network rollout.</p>
+        <p class="now"><b>Now —</b> Architecture scales (one deploy, N domains; per-request tenant resolution) but rollout mechanics are unproven: DNS/cert onboarding is manual, no load testing, no caching layer between site SSR and the platform API, and migration from five incumbent platforms (WordPress ×2 suppliers, Zeald, Turboweb, Elementor) is unplanned — 301 maps, content import, redirect preservation.</p>
+        <p class="todo"><b>Do —</b> Rollout plan in waves with migration tooling + API caching + load test (P2-20, P1-18).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">I5</span><div class="rbody">
+        <p class="rt">Phase 5 — Ongoing optimisation and support.</p>
+        <p class="now"><b>Now —</b> The monthly managed model is this phase — content, SEO, campaigns, support, continuous deployment of improvements to all sites at once.</p>
+        <p class="todo"><b>Do —</b> Describe the ongoing cadence (monthly reports, quarterly reviews, roadmap features like workshop-booking and AI parts lookup).</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+    </div>
+
+    <!-- ============ RFP §15 ============ -->
+    <div class="rfp-part" id="m-vendor">
+      <div class="rfp-part-head"><h3>RFP §15 · Vendor response requirements</h3>
+        <span class="tally"><span class="chip ok">1 compliant</span><span class="chip part">2 partial</span><span class="chip gap">2 gap</span></span></div>
+
+      <div class="req"><span class="rid">V1–3</span><div class="rbody">
+        <p class="rt">Company overview · team structure · relevant experience.</p>
+        <p class="now"><b>Now —</b> Writing work, but not just writing: F925 presents as very small, and the RFP evaluator will weigh continuity. The honest counter is process maturity — documented handoffs, audit trails, CI, and the platform itself as evidence of engineering discipline.</p>
+        <p class="todo"><b>Do —</b> Company section with continuity plan (escrow, runbooks, named backup capacity) rather than headcount theatre.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">V4</span><div class="rbody">
+        <p class="rt">Multi-site retail experience.</p>
+        <p class="now"><b>Now —</b> One live dealer site vs Little Rocket's ten. On the traditional reading, we lose this line item.</p>
+        <p class="todo"><b>Do —</b> Reframe with proof: spin up 3–5 demo dealers on the platform before presentations (real multi-tenant demo: one edit → all sites), plus this audit's dealer-landscape research showing what ten unmanaged sites actually look like. "Multi-site" for us is an architecture, not an anecdote (P1-21).</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">V5</span><div class="rbody">
+        <p class="rt">Franchise experience.</p>
+        <p class="now"><b>Now —</b> No franchise portfolio — but the pilot IS a franchise dealer, built "in constant collaboration" with the network, and the platform's whole governance model (national lock, local flexibility) is franchise thinking made executable.</p>
+        <p class="todo"><b>Do —</b> Reference letter from the Tauranga owners; note their operational reality (attribution, dealer-scoped stores) is deeply understood.</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">V6–9</span><div class="rbody">
+        <p class="rt">Proposed solution · hosting model · support model · project timeline.</p>
+        <p class="now"><b>Now —</b> All four are documents this audit essentially drafts: solution = UNIFY as measured here; hosting = Cloudflare + DO diagram (H1); support = the §13 pack (P0-03); timeline = the RFP's own phases with our compression story.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">V10</span><div class="rbody">
+        <p class="rt">Pricing.</p>
+        <p class="now"><b>Now —</b> A price exists ($2,000 + $600/mo) but the public record shows <strong>three different prices</strong> ($500/mo on the chatbot pitch page, $599 on the proposal hub, $600 on /unify) and no network-scale model — an evaluator multiplying $600 × 88 gets $52.8k/month and no volume answer.</p>
+        <p class="todo"><b>Do —</b> One reconciled rate card with volume tiers + HQ platform fee option (P0-02).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+    </div>
+
+    <!-- ============ RFP §17 ============ -->
+    <div class="rfp-part" id="m-commercial">
+      <div class="rfp-part-head"><h3>RFP §17 · Commercial response</h3>
+        <span class="tally"><span class="chip ok">3 compliant</span><span class="chip part">2 partial</span><span class="chip gap">1 gap</span></span></div>
+
+      <div class="req"><span class="rid">$1</span><div class="rbody">
+        <p class="rt">Setup fees — identified separately.</p>
+        <p class="now"><b>Now —</b> $2,000 setup, splittable over 3 months — clear and market-defensible against the $8k–25k custom-build comparison we already publish.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">$2</span><div class="rbody">
+        <p class="rt">Website migration fees — identified separately.</p>
+        <p class="now"><b>Now —</b> Never priced or scoped. The network sits on at least five platforms (two WordPress suppliers, Zeald, Turboweb, Elementor); migration = content import, redirect/301 maps, DNS cutover, and SEO-equity preservation per dealer.</p>
+        <p class="todo"><b>Do —</b> Migration fee schedule by complexity tier (no existing site / simple / e-commerce-entangled), with SEO-preservation methodology (P0-02).</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+
+      <div class="req"><span class="rid">$3</span><div class="rbody">
+        <p class="rt">Monthly fees — identified separately.</p>
+        <p class="now"><b>Now —</b> $600/mo flat exists but conflicts with two other public prices, and no volume structure for an 88-dealer commitment.</p>
+        <p class="todo"><b>Do —</b> Reconcile everywhere; present volume bands (e.g. 1–10 / 11–40 / 41+ dealers) so head-office maths lands softly. Cost is only 10% of scoring — do not race to the bottom; sell what the flat fee replaces (P0-02).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">$4</span><div class="rbody">
+        <p class="rt">Hosting fees — identified separately.</p>
+        <p class="now"><b>Now —</b> Included in the flat fee; the RFP wants it itemised — state the hosting line explicitly even if bundled at $0 extra.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">$5</span><div class="rbody">
+        <p class="rt">Content management costs — identified separately.</p>
+        <p class="now"><b>Now —</b> Included (unlimited 48-h changes + managed content). Itemise as its own line with the fair-use definition.</p>
+      </div><span class="rchip"><span class="chip ok">Compliant</span></span></div>
+
+      <div class="req"><span class="rid">$6</span><div class="rbody">
+        <p class="rt">Optional services — identified separately.</p>
+        <p class="now"><b>Now —</b> Real candidates exist (bespoke photography, premium modules, extra local SEO content) but aren't formalised as an options menu.</p>
+        <p class="todo"><b>Do —</b> Optional-services menu with prices; it also absorbs the old $500/$599 offers as historical bundles (P0-02).</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+    </div>
+
+    <!-- ============ RFP §18 ============ -->
+    <div class="rfp-part" id="m-legal">
+      <div class="rfp-part-head"><h3>RFP §18 · Legal requirements</h3>
+        <span class="tally"><span class="chip part">1 partial</span><span class="chip gap">1 gap</span></span></div>
+
+      <div class="req"><span class="rid">L1</span><div class="rbody">
+        <p class="rt">STIHL SHOP retains ownership of branding, customer data, dealer content, and digital assets.</p>
+        <p class="now"><b>Now —</b> Dealer-level ownership is answered well in the /unify FAQ ("your domain is yours, your content is yours"). Network-level custody is not clean today: leads flow into a third-party Web3Forms inbox via a shared key, two real subscriber email addresses sit committed in the repo, and GA4 property ownership per dealer is undefined.</p>
+        <p class="todo"><b>Do —</b> First-party lead storage with export (P0-05), purge PII from the repo (P0-06), GA4 properties created under a STIHL SHOP-owned organisation, and a data-ownership schedule in the contract.</p>
+      </div><span class="rchip"><span class="chip part">Partial</span></span></div>
+
+      <div class="req"><span class="rid">L2</span><div class="rbody">
+        <p class="rt">Comply with the NZ Privacy Act, Fair Trading Act, Consumer Guarantees Act, and applicable cybersecurity standards.</p>
+        <p class="now"><b>Now —</b> Material exposure: dealer sites have <strong>no privacy policy of their own</strong> (footer links borrow stihlshop.co.nz corporate pages while we separately collect emails, form data, and chat logs); the newsletter endpoint silently drops signups; and the chatbot's system prompt <strong>instructs the AI to deny being an AI</strong> ("say: I am a technical expert here") — squarely a Fair Trading Act misleading-conduct risk, on the exact page where STIHL's lawyers will look. Cybersecurity: no headers, no rate limiting, no lockouts (W3).</p>
+        <p class="todo"><b>Do —</b> Per-dealer privacy policy + terms (P0-06); delete the chatbot's AI-concealment instruction (P0-06); hardening per P1-17; name a cybersecurity reference point (e.g. NZISM-aligned controls) in the proposal.</p>
+      </div><span class="rchip"><span class="chip gap">Gap</span></span></div>
+    </div>
+
+    <div class="callout green">
+      <h4>RFP §19 — desired outcome, read back to them</h4>
+      <p>"A nationally consistent, professionally managed dealer website ecosystem… local flexibility… superior customer experience… minimal dealer administration… supporting growth of STIHL and approved supplier brands." That is a one-paragraph description of UNIFY's architecture. The proposal's opening should quote §19 and answer it clause by clause with the pilot as evidence — then let the gap-closure work in §06 make every claim survivable under inspection.</p>
+    </div>
+  </div>
+</section>
+
+<section id="gaps">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2>Critical gaps &amp; mitigation</h2></div>
+    <p class="sec-intro">The ten things most likely to lose the bid if a competitor or evaluator finds them first — ranked by scoring damage, each with its mitigation and honest effort estimate.</p>
+
+    <div class="gapcard"><h4>1 · Analytics &amp; reporting is a five-requirement hole <span class="effort">1–2 weeks</span></h4>
+      <p class="refs">M3 · M4 · M6 · M7 · W11 — touches Technical Capability (15%) and Digital Strategy (20%)</p>
+      <p>The RFP demands dealer-level AND network-level analytics, dashboards, keyword monitoring, and conversion reporting. We have collection without reporting, and the word "analytics" appears nowhere in our public offer.</p>
+      <p class="fix"><b>Fix —</b> Wire five conversion events (form submit, tel: tap, outbound stihlshop.co.nz click, enquiry CTA, review click) → GA4 per dealer under a STIHL-owned org → BigQuery → two Looker Studio templates: per-dealer monthly + network rollup. Add Search Console API pull per domain for keyword data. Flagship artifact: the <strong>outbound-attribution report</strong> — "dealer sites referred N shoppers into stihlshop.co.nz this month" — which proves the complement-not-compete strategy with numbers.</p></div>
+
+    <div class="gapcard"><h4>2 · No support model beyond "48 hours" <span class="effort">Days (docs + ops setup)</span></h4>
+      <p class="refs">U1 · U2 · U3 · U5 · U6 — the entire Support Model criterion (15%)</p>
+      <p>The RFP asks for a service desk, escalation, SLAs, and an emergency process, with a 2h/4h/1BD/3BD response matrix. We publish one number. 15% of the total score is currently near-undefended.</p>
+      <p class="fix"><b>Fix —</b> Commit to STIHL's exact preferred matrix (their words, verbatim — free points), defined as acknowledge-and-triage. Lightweight helpdesk + emergency line + on-call paging fed by the new monitoring (gap #3 detects Critical incidents before dealers do). Publish support hours, escalation matrix, and a continuity plan (runbooks, escrow, named backup capacity) that answers the small-studio question before it's asked.</p></div>
+
+    <div class="gapcard"><h4>3 · Backups, monitoring, DR: claimed but not built <span class="effort">~1 week</span></h4>
+      <p class="refs">H3 · H4 · H5 · H6 · H7 — Governance &amp; Compliance (20%) + Technical Capability (15%) + integrity of every other claim</p>
+      <p>/unify promises daily backups, 24/7 monitoring, 99.9% uptime. None exists. If an evaluator asks "show me your last restore test" the whole bid's credibility bleeds.</p>
+      <p class="fix"><b>Fix —</b> Managed Postgres with PITR + daily snapshots; Spaces versioning; uptime checks on every dealer domain + status page; Sentry; one rehearsed disaster-recovery run with recorded timings; a DR doc with RPO ≤ 24 h / RTO ≤ 4 h. Start now so weeks of green uptime history exist by the 22–23 Oct presentations.</p></div>
+
+    <div class="gapcard"><h4>4 · Promotions &amp; events modules don't exist <span class="effort">2–3 weeks combined</span></h4>
+      <p class="refs">W9 · W10 · G2 · C2 · C3 · C5 — named platform requirements, and Little Rocket's home turf</p>
+      <p>"Promotion management" and "event management" are listed platform requirements, and monthly retail campaigns are precisely what the incumbent already does for this client. Bidding without a demoable answer hands them the comparison.</p>
+      <p class="fix"><b>Fix —</b> One shared build: scheduled content blocks with start/end dates, national-push + dealer-local variants, portal fields (which also close the community-sponsorship gap), template banner/listing components. Demo at presentations: publish a national promo → appears on every demo dealer site at once → expires itself. That demo is unanswerable by a WordPress fleet.</p></div>
+
+    <div class="gapcard"><h4>5 · Legal &amp; privacy exposure <span class="effort">2–3 days + legal review</span></h4>
+      <p class="refs">L1 · L2 — Governance &amp; Compliance (20%), and disqualification-grade if surfaced badly</p>
+      <p>No privacy policy on dealer sites while collecting PII; real subscriber emails committed to the repo; leads in a third-party inbox via a shared hardcoded key; and a chatbot instructed to deny being an AI — a Fair Trading Act red flag sitting in source.</p>
+      <p class="fix"><b>Fix —</b> Per-dealer privacy policy + terms; purge PII and rotate the form key; first-party lead capture (gap #6); delete the chatbot's concealment instruction and label it an AI assistant (his Kiwi personality survives disclosure just fine); privacy-and-data schedule in the proposal naming the Privacy Act, data residency, and ownership.</p></div>
+
+    <div class="gapcard"><h4>6 · Lead capture: shared key, no routing, no record <span class="effort">2–4 days</span></h4>
+      <p class="refs">W5 · L1 — Design &amp; CX (20%) + data ownership</p>
+      <p>All dealers' leads post to Web3Forms with one hardcoded public key — no per-dealer routing, no spam protection, no stored record, no export. The newsletter form silently discards signups in production.</p>
+      <p class="fix"><b>Fix —</b> First-party endpoint → Postgres lead table (timestamped, per-dealer) → routed to the dealer's department emails (already collected in the schema) → honeypot + Turnstile → export for STIHL data ownership. Kill or fix the newsletter. This also creates the lead metrics gap #1 reports on.</p></div>
+
+    <div class="gapcard"><h4>7 · SEO integrity bugs on a vendor selling SEO <span class="effort">1 day</span></h4>
+      <p class="refs">M1 · M2 · C6 — Technical Capability (15%), and embarrassment risk</p>
+      <p>Live homepage ships literal <code>{localBusinessSchema}</code> instead of JSON-LD; zero Open Graph/Twitter tags on a retail site; robots.txt missing the sitemap; our own competitive-teardown page (/report) crawlable on the customer's domain, alongside dead /login and /content routes.</p>
+      <p class="fix"><b>Fix —</b> All four in one day's PR. Then screenshot the validated schema in the proposal's technical-SEO section.</p></div>
+
+    <div class="gapcard"><h4>8 · The performance story doesn't currently survive measurement <span class="effort">2–4 days</span></h4>
+      <p class="refs">S4f · W1 · W2 — Design &amp; CX + Technical Capability, plus claim integrity</p>
+      <p>We campaign on "96/100 mobile" but a fresh lab run shows 66, almost entirely from one bug: the hero H1's fade-in animation adds ~16 s of LCP render delay. Plus 26 MiB of hero videos with empty posters, raw 450 KB dealer JPEGs, HTML bypassing the edge cache, and zero security headers.</p>
+      <p class="fix"><b>Fix —</b> Animate the hero from a painted state; add posters + <code>preload="metadata"</code>; route uploads through the image pipeline; add HSTS/CSP/XCTO/XFO headers; enable HTML edge caching with sensible revalidation. Re-measure from NZ, publish score + methodology. Target: mobile 90+ that anyone can reproduce.</p></div>
+
+    <div class="gapcard"><h4>9 · Duplicate content across the network <span class="effort">Strategy now, build over rollout</span></h4>
+      <p class="refs">M1 · M2 · C6 — the scaled-SEO promise itself</p>
+      <p>56 identical blog posts and identical category copy ship inside the template — at 88 dealers, that's a near-clone network Google will treat accordingly, undermining the local-SEO pitch that justifies the monthly fee.</p>
+      <p class="fix"><b>Fix —</b> Per-dealer content policy: localized intros/outros and town-specific metadata on shared posts, staggered/curated post subsets per dealer, and the promised monthly bespoke local post (town, soil, microclimate) built as a real pipeline with human review. Document the strategy in the proposal — evaluators who know SEO will ask exactly this question.</p></div>
+
+    <div class="gapcard"><h4>10 · Multi-site &amp; franchise track record (vs the incumbent's ten sites) <span class="effort">1 week (demo fleet)</span></h4>
+      <p class="refs">V4 · V5 — Relevant experience, against an incumbent</p>
+      <p>Little Rocket shows ten STIHL SHOP franchise sites; we show one. On paper we lose that line.</p>
+      <p class="fix"><b>Fix —</b> Change what "multi-site" means: stand up 3–5 fictional demo dealers on the platform and demo one-edit-updates-all live at presentations. Pair with this audit's landscape evidence of what ten unmanaged sites drift into, and a reference letter from the Tauranga owners. Their ten sites are ten liabilities; our N sites are one system.</p></div>
+  </div>
+</section>
+
+<section id="war">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05</span><h2>The war room · Little Rocket &amp; the network</h2></div>
+    <p class="sec-intro"><strong>Assume Little Rocket writes a good bid.</strong> They are a real studio (New Plymouth, founder-led, 20+ years) with the two things we lack: incumbency and relationships. Their case study claims a custom WordPress theme across ten STIHL SHOP franchise sites, "each uniquely styled to reflect the store's local identity while maintaining brand consistency," plus monthly retail campaign production with The Ideas Company. That sentence is aimed straight at this RFP.</p>
+
+    <div class="two-col">
+      <div class="panel">
+        <h4>Their bid, predicted</h4>
+        <ul>
+          <li><strong>Incumbency:</strong> "we already run 10 of your dealer sites — lowest-risk path is to extend what works."</li>
+          <li><strong>Relationships:</strong> dealers who know them; an existing campaign pipeline with The Ideas Company.</li>
+          <li><strong>Familiarity:</strong> WordPress — a platform head office staff may feel they understand.</li>
+          <li><strong>Local identity:</strong> "each site uniquely styled" — they'll pitch flexibility as a feature.</li>
+        </ul>
+        <h4 style="margin-top:16px">Their structural weaknesses</h4>
+        <ul>
+          <li>Per-site economics: 88 WordPress installs = 88 update queues, 88 plugin stacks, 88 attack surfaces. Seasonal campaign = 88 manual deployments (C3/C8 are our proof of the opposite).</li>
+          <li>"Uniquely styled per store" is the <em>disease this RFP exists to cure</em> — §2 lists brand inconsistency as the core problem. Quote their own case study language against the RFP's objectives, without naming them.</li>
+          <li>No visible platform, portal, analytics, SLA, or performance story. Their own site measures mobile 38/100, no security headers, no CDN, exposed PHP version, zero structured data.</li>
+          <li>Small like us — incumbency doesn't answer the continuity question any better than we do.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>Our kill points (never name them; let standards do it)</h4>
+        <ul>
+          <li>Propose a <strong>minimum technical standards appendix</strong>: Core Web Vitals thresholds, security headers, structured-data validation, uptime SLA, WCAG target. We pass; a WordPress fleet mostly can't.</li>
+          <li>Demand-side demo: national promo published once → live on N demo sites instantly → auto-expires. The 88-deployment alternative refutes itself.</li>
+          <li>Governance mechanics: per-field approval + audit trail vs "please don't edit the header, we wrote it down."</li>
+          <li>Measured performance vs their measurable performance — invite the evaluators to run Lighthouse on anything, ours or anyone's.</li>
+          <li>The economics: one codebase amortised across the network vs 88 × maintenance-hours; our flat fee replaces the per-site retainer model entirely.</li>
+        </ul>
+        <h4 style="margin-top:16px">Where to respect them</h4>
+        <ul>
+          <li>Campaign production capability is real — our answer is the promotions module (gap #4) plus a content partnership stance, not dismissal.</li>
+          <li>They may partner with a larger agency to plug their platform gap. Prepare for a "WordPress multisite + hosting partner" bid — our counters (per-site plugin surface, performance, governance) still hold.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="font-size:24px;text-transform:uppercase;margin:30px 0 4px">The fragmentation we replace — documented</h3>
+    <p class="sec-intro">Live research across the dealer network found at least five different suppliers/platforms — the RFP §2 problem statement, verified in the wild. This table belongs in the proposal (anonymised or not, judgment call).</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Dealer site</th><th>Platform</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>stihlshoptauranga.co.nz</td><td class="good">UNIFY (F925)</td><td>The pilot — fastest measured site in the network's landscape</td></tr>
+        <tr><td>Little Rocket fleet (×10)</td><td>WordPress (custom theme)</td><td>"Each uniquely styled" — per-site maintenance model</td></tr>
+        <tr><td>stihlshopnewplymouth.co.nz</td><td>WordPress (Nectarine)</td><td>A third supplier; runs its own e-commerce — likely violating P3-equivalent rules</td></tr>
+        <tr><td>stihlshopta.co.nz (Te Awamutu)</td><td>WordPress + Elementor</td><td>Page-builder stack</td></tr>
+        <tr><td>stihlshoppukekohe.co.nz</td><td>Zeald template builder</td><td>Sells chainsaws next to fireplaces and BBQs</td></tr>
+        <tr><td>stihlshopinvercargill.co.nz</td><td>Turboweb CMS</td><td>Running jQuery 1.8.2 — 2012-era stack</td></tr>
+        <tr><td>nelsonstihlshop.co.nz</td><td class="bad">Unreachable</td><td>Failed to respond at all during this audit — fragmentation personified</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">06</span><h2>The unify-for-rfp roadmap</h2></div>
+    <p class="sec-intro">Sequenced against the RFP calendar: <strong>P0</strong> lands before the 9 Oct proposal (claims true, embarrassments gone, documents written). <strong>P1</strong> lands before the 22–23 Oct presentations (demoable product answers). <strong>P2</strong> is committed roadmap for pilot/rollout phases. Effort assumes current team; tickets reference requirement IDs from §03.</p>
+
+    <div class="ticketgroup">
+      <h3>P0 — before the proposal (by 9 Oct)</h3>
+      <p class="tg-sub">Nothing in the proposal may be false or checkable-and-absent.</p>
+      <div class="ticket"><span class="tid">P0-01</span><div><p class="tt">Polish sweep on the live pilot</p><p class="td">Fix "All rights reverved"; render Sunday hours from data; remove console.log spam (36 calls); prune dead <span class="mono">/login</span>, <span class="mono">/content</span> routes and the <span class="mono">/report</span> teardown from the tenant template. — S4b, W7, M2</p></div><span class="effort">½ day</span></div>
+      <div class="ticket"><span class="tid">P0-02</span><div><p class="tt">One price, one story</p><p class="td">Reconcile $500/$599/$600 across unify page, netlify hub, chatbot pitch page; volume rate card (bands) + optional-services menu + migration fee schedule by complexity tier. Fix or remove the netlify hub's dead document links. — V10, $2, $3, $6</p></div><span class="effort">1–2 days</span></div>
+      <div class="ticket"><span class="tid">P0-03</span><div><p class="tt">Support &amp; SLA pack</p><p class="td">Commit to Critical 2h / High 4h / Medium 1BD / Low 3BD (acknowledge-and-triage), 99.9% uptime with credits, 48h content SLA; helpdesk intake, escalation matrix, emergency line, on-call; continuity plan (runbooks, escrow, backup capacity). — U1–U6, V1–3</p></div><span class="effort">2–3 days</span></div>
+      <div class="ticket"><span class="tid">P0-04</span><div><p class="tt">Make the infrastructure claims true</p><p class="td">Managed Postgres PITR + daily snapshots; Spaces versioning; uptime monitoring on all domains + public status page; Sentry error tracking; one rehearsed DR restore with recorded RPO/RTO. Start immediately — the uptime history is presentation evidence. — H3–H7</p></div><span class="effort">~1 week</span></div>
+      <div class="ticket"><span class="tid">P0-05</span><div><p class="tt">First-party lead capture</p><p class="td">Replace Web3Forms shared key: server endpoint → Postgres lead store → routed to dealer department emails → honeypot + Turnstile → export. Fix/remove the silently-failing newsletter. — W5, L1, feeds M6</p></div><span class="effort">2–4 days</span></div>
+      <div class="ticket"><span class="tid">P0-06</span><div><p class="tt">Legal compliance pass</p><p class="td">Per-dealer privacy policy + terms; purge subscribers.txt PII and rotate keys; remove the chatbot's "deny being an AI" instruction and add AI disclosure; tighten CORS on chat endpoints. — L1, L2</p></div><span class="effort">2–3 days</span></div>
+      <div class="ticket"><span class="tid">P0-07</span><div><p class="tt">SEO integrity fixes</p><p class="td">Fix the un-interpolated <span class="mono">{localBusinessSchema}</span> JSON-LD in production; add Open Graph + Twitter Card site-wide; robots.txt sitemap reference; noindex/remove dead routes; fill the empty postalCode in schema. — M1, M2, C6</p></div><span class="effort">1 day</span></div>
+      <div class="ticket"><span class="tid">P0-08</span><div><p class="tt">LCP animation fix + NZ re-measure</p><p class="td">Hero H1 animates from a painted state (or exempt LCP element from entrance animation); re-run Lighthouse from NZ vantage, both strategies; publish score + methodology in the proposal. Target mobile 90+ reproducible. — S4f, W1, W2</p></div><span class="effort">1 day + measure</span></div>
+      <div class="ticket"><span class="tid">P0-09</span><div><p class="tt">Page-weight diet</p><p class="td">Posters + <span class="mono">preload="metadata"</span> on hero videos (26 MiB → lazy), route dealer uploads through resize/AVIF pipeline with long cache, security headers (HSTS, CSP, XCTO, XFO), enable HTML edge caching. — W2, W3, C4, W8</p></div><span class="effort">2–3 days</span></div>
+      <div class="ticket"><span class="tid">P0-10</span><div><p class="tt">Governance pack + HQ narrative</p><p class="td">Governance matrix mapping every §5 element to its enforcement mechanism; approved-supplier content rules; network strategy section (one framework, five incumbent platforms retired, migration waves). — S3, S4d, G1, P6</p></div><span class="effort">2 days</span></div>
+    </div>
+
+    <div class="ticketgroup">
+      <h3>P1 — before presentations (by 22 Oct)</h3>
+      <p class="tg-sub">Demoable answers to the scored gaps.</p>
+      <div class="ticket"><span class="tid">P1-11</span><div><p class="tt">Promotions module</p><p class="td">Scheduled promo blocks (start/end), national push + dealer-local promos, portal fields, banner/listing components. Demo: publish once → all demo sites → auto-expire. — W9, C2, C3, C5, G2</p></div><span class="effort">1–2 weeks</span></div>
+      <div class="ticket"><span class="tid">P1-12</span><div><p class="tt">Events module</p><p class="td">Event schema (date/venue/expiry), portal fields incl. community sponsorships, template listing. Shares P1-11 plumbing. — W10, G2, S5</p></div><span class="effort">3–5 days</span></div>
+      <div class="ticket"><span class="tid">P1-13</span><div><p class="tt">Analytics &amp; reporting v1</p><p class="td">Five conversion events wired; GA4 per dealer under STIHL-owned org; Looker Studio per-dealer + network rollup; Search Console keyword pull; the outbound-attribution report; quarterly brand-compliance report from the change-request audit trail. — M3–M7, W11, C7</p></div><span class="effort">1–2 weeks</span></div>
+      <div class="ticket"><span class="tid">P1-14</span><div><p class="tt">Content differentiation strategy + local post pipeline</p><p class="td">Per-dealer localized intros/metadata on shared posts; staggered post subsets; the monthly town-specific AI-drafted, human-reviewed local SEO post as a working pipeline. — M1, C6, gap #9</p></div><span class="effort">1 week</span></div>
+      <div class="ticket"><span class="tid">P1-15</span><div><p class="tt">Product data freshness</p><p class="td">Weekly scheduled re-sync of the product index; strip prices from the chatbot's RAG context; "last synced" stamp. Supersede entirely if STIHL grants feed access (see §07 questions). — P1</p></div><span class="effort">2–3 days</span></div>
+      <div class="ticket"><span class="tid">P1-16</span><div><p class="tt">Accessibility pass + statement</p><p class="td">Keyboard path for megamenu; heading-order fix; sanitize <span class="mono">{@html}</span> injections; focus management on cookie banner; publish a WCAG 2.1 AA-target statement. — S4b, D3, D5</p></div><span class="effort">3–4 days</span></div>
+      <div class="ticket"><span class="tid">P1-17</span><div><p class="tt">Platform hardening</p><p class="td">Rate limiting + OTP lockout; remove fallback JWT/DB secrets; SSE token out of query string; helmet/CSP on portal; dependency audit in CI; run the test suite in CI (fix the 1 failing test). — W3, H4, L2</p></div><span class="effort">1 week</span></div>
+      <div class="ticket"><span class="tid">P1-18</span><div><p class="tt">Deployment truth &amp; pipeline</p><p class="td">Remove dead Netlify config; document Cloudflare+DO architecture; CI deploy step with preview + rollback runbook; API response caching between template SSR and platform (protects Postgres at 88-dealer scale). — H1, I4</p></div><span class="effort">3–5 days</span></div>
+      <div class="ticket"><span class="tid">P1-19</span><div><p class="tt">Portal: roles + instant-publish fields</p><p class="td">Multi-user dealer accounts (owner/staff roles); instant-publish for zero-risk fields (hours, phone) with post-hoc review — defuses "48h for everything?" while keeping the governance story. — C9, C10</p></div><span class="effort">1 week</span></div>
+      <div class="ticket"><span class="tid">P1-21</span><div><p class="tt">Demo dealer fleet</p><p class="td">3–5 fictional dealers spun up via the real onboarding flow, on preview domains — the multi-site proof, the one-edit-updates-all demo, and the presentation centerpiece. — V4, C8, I3</p></div><span class="effort">2–3 days</span></div>
+    </div>
+
+    <div class="ticketgroup">
+      <h3>P2 — committed roadmap (pilot → rollout)</h3>
+      <p class="tg-sub">Promised in the proposal, built during Phases 2–5.</p>
+      <div class="ticket"><span class="tid">P2-20</span><div><p class="tt">Rollout &amp; migration tooling</p><p class="td">Scripted domain/DNS/cert onboarding via Cloudflare API; WordPress/Zeald/Turboweb content importers; 301-map generator; per-wave rollout checklist; load testing at 88-dealer scale. — I4, H2, $2</p></div><span class="effort">Phase 3–4</span></div>
+      <div class="ticket"><span class="tid">P2-22</span><div><p class="tt">Dealer analytics in the portal</p><p class="td">Surface each dealer's traffic/leads/attribution inside the portal they already log into. — M3, M7</p></div><span class="effort">Phase 5</span></div>
+      <div class="ticket"><span class="tid">P2-23</span><div><p class="tt">Lock-in features</p><p class="td">Workshop drop-off booking with live slots; AI spare-parts lookup (disclosed, on fresh feed data); Google Business Profile API integration for hours/posts sync. — the "supports future growth" clause (O1)</p></div><span class="effort">Phase 5</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="bid">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">07</span><h2>Bid mechanics</h2></div>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-size:24px;text-transform:uppercase;margin-bottom:2px">The clock</h3>
+        <div class="timeline">
+          <div class="tl-item hot"><div class="d">11 Sep <small>· 8 days away</small></div><p>Confirm participation. Do this first — it costs nothing and the deadline is close.</p></div>
+          <div class="tl-item hot"><div class="d">18 Sep <small>· questions due</small></div><p>Submit the strategic questions (right) — they shape the playing field in our favour.</p></div>
+          <div class="tl-item"><div class="d">25 Sep</div><p>STIHL answers. Adjust positioning; lock the proposal outline.</p></div>
+          <div class="tl-item us"><div class="d">9 Oct <small>· proposal due</small></div><p>All P0 complete; NZ-measured numbers in the document; every claim verifiable.</p></div>
+          <div class="tl-item"><div class="d">16 Oct</div><p>Shortlist announced.</p></div>
+          <div class="tl-item us"><div class="d">22–23 Oct <small>· presentations</small></div><p>Live demos: onboarding wizard, one-edit-updates-all on the demo fleet, promo push, portal + /demo sandbox, dashboards, status page with weeks of green uptime.</p></div>
+          <div class="tl-item"><div class="d">30 Oct → 13 Nov</div><p>Preferred vendor → contract.</p></div>
+          <div class="tl-item us"><div class="d">Dec 2026 <small>· pilot phase</small></div><p>Ours is already live. Offer to onboard 2–3 additional pilot stores in December instead — a pilot nobody else can match.</p></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h4>Questions to submit by 18 Sep (each one strategic)</h4>
+        <ul>
+          <li><strong>Product data:</strong> "Will STIHL SHOP provide a product/category feed or API for approved vendors?" — solves P1 permanently and exposes scraping-based competitors.</li>
+          <li><strong>Portal semantics:</strong> "Does the dealer portal require direct instant publishing, or is a governed submit-approve-publish workflow preferred?" — invites them to endorse our model under their governance objective.</li>
+          <li><strong>Analytics ownership:</strong> "Should dealer-level GA4 properties live under a STIHL SHOP organisation?" — signals data-ownership maturity (L1).</li>
+          <li><strong>Migration scope:</strong> "How many dealers currently have websites, on which platforms, and is redirect/SEO-equity preservation in scope?" — sizes $2 and reveals the incumbent's footprint officially.</li>
+          <li><strong>Technical floor:</strong> "Will responses be evaluated against measurable standards (Core Web Vitals, WCAG, security headers)?" — plants our kill points as criteria.</li>
+          <li><strong>AI policy:</strong> "Is an AI assistant (disclosed) within brand standards for dealer sites?" — clears the runway for a chatbot later or saves us from a landmine.</li>
+          <li><strong>Commercials:</strong> "Are dealer-paid, HQ-paid, or hybrid models preferred?" — determines which rate card leads.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h4>Response skeleton (maps §15 verbatim)</h4>
+      <p>1 · Company overview + continuity plan (V1–V3) → 2 · Experience: pilot case study with NZ-measured numbers + demo fleet + landscape research (V4–V5) → 3 · Proposed solution: UNIFY architecture, governance matrix, portal, promotions/events, analytics &amp; reporting (V6) → 4 · Hosting model: Cloudflare + DO diagram, backups/DR/status page (V7) → 5 · Support model: SLA pack (V8) → 6 · Timeline: their five phases, compressed by the live pilot (V9) → 7 · Pricing: reconciled rate card, itemised per §17, volume bands, migration schedule, optional services (V10) → 8 · Legal: Privacy Act/FTA/CGA compliance statement, data-ownership schedule (§18) → Appendix: minimum technical standards we invite STIHL to hold all vendors to.</p>
+    </div>
+
+    <div class="callout green">
+      <h4>The one-sentence thesis</h4>
+      <p>Every other vendor will propose to <em>build</em> what this RFP describes. We are the only vendor who can hand the evaluators a URL where it is already <em>running</em> — measured, governed, and live with a real dealer — and a portal login to prove the rest.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Method &amp; sources.</strong> RFP: STIHL SHOP Dealer Website RFP 2026 v1.0 (9 pp, issued 4 Sep 2026). Codebases audited: <code>multi-tenancy-main</code> (platform: React/Express/Postgres, ~6.9k lines server TS) and <code>stihl-dealers-website-template-main</code> (SvelteKit 2/Svelte 5). Live measurement 3 Sep 2026: Lighthouse 12.8.2 lab runs (mobile + desktop) on stihlshoptauranga.co.nz, stihlshop.co.nz, littlerocket.co.nz — PageSpeed Insights API was quota-limited (HTTP 429), so runs are local-lab via a South American POP; absolutes inflated equally, comparisons fair. Headers, robots/sitemaps, structured data, page weight, and TLS verified by direct fetch. Web research: f925.works/unify (source), digital-framework-proposal-dealer.netlify.app, littlerocket.co.nz + case studies, and the public dealer-site landscape. Statuses reflect the audited working copies; re-verify against production repos before submission.</p>
+    <p>Prepared for F925 · internal · 3 September 2026.</p>
+  </div>
+</footer>
+
+<style>
+/* ---------- review layer ---------- */
+.rdock{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);padding:6px 12px;font-size:12.5px;max-width:calc(100vw - 28px)}
+.rdock .rdl{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.rdock .idbtn{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.05em;text-transform:uppercase;background:var(--surface2);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:2px 11px;cursor:pointer}
+.rdock .idbtn.active{color:#fff}
+.rdock .idbtn.pa.active{background:var(--accent);border-color:var(--accent)}
+.rdock .idbtn.pb.active{background:var(--sup);border-color:var(--sup)}
+.rdock .idbtn.pc.active{background:var(--part);border-color:var(--part)}
+.rdock .rstat{color:var(--muted);white-space:nowrap}
+.rdock .rlive{font-weight:600;white-space:nowrap;color:var(--muted)}
+.rdock .rlive.live{color:var(--sup)}
+.rdock .rlive.local{color:var(--gap)}
+.rdock.pulse{animation:rdpulse .45s ease 2}
+@keyframes rdpulse{50%{transform:scale(1.05)}}
+@media (prefers-reduced-motion: reduce){.rdock.pulse{animation:none}}
+.rw{display:inline-flex;align-items:center;gap:5px;margin-left:10px;vertical-align:middle;font-family:"IBM Plex Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none}
+.rw button{font-size:11.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 8px;cursor:pointer;line-height:1.5}
+.rw .rwf.on{color:#fff;background:var(--gap);border-color:var(--gap)}
+.rw .rwc.has{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);font-weight:700;background:var(--accent-soft)}
+.rw-flagged{box-shadow:0 0 0 2px var(--gap);border-radius:8px}
+.rw-panel{margin:10px 0 4px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:10px 12px;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13.5px;font-weight:400;letter-spacing:0;text-transform:none;text-align:left;line-height:1.55}
+.rw-panel .citem{border-bottom:1px solid var(--line);padding:6px 0}
+.rw-panel .citem:last-child{border-bottom:none}
+.rw-panel .citem b{font-size:13px}
+.rw-panel .citem time{font-size:11.5px;color:var(--muted);margin-left:6px}
+.rw-panel .citem p{margin:.15em 0 0;font-size:13.5px;white-space:pre-wrap}
+.rw-panel .cform{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
+.rw-panel .cform input,.rw-panel .cform textarea{flex:1;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);min-width:0;resize:none;line-height:1.45}
+.rw-panel .cform button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.rw-panel .cnote{font-size:12.5px;color:var(--gap);margin:.4em 0 0}
+.rw-panel .cflag{font-size:12px;color:var(--gap);font-weight:600;margin:0 0 .3em}
+</style>
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+<script>
+(function(){
+  var API='/api/state?page=audit', APIKEY='XPFmcH2RSsza';
+  var PEOPLE=[
+    {id:'martin', name:'Martin', cls:'pa'},
+    {id:'leonel', name:'Leonel', cls:'pb'},
+    {id:'mike',   name:'Mike',   cls:'pc'}
+  ];
+  var NAME={}; PEOPLE.forEach(function(p){NAME[p.id]=p.name;});
+  var me=(window.WR?WR.me:'');
+  if(window.WR)WR.onIdentity(function(id){me=id;});
+  var mode='connecting';
+  var marks={}, comments={}, items={};
+  var lastRev='', applied=false, pendingWrites=0, chain=Promise.resolve();
+  function enqueue(op){
+    pendingWrites++;
+    var p=chain.then(function(){return apiPost(op);});
+    chain=p.then(function(){pendingWrites--;if(pendingWrites===0)refresh();},function(){pendingWrites--;setMode('local');});
+    return p;
+  }
+
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function san(t){return String(t).trim().replace(/[^A-Za-z0-9_.~:@+-]+/g,'_').replace(/^[_.]+|[_.]+$/g,'').slice(0,60)||'x';}
+  function slug(t){return san(String(t).toLowerCase().replace(/\s+/g,'-'));}
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(undefined,{day:'numeric',month:'short'});}catch(e){return '';}}
+
+  function apiGet(){
+    return fetch(API,{headers:{'x-warroom-key':APIKEY}}).then(function(r){
+      if(!r.ok)throw new Error('http '+r.status);
+      return r.json();
+    });
+  }
+  function apiPost(op){
+    return fetch(API,{method:'POST',headers:{'x-warroom-key':APIKEY,'content-type':'application/json'},body:JSON.stringify(op)}).then(function(r){
+      if(!r.ok)throw new Error('http '+r.status);
+      return r.json();
+    });
+  }
+
+  /* ---------- dock (totals + live; identity lives in the wr-shell header) ---------- */
+  var dock=document.createElement('div');
+  dock.className='rdock';
+  dock.innerHTML='<span class="rstat" id="rd-stat">⚑ 0 · 💬 0</span><span class="rlive" id="rd-live">Connecting…</span>';
+  document.body.appendChild(dock);
+  function needIdentity(noteEl,msg){
+    if(me)return false;
+    if(noteEl){noteEl.textContent=msg;noteEl.hidden=false;}
+    if(window.WR)WR.nudge();
+    return true;
+  }
+  function setMode(m){
+    mode=m;
+    var el=document.getElementById('rd-live');
+    el.className='rlive '+m;
+    el.textContent = m==='live'?'● Live':(m==='local'?'○ Offline — read-only':'Connecting…');
+  }
+
+  /* ---------- targets ---------- */
+  function addTarget(key,label,widgetHost,panelAnchor,block){
+    if(items[key]||!widgetHost)return;
+    var w=document.createElement('span');
+    w.className='rw';
+    w.innerHTML='<button type="button" class="rwf" title="Flag for attention">⚑</button><button type="button" class="rwc" title="Comments">💬 <span>0</span></button>';
+    widgetHost.appendChild(w);
+    var panel=document.createElement('div');
+    panel.className='rw-panel'; panel.hidden=true;
+    panel.innerHTML='<p class="cflag" hidden></p><div class="clist"></div>'
+      +'<form class="cform"><textarea rows="1" placeholder="Comment on '+esc(label)+'… (Shift+Enter for a new line)" aria-label="Comment on '+esc(label)+'"></textarea><button type="submit">Post</button></form>'
+      +'<p class="cnote" hidden></p>';
+    if(panelAnchor&&panelAnchor!==widgetHost){panelAnchor.insertAdjacentElement('afterend',panel);}
+    else{widgetHost.appendChild(panel);}
+    if(window.WR)WR.wireCommentBox(panel.querySelector('.cform textarea'));
+    var fbtn=w.querySelector('.rwf'), cbtn=w.querySelector('.rwc');
+    var note=panel.querySelector('.cnote');
+    fbtn.addEventListener('click',function(){
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.')){panel.hidden=false;return;}
+      var cur=marks[key]||{};
+      var next=!cur.flagged;
+      marks[key]={flagged:next,by:me,at:new Date().toISOString()};
+      render(key); renderTotals();
+      enqueue({t:'mark',key:key,flagged:next,by:me}).catch(function(){});
+    });
+    cbtn.addEventListener('click',function(){panel.hidden=!panel.hidden;});
+    panel.querySelector('form').addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var inp=panel.querySelector('textarea');
+      var txt=inp.value.trim();
+      if(!txt)return;
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.'))return;
+      note.hidden=true;
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString()};
+      (comments[key]=comments[key]||[]).push(temp);
+      render(key); renderTotals();
+      inp.value='';
+      enqueue({t:'comment',key:key,author:me,text:txt})
+        .catch(function(){
+          var arr=comments[key]||[], ix=arr.indexOf(temp);
+          if(ix>=0)arr.splice(ix,1);
+          render(key); renderTotals();
+          note.textContent='Could not post — try again in a moment.';note.hidden=false;
+        });
+    });
+    items[key]={w:w,fbtn:fbtn,cbtn:cbtn,cnum:cbtn.querySelector('span'),panel:panel,clist:panel.querySelector('.clist'),cflag:panel.querySelector('.cflag'),block:block||widgetHost};
+  }
+
+  
+  document.querySelectorAll('section[id]').forEach(function(sec){
+    var head=sec.querySelector('.sec-head');
+    if(!head)return;
+    var h2=head.querySelector('h2');
+    addTarget('sec-'+san(sec.id),(h2?h2.textContent:sec.id),head,head,head);
+  });
+  document.querySelectorAll('.req').forEach(function(el){
+    var rid=el.querySelector('.rid'), body=el.querySelector('.rbody');
+    if(!rid||!body)return;
+    addTarget('req-'+san(rid.textContent),rid.textContent.trim(),body,null,el);
+  });
+  document.querySelectorAll('.gapcard').forEach(function(el,i){
+    var h=el.querySelector('h4');
+    var m=h&&h.textContent.match(/^\s*(\d+)/);
+    var n=m?m[1]:(i+1);
+    addTarget('gap-'+n,'Gap '+n,el,null,el);
+  });
+
+
+  /* ---------- rendering ---------- */
+  function render(key){
+    var it=items[key]; if(!it)return;
+    var m=marks[key]||{};
+    it.fbtn.classList.toggle('on',!!m.flagged);
+    it.block.classList.toggle('rw-flagged',!!m.flagged);
+    it.cflag.hidden=!m.flagged;
+    if(m.flagged)it.cflag.textContent='⚑ Flagged by '+(NAME[m.by]||m.by||'?')+(m.at?' · '+fmtDate(m.at):'');
+    var cm=comments[key]||[];
+    it.cnum.textContent=cm.length;
+    it.cbtn.classList.toggle('has',cm.length>0);
+    if(!it.clist.querySelector('.ceform'))it.clist.innerHTML=window.WR?WR.commentListHTML(cm,key):'';
+  }
+  function renderAll(){Object.keys(items).forEach(render);renderTotals();}
+  function renderTotals(){
+    var f=0,c=0;
+    Object.keys(items).forEach(function(k){
+      if(marks[k]&&marks[k].flagged)f++;
+      c+=(comments[k]||[]).length;
+    });
+    document.getElementById('rd-stat').textContent='⚑ '+f+' · 💬 '+c;
+  }
+
+  /* ---------- sync loop ---------- */
+  function applyState(data,fromPost){
+    if(!data||typeof data!=='object')return;
+    var rev=(typeof data.rev==='string')?data.rev:'';
+    if(applied&&rev&&rev<lastRev)return;
+    if(!fromPost&&pendingWrites>0)return;
+    if(rev>lastRev)lastRev=rev; applied=true;
+    marks=data.marks||{};
+    var by={};
+    (data.comments||[]).forEach(function(c){
+      if(!c.key)return;
+      (by[c.key]=by[c.key]||[]).push(c);
+    });
+    comments=by;
+    setMode('live');
+    renderAll();
+  }
+  function refresh(){
+    if(pendingWrites>0)return;
+    apiGet().then(function(d){applyState(d,false);}).catch(function(){setMode('local');});
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cdel'); if(!b)return;
+    if(!confirm('Delete this comment for everyone?'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[];
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id){arr.splice(i,1);break;}}
+    render(key); renderTotals();
+    enqueue({t:'comment-del',id:id,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crply'); if(!b)return;
+    var citem=b.closest('.citem');
+    if(citem.querySelector('.crform'))return;
+    var key=b.dataset.key, pid=b.dataset.cid;
+    var f=document.createElement('form');
+    f.className='cform ceform crform';
+    f.innerHTML='<textarea rows="1" placeholder="Reply… (Shift+Enter for a new line)" aria-label="Reply"></textarea><button type="submit">Reply</button><button type="button" class="cancel">Cancel</button>';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea');
+    ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key); renderTotals();});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim();
+      if(!txt)return;
+      if(!me){if(window.WR)WR.nudge();return;}
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString(),parent:pid};
+      (comments[key]=comments[key]||[]).push(temp);
+      f.remove();
+      render(key); renderTotals();
+      enqueue({t:'comment',key:key,author:me,text:txt,parent:pid})
+        .catch(function(){
+          var arr=comments[key]||[], ix=arr.indexOf(temp);
+          if(ix>=0)arr.splice(ix,1);
+          render(key); renderTotals();
+        });
+    });
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crb'); if(!b)return;
+    if(!me){if(window.WR)WR.nudge();return;}
+    var id=b.dataset.cid, key=b.dataset.key, e=b.dataset.remoji;
+    var arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    c.reactions=c.reactions||{};
+    var l=c.reactions[e]=c.reactions[e]||[];
+    var ix=l.indexOf(me);
+    if(ix>=0)l.splice(ix,1); else l.push(me);
+    render(key);
+    enqueue({t:'react',id:id,emoji:e,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cedit'); if(!b)return;
+    var citem=b.closest('.citem');
+    if(citem.querySelector('.ceform'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    var f=document.createElement('form');
+    f.className='cform ceform';
+    f.innerHTML='<textarea rows="1" aria-label="Edit comment"></textarea><button type="submit">Save</button><button type="button" class="cancel">Cancel</button>';
+    f.querySelector('textarea').value=c.text||'';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea');
+    ta.dispatchEvent(new Event('input')); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim();
+      if(!txt)return;
+      c.text=txt; c.edited=new Date().toISOString();
+      f.remove();
+      render(key); renderTotals();
+      enqueue({t:'comment-edit',id:id,by:me,text:txt}).catch(function(){});
+    });
+  });
+  if(window.WR)WR.registerLocator(function(key){
+    var it=items[key]; if(!it)return false;
+    it.panel.hidden=false;
+    var el=it.block||it.w;
+    el.scrollIntoView({block:'center'});
+    el.classList.remove('wr-flash'); void el.offsetWidth; el.classList.add('wr-flash');
+    return true;
+  });
+  setMode('connecting');
+  renderTotals();
+  refresh();
+  setInterval(refresh,12000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh();});
+})();
+</script>
+</body>
+</html>

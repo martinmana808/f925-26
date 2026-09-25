@@ -1,0 +1,54 @@
+{
+  "slug": "ferrymead",
+  "url": "https://www.stihlshopferrymead.com",
+  "at": "2026-09-21T17:47:27.666Z",
+  "reasons": [
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "+4 fast load",
+    "-5 builder: Wix"
+  ],
+  "loadMs": 1154,
+  "finalUrl": "https://www.stihlshopferrymead.com/",
+  "status": 200,
+  "https": true,
+  "tech": "Wix",
+  "bytes": 755674,
+  "title": "Home | STIHL Shop Ferrymead",
+  "description": "At STIHL Shop Ferrymead, we’re here to help with quality tools, expert servicing, and friendly, local advice — whatever the job.",
+  "viewport": true,
+  "pagesLinked": 6,
+  "navItems": [
+    "/",
+    "/clearance",
+    "/woodsman",
+    "/service",
+    "/about",
+    "/contact-us"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": false,
+  "linksToStihlshop": 12,
+  "localCatalogue": false,
+  "copyrightYear": 2025,
+  "newestYear": 2025,
+  "wordCount": 254,
+  "images": 24,
+  "h1": "",
+  "social": {
+    "facebook": "https://www.facebook.com/stihlshopferrymead",
+    "instagram": "https://www.instagram.com/wix"
+  },
+  "about": "",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": true
+  },
+  "score": 57
+}

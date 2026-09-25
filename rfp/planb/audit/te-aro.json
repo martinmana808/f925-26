@@ -1,0 +1,53 @@
+{
+  "slug": "te-aro",
+  "url": "https://ellmers.co.nz",
+  "at": "2026-09-21T18:01:28.651Z",
+  "reasons": [
+    "+5 contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "-10 slow load 32.2s"
+  ],
+  "loadMs": 32156,
+  "finalUrl": "https://ellmers.co.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "WordPress",
+  "bytes": 323434,
+  "title": "Home - Ellmers",
+  "description": "",
+  "viewport": true,
+  "pagesLinked": 6,
+  "navItems": [
+    "/",
+    "/scooterspitbikes",
+    "/ellmers-repairs",
+    "/home",
+    "/get-in-touch",
+    "/mopeds-scooters"
+  ],
+  "hasForm": true,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 5,
+  "localCatalogue": false,
+  "copyrightYear": null,
+  "newestYear": null,
+  "wordCount": 357,
+  "images": 7,
+  "h1": "ELLMERS",
+  "social": {
+    "facebook": "https://www.facebook.com/wellingtoncity/",
+    "instagram": ""
+  },
+  "about": "ABOUT US\n\nEllmers have been trading since 1969 and are a trusted family owned supplier of Outdoor Power Equipment, Bikes & Scooters, and Repairs. We sell and service quality brands and have full workshop facilities on site.\n\nAll products are backed by domestic warranties of 1-5 years. We also stock and sell spare parts for most makes and models.\n\nPlease call, email or visit so one of our helpful staff can assist you.",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 58
+}

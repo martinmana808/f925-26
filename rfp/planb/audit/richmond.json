@@ -1,0 +1,52 @@
+{
+  "slug": "richmond",
+  "url": "https://stihlshoprichmond.nz",
+  "at": "2026-09-21T18:13:30.259Z",
+  "reasons": [
+    "+5 contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "+4 current year on page"
+  ],
+  "loadMs": 2888,
+  "finalUrl": "https://stihlshoprichmond.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "Shopify",
+  "bytes": 198197,
+  "title": "STIHL Shop Richmond",
+  "description": "",
+  "viewport": true,
+  "pagesLinked": 5,
+  "navItems": [
+    "/",
+    "/pages/contact",
+    "/customer_authentication/redirect",
+    "/collections/all",
+    "/policies/privacy-policy"
+  ],
+  "hasForm": true,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 7,
+  "localCatalogue": false,
+  "copyrightYear": 2026,
+  "newestYear": 2026,
+  "wordCount": 329,
+  "images": 11,
+  "h1": "STIHL Shop Richmond",
+  "social": {
+    "facebook": "https://www.facebook.com/stihlshoprichmond/",
+    "instagram": ""
+  },
+  "about": "",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 72
+}

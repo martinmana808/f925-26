@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Status Report · 12 Sep</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+  --p-a:#6847B8; --p-b:#0A6C4F; --p-c:#1B5FAE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+    --p-a:#A78BFA; --p-b:#4CC9A2; --p-c:#6FB1F0;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  --p-a:#A78BFA; --p-b:#4CC9A2; --p-c:#6FB1F0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.86em;background:var(--surface2);padding:.1em .35em;border-radius:4px}
+h1,h2,h3{font-family:"Barlow Condensed",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding:9px 20px;max-width:none}
+.brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase}
+.brand em{color:var(--accent);font-style:normal}
+header{padding:46px 0 10px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h1{font-size:clamp(36px,5.4vw,54px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:66ch;margin-top:10px}
+.big{margin:22px 0;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--sup);border-radius:10px;box-shadow:var(--shadow);padding:16px 20px}
+.big h2{font-size:22px;text-transform:uppercase}
+.big p{margin:.4em 0 0}
+h2.sec{font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:7px;margin:30px 0 12px}
+ul{margin:.5em 0;padding-left:22px} li{margin:.4em 0}
+.who{font-weight:700}
+.who.pa{color:var(--p-a)}.who.pb{color:var(--p-b)}.who.pc{color:var(--p-c)}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:5px;padding:1px 8px;vertical-align:middle}
+.pill.done{background:var(--sup-bg);color:var(--sup)} .pill.red{background:var(--gap-bg);color:var(--gap)} .pill.amber{background:var(--part-bg);color:var(--part)}
+.next{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:11px 16px;margin:10px 0;box-shadow:var(--shadow)}
+.next b:first-child{font-family:"Barlow Condensed",sans-serif;font-size:16.5px;letter-spacing:.03em;text-transform:uppercase}
+.next p{margin:.25em 0 0;font-size:14px;color:var(--muted)}
+.next p strong{color:var(--ink)}
+footer{border-top:1px solid var(--line);margin-top:42px;padding:20px 0 42px;color:var(--muted);font-size:13px}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="report">
+<div class="topbar"><div class="wrap">
+  <span class="brand">U4R <em>·</em> Status Report</span>
+  <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+</div></div>
+
+<header><div class="wrap">
+  <p class="eyebrow">F925 internal · STIHL RFP 2026 · daily report</p>
+  <h1>Status — Friday 12 Sep</h1>
+  <p class="sub">Day 9 of 49. Numbers from the live runbook at time of writing; the <a href="/">dashboard</a> always shows the current values.</p>
+</div></header>
+
+<div class="wrap">
+  <div class="big">
+    <h2>Headline: 34 of 101 tasks done (34%) with 16% of the runway used — ~17 points ahead of the clock</h2>
+    <p>The board grew to 101 tasks (83 fixed + 18 the team added) and the pace is holding. The S-group (site fixes) is now <b>fully closed — all 14, plus S-12 edge-caching and S-14 schema landed yesterday</b>. Error tracking (I-02 Sentry) is live on both repos. The vendor-questions bank is finalised: 17 written questions ready to send. The one red light hasn't changed: <b>I-01 uptime monitoring is still untouched after 9 days</b>.</p>
+  </div>
+
+  <h2 class="sec">Closed since the last report (10–11 Sep)</h2>
+  <ul>
+    <li><span class="pill done">done</span> <b>I-02 Error tracking</b> — Sentry live on both repos, tracking frontend and backend (<span class="who pb">Leo</span>).</li>
+    <li><span class="pill done">done</span> <b>S-12 Edge-cache the HTML</b> — root cause found: SvelteKit was defaulting SSR responses to no-cache; fixed (<span class="who pb">Leo</span>).</li>
+    <li><span class="pill done">done</span> <b>S-14 BlogPosting + BreadcrumbList schema</b> — verified already implemented (<span class="who pb">Leo</span>). <b>The whole S-group is now 14/14.</b></li>
+    <li><span class="pill done">done</span> <b>A-03 Vendor questions finalised</b> — thread rebuilt into 17 clean questions: 7 strategic + MIKE-1/2, MARTIN-1/2, LEONEL-1/2 + 4 Claude suggestions (pilot terms, domain/DNS authority, incumbent contracts, brand-asset certification). <span class="pill amber">confirm</span> the task is ticked — if the email hasn't actually gone to STIHL yet, that send is the real finish line (due 18 Sep).</li>
+    <li><span class="pill done">done</span> <b>Tooling review</b> — CodeRabbit/PostHog/Grep/Sentry checked (<span class="who pb">Leo</span>); Sentry chosen and installed.</li>
+    <li><span class="pill done">done</span> Project documentation task, the services &amp; running-costs list (feeding <a href="/capacity.html">capacity</a>), Mike's onboarding questions closed, 100-dealer costs, forms decision (Resend).</li>
+    <li><span class="pill done">done</span> <b>Mike's 74 technical questions</b> — imported in full to <a href="/questions.html">their own page</a> with topic + status filters and per-question threads.</li>
+  </ul>
+
+  <h2 class="sec">Also new</h2>
+  <ul>
+    <li><b>War room got a proper spine</b>: a <a href="/">dashboard</a> (time-vs-tasks race, big numbers, per-person load), one mega-menu on every page, cleaner header (I-am dropdown, four filters), search, per-user dismissable notifications, comment editing, links everywhere.</li>
+    <li><b>Capacity report reviewed hard by <span class="who pa">Martin</span></b> — 25 comments + 4 flags on <a href="/capacity.html">/capacity.html</a>: service clarifications (Vercel? ImageKit? Axiom?), decisions recorded (Web3Forms→Resend, Groq→paid model, multi-instance plan "ALL GOOD"), and direct questions awaiting answers — including the 🚨 photo-upload OOM flag and a request for a step-by-step guide to the restore/verification testing.</li>
+  </ul>
+
+  <h2 class="sec">Next steps — in order</h2>
+  <div class="next"><b>1 · I-01 uptime monitoring + public status page</b> <span class="pill red">9 days late</span>
+    <p><strong>Unowned. 2–3 hours.</strong> Every day open is a day less of green uptime history for the 22–23 Oct stage. Sentry's done — this is the last week-1 item still standing.</p></div>
+  <div class="next"><b>2 · Send the vendor questions to STIHL</b>
+    <p>The 17-question bank is written (A-03 thread). Pick the final set on a quick call, <span class="who pc">Mike</span> tone-checks, send by <strong>Mon 15 Sep</strong> — deadline is Thu 18.</p></div>
+  <div class="next"><b>3 · Mike: Monday legal review</b>
+    <p><span class="mono">D-xmtwhacfx</span> — the RFP's legal asks (Privacy Act, FTA, CGA, §18 data ownership) so we know the rules before W-05 gets written. Due Mon 14 Sep.</p></div>
+  <div class="next"><b>4 · Martin: Lighthouse audit (S-xmtrzfe49)</b>
+    <p>The 96/82/76 investigation — <span class="who pb">Leo</span> suggests pointing Claude at it. It gates S-13 (NZ re-measure), which gates every performance number in the proposal.</p></div>
+  <div class="next"><b>5 · Leo: cookies persistence + Web3Forms→Resend</b>
+    <p>Both open and his; the new reCAPTCHA task (<span class="mono">S-xmtwh1m6e</span>, unassigned) probably folds into the forms work.</p></div>
+  <div class="next"><b>6 · Answer Martin's 25 capacity questions</b>
+    <p>They include real decisions (DB standby $, staging env) and two how-to guides owed back (restore drill, verification testing). The 🚨 upload-OOM flag needs a fix task.</p></div>
+  <div class="next"><b>7 · Book the team call — 14 decisions waiting</b>
+    <p>Filter <a href="/questions.html">Mike's questions</a> by <em>Team call</em>: support hours, response-vs-resolution wording, escalation chain, patching ownership, insurance, setup-fee scope, exit policy, IP split. One call clears most of the D-group blockers. Also on the agenda: the +$57/mo uptime infrastructure (Q-31) into the rate card, and volume bands.</p></div>
+
+  <h2 class="sec">Open load right now</h2>
+  <ul>
+    <li><span class="who pa">Martin</span> — Lighthouse audit.</li>
+    <li><span class="who pb">Leo</span> — cookies policy, Resend forms.</li>
+    <li><span class="who pc">Mike</span> — Monday legal review.</li>
+    <li>Team (unassigned) — I-01 monitoring, stress test, reCAPTCHA, I-03…I-09, D-group docs, W/B/H/P groups per the week map.</li>
+  </ul>
+</div>
+
+<footer><div class="wrap">
+  <p>Generated 12 Sep 2026 from live warroom state · <a href="/">dashboard</a> · <a href="/wk1-report.html">week-1 report</a> · questions due 18 Sep · proposal due 9 Oct · presentations 22–23 Oct.</p>
+</div></footer>
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+</body>
+</html>

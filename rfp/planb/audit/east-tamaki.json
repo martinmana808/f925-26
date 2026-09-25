@@ -1,0 +1,53 @@
+{
+  "slug": "east-tamaki",
+  "url": "https://www.stihlshopeasttamaki.co.nz",
+  "at": "2026-09-21T17:46:47.799Z",
+  "reasons": [
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "-12 stale (newest year on page 2020)",
+    "-10 slow load 9.9s"
+  ],
+  "loadMs": 9876,
+  "finalUrl": "https://www.stihlshopeasttamaki.co.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "WordPress",
+  "bytes": 68614,
+  "title": "home - Stihl Shop East Tamaki",
+  "description": "",
+  "viewport": true,
+  "pagesLinked": 5,
+  "navItems": [
+    "/",
+    "/service",
+    "/products",
+    "/ride-on-mowers",
+    "/contact-us"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 3,
+  "localCatalogue": false,
+  "copyrightYear": 2020,
+  "newestYear": 2020,
+  "wordCount": 353,
+  "images": 8,
+  "h1": "home",
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "about": "LOCATION\n\n18 Harris Road\nEast Tamaki\nAuckland 2013\n\nView Map",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 36
+}

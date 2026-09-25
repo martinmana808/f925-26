@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Status Report · 14 Sep</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+  --p-a:#6847B8; --p-b:#0A6C4F; --p-c:#1B5FAE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+    --p-a:#A78BFA; --p-b:#4CC9A2; --p-c:#6FB1F0;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  --p-a:#A78BFA; --p-b:#4CC9A2; --p-c:#6FB1F0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.86em;background:var(--surface2);padding:.1em .35em;border-radius:4px}
+h1,h2,h3{font-family:"Barlow Condensed",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding:9px 20px;max-width:none}
+.brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase}
+.brand em{color:var(--accent);font-style:normal}
+header{padding:46px 0 10px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h1{font-size:clamp(36px,5.4vw,54px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:66ch;margin-top:10px}
+.big{margin:22px 0;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--part);border-radius:10px;box-shadow:var(--shadow);padding:16px 20px}
+.big h2{font-size:22px;text-transform:uppercase}
+.big p{margin:.4em 0 0}
+h2.sec{font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:7px;margin:30px 0 12px}
+h3{font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin:18px 0 6px;color:var(--accent)}
+ul{margin:.5em 0;padding-left:22px} li{margin:.4em 0}
+.who{font-weight:700} .who.pa{color:var(--p-a)}.who.pb{color:var(--p-b)}.who.pc{color:var(--p-c)}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:5px;padding:1px 8px;vertical-align:middle}
+.pill.done{background:var(--sup-bg);color:var(--sup)} .pill.red{background:var(--gap-bg);color:var(--gap)} .pill.amber{background:var(--part-bg);color:var(--part)} .pill.live{background:var(--sup);color:#fff}
+.next{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:11px 16px;margin:10px 0;box-shadow:var(--shadow)}
+.next b:first-child{font-family:"Barlow Condensed",sans-serif;font-size:16.5px;letter-spacing:.03em;text-transform:uppercase}
+.next p{margin:.25em 0 0;font-size:14px;color:var(--muted)} .next p strong{color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow)}
+.stat .k{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stat .v{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:700;margin-top:2px}
+.stat .v small{font-family:"IBM Plex Sans",sans-serif;font-size:12px;font-weight:500;color:var(--muted)}
+.good{color:var(--sup)} .warn{color:var(--part)} .bad{color:var(--gap)}
+footer{border-top:1px solid var(--line);margin-top:42px;padding:20px 0 42px;color:var(--muted);font-size:13px}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="report">
+<div class="topbar"><div class="wrap">
+  <span class="brand">U4R <em>·</em> Status Report</span>
+  <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+</div></div>
+
+<header><div class="wrap">
+  <p class="eyebrow">F925 internal · STIHL RFP 2026 · three-day catch-up</p>
+  <h1>Status — Sunday 14 Sep</h1>
+  <p class="sub">Day 11 of 49. Covers Fri 12 → Sun 14 Sep across all three fronts: the RFP itself, the UNIFY platform (helpdesk), and the STIHL social-posting product. Numbers from the live runbook.</p>
+</div></header>
+
+<div class="wrap">
+  <div class="big">
+    <h2>Headline: huge build weekend on the platform, but the RFP paperwork stood still — and the clock didn't</h2>
+    <p>The helpdesk shipped <b>to production</b>, got rebuilt twice on review, and the social-posting product connected its first real dealer after a five-week Meta saga. Runbook: <b>34 of 102 (33%) at 22% of the runway</b> — still 11 points ahead. But: <b>the vendor questions are still unsent with 4 days left</b>, I-01 uptime monitoring is on day 11 untouched, and 3 of the 5 tasks due this week are things nobody has started.</p>
+  </div>
+
+  <div class="grid">
+    <div class="stat"><div class="k">Runbook</div><div class="v">34<small> / 102 · 33%</small></div></div>
+    <div class="stat"><div class="k">Runway used</div><div class="v">22%<small> · 11 pts ahead</small></div></div>
+    <div class="stat"><div class="k">Questions to STIHL</div><div class="v bad">4<small> days · Thu 18</small></div></div>
+    <div class="stat"><div class="k">Proposal due</div><div class="v">25<small> days · 9 Oct</small></div></div>
+    <div class="stat"><div class="k">I-01 monitoring</div><div class="v bad">11<small> days late</small></div></div>
+    <div class="stat"><div class="k">Helpdesk</div><div class="v good">LIVE<small> v1 in prod</small></div></div>
+  </div>
+
+  <h2 class="sec">1 · The platform — helpdesk built, reviewed, rebuilt, shipped</h2>
+  <p><span class="pill live">in production</span> <b>PR #13 — ticket system v1</b> was built Saturday via spec → plan → reviewed subagent tasks, QA'd 10/10 at API level, then <span class="who pb">Leo</span> clicked through it locally and <b>merged + deployed it Saturday 22:58 UTC</b>. That happened about an hour before Martin's "do not merge until staging" note landed — so v1 is live for the three dealers right now, and D-06 is ticked. Fine outcome (it was tested), but it is the concrete example of why <b>I-xmu0hw5a2 dev + staging</b> matters: <code>main</code> auto-deploys with one instance and no rehearsal.</p>
+  <p><span class="pill amber">PR #14 — open</span> <b>Ticket system v2</b> (27 commits, Sunday): everything Martin asked for after using v1 —</p>
+  <ul>
+    <li><b>Rich text everywhere</b> with inline pasted screenshots (Freshdesk-style), Cmd+Enter to send; HTML sanitised on write and on render, images locked to our CDN — probed with an XSS payload in the browser, fully stripped.</li>
+    <li><b>Description is the ticket</b>, not message #1; header shows Submitted date + time.</li>
+    <li><b>New lifecycle</b>: NEW → IN PROGRESS (auto on first reply) → RESOLVED → CLOSED, with manual states Waiting on dealer · <b>Waiting for UAT</b> (staging link + dealer Approve) · Approved (dealer-only) · <b>Waiting internal 🔒</b> (never visible to the dealer). <code>acknowledged</code> removed.</li>
+    <li><b>Dealer side</b>: no priority (admins set it), latest-message preview per row, attention-first with red dot, <i>New activity / Everything else</i> dividers, "Just created" badge + View-ticket toast. Admin messages right-aligned.</li>
+    <li>90 automated tests · 14/14 + 24/24 browser runs · reviews caught three real bugs before push (missing length cap, editor placeholder positions, attention flag).</li>
+  </ul>
+  <p><b>Leo, in parallel</b> (per his comments): "Site built by F925." removed from the template (A-07 closed) · Sentry live · cookie-consent approach proposed and Martin agreed "classic behaviour" · Resend forms plan with per-domain <code>no-reply@</code> senders — Martin: <b>GO AHEAD</b> (S-xmtvmisnu) · reCAPTCHA on form-submit only, free tier — Martin: <b>GO AHEAD</b> (S-xmtwh1m6e) · onboarding questions closed.</p>
+  <p><b>Local dev unlocked</b>: OTP login codes print to the console when Resend is unset; <code>npm run dev:seed-dealer</code>; documented in <code>docs/2026-09-13-tickets-handoff-and-environments.md</code>.</p>
+
+  <h2 class="sec">2 · STIHL social posting — the Meta saga is over</h2>
+  <p><span class="pill live">first dealer live</span> Root cause of five weeks of "Feature unavailable" found on 11 Sep: <code>public_profile</code> was at Standard access and the six business permissions were <i>Advanced · Inactive · Verification required</i>. Requested advanced access, submitted <b>Tech Provider access verification 11 Sep → verified 14 Sep</b>. <b>STIHL SHOP Tauranga (Mike) connected 14 Sep</b> — FB page + IG, token good to 13 Nov. He is the only connected dealer; no test publishes against him.</p>
+  <p>Shipped 14 Sep: <b>month builder</b> (one form per post, browser → Supabase Storage uploads, PNG→JPEG), <b>Reels publishing</b> (IG Reel + FB video, two-phase engine, 3-worker pool, resumable), publishing moved to a 15-minute <b>Netlify background function</b>, and a fix for a timezone bug that would have posted 9 am NZ content at 9 pm. Supabase moved into the F925 company org (Tokyo). Separately, the white-label <b>social-posting-automated</b> tool got its F925 theme (11 Sep).</p>
+  <p>RFP angle: this is runbook <b>X-03 BRANDKIT</b> — no longer "built and working" in the abstract; it's live with a real STIHL dealer. It belongs in the proposal as an operating differentiator, not a roadmap line.</p>
+
+  <h2 class="sec">3 · The RFP itself — what moved, what didn't</h2>
+  <ul>
+    <li><span class="pill done">done</span> Vendor-question bank finalised: 18 questions in A-03 (7 strategic + MIKE-1/2 + MARTIN-1/2/3 + LEONEL-1/2 + 4 Claude) — MARTIN-3 (platform ownership / IP model) added Friday. A <a href="/vendor-questions.html">vendor-questions page</a> with per-person Send/Drop voting and a live email draft now exists. <b>Nobody has voted yet.</b></li>
+    <li><span class="pill red">not done</span> <b>The questions have not been sent.</b> Due Thursday 18 Sep. Martin: "We need to DECIDE ON THIS, EARLY NEXT WEEK"; Leo: "we need a meeting". That meeting is the single most important thing this week.</li>
+    <li><span class="pill red">not done</span> <b>D-xmtwhacfx Mike's legal review</b> was due Monday 14 Sep — no comment, still open.</li>
+    <li><span class="pill red">not done</span> <b>I-01 uptime monitoring</b> — 11 days, unowned. I-03…I-09 all untouched. Every §6/§7 claim in the proposal still hangs on this group.</li>
+    <li>Proposal V2 unchanged since Wed — it should now absorb: the helpdesk as a live feature (§7 support model gets a real screenshot), BRANDKIT as an operating product, and Leo's technical answers (Q-21/Q-73 on staging are still honest gaps).</li>
+    <li>Idea thread on X-04 weather widget: Martin asked about Google Weather API; Leo proposed just asking the LLM for the dealer's weather — parked.</li>
+  </ul>
+
+  <h2 class="sec">Next steps — in order</h2>
+  <div class="next"><b>1 · Monday: the vendor-questions call</b> <span class="pill red">4 days to deadline</span>
+    <p>All three on the <a href="/vendor-questions.html">vote page</a>, pick the final set, assemble the draft it generates, <span class="who pc">Mike</span> tone-checks, <span class="who pa">Martin</span> sends by <strong>Tuesday</strong>. Nothing else on the RFP matters more this week.</p></div>
+  <div class="next"><b>2 · I-01 uptime monitoring — assign it Monday</b> <span class="pill red">11 days</span>
+    <p>2–3 h. <span class="who pb">Leo</span> is the natural owner now that Sentry is in. Then I-03 (confirm the DB is a managed cluster + Spaces versioning is already on) and I-09 (the restore drill — which staging setup gives us for free).</p></div>
+  <div class="next"><b>3 · Mike: legal review</b>
+    <p>Overdue since Monday. Needed before W-05 is written and before MARTIN-3 / LEONEL-2 (IP, exit terms) go to STIHL.</p></div>
+  <div class="next"><b>4 · Leo: dev + staging environments (I-xmu0hw5a2)</b>
+    <p>Saturday proved the risk. Also lets PR #14 get a real click-through before it hits the three live dealers. Handoff doc has the proposal + cost.</p></div>
+  <div class="next"><b>5 · Proposal V3 pass</b>
+    <p>Fold in: helpdesk live (screenshot §7), BRANDKIT live with Tauranga, UAT/approve flow as governance evidence (§5.2), staging plan as the honest answer to Q-21/Q-73. Plus the two decisions still open: volume bands and team bios.</p></div>
+
+  <h2 class="sec">Open load</h2>
+  <ul>
+    <li><span class="who pa">Martin</span> — Lighthouse audit (S-xmtrzfe49, gates S-13); send the questions.</li>
+    <li><span class="who pb">Leo</span> — dev+staging (I-xmu0hw5a2), Resend forms, reCAPTCHA, cookies; review PR #14.</li>
+    <li><span class="who pc">Mike</span> — legal review (overdue); vote on the questions.</li>
+    <li>Unassigned — I-01, I-03…I-09, stress test, D-group docs, W-group writing.</li>
+  </ul>
+</div>
+
+<footer><div class="wrap">
+  <p>Generated 14 Sep 2026 from live warroom state + git history of <code>multi-tenancy</code> and <code>stihl-automated-posting</code> · <a href="/">dashboard</a> · <a href="/report-2026-09-12.html">previous report (12 Sep)</a> · questions due <b>18 Sep</b> · proposal due 9 Oct · presentations 22–23 Oct.</p>
+</div></footer>
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+</body>
+</html>

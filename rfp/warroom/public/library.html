@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Library · War Room</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --code-bg:#EFE9DD; --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+code{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.86em;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:.6em 0}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:9px;padding-bottom:9px}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+header{padding:56px 0 28px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-size:clamp(40px,6vw,64px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:64ch;margin-top:12px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 8px}
+.tools input[type=search]{flex:1;min-width:220px;font:inherit;font-size:14.5px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:9px 12px;color:var(--ink)}
+.tools label{font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.layout{display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:start;margin-top:20px}
+@media (max-width:800px){.layout{grid-template-columns:1fr}.side{position:static}}
+.side{position:sticky;top:64px}
+.side a{display:block;color:var(--muted);font-size:13.5px;padding:5px 10px;border-left:2px solid var(--line);margin:0}
+.side a b{color:var(--ink);font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.side a span{float:right;font-family:"IBM Plex Mono",monospace;font-size:11px}
+.side a:hover{border-left-color:var(--accent);text-decoration:none}
+.grp{margin:0 0 34px}
+.grp h2{font-size:24px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:10px;display:flex;align-items:baseline;gap:10px}
+.grp h2 small{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);letter-spacing:0;text-transform:none;font-weight:400}
+.item{display:grid;grid-template-columns:1fr auto;gap:6px 16px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:8px 0;box-shadow:var(--shadow)}
+.item.superseded,.item.archived{opacity:.72}
+.item .t{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:.02em}
+.item .t a{color:var(--ink)}
+.item .t a:hover{color:var(--accent)}
+.item .d{font-size:14px;color:var(--muted);grid-column:1/-1;margin:0}
+.item .m{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);white-space:nowrap;display:flex;gap:10px;align-items:center}
+.item .u{grid-column:1/-1;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted);word-break:break-all}
+.item .u a{color:var(--muted)}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:1px 8px;border:1px solid transparent}
+.pill.live{color:var(--sup);background:var(--sup-bg);border-color:color-mix(in srgb,var(--sup) 40%,transparent)}
+.pill.superseded,.pill.archived{color:var(--muted);background:var(--surface2);border-color:var(--line)}
+.pill.missing{color:var(--part);background:var(--part-bg);border-color:color-mix(in srgb,var(--part) 40%,transparent)}
+.who{font-weight:600}
+.who.pa{color:var(--p-a)}.who.pb{color:var(--p-b)}.who.pc{color:var(--p-c)}
+.ldel{background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);font-size:11px;padding:1px 7px;cursor:pointer}
+.ldel:hover{color:var(--gap);border-color:var(--gap)}
+.add{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;box-shadow:var(--shadow);padding:14px 18px;margin:8px 0 26px}
+.add h3{font-size:18px;text-transform:uppercase;letter-spacing:.05em;margin:0 0 6px}
+.add form{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.add form .full{grid-column:1/-1}
+@media (max-width:640px){.add form{grid-template-columns:1fr}}
+.add label{display:flex;flex-direction:column;gap:3px;font-size:11.5px;color:var(--muted);font-family:"IBM Plex Mono",monospace;letter-spacing:.03em}
+.add input,.add select,.add textarea{font:inherit;font-size:14px;background:var(--surface2);border:1px solid var(--line);border-radius:6px;padding:7px 10px;color:var(--ink)}
+.add textarea{resize:vertical;min-height:38px}
+.add button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:7px 18px;cursor:pointer;justify-self:start}
+.add .note{font-size:12.5px;color:var(--gap);margin:.3em 0 0}
+.empty{color:var(--muted);font-size:14px;padding:6px 2px}
+.rdock{position:fixed;right:14px;bottom:14px;z-index:80;background:var(--surface);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);padding:6px 12px;font-size:12.5px;color:var(--muted)}
+.rdock.live{color:var(--sup)}.rdock.local{color:var(--gap)}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:26px 0 70px;color:var(--muted);font-size:13px}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="library">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">U4R <em>·</em> Library</span>
+    <div class="wrs-menu">
+      <button type="button" class="wrs-menubtn" aria-haspopup="true">Sections ▾</button>
+      <nav class="wrs-drop" aria-label="Sections" id="secnav"></nav>
+    </div>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+  </div>
+</div>
+
+<header><div class="wrap">
+  <p class="eyebrow">STIHL RFP 2026 · project documentation</p>
+  <h1>Library</h1>
+  <p class="sub">Every page, artifact, link and account that belongs to this bid, in one index. The same list sits under <b>Library ▾</b> in the header of every war room page. Anything missing: add it below under your name, and it appears everywhere.</p>
+  <div class="tools">
+    <input type="search" id="q" placeholder="Filter by title, description or URL…" aria-label="Filter the library">
+    <label><input type="checkbox" id="hideold" checked> hide superseded &amp; archived</label>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <div class="layout">
+    <nav class="side" id="side" aria-label="Groups"></nav>
+    <div>
+      <div class="add">
+        <h3>Add a link</h3>
+        <form id="addf">
+          <label>Title <input id="a-title" required maxlength="120" placeholder="e.g. Reference letter draft"></label>
+          <label>Group <select id="a-group"></select></label>
+          <label class="full">URL <input id="a-url" type="url" required maxlength="500" placeholder="https://…"></label>
+          <label class="full">What it is (one line) <textarea id="a-desc" rows="1" maxlength="300"></textarea></label>
+          <button type="submit">Add to the library</button>
+          <p class="note full" id="a-note" hidden></p>
+        </form>
+      </div>
+      <div id="groups"></div>
+    </div>
+  </div>
+</div>
+
+<footer><div class="wrap"><p>F925 internal · <a href="/board.html">runbook</a> · <a href="/audit.html">audit</a> · <a href="/proposal.html">proposal</a> · <a href="/capacity.html">capacity</a> · <a href="/wk1-report.html">week 1</a></p></div></footer>
+<div class="rdock" id="dock">Connecting…</div>
+
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+<script>
+(function(){
+  var API='/api/state?page=library', APIKEY='XPFmcH2RSsza';
+  var LIB=window.WR_LIBRARY||{groups:[],items:[]};
+  var NAME={martin:'Martin',leonel:'Leonel',mike:'Mike',claude:'Claude'}, CLS={martin:'pa',leonel:'pb',mike:'pc'};
+  var me=(window.WR?WR.me:'');
+  if(window.WR)WR.onIdentity(function(id){me=id;renderAll();});
+  var links={};
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'});}catch(e){return '';}}
+  function host(u){try{var h=new URL(u,location.origin);return h.host===location.host?('war room '+h.pathname):h.host;}catch(e){return u;}}
+  function setDock(m){var d=document.getElementById('dock');d.className='rdock '+m;d.textContent=m==='live'?'● Live':(m==='local'?'○ Offline — read-only':'Connecting…');}
+
+  /* group selector + section menu */
+  var sel=document.getElementById('a-group'), nav=document.getElementById('secnav');
+  LIB.groups.forEach(function(g){
+    if(g.id!=='team'){var o=document.createElement('option');o.value=g.id;o.textContent=g.label;sel.appendChild(o);}
+    if(nav){var a=document.createElement('a');a.href='#g-'+g.id;a.textContent=g.label;nav.appendChild(a);}
+  });
+  sel.value='artifacts';
+  // the old dropdown is retired when wr-shell's mega nav is active (nav === null)
+  if(nav){
+    var sep=document.createElement('span');sep.className='wrs-sep';nav.appendChild(sep);
+    [['/board.html','→ The runbook'],['/audit.html','→ The audit'],['/proposal.html','→ The proposal'],['/capacity.html','→ Capacity report'],['/wk1-report.html','→ Week 1 report']].forEach(function(p){var a=document.createElement('a');a.href=p[0];a.textContent=p[1];nav.appendChild(a);});
+  }
+
+  function allItems(){
+    var out=LIB.items.map(function(i){return Object.assign({},i,{custom:false});});
+    Object.keys(links).forEach(function(id){var l=links[id];if(l&&l.url)out.push({g:l.group||'team',title:l.title,url:l.url,desc:l.desc||'',by:l.by,date:l.at,status:'live',custom:true,id:id});});
+    return out;
+  }
+  function itemHTML(i){
+    var st=i.url?i.status:'missing';
+    var who=i.by?'<span class="who '+(CLS[i.by]||'')+'">'+esc(NAME[i.by]||i.by)+'</span>':'';
+    var del=(i.custom&&i.by===me)?'<button type="button" class="ldel" data-id="'+esc(i.id)+'" title="Remove this link">remove</button>':'';
+    var title=i.url?'<a href="'+esc(i.url)+'"'+(/^https?:/.test(i.url)?' target="_blank" rel="noopener"':'')+'>'+esc(i.title)+'</a>':esc(i.title);
+    return '<div class="item '+esc(st)+'" data-q="'+esc((i.title+' '+i.desc+' '+i.url).toLowerCase())+'" data-st="'+esc(st)+'">'
+      +'<div class="t">'+title+'</div>'
+      +'<div class="m"><span class="pill '+esc(st)+'">'+(st==='missing'?'no link yet':st)+'</span>'+who+(i.date?'<span>'+esc(fmtDate(i.date))+'</span>':'')+del+'</div>'
+      +(i.desc?'<p class="d">'+esc(i.desc)+'</p>':'')
+      +(i.url?'<div class="u"><a href="'+esc(i.url)+'"'+(/^https?:/.test(i.url)?' target="_blank" rel="noopener"':'')+'>'+esc(i.url)+'</a></div>':'')
+      +'</div>';
+  }
+  function renderAll(){
+    var items=allItems(), host=document.getElementById('groups'), side=document.getElementById('side');
+    var q=document.getElementById('q').value.trim().toLowerCase(), hideOld=document.getElementById('hideold').checked;
+    var html='', sideHtml='';
+    LIB.groups.forEach(function(g){
+      var its=items.filter(function(i){return (i.g||'team')===g.id;});
+      var shown=its.filter(function(i){
+        if(hideOld&&(i.status==='superseded'||i.status==='archived'))return false;
+        if(q&&(i.title+' '+i.desc+' '+i.url).toLowerCase().indexOf(q)<0)return false;
+        return true;
+      });
+      sideHtml+='<a href="#g-'+g.id+'"><b>'+esc(g.label)+'</b><span>'+shown.length+'</span></a>';
+      html+='<section class="grp" id="g-'+g.id+'"><h2>'+esc(g.label)+' <small>'+shown.length+(its.length!==shown.length?' of '+its.length:'')+'</small></h2>';
+      html+=shown.length?shown.map(itemHTML).join(''):'<p class="empty">'+(g.id==='team'?'Nothing added yet — use the form above.':'Nothing matches.')+'</p>';
+      html+='</section>';
+    });
+    host.innerHTML=html; side.innerHTML=sideHtml;
+  }
+  document.getElementById('q').addEventListener('input',renderAll);
+  document.getElementById('hideold').addEventListener('change',renderAll);
+
+  /* state */
+  function apiGet(){return fetch(API,{headers:{'x-warroom-key':APIKEY}}).then(function(r){if(!r.ok)throw 0;return r.json();});}
+  function apiPost(op){return fetch(API,{method:'POST',headers:{'x-warroom-key':APIKEY,'content-type':'application/json'},body:JSON.stringify(op)}).then(function(r){if(!r.ok)throw 0;return r.json();});}
+  function refresh(){apiGet().then(function(d){links=d.links||{};setDock('live');renderAll();}).catch(function(){setDock('local');renderAll();});}
+  document.getElementById('addf').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var note=document.getElementById('a-note');
+    if(!me){note.textContent='Pick who you are first — "I am" in the header.';note.hidden=false;if(window.WR)WR.nudge();return;}
+    var title=document.getElementById('a-title').value.trim(), url=document.getElementById('a-url').value.trim(), desc=document.getElementById('a-desc').value.trim(), group=sel.value;
+    if(!title||!url)return;
+    note.hidden=true;
+    var id='l'+Date.now().toString(36);
+    links[id]={id:id,title:title,url:url,desc:desc,group:group,by:me,at:new Date().toISOString()};
+    renderAll();
+    document.getElementById('addf').reset(); sel.value='artifacts';
+    apiPost({t:'link',id:id,title:title,url:url,desc:desc,group:group,by:me}).then(refresh).catch(function(){delete links[id];renderAll();note.textContent='Could not save — try again in a moment.';note.hidden=false;});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.ldel'); if(!b)return;
+    if(!confirm('Remove this link from the library for everyone?'))return;
+    var id=b.getAttribute('data-id'); delete links[id]; renderAll();
+    apiPost({t:'link-del',id:id,by:me}).then(refresh).catch(function(){});
+  });
+  renderAll(); refresh();
+  setInterval(refresh,30000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh();});
+})();
+</script>
+</body>
+</html>

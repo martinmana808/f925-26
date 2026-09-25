@@ -1,0 +1,55 @@
+{
+  "slug": "drury",
+  "url": "https://stihlshopdrury.co.nz",
+  "at": "2026-09-21T17:46:03.974Z",
+  "reasons": [
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "-12 stale (newest year on page 2021)",
+    "-10 slow load 31.3s"
+  ],
+  "loadMs": 31322,
+  "finalUrl": "https://stihlshopdrury.co.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "Custom / unknown",
+  "bytes": 158066,
+  "title": "STIHL Shop Drury | Home",
+  "description": "STIHL SHOP Drury is a locally owned and managed outdoor power equipment store in South Auckland with a wide range and a specialist workshop. We are proud stockists of STIHL products including Chainsaws, Polaris ATVs, Lawn mowers, Ziggy Barbecues, hedge trimmers, line trimmers, high pressure cleaners, and more.",
+  "viewport": true,
+  "pagesLinked": 7,
+  "navItems": [
+    "/",
+    "/category/barbeques",
+    "/category/polaris",
+    "/service",
+    "/about",
+    "/contact",
+    "/category"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": false,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 212,
+  "localCatalogue": false,
+  "copyrightYear": 2021,
+  "newestYear": 2021,
+  "wordCount": 248,
+  "images": 75,
+  "h1": "Proud Suppliers of STIHL Outdoor Power Equipment",
+  "social": {
+    "facebook": "https://www.facebook.com/StihlShopDrury",
+    "instagram": "https://www.instagram.com/stihlshopdrury"
+  },
+  "about": "",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 36
+}

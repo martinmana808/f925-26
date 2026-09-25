@@ -1,0 +1,55 @@
+{
+  "slug": "te-anau",
+  "url": "https://www.fiordlandmarine.co.nz",
+  "at": "2026-09-21T18:01:19.790Z",
+  "reasons": [
+    "+5 contact form",
+    "+3 hours shown",
+    "+3 map",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "-12 stale (newest year on page 2023)",
+    "+4 fast load",
+    "-5 builder: Wix"
+  ],
+  "loadMs": 1092,
+  "finalUrl": "https://www.fiordlandmarine.co.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "Wix",
+  "bytes": 699906,
+  "title": "Servicing & Sales | Fiordland Marine | STIHL SHOP Te Anau, New Zealand",
+  "description": "Fiordland Marine | STIHL SHOP Te Anau are stockists of well known brands including STIHL, MERCURY & HONDA. Located in Te Anau, we are proud to go out of our way to meet all your Outdoor Power, Boating and Marine needs.",
+  "viewport": true,
+  "pagesLinked": 5,
+  "navItems": [
+    "/",
+    "/outdoor-power-equipment",
+    "/marine",
+    "/services-1",
+    "/boating-information"
+  ],
+  "hasForm": true,
+  "hasMap": true,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 5,
+  "localCatalogue": false,
+  "copyrightYear": 2023,
+  "newestYear": 2023,
+  "wordCount": 254,
+  "images": 19,
+  "h1": "",
+  "social": {
+    "facebook": "https://www.facebook.com/Fiordland-Marine-100446508113815",
+    "instagram": ""
+  },
+  "about": "Current Promotions\n\nClick Here",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": true
+  },
+  "score": 58
+}

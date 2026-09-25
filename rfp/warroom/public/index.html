@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>STIHL RFP War Room</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em}
+h1,h2,h3,h4{font-family:"Barlow Condensed",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:9px;padding-bottom:9px}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+header{padding:44px 0 8px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h1{font-size:clamp(38px,5.6vw,60px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:70ch;margin-top:10px}
+
+/* time vs tasks */
+.race{margin:28px 0 8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:20px 24px}
+.race h2{font-size:22px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px}
+.race .verdict{font-size:13.5px;color:var(--muted);margin:.2em 0 14px}
+.race .verdict b{font-size:14px}
+.rowlab{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px}
+.rowlab .k{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.rowlab .n{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:24px;font-variant-numeric:tabular-nums}
+.rowlab .n small{font-family:"IBM Plex Sans",sans-serif;font-size:12px;color:var(--muted);font-weight:500}
+.track{position:relative;height:16px;background:var(--surface2);border:1px solid var(--line);border-radius:8px;margin-top:6px}
+.track i{position:absolute;left:0;top:0;bottom:0;border-radius:7px;transition:width .6s ease}
+.track.time i{background:var(--part)}
+.track.tasks i{background:var(--sup)}
+.mark{position:absolute;top:-7px;bottom:-7px;width:2px;background:var(--ink);opacity:.65}
+.mark.due{background:var(--gap)}
+.mark span{position:absolute;top:100%;left:50%;transform:translateX(-50%);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);white-space:nowrap;margin-top:8px;font-weight:600}
+.mark.today{background:var(--accent);width:3px;opacity:1}
+.mark.today span{color:var(--accent);font-weight:700;top:auto;bottom:100%;margin:0 0 8px}
+.track.time{margin-bottom:34px}
+.delta{display:inline-block;font-size:12px;font-weight:700;border-radius:6px;padding:2px 10px;margin-left:8px;vertical-align:middle}
+.delta.ahead{background:var(--sup-bg);color:var(--sup)}
+.delta.behind{background:var(--gap-bg);color:var(--gap)}
+
+/* numbers */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:18px 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px 15px;box-shadow:var(--shadow)}
+.stat .k{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stat .v{font-family:"Barlow Condensed",sans-serif;font-size:30px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums}
+.stat .v small{font-family:"IBM Plex Sans",sans-serif;font-size:12px;font-weight:500;color:var(--muted)}
+.stat .v.good{color:var(--sup)} .stat .v.warn{color:var(--part)} .stat .v.bad{color:var(--gap)}
+.stat .v .pa{color:var(--p-a)} .stat .v .pb{color:var(--p-b)} .stat .v .pc{color:var(--p-c)}
+
+/* phases */
+.phases{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:6px 0 18px}
+.ptile{background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:11px 13px;box-shadow:var(--shadow)}
+.ptile .pt{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ptile .pn{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:22px;font-variant-numeric:tabular-nums;margin-top:1px}
+.ptile .bar{height:7px;background:var(--surface2);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:7px}
+.ptile .bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .5s ease}
+
+/* pages */
+.h2row{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:7px;margin:26px 0 14px}
+.h2row h2{font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:uppercase}
+.pages{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;margin:0 0 12px}
+a.pg{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:13px 16px;color:inherit;text-decoration:none}
+a.pg:hover{border-color:var(--accent);text-decoration:none}
+a.pg b{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.03em}
+a.pg span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+a.pg .meta{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);margin-top:6px;display:block}
+footer{border-top:1px solid var(--line);margin-top:36px;padding:20px 0 40px;color:var(--muted);font-size:13px}
+.milestones{list-style:none;margin:0 0 6px;padding:0;display:grid;gap:6px}
+.milestones li{display:grid;grid-template-columns:78px 1fr;gap:12px;align-items:baseline;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--sup);border-radius:8px;padding:8px 14px;font-size:13.5px;box-shadow:var(--shadow)}
+.milestones li time{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:15px;letter-spacing:.04em;color:var(--sup)}
+.milestones li.next{border-left-color:var(--line);color:var(--muted)} .milestones li.next time{color:var(--muted)}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="dashboard">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">U4R <em>·</em> War Room</span>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+  </div>
+</div>
+
+<header><div class="wrap">
+  <p class="eyebrow">F925 internal · STIHL SHOP Dealer Website RFP 2026</p>
+  <h1>The Dashboard</h1>
+  <p class="sub" id="today-line">Everything in one place: how much runway is gone, how much work is done, and where each of us stands. Live from the same shared database as every page.</p>
+</div></header>
+
+<div class="wrap">
+  <div class="race">
+    <h2>Time vs tasks</h2>
+    <p class="verdict" id="race-verdict">Loading…</p>
+    <div class="rowlab"><span class="k">⏱ Time elapsed — 4 Sep (RFP issued) → 23 Oct (presentations)</span><span class="n" id="time-pct">–<small></small></span></div>
+    <div class="track time" id="time-track"><i id="time-fill"></i></div>
+    <div class="rowlab"><span class="k">✓ Tasks completed — whole runbook</span><span class="n" id="task-pct">–<small></small></span></div>
+    <div class="track tasks"><i id="task-fill"></i></div>
+  </div>
+
+  <div class="grid" id="stats"></div>
+
+  <div class="phases" id="phases"></div>
+
+  <div class="h2row"><h2>Milestones</h2></div>
+  <ol class="milestones">
+    <li><time>8 Sep</time><b>Participation confirmed</b> with STIHL NZ.</li>
+    <li><time>11 Sep</time><b>Meta "Feature unavailable" root cause found</b> after five weeks; Tech Provider verification submitted.</li>
+    <li><time>13 Sep</time><b>Helpdesk v1 live</b> for the dealers (PR #13).</li>
+    <li><time>14 Sep</time><b>Meta verified · STIHL SHOP Tauranga connected</b> — first real dealer on BRANDKIT.</li>
+    <li><time>15 Sep</time><b>Vendor questions sent to STIHL</b>, signed by Mike (<a href="/docs/vendor-questions-sent-2026-09-15.pdf">PDF</a>).</li>
+    <li><time>16 Sep</time><b>First BRANDKIT post published</b> to a real dealer's Facebook + Instagram — worked first time.</li>
+    <li><time>16 Sep</time><b>Tickets v2 + live-test fixes in production</b> (PRs #14, #18); dealer analytics + HQ built (PR #19).</li>
+    <li class="next"><time>~25 Sep</time>STIHL answers the questions → pricing shape decided → Proposal V3.</li>
+    <li class="next"><time>9 Oct</time>Proposal due.</li>
+    <li class="next"><time>22–23 Oct</time>Presentations.</li>
+  </ol>
+
+  <div class="h2row"><h2>The pages</h2></div>
+  <div class="pages" id="pages">
+    <a class="pg" href="/board.html">🧭 <b>Runbook</b><span>Tick, assign, comment — the shared tasklist.</span><span class="meta" id="m-board"></span></a>
+    <a class="pg" href="/audit.html">🪚 <b>RFP audit</b><span>84 requirement verdicts, flag &amp; discuss.</span><span class="meta" id="m-audit"></span></a>
+    <a class="pg" href="/v666.html">📄 <b>v.672 — the proposal</b><span>After the Truth. The price is the strategy ($100 / $300 / $600, one website at every tier) the BRANDKIT nobody posts is the argument, and §2.2 now has the numbers — including our audit of all 93 dealers. <u>PREFERRED superseded</u>.</span><span class="meta" id="m-v666"></span></a>
+    <a class="pg" href="/questions.html">❓ <b>Mike's questions</b><span>Technical Q&amp;A with topic + status filters.</span><span class="meta" id="m-questions"></span></a>
+    <a class="pg" href="/vendor-questions.html">📨 <b>Vendor questions</b><span>SENT 15 Sep (4 questions, Mike signed). Answers expected ~25 Sep. Cards + votes + the PDF as sent.</span><span class="meta" id="m-vendorq"></span></a>
+    <a class="pg" href="/process.html">🔁 <b>The Process</b><span>Dealer lifecycle: onboarding → changes → support. Editable in place, edits logged.</span><span class="meta" id="m-process"></span></a>
+    <a class="pg" href="/directory.html">🗂️ <b>Dealer directory</b><span>All 93 STIHL SHOPs: screenshot of every website, site audit, Google and socials, filters, map, shared notes. Plus <a href="/heroes.html">every hero photo</a>.</span><span class="meta" id="m-directory"></span></a>
+    <a class="pg" href="/planb.html">🅱️ <b>Plan B</b><span>LIVE: 55 previews up at &lt;town&gt;.preview.f925.works, $100/mo offer on each. Emails still wait for 31 Oct.</span><span class="meta" id="m-planb"></span></a>
+    <a class="pg" href="/rant.html">🔥 <b>The rant, answered</b><span>Is the badge worth it? The asymmetry, the Little Rocket test, and what to say where.</span><span class="meta" id="m-rant"></span></a>
+    <a class="pg" href="/wtf.html">🤯 <b>WTF?</b><span>STIHL answered: optional, dealer pays, no push. Their RFP has a contract, a pilot and a rollout. Both, verbatim.</span><span class="meta" id="m-wtf"></span></a>
+    <a class="pg" href="/scenarios.html">🌳 <b>Scenarios</b><span>What are we bidding for? The decision tree + the pricing idea, for discussion.</span><span class="meta" id="m-scenarios"></span></a>
+    <a class="pg" href="/capacity.html">🧪 <b>Capacity report</b><span>100 dealers: load test, costs, fixes first.</span><span class="meta" id="m-capacity"></span></a>
+    <a class="pg" href="/report-2026-09-16.html">📊 <b>Status report · 16 Sep</b><span>End of day: questions sent, tickets v2 + feedback live, first BRANDKIT post published, analytics + HQ in PR #19, I-01 day 13. <u>Older: 14 Sep · 12 Sep · week 1</u>.</span></a>
+    <a class="pg" href="/library.html">📚 <b>Library</b><span>Every page, artifact, repo and link.</span></a>
+  </div>
+  <p style="font-size:12.5px;color:var(--muted)">Archives: <a href="/board-v1.html">Runbook V1</a> · <a href="/proposal-v1.html">Proposal V1</a></p>
+</div>
+
+<footer><div class="wrap">
+  <p>Unlisted &amp; noindexed — access by this link only, don't forward outside the team. Key dates: questions <b>18 Sep</b> · STIHL answers 25 Sep · proposal <b>9 Oct</b> · presentations <b>22–23 Oct</b>.</p>
+</div></footer>
+
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+<script>
+(function(){
+  var KEY='XPFmcH2RSsza';
+  // fixed tasks on the runbook, by group letter
+  var FIXED={A:7,S:14,I:8,D:9,W:9,B:11,H:7,P:5,R:6,X:4};
+  var PHASES=[
+    {id:'now',label:'Now · admin',groups:['A']},
+    {id:'p0',label:'P0 · proposal',groups:['S','I','D','W']},
+    {id:'p1',label:'P1 · presentations',groups:['B','H','P']},
+    {id:'p2',label:'P2 · rollout',groups:['R']},
+    {id:'x',label:'Beyond the RFP',groups:['X']}
+  ];
+  var T0=new Date('2026-09-04T00:00:00+12:00');           // RFP issued
+  var TEND=new Date('2026-10-23T23:59:59+13:00');         // presentations end
+  var MILESTONES=[
+    {d:'2026-09-11',label:'Confirm'},
+    {d:'2026-09-18',label:'Questions',due:true},
+    {d:'2026-09-25',label:'Answers'},
+    {d:'2026-10-09',label:'Proposal due',due:true},
+    {d:'2026-10-22',label:'Present'}
+  ];
+  function pct(x){return Math.max(0,Math.min(100,x));}
+  function days(to){return Math.ceil((new Date(to+'T23:59:59+13:00')-Date.now())/86400000);}
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  // time bar (independent of data)
+  var timePct=pct((Date.now()-T0)/(TEND-T0)*100);
+  document.getElementById('time-fill').style.width=timePct+'%';
+  document.getElementById('time-pct').innerHTML=Math.round(timePct)+'%<small> of the runway</small>';
+  var track=document.getElementById('time-track');
+  MILESTONES.forEach(function(m){
+    var x=pct((new Date(m.d+'T12:00:00+12:00')-T0)/(TEND-T0)*100);
+    var el=document.createElement('div');
+    el.className='mark'+(m.due?' due':'');
+    el.style.left=x+'%';
+    el.innerHTML='<span>'+esc(m.label)+'</span>';
+    track.appendChild(el);
+  });
+  var tm=document.createElement('div');
+  tm.className='mark today';
+  tm.style.left=timePct+'%';
+  tm.innerHTML='<span>today</span>';
+  track.appendChild(tm);
+  document.getElementById('today-line').textContent=
+    'Today is '+new Date().toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})
+    +' — '+days('2026-09-18')+' days to the questions deadline, '+days('2026-10-09')+' to the proposal, '+days('2026-10-23')+' to the presentations.';
+
+  function get(p){
+    return fetch('/api/state?page='+p,{headers:{'x-warroom-key':KEY}})
+      .then(function(r){if(!r.ok)throw 0;return r.json();})
+      .catch(function(){return null;});
+  }
+  Promise.all(['board','audit','proposal','questions','capacity','vendorq','process','scenarios','wtf','preferred','v666','rant','planb','directory'].map(get)).then(function(res){
+    var board=res[0]||{tasks:{},comments:[]};
+    var tasks=board.tasks||{};
+    // totals: fixed + customs seen in the store
+    var total={}, done={}, per={martin:0,leonel:0,mike:0,team:0};
+    Object.keys(FIXED).forEach(function(g){total[g]=FIXED[g];done[g]=0;});
+    Object.keys(tasks).forEach(function(id){
+      var v=tasks[id]; if(!v)return;
+      var g=id.charAt(0);
+      if(v.custom&&total[g]!=null)total[g]++;
+      if(v.done&&total[g]!=null)done[g]++;
+      if(!v.done){
+        var a=v.assignee;
+        if(a==='martin'||a==='leonel'||a==='mike')per[a]++;
+      }
+    });
+    var T=0,D=0;
+    Object.keys(total).forEach(function(g){T+=total[g];D+=done[g];});
+    var taskPct=T?D/T*100:0;
+    document.getElementById('task-fill').style.width=pct(taskPct)+'%';
+    document.getElementById('task-pct').innerHTML=Math.round(taskPct)+'%<small> · '+D+' / '+T+' tasks</small>';
+    var diff=Math.round(taskPct-timePct);
+    var v=document.getElementById('race-verdict');
+    if(diff>=0)v.innerHTML='<b>Tasks are '+diff+' points ahead of the clock.</b> '+Math.round(timePct)+'% of the runway is gone and '+Math.round(taskPct)+'% of the runbook is done — keep it that way. <span class="delta ahead">'+diff+' pts ahead</span>';
+    else v.innerHTML='<b>The clock is '+(-diff)+' points ahead of the tasks.</b> '+Math.round(timePct)+'% of the runway is gone but only '+Math.round(taskPct)+'% of the runbook is done. <span class="delta behind">'+(-diff)+' pts behind</span>';
+
+    // stats
+    var flags=0,comms=0;
+    var pageNames=['board','audit','proposal','questions','capacity','vendorq','process','scenarios','wtf','preferred','v666','rant','planb','directory'];
+    res.forEach(function(d,i){
+      if(!d)return;
+      comms+=(d.comments||[]).length;
+      Object.keys(d.marks||{}).forEach(function(k){if(d.marks[k]&&d.marks[k].flagged)flags++;});
+      var el=document.getElementById('m-'+pageNames[i]);
+      if(el)el.textContent='💬 '+(d.comments||[]).length+(Object.keys(d.marks||{}).length?' · ⚑ '+Object.keys(d.marks||{}).filter(function(k){return d.marks[k].flagged;}).length:'');
+      if(el&&pageNames[i]==='process'&&(d.revs||[]).length)el.textContent+=' · ✎ '+d.revs.length;
+    });
+    var dq=days('2026-09-25'), dp=days('2026-10-09');
+    document.getElementById('stats').innerHTML=
+      '<div class="stat"><div class="k">STIHL answers</div><div class="v good">'+dq+'<small> days · ~25 Sep · sent 15 Sep</small></div></div>'
+      +'<div class="stat"><div class="k">Proposal due</div><div class="v">'+dp+'<small> days · 9 Oct</small></div></div>'
+      +'<div class="stat"><div class="k">Tasks done</div><div class="v good">'+D+'<small> / '+T+'</small></div></div>'
+      +'<div class="stat"><div class="k">Open · Martin</div><div class="v"><span class="pa">'+per.martin+'</span></div></div>'
+      +'<div class="stat"><div class="k">Open · Leonel</div><div class="v"><span class="pb">'+per.leonel+'</span></div></div>'
+      +'<div class="stat"><div class="k">Open · Mike</div><div class="v"><span class="pc">'+per.mike+'</span></div></div>'
+      +'<div class="stat"><div class="k">Comments</div><div class="v">'+comms+'</div></div>'
+      +'<div class="stat"><div class="k">Flags open</div><div class="v '+(flags?'warn':'')+'">'+flags+'</div></div>';
+
+    // phases
+    document.getElementById('phases').innerHTML=PHASES.map(function(ph){
+      var t=0,d=0;
+      ph.groups.forEach(function(g){t+=total[g]||0;d+=done[g]||0;});
+      return '<div class="ptile"><div class="pt">'+esc(ph.label)+'</div><div class="pn">'+d+'/'+t+'</div><div class="bar"><i style="width:'+pct(t?d/t*100:0)+'%"></i></div></div>';
+    }).join('');
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>STIHL RFP · Week 1 Report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+  --p-a:#6847B8; --p-b:#0A6C4F; --p-c:#1B5FAE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+    --p-a:#A78BFA; --p-b:#4CC9A2; --p-c:#6FB1F0;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  --p-a:#A78BFA; --p-b:#4CC9A2; --p-c:#6FB1F0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em;background:var(--surface2);padding:.1em .35em;border-radius:4px}
+h1,h2,h3{font-family:"Barlow Condensed",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding:9px 28px}
+.brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase}
+.brand em{color:var(--accent);font-style:normal}
+.topbar nav{display:flex;gap:14px;margin-left:auto}
+.topbar nav a{color:var(--muted);font-size:13px;font-weight:500}
+header{padding:52px 0 26px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-size:clamp(38px,6vw,58px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:64ch;margin-top:12px}
+.verdict{margin:26px 0;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--sup);border-radius:10px;box-shadow:var(--shadow);padding:18px 22px}
+.verdict h2{font-size:24px;text-transform:uppercase;letter-spacing:.03em}
+.verdict p{margin:.5em 0 0}
+section{padding:26px 0 4px}
+h2.sec{font-size:clamp(24px,3.4vw,32px);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:14px 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow)}
+.stat .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stat .v{font-family:"Barlow Condensed",sans-serif;font-size:30px;font-weight:700;margin-top:2px}
+.stat .v small{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;font-weight:500;color:var(--muted)}
+.good{color:var(--sup)} .warn{color:var(--part)} .bad{color:var(--gap)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:var(--shadow);margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th{font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:var(--muted);padding:8px 13px;border-bottom:2px solid var(--line);background:var(--surface2)}
+td{padding:8px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:5px;padding:1px 8px}
+.pill.done{background:var(--sup-bg);color:var(--sup)}
+.pill.open{background:var(--gap-bg);color:var(--gap)}
+.pill.prog{background:var(--part-bg);color:var(--part)}
+.who{font-weight:700}
+.who.pa{color:var(--p-a)}.who.pb{color:var(--p-b)}.who.pc{color:var(--p-c)}
+ul{margin:.5em 0;padding-left:22px}
+li{margin:.45em 0}
+.crack{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--gap);border-radius:8px;padding:12px 16px;margin:10px 0;box-shadow:var(--shadow)}
+.crack b:first-child{font-family:"Barlow Condensed",sans-serif;font-size:17px;letter-spacing:.03em;text-transform:uppercase}
+.crack p{margin:.3em 0 0;font-size:14px;color:var(--muted)}
+.crack p strong{color:var(--ink)}
+footer{border-top:1px solid var(--line);margin-top:48px;padding:22px 0 42px;color:var(--muted);font-size:13px}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <span class="brand">U4R <em>·</em> Week 1 Report</span>
+  <nav><a href="/board.html">Runbook</a><a href="/audit.html">Audit</a><a href="/proposal.html">Proposal V2</a><a href="/capacity.html">Capacity</a>
+      </nav>
+</div></div>
+
+<header><div class="wrap">
+  <p class="eyebrow">F925 internal · STIHL RFP 2026 · 3 – 10 September</p>
+  <h1>Week 1: tracking well,<br>one red light</h1>
+  <p class="sub">What the plan asked of week 1, what actually happened, and exactly what needs attention now. Sources: the live runbook state, 38 team comments, and the audit's week map.</p>
+</div></header>
+
+<div class="wrap"><div class="verdict">
+  <h2>Verdict: on track overall — ahead on site fixes, on time on decisions, behind on infrastructure</h2>
+  <p>Week 1 asked for 14 tasks (A-01…A-07, S-01…S-04, I-01…I-03). The team closed <strong>all of the A-group decisions</strong> and Leo cleared <strong>the entire S-group through S-11 — a full week ahead of plan</strong>. The red light: <strong>the I-group hasn't started</strong>, and I-01 (uptime monitoring) was the one task stamped "TODAY" — every day it slips is one less day of green uptime history to show on stage 22–23 Oct. Start I-01 before anything else.</p>
+</div></div>
+
+<section><div class="wrap">
+  <h2 class="sec">The numbers</h2>
+  <div class="grid">
+    <div class="stat"><div class="k">Week-1 targets</div><div class="v">11<small> / 14 done</small></div></div>
+    <div class="stat"><div class="k">Ahead of schedule</div><div class="v good">S-05…S-11<small> (wk-2 work, done)</small></div></div>
+    <div class="stat"><div class="k">Behind</div><div class="v bad">I-01…I-03<small> not started</small></div></div>
+    <div class="stat"><div class="k">Team-added tasks</div><div class="v">14<small> · 7 closed</small></div></div>
+    <div class="stat"><div class="k">Decisions closed</div><div class="v good">4<small> price · hosting · chatbot · footer</small></div></div>
+    <div class="stat"><div class="k">Days to questions deadline</div><div class="v warn">8<small> A-03 · 18 Sep</small></div></div>
+  </div>
+
+  <div class="tablewrap"><table>
+    <thead><tr><th>Week-1 target</th><th>Status</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>A-01 Confirm participation</td><td><span class="pill done">done</span></td><td>Sent 8 Sep — 3 days before the hard date.</td></tr>
+      <tr><td>A-02 Bid war-room</td><td><span class="pill done">done</span></td><td>You're reading it.</td></tr>
+      <tr><td>A-03 Vendor questions</td><td><span class="pill open">open</span></td><td><strong>The week-2 priority.</strong> Nine questions now (Mike added two). Due 18 Sep.</td></tr>
+      <tr><td>A-04 Price</td><td><span class="pill done">done</span></td><td>$2,500 + GST setup · $600 + GST monthly. "Price is sweet." Bands still open.</td></tr>
+      <tr><td>A-05 Hosting narrative</td><td><span class="pill done">done</span></td><td>Cloudflare + DO locked; Netlify fully removed; DR story documented (Leo's artifact).</td></tr>
+      <tr><td>A-06 Chatbot's role</td><td><span class="pill done">done</span></td><td>Off the customer side this bid; task since removed from the runbook.</td></tr>
+      <tr><td>A-07 Footer claim</td><td><span class="pill done">done</span></td><td>"Site built by F925." — collaboration claim gone.</td></tr>
+      <tr><td>S-01…S-04 quick fixes</td><td><span class="pill done">done</span></td><td>All closed 7 Sep by Leo — plus S-05…S-11 (week-2 scope) same day.</td></tr>
+      <tr><td>I-01 Uptime monitoring — "TODAY"</td><td><span class="pill open">open</span></td><td class="bad"><strong>7 days of demo-able uptime history already lost.</strong></td></tr>
+      <tr><td>I-02 Error tracking</td><td><span class="pill open">open</span></td><td>Sentry is on Leo's tooling-review list (A-xmtryqcu9) — decide and wire it.</td></tr>
+      <tr><td>I-03 Backups / PITR</td><td><span class="pill open">open</span></td><td>The proposal's "daily backups" row depends on it.</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Beyond the plan, the team added and closed real work: repo tidy-up + branch hygiene + the old Tauranga repo deleted (<span class="who pb">Leo</span>), GEO/AEO implementation (<span class="who pb">Leo</span>), the V1 proposal review (<span class="who pc">Mike</span>), the onboarding questionnaire (<span class="who pc">Mike</span>), and the technical Q&amp;A for the proposal (<span class="who pb">Leo</span> → artifact delivered 10 Sep).</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2 class="sec">What changed in V2 (from the team's comments)</h2>
+  <ul>
+    <li><strong><a href="/proposal.html">Proposal V2</a></strong> — <span class="who pc">Mike</span>'s review applied: tone pass on the executive summary and governance wording (less combative, same facts); every <em>"unlimited"</em> claim replaced with tight "included / scoped separately" wording; pricing set to <strong>$2,500 + GST setup, $600 + GST monthly</strong>; reference-letter slot removed (Mike is the client). <span class="who pb">Leo</span>'s hosting facts applied: honest self-healing/failover description (seconds-to-minutes recovery, second origin instance at rollout) replaces "no single machine to fail". Customer-facing chatbot removed. <a href="/proposal-v1.html">V1 archived</a>.</li>
+    <li><strong><a href="/board.html">Runbook V2</a></strong> — decisions written onto A-03…A-07 and P-03 so the board reads true; A-03 now carries all nine questions; two new tasks created: <span class="mono">S-xmtvmisnu</span> Web3Forms → Resend (assigned <span class="who pb">Leo</span> — the shared hardcoded key dies) and <span class="mono">D-xmtvmiu4r</span> services &amp; running-costs list (assigned <span class="who pa">Martin</span>; includes the $4/repo GitHub rulesets Leo flagged). <a href="/board-v1.html">V1 archived</a>.</li>
+  </ul>
+</div></section>
+
+<section><div class="wrap">
+  <h2 class="sec">Nothing falls through the cracks — who owes what</h2>
+
+  <div class="crack"><b>1 · A-03 vendor questions — the clock that matters</b>
+    <p><strong>Team.</strong> Due 18 Sep (8 days). Wording is drafted (7 strategic + Mike's 2). Someone owns the send: suggest <span class="who pa">Martin</span> finalises, <span class="who pc">Mike</span> sanity-checks tone, sent by 15 Sep to leave margin.</p></div>
+
+  <div class="crack"><b>2 · I-01 uptime monitoring — start today, literally</b>
+    <p><strong>Unowned — needs an owner now.</strong> 2–3 hours of work. Every day open = one less day of the green-history chart for the 22–23 Oct presentations. I-02 (Sentry — already on Leo's review list) and I-03 (backups) follow right behind; the proposal's §6 claims are gated on all three.</p></div>
+
+  <div class="crack"><b>3 · Mike → confirm the onboarding questions closed</b>
+    <p><span class="who pc">Mike</span> said they're "good for now" (9 Sep) but <span class="who pb">Leo</span> has asked twice for an explicit close (A-xmtrztzc6) — he needs it locked before remaking the onboarding.</p></div>
+
+  <div class="crack"><b>4 · Martin &amp; Mike → review Leo's two artifacts</b>
+    <p><span class="who pb">Leo</span> delivered the DR/hosting explainer (A-05) and the answers to Mike's technical questionnaire (A-xmtrysvel, 10 Sep, CC'd to Martin). Both are waiting on your eyes — the questionnaire answers feed straight into proposal §6/§7 tightening.</p></div>
+
+  <div class="crack"><b>5 · Leo's in-flight list — still open, all his</b>
+    <p>Tooling review (CodeRabbit / PostHog / Grep / Sentry — started 10 Sep) · 100-dealer cost model (has DO + Resend inputs, needs finishing) · cookies-policy actually persisting consent · <strong>Lighthouse 96/82/76 investigation — he marked it KEY</strong>, and it gates S-13 (no performance number enters the proposal until the NZ re-measure passes) · the new Resend forms task.</p></div>
+
+  <div class="crack"><b>6 · Smaller loose ends</b>
+    <p>Volume bands + HQ-pays model (pricing half-decided) · proposal §3 team bios still placeholders (Leo + Mike surnames/roles) · stress-test task (H-group) unassigned · services &amp; costs list (new, <span class="who pa">Martin</span>) · D-04: the public pricing surfaces (/unify, netlify hub) still show old prices — now that A-04 is decided there's no excuse.</p></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2 class="sec">Week 2 focus (10 – 16 Sep)</h2>
+  <ul>
+    <li><strong>I-01 → I-03</strong> — light the monitoring/backup stack. This is the week's non-negotiable.</li>
+    <li><strong>A-03 sent by ~15 Sep</strong> — margin before the 18 Sep deadline.</li>
+    <li><strong>Plan says this week:</strong> S-12 edge-caching + S-13 NZ re-measure (Leo's Lighthouse digging feeds straight in), I-04…I-07 (leads, form-stack purge — the new Resend task — and privacy pages).</li>
+    <li><strong>Decisions cleanup:</strong> volume bands, team bios, D-04 pricing surfaces.</li>
+  </ul>
+</div></section>
+
+<footer><div class="wrap">
+  <p>Prepared 10 September 2026 from live runbook state (31 tracked + 78 fixed tasks, 38 comments) · F925 internal · <a href="/board.html">runbook</a> · <a href="/proposal.html">proposal V2</a> · <a href="/audit.html">audit</a></p>
+</div></footer>
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{
+  "slug": "whangarei",
+  "url": "https://stihlshopwhangarei.co.nz",
+  "at": "2026-09-21T18:04:07.780Z",
+  "reasons": [
+    "+10 8 internal pages",
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "-10 slow load 10.2s"
+  ],
+  "loadMs": 10249,
+  "finalUrl": "https://stihlshopwhangarei.co.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "WordPress",
+  "bytes": 84609,
+  "title": "Stihlshop Whangarei – Largest Range of Ride on Mowers",
+  "description": "",
+  "viewport": true,
+  "pagesLinked": 8,
+  "navItems": [
+    "/",
+    "/promotions",
+    "/products",
+    "/ride-on-mowers",
+    "/lawn-mowers",
+    "/woodfires",
+    "/service",
+    "/contact-us"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 3,
+  "localCatalogue": false,
+  "copyrightYear": null,
+  "newestYear": null,
+  "wordCount": 457,
+  "images": 9,
+  "h1": "Home",
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "about": "",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 58
+}

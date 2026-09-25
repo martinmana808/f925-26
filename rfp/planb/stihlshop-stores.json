@@ -1,0 +1,2554 @@
+[
+  {
+    "store_name": "STIHL SHOP Albany",
+    "website_code": "albany",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/albany/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-albany/",
+    "latitude": "-36.75213900",
+    "longitude": "174.69586400",
+    "address": "Suite 1, 265 Albany Highway, Rosedale, Auckland 0632",
+    "phone": "09 414 0022",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday",
+        "hours": "8am - 5:30pm"
+      },
+      "tuesday": {
+        "label": "Tuesday - Friday",
+        "hours": "8:30am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 3pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/a/l/albany.jpg",
+    "description": "<p>Specialising in all manner of Outdoor Power Equipment and Weber BBQs, we take great pride in providing high quality STIHL tools and accessories to our customers both in-store and online.\r\n\r\n<p>We thoroughly enjoy being active throughout our Albany community and love supporting our local schools, sports clubs, and charities.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Honda, Rover, Cub Cadet, Fiskars, Red Band, Silky, Wolf Garten, Billy Goat, Hustler and Weber BBQs. </b>\r\n",
+    "email": "albany@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Botany",
+    "website_code": "botany",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/botany/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-botany/",
+    "latitude": "-36.95827663",
+    "longitude": "174.90199642",
+    "address": "16 Bishop Dunn Place, Flat Bush, Auckland 2013",
+    "phone": "09 271 3000",
+    "fax": "09 271 3040",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 4pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihlshopbotany.jpg",
+    "description": "<p>We’re experts in two product groups: Gardening equipment and Weber BBQs. We provide our customers with helpful advice for selecting their tools, such as STIHL Lawnmowers, STIHL Hedgetrimmers, and STIHL Brushcutters – Which can now be purchased online for easy Home Delivery, or Click & Collect – We’ll even have your purchases assembled and ready to go before you arrive in-store!<p>\r\n\r\n<p>We continue to support a number of schools around the Botany area, as well as local charities and sports organisations in the form of sponsorship and donations.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Honda Power Equipment, Rover, Cub Cadet, Wolf Garten, Hansa Chippers, Silky and Weber BBQs.</b>\r\n",
+    "email": "botany@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Drury",
+    "website_code": "downs",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/downs/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-downs/",
+    "latitude": "-37.10534773",
+    "longitude": "174.94991853",
+    "address": "267 Great South Road, Drury 2113",
+    "phone": "09 294 8585",
+    "fax": "09 294 7523",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8:30am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/d/r/drury.jpg",
+    "description": "<p>A long-established business, STIHL SHOP Drury has been family-owned and operated by Sue and Ross Warren since 2004. Formerly Downs Mowers and Machinery, our business has had a long history with the STIHL brand through original owner and renowned STIHL specialist, Jim Downs.</p>\r\n\r\n</p>We’re proud to help local Drury customers look after their land, and now offer the option of shopping online for Home Delivery and Click & Collect in-store. We enjoy helping local community groups such as Riding for the Disabled, Hospice, Drury Primary School, Ramamara School and the Rotary Club.</p>\r\n\r\n<p>We Stock the Following Brands: STIHL, Masport, Cub Cadet, Rover, Polaris, Hansa Chippers, Honda, Ziegler & Brown</p>\r\n",
+    "email": "ross@downs.net.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP East Tamaki",
+    "website_code": "east_tamaki",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/east_tamaki/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-east-tamaki/",
+    "latitude": "-36.94181800",
+    "longitude": "174.89377100",
+    "address": "18 Harris Road, East Tamaki, Auckland 2013",
+    "phone": "09 274 6238",
+    "fax": "09 274 6338",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_east_tamaki_hamish_cook.jpg",
+    "description": "<p>Hamish Cook and Claire Uhlenberg have owned and operated STIHL SHOP East Tamaki since 2004. We cater to all users of Outdoor Power Equipment and specialise in looking after our strong commercial customer base: from contractors and tradies, to large corporates. </p>\r\n<p>As well as in-store sales, we offer customers Home Delivery and Click & Collect options for their online purchases.</p>\r\n<p>Locals to the community ourselves, we enjoy supporting our local schools and sports clubs, as well as the Beachlands Fire Brigade.</p>\r\n<b>We stock the following brands: STIHL, Masport, Honda Power Equipment, Walker, Hustler, and Hansa.</b>\r\n",
+    "email": "easttamaki@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Ellerslie",
+    "website_code": "ellerslie",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/ellerslie/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-ellerslie/",
+    "latitude": "-36.89158420",
+    "longitude": "174.83274506",
+    "address": "174B Marua Road, Mount Wellington, Auckland 1051, New Zealand",
+    "phone": "09 579 4938",
+    "fax": "09 579 6449",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 4pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/e/l/ellerslie_2023.jpg",
+    "description": "<p>Phillip and Karen have been the owners of STIHL SHOP Ellerslie since 2016. Specialising in STIHL’s range of Battery Electric tools, we are proud to offer our customers friendly advice and support with their equipment, whether they are purchased in-store or online.</p>\r\n\r\n<p>We enjoy being engaged with our neighbours and local community, and we are actively involved with helping primary schools, sports clubs, and Safety-Wise. </p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Gravely, Cub Cadet, Rover, Victa, and Hansa.</b>\r\n",
+    "email": "ellerslie@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Glen Eden",
+    "website_code": "glen_eden",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/glen_eden/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-glen-eden/",
+    "latitude": "-36.91122100",
+    "longitude": "174.65541400",
+    "address": "93 West Coast Road, Glen Eden, Auckland 0602",
+    "phone": "09 818 5144",
+    "fax": "09 818 5144",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 3pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "9am - 2pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/g/l/glen_eden.jpg",
+    "description": "<p>A true family business, STIHL SHOP Glen Eden has been owned and operated for over 30 years by the Hahn family. Originally opening our doors in 1986 as ‘Mr Mowers‘, we became the first STIHL SHOP in New Zealand in 2003. We specialise in providing a great range of products to our customers both in-store and online.\r\n\r\n<p>Active throughout our local Glen Eden community, we’re regular supporters of various sports clubs, schools and the local RSA.</p>\r\n\r\n<p>We stock the following brands: STIHL, Masport, Cub Cadet, Honda, Big Dog, Ziegler and Brown, and Silky. </p>\r\n",
+    "email": "gleneden@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Kumeu",
+    "website_code": "kumeu",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/kumeu/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-kumeu/",
+    "latitude": "-36.77698100",
+    "longitude": "174.55877900",
+    "address": "54 Main Road, Kumeu 0810",
+    "phone": "09 412 8592",
+    "fax": "09 412 8808",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8:30am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_kumue_craig_and_margaret.jpg",
+    "description": "<p>Proud owners Craig and Margaret Walker have operated STIHL SHOP Kumeu since 2015. We enjoy giving our customers expert advice and onsite product demonstrations for Outdoor Power Equipment. We also offer convenient online sales of our STIHL range for easy Home Delivery straight to your door, and Click & Collect. </p>\r\n\r\n<p>We are keen supporters of the Kumeu Volunteer Fire Brigade and hold an annual fundraising event to help them out. We’re also members of the Local Business Association, and are sponsors of the Kumeu Rugby Club and Riverhead Bowling Club. \r\n\r\n<p>We stock the following brands: STIHL, Masport, Rover, Cub Cadet, Honda, Hustler</p>",
+    "email": "kumeu@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Mt Albert",
+    "website_code": "mt_albert",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/mt_albert/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-mt-albert/",
+    "latitude": "-36.88253200",
+    "longitude": "174.71716000",
+    "address": "859 New North Road, Mount Albert, Auckland 1025",
+    "phone": "09 846 1820",
+    "fax": "09 849 4217",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/m/t/mt-albert.jpg",
+    "description": "<p>STIHL SHOP Mt Albert specializes in all manner of Outdoor Power Equipment and accessories. When customers shop with us online and choose Click & Collect, we make sure their machines are assembled and ready to go before they arrive so they can get a head-start on their next outdoor project.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Rover, Cub Cadet, and Honda Power Equipment.</b>\r\n",
+    "email": "mtalbert@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Onehunga",
+    "website_code": "onehunga",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/onehunga/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-onehunga/",
+    "latitude": "-36.92110962",
+    "longitude": "174.80280429",
+    "address": "270 Church Street, Onehunga, Auckland 1061",
+    "phone": "09 636 6770",
+    "fax": "09 634 1467",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/s/ss_onehunga_2024.jpg",
+    "description": "<p>STIHL SHOP Onehunga is a long-established STIHL service agent with a foothold in the local Onehunga/Penrose area. Current owner Shane Taylor enjoys helping customers and commercial contractors with their Outdoor Power needs; applying many years’ of technical experience and customer service within the Outdoor Power industry. Customers can now make purchases online where they can enjoy fast home delivery, or come in-store for Click & Collect.</p>\r\n\r\n<p>We like to support local charities and community causes, such as our local schools, as well as the Special Children’s Christmas Parties association.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda Power Equipment, Hansa Chippers, Ziegler & Brown</b>\r\n",
+    "email": "onehunga@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Pukekohe",
+    "website_code": "pukekohe",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/pukekohe/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-pukekohe/",
+    "latitude": "-37.21064200",
+    "longitude": "174.91367800",
+    "address": "16 Wrightson Way, Pukekohe 2120",
+    "phone": "09 238 3723",
+    "fax": "09 238 1407",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_pukekohe_steve_and_marlene.jpg",
+    "description": "",
+    "email": "pukekohe@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Silverdale",
+    "website_code": "silverdale",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/silverdale/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-silverdale/",
+    "latitude": "-36.61861600",
+    "longitude": "174.67807300",
+    "address": "6 Flexman Place",
+    "phone": "09 426 5414",
+    "fax": "09 426 5495",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_silverdale_pete_and_judy.jpg",
+    "description": "<p>Owners Pete and Judy Leishman have spent the last 20 years in the Silverdale community, the last 10 of which has been proudly operating STIHL SHOP Silverdale. Our specialty is providing locals with friendly advice and expert knowledge for their outdoor power equipment, which we sell in-store, as well as online for easy Home Delivery and Click & Collect.</p>\r\n\r\n<p>Actively involved in various local organisations, Pete is a Rotarian, while Judy is on the board of the Silverdale Business Association. Between us, we sponsor the Coatesville Scouts, Silverdale Area Kindergarten, HBC Rodders Eveny, HBC Hospice and Trillian trek.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda, Hansa, Lawnmaster, Ferris, Hustler, Victa, Lawnmaster, Silky, Wolf Garten, Solo</b>\r\n",
+    "email": "silverdale@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Warkworth",
+    "website_code": "warkworth",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/warkworth/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-warkworth/",
+    "latitude": "-36.40136900",
+    "longitude": "174.66137500",
+    "address": "32 Whitaker Road, Warkworth 0910",
+    "phone": "09 425 7772",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_warkworth_michael_and_roanne.jpg",
+    "description": "<p>Mike and Roanne Bremner have owned and operated STIHL Shop Warkworth since 2012. Stocking premium grade products including the full STIHL petrol and battery outdoor power equipment range, MASPORT lawn mowers, CUBCADET ride on mowers, CANYCOM 4WD mowers, HONDA generators and inverters, a range of SILKY, NIWASHI and OKASUNE garden tools and TIMBERSAW spades. They also sell Ziegler and Brown (Ziggy) BBQ’s and accessories and the famous Big Green Egg charcoal BBQ range.</p>\r\n\r\n<p>With a fully equipped workshop they service all outdoor power equipment including sharpening chainsaw chains and garden tools. </p>\r\n",
+    "email": "warkworth@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Waiheke",
+    "website_code": "waiheke",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/waiheke/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-waiheke/",
+    "latitude": "-36.79635110",
+    "longitude": "175.05499898",
+    "address": "2A Tahi Road, Ostend, Waiheke Island 1081, New Zealand",
+    "phone": "022 320 3844",
+    "fax": "09 579 6449",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8am - 2pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_logo_5.jpg",
+    "description": "",
+    "email": "waiheke@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Howick",
+    "website_code": "howick",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/howick/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-howick/",
+    "latitude": "-36.89466300",
+    "longitude": "174.93276300",
+    "address": "102 Picton Street, Howick 2014",
+    "phone": "09 532 8443",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Wednesday",
+        "hours": "8am - 5pm"
+      },
+      "thursday": {
+        "label": "Thursday",
+        "hours": "8am - 5:30pm"
+      },
+      "friday": {
+        "label": "Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/h/o/howick_garth_and_tessa.jpg",
+    "description": "<p>STIHL SHOP Howick opened its door in December 2020. Owners Tessa and Garth have lived in the East Auckland areas for many years and take pride in supporting local business, schools and community projects.</p>\r\n<p>We provide a great range of products and services: outdoor power and gardening equipment, BBQ grills, key cutting and accessories as well as a service and repair centre. We also serve as a collection point for household batteries.</p>\r\n<p>As well as in-store sales, we offer customers Home Delivery and Click & Collect via the STIHL SHOP website.</p>\r\n<p>We stock the following brands: STIHL, Masport, Honda, Cub Cadet, Rover, Ziegler & Brown, Pope, Culleys, Green Gorilla</p>",
+    "email": "Howick@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Browns Bay",
+    "website_code": "browns_bay",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/browns_bay/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-browns-bay/",
+    "latitude": "-36.71722750",
+    "longitude": "174.74657000",
+    "address": "26 Anzac Road, Browns Bay, Auckland 0630, New Zealand",
+    "phone": "094755129",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/b/r/browns-bay.jpg",
+    "description": "",
+    "email": "brownsbay@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Westgate",
+    "website_code": "westgate",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/westgate/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-westgate/",
+    "latitude": "-36.81215314",
+    "longitude": "174.60467119",
+    "address": "15 Kakano Road, Westgate, Auckland 0814",
+    "phone": "09 930 9999",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/w/e/westgate.jpg",
+    "description": "<p>Our brand new Westgate store is locally owned by the family team of Craig & Margaret Walker and Ben & Rae Deakin, who are specialists in the sale and servicing of all outdoor power equipment. \r\nWe will provide you with helpful advice for selecting the best tools for the job, as well as assisting you with all your technical needs. </p>\r\n\r\n<p>Our store is conveniently located in the heart of Westgate at 15 Kakano Rd - just 200m from Costco.</p>\r\n\r\n<p>We are open 7 days and are here to help with your home maintenance and outdoor power equipment needs. We've got lawnmowers (petrol, battery, ride on and robotic), hedge cutters, trimmers, blower vacs, chippers, high pressure cleaners, chainsaws, sprayers, misters, brushcutters, mulchers, safety equipment, lubricants, generators, pumps, clearing saws – all sorts of outdoor power equipment!</p>\r\n\r\n<p>All online purchasers for our STIHL product range are available for Click & Collect, or delivered straight to your doorstep. </p>\r\n<p>We have a strong community focus and we look forward to being part of your local community. </p>",
+    "email": "westgate@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Glenfield",
+    "website_code": "glenfield",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/glenfield/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-glenfield/",
+    "latitude": "-36.77620902",
+    "longitude": "174.74384848",
+    "address": "89 Wairau Road, Wairau Valley, Auckland 0627, New Zealand",
+    "phone": "092154398",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 4pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/g/l/glenfield.jpg",
+    "description": "<p>Our Wairau Rd Glenfield store is locally owned by Raman Behl. We look forward to helping you with all your outdoor power equipment needs.</P\r\n\r\n<p>We are local & here to help you to select the best tools for the job, as well as assisting you with all your technical needs.\r\nWe've got lawnmowers, Ride Ons, Hedge Trimmers, Line Trimmers, Blower Vacs, Chippers, High Pressure Cleaners, Chainsaws, \r\nSprayers, Misters, Brushcutters, Mulchers, Safety Equipment, Lubricants, Generators, Pumps, Clearing saws – all sorts of Outdoor Power Equipment \r\nto save you time & money as well as a big range of accessories!</P>\r\n\r\n<P>Online purchasers for our STIHL product range are available for Click & Collect, or delivered straight to your doorstep.</P\r\n\r\n<p>We are open 7 days & look forward to meeting you soon & being part of your local community. </p>\r\n\r\nSo come on in and deal directly with people who actually use the gear.\r\n",
+    "email": "glenfield@stihlshop.co.nz",
+    "locatorRegion": "Auckland"
+  },
+  {
+    "store_name": "STIHL SHOP Mt Maunganui",
+    "website_code": "mt_maunganui",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/mt_maunganui/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-mt-maunganui/",
+    "latitude": "-37.65504448",
+    "longitude": "176.19874359",
+    "address": "11 Newton Street",
+    "phone": "07 575 8840",
+    "fax": "07 575 8840",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8:30am - 2:30pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "9am - 2pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/m/t/mtmaunganui-may2026-staff.jpg",
+    "description": "",
+    "email": "mtmaunganui@stihlshop.co.nz",
+    "locatorRegion": "Bay of Plenty"
+  },
+  {
+    "store_name": "STIHL SHOP Rotorua",
+    "website_code": "rotorua",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/rotorua/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-rotorua/",
+    "latitude": "-38.13961661",
+    "longitude": "176.25523000",
+    "address": "1059 Amohau Street, Rotorua 3010, New Zealand",
+    "phone": "07 348 6614",
+    "fax": "07 349 1135",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8am - 2pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/r/o/rotorua.jpg",
+    "description": "",
+    "email": "rotorua@stihlshop.co.nz",
+    "locatorRegion": "Bay of Plenty"
+  },
+  {
+    "store_name": "STIHL SHOP Tauranga",
+    "website_code": "tauranga",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/tauranga/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-tauranga/",
+    "latitude": "-37.68693520",
+    "longitude": "176.16415703",
+    "address": "154 Elizabeth Street, Tauranga 3110",
+    "phone": "07 577 0747",
+    "fax": "07 577 0740",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12:30pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/t/a/tauranga.jpg",
+    "description": "",
+    "email": "tauranga@stihlshop.co.nz",
+    "locatorRegion": "Bay of Plenty"
+  },
+  {
+    "store_name": "STIHL SHOP Te Puke",
+    "website_code": "tepuke",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/tepuke/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-te-puke/",
+    "latitude": "-37.78379900",
+    "longitude": "176.32632900",
+    "address": "124 Jellicoe Street, Te Puke 3119",
+    "phone": "07 573 7019",
+    "fax": "07 573 8547",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 1pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/t/e/te_puke.jpg",
+    "description": "",
+    "email": "tepuke@stihlshop.co.nz",
+    "locatorRegion": "Bay of Plenty"
+  },
+  {
+    "store_name": "STIHL SHOP Waihi",
+    "website_code": "waihi",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/waihi/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-waihi/",
+    "latitude": "-37.39348300",
+    "longitude": "175.83809600",
+    "address": "36 Kenny Street, Waihi 3610",
+    "phone": "07 863 8385",
+    "fax": "07 863 8196",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/w/a/waihi.jpg",
+    "description": "",
+    "email": "stihlshopwaihi@gmail.com",
+    "locatorRegion": "Bay of Plenty"
+  },
+  {
+    "store_name": "STIHL SHOP Whakatane",
+    "website_code": "whakatane",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/whakatane/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-whakatane/",
+    "latitude": "-37.95921300",
+    "longitude": "176.98238100",
+    "address": "11 King Street, Whakatane 3120",
+    "phone": "07 308 8658",
+    "fax": "07 308 0541",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl-shop-whakatane.jpg",
+    "description": "<p>Since joining the team in 2016, Patrick Redward soon took over as the owner and operator of STIHL SHOP Whakatane in 2019. We specialise in the excellent technical servicing of STIHL Chainsaws for our local customers, and we now also offer the option of Home Delivery and Click & Collect for online purchases. <p>\r\n\r\n<p> We are long-time supporters of a number of local charity fishing & golf tournaments, and once a week we’re proud to have a student from the Trident High School Special Education Centre come into our store for work experience.</p>\r\n\r\n<p>We stock the following brands: STIHL, Masport, Honda, Rover, Cub Cadet, Hansa Chippers, Big Dog Zero-Turn Mowers</p>",
+    "email": "whakatane@stihlshop.co.nz",
+    "locatorRegion": "Bay of Plenty"
+  },
+  {
+    "store_name": "STIHL SHOP Lakelands (Rotorua)",
+    "website_code": "lakelands",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/lakelands/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-lakelands/",
+    "latitude": "-38.14018511",
+    "longitude": "176.24076734",
+    "address": "2/1560 Amohau Street",
+    "phone": "07 348 8141",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 3pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 2pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/l/a/lakelands.jpg",
+    "description": "",
+    "email": "lakelands@stihlshop.co.nz",
+    "locatorRegion": "Bay of Plenty"
+  },
+  {
+    "store_name": "STIHL SHOP Ashburton",
+    "website_code": "ashburton",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/ashburton/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-ashburton/",
+    "latitude": "-43.90493700",
+    "longitude": "171.74850100",
+    "address": "187 West Street, Ashburton 7700",
+    "phone": "03 308 2055",
+    "fax": "03 308 2055",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl-shop-ashburton.jpg",
+    "description": "<p>Since 2015, Jeff and Kerry Marshall have owned and operated STIHL SHOP Ashburton. We enjoy offering our customers friendly service, and supply STIHL petrol and battery equipment to them in-store, as well as online for Home Delivery and Click & Collect.</p>\r\n<p>Having lived in Ashburton our entire lives, we continue to support local events and sports teams, as well as the Ashburton Fire Brigade, which Jeff is the Deputy Chief Fire Officer.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda Power Equipment, Silky and Suzuki Motorcycles.</b>\r\n",
+    "email": "ashburton@stihlshop.co.nz",
+    "locatorRegion": "Canterbury"
+  },
+  {
+    "store_name": "STIHL SHOP Fosters",
+    "website_code": "fosters",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/fosters/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-fosters/",
+    "latitude": "-43.53937600",
+    "longitude": "172.55723400",
+    "address": "559 Blenheim Road, Sockburn, Christchurch 8042",
+    "phone": "03 343 6339",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9:30am - 3pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/f/o/fosters_-_b_road_staff.jpg",
+    "description": "",
+    "email": "fosters@stihlshop.co.nz",
+    "locatorRegion": "Canterbury"
+  },
+  {
+    "store_name": "STIHL SHOP Northwood",
+    "website_code": "northwood",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/northwood/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-northwood/",
+    "latitude": "-43.45834828",
+    "longitude": "172.62406577",
+    "address": "554 Main North Road, Belfast, Christchurch 8051",
+    "phone": "03 974 2469",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9:30am - 3pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_logo_15.jpg",
+    "description": "",
+    "email": "northwood@stihlshop.co.nz",
+    "locatorRegion": "Canterbury"
+  },
+  {
+    "store_name": "STIHL SHOP Rangiora",
+    "website_code": "rangiora",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/rangiora/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-rangiora/",
+    "latitude": "-43.32559400",
+    "longitude": "172.59953400",
+    "address": "21 Station Road, Rangiora 7400",
+    "phone": "03 313 3398",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9:30am - 3pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_rangiora.jpg",
+    "description": "",
+    "email": "rangiora@stihlshop.co.nz",
+    "locatorRegion": "Canterbury"
+  },
+  {
+    "store_name": "STIHL SHOP Timaru",
+    "website_code": "timaru",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/timaru/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-timaru/",
+    "latitude": "-44.36132400",
+    "longitude": "171.24161200",
+    "address": "105 Hilton Highway, Washdyke, Timaru 7910",
+    "phone": "03 688 2557",
+    "fax": "03 688 2559",
+    "hours": {
+      "monday": {
+        "label": "Monday - Thursday",
+        "hours": "8am - 5:30pm"
+      },
+      "friday": {
+        "label": "Friday",
+        "hours": "8am - 7pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 3pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_timaru_john_bishop.jpg",
+    "description": "<p>With a true “we service what we sell“ attitude, our team makes sure that our customers‘ equipment is well looked after so they can keep up with all their outdoor projects. We enjoy being able to offer a great range of STIHL tools and accessories in-store and online for convenient Home Delivery and Click & Collect.</p>\r\n\r\n<p>We’re also proud sponsors and supporters of various community groups and activities around the Timaru community.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Rover, Cub Cadet, Honda, Hansa Chippers, and Hustler.</b>\r\n",
+    "email": "timaru@stihlshop.co.nz",
+    "locatorRegion": "Canterbury"
+  },
+  {
+    "store_name": "STIHL SHOP Rolleston",
+    "website_code": "rolleston",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/rolleston/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-rolleston/",
+    "latitude": "-43.58383341",
+    "longitude": "172.38427753",
+    "address": "40 Hoskyns Road, Rolleston 7675, New Zealand",
+    "phone": "03 242 0421",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8:30am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "9am - 4pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/r/o/rolleston_2025.jpg",
+    "description": "",
+    "email": "rolleston@stihlshop.co.nz",
+    "locatorRegion": "Canterbury"
+  },
+  {
+    "store_name": "STIHL SHOP Ferrymead",
+    "website_code": "ferrymead",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/ferrymead/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-ferrymead/",
+    "latitude": "-43.55669270",
+    "longitude": "172.69877216",
+    "address": "1/987 Ferry Road, Ferrymead, Christchurch 8023",
+    "phone": "033764656",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_ferrymead.jpg",
+    "description": "<p>Bill and Shelley have been the proud owners and operators of STIHL SHOP Ferrymead since its opening in August 2023. After owning 2 successful STIHL Shops on the West Coast and receiving the prestigious STIHL Retailer of the Year award, Bill and Shelley have followed their hearts and opened a brand new store in their hometown of Christchurch. Loving what they do, the team focuses on the sales and expert servicing of Outdoor Power Equipment. They offer a great range of STIHL tools and accessories in store, as well as online for fast Home Delivery and Click & Collect. </p>\r\n\r\n<p><strong>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda, Hansa, Silky and Lawnmaster</strong></p>\r\n",
+    "email": "ferrymead@stihlshop.co.nz",
+    "locatorRegion": "Canterbury"
+  },
+  {
+    "store_name": "STIHL SHOP Amberley",
+    "website_code": "amberley",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/amberley/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-amberley/",
+    "latitude": "-43.15089160",
+    "longitude": "172.72995970",
+    "address": "47 Carters Road, Amberley 7410, New Zealand",
+    "phone": "03 662 3004",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/s/ss_amberley_1.jpg",
+    "description": "",
+    "email": "amberley@stihlshop.co.nz",
+    "locatorRegion": "Canterbury"
+  },
+  {
+    "store_name": "STIHL SHOP Sydenham",
+    "website_code": "sydenham",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/sydenham/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-sydenham/",
+    "latitude": "-43.54712000",
+    "longitude": "172.63566000",
+    "address": "32 Stanley Street, CHRISTCHURCH 8023, New Zealand",
+    "phone": "033793739",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/y/sydenham.jpg",
+    "description": "<p>Bill and Shelley are proud to bring their experience and passion for Outdoor Power Equipment to the STIHL SHOP Sydenham store. Following the success of their two West Coast stores in Greymouth and Westport, and their first Christchurch store in Ferrymead, Sydenham is the next step in their commitment to providing Christchurch customers with quality products, expert advice and exceptional service.</p>\r\n<p>The team offers a great range of STIHL tools and accessories, along with other leading outdoor power equipment brands, and a fully equipped Platinum Workshop for expert servicing and repairs.</p>\r\n<p>STIHL SHOP Sydenham is open 7 days, with Home Delivery and Click & Collect also available.</p>",
+    "email": "sydenham@stihlshop.co.nz",
+    "locatorRegion": "Canterbury"
+  },
+  {
+    "store_name": "STIHL SHOP Gisborne",
+    "website_code": "gisborne",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/gisborne/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-gisborne/",
+    "latitude": "-38.66031898",
+    "longitude": "178.02002642",
+    "address": "51 Carnarvon Street, Gisborne 4010",
+    "phone": "06 868 8045",
+    "fax": "06 868 8044",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8am - 2pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/g/i/gisborne.jpg",
+    "description": "<p>STIHL Shop Gisborne has been owned and operated by Tony and Kirsten Morris since mid-2020. We cater to all users of Outdoor Power Equipment with friendly and professional customer service. </p>\r\n\r\n<p>As well our expert onsite servicing, repairs and in-store sales, we offer customers Home Delivery and Click and collect options for online purchases. \r\nBeing Gisborne locals, we like to support our community where we can. Keep an eye out for our new local giveback program! </p>\r\n\r\n<p><strong>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda Power Equipment, Hansa Chippers, Lawnmaster, Wrights Stander and more! </strong></p>",
+    "email": "gisborne@stihlshop.co.nz",
+    "locatorRegion": "Gisborne"
+  },
+  {
+    "store_name": "STIHL SHOP Greenmeadows (Napier)",
+    "website_code": "greenmeadows",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/greenmeadows/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-greenmeadows/",
+    "latitude": "-39.52474700",
+    "longitude": "176.86395800",
+    "address": "2 Gloucester Street, Greenmeadows, Napier 4112",
+    "phone": "06 844 2418",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl-shop-greenmeadows.jpg",
+    "description": "<p>Owned & Operated by Hayden & Vicki Buckman since 2014, Stihl Shop Greenmeadows is proud to service Napier and the wider area, specialising in online and instore sales of STIHL equipment, Lawnmowers, Rideons and also the supply and install of wood fires.   We pride ourselves in our quality service, ensuring customers have the right tool for the job, backed up by a service workshop for all your repairs and maintenance requirements. </p>\r\n\r\n<p>We are also proud sponsors of local schools, clubs and community events including Magpies Rugby, Taradale Rugby Club and the Puketapu Auction & Fair. </p>\r\n\r\n<p><strong>We stock the following brands: STIHL, Masport, Cub Cadet, Hansa, Honda Power Equipment, Stiga, Protos, Fiskars plus Masport, Metro and Firenzo woodfires. </strong></p>\r\n",
+    "email": "greenmeadows@stihlshop.co.nz",
+    "locatorRegion": "Hawke's Bay"
+  },
+  {
+    "store_name": "STIHL SHOP Hastings",
+    "website_code": "hastings",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/hastings/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-hastings/",
+    "latitude": "-39.63653840",
+    "longitude": "176.85506701",
+    "address": "906 Karamu Road North, Hastings 4122",
+    "phone": "06 876 9458",
+    "fax": "06 878 9843",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_hastings_1100_x_730.jpg",
+    "description": "<p>We are a proud retailer of STIHL equipment in the Hastings community, owned and operated by Gareth and Amie Chadwick’, we specialise in friendly and personalised customer service. We're proud to offer customers ongoing advice and technical assistance.</p>\r\n<h5><strong>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda Power Equipment, Ziegler & Brown BBQs, Billy Goat, Hansa, AES Waterblasters, Silky, Fiskars and Wolf Garten.</strong></h5>",
+    "email": "hastings@stihlshop.co.nz",
+    "locatorRegion": "Hawke's Bay"
+  },
+  {
+    "store_name": "STIHL SHOP Napier",
+    "website_code": "napier",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/napier/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-napier/",
+    "latitude": "-39.49378000",
+    "longitude": "176.90796800",
+    "address": "43 Thackeray Street, Napier South, Napier 4110",
+    "phone": "06 835 7850",
+    "fax": "06 835 7850",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_napier_martin_and_deborah.jpg",
+    "description": "<p>Owners Martin and Deborah Leach are the owners and operators of STIHL SHOP Napier, with great knowledge of the online sales and mechanical servicing of STIHL equipment, as well as other major Outdoor Power brands, and Weber BBQs. </p>\r\n\r\n<p>Around our community we like to support local groups, and we are proud sponsors of the Magpies Rugby Club, Art Deco Golf Tournament, the Hohepa Foundation, and the Napier City Gardening competition. </p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Cub Cadet, Honda, Hansa Chippers, Weber BBQs and Lawnmaster.</b>\r\n",
+    "email": "napier@stihlshop.co.nz",
+    "locatorRegion": "Hawke's Bay"
+  },
+  {
+    "store_name": "STIHL SHOP Waipukurau",
+    "website_code": "waipukurau",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/waipukurau/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-waipukurau/",
+    "latitude": "-39.99378202",
+    "longitude": "176.54578500",
+    "address": "51 Takapau Road, Waipukurau 4200",
+    "phone": "06 858 9109",
+    "fax": "06 858 9912",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/w/a/waipukurau.jpg",
+    "description": "<p>Supplying and servicing STIHL equipment to the CHB community since 1990, we specialise in friendly and personal customer service. We are also your one stop shop for all Honda ATV’s, MUV’s and Farm bikes.</p>\r\n\r\n<p>Mills Honda and Stihl Shop Waipukurau are proud of our community involvement in CHB. We actively sponsor a number of sporting disciplines, including golf, rugby, dog trialling and trail bike riding. Culturally, we sponsor local theatre and school fundraising. We stand and support the community that supports us.</p>\r\n<strong>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda and Honda Power Equipment, Billy Goat, Hansa and C-Dax</strong>\r\n",
+    "email": "waipukurau@stihlshop.co.nz",
+    "locatorRegion": "Hawke's Bay"
+  },
+  {
+    "store_name": "STIHL SHOP Wairoa",
+    "website_code": "wairoa",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/wairoa/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-wairoa/",
+    "latitude": "-39.03434100",
+    "longitude": "177.41876000",
+    "address": "54 Queen Street, Wairoa 4108",
+    "phone": "06 838 9005",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:45am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/w/a/wairoa_2023.jpg",
+    "description": "<p>We're proud to be an authorized service and repair agent for the brands we stock below, including cars and trailers. We also offer Castrol lubricants for farm and forestry equipment. </p>\r\n<br>\r\n<b>We stock the following brands: STIHL, Honda Power Equipment, Briggs & Stratton, Masport, Cub Cadet, Rover, and Hansa Chippers. </b>\r\n\r\n",
+    "email": "wairoa@stihlshop.co.nz",
+    "locatorRegion": "Hawke's Bay"
+  },
+  {
+    "store_name": "STIHL SHOP Feilding",
+    "website_code": "feilding",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/feilding/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-feilding/",
+    "latitude": "-40.22907100",
+    "longitude": "175.57008900",
+    "address": "30 Aorangi Street, Feilding 4702",
+    "phone": "06 323 8271",
+    "fax": "06 323 8271",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:30am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8am - 2pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/s/ss_feilding.jpg",
+    "description": "<p>Stihl Shop Feilding is proudly locally owned and operated business in its current location since 2010. The team love helping customers into the correct piece of equipment for their requirements with professional ongoing advice. </p>\r\n\r\n<p><strong>We specialise in major Outdoor Power Equipment brands such as STIHL, Honda, Walker, Masport, Cub Cadet, LawnMaster, as well as being Feilding’s only cycle store with cycles and E-Bikes such as Avanti, Scott, and GT, and Home Heating with Firenzo Wood Fires. </strong></p>\r\n\r\n<p>We love being involved in the awesome Feilding community, from sponsoring Feilding High Girls Rugby and Feilding Junior Rugby, to donating to the volunteer Fire Brigades and Young Farmers.</p>\r\n\r\n<p>Come in and see Richard, Dan and the team for all your needs.</p>\r\n\r\n<p>STIHL SHOP Feilding would love your feedback. <a href=\"https://g.page/r/CfQ7rpE96kcqEB0/review\">Post a review to our profile</a>. </p>\r\n ",
+    "email": "feilding@stihlshop.co.nz",
+    "locatorRegion": "Manawatu"
+  },
+  {
+    "store_name": "STIHL SHOP Pahiatua",
+    "website_code": "pahiatua",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/pahiatua/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-pahiatua/",
+    "latitude": "-40.45303200",
+    "longitude": "175.84049700",
+    "address": "116 Main Street, Pahiatua 4910",
+    "phone": "06 376 8829",
+    "fax": "06 376 8837",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_levin_bevan_and_ingrid_1.jpg",
+    "description": "<p>Since 2008, Bevan and Ingrid have owned and operated STIHL SHOP Pahaitua, and loved their connection to the local community. As a business, we specialise in good old-fashioned small town service, with a strong focus on the retail of quality STIHL products. For online purchases, we make sure Click & Collect orders are ready to go before our customers even walk in the door, and we always offer ongoing advice an service.</p>\r\n\r\n<p>Deeply involved in our community, we are all about being local. We sponsor a number of local schools, sports clubs, community end farming events, as well as hold our own events such as the Twilight Rides, Mini (motorcycle) Rides, Golf Tournaments and Demo Days.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Honda Power Equipment, Cub Cadet, Rover, Honda Motorcycles, Walker, Hustler.</b>\r\n",
+    "email": "office@bissethonda.co.nz",
+    "locatorRegion": "Manawatu"
+  },
+  {
+    "store_name": "STIHL SHOP Palmerston North",
+    "website_code": "palmerston_north",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/palmerston_north/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-palmerston-north/",
+    "latitude": "-40.34925900",
+    "longitude": "175.62611100",
+    "address": "711 Main Street, Palmerston North 4414",
+    "phone": "06 358 6275",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "8am - 2pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/s/ss_palmerston_north_2025.jpg",
+    "description": "<p>Mark Detrey & Jo Bird are proud co-owners of STIHL SHOP Palmerston North, your trusted local outdoor power equipment specialists. Both lifelong residents of the Manawatū region, they are passionate about supporting the community and helping locals find the right gear for every job.</p>\r\n<p>STIHL SHOP Palmerston North proudly supports local schools, Riders Against Cancer (RAC), and other community groups. We love giving back to the community that have supported us over the years.</p>\r\n<p>We stock the following brands: STIHL, Cub Cadet, Masport, LawnMaster, Hansa, Honda, Wet & Forget</p>",
+    "email": "palmerstonnorth@stihlshop.co.nz",
+    "locatorRegion": "Manawatu"
+  },
+  {
+    "store_name": "STIHL SHOP Whanganui",
+    "website_code": "wanganui",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/wanganui/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-wanganui/",
+    "latitude": "-39.93671477",
+    "longitude": "175.05289389",
+    "address": "111 Ridgway Street, Whanganui 4500",
+    "phone": "06 348 9560",
+    "fax": "06 348 9460",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "8am - 2pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/w/a/wanganui.jpg",
+    "description": "",
+    "email": "wanganui@stihlshop.co.nz",
+    "locatorRegion": "Manawatu"
+  },
+  {
+    "store_name": "STIHL SHOP Taihape",
+    "website_code": "taihape",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/taihape/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-taihape/",
+    "latitude": "-39.67732932",
+    "longitude": "175.79821405",
+    "address": "91 Hautapu Street, Taihape 4720, New Zealand",
+    "phone": "06 388 1211",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8:30am - 1:30pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_logo.jpg",
+    "description": "",
+    "email": "taihape@stihlshop.co.nz",
+    "locatorRegion": "Manawatu"
+  },
+  {
+    "store_name": "STIHL SHOP Blenheim",
+    "website_code": "blenheim",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/blenheim/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-blenheim/",
+    "latitude": "-41.51638400",
+    "longitude": "173.96024900",
+    "address": "30 Redwood Street, Blenheim 7201",
+    "phone": "03 578 3600",
+    "fax": "03 578 3670",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8:30am - 3pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/b/l/blenheim.jpg",
+    "description": "At STIHL SHOP Blenheim, we're proud to be Marlborough’s trusted destination for outdoor power equipment, tools, and expert advice.\r\nWe stock a wide range of STIHL products, including chainsaws, lawn mowers, trimmers, blowers, battery tools, safety gear, accessories, and ride-on mowers to suit your needs.\r\nOur knowledgeable team is here to provide professional servicing, repairs, genuine parts, and tailored recommendations to help you find the right solution for the job.",
+    "email": "blenheim@stihlshop.co.nz",
+    "locatorRegion": "Marlborough"
+  },
+  {
+    "store_name": "STIHL SHOP Motueka",
+    "website_code": "motueka",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/motueka/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-motueka/",
+    "latitude": "-41.12310600",
+    "longitude": "173.00885000",
+    "address": "396 High Street, Motueka 7120",
+    "phone": "03 528 9159",
+    "fax": "03 528 6429",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_logo_9.jpg",
+    "description": "<p>We specialise in providing Outdoor Equipment solutions to our strong Lifestyle block customer base, who can now choose to shop in-store, or online for easy Home Delivery and Click & Collect.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Honda, Rover, Cub Cadet, Gravely, Atex, Hansa, Lawnmaster and Silky </b>",
+    "email": "motueka@stihlshop.co.nz",
+    "locatorRegion": "Nelson"
+  },
+  {
+    "store_name": "STIHL SHOP Nelson",
+    "website_code": "nelson",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/nelson/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-nelson/",
+    "latitude": "-41.27538202",
+    "longitude": "173.27729602",
+    "address": "68 Vanguard Street, Nelson South, Nelson 7010",
+    "phone": "03 548 0179",
+    "fax": "03 548 0591",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 2pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl-shop-nelson.jpg",
+    "description": "<p>Since 2019, Michelle and Isaac Russell have enjoyed providing customers with helpful and friendly advice for their STIHL garden tools, and whether they are purchased in-store or online – customers are offered ongoing repairs and service through their Service Centre.</p>\r\n\r\n<p>Locals ourselves, we’re actively involved around the Nelson community, sponsoring the Nelson Rugby Club, North Nelson Country Club, Nelson College 1st XV as well as Hira Primary School.</p>\r\n\r\n<p>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Bob Cat, Canycom, Hansa Chippers, Honda and Silky.</p>\r\n",
+    "email": "nelson@stihlshop.co.nz",
+    "locatorRegion": "Nelson"
+  },
+  {
+    "store_name": "STIHL SHOP Richmond",
+    "website_code": "richmond",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/richmond/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-richmond/",
+    "latitude": "-41.34372878",
+    "longitude": "173.17007038",
+    "address": "62 Gladstone Road, Richmond 7020",
+    "phone": "03 544 6122",
+    "fax": "03 544 0022",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8am - 12:30pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_richmond_jo_and_grant.jpg",
+    "description": "<p>Since 2011 Jo and Grant Blanchet have been the owners of STIHL SHOP Richmond looking after their local customers with all their Outdoor Power Equipment needs. Our team specialises in offering excellent technical knowledge and service, and provide high quality STIHL tools and accessories in-store and online.</p>\r\n\r\n<p>We’re proud to be major sponsors of Waimea Old Boys Rugby Club, as well as Greenacres Golf and Keep Richmond Beautiful. </p>\r\n\r\n<p>We stock the following brands: STIHL, Masport, Honda, Walker, Hustler, and Wacker Neusson</p>\r\n",
+    "email": "sales@stihlshoprichmond.co.nz",
+    "locatorRegion": "Nelson"
+  },
+  {
+    "store_name": "STIHL SHOP Kaitaia",
+    "website_code": "kaitaia",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/kaitaia/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-kaitaia/",
+    "latitude": "-35.09613077",
+    "longitude": "173.25754747",
+    "address": "134 North Road, Kaitaia 0482, New Zealand",
+    "phone": "09 408 2770",
+    "fax": "09 408 2140",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8:30am - 3pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_kaitaia_2025.jpg",
+    "description": "",
+    "email": "kaitaia@stihlshop.co.nz",
+    "locatorRegion": "Northland"
+  },
+  {
+    "store_name": "STIHL SHOP Waipapa",
+    "website_code": "waipapa",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/waipapa/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-waipapa/",
+    "latitude": "-35.21197400",
+    "longitude": "173.91839700",
+    "address": "1 Klinac Lane, Waipapa 0295",
+    "phone": "09 407 6140",
+    "fax": "09 407 6141",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/w/a/waipapa.jpg",
+    "description": "",
+    "email": "waipapa@stihlshop.co.nz",
+    "locatorRegion": "Northland"
+  },
+  {
+    "store_name": "STIHL SHOP Whangarei",
+    "website_code": "whangarei",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/whangarei/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-whangarei/",
+    "latitude": "-35.72726385",
+    "longitude": "174.32596020",
+    "address": "17 Reyburn Street, Whangarei 0110",
+    "phone": "09 438 8841",
+    "fax": "09 438 8841",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "8am - 2pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/w/h/whangarei_1.jpg",
+    "description": "<p>Since mid 2021 Raymond, Olivia and James have been owners and operators of STIHL SHOP Whangarei. We provide our customers with helpful advice when selecting their STIHL outdoor power equipment such as STIHL lawnmowers, STIHL water blasters and STIHL weed eaters.  We are leading suppliers of ride-on mowers in Whangarei. </p>\r\n<p>We continue to support many local schools and charities such as Kids Foundation, Autism NZ, Kids Day Out and others. </p>\r\n<p><b>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda Power Equipment, Hansa Chippers, Lawnmaster and Silky.</b></p>\r\n",
+    "email": "whangarei@stihlshop.co.nz",
+    "locatorRegion": "Northland"
+  },
+  {
+    "store_name": "STIHL SHOP Dargaville",
+    "website_code": "dargaville",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/dargaville/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-dargaville/",
+    "latitude": "-35.94224230",
+    "longitude": "173.86450370",
+    "address": "26 Normanby Street, Dargaville 0310, New Zealand",
+    "phone": "0508784457",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8:30am - 3pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/s/ss_dargaville.jpg",
+    "description": "",
+    "email": "dargaville@stihlshop.co.nz",
+    "locatorRegion": "Northland"
+  },
+  {
+    "store_name": "STIHL SHOP Dunedin",
+    "website_code": "dunedin",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/dunedin/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-dunedin/",
+    "latitude": "-45.89590600",
+    "longitude": "170.50668200",
+    "address": "535 Andersons Bay Road, South Dunedin, Dunedin 9012",
+    "phone": "03 455 4667",
+    "fax": "03 455 5093",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:45am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 3pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "8am - 2pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_logo_14.jpg",
+    "description": "<p>We proudly service and repair all brands of Outdoor Power Equipment and other small engine machinery.</p>\r\n\r\n<p>Our customers have access to an excellent range of STIHL products in-store and online, which they are always welcome to bring into our workshop for ongoing service and maintenance to get the most out of their tools.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Hansa Chippers, Honda Outdoor Power Equipment, Lawnmaster, Silky, Grillo, and UBCO Electric Motor Bikes. </b>\r\n",
+    "email": "dunedin@stihlshop.co.nz",
+    "locatorRegion": "Otago"
+  },
+  {
+    "store_name": "STIHL SHOP Milton",
+    "website_code": "milton",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/milton/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-milton/",
+    "latitude": "-46.12032968",
+    "longitude": "169.96008345",
+    "address": "101 Union Street, Milton 9220",
+    "phone": "03 417 8959",
+    "fax": "03 417 8981",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "6am - 6pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl-shop-milton-john2.jpg",
+    "description": "<p>STIHL SHOP Milton is proudly owned and operated by long-time local, John Taal. As a team we aim to provide exceptional service to everyone and are well-known specialists to the Forestry and Farming sectors, with a strong emphasis on STIHL Chainsaws and CanAm Farm Vehicles. </p>\r\n\r\n<p>We always try to encompass a “locals supporting locals” attitude around the community, so when you shop online with us, you're supporting a locally-owned Kiwi business. Around the community, we are strong supporters of service groups, schools, and sports clubs and like to be involved in their activities and events which help build a stronger Milton community.</p>\r\n\r\n<p>We stock the following brands: STIHL, Masport, Honda, Rover, Cub Cadet, Briggs & Stratton, CanAm and Ironman 4x4 Accessories.</p>\r\n",
+    "email": "milton@stihlshop.co.nz",
+    "locatorRegion": "Otago"
+  },
+  {
+    "store_name": "STIHL SHOP Oamaru",
+    "website_code": "oamaru",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/oamaru/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-oamaru/",
+    "latitude": "-45.07785892",
+    "longitude": "170.98465727",
+    "address": "394 Thames Highway, Oamaru North, Oamaru 9400",
+    "phone": "03 437 1850",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_oamaru_brad_selfe.jpg",
+    "description": "<p>STIHL SHOP Oamaru is owned and operated by Brad Selfe, specialising in the sales and service of the STIHL product range, as well as Honda motorcycles. Formerly known as Oamaru Motorcycles, STIHL SHOP Oamaru has been a family owned business for over 48 years with a commitment to great service and product knowledge.</p>\r\n\r\n<p>A long-time stockist of STIHL tools and accessories, local Oamaru customers can now choose to shop both in-store and online for Home Delivery and Click and Collect options.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda, and Hansa Chippers.</b>\r\n",
+    "email": "oamaru@stihlshop.co.nz",
+    "locatorRegion": "Otago"
+  },
+  {
+    "store_name": "STIHL SHOP Queenstown",
+    "website_code": "queenstown",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/queenstown/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-queenstown/",
+    "latitude": "-45.01270050",
+    "longitude": "168.75530433",
+    "address": "208 Glenda Drive, Frankton, Queenstown 9300",
+    "phone": "03 442 3896",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl-qtwn.jpg",
+    "description": "",
+    "email": "queenstown@stihlshop.co.nz",
+    "locatorRegion": "Otago"
+  },
+  {
+    "store_name": "STIHL SHOP Wanaka",
+    "website_code": "wanaka",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/wanaka/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-wanaka/",
+    "latitude": "-44.68879900",
+    "longitude": "169.14377597",
+    "address": "3 Reece Crescent, Wanaka 9305",
+    "phone": "03 443 7916",
+    "fax": "03 443 7917",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 1pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_wanaka_sam_and_jenna.jpg",
+    "description": "<p>Sam and Jenna Scott have owned and operated STIHL SHOP Wanaka since 2016. Always making sure our customers have the sharpest Chainsaw chains in town, we love giving them the best advice possible when purchasing their STIHL tools in-store and online.</p>\r\n\r\n<p>Living locally, we’re actively involved in our community. We are very proud sponsors of the Lake Hawea Netball Club and the Lake Hawea Fishing Competition, as well the Lions Club.</p>\r\n\r\n<p>We Stock the following brands: STIHL, Masport, Honda, Rover, Cub Cadet, Hustler, Silky, Red Band and Hansa Chippers</p>\r\n",
+    "email": "wanaka@stihlshop.co.nz",
+    "locatorRegion": "Otago"
+  },
+  {
+    "store_name": "STIHL SHOP Cromwell",
+    "website_code": "cromwell",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/cromwell/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-cromwell/",
+    "latitude": "-45.03670730",
+    "longitude": "169.19087850",
+    "address": "12 Elspeth Street",
+    "phone": "03 445 1046",
+    "fax": "03 445 1042",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_cromwell.jpg",
+    "description": "<p>STIHL SHOP Cromwell specialize in the sale and service of STIHL Outdoor Power Equipment, as well as John Deere. Customers can also purchase their STIHL gear online to be delivered to their home, or they can choose to come in-store for Click & Collect where we will have everything ready to go.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Honda Power Equipment, and John Deere.</b>\r\n",
+    "email": "cromwell@stihlshop.co.nz",
+    "locatorRegion": "Otago"
+  },
+  {
+    "store_name": "STIHL SHOP Mosgiel",
+    "website_code": "mosgiel",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/mosgiel/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-mosgiel/",
+    "latitude": "-45.85802000",
+    "longitude": "170.35249000",
+    "address": "119 Dukes Road North, Mosgiel 9092, New Zealand",
+    "phone": "+6434861222",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:30am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8:30am - 1pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl-shop-mosgiel-team.jpg",
+    "description": "",
+    "email": "mosgiel@stihlshop.co.nz",
+    "locatorRegion": "Otago"
+  },
+  {
+    "store_name": "STIHL SHOP Alexandra",
+    "website_code": "alexandra",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/alexandra/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-alexandra/",
+    "latitude": "-45.25085487",
+    "longitude": "169.38812923",
+    "address": "71 Centennial Avenue, Alexandra",
+    "phone": "03 9767560 ",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_alexandra.jpg",
+    "description": "<p>STIHL SHOP Alexandra specialise in the sale and service of STIHL Outdoor Power Equipment, we also service other brands of outdoor power equipment in our fully equipped workshop. Customers can also purchase their STIHL gear online to be delivered to their home, or they can choose to come in-store for Click & Collect where we will have everything ready to go.</p>\r\n<p><b>We stock the following brands:  STIHL, Cub Cadet, Hansa Chippers, Masport, Lawnmaster, Honda Power Equipment</b></p>",
+    "email": "alexandra@stihlshop.co.nz",
+    "locatorRegion": "Otago"
+  },
+  {
+    "store_name": "STIHL SHOP Gore",
+    "website_code": "gore",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/gore/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-gore/",
+    "latitude": "-46.10495500",
+    "longitude": "168.94181400",
+    "address": "189 Main Street, Gore 9710",
+    "phone": "03 208 7518",
+    "fax": "03 208 7318",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "10am - 1pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/g/o/gore.jpg",
+    "description": "",
+    "email": "gore@stihlshop.co.nz",
+    "locatorRegion": "Southland"
+  },
+  {
+    "store_name": "STIHL SHOP Invercargill",
+    "website_code": "invercargill",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/invercargill/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-invercargill/",
+    "latitude": "-46.41278960",
+    "longitude": "168.35433142",
+    "address": "120 Tay Street, Invercargill 9810",
+    "phone": "03 218 9364",
+    "fax": "03 218 7584",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_invercargill_don_and_shirley.jpg",
+    "description": "<p>A family-owned and operated business since 1985, long-time locals Don, Gill and Shirley Muirhead have been key members of the Invercargill community. With years of experience in the Outdoor Power Industry, we’re great at matching the right customer with the right tool. We have a strong focus on customer service, and we’ll even make sure all products purchased online for Click & Collect are assembled and ready to go before you even walk in the door.</p>\r\n\r\n<p>We enjoy supporting a number of charities and associations in the community, including the Kids’ Hospital Appeal, Autism New Zealand, Eagles Golf, Georgetown Scouts and the Southland Softball Association.</p> \r\n\r\n<p>We stock the following brands: STIHL, Masport, Honda, Rover, Cub Cadet, Countax, Walker, MTD, Ferris, Stiga, Lawnmaster, Tesstarossa, Morrison, Victa, Weber BBQs, Briggs & Stratton, Kohler, Silky, Wolf Garden, Kiwi Care and Hansa Chippers.</p>\r\n",
+    "email": "invercargill@stihlshop.co.nz",
+    "locatorRegion": "Southland"
+  },
+  {
+    "store_name": "STIHL SHOP Winton",
+    "website_code": "winton",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/winton/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-winton/",
+    "latitude": "-46.14642600",
+    "longitude": "168.32764900",
+    "address": "177 Great North Road, Winton 9720",
+    "phone": "03 236 8585",
+    "fax": "03 236 8585",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 1pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/s/ss_winton_fraser_and_sarah.jpg",
+    "description": "<p>STIHL SHOP Winton is a family owned and operated business since 1994, owned by Sarah and Fraser Guise. We are proud to offer our customers friendly advice and support with the sales and servicing of Outdoor Power Equipment, as well as cycles, including e-bikes. We stock a wide range of products to suit Southland customers from home domestic users through to farming, forestry, and commercial users. Our equipment is complimented by an extensive range of accessories, safety equipment and spare parts. </p>\r\n\r\n<p>We enjoy being engaged in our local community, and we are actively involved with helping primary schools, sports clubs and local charities. </p>\r\n\r\n<p><strong>We stock the following brands: STIHL, Masport, Lawnmaster, Walker, Cub Cadet, Stiga, Hustler, Rover, Hansa, Honda, Silky, Fiskars, Avanti, Merida and Scott. </strong></p>\r\n",
+    "email": "winton@stihlshop.co.nz",
+    "locatorRegion": "Southland"
+  },
+  {
+    "store_name": "STIHL SHOP Te Anau",
+    "website_code": "te_anau",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/te_anau/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-te-anau/",
+    "latitude": "-45.41203500",
+    "longitude": "167.72860944",
+    "address": "15 Snodgrass Road, Te Anau 9600",
+    "phone": "03 2497322",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/t/e/te_anau_1100x730.jpg",
+    "description": "",
+    "email": "teanau@stihlshop.co.nz",
+    "locatorRegion": "Southland"
+  },
+  {
+    "store_name": "STIHL SHOP Hawera",
+    "website_code": "hawera",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/hawera/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-hawera/",
+    "latitude": "-39.58441435",
+    "longitude": "174.28543836",
+    "address": "25 Glover Road, Hawera 4610, New Zealand",
+    "phone": "06 278 4753",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "6am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/h/a/hawera.jpg",
+    "description": "",
+    "email": "hawera@stihlshop.co.nz",
+    "locatorRegion": "Taranaki"
+  },
+  {
+    "store_name": "STIHL SHOP New Plymouth",
+    "website_code": "new_plymouth",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/new_plymouth/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-new-plymouth/",
+    "latitude": "-39.05493087",
+    "longitude": "174.07760695",
+    "address": "50 Molesworth Street, New Plymouth 4310",
+    "phone": "06 757 2929",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_new_plymouth_hamish_and_kate.jpg",
+    "description": "<p>Hamish and Kate Scott have owned and operated STIHL SHOP New Plymouth since 2018. Specialising in the sale and service of all manner of Outdoor Power Equipment, we enjoy helping our customers with all their technical needs. We now also offer online purchases for our STIHL product range, which is available for Click & Collect, or delivered straight to your doorstep. </p>\r\n\r\n<p>We are Taranaki's Ride On mower specialist's & have a large workshop to take care of whatever servicing you need for most makes & models. We are proud supporters of local schools around the New Plymouth community, as well as WITT and Taranaki Community Rescue Helicopters.</p>\r\n\r\n<p>We are open 7 days & stock the following brands: STIHL, Masport mowers, Cub Cadet, Rover, Stiga & Hustler Ride On mowers, Hansa Chippers, Silky Saws, Ziegler & Brown BBQ's.</p>\r\n",
+    "email": "newplymouth@stihlshop.co.nz",
+    "locatorRegion": "Taranaki"
+  },
+  {
+    "store_name": "STIHL SHOP Stratford",
+    "website_code": "stratford",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/stratford/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-stratford/",
+    "latitude": "-39.34338468",
+    "longitude": "174.28615206",
+    "address": "369 Broadway, Stratford 4332, New Zealand",
+    "phone": "06 765 5202",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stratford.jpg",
+    "description": "",
+    "email": "stratford@stihlshop.co.nz",
+    "locatorRegion": "Taranaki"
+  },
+  {
+    "store_name": "STIHL SHOP Cambridge",
+    "website_code": "cambridge",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/cambridge/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-cambridge/",
+    "latitude": "-37.89525700",
+    "longitude": "175.47068700",
+    "address": "26 Victoria Street, Cambridge 3434",
+    "phone": "07 827 6763",
+    "fax": "07 827 6763",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/c/a/caimbridge.jpg",
+    "description": "",
+    "email": "cambridge@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Hamilton East",
+    "website_code": "hamilton_east",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/hamilton_east/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-hamilton-east/",
+    "latitude": "-37.79825563",
+    "longitude": "175.29563968",
+    "address": "146 Grey Street, Hamilton East, Hamilton 3216",
+    "phone": "07 856 6597",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/h/a/hamilton_east_joel_alex.jpg",
+    "description": "<p>STIHL SHOP Hamilton East is owned and operated by Joel and Alex Hansen. One of our specialties is the sales and servicing of all major Ride On mower brands, as well as home installations of STIHL iMows. We also provide our customers with the options of in-store Click & Collect and easy Home Delivery for their online STIHL purchases.</p>\r\n\r\n<p>During our time our time at STIHL SHOP Hamilton East, we’ve been great supporters of Tamahere School, Womens’ Refuge Waikato, and the St. Johns Ambulance service.  </p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Cub Cadet, Hansa, Hustler, Stiga, and Wright Stander Mowers. </b>\r\n",
+    "email": "hamiltoneast@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Huntly",
+    "website_code": "huntly",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/huntly/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-huntly/",
+    "latitude": "-37.56109400",
+    "longitude": "175.16107200",
+    "address": "10 Ralph Street, Huntly 3700",
+    "phone": "07 828 0011",
+    "fax": "07 828 0015",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 12pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/h/u/huntly.jpg",
+    "description": "",
+    "email": "huntly@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Matamata",
+    "website_code": "matamata",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/matamata/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-matamata/",
+    "latitude": "-37.81346300",
+    "longitude": "175.77038700",
+    "address": "91 Firth Street, Matamata 3400",
+    "phone": "07 888 8272",
+    "fax": "07 888 5020",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/m/a/matamata.jpg",
+    "description": "",
+    "email": "matamata@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Morrinsville",
+    "website_code": "morrinsville",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/morrinsville/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/morrinsville/",
+    "latitude": "-37.65912237",
+    "longitude": "175.53021857",
+    "address": "8 Allen Street, Morrinsville 3300",
+    "phone": "07 889 6053",
+    "fax": "07 889 6723",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/s/ss_morrinsville_2025.jpg",
+    "description": "",
+    "email": "jan@mclarensrural.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Otorohanga",
+    "website_code": "otorohanga",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/otorohanga/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-otorohanga/",
+    "latitude": "-38.18236300",
+    "longitude": "175.21027300",
+    "address": "4 Te Kanawa St, Otorohanga 3900",
+    "phone": "07 873 4016",
+    "fax": "07 873 6367",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/o/t/otorohunga.jpg",
+    "description": "",
+    "email": "otorohanga@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Putaruru",
+    "website_code": "putaruru",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/putaruru/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-putaruru/",
+    "latitude": "-38.05174600",
+    "longitude": "175.78097000",
+    "address": "15 Taupo Street, Putaruru 3411",
+    "phone": "07 883 8935",
+    "fax": "07 883 8985",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8:30am - 12:30pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/p/u/putaruru-2026.jpg",
+    "description": "<p>Providing customers with great technical service and the convenience of shopping online for either Home Delivery or Click & Collect.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Rover, Cub Cadet, Honda, Ferris, Fiskas and Silky.</b> \r\n",
+    "email": "putaruru@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Taupo",
+    "website_code": "taupo",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/taupo/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-taupo/",
+    "latitude": "-38.68750084",
+    "longitude": "176.10576779",
+    "address": "64 Miro Street, Tauhara, Taupō 3378, New Zealand",
+    "phone": "07 378 4667",
+    "fax": "07 378 4667",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 1pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/t/a/taupo_1.jpg",
+    "description": "",
+    "email": "taupo@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Taumarunui",
+    "website_code": "taumarunui",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/taumarunui/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-taumarunui/",
+    "latitude": "-38.88368400",
+    "longitude": "175.25942500",
+    "address": "4 Katarina Street, Taumarunui 3920",
+    "phone": "07 895 8110",
+    "fax": "07 895 8760",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/t/a/taumaranui.jpg",
+    "description": "",
+    "email": "taumarunui@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Te Awamutu",
+    "website_code": "te_awamutu",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/te_awamutu/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-te-awamutu/",
+    "latitude": "-38.00445388",
+    "longitude": "175.32707678",
+    "address": "424 Ohaupo Road, Te Awamutu 3800",
+    "phone": "07 871 6134",
+    "fax": "07 871 3795",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "8am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl-shop-te_awamutu.jpg",
+    "description": "<p>Since 2013, Matthew and Sharlene have owned STIHL SHOP Te Awamutu with a focus on providing customers with expert service and friendly advice for all their tools. Aside from selling a great range of STIHL products online and in-store, we specialise in selling and servicing Walker Ride-on Mowers, and providing hire services.</p>\r\n\r\n<p>We support the local rugby grounds and bowling club, as well as 2 local golf courses, and other causes such as the Maungatari Trust and Fire Brigade.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda, Walker, Hustler, Stiga, Wright Stander and Nordic Mobility Scooters.</b>\r\n",
+    "email": "teawamutu@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Te Rapa",
+    "website_code": "te_rapa",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/te_rapa/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-te-rapa/",
+    "latitude": "-37.74339000",
+    "longitude": "175.21511100",
+    "address": "39 Te Kowhai Road East, Hamilton 3200",
+    "phone": "07 849 9966",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 4pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/t/e/terapa_3.jpg",
+    "description": "",
+    "email": "terapa@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Thames",
+    "website_code": "thames",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/thames/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-thames/",
+    "latitude": "-37.14249200",
+    "longitude": "175.54378000",
+    "address": "317 Pollen Street, Thames 3500",
+    "phone": "07 868 8730",
+    "fax": "07 868 8739",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/t/h/thames.jpg",
+    "description": "",
+    "email": "thames@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Tokoroa",
+    "website_code": "tokoroa",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/tokoroa/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-tokoroa/",
+    "latitude": "-38.21573733",
+    "longitude": "175.86700920",
+    "address": "12 Campbell Street, Tokoroa 3420",
+    "phone": "07 886 6612",
+    "fax": "07 886 6613",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 12pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/s/ss_tokoroa.jpg",
+    "description": "<p>Long-time owners Gaye and Russell Hoskins are true locals to the Tokoroa community and have extensive experience within the industry. We're an expert team committed to ensuring our customers receive the ultimate retail experience in-store, and we now offer a great range of STIHL products online that are available for Click & Collect and Home Delivery. </p>\r\n\r\n<p>We specialise in serving our Forestry, Farming, Commercial, and Domestic customers by making sure all their Outdoor Power needs are met.</p>\r\n\r\n<p>We stock the following brands: STIHL, Masport, Honda, Cub Cadet, Briggs & Stratton, John Deere, Hansa and Walker</p>\r\n",
+    "email": "tokoroa@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Whitianga - CURRENTLY CLOSED",
+    "website_code": "whitianga",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/whitianga/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-whitianga/",
+    "latitude": "-36.83384518",
+    "longitude": "175.69724282",
+    "address": "8 Joan Gaskell Drive, Whitianga 3510, New Zealand",
+    "phone": "07 8660211",
+    "fax": "07 866 0909",
+    "hours": {
+      "monday": {
+        "label": "Monday - Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/w/h/whitianga_2023.jpg",
+    "description": "",
+    "email": "whitianga@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Whangamata",
+    "website_code": "whangamata",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/whangamata/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-whangamata/",
+    "latitude": "-37.20187682",
+    "longitude": "175.86804628",
+    "address": "303 Casement Road",
+    "phone": "07 865 6093",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/w/h/whangamata.jpg",
+    "description": "",
+    "email": "whangamata@stihlshop.co.nz",
+    "locatorRegion": "Waikato"
+  },
+  {
+    "store_name": "STIHL SHOP Greytown",
+    "website_code": "greytown",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/greytown/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-greytown/",
+    "latitude": "-41.08811500",
+    "longitude": "175.45157600",
+    "address": "246 Main Street, Greytown 5712",
+    "phone": "06 304 9661",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "8am - 2pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/s/ss_greytown.jpg",
+    "description": "",
+    "email": "greytown@stihlshop.co.nz",
+    "locatorRegion": "Wellington"
+  },
+  {
+    "store_name": "STIHL SHOP Kapiti",
+    "website_code": "kapiti",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/kapiti/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-kapiti/",
+    "latitude": "-40.90603143",
+    "longitude": "174.99851640",
+    "address": "10 Te Roto Drive, Paraparaumu 5032",
+    "phone": "04-212-5570",
+    "fax": "04 902 6024",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/k/a/kapiti-2026.jpg",
+    "description": "",
+    "email": "kapiti@stihlshop.co.nz",
+    "locatorRegion": "Wellington"
+  },
+  {
+    "store_name": "STIHL SHOP Levin",
+    "website_code": "levin",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/levin/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-levin/",
+    "latitude": "-40.62600498",
+    "longitude": "175.28258218",
+    "address": "108 Oxford Street, Levin 5510, New Zealand",
+    "phone": "06 367 9951",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 1pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_levin_bevan_and_ingrid.jpg",
+    "description": "",
+    "email": "levin@stihlshop.co.nz",
+    "locatorRegion": "Wellington"
+  },
+  {
+    "store_name": "STIHL SHOP Petone ",
+    "website_code": "petone",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/petone/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-petone/",
+    "latitude": "-41.22493843",
+    "longitude": "174.87383020",
+    "address": "38 Victoria Street, Petone, Lower Hutt 5012, New Zealand",
+    "phone": "04 586 7139",
+    "fax": "04 527 9683",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 4pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_pentone_porirua_upper_hutt_alastair_and_louise_feb_2022.jpg",
+    "description": "<p>STIHL SHOP Petone is owned by Hutt Valley locals Alastair and Louise Thomson. We specialise in online and in-store sales of STIHL tools, and with a full service workshop, you can be rest-assured that your equipment will be kept in great working condition for years to come.</p>\r\n\r\n<p>Alastair and Louise are proud supports of a number of local organisations, such as Hutt High School Water Polo, HOBM Rugby, St Patricks Silverstream, Hutt International Boys School and the Upper Hutt Axemens Club.</p>\r\n\r\n<b>We stock the following brands: STIHL, Hansa, Masport, Rover, Cub Cadet, Honda Power Equipment, Walker and Hustler.</b>\r\n",
+    "email": "petone@stihlshop.co.nz",
+    "locatorRegion": "Wellington"
+  },
+  {
+    "store_name": "STIHL SHOP Masterton",
+    "website_code": "masterton",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/masterton/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-masterton/",
+    "latitude": "-40.94662435",
+    "longitude": "175.66420812",
+    "address": "4 Chapel Street, Masterton 5810",
+    "phone": "06 377 5549",
+    "fax": "06 377 4299",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "7am - 5:30pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 1pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/m/a/masterton.jpg",
+    "description": "",
+    "email": "masterton@stihlshop.co.nz",
+    "locatorRegion": "Wellington"
+  },
+  {
+    "store_name": "STIHL SHOP Upper Hutt",
+    "website_code": "upper_hutt",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/upper_hutt/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-upper-hutt/",
+    "latitude": "-41.12514700",
+    "longitude": "175.06194400",
+    "address": "769 Fergusson Drive, Elderslea, Upper Hutt 5018",
+    "phone": "04 527 9682",
+    "fax": "04 527 9683",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_pentone_porirua_upper_hutt_alastair_and_louise_feb_2022_1.jpg",
+    "description": "<p>STIHL SHOP Upper Hutt is owned by Hutt Valley locals Alastair and Louise Thomson. We specialise in online and in-store sales of STIHL tools, and with a full service workshop, you can be rest-assured that your equipment will be kept in great working condition for years to come.</p>\r\n\r\n<p>Alastair and Louise are proud supports of a number of local organisations, such as Hutt High School Water Polo, HOBM Rugby, St Patricks Silverstream, Hutt International Boys School and the Upper Hutt Axemens Club.</p>\r\n\r\n<b>We stock the following brands: STIHL, Hansa, Masport, Rover, Cub Cadet, Honda Power Equipment, Walker and Hustler.</b>",
+    "email": "upperhutt@stihlshop.co.nz",
+    "locatorRegion": "Wellington"
+  },
+  {
+    "store_name": "STIHL SHOP Porirua",
+    "website_code": "porirua",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/porirua/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-porirua/",
+    "latitude": "-41.13031928",
+    "longitude": "174.83697535",
+    "address": "6 Semple Street, Porirua City Centre, Porirua 5022, New Zealand",
+    "phone": "04 237 4085",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday",
+        "hours": "8:30am - 5pm"
+      },
+      "tuesday": {
+        "label": "Tuesday",
+        "hours": "9am - 5pm"
+      },
+      "wednesday": {
+        "label": "Wednesday - Friday",
+        "hours": "8:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 4pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "10am - 4pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_pentone_porirua_upper_hutt_alastair_and_louise_feb_2022_2.jpg",
+    "description": "<p>STIHL SHOP Porirua is owned by Hutt Valley locals Alastair and Louise Thomson. We specialise in online and in-store sales of STIHL tools, and with a full service workshop, you can be rest-assured that your equipment will be kept in great working condition for years to come.</p>\r\n\r\n<p>Alastair and Louise are proud supports of a number of local organisations, such as Hutt High School Water Polo, HOBM Rugby, St Patricks Silverstream, Hutt International Boys School and the Upper Hutt Axemens Club.</p>\r\n\r\n<b>We stock the following brands: STIHL, Hansa, Masport, Rover, Cub Cadet, Honda Power Equipment, Walker and Hustler.</b>",
+    "email": "porirua@stihlshop.co.nz",
+    "locatorRegion": "Wellington"
+  },
+  {
+    "store_name": "STIHL SHOP Ellmers",
+    "website_code": "tearo",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/tearo/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-tearo/",
+    "latitude": "-41.29559294",
+    "longitude": "174.77455360",
+    "address": "239 Cuba Street, Te Aro, Wellington 6011, New Zealand",
+    "phone": "04 384 6410",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/s/sstearo-elmers.jpg",
+    "description": "",
+    "email": "tearo@stihlshop.co.nz",
+    "locatorRegion": "Wellington"
+  },
+  {
+    "store_name": "STIHL SHOP Greymouth",
+    "website_code": "west_coast",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/west_coast/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-greymouth/",
+    "latitude": "-42.45015300",
+    "longitude": "171.20755100",
+    "address": "11 Herbert Street, Greymouth 7805",
+    "phone": "03 768 0230",
+    "fax": "03 768 0230",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday - Sunday",
+        "hours": "9am - 3pm"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl_shop_greymouth_bill_and_shelly.jpg",
+    "description": "<p>STIHL SHOP Greymouth has been owned and operated by Bill and Shelley Caines since the start of 2020. Loving what we do, our team focuses on the sales and expert servicing of Outdoor Power Equipment, as well as Paslode repairs. We offer a great range of STIHL tools and accessories in-store, as well as online for fast Home Delivery and Click & Collect.</p>\r\n\r\n<b>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda Power Equipment, Hansa Chippers, and Lawnmaster</b>\r\n\r\n",
+    "email": "greymouth@stihlshop.co.nz",
+    "locatorRegion": "West Coast"
+  },
+  {
+    "store_name": "STIHL SHOP Westport",
+    "website_code": "westport",
+    "url": "https://www.stihlshop.co.nz/stores/store/redirect/___store/westport/___from_store/default/",
+    "store_url": "https://www.stihlshop.co.nz/stihl-shop-westport/",
+    "latitude": "-41.75063638",
+    "longitude": "171.59750047",
+    "address": "56 Palmerston Street",
+    "phone": "03 789 5331 ",
+    "fax": "",
+    "hours": {
+      "monday": {
+        "label": "Monday - Friday",
+        "hours": "8:30am - 5pm"
+      },
+      "saturday": {
+        "label": "Saturday",
+        "hours": "9am - 1pm"
+      },
+      "sunday": {
+        "label": "Sunday",
+        "hours": "CLOSED"
+      }
+    },
+    "image": "https://www.stihlshop.co.nz/media/magestore/storelocator/images/store/gallery/s/t/stihl-shop-greymouth-bill-and-shelly2.jpg",
+    "description": "<p>Bill and Shelley have been the owners and operators of STIHL SHOP Westport since its opening in July 2021. Loving what we do, our team focuses on the sales and expert servicing of Outdoor Power Equipment. We offer a great range of STIHL tools and accessories in store, as well as online for fast Home Delivery and Click & Collect.</p>\r\n\r\n<strong><p>We stock the following brands: STIHL, Masport, Cub Cadet, Rover, Honda, Hansa, Silky and Lawnmaster</strong></p>\r\n",
+    "email": "westport@stihlshop.co.nz",
+    "locatorRegion": "West Coast"
+  }
+]

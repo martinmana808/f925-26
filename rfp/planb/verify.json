@@ -1,0 +1,2155 @@
+[
+  {
+    "slug": "albany",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopalbany.co.nz",
+        "url": "https://stihlshopalbany.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopalbany.co.nz",
+        "url": "https://www.stihlshopalbany.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopalbany.nz",
+        "url": "https://stihlshopalbany.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-albany.co.nz",
+        "url": "https://stihlshop-albany.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "alexandra",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopalexandra.co.nz",
+        "url": "https://stihlshopalexandra.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopalexandra.co.nz",
+        "url": "https://www.stihlshopalexandra.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopalexandra.nz",
+        "url": "https://stihlshopalexandra.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-alexandra.co.nz",
+        "url": "https://stihlshop-alexandra.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "amberley",
+    "checked": [
+      {
+        "ok": false,
+        "status": 403,
+        "final": "https://stihlshopamberley.co.nz",
+        "url": "https://stihlshopamberley.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopamberley.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "unverified403": true
+  },
+  {
+    "slug": "ashburton",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopashburton.co.nz",
+        "url": "https://stihlshopashburton.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopashburton.co.nz",
+        "url": "https://www.stihlshopashburton.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopashburton.nz",
+        "url": "https://stihlshopashburton.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-ashburton.co.nz",
+        "url": "https://stihlshop-ashburton.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "blenheim",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshop.co.nz/blenheim",
+        "title": "STIHL SHOP NZ: Specialist Outdoor Power Equipment Dealers",
+        "len": 59998,
+        "url": "https://stihlshopblenheim.co.nz"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshop.co.nz/blenheim",
+        "title": "STIHL SHOP NZ: Specialist Outdoor Power Equipment Dealers",
+        "len": 59998,
+        "url": "https://www.stihlshopblenheim.co.nz"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshop.co.nz/blenheim",
+        "title": "STIHL SHOP NZ: Specialist Outdoor Power Equipment Dealers",
+        "len": 59998,
+        "url": "https://stihlshopblenheim.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-blenheim.co.nz",
+        "url": "https://stihlshop-blenheim.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": true,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "botany",
+    "checked": [
+      {
+        "ok": false,
+        "status": 403,
+        "final": "https://stihlshopbotany.co.nz",
+        "url": "https://stihlshopbotany.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopbotany.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "unverified403": true
+  },
+  {
+    "slug": "browns-bay",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopbrownsbay.co.nz",
+        "title": "Home - Stihlshop Browns Bay",
+        "len": 59992,
+        "url": "https://stihlshopbrownsbay.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopbrownsbay.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Home - Stihlshop Browns Bay"
+  },
+  {
+    "slug": "cambridge",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopcambridge.co.nz",
+        "url": "https://stihlshopcambridge.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopcambridge.co.nz",
+        "url": "https://www.stihlshopcambridge.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopcambridge.nz",
+        "url": "https://stihlshopcambridge.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-cambridge.co.nz",
+        "url": "https://stihlshop-cambridge.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "cromwell",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopcromwell.co.nz",
+        "url": "https://stihlshopcromwell.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopcromwell.co.nz",
+        "url": "https://www.stihlshopcromwell.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopcromwell.nz",
+        "url": "https://stihlshopcromwell.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-cromwell.co.nz",
+        "url": "https://stihlshop-cromwell.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "dargaville",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopdargaville.co.nz",
+        "url": "https://stihlshopdargaville.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopdargaville.co.nz",
+        "url": "https://www.stihlshopdargaville.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopdargaville.nz",
+        "url": "https://stihlshopdargaville.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-dargaville.co.nz",
+        "url": "https://stihlshop-dargaville.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "drury",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopdrury.co.nz",
+        "title": "STIHL Shop Drury | Home",
+        "len": 59992,
+        "url": "https://stihlshopdrury.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopdrury.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL Shop Drury | Home"
+  },
+  {
+    "slug": "dunedin",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshop.co.nz/dunedin/",
+        "title": "STIHL SHOP NZ: Specialist Outdoor Power Equipment Dealers",
+        "len": 59998,
+        "url": "https://stihlshopdunedin.co.nz"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshop.co.nz/dunedin/",
+        "title": "STIHL SHOP NZ: Specialist Outdoor Power Equipment Dealers",
+        "len": 59998,
+        "url": "https://www.stihlshopdunedin.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopdunedin.nz",
+        "url": "https://stihlshopdunedin.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-dunedin.co.nz",
+        "url": "https://stihlshop-dunedin.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": true,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "east-tamaki",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopeasttamaki.co.nz",
+        "title": "home - Stihl Shop East Tamaki",
+        "len": 59981,
+        "url": "https://www.stihlshopeasttamaki.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopeasttamaki.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "home - Stihl Shop East Tamaki"
+  },
+  {
+    "slug": "ellerslie",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopellerslie.co.nz",
+        "url": "https://stihlshopellerslie.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopellerslie.co.nz",
+        "url": "https://www.stihlshopellerslie.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopellerslie.nz",
+        "url": "https://stihlshopellerslie.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-ellerslie.co.nz",
+        "url": "https://stihlshop-ellerslie.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "feilding",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopfeilding.co.nz",
+        "title": "StihlShop Feilding &#8211; Your local outdoor power equipment solutions provider",
+        "len": 59977,
+        "url": "https://stihlshopfeilding.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopfeilding.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "StihlShop Feilding &#8211; Your local outdoor power equipment solutions provider"
+  },
+  {
+    "slug": "ferrymead",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopferrymead.com",
+        "title": "",
+        "len": 59980,
+        "url": "https://www.stihlshopferrymead.com"
+      }
+    ],
+    "liveSite": "https://www.stihlshopferrymead.com",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": ""
+  },
+  {
+    "slug": "fosters",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopfosters.co.nz",
+        "title": "Stihl Shop Fosters - Blenheim Rd, Northwood and Rangiora",
+        "len": 60000,
+        "url": "https://stihlshopfosters.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopfosters.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Stihl Shop Fosters - Blenheim Rd, Northwood and Rangiora"
+  },
+  {
+    "slug": "gisborne",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopgisborne.co.nz",
+        "title": "StihlShop Gisborne &#8211; Your local outdoor power equipment solutions provider",
+        "len": 59240,
+        "url": "https://www.stihlshopgisborne.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopgisborne.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "StihlShop Gisborne &#8211; Your local outdoor power equipment solutions provider"
+  },
+  {
+    "slug": "glen-eden",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://mcgilloutdoors.co.nz/",
+        "title": "MCGILL Outdoors",
+        "len": 59992,
+        "url": "https://stihlshopgleneden.co.nz"
+      }
+    ],
+    "liveSite": "https://mcgilloutdoors.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "MCGILL Outdoors"
+  },
+  {
+    "slug": "glenfield",
+    "checked": [
+      {
+        "ok": false,
+        "status": 500,
+        "final": "https://stihlshopglenfield.co.nz",
+        "url": "https://stihlshopglenfield.co.nz"
+      },
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopglenfield.co.nz",
+        "title": "Aaron Tindell",
+        "len": 2326,
+        "url": "https://www.stihlshopglenfield.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopglenfield.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Aaron Tindell"
+  },
+  {
+    "slug": "gore",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopgore.co.nz",
+        "url": "https://stihlshopgore.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopgore.co.nz",
+        "url": "https://www.stihlshopgore.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopgore.nz",
+        "url": "https://stihlshopgore.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-gore.co.nz",
+        "url": "https://stihlshop-gore.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "greenmeadows",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopgreenmeadows.co.nz",
+        "title": "Home - STIHL SHOP Greenmeadows",
+        "len": 59994,
+        "url": "https://stihlshopgreenmeadows.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopgreenmeadows.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Home - STIHL SHOP Greenmeadows"
+  },
+  {
+    "slug": "greymouth",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopgreymouth.com",
+        "title": "",
+        "len": 59980,
+        "url": "https://www.stihlshopgreymouth.com"
+      }
+    ],
+    "liveSite": "https://www.stihlshopgreymouth.com",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": ""
+  },
+  {
+    "slug": "greytown",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopgreytown.co.nz",
+        "title": "STIHL Shop Greytown | Outdoor Power Equipment, Hire &amp; Servicing Wairarapa",
+        "len": 43139,
+        "url": "https://www.stihlshopgreytown.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopgreytown.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL Shop Greytown | Outdoor Power Equipment, Hire &amp; Servicing Wairarapa"
+  },
+  {
+    "slug": "hamilton-east",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshophameast.co.nz",
+        "title": "Home - STIHL SHOP Hamilton East",
+        "len": 60000,
+        "url": "https://www.stihlshophameast.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshophameast.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Home - STIHL SHOP Hamilton East"
+  },
+  {
+    "slug": "hastings",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshophastings.co.nz",
+        "title": "StihlShop Hastings &#8211; Your local outdoor power equipment solutions provider",
+        "len": 59745,
+        "url": "https://stihlshophastings.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshophastings.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "StihlShop Hastings &#8211; Your local outdoor power equipment solutions provider"
+  },
+  {
+    "slug": "hawera",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshophawera.co.nz",
+        "url": "https://stihlshophawera.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshophawera.co.nz",
+        "url": "https://www.stihlshophawera.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshophawera.nz",
+        "url": "https://stihlshophawera.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-hawera.co.nz",
+        "url": "https://stihlshop-hawera.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "howick",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshophowick.co.nz",
+        "title": "StihlShop Howick &#8211; Auckland",
+        "len": 59972,
+        "url": "https://stihlshophowick.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshophowick.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "StihlShop Howick &#8211; Auckland"
+  },
+  {
+    "slug": "huntly",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshophuntly.co.nz",
+        "url": "https://stihlshophuntly.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshophuntly.co.nz",
+        "url": "https://www.stihlshophuntly.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshophuntly.nz",
+        "url": "https://stihlshophuntly.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-huntly.co.nz",
+        "url": "https://stihlshop-huntly.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "invercargill",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopinvercargill.co.nz",
+        "title": "STIHL SHOP Invercargill | Home | STIHL, Honda, Masport, Weber BBQ, Testarossa, Lawnmaster & more",
+        "len": 28327,
+        "url": "https://www.stihlshopinvercargill.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopinvercargill.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL SHOP Invercargill | Home | STIHL, Honda, Masport, Weber BBQ, Testarossa, Lawnmaster & more"
+  },
+  {
+    "slug": "kaitaia",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopkaitaia.co.nz",
+        "url": "https://stihlshopkaitaia.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopkaitaia.co.nz",
+        "url": "https://www.stihlshopkaitaia.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopkaitaia.nz",
+        "url": "https://stihlshopkaitaia.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-kaitaia.co.nz",
+        "url": "https://stihlshop-kaitaia.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "kapiti",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopkapiti.nz",
+        "title": "Kapiti Chainsaw, Lawnmower, Garden Machinery Sales, Service &amp; Repairs",
+        "len": 32616,
+        "url": "https://www.stihlshopkapiti.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopkapiti.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Kapiti Chainsaw, Lawnmower, Garden Machinery Sales, Service &amp; Repairs"
+  },
+  {
+    "slug": "kumeu",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopkumeu.co.nz",
+        "url": "https://stihlshopkumeu.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopkumeu.co.nz",
+        "url": "https://www.stihlshopkumeu.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopkumeu.nz",
+        "url": "https://stihlshopkumeu.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-kumeu.co.nz",
+        "url": "https://stihlshop-kumeu.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "lakelands",
+    "checked": [
+      {
+        "ok": false,
+        "status": 403,
+        "final": "https://stihlshoplakelands.co.nz",
+        "url": "https://stihlshoplakelands.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshoplakelands.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "unverified403": true
+  },
+  {
+    "slug": "levin",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoplevin.co.nz",
+        "url": "https://stihlshoplevin.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshoplevin.co.nz",
+        "url": "https://www.stihlshoplevin.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoplevin.nz",
+        "url": "https://stihlshoplevin.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-levin.co.nz",
+        "url": "https://stihlshop-levin.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "masterton",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopmasterton.co.nz",
+        "url": "https://stihlshopmasterton.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopmasterton.co.nz",
+        "url": "https://www.stihlshopmasterton.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopmasterton.nz",
+        "url": "https://stihlshopmasterton.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-masterton.co.nz",
+        "url": "https://stihlshop-masterton.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "matamata",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopmatamata.co.nz",
+        "title": "Home - Stihl Shop Matamata",
+        "len": 59988,
+        "url": "https://stihlshopmatamata.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopmatamata.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Home - Stihl Shop Matamata"
+  },
+  {
+    "slug": "milton",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopmilton.co.nz",
+        "url": "https://stihlshopmilton.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopmilton.co.nz",
+        "url": "https://www.stihlshopmilton.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopmilton.nz",
+        "url": "https://stihlshopmilton.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-milton.co.nz",
+        "url": "https://stihlshop-milton.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "morrinsville",
+    "checked": [
+      {
+        "ok": false,
+        "status": 403,
+        "final": "https://mclarensrural.co.nz",
+        "url": "https://mclarensrural.co.nz"
+      }
+    ],
+    "liveSite": "https://mclarensrural.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "unverified403": true
+  },
+  {
+    "slug": "mosgiel",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopmosgiel.co.nz",
+        "title": "Stihlshop Mosgiel",
+        "len": 59927,
+        "url": "https://stihlshopmosgiel.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopmosgiel.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Stihlshop Mosgiel"
+  },
+  {
+    "slug": "motueka",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopmotueka.co.nz",
+        "url": "https://stihlshopmotueka.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopmotueka.co.nz",
+        "url": "https://www.stihlshopmotueka.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopmotueka.nz",
+        "url": "https://stihlshopmotueka.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-motueka.co.nz",
+        "url": "https://stihlshop-motueka.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "mt-albert",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://mcgilloutdoors.co.nz/",
+        "title": "MCGILL Outdoors",
+        "len": 59992,
+        "url": "https://stihlshopmtalbert.co.nz"
+      }
+    ],
+    "liveSite": "https://mcgilloutdoors.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "MCGILL Outdoors"
+  },
+  {
+    "slug": "mt-maunganui",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopmtmaunganui.co.nz",
+        "title": "STIHL Shop | Outdoor Power Equipment | Mt Maunganui | Tauranga",
+        "len": 37393,
+        "url": "https://www.stihlshopmtmaunganui.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopmtmaunganui.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL Shop | Outdoor Power Equipment | Mt Maunganui | Tauranga"
+  },
+  {
+    "slug": "napier",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopnapier.co.nz",
+        "title": "STIHL SHOP Napier - Love Your Land",
+        "len": 59994,
+        "url": "https://stihlshopnapier.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopnapier.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL SHOP Napier - Love Your Land"
+  },
+  {
+    "slug": "nelson",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.nelsonstihlshop.co.nz",
+        "url": "https://www.nelsonstihlshop.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopnelson.co.nz",
+        "url": "https://stihlshopnelson.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopnelson.co.nz",
+        "url": "https://www.stihlshopnelson.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopnelson.nz",
+        "url": "https://stihlshopnelson.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-nelson.co.nz",
+        "url": "https://stihlshop-nelson.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": true
+  },
+  {
+    "slug": "new-plymouth",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopnewplymouth.co.nz",
+        "title": "Home | Stihl Shop New Plymouth 06 757 2929 Stratford 06 765 5202",
+        "len": 59972,
+        "url": "https://stihlshopnewplymouth.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopnewplymouth.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Home | Stihl Shop New Plymouth 06 757 2929 Stratford 06 765 5202"
+  },
+  {
+    "slug": "northwood",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopnorthwood.co.nz",
+        "url": "https://stihlshopnorthwood.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopnorthwood.co.nz",
+        "url": "https://www.stihlshopnorthwood.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopnorthwood.nz",
+        "url": "https://stihlshopnorthwood.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-northwood.co.nz",
+        "url": "https://stihlshop-northwood.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "oamaru",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopoamaru.co.nz",
+        "url": "https://stihlshopoamaru.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopoamaru.co.nz",
+        "url": "https://www.stihlshopoamaru.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopoamaru.nz",
+        "url": "https://stihlshopoamaru.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-oamaru.co.nz",
+        "url": "https://stihlshop-oamaru.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "onehunga",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoponehunga.co.nz",
+        "url": "https://stihlshoponehunga.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshoponehunga.co.nz",
+        "url": "https://www.stihlshoponehunga.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoponehunga.nz",
+        "url": "https://stihlshoponehunga.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-onehunga.co.nz",
+        "url": "https://stihlshop-onehunga.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "otorohanga",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopotorohanga.co.nz",
+        "url": "https://stihlshopotorohanga.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopotorohanga.co.nz",
+        "url": "https://www.stihlshopotorohanga.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopotorohanga.nz",
+        "url": "https://stihlshopotorohanga.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-otorohanga.co.nz",
+        "url": "https://stihlshop-otorohanga.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "pahiatua",
+    "checked": [
+      {
+        "ok": false,
+        "status": 403,
+        "final": "https://www.bissethonda.co.nz",
+        "url": "https://www.bissethonda.co.nz"
+      }
+    ],
+    "liveSite": "https://www.bissethonda.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "unverified403": true
+  },
+  {
+    "slug": "palmerston-north",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshoppalmerstonnorth.co.nz",
+        "title": "STIHL SHOP Palmerston North | Local Outdoor Power Specialists",
+        "len": 59995,
+        "url": "https://www.stihlshoppalmerstonnorth.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshoppalmerstonnorth.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL SHOP Palmerston North | Local Outdoor Power Specialists"
+  },
+  {
+    "slug": "petone",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshoppetone.co.nz",
+        "title": "Fireplaces &amp; Wood Burners Wellington - Wood Fires Petone, Porirua",
+        "len": 59986,
+        "url": "https://www.stihlshoppetone.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshoppetone.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Fireplaces &amp; Wood Burners Wellington - Wood Fires Petone, Porirua"
+  },
+  {
+    "slug": "porirua",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopporirua.co.nz",
+        "title": "STIHL SHOP Porirua | Helping create beautiful gardens and outdoor spaces!",
+        "len": 59998,
+        "url": "https://www.stihlshopporirua.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopporirua.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL SHOP Porirua | Helping create beautiful gardens and outdoor spaces!"
+  },
+  {
+    "slug": "pukekohe",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshoppukekohe.co.nz",
+        "title": "STIHL SHOP Pukekohe for Chainsaws Fireplaces Weber BBQs in Auckland NZ",
+        "len": 59998,
+        "url": "https://www.stihlshoppukekohe.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshoppukekohe.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL SHOP Pukekohe for Chainsaws Fireplaces Weber BBQs in Auckland NZ"
+  },
+  {
+    "slug": "putaruru",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopputaruru.co.nz",
+        "url": "https://stihlshopputaruru.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopputaruru.co.nz",
+        "url": "https://www.stihlshopputaruru.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopputaruru.nz",
+        "url": "https://stihlshopputaruru.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-putaruru.co.nz",
+        "url": "https://stihlshop-putaruru.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "queenstown",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopqueenstown.co.nz",
+        "url": "https://stihlshopqueenstown.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopqueenstown.co.nz",
+        "url": "https://www.stihlshopqueenstown.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopqueenstown.nz",
+        "url": "https://stihlshopqueenstown.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-queenstown.co.nz",
+        "url": "https://stihlshop-queenstown.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "rangiora",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoprangiora.co.nz",
+        "url": "https://stihlshoprangiora.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshoprangiora.co.nz",
+        "url": "https://www.stihlshoprangiora.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoprangiora.nz",
+        "url": "https://stihlshoprangiora.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-rangiora.co.nz",
+        "url": "https://stihlshop-rangiora.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "richmond",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshoprichmond.nz",
+        "title": "STIHL Shop Richmond",
+        "len": 60000,
+        "url": "https://stihlshoprichmond.nz"
+      }
+    ],
+    "liveSite": "https://stihlshoprichmond.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL Shop Richmond"
+  },
+  {
+    "slug": "rolleston",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshoprolleston.co.nz",
+        "title": "StihlShop Rolleston &#8211; Your local outdoor power equipment solutions provider",
+        "len": 58701,
+        "url": "https://www.stihlshoprolleston.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshoprolleston.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "StihlShop Rolleston &#8211; Your local outdoor power equipment solutions provider"
+  },
+  {
+    "slug": "rotorua",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshoprotorua.co.nz",
+        "title": "",
+        "len": 59943,
+        "url": "https://stihlshoprotorua.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshoprotorua.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": ""
+  },
+  {
+    "slug": "silverdale",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopsilverdale.co.nz",
+        "title": "Home - Stihlshop Silverdale",
+        "len": 59989,
+        "url": "https://stihlshopsilverdale.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopsilverdale.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Home - Stihlshop Silverdale"
+  },
+  {
+    "slug": "stratford",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopnewplymouth.co.nz",
+        "title": "Home | Stihl Shop New Plymouth 06 757 2929 Stratford 06 765 5202",
+        "len": 59972,
+        "url": "https://stihlshopnewplymouth.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopnewplymouth.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Home | Stihl Shop New Plymouth 06 757 2929 Stratford 06 765 5202"
+  },
+  {
+    "slug": "taihape",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptaihape.co.nz",
+        "url": "https://stihlshoptaihape.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshoptaihape.co.nz",
+        "url": "https://www.stihlshoptaihape.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptaihape.nz",
+        "url": "https://stihlshoptaihape.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-taihape.co.nz",
+        "url": "https://stihlshop-taihape.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "taumarunui",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptaumarunui.co.nz",
+        "url": "https://stihlshoptaumarunui.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshoptaumarunui.co.nz",
+        "url": "https://www.stihlshoptaumarunui.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptaumarunui.nz",
+        "url": "https://stihlshoptaumarunui.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-taumarunui.co.nz",
+        "url": "https://stihlshop-taumarunui.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "taupo",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptaupo.co.nz",
+        "url": "https://stihlshoptaupo.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshoptaupo.co.nz",
+        "url": "https://www.stihlshoptaupo.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptaupo.nz",
+        "url": "https://stihlshoptaupo.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-taupo.co.nz",
+        "url": "https://stihlshop-taupo.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "tauranga",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshoptauranga.co.nz",
+        "title": "STIHL SHOP Tauranga | Mower Repairs, Chainsaws &amp; Outdoor Power Equipment",
+        "len": 59990,
+        "url": "https://stihlshoptauranga.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshoptauranga.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL SHOP Tauranga | Mower Repairs, Chainsaws &amp; Outdoor Power Equipment"
+  },
+  {
+    "slug": "te-anau",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.fiordlandmarine.co.nz",
+        "title": "",
+        "len": 59980,
+        "url": "https://www.fiordlandmarine.co.nz"
+      }
+    ],
+    "liveSite": "https://www.fiordlandmarine.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": ""
+  },
+  {
+    "slug": "te-aro",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptearo.co.nz",
+        "url": "https://stihlshoptearo.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshoptearo.co.nz",
+        "url": "https://www.stihlshoptearo.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptearo.nz",
+        "url": "https://stihlshoptearo.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-te-aro.co.nz",
+        "url": "https://stihlshop-te-aro.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "te-awamutu",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopta.co.nz",
+        "title": "Home - STIHL SHOP Te Awamutu",
+        "len": 60000,
+        "url": "https://www.stihlshopta.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopta.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Home - STIHL SHOP Te Awamutu"
+  },
+  {
+    "slug": "te-puke",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptepuke.co.nz",
+        "url": "https://stihlshoptepuke.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshoptepuke.co.nz",
+        "url": "https://www.stihlshoptepuke.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptepuke.nz",
+        "url": "https://stihlshoptepuke.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-te-puke.co.nz",
+        "url": "https://stihlshop-te-puke.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "te-rapa",
+    "checked": [
+      {
+        "ok": false,
+        "status": 403,
+        "final": "https://stihlshop-terapa.co.nz",
+        "url": "https://stihlshop-terapa.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshop-terapa.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "unverified403": true
+  },
+  {
+    "slug": "thames",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopthames.co.nz",
+        "url": "https://stihlshopthames.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopthames.co.nz",
+        "url": "https://www.stihlshopthames.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopthames.nz",
+        "url": "https://stihlshopthames.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-thames.co.nz",
+        "url": "https://stihlshop-thames.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "timaru",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshoptimaru.co.nz",
+        "title": "StihlShop Timaru &#8211; Your local outdoor power equipment solutions provider",
+        "len": 52177,
+        "url": "https://stihlshoptimaru.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshoptimaru.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "StihlShop Timaru &#8211; Your local outdoor power equipment solutions provider"
+  },
+  {
+    "slug": "tokoroa",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptokoroa.co.nz",
+        "url": "https://stihlshoptokoroa.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshoptokoroa.co.nz",
+        "url": "https://www.stihlshoptokoroa.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshoptokoroa.nz",
+        "url": "https://stihlshoptokoroa.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-tokoroa.co.nz",
+        "url": "https://stihlshop-tokoroa.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "upper-hutt",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopupperhutt.co.nz",
+        "title": "STIHL SHOP Upper Hutt | Helping create beautiful gardens and outdoor spaces!",
+        "len": 59998,
+        "url": "https://www.stihlshopupperhutt.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopupperhutt.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL SHOP Upper Hutt | Helping create beautiful gardens and outdoor spaces!"
+  },
+  {
+    "slug": "waiheke",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwaiheke.co.nz",
+        "url": "https://stihlshopwaiheke.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopwaiheke.co.nz",
+        "url": "https://www.stihlshopwaiheke.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwaiheke.nz",
+        "url": "https://stihlshopwaiheke.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-waiheke.co.nz",
+        "url": "https://stihlshop-waiheke.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "waihi",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopwaihi.co.nz",
+        "title": "STIHL SHOP Waihi | Outdoor Power Equipment, Sales &amp; Servicing",
+        "len": 59992,
+        "url": "https://stihlshopwaihi.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopwaihi.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL SHOP Waihi | Outdoor Power Equipment, Sales &amp; Servicing"
+  },
+  {
+    "slug": "waipapa",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwaipapa.co.nz",
+        "url": "https://stihlshopwaipapa.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopwaipapa.co.nz",
+        "url": "https://www.stihlshopwaipapa.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwaipapa.nz",
+        "url": "https://stihlshopwaipapa.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-waipapa.co.nz",
+        "url": "https://stihlshop-waipapa.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "waipukurau",
+    "checked": [
+      {
+        "ok": false,
+        "status": 403,
+        "final": "https://www.millshonda.co.nz",
+        "url": "https://www.millshonda.co.nz"
+      }
+    ],
+    "liveSite": "https://www.millshonda.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "unverified403": true
+  },
+  {
+    "slug": "wairoa",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwairoa.co.nz",
+        "url": "https://stihlshopwairoa.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopwairoa.co.nz",
+        "url": "https://www.stihlshopwairoa.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwairoa.nz",
+        "url": "https://stihlshopwairoa.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-wairoa.co.nz",
+        "url": "https://stihlshop-wairoa.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "wanaka",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwanaka.co.nz",
+        "url": "https://stihlshopwanaka.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopwanaka.co.nz",
+        "url": "https://www.stihlshopwanaka.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwanaka.nz",
+        "url": "https://stihlshopwanaka.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-wanaka.co.nz",
+        "url": "https://stihlshop-wanaka.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "wanganui",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwanganui.co.nz",
+        "url": "https://stihlshopwanganui.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopwanganui.co.nz",
+        "url": "https://www.stihlshopwanganui.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwanganui.nz",
+        "url": "https://stihlshopwanganui.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-wanganui.co.nz",
+        "url": "https://stihlshop-wanganui.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "warkworth",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopwarkworth.co.nz",
+        "title": "",
+        "len": 59980,
+        "url": "https://www.stihlshopwarkworth.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopwarkworth.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": ""
+  },
+  {
+    "slug": "westgate",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwestgate.co.nz",
+        "url": "https://stihlshopwestgate.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopwestgate.co.nz",
+        "url": "https://www.stihlshopwestgate.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwestgate.nz",
+        "url": "https://stihlshopwestgate.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-westgate.co.nz",
+        "url": "https://stihlshop-westgate.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "westport",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwestport.co.nz",
+        "url": "https://stihlshopwestport.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopwestport.co.nz",
+        "url": "https://www.stihlshopwestport.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwestport.nz",
+        "url": "https://stihlshopwestport.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-westport.co.nz",
+        "url": "https://stihlshop-westport.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "whakatane",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopwhakatane.co.nz",
+        "title": "STIHL SHOP Whakatane &#8211; Right into Outdoor Power Equipment",
+        "len": 59997,
+        "url": "https://stihlshopwhakatane.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopwhakatane.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "STIHL SHOP Whakatane &#8211; Right into Outdoor Power Equipment"
+  },
+  {
+    "slug": "whangamata",
+    "checked": [
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwhangamata.co.nz",
+        "url": "https://stihlshopwhangamata.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://www.stihlshopwhangamata.co.nz",
+        "url": "https://www.stihlshopwhangamata.co.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshopwhangamata.nz",
+        "url": "https://stihlshopwhangamata.nz"
+      },
+      {
+        "ok": false,
+        "error": "URLError",
+        "final": "https://stihlshop-whangamata.co.nz",
+        "url": "https://stihlshop-whangamata.co.nz"
+      }
+    ],
+    "liveSite": null,
+    "franchiseRedirect": false,
+    "sheetSiteDead": false
+  },
+  {
+    "slug": "whangarei",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://stihlshopwhangarei.co.nz",
+        "title": "Stihlshop Whangarei &#8211; Largest Range of Ride on Mowers",
+        "len": 60000,
+        "url": "https://stihlshopwhangarei.co.nz"
+      }
+    ],
+    "liveSite": "https://stihlshopwhangarei.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": "Stihlshop Whangarei &#8211; Largest Range of Ride on Mowers"
+  },
+  {
+    "slug": "winton",
+    "checked": [
+      {
+        "ok": true,
+        "status": 200,
+        "final": "https://www.stihlshopwinton.co.nz",
+        "title": "",
+        "len": 59980,
+        "url": "https://www.stihlshopwinton.co.nz"
+      }
+    ],
+    "liveSite": "https://www.stihlshopwinton.co.nz",
+    "franchiseRedirect": false,
+    "sheetSiteDead": false,
+    "title": ""
+  }
+]

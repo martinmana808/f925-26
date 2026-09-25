@@ -1,0 +1,53 @@
+{
+  "slug": "glenfield",
+  "url": "https://stihlshopglenfield.co.nz",
+  "at": "2026-09-21T18:09:25.230Z",
+  "reasons": [
+    "-10 only 1 internal pages",
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "0 speed not measured (audited via Wayback 2026-01-21, site geo-blocks non-NZ visitors)"
+  ],
+  "loadMs": null,
+  "finalUrl": "https://stihlshopglenfield.co.nz/",
+  "status": 500,
+  "https": true,
+  "geoBlocked": true,
+  "via": "wayback",
+  "snapshot": "2026-01-21",
+  "tech": "WordPress",
+  "bytes": 71605,
+  "title": "Home - Stihl Shop Glenfield",
+  "description": "",
+  "viewport": true,
+  "pagesLinked": 1,
+  "navItems": [
+    "/"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 6,
+  "localCatalogue": false,
+  "copyrightYear": 2025,
+  "newestYear": 2025,
+  "wordCount": 598,
+  "images": 6,
+  "h1": "Home",
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "about": "",
+  "liveText": true,
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 48
+}

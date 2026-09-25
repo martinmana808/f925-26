@@ -1,0 +1,60 @@
+{
+  "slug": "palmerston-north",
+  "url": "https://www.stihlshoppalmerstonnorth.co.nz",
+  "at": "2026-09-21T17:56:52.397Z",
+  "reasons": [
+    "+10 12 internal pages",
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "-10 slow load 7.3s"
+  ],
+  "loadMs": 7309,
+  "finalUrl": "https://www.stihlshoppalmerstonnorth.co.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "WordPress (Elementor)",
+  "bytes": 122081,
+  "title": "STIHL SHOP Palmerston North | Local Outdoor Power Specialists",
+  "description": "Proudly serving the Manawatū community, STIHL Shop Palmerston North are your local outdoor power specialists. Explore our STIHL products, accessories & expert repair services today!",
+  "viewport": true,
+  "pagesLinked": 12,
+  "navItems": [
+    "/",
+    "/products",
+    "/products/ride-on-mowers",
+    "/products/hansa-wood-chippers",
+    "/products/honda",
+    "/products/lawnmaster",
+    "/products/masport",
+    "/products/wet-forget",
+    "/hire-equipment",
+    "/service",
+    "/promotions",
+    "/contact-us"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 4,
+  "localCatalogue": false,
+  "copyrightYear": null,
+  "newestYear": 2025,
+  "wordCount": 564,
+  "images": 72,
+  "h1": "HOME",
+  "social": {
+    "facebook": "https://www.facebook.com/lawnmower711",
+    "instagram": "https://www.instagram.com/stihlshoppalmerstonnorth/"
+  },
+  "about": "EXCELLENT\nBased on 184 reviews\nIan Warrington\nFriendly disposition; complete technical explanation of the item that I purchased; good explanation of the warranty offered; prompt and helpful service\"\nPaul Devantier\nMore than happy to give 5 stars. All they did was source for me the correct belt for my Ride on mower deck and the communication was excellent. Inside the well presented shop I overheard solid advice being given to the customers ahead of me. Thank you Stihl shop\nKen\nNothing is ever a problem.\nChris Entwistle\nAs a lawnmowing contractor I receive very good service. Repair small but done in a timely manner. Very much appreciated the loan mower to enable me to continue to work.\nclaire OSullivan\nFabulous service and staff at Stihl shop in Palmerston North. Took in my mini pruner which had stopped working and Regan was so helpful explaining what the problem was, and quickly he had it up and running again. All done while so friendly, like nothing was too much trouble. Thanks so much I will be back!\nJacob Lawson\nThere honestly amazing, They get the parts you need on a dime and they all have a good attitude towards customers.\nCarl Bennik\nCool\nDonna Hirst\nAmazing customer service, ",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 58
+}

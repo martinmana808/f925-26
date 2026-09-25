@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Vendor Questions to STIHL</title>
+<style>.sent{margin:18px 0 0;background:var(--sup-bg);border:1px solid var(--line);border-left:5px solid var(--sup);border-radius:10px;padding:16px 20px;box-shadow:var(--shadow)}.sent h2{font-size:24px;text-transform:uppercase;font-weight:700;color:var(--sup);margin-bottom:6px}.sent pre{white-space:pre-wrap;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:14px;line-height:1.55;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:10px 0;max-height:60vh;overflow:auto}.sent .meta{font-size:13px;color:var(--muted)}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --code-bg:#EFE9DD; --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+  --p-a:#6847B8; --p-a-bg:#EDE7FA; --p-b:#0A6C4F; --p-b-bg:#DCF2E9; --p-c:#1B5FAE; --p-c-bg:#DDEAF8;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+    --p-a:#A78BFA; --p-a-bg:#2A2340; --p-b:#4CC9A2; --p-b-bg:#12352A; --p-c:#6FB1F0; --p-c-bg:#172A40;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  --p-a:#A78BFA; --p-a-bg:#2A2340; --p-b:#4CC9A2; --p-b-bg:#12352A; --p-c:#6FB1F0; --p-c-bg:#172A40;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+h1,h2,h3,h4{font-family:"Barlow Condensed",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:.5em 0}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:9px;padding-bottom:9px}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+header{padding:50px 0 10px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-size:clamp(36px,5.6vw,56px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:66ch;margin-top:12px}
+.srcnote{margin:18px 0 0;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--part);border-radius:8px;padding:12px 16px;font-size:14px;box-shadow:var(--shadow)}
+/* stat strip */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:22px 0 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px;box-shadow:var(--shadow)}
+.stat b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:34px;font-weight:700;line-height:1}
+.stat span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stat.due b{color:var(--gap)}
+.stat.agreed b{color:var(--sup)}
+.stat.contested b{color:var(--part)}
+.filters2{position:sticky;top:var(--wr-topbar-h,46px);z-index:40;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(8px);padding:12px 0;border-bottom:1px solid var(--line);margin-top:20px}
+.filters2 .wrap{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-right:4px}
+.fbtn{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;background:var(--surface);border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:3px 11px;cursor:pointer}
+.fbtn.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.fsep{width:1px;align-self:stretch;background:var(--line);margin:0 6px}
+.filters2 .draftlink{margin-left:auto;font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+main{padding:10px 0 40px}
+.qgh{font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:7px;margin:34px 0 4px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.qgh small{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0}
+.qgh .who{font-size:12px;letter-spacing:.1em;border-radius:5px;padding:1px 8px;font-family:"IBM Plex Sans",sans-serif;font-weight:700}
+.who.pa{background:var(--p-a-bg);color:var(--p-a)} .who.pb{background:var(--p-b-bg);color:var(--p-b)} .who.pc{background:var(--p-c-bg);color:var(--p-c)}
+.who.px{background:var(--surface2);color:var(--muted);border:1px solid var(--line)}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);margin:16px 0;padding:0;overflow:hidden}
+.q .qbody{padding:16px 20px}
+.q .qhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+.q .qid{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);font-weight:500}
+.q .orig{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);background:var(--code-bg);padding:0 6px;border-radius:4px}
+.q h3{font-size:21px;font-weight:700}
+.q .a{margin-top:8px;font-size:15px}
+.q .a .why{color:var(--muted);font-size:13.5px;margin-top:6px}
+.unknowns{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:10px;padding:16px 20px;box-shadow:var(--shadow);font-size:14.5px}
+.unknowns h2{font-size:22px;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.unknowns ol{margin:.4em 0;padding-left:22px} .unknowns li{margin:.4em 0}
+.unknowns .position{margin-top:10px;background:var(--surface2);border:1px solid var(--line);border-left:4px solid var(--sup);border-radius:8px;padding:10px 14px}
+.unknowns .position.pricing{border-left-color:var(--accent)}
+.q .ctx{margin-top:8px;font-size:13.5px;color:var(--muted)}
+.q .ctx p{margin:.3em 0} .q .ctx b{color:var(--ink)}
+.q .ctx .dont{color:var(--ink)}
+.q .merges{font-size:12.5px}
+.chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;border-radius:5px;padding:0 7px;vertical-align:middle}
+.chip.pa{background:var(--p-a-bg);color:var(--p-a)} .chip.pb{background:var(--p-b-bg);color:var(--p-b)} .chip.pc{background:var(--p-c-bg);color:var(--p-c)} .chip.px{background:var(--surface2);color:var(--muted);border:1px solid var(--line)}
+.q .a{margin-top:10px;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:15px}
+.q .a::before{content:"The question";display:block;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+/* decision band + votes */
+.band{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 20px;border-top:1px solid var(--line);background:var(--surface2);font-size:13px}
+.band .verdict{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;padding:1px 9px;border-radius:5px}
+.band.agreed .verdict{background:var(--sup-bg);color:var(--sup)}
+.band.contested .verdict{background:var(--part-bg);color:var(--part)}
+.band.dropped .verdict{background:var(--gap-bg);color:var(--gap)}
+.band.undecided .verdict{background:var(--surface);color:var(--muted);border:1px solid var(--line)}
+.band .tally{color:var(--muted)}
+.votes{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.vp{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:999px;padding:2px 9px 2px 6px;background:var(--surface);font-size:12.5px}
+.vp .nm{font-weight:700}
+.vp.pa .nm{color:var(--p-a)} .vp.pb .nm{color:var(--p-b)} .vp.pc .nm{color:var(--p-c)}
+.vp .st{color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:11.5px}
+.vp .st.send{color:var(--sup);font-weight:700} .vp .st.drop{color:var(--gap);font-weight:700}
+.vp.me{border-color:var(--ink);padding-right:4px}
+.vp.me button{font:inherit;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:none;border:1px solid var(--line);border-radius:999px;padding:0 8px;cursor:pointer;color:var(--muted);line-height:1.6}
+.vp.me button.send.on{background:var(--sup);border-color:var(--sup);color:#fff}
+.vp.me button.drop.on{background:var(--gap);border-color:var(--gap);color:#fff}
+.vp.me button:hover{border-color:var(--ink)}
+.vnote{width:100%;font-size:12px;color:var(--gap);margin:0}
+/* draft */
+.draft{margin-top:44px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--sup);border-radius:10px;box-shadow:var(--shadow);padding:20px 24px}
+.draft h2{font-size:clamp(22px,3vw,30px);text-transform:uppercase;font-weight:700}
+.draft .dsub{color:var(--muted);font-size:14px;margin:.3em 0 1em}
+.draft .dbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.draft .dbar button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:14px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:5px 16px;cursor:pointer}
+.draft .dbar .copied{font-size:13px;color:var(--sup);font-weight:600}
+.draft pre{white-space:pre-wrap;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:14.5px;line-height:1.6;background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:14px 18px;margin:0;max-height:70vh;overflow:auto}
+.draft pre.empty{color:var(--muted);font-style:italic}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 42px;color:var(--muted);font-size:13px}
+/* review layer (same as audit/proposal) */
+.rdock{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);padding:6px 12px;font-size:12.5px;max-width:calc(100vw - 28px)}
+.rdock .rstat{color:var(--muted);white-space:nowrap}
+.rdock .rlive{font-weight:600;white-space:nowrap;color:var(--muted)}
+.rdock .rlive.live{color:var(--sup)}
+.rdock .rlive.local{color:var(--gap)}
+.rw{display:inline-flex;align-items:center;gap:5px;margin-left:10px;vertical-align:middle}
+.rw button{font-size:11.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 8px;cursor:pointer;line-height:1.5;font-family:"IBM Plex Sans",system-ui,sans-serif}
+.rw .rwf.on{color:#fff;background:var(--gap);border-color:var(--gap)}
+.rw .rwc.has{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);font-weight:700;background:var(--accent-soft)}
+.rw-flagged{box-shadow:0 0 0 2px var(--gap);border-radius:10px}
+.rw-panel{margin:10px 20px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:10px 12px;font-size:13.5px;line-height:1.55}
+.rw-panel .citem{border-bottom:1px solid var(--line);padding:6px 0}
+.rw-panel .citem:last-child{border-bottom:none}
+.rw-panel .citem b{font-size:13px}
+.rw-panel .citem time{font-size:11.5px;color:var(--muted);margin-left:6px}
+.rw-panel .citem p{margin:.15em 0 0;font-size:13.5px;white-space:pre-wrap}
+.rw-panel .cform{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
+.rw-panel .cform input,.rw-panel .cform textarea{flex:1;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);min-width:0;resize:none;line-height:1.45}
+.rw-panel .cform button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.rw-panel .cnote{font-size:12.5px;color:var(--gap);margin:.4em 0 0}
+.rw-panel .cflag{font-size:12px;color:var(--gap);font-weight:600;margin:0 0 .3em}
+html{scroll-behavior:smooth}
+@media (max-width:600px){.wrap{padding:0 16px}.q .qbody{padding:14px 16px}.band{padding:9px 16px}.votes{margin-left:0;width:100%}}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="vendorq">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">U4R <em>·</em> Vendor Questions</span>
+    <div class="wrs-menu">
+      <button type="button" class="wrs-menubtn" aria-haspopup="true">Sections ▾</button>
+      <nav class="wrs-drop" aria-label="Sections">
+        <a href="#sent">✓ What was sent (15 Sep)</a>
+        <a href="#unknowns">What we don't understand</a>
+        <a href="#deal">The deal</a>
+        <a href="#network">The network</a>
+        <a href="#longrun">Ownership &amp; the long run</a>
+        <a href="#brand">Brand</a>
+        <a href="#draft">The draft to STIHL</a>
+        <a href="/vendor-questions-v1.html">Archive: the original 11</a>
+        <a href="/process.html">→ The Process (where these come from)</a>
+      </nav>
+    </div>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">F925 internal · STIHL RFP 2026 · task <a href="/board.html?wrgo=A-03">A-03</a></p>
+    <h1>Vendor questions<br>to STIHL</h1>
+    <div class="sent" id="sent">
+      <h2>✓ Sent 15 Sep — ANSWERED 17 Sep. Read <a href="/wtf.html">WTF?</a></h2>
+      <p class="meta"><b>Mark Ballantine answered in two days:</b> optional, dealer pays everything, STIHL will not contract or fund; migration is the dealer's; no formal design certification; no named security standard, everything on the vendor. The answers, verbatim, next to the RFP's own contract / pilot / rollout wording, are on the <a href="/wtf.html">WTF page</a> — with the follow-up question we still need to send.</p>
+      <p class="meta">Four questions went, as a one-page letter on F925 letterhead (<a href="/docs/vendor-questions-sent-2026-09-15.pdf">PDF as sent</a>) with the same text in the email body. Three came from the cards below; the fourth (cybersecurity standards) came out of Mike's legal review (<a href="/board.html?wrgo=D-xmtwhacfx">D-xmtwhacfx</a>). STIHL's answers are expected around <b>25 Sep</b>. What was sent, verbatim:</p>
+      <pre>Hi Mark,
+
+Thank you for the opportunity to respond to the STIHL SHOP Dealer Website RFP 2026. Ahead of the 18 September deadline for vendor questions, we would appreciate clarification on the following points:
+
+1. Brand standard or optional programme
+Will the dealer website framework be a required STIHL SHOP brand standard (as store fit-out is), or an optional programme dealers may adopt?
+If required: on what timeline, and does STIHL NZ contract and pay centrally, or does each dealer?
+If optional: what adoption does STIHL NZ expect by end of 2027, and how will it be driven?
+
+2. Existing sites
+If the whole network of roughly 90 sites is in scope, what happens to the existing dealer websites and their content during migration?
+
+3. Brand assets and STIHL sign-off
+Will STIHL supply the official brand asset kit (logos, licensed typography and approved product imagery) so the template can be certified against the brand guidelines during Phase 1?
+
+4. Cybersecurity standards
+Can STIHL clarify what specific standards or frameworks are contemplated by ‘applicable cybersecurity standards’ (for example NZISM, NCSC Minimum Cyber Security Standards, ISO 27001 or equivalent industry best practice)?
+
+We are happy to discuss any of these by phone if that is easier.
+
+Kind regards,
+Michael McLarnon
+F925
+https://F925.works</pre>
+      <p class="meta">Differences from the cards: question 2 dropped the pilot half (belongs in the proposal and the contract); question 3 dropped the point-of-contact sentence; CQ-02, CQ-04 and CQ-05 were not sent (all three voted Drop). The cards and votes below stay as the record of how we got there.</p>
+    </div>
+    <p class="sub">The <b>6 questions</b> we consolidated for STIHL ahead of the <b>Thu 18 Sep</b> deadline — consolidated on 15 Sep from the <a href="/vendor-questions-v1.html">original 11</a> (plus the ones that fell out of <a href="/process.html">The Process</a>) using Martin and Leo's votes and comments. Vote <b>Send</b> or <b>Drop</b> on each; the draft at the bottom assembles itself. Wording tweaks go in the 💬 thread.</p>
+    <div class="unknowns" id="unknowns">
+      <h2>What we actually don't understand</h2>
+      <p>Eleven questions, but underneath them there is one first-level question and one second-level question. Everything else follows from the answers.</p>
+      <ol>
+        <li><b>FIRST LEVEL — does the winner get the 92-dealer network contract, or become the preferred supplier for the network?</b> Mandatory (like the physical shop fit-out: every STIHL SHOP has to have its digital presence on UNIFY) vs. recommended (a good word from STIHL, then we are on our own). Difference: 92 × our price vs. $0 guaranteed. (→ CQ-01)</li>
+        <li><b>SECOND LEVEL — who pays F925, and who signs?</b> Head office, the dealer, or a hybrid. It only becomes real once the first level is answered. (→ CQ-02)</li>
+      </ol>
+      <p class="position"><b>Our position, for the three of us (not sent to STIHL):</b> <b>F925 does not sell.</b> We do not publish, prospect, or go looking for clients. Whether the programme is mandatory or optional, F925's job is to get the dealer(s) <b>ready to be onboarded</b> and run them well afterwards. We assist STIHL on the technical side of bringing dealers in; we do not assist a pre-dealer dealer who has not decided yet. Adoption is STIHL's job. Write the proposal that way.</p>
+      <p class="position pricing"><b>An idea for pricing (15 Sep — for discussion, nothing decided):</b> because we don't know which answer we'll get, shape §9 so it works either way — one product, two ways to buy it: the dealer-direct price we agreed ($2,500 + $600/mo) with volume bands, plus a network-programme rate that applies if STIHL adopts the framework as a brand standard, whoever is invoiced. The tree of scenarios, the reasoning and the open points are on the <a href="/scenarios.html">scenarios page</a>.</p>
+      <p>Dropped outright (both voted Drop): incumbent supplier contracts — "not our problem". STIHL's role in driving adoption is folded into the network question; the pilot question now sits there too.</p>
+    </div>
+    <div class="srcnote" style="border-left-color:var(--sup)"><b>Read this first → <a href="/process.html">The Process</a>.</b> Martin wrote down the whole dealer lifecycle (onboarding → changes → support) on 15 Sep, with every open question marked inline: who the provider is, who owns the contacts, what happens with domains, staging rounds, SLAs. Most of what we ask STIHL should fall out of that page — and it is editable in place, with a log of who changed what.</div>
+    <div class="srcnote"><b>How the decision works:</b> a question goes into the draft when it has more Send than Drop votes. <b>Agreed</b> = all three said Send. <b>Contested</b> = someone said Drop while someone else said Send. <b>Undecided</b> = fewer than two people have voted. Votes sync live for the whole team, like everything else here.</div>
+    <div class="stats">
+      <div class="stat agreed"><b id="st-days">–</b><span>days to answers (~25 Sep)</span></div>
+      <div class="stat"><b id="st-in">–</b><span>in the draft</span></div>
+      <div class="stat agreed"><b id="st-agreed">–</b><span>agreed</span></div>
+      <div class="stat contested"><b id="st-contested">–</b><span>contested</span></div>
+      <div class="stat"><b id="st-undecided">–</b><span>undecided</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="filters2"><div class="wrap">
+  <span class="fl">Show</span>
+  <button type="button" class="fbtn active" data-f="all">All 6</button>
+  <button type="button" class="fbtn" data-f="agreed">Agreed</button>
+  <button type="button" class="fbtn" data-f="contested">Contested</button>
+  <button type="button" class="fbtn" data-f="undecided">Undecided</button>
+  <span class="fsep"></span>
+  <button type="button" class="fbtn" data-f="mine">I haven't voted</button>
+  <a class="draftlink" href="#draft">↓ The draft</a>
+</div></div>
+
+<main><div class="wrap">
+
+<h2 class="qgh" id="deal">The deal <small>CQ-01–02 · what we are bidding for, and for whom</small></h2>
+
+<div class="q" data-key="cq-01">
+  <div class="qbody">
+    <div class="qhead"><span class="qid">CQ-01</span><h3>Brand standard or optional programme</h3></div>
+    <div class="ctx">
+      <p class="dont"><b>What we don't understand:</b> whether winning means the 92-dealer network (STIHL mandates UNIFY the way it mandates the shop fit-out) or "preferred supplier" (a recommendation, and we are on our own). Difference: 92 × our price vs. $0 guaranteed.</p>
+      <p class="why"><b>Why it matters:</b> it is the whole business case — and it decides how we write §2 Strategy, §8 Cost and §9 Rollout. We ask about the <i>mechanism</i> (brand standard vs. programme, timeline, expected adoption) rather than "will you force your dealers?", because that question invites a "no". "100% by end of 2027" is a mandate in everything but name; HQ never pays for something optional.</p>
+      <p class="merges">Merges <span class="chip pc">VQ-01 Mike</span> <span class="chip pa">VQ-04 Martin</span> <span class="chip pb">VQ-06 Leo</span> · previous votes: VQ-01 ✓✓ · VQ-04 ✓✗ ("same as Mike's") · VQ-06 ✗✗ (adoption push is now the "how will it be driven" clause)</p>
+    </div>
+    <div class="a"><p>Will the dealer website framework be a required STIHL SHOP brand standard (as store fit-out is), or an optional programme dealers may adopt?</p><p>If required — on what timeline, and does STIHL NZ contract and pay centrally, or does each dealer?</p><p>If optional — what adoption does STIHL NZ expect by end of 2027, and how will it be driven?</p></div>
+  </div>
+</div>
+
+<div class="q" data-key="cq-02">
+  <div class="qbody">
+    <div class="qhead"><span class="qid">CQ-02</span><h3>Second level — who signs, who pays, who hands us each dealer</h3></div>
+    <div class="ctx">
+      <p class="dont"><b>What we don't understand:</b> whether our client is STIHL NZ or 90 separate dealers. The Process (Step 1) hits this immediately: someone has to give us each dealer's email, and we don't know if that is STIHL or the dealer, or who owns those contact details.</p>
+      <p class="why"><b>Why it matters:</b> contract, invoicing and the onboarding flow. Second level: it only becomes real once CQ-01 is answered. Either way F925 does not go and find dealers; STIHL hands them to us ready to onboard.</p>
+      <p class="merges">Merges <span class="chip pa">VQ-03 Martin</span> <span class="chip pa">Process Q1–Q3</span> · previous votes: VQ-03 ✓✓</p>
+    </div>
+    <div class="a"><p>Who is the vendor's client in this engagement — STIHL NZ centrally, or each dealer individually? Who signs the contract and who pays the setup and monthly fees (head office, the dealer, or a hybrid)? For onboarding, will STIHL introduce the vendor to each dealer and supply their contact details, or is the dealer expected to come to us?</p></div>
+  </div>
+</div>
+
+<h2 class="qgh" id="network">The network <small>CQ-03 · how ~90 sites actually move</small></h2>
+
+<div class="q" data-key="cq-03">
+  <div class="qbody">
+    <div class="qhead"><span class="qid">CQ-03</span><h3>Existing sites, the pilot and the rollout</h3></div>
+    <div class="ctx">
+      <p class="dont"><b>What we don't understand:</b> what happens to the ~90 existing dealer sites and their content, and how the December pilot works — paid or not, how many dealers, what "it went well" means to STIHL, and what happens after it either way.</p>
+      <p class="why"><b>Why it matters:</b> Mike's point stands — this sizes the technical requirements more than anything: capacity, onboarding throughput, DNS cutovers, support load, and the rollout timeline in §9. The pilot terms decide how much we invest before January.</p>
+      <p class="merges">Merges <span class="chip pc">VQ-02 Mike</span> <span class="chip px">VQ-08 Claude</span> · previous votes: VQ-02 ✓✓ · VQ-08 ✓✓ ("how will the pilot go, what can we expect at the end, successful or not") · VQ-10 incumbent contracts dropped ✗✗</p>
+    </div>
+    <div class="a"><p>If the whole network of roughly 90 sites is in scope, what happens to the existing dealer websites and their content during migration?</p><p>For the December 2026 pilot: is it paid, how many dealers are in it, what will be measured and over what period, and who decides whether it proceeds to rollout? What happens if it does not?</p></div>
+  </div>
+</div>
+
+<h2 class="qgh" id="longrun">Ownership &amp; the long run <small>CQ-04–05 · what we keep, what they keep, what the dealer keeps</small></h2>
+
+<div class="q" data-key="cq-04">
+  <div class="qbody">
+    <div class="qhead"><span class="qid">CQ-04</span><h3>Platform ownership, contract term, and what happens at the end</h3></div>
+    <div class="ctx">
+      <p class="dont"><b>What we don't understand:</b> whether F925 stays the owner of UNIFY (licensed to use the STIHL brand) or STIHL wants to own the platform with us running it as a service — and, either way, how long the deal runs and what a dealer is left with if it ends.</p>
+      <p class="why"><b>Why it matters:</b> this is the single biggest commercial question: it changes the price, what we are willing to build, MARTIN-3's IP position, and Mike's legal review (D-xmtwhacfx).</p>
+      <p class="merges">Merges <span class="chip pa">VQ-05 Martin</span> <span class="chip pb">VQ-07 Leo</span> · previous votes: VQ-05 ✓✓ · VQ-07 ✓✓</p>
+    </div>
+    <div class="a"><p>Who owns the platform under this engagement: (a) the vendor retains ownership and operates it as an approved supplier licensed to use STIHL brand assets, or (b) STIHL acquires the platform and engages the vendor to implement and run it as a service? Which model does STIHL prefer, and who owns improvements built during the contract? What is the intended contract term and renewal structure, and if the relationship ends, what is the transition for dealers — do they keep their site and domain, does STIHL take over hosting, or is there a defined handover window?</p></div>
+  </div>
+</div>
+
+<div class="q" data-key="cq-05">
+  <div class="qbody">
+    <div class="qhead"><span class="qid">CQ-05</span><h3>Domains &amp; DNS — who owns them, who can change them</h3></div>
+    <div class="ctx">
+      <p class="dont"><b>What we don't understand:</b> the pain point in The Process Step 4. Some dealers have a domain, some don't. For the ones that don't — do we register it and who owns and pays for it? For the ones that do — do we get registrar access or do they make the DNS change themselves?</p>
+      <p class="why"><b>Why it matters:</b> at ~90 cutovers this is the biggest operational coordination point of the rollout; whatever the answer, the process has to be painless for the dealer.</p>
+      <p class="merges">Merges <span class="chip px">VQ-09 Claude</span> <span class="chip pa">Process Q4–Q5</span> · previous votes: VQ-09 ✓✓</p>
+    </div>
+    <div class="a"><p>Who owns and controls dealer domain names today, and who should going forward? For dealers without a domain, should the vendor register one, and who owns and pays for it? For dealers with a domain, who is authorised to make DNS changes — will the vendor be given registrar access, or is the dealer expected to make the change? Does STIHL prefer domains consolidated under central management?</p></div>
+  </div>
+</div>
+
+<h2 class="qgh" id="brand">Brand <small>CQ-06 · the guardrails</small></h2>
+
+<div class="q" data-key="cq-06">
+  <div class="qbody">
+    <div class="qhead"><span class="qid">CQ-06</span><h3>Point of contact, template sign off and brand assets</h3></div>
+    <div class="ctx">
+      <p class="dont"><b>What we don't understand:</b> whether STIHL will hand us the official kit (logos, licensed type, approved imagery) and formally sign off the template — or whether "on brand" is left to our judgement and challenged later. And who settles a dispute over a dealer's local content.</p>
+      <p class="why"><b>Why it matters:</b> Governance is 20% of the score; a defined certification step is evidence for §5, and it protects us from re-doing the template after the pilot.</p>
+      <p class="merges">Merges <span class="chip px">VQ-11 Claude</span> · previous votes: VQ-11 ✓✓</p>
+    </div>
+    <div class="a"><p>Who will be our single point of contact at STIHL NZ for this programme: the person we go to for decisions, brand questions and anything that needs a ruling, including any dispute over a dealer's local content?</p><p>Before rollout we will need a sign off on the website template. Is that sign off collaborative with STIHL NZ marketing, and will STIHL supply the official brand asset kit (logos, licensed typography and approved product imagery) so the template can be certified against the brand guidelines during Phase 1?</p></div>
+  </div>
+</div>
+
+<section class="draft" id="draft">
+  <h2>The draft to STIHL</h2>
+  <p class="dsub">Assembled live from the votes: every question with more Send than Drop, in page order, numbered. Only the boxed question text goes in — not the "what we don't understand" / "why" context. Copy it into the email when the team is done; fix wording via the 💬 thread → Martin updates the card.</p>
+  <div class="dbar"><button type="button" id="copy-draft">Copy draft</button><span id="draft-count" class="tally"></span><span class="copied" id="copied" hidden>Copied ✓</span></div>
+  <pre id="draft-text" class="empty">Nothing agreed yet.</pre>
+</section>
+
+</div></main>
+
+<footer>
+  <div class="wrap">
+    <p>F925 internal · 6 consolidated vendor questions (15 Sep 2026) from the <a href="/vendor-questions-v1.html">original 11</a> in the <a href="/board.html?wrgo=A-03">A-03</a> thread and <a href="/process.html">The Process</a> · questions SENT 15 Sep (4, signed by Mike), STIHL's answers expected ~25 Sep · votes, flags and threads sync live for the whole team.</p>
+  </div>
+</footer>
+
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+<script>
+(function(){
+  var API='/api/state?page=vendorq', APIKEY='XPFmcH2RSsza';
+  var PEOPLE=[
+    {id:'martin', name:'Martin', cls:'pa'},
+    {id:'leonel', name:'Leo',    cls:'pb'},
+    {id:'mike',   name:'Mike',   cls:'pc'}
+  ];
+  var NAME={}; PEOPLE.forEach(function(p){NAME[p.id]=p.name;});
+  var me=(window.WR?WR.me:'');
+  if(window.WR)WR.onIdentity(function(id){me=id;renderAll();});
+  var mode='connecting';
+  var marks={}, comments={}, votes={}, items={};
+  var lastRev='', applied=false, pendingWrites=0, chain=Promise.resolve();
+  function enqueue(op){
+    pendingWrites++;
+    var p=chain.then(function(){return apiPost(op);});
+    chain=p.then(function(){pendingWrites--;if(pendingWrites===0)refresh();},function(){pendingWrites--;setMode('local');});
+    return p;
+  }
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(undefined,{day:'numeric',month:'short'});}catch(e){return '';}}
+  function apiGet(){
+    return fetch(API,{headers:{'x-warroom-key':APIKEY}}).then(function(r){
+      if(!r.ok)throw new Error('http '+r.status);
+      return r.json();
+    });
+  }
+  function apiPost(op){
+    return fetch(API,{method:'POST',headers:{'x-warroom-key':APIKEY,'content-type':'application/json'},body:JSON.stringify(op)}).then(function(r){
+      if(!r.ok)throw new Error('http '+r.status);
+      return r.json();
+    });
+  }
+
+  /* days to deadline (NZ time) */
+  (function(){
+    var due=new Date('2026-09-25T23:59:59+12:00'), now=new Date();
+    var d=Math.ceil((due-now)/86400000);
+    document.getElementById('st-days').textContent=d<0?'0':String(d);
+  })();
+
+  /* dock */
+  var dock=document.createElement('div');
+  dock.className='rdock';
+  dock.innerHTML='<span class="rstat" id="rd-stat">⚑ 0 · 💬 0</span><span class="rlive" id="rd-live">Connecting…</span>';
+  document.body.appendChild(dock);
+  function needIdentity(noteEl,msg){
+    if(me)return false;
+    if(noteEl){noteEl.textContent=msg;noteEl.hidden=false;}
+    if(window.WR)WR.nudge();
+    return true;
+  }
+  function setMode(m){
+    mode=m;
+    var el=document.getElementById('rd-live');
+    el.className='rlive '+m;
+    el.textContent = m==='live'?'● Live':(m==='local'?'○ Offline — read-only':'Connecting…');
+  }
+
+  /* verdict per question */
+  function verdict(key){
+    var v=votes[key]||{}, s=0, d=0;
+    PEOPLE.forEach(function(p){ if(v[p.id]==='send')s++; else if(v[p.id]==='drop')d++; });
+    var cls;
+    if(s===PEOPLE.length)cls='agreed';
+    else if(s>0&&d>0)cls='contested';
+    else if(d>0&&s===0&&d>=2)cls='dropped';
+    else cls='undecided';
+    return {s:s,d:d,cls:cls,in:s>d};
+  }
+  var VERDICT_LABEL={agreed:'Agreed · send',contested:'Contested',dropped:'Dropped',undecided:'Undecided'};
+
+  /* targets: one per question card — review layer + vote band */
+  function addTarget(key,label,host){
+    if(items[key]||!host)return;
+    var w=document.createElement('span');
+    w.className='rw';
+    w.innerHTML='<button type="button" class="rwf" title="Flag for attention">⚑</button><button type="button" class="rwc" title="Comments">💬 <span>0</span></button>';
+    host.querySelector('h3').appendChild(w);
+    var band=document.createElement('div');
+    band.className='band undecided';
+    band.innerHTML='<span class="verdict">Undecided</span><span class="tally"></span><span class="votes"></span><p class="vnote" hidden></p>';
+    host.appendChild(band);
+    var panel=document.createElement('div');
+    panel.className='rw-panel'; panel.hidden=true;
+    panel.innerHTML='<p class="cflag" hidden></p><div class="clist"></div>'
+      +'<form class="cform"><textarea rows="1" placeholder="Comment on '+esc(label)+' — wording, merge, drop… (Shift+Enter for a new line)" aria-label="Comment on '+esc(label)+'"></textarea><button type="submit">Post</button></form>'
+      +'<p class="cnote" hidden></p>';
+    host.appendChild(panel);
+    if(window.WR)WR.wireCommentBox(panel.querySelector('.cform textarea'));
+    var fbtn=w.querySelector('.rwf'), cbtn=w.querySelector('.rwc');
+    var note=panel.querySelector('.cnote');
+    fbtn.addEventListener('click',function(){
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.')){panel.hidden=false;return;}
+      var cur=marks[key]||{};
+      var next=!cur.flagged;
+      marks[key]={flagged:next,by:me,at:new Date().toISOString()};
+      render(key); renderTotals();
+      enqueue({t:'mark',key:key,flagged:next,by:me}).catch(function(){});
+    });
+    cbtn.addEventListener('click',function(){panel.hidden=!panel.hidden;});
+    panel.querySelector('form').addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var inp=panel.querySelector('textarea');
+      var txt=inp.value.trim();
+      if(!txt)return;
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.'))return;
+      note.hidden=true;
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString()};
+      (comments[key]=comments[key]||[]).push(temp);
+      render(key); renderTotals();
+      inp.value='';
+      enqueue({t:'comment',key:key,author:me,text:txt})
+        .catch(function(){
+          var arr=comments[key]||[], ix=arr.indexOf(temp);
+          if(ix>=0)arr.splice(ix,1);
+          render(key); renderTotals();
+          note.textContent='Could not post — try again in a moment.';note.hidden=false;
+        });
+    });
+    band.addEventListener('click',function(ev){
+      var b=ev.target.closest('button[data-v]'); if(!b)return;
+      var vnote=band.querySelector('.vnote');
+      if(needIdentity(vnote,'Pick who you are first — "I am" in the header — then vote.'))return;
+      vnote.hidden=true;
+      var cur=(votes[key]||{})[me]||'';
+      var next=(cur===b.dataset.v)?'':b.dataset.v;
+      (votes[key]=votes[key]||{})[me]=next;
+      render(key); renderTotals();
+      enqueue({t:'vote',key:key,by:me,v:next}).catch(function(){});
+    });
+    items[key]={w:w,fbtn:fbtn,cbtn:cbtn,cnum:cbtn.querySelector('span'),panel:panel,clist:panel.querySelector('.clist'),cflag:panel.querySelector('.cflag'),band:band,block:host};
+  }
+  document.querySelectorAll('.q[data-key]').forEach(function(el){
+    addTarget(el.dataset.key,el.dataset.key.toUpperCase(),el);
+  });
+
+  function render(key){
+    var it=items[key]; if(!it)return;
+    var m=marks[key]||{};
+    it.fbtn.classList.toggle('on',!!m.flagged);
+    it.block.classList.toggle('rw-flagged',!!m.flagged);
+    it.cflag.hidden=!m.flagged;
+    if(m.flagged)it.cflag.textContent='⚑ Flagged by '+(NAME[m.by]||m.by||'?')+(m.at?' · '+fmtDate(m.at):'');
+    var cm=comments[key]||[];
+    it.cnum.textContent=cm.length;
+    it.cbtn.classList.toggle('has',cm.length>0);
+    if(!it.clist.querySelector('.ceform'))it.clist.innerHTML=window.WR?WR.commentListHTML(cm,key):'';
+    /* vote band */
+    var vd=verdict(key), v=votes[key]||{};
+    it.band.className='band '+vd.cls;
+    it.block.dataset.verdict=vd.cls;
+    it.band.querySelector('.verdict').textContent=VERDICT_LABEL[vd.cls];
+    it.band.querySelector('.tally').textContent=vd.s+' send · '+vd.d+' drop';
+    var html='';
+    PEOPLE.forEach(function(p){
+      var st=v[p.id]||'';
+      if(p.id===me){
+        html+='<span class="vp '+p.cls+' me"><span class="nm">'+p.name+'</span>'
+          +'<button type="button" class="send'+(st==='send'?' on':'')+'" data-v="send">Send</button>'
+          +'<button type="button" class="drop'+(st==='drop'?' on':'')+'" data-v="drop">Drop</button></span>';
+      }else{
+        html+='<span class="vp '+p.cls+'"><span class="nm">'+p.name+'</span><span class="st '+st+'">'+(st==='send'?'✓ send':(st==='drop'?'✗ drop':'—'))+'</span></span>';
+      }
+    });
+    it.band.querySelector('.votes').innerHTML=html;
+  }
+  function renderAll(){Object.keys(items).forEach(render);renderTotals();applyFilter();}
+  function renderTotals(){
+    var f=0,c=0,agreed=0,contested=0,undecided=0,inn=0;
+    Object.keys(items).forEach(function(k){
+      if(marks[k]&&marks[k].flagged)f++;
+      c+=(comments[k]||[]).length;
+      var vd=verdict(k);
+      if(vd.cls==='agreed')agreed++; else if(vd.cls==='contested')contested++; else if(vd.cls==='undecided')undecided++;
+      if(vd.in)inn++;
+    });
+    document.getElementById('rd-stat').textContent='⚑ '+f+' · 💬 '+c;
+    document.getElementById('st-in').textContent=inn;
+    document.getElementById('st-agreed').textContent=agreed;
+    document.getElementById('st-contested').textContent=contested;
+    document.getElementById('st-undecided').textContent=undecided;
+    renderDraft();
+  }
+
+  /* the draft */
+  function renderDraft(){
+    var lines=[], n=0;
+    document.querySelectorAll('.q[data-key]').forEach(function(el){
+      var key=el.dataset.key; if(!verdict(key).in)return;
+      n++;
+      var title=el.querySelector('h3').childNodes[0].textContent.trim();
+      var text=[].map.call(el.querySelectorAll('.a p:not(.why)'),function(p){return p.textContent.trim();}).join('\n');
+      lines.push(n+'. '+title+'\n'+text);
+    });
+    var pre=document.getElementById('draft-text');
+    document.getElementById('draft-count').textContent=n?(n+' question'+(n===1?'':'s')+' in'):'';
+    if(!n){pre.textContent='Nothing agreed yet — vote Send on the cards above.';pre.className='empty';return;}
+    pre.className='';
+    pre.textContent='Hi [name],\n\nThank you for the opportunity to respond to the STIHL SHOP Dealer Website RFP 2026. Ahead of the 18 September deadline for vendor questions, we would appreciate clarification on the following points:\n\n'
+      +lines.join('\n\n')
+      +'\n\nWe are happy to discuss any of these by phone if that is easier.\n\nKind regards,\nMartin Mana\nF925';
+  }
+  document.getElementById('copy-draft').addEventListener('click',function(){
+    var t=document.getElementById('draft-text').textContent;
+    var done=function(){var c=document.getElementById('copied');c.hidden=false;setTimeout(function(){c.hidden=true;},1800);};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done,function(){fallback();});}
+    else fallback();
+    function fallback(){
+      var r=document.createRange(); r.selectNodeContents(document.getElementById('draft-text'));
+      var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      try{document.execCommand('copy');done();}catch(e){}
+    }
+  });
+
+  /* comment delete + edit (same pattern as the other pages) */
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cdel'); if(!b)return;
+    if(!confirm('Delete this comment for everyone?'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[];
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id){arr.splice(i,1);break;}}
+    render(key); renderTotals();
+    enqueue({t:'comment-del',id:id,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crply'); if(!b)return;
+    var citem=b.closest('.citem');
+    if(citem.querySelector('.crform'))return;
+    var key=b.dataset.key, pid=b.dataset.cid;
+    var f=document.createElement('form');
+    f.className='cform ceform crform';
+    f.innerHTML='<textarea rows="1" placeholder="Reply… (Shift+Enter for a new line)" aria-label="Reply"></textarea><button type="submit">Reply</button><button type="button" class="cancel">Cancel</button>';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea');
+    ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key); renderTotals();});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim();
+      if(!txt)return;
+      if(!me){if(window.WR)WR.nudge();return;}
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString(),parent:pid};
+      (comments[key]=comments[key]||[]).push(temp);
+      f.remove();
+      render(key); renderTotals();
+      enqueue({t:'comment',key:key,author:me,text:txt,parent:pid})
+        .catch(function(){
+          var arr=comments[key]||[], ix=arr.indexOf(temp);
+          if(ix>=0)arr.splice(ix,1);
+          render(key); renderTotals();
+        });
+    });
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crb'); if(!b)return;
+    if(!me){if(window.WR)WR.nudge();return;}
+    var id=b.dataset.cid, key=b.dataset.key, e=b.dataset.remoji;
+    var arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    c.reactions=c.reactions||{};
+    var l=c.reactions[e]=c.reactions[e]||[];
+    var ix=l.indexOf(me);
+    if(ix>=0)l.splice(ix,1); else l.push(me);
+    render(key);
+    enqueue({t:'react',id:id,emoji:e,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cedit'); if(!b)return;
+    var citem=b.closest('.citem');
+    if(citem.querySelector('.ceform'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    var f=document.createElement('form');
+    f.className='cform ceform';
+    f.innerHTML='<textarea rows="1" aria-label="Edit comment"></textarea><button type="submit">Save</button><button type="button" class="cancel">Cancel</button>';
+    f.querySelector('textarea').value=c.text||'';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea');
+    ta.dispatchEvent(new Event('input')); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim();
+      if(!txt)return;
+      c.text=txt; c.edited=new Date().toISOString();
+      f.remove();
+      render(key); renderTotals();
+      enqueue({t:'comment-edit',id:id,by:me,text:txt}).catch(function(){});
+    });
+  });
+
+  /* filter */
+  var filter='all';
+  function applyFilter(){
+    document.querySelectorAll('.q[data-key]').forEach(function(el){
+      var key=el.dataset.key, ok=true, vd=verdict(key);
+      if(filter==='agreed')ok=vd.cls==='agreed';
+      else if(filter==='contested')ok=vd.cls==='contested';
+      else if(filter==='undecided')ok=vd.cls==='undecided'||vd.cls==='dropped';
+      else if(filter==='mine')ok=!me||!((votes[key]||{})[me]);
+      el.hidden=!ok;
+    });
+    document.querySelectorAll('.qgh').forEach(function(h){
+      var any=false, el=h.nextElementSibling;
+      while(el&&!el.classList.contains('qgh')&&!el.classList.contains('draft')){
+        if(el.classList&&el.classList.contains('q')&&!el.hidden)any=true;
+        el=el.nextElementSibling;
+      }
+      h.hidden=!any;
+    });
+  }
+  document.querySelectorAll('.fbtn[data-f]').forEach(function(b){
+    b.addEventListener('click',function(){
+      filter=b.dataset.f;
+      document.querySelectorAll('.fbtn[data-f]').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      applyFilter();
+    });
+  });
+
+  if(window.WR)WR.registerLocator(function(key){
+    var it=items[key]; if(!it)return false;
+    var el=it.block;
+    el.hidden=false;
+    it.panel.hidden=false;
+    el.scrollIntoView({block:'center'});
+    el.classList.remove('wr-flash'); void el.offsetWidth; el.classList.add('wr-flash');
+    return true;
+  });
+
+  /* sync loop */
+  function applyState(data,fromPost){
+    if(!data||typeof data!=='object')return;
+    var rev=(typeof data.rev==='string')?data.rev:'';
+    if(applied&&rev&&rev<lastRev)return;
+    if(!fromPost&&pendingWrites>0)return;
+    if(rev>lastRev)lastRev=rev; applied=true;
+    marks=data.marks||{};
+    votes=data.votes||{};
+    var by={};
+    (data.comments||[]).forEach(function(c){
+      if(!c.key)return;
+      (by[c.key]=by[c.key]||[]).push(c);
+    });
+    comments=by;
+    setMode('live');
+    renderAll();
+  }
+  function refresh(){
+    if(pendingWrites>0)return;
+    apiGet().then(function(d){applyState(d,false);}).catch(function(){setMode('local');});
+  }
+  setMode('connecting');
+  renderAll();
+  refresh();
+  setInterval(refresh,12000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh();});
+})();
+</script>
+</body>
+</html>

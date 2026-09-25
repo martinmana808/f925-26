@@ -1,0 +1,55 @@
+{
+  "slug": "mosgiel",
+  "url": "https://stihlshopmosgiel.co.nz",
+  "at": "2026-09-21T17:53:10.084Z",
+  "reasons": [
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "+4 current year on page",
+    "-10 slow load 7.9s"
+  ],
+  "loadMs": 7871,
+  "finalUrl": "https://stihlshopmosgiel.co.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "WordPress",
+  "bytes": 60975,
+  "title": "Stihlshop Mosgiel",
+  "description": "",
+  "viewport": true,
+  "pagesLinked": 7,
+  "navItems": [
+    "/",
+    "/promotions",
+    "/products",
+    "/ride-on-mowers",
+    "/lawn-mowers",
+    "/service",
+    "/contact-us"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 3,
+  "localCatalogue": false,
+  "copyrightYear": 2026,
+  "newestYear": 2026,
+  "wordCount": 459,
+  "images": 4,
+  "h1": "Home",
+  "social": {
+    "facebook": "https://www.facebook.com/stihlshopmosgiel",
+    "instagram": ""
+  },
+  "about": "",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 52
+}

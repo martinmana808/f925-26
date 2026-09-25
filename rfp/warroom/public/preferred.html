@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+<title>Preferred — proposal draft 1</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --code-bg:#EFE9DD; --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,sans-serif;font-size:15.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+code{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.86em;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+h1,h2,h3,h4{font-family:"Barlow Condensed","Arial Narrow",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:.6em 0}
+ul{margin:.5em 0;padding-left:22px}
+li{margin:.3em 0}
+
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:9px;padding-bottom:9px}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+.draftbar{background:var(--part-bg);color:var(--part);border-bottom:1px solid color-mix(in srgb,var(--part) 35%,transparent);font-size:13px;font-weight:600;letter-spacing:.06em;text-align:center;padding:6px 16px}
+.draftbar b{text-transform:uppercase}
+
+.cover{padding:80px 0 48px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+.cover h1{font-size:clamp(42px,6.5vw,72px);font-weight:700;text-transform:uppercase}
+.cover .sub{font-size:18px;color:var(--muted);margin-top:16px;max-width:60ch}
+.cover-meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:36px}
+.cover-meta>div{background:var(--surface);padding:14px 16px}
+.cover-meta .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.cover-meta .v{font-family:"Barlow Condensed",sans-serif;font-size:20px;font-weight:600;margin-top:2px}
+
+.toc{padding:36px 0 8px}
+.toc h2{font-size:22px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+.toc ol{columns:2;column-gap:40px;margin:.4em 0;padding-left:22px;font-size:14.5px}
+.toc li{margin:.35em 0;-webkit-column-break-inside:avoid;break-inside:avoid}
+@media (max-width:680px){.toc ol{columns:1}}
+
+section{padding:48px 0 10px}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:9px;margin-bottom:10px}
+.sec-head .num{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:26px;color:var(--accent)}
+.sec-head h2{font-size:clamp(26px,3.6vw,36px);font-weight:700;text-transform:uppercase}
+h3{font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin:26px 0 6px}
+h4{font-size:17px;font-weight:600;margin:18px 0 4px}
+.lede{font-size:16.5px;max-width:72ch}
+.lede strong{color:var(--ink)}
+
+.tbd{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--part);background:var(--part-bg);border:1px solid color-mix(in srgb,var(--part) 40%,transparent);border-radius:5px;padding:1px 8px;vertical-align:2px}
+.callout{border:1px solid var(--line);border-left:4px solid var(--accent);background:var(--surface);border-radius:8px;padding:14px 20px;margin:18px 0;box-shadow:var(--shadow)}
+.callout.green{border-left-color:var(--sup)}
+.callout.internal{border-left-color:var(--part);background:var(--part-bg)}
+.callout h4{font-size:17px;text-transform:uppercase;letter-spacing:.04em;margin:0 0 4px}
+.callout p{margin:.35em 0}
+
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:var(--shadow);margin:18px 0}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:560px}
+th{font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:var(--muted);padding:10px 14px;border-bottom:2px solid var(--line);background:var(--surface2)}
+td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+td.good{color:var(--sup);font-weight:600}
+td.bad{color:var(--gap);font-weight:600}
+
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0}
+@media (max-width:760px){.two-col{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 20px;box-shadow:var(--shadow)}
+.panel h4{margin-top:0;font-size:18px;text-transform:uppercase;letter-spacing:.03em}
+
+.person{display:grid;grid-template-columns:56px 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:10px 0;box-shadow:var(--shadow)}
+.person .avatar{width:56px;height:56px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:22px}
+.person h4{margin:0}
+.person p{margin:.25em 0 0;font-size:14px;color:var(--muted)}
+
+.check li{list-style:none;position:relative;padding-left:26px}
+.check li::before{content:"✓";position:absolute;left:0;color:var(--sup);font-weight:700}
+.check{padding-left:2px}
+
+.phase{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.phase:last-child{border-bottom:none}
+.phase .ph{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:19px;text-transform:uppercase;color:var(--accent)}
+.phase .ph small{display:block;font-family:"IBM Plex Sans",sans-serif;font-size:12px;color:var(--muted);font-weight:500;text-transform:none;letter-spacing:0}
+.phase h4{margin:0}
+.phase p{margin:.3em 0 0;font-size:14px;color:var(--muted)}
+@media (max-width:640px){.phase{grid-template-columns:1fr}}
+
+.howto{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;box-shadow:var(--shadow);padding:14px 20px;margin:24px 0 0;font-size:14px;line-height:1.6}
+.howto>b{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:18px;letter-spacing:.05em;text-transform:uppercase}
+.howto p{margin:.35em 0 .2em;color:var(--muted)}
+.howto p i{font-style:normal;color:var(--ink);font-weight:600}
+.howto ol{margin:.4em 0 0;padding-left:20px}
+.howto li{margin:.3em 0}
+.howto li b{color:var(--ink)}
+footer{border-top:1px solid var(--line);margin-top:56px;padding:26px 0 46px;color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto!important}}
+.badges{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0 4px}
+.badge{border:2px solid var(--ink);border-radius:12px;padding:14px 16px;background:var(--surface);box-shadow:var(--shadow)}
+.badge .bi{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.badge h4{font-family:"Barlow Condensed",sans-serif;font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin:3px 0 5px}
+.badge p{font-size:13px;color:var(--muted);margin:0;line-height:1.5}
+html{scroll-behavior:smooth}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="preferred">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">U4R <em>·</em> Preferred</span>
+    <div class="wrs-menu">
+      <button type="button" class="wrs-menubtn" aria-haspopup="true">Contents ▾</button>
+      <nav class="wrs-drop" aria-label="Contents">
+        <a href="#summary">The short version</a>
+        <a href="#brief">1 · What we understood</a>
+        <a href="#adoption">2 · How dealers say yes</a>
+        <a href="#website">3 · The website a dealer gets</a>
+        <a href="#governance">4 · How it stays on brand</a>
+        <a href="#support">5 · Support</a>
+        <a href="#technical">6 · Hosting, security, continuity</a>
+        <a href="#analytics">7 · Analytics</a>
+        <a href="#migration">8 · Migration</a>
+        <a href="#pilot">9 · The pilot</a>
+        <a href="#timeline">10 · Timeline</a>
+        <a href="#pricing">11 · Pricing</a>
+        <a href="#team">12 · Who we are</a>
+        <a href="#legal">13 · Legal &amp; the MOU</a>
+        <a href="#review">14 · The two-year review</a>
+        <a href="#internal">Internal appendix</a>
+        <span class="wrs-sep"></span>
+        <a href="/wtf.html">→ WTF (STIHL’s answers)</a>
+        <a href="/proposal.html">→ Old proposal V2 (superseded)</a>
+        <a href="/board.html">→ The runbook</a>
+      </nav>
+    </div>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+  </div>
+</div>
+<div class="draftbar" style="background:var(--gap-bg);color:var(--gap);border-bottom-color:var(--gap)"><b>SUPERSEDED 23 Sep 2026</b> — replaced by <a href="/v666.html" style="color:inherit;text-decoration:underline"><b>v.666 · After the Truth</b></a>, which keeps this document’s diagnosis and changes the price. Kept for reference only.</div>
+<div class="draftbar"><b>PREFERRED · draft 1 · 18 Sep 2026</b> — a fresh proposal written for the brief STIHL actually confirmed on 17 Sep: optional, dealer-funded, STIHL-introduced. It replaces Proposal V2 (which assumed a network rollout). Amber chips mark what still has to be decided or built before 9 Oct.</div>
+
+<header class="cover">
+  <div class="wrap">
+    <p class="eyebrow">Response to Request for Proposal · STIHL SHOP Dealer Website Platform</p>
+    <h1>Preferred.</h1>
+    <p class="sub">F925’s proposal to be STIHL SHOP’s preferred website partner: a compliant, brand-aligned website that any dealer can say yes to in a week, a platform that keeps every one of them on brand without anyone at STIHL lifting a finger, and a two-year plan to make the network look like one network again.</p>
+    <div class="cover-meta">
+      <div><div class="k">Submitted to</div><div class="v">STIHL New Zealand</div></div>
+      <div><div class="k">RFP reference</div><div class="v">Dealer Website Platform · v1.0 · 4 Sep 2026</div></div>
+      <div><div class="k">Vendor</div><div class="v">F925 Limited</div></div>
+      <div><div class="k">Contact</div><div class="v">Martin Mana · hello@f925.works</div></div>
+      <div><div class="k">Already live</div><div class="v"><a href="https://stihlshoptauranga.co.nz">stihlshoptauranga.co.nz</a></div></div>
+      <div><div class="k">Valid until</div><div class="v">13 Nov 2026</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="howto">
+    <b>Why this is a new document and not V3</b>
+    <p>V2 was written for a network rollout that STIHL would drive. On 17 Sep Mark confirmed the real model: dealer websites stay optional, each dealer contracts and pays the vendor directly, STIHL appoints one <i>preferred</i> partner under a two-year MOU and introduces that partner to the network. That changes who the customer is (the dealer), what STIHL is (the channel), and what wins (adoption, not architecture). So we started again. Flag ⚑ and comment 💬 as usual; open decisions are in the internal appendix.</p>
+  </div>
+</div>
+
+<nav class="toc">
+  <div class="wrap">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#summary">The short version</a></li>
+      <li><a href="#brief">What we understood from the brief</a></li>
+      <li><a href="#adoption">How dealers say yes — the adoption plan</a></li>
+      <li><a href="#website">The website a dealer gets</a></li>
+      <li><a href="#governance">How it stays on brand — governance</a></li>
+      <li><a href="#support">Support model</a></li>
+      <li><a href="#technical">Hosting, security and continuity</a></li>
+      <li><a href="#analytics">Analytics — dealer level and network level</a></li>
+      <li><a href="#migration">Migration approach</a></li>
+      <li><a href="#pilot">The pilot</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#team">Who we are</a></li>
+      <li><a href="#legal">Legal, ownership and the MOU</a></li>
+      <li><a href="#review">The two-year review</a></li>
+      <li><a href="#internal">Internal appendix — remove before sending</a></li>
+    </ol>
+  </div>
+</nav>
+
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">00</span><h2>The short version</h2></div>
+    <p class="lede"><strong>STIHL SHOP’s problem is inconsistency. It can only be fixed by adoption.</strong> No dealer can be made to move, so the preferred partner has to be the one dealers <em>want</em> to move to — and the one STIHL can trust with the brand once they have. This proposal is built around those two jobs.</p>
+    <div class="two-col">
+      <div class="panel">
+        <h4>For the dealer</h4>
+        <ul class="check">
+          <li>A STIHL SHOP website that looks like an extension of stihlshop.co.nz, live in <b>five working days</b> from the day they say yes.</li>
+          <li>They never touch code, hosting or design. They answer a guided wizard once; after that they ask for changes in plain English and we make them.</li>
+          <li><b>$2,500 setup, $600 a month</b>, everything included. Cheaper for everyone as more dealers join.</li>
+          <li>Their own traffic numbers, in plain words, inside the portal they already use.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h4>For STIHL New Zealand</h4>
+        <ul class="check">
+          <li><b>Zero cost, zero administration.</b> STIHL sets the standards; the platform enforces them.</li>
+          <li>National campaigns pushed to every participating site in one action. Brand compliance monitored and reported, not hoped for.</li>
+          <li>A dealer-ready introduction kit, so “promoting the preferred partner” is one email STIHL forwards, not a project STIHL runs.</li>
+          <li>A quarterly network report — adoption, compliance, uptime, support — so the two-year review answers itself.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout green">
+      <h4>What is already real</h4>
+      <p>This is not a proposal to build a platform. <b>UNIFY</b> already runs <a href="https://stihlshoptauranga.co.nz">STIHL SHOP Tauranga</a> in production: the dealer portal, the onboarding wizard, the change-request workflow, the helpdesk with dealer approval, error tracking, per-dealer analytics, and the social-posting tool that published its first post to a STIHL dealer’s Facebook and Instagram on 16 September. The pilot in December runs on software that exists today.</p>
+    </div>
+  </div>
+</section>
+
+<section id="brief">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>What we understood from the brief</h2></div>
+    <p class="lede">We read the RFP and the clarifications of 17 September as one brief. Here is what we heard, in STIHL’s own terms, and what it means for how a partner should behave.</p>
+    <h3>1.1 · The problem</h3>
+    <p>Dealer websites “vary significantly across the network” in quality, experience, brand compliance, mobile, SEO, content, promotions and support, and “this inconsistency creates customer confusion and reduces the effectiveness of the STIHL SHOP brand online”. The desired outcome is “a nationally consistent, professionally managed dealer website ecosystem” that complements stihlshop.co.nz, gives dealers local flexibility and needs minimal dealer administration.</p>
+    <h3>1.2 · The model</h3>
+    <ul>
+      <li>Dealer websites are <b>optional</b>. Many dealers rely on stihlshop.co.nz alone today.</li>
+      <li>Each participating dealer <b>contracts with and pays the vendor directly</b>. STIHL New Zealand does not contract for, fund or manage dealer websites.</li>
+      <li>STIHL New Zealand appoints one <b>preferred website partner</b> under a two-year MOU, sets brand, compliance and governance requirements, provides brand assets, and <b>actively introduces and promotes</b> the partner to the network.</li>
+      <li>Any dealer with a website must comply with STIHL SHOP brand and compliance requirements, whichever provider they use.</li>
+      <li>A pilot with a small number of jointly selected dealers validates the framework before it is introduced to the wider network.</li>
+    </ul>
+    <h3>1.3 · What follows from that</h3>
+    <div class="callout">
+      <h4>Consistency is an adoption problem before it is a design problem</h4>
+      <p>A framework only makes the network consistent if most of the network is on it. Since nobody can be compelled, the preferred partner’s first job is to make joining easy, fast and obviously worthwhile for a busy dealer — and the second is to make sure that once a dealer has joined, the brand is protected without STIHL having to police it. Everything in this proposal is organised around those two jobs: <b>Section 2</b> is how dealers say yes; <b>Sections 3 to 7</b> are how we keep them, and the brand, safe once they have.</p>
+    </div>
+    <h3>1.4 · The boundaries we will respect</h3>
+    <ul class="check">
+      <li>Dealer sites are local marketing and information sites. <b>No e-commerce.</b> Any STIHL product journey redirects to the relevant page on stihlshop.co.nz (RFP §6). We already do this on Tauranga.</li>
+      <li>STIHL SHOP owns brand standards, structure, templates, navigation, STIHL product presentation, compliance requirements and approved-supplier standards (§5). The template is built so a dealer <i>cannot</i> change those areas.</li>
+      <li>Dealers own store information, team, services, community, local promotions and approved-supplier content (§5). Those are exactly the fields the dealer portal exposes.</li>
+      <li>STIHL owns branding, customer data, dealer content and digital assets (§18). Our contract with each dealer says so, and every dealer can export everything at any time.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="adoption">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>How dealers say yes — the adoption plan</h2></div>
+    <p class="lede">This section is the strategy. A dealer is a shop owner with a workshop to run. They will adopt the framework if three things are true: it is clearly better than what they have, it costs them almost no time, and STIHL has told them it is the right one. We take care of the first two and make the third as easy as forwarding an email.</p>
+
+    <h3>2.1 · The offer a dealer hears</h3>
+    <div class="callout green">
+      <p><b>“Your STIHL SHOP website, on brand, live in five working days. You answer a few questions once; we do everything else, forever. $2,500 to set up, $600 a month, nothing extra. Recommended by STIHL New Zealand.”</b></p>
+    </div>
+    <p>Every word of that is load-bearing. <i>Five working days</i> because the wizard collects everything and the template does the rest. <i>Once</i> because after onboarding the dealer only ever asks for changes. <i>Nothing extra</i> because hosting, SSL, backups, content changes, SEO and support are inside the monthly fee (§11). <i>Recommended by STIHL New Zealand</i> because that is what the MOU gives us the right to say.</p>
+
+    <h3>2.2 · See it before you buy it</h3>
+    <p>The single biggest reason a dealer says no to a website is not price; it is not being able to picture it. So we remove the imagination step. For any dealer STIHL introduces, we build a <b>preview of their site from public information</b> (their Google Business listing, their current site if they have one, their stihlshop.co.nz store page) and send them the link. No commitment, no form. If they like it, the wizard fills in the rest and the preview becomes the site. <span class="tbd">build: preview-from-public-data flow · runbook X-06</span></p>
+
+    <h3>2.3 · The introduction kit we hand STIHL</h3>
+    <p>Mark said STIHL “intends to actively introduce and promote the appointed preferred website partner”. We will make that a one-hour job for STIHL, not a campaign. On appointment we deliver:</p>
+    <ul>
+      <li><b>The dealer one-pager</b> (PDF and web): what they get, what it costs, three screenshots, how to start. STIHL SHOP co-branded, STIHL-approved before it goes anywhere.</li>
+      <li><b>Three ready-to-send dealer emails</b> for STIHL’s dealer communications: the announcement, the pilot results, the “your site must comply — here is the assessed option” reminder.</li>
+      <li><b>A page on our side</b> (e.g. <i>stihlshop-websites.co.nz</i>) that STIHL can link from the dealer portal or any communication: the offer, the preview request, the pilot dealers’ sites as live examples. <span class="tbd">domain + page — decide name</span></li>
+      <li><b>A slot in new-dealer onboarding</b>: one paragraph and a link for STIHL’s new-dealer pack, so every dealer who joins the network from 2027 hears about it on day one.</li>
+      <li><b>A 15-minute walkthrough</b> we run for STIHL’s retail team so they can answer the first dealer questions themselves.</li>
+    </ul>
+
+    <h3>2.4 · The two-year adoption plan</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>When</th><th>What happens</th><th>Dealers live (target)</th></tr></thead>
+      <tbody>
+        <tr><td><b>Dec 2026</b> — pilot</td><td>3 to 5 dealers selected with STIHL; setup fee waived for pilot dealers (§11.4). Their sites become the live examples.</td><td>3–5</td></tr>
+        <tr><td><b>Jan–Mar 2027</b> — introduction</td><td>STIHL introduces the partner (kit above). Previews built for every dealer who asks. Existing-site dealers hear the compliance message.</td><td>12–15</td></tr>
+        <tr><td><b>Apr–Sep 2027</b></td><td>Volume band 2 reached ($500/mo for everyone). Pilot-results email. Dealers recruit dealers — each live site carries a small “Get a site like this” link for other STIHL SHOP owners.</td><td>21–25</td></tr>
+        <tr><td><b>Oct 2027–Nov 2028</b></td><td>Steady state. Quarterly network report to STIHL. Band 3 ($400/mo) at 51 if the network gets there.</td><td>30–45 by the two-year review</td></tr>
+      </tbody>
+    </table></div>
+    <p>These are targets, not promises — adoption is the dealer’s decision. But they are the numbers we will report against every quarter (§14), and the volume bands mean every dealer who joins makes it cheaper for the ones already in, which is the only adoption incentive that costs STIHL nothing.</p>
+
+    <h3>2.5 · Why the compliance requirement matters</h3>
+    <p>“Dealers who operate their own website must ensure their website complies with STIHL SHOP brand and compliance requirements, regardless of the provider they choose.” That sentence is the network’s reason to move. A dealer with an off-brand site now has a standard to meet and one assessed way to meet it without doing the work themselves. We will never use that message aggressively — the tone is <i>here is the easy way</i>, not <i>you are non-compliant</i> — but it belongs in the kit, in STIHL’s voice.</p>
+  </div>
+</section>
+
+<section id="website">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>The website a dealer gets</h2></div>
+    <p class="lede">One template, built to feel like an extension of stihlshop.co.nz, with the local areas the RFP lists as dealer-owned. See it live: <a href="https://stihlshoptauranga.co.nz">stihlshoptauranga.co.nz</a>.</p>
+    <h3>3.1 · Design and customer experience</h3>
+    <ul class="check">
+      <li><b>Mobile first.</b> Two thirds of dealer-site traffic is a phone; the template is designed at phone size and scaled up, not the reverse.</li>
+      <li><b>STIHL SHOP retail positioning</b>: national design standards, consistent navigation and visual hierarchy, STIHL product presentation identical across every site (RFP §10).</li>
+      <li><b>Fast.</b> Server-rendered pages on an edge network, images served at the exact size each device needs. <span class="tbd">insert NZ Lighthouse numbers — task S-13</span></li>
+      <li><b>Accessible</b>: keyboard navigation, contrast, alt text on every dealer image (checked at upload).</li>
+      <li><b>Everything the RFP lists in §8</b>: store information, staff profiles, contact forms (spam-protected, first party, delivered to the dealer’s inbox), interactive map, local content, promotions, events, analytics.</li>
+    </ul>
+    <h3>3.2 · The pages</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Page</th><th>What it does</th><th>Who controls it</th></tr></thead>
+      <tbody>
+        <tr><td>Home</td><td>Store, hours (with an “open now / opens at” line), what makes this shop special, current promotions, map, contact.</td><td>Structure STIHL · content dealer</td></tr>
+        <tr><td>Products</td><td>STIHL categories that <b>link out to stihlshop.co.nz</b> — no local STIHL catalogue to go stale (RFP §6). Approved-supplier ranges the dealer stocks, managed locally.</td><td>STIHL section fixed · supplier section dealer</td></tr>
+        <tr><td>Services / Workshop</td><td>Servicing, repairs, sharpening, hire — the dealer’s real differentiator, in their words.</td><td>Dealer</td></tr>
+        <tr><td>About / Team</td><td>Story, staff profiles, community involvement, sponsorships.</td><td>Dealer</td></tr>
+        <tr><td>Promotions &amp; Events</td><td>National promotions pushed by us on STIHL’s schedule; local promotions and events added by the dealer with start/end dates so nothing is ever out of date.</td><td>National us · local dealer</td></tr>
+        <tr><td>Contact</td><td>Department-aware form, map, hours, phone. Submissions stored and emailed; counted in the dealer’s analytics as “got in touch”.</td><td>Dealer</td></tr>
+        <tr><td>Legal</td><td>Per-dealer privacy policy and terms, cookie consent with real per-category control.</td><td>Us</td></tr>
+      </tbody>
+    </table></div>
+    <h3>3.3 · What a dealer can and cannot change</h3>
+    <p>The dealer portal exposes exactly the dealer-owned fields from RFP §5 and nothing else. There is no theme editor, no page builder, no font picker. A dealer can make their site <i>theirs</i> — hours, people, services, local offers, photos — and cannot make it off-brand. That is the design decision that makes “central control” real without anyone at STIHL reviewing anything.</p>
+  </div>
+</section>
+
+<section id="governance">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">04</span><h2>How it stays on brand — governance</h2></div>
+    <p class="lede">Governance is 20% of the evaluation and, under an opt-in model, the thing STIHL is actually relying on the partner for. Ours is enforced by the software, evidenced by an audit trail, and reported quarterly.</p>
+    <h3>4.1 · National ownership, enforced</h3>
+    <ul class="check">
+      <li>Templates, navigation, STIHL product presentation and compliance elements live in code we control and deploy to every site at once. A dealer cannot alter them.</li>
+      <li><b>National promotions and seasonal campaigns</b> are deployed by us across all participating sites in one action, on STIHL’s calendar, with STIHL’s assets. Regional or tiered campaigns are supported. <span class="tbd">campaigns module: national push exists; scheduling UI — task B-05</span></li>
+      <li>Brand assets are served from one library; when STIHL updates a logo, every site updates.</li>
+    </ul>
+    <h3>4.2 · Dealer content, approved before it is live</h3>
+    <p>Every dealer change goes through the portal as a <b>change request</b>. Deterministic changes (hours, phone, a price on a supplier product) are applied by us within the content SLA. Anything with judgement in it — copy, imagery, a new page section — is reviewed by us against STIHL SHOP standards before it is published; if we are unsure, we ask STIHL. Nothing a dealer types appears on a live site unreviewed.</p>
+    <h3>4.3 · The audit trail</h3>
+    <p>Every change request, approval, publish and support ticket is time-stamped with who asked, who reviewed and what changed. For any site, at any time, STIHL can be shown exactly how it came to look the way it does. This is the record that makes “brand compliance monitoring and reporting” (§9) a report we run, not a manual check.</p>
+    <h3>4.4 · Compliance monitoring and reporting</h3>
+    <ul>
+      <li>Automated checks on every site: template version, legal pages present, STIHL product links resolving to stihlshop.co.nz, no local STIHL pricing, image alt text, broken links, performance budget.</li>
+      <li>A quarterly <b>network compliance report</b> to STIHL (§14): sites live, checks passed, exceptions and how they were resolved.</li>
+      <li>Disputes over a dealer’s local content: we hold the change, refer it to STIHL’s nominated contact, and apply STIHL’s ruling. We never publish over STIHL’s objection.</li>
+    </ul>
+    <h3>4.5 · Approved-supplier content</h3>
+    <p>Dealers may promote non-STIHL products and services relevant to their business (§7). The portal has a dedicated supplier-products area, kept visually separate from STIHL product presentation, with the same review step. Supplier imagery and brand assets are the dealer’s or supplier’s to provide, as Mark confirmed.</p>
+  </div>
+</section>
+
+<section id="support">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">05</span><h2>Support model</h2></div>
+    <p class="lede">One place for everything. A dealer never emails a person and hopes; they open the portal, say what they need, and can see where it is.</p>
+    <h3>5.1 · How a dealer gets help</h3>
+    <div class="two-col">
+      <div class="panel"><h4>Request a change</h4><p>For content. Field-by-field, mapped to the website, with a visible status from <i>submitted</i> to <i>live</i>. Deterministic changes applied within the content SLA; creative changes come back as a preview link to approve first.</p></div>
+      <div class="panel"><h4>Report a problem</h4><p>For anything else. A ticket with a number, a thread, attachments, and a status the dealer can read: <i>New → In progress → Waiting on you / Please test → Resolved → Closed</i>. When a fix needs their eyes we send a test link and they click <b>Mark as approved</b>. Resolved tickets close themselves after five days; the dealer can reopen with one click. Live today.</p></div>
+    </div>
+    <h3>5.2 · Service levels</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Priority</th><th>Definition</th><th>Response</th><th>Target resolution</th></tr></thead>
+      <tbody>
+        <tr><td><b>Critical</b></td><td>Site down or unusable, data at risk, legal exposure</td><td><b>2 hours</b>, 24/7</td><td>8 hours</td></tr>
+        <tr><td><b>High</b></td><td>Major feature broken, form not delivering, wrong hours live</td><td><b>4 hours</b>, business hours</td><td>2 business days</td></tr>
+        <tr><td><b>Medium</b></td><td>Content change, minor defect</td><td><b>1 business day</b></td><td>3 business days</td></tr>
+        <tr><td><b>Low</b></td><td>Cosmetic, questions, ideas</td><td><b>3 business days</b></td><td>Next release</td></tr>
+      </tbody>
+    </table></div>
+    <p>Business hours are 8am–6pm NZT, Monday to Friday. Critical issues page an engineer at any hour. Content changes: <b>48 hours</b> for deterministic changes, 5 business days for creative changes including the preview round. <span class="tbd">confirm the team can hold 24/7 Critical across two time zones — decide</span></p>
+    <h3>5.3 · Escalation</h3>
+    <p>Level 1 support (F925 team) → Level 2 engineering (Leonel) → Level 3 director (Martin). A dealer or STIHL can escalate any ticket from inside the ticket. STIHL’s nominated contact receives a monthly summary of open Critical/High items and any ticket older than its target.</p>
+    <h3>5.4 · Training</h3>
+    <p>There is very little to train because the dealer does very little. A 20-minute onboarding call at go-live, a two-page guide, and an in-portal help page. Everything else is “ask us”.</p>
+  </div>
+</section>
+
+<section id="technical">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">06</span><h2>Hosting, security and continuity</h2></div>
+    <p class="lede">Mark confirmed that STIHL mandates no specific security framework and that responsibility rests with the vendor. We hold no ISO certification and will not pretend otherwise. What we offer instead is a specific list of controls, the evidence for each, and a standing invitation to audit them.</p>
+    <h3>6.1 · Architecture</h3>
+    <ul>
+      <li>One platform, many sites: every dealer site is served by the same application, keyed by domain. One fix fixes everyone; one campaign reaches everyone.</li>
+      <li>Hosted on DigitalOcean (Sydney region) behind Cloudflare’s edge for TLS, caching and DDoS protection. Data stays in Australia/NZ.</li>
+      <li>Media on object storage with CDN delivery; images resized at upload to every size a device needs.</li>
+      <li>Target topology for the programme: two production instances per tier plus a staging environment, so a failed instance is invisible to visitors and every change is rehearsed before it reaches a dealer. <span class="tbd">staging + second instance: planned for pilot, not yet built — task I-xmu0hw5a2</span></li>
+    </ul>
+    <h3>6.2 · The controls</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>RFP §12 requirement</th><th>What we do</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Cloud hosting</td><td>DigitalOcean App Platform, Sydney; Cloudflare edge</td><td class="good">Live</td></tr>
+        <tr><td>SSL certificates</td><td>Automatic, renewed, HSTS; every dealer domain</td><td class="good">Live</td></tr>
+        <tr><td>Daily backups</td><td>Managed database with daily snapshots and point-in-time recovery; media versioned</td><td>Managed cluster: <span class="tbd">task I-03</span></td></tr>
+        <tr><td>Security monitoring</td><td>Error and exception tracking on platform and sites (Sentry); dependency vulnerability updates automatically raised and reviewed; content security policy; all dealer input sanitised on write and on render</td><td class="good">Live</td></tr>
+        <tr><td>Uptime monitoring</td><td>External checks on the platform and every dealer domain, alerting the on-call engineer</td><td><span class="tbd">task I-01 — being installed</span></td></tr>
+        <tr><td>Disaster recovery</td><td>Documented restore procedure, rehearsed quarterly; recovery objective 4 hours, data loss objective 24 hours</td><td><span class="tbd">first rehearsal — task I-09</span></td></tr>
+        <tr><td>99.9% availability</td><td>Committed per site, measured by the external monitor, reported quarterly</td><td>Commitment</td></tr>
+      </tbody>
+    </table></div>
+    <h3>6.3 · Access and data protection</h3>
+    <ul class="check">
+      <li>Dealer and admin logins require a password <b>and</b> a one-time code by email. No shared accounts.</li>
+      <li>Every write to a dealer’s data is scoped to that dealer at the database query; there is no path from one dealer’s login to another dealer’s content.</li>
+      <li>Secrets live in the hosting platform’s encrypted configuration, never in code. Third-party keys are rotated on staff change.</li>
+      <li>Contact-form submissions are stored first-party in New Zealand-adjacent infrastructure, delivered to the dealer, and never shared with a third-party form service.</li>
+      <li>Privacy Act 2020 compliance: per-dealer privacy policy, cookie consent that actually gates trackers, data export and deletion on request.</li>
+    </ul>
+    <h3>6.4 · How we build</h3>
+    <p>Every change to the platform is a pull request: automated tests, a production build and an automated code review must pass, then a second engineer reviews before merge. Nothing reaches a dealer on one person’s say-so. We are happy to show STIHL the actual review history.</p>
+  </div>
+</section>
+
+<section id="analytics">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">07</span><h2>Analytics — dealer level and network level</h2></div>
+    <p class="lede">The RFP asks for both. Dealer-level is live; network-level is the report that makes STIHL’s two-year review easy.</p>
+    <h3>7.1 · For the dealer: “Your website”</h3>
+    <p>Inside the portal, in plain words: people who visited, first-time visitors, pages looked at, how many got in touch, visitors per day, the pages people looked at most, how they found you (Google, typed the address, Facebook and Instagram), phone or computer. Seven, thirty or ninety days, with change against the previous period. No dashboards to learn. Google Analytics 4 underneath, set up by us, one property per site.</p>
+    <h3>7.2 · For STIHL: the network view</h3>
+    <p>A quarterly report (and, on request, a live view) across all participating sites: dealers live, visits, contacts generated, top local pages, search visibility trend, compliance checks passed, uptime, support volumes and response times. Aggregated by default; per-dealer on request with the dealer’s consent. <span class="tbd">network report: data exists per dealer; the aggregate report is to build before the pilot review — task R-05</span></p>
+    <h3>7.3 · SEO</h3>
+    <p>Local SEO is built into the template: structured data for the store (LocalBusiness, opening hours, reviews), per-dealer sitemaps, canonical handling, fast pages, and a monthly local article per dealer written by us and approved by the dealer. Technical SEO is a platform concern, fixed once for everyone. Keyword and traffic reporting sit in the dealer’s analytics; conversion means contact-form submissions and click-throughs to stihlshop.co.nz, both counted.</p>
+  </div>
+</section>
+
+<section id="migration">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">08</span><h2>Migration approach</h2></div>
+    <p class="lede">Mark asked vendors to outline the recommended approach, costs, responsibilities and assumptions. Migration is arranged and funded by the participating dealer.</p>
+    <h3>8.1 · Approach</h3>
+    <ol>
+      <li><b>Audit</b> (included, before the dealer commits): we look at the existing site and tell the dealer which tier applies and what will carry over.</li>
+      <li><b>Content carry-over</b>: text and images the dealer wants to keep are brought into the wizard for them; anything STIHL-product-related is replaced by links to stihlshop.co.nz.</li>
+      <li><b>Redirect map</b>: every old URL that had search traffic redirects to its new equivalent, so local search rankings survive the move.</li>
+      <li><b>Domain</b>: the site launches on the dealer’s existing domain. We either receive delegated DNS access or send the dealer a two-line change to make; a domain the dealer does not own yet we register in the dealer’s name at cost.</li>
+      <li><b>Cutover</b>: new site live on a preview address first, dealer approves, DNS switched, old site kept read-only for 30 days.</li>
+    </ol>
+    <h3>8.2 · Tiers and costs</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Tier</th><th>Applies when</th><th>Fee to dealer</th></tr></thead>
+      <tbody>
+        <tr><td><b>0 — none</b></td><td>No existing site, or the dealer chooses a fresh start</td><td>Included in setup</td></tr>
+        <tr><td><b>1 — simple</b></td><td>Brochure site under ~15 pages; content import + redirect map</td><td>$750 + GST</td></tr>
+        <tr><td><b>2 — complex</b></td><td>Large or e-commerce-entangled site; content triage, catalogue to stihlshop.co.nz links, redirect map</td><td>$1,500 + GST</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Assumptions:</b> the dealer can grant access to, or export from, their current site; domain registrar access is available or the dealer can make a DNS change with our instructions; supplier product imagery is provided by the dealer or supplier. <b>Responsibilities:</b> we do the work; the dealer approves the preview and answers questions within the cutover week; STIHL supplies brand assets.</p>
+  </div>
+</section>
+
+<section id="pilot">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">09</span><h2>The pilot</h2></div>
+    <p class="lede">Mark set out what STIHL will assess. We propose a pilot shaped to produce exactly that evidence, with dealers who will be glad they went first.</p>
+    <h3>9.1 · Shape</h3>
+    <ul>
+      <li><b>3 to 5 dealers</b>, selected jointly with STIHL in November on Mark’s criteria: interest, readiness, and a mix that tests the framework — at least one dealer with no site today, one migrating a simple site, one migrating a complex one, and ideally one in each island.</li>
+      <li><b>Setup fee waived for pilot dealers</b> (they pay the monthly fee and any migration tier). In return their sites are the network’s live examples and they give a short written reference. <span class="tbd">decide: waive $2,500 for pilot dealers — A-04</span></li>
+      <li>All pilot sites live by <b>19 December 2026</b>; the pilot runs to <b>28 February 2027</b> to include a full campaign cycle (summer) and at least one national promotion push.</li>
+    </ul>
+    <h3>9.2 · What STIHL will be able to assess</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Mark’s criterion</th><th>What we will show</th></tr></thead>
+      <tbody>
+        <tr><td>Alignment with brand standards and compliance</td><td>Each pilot site against a checklist derived from STIHL’s standards; the automated compliance checks running weekly</td></tr>
+        <tr><td>Consistency of branding, content and experience</td><td>The 3–5 sites side by side; the same national promotion live on all of them the same morning</td></tr>
+        <tr><td>Ease of implementation and management</td><td>Days from yes to live per dealer; minutes of dealer time consumed (we log it); change requests and their turnaround</td></tr>
+        <tr><td>Vendor’s ability to support dealers and maintain governance</td><td>Every ticket and change request with its timestamps; the audit trail for each site</td></tr>
+        <tr><td>Feedback from dealers and STIHL</td><td>A short survey at go-live and at 60 days; a one-page pilot report to STIHL on 5 March 2027</td></tr>
+      </tbody>
+    </table></div>
+    <h3>9.3 · What happens after</h3>
+    <p>STIHL confirms the framework for broader introduction, we fold in any refinements from the pilot report, and the introduction kit (§2.3) goes out in March. Pilot dealers stay on their terms indefinitely.</p>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">10</span><h2>Timeline</h2></div>
+    <p class="lede">Mapped to the RFP’s five phases and its dates. Phase 1 is short because the platform exists; the time goes into the pilot and the introduction.</p>
+    <div class="phase"><div class="ph">Phase 1<small>13 Nov – 5 Dec 2026</small></div><div><h4>Discovery and platform alignment</h4><p>MOU signed. Brand asset kit received; template checked against STIHL SHOP standards with STIHL’s contact. Pilot dealers selected jointly. Introduction kit drafted for STIHL approval. Staging environment and uptime monitoring in place.</p></div></div>
+    <div class="phase"><div class="ph">Phase 2<small>Dec 2026 – Feb 2027</small></div><div><h4>Pilot deployment</h4><p>3–5 pilot sites live by 19 Dec. First national promotion pushed. Support and change requests running. Pilot report 5 Mar.</p></div></div>
+    <div class="phase"><div class="ph">Phase 3<small>Mar – Apr 2027</small></div><div><h4>Dealer onboarding at scale</h4><p>STIHL introduces the partner. Previews on request; five-working-day go-lives; migrations by tier. Target 12–15 live.</p></div></div>
+    <div class="phase"><div class="ph">Phase 4<small>May 2027 onward</small></div><div><h4>Network rollout — as dealers choose</h4><p>Continuous onboarding. Volume band 2 for everyone at 21 dealers. Quarterly network report to STIHL.</p></div></div>
+    <div class="phase"><div class="ph">Phase 5<small>Ongoing</small></div><div><h4>Optimisation and support</h4><p>Monthly template improvements shipped to every site; seasonal campaigns; SEO programme; two-year review pack (§14) delivered October 2028.</p></div></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">11</span><h2>Pricing</h2></div>
+    <p class="lede"><strong>One price, everything included, paid by the dealer. No cost to STIHL New Zealand at any point.</strong> The monthly fee steps down for every participating dealer as the network grows. All prices NZD, plus GST, itemised per RFP §17.</p>
+    <h3>11.1 · Per dealer</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th>RFP §17 line</th><th>Fee</th><th>What it covers</th></tr></thead>
+      <tbody>
+        <tr><td><b>Setup fee</b></td><td>$2,500 one-off</td><td>Onboarding wizard, content collection, image preparation, site configuration, domain and go-live. Waived for pilot dealers (§9).</td></tr>
+        <tr><td><b>Website migration fee</b></td><td>$0 / $750 / $1,500 by tier</td><td>See §8. Confirmed per dealer in the free audit before they commit.</td></tr>
+        <tr><td><b>Monthly fee</b></td><td>$600<br><small>$500 once 21 dealers are live · $400 once 51 are live — for everyone, from the following month</small></td><td>The managed service: hosting, changes, campaigns, SEO, analytics, support, all of it.</td></tr>
+        <tr><td><b>Hosting fee</b></td><td>$0 — included</td><td>Edge delivery, compute, database, storage, SSL, backups, monitoring.</td></tr>
+        <tr><td><b>Content management cost</b></td><td>$0 — included</td><td>Unlimited deterministic changes at the 48-hour SLA; creative changes with preview; national campaigns; a monthly local SEO article; monthly analytics.</td></tr>
+        <tr><td><b>Optional services</b></td><td>Menu</td><td>On-site photography from $450; additional local content pages $180 each; social-posting add-on (BRANDKIT) $149/mo; premium module configuration quoted. <span class="tbd">confirm menu — task D-03</span></td></tr>
+      </tbody>
+    </table></div>
+    <h3>11.2 · What the dealer is comparing it to</h3>
+    <p>A typical dealer site today is a one-off build (commonly $3,000–$8,000) plus hosting, a maintenance retainer, occasional SEO help and content changes billed by the hour — and it still drifts off brand because nobody owns it. $600 a month replaces all of that, includes the changes, and never drifts, because the template is maintained for everyone at once.</p>
+    <h3>11.3 · Terms</h3>
+    <ul>
+      <li>Dealer agreement: month to month after the first 12 months; 30 days’ notice; no exit fee. On exit the dealer receives all their content and their domain stays theirs.</li>
+      <li>Setup and migration invoiced at go-live; monthly in advance.</li>
+      <li>Price fixed for the two-year MOU term; bands only ever move down.</li>
+    </ul>
+    <h3>11.4 · Pilot pricing</h3>
+    <p>Pilot dealers: setup fee waived; migration tier and monthly fee as above. <span class="tbd">decide — A-04</span></p>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">12</span><h2>Who we are</h2></div>
+    <p class="lede">F925 Limited is a small New Zealand–Argentina studio that builds and runs multi-site platforms for retail networks. We are three people who will each be on the phone to dealers, and one of us is a STIHL SHOP owner.</p>
+    <div class="person"><div class="avatar">MM</div><div><h4>Martin Mana — Director, product and delivery</h4><p>Runs the platform roadmap, dealer onboarding and the relationship with STIHL New Zealand. <span class="tbd">bio — 2 lines</span></p></div></div>
+    <div class="person"><div class="avatar">LO</div><div><h4>Leonel Orsi — Engineering</h4><p>Owns the platform, hosting, security and continuity. Level 2 support and the on-call engineer. <span class="tbd">bio + surname/title to confirm</span></p></div></div>
+    <div class="person"><div class="avatar">MM</div><div><h4>Michael McLarnon — Dealer experience</h4><p>Owner of STIHL SHOP Tauranga, the first dealer on the platform. Leads dealer onboarding conversations, pilot dealer selection with STIHL, and the “would a dealer actually do this?” test on every feature. <span class="tbd">bio + role title to confirm</span></p></div></div>
+    <div class="callout">
+      <h4>A note on independence</h4>
+      <p>Michael is both a STIHL SHOP dealer and a principal of F925. We think that is the reason the platform works for dealers, and we would rather say it plainly than have it discovered. STIHL SHOP Tauranga contracts with F925 on the same terms offered to every dealer in this proposal, and Michael takes no part in STIHL New Zealand’s evaluation of any vendor. <span class="tbd">Mike to confirm wording</span></p>
+    </div>
+    <h3>12.1 · Relevant experience</h3>
+    <ul>
+      <li><b>STIHL SHOP Tauranga</b> — live on UNIFY: onboarding, content, campaigns, support, analytics, and the first BRANDKIT social post published 16 September 2026. The reference site for this proposal.</li>
+      <li><b>UNIFY</b> — one codebase serving many dealer domains, with a dealer portal, review workflow and helpdesk; load-tested for 100 dealers with headroom. <span class="tbd">link capacity summary — Appendix</span></li>
+      <li><b>Multi-site and franchise experience</b> — <span class="tbd">Martin/Leo: two prior examples, one line each</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="legal">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">13</span><h2>Legal, ownership and the MOU</h2></div>
+    <h3>13.1 · Ownership (RFP §18)</h3>
+    <ul class="check">
+      <li>STIHL SHOP retains ownership of branding, customer data, dealer content and digital assets. Our dealer agreement states this; F925 claims no rights in any of them.</li>
+      <li>F925 retains ownership of the UNIFY platform and template code. Dealers and STIHL receive a licence to use them for the term; on exit, content and data are exported in open formats within 10 business days.</li>
+      <li>Improvements to the template made for the STIHL SHOP network remain available to the network for the MOU term.</li>
+    </ul>
+    <h3>13.2 · Compliance</h3>
+    <ul class="check">
+      <li><b>Privacy Act 2020</b> — per-dealer privacy policy, consent-gated tracking, data subject requests handled within statutory time, breach notification procedure.</li>
+      <li><b>Fair Trading Act</b> — no misleading claims on dealer sites; national pricing never shown locally; any AI-assisted feature is disclosed as such.</li>
+      <li><b>Consumer Guarantees Act</b> — dealer sites do not transact; where services are described, terms are the dealer’s and reviewed for accuracy.</li>
+      <li><b>Security</b> — the controls in §6, with no certification claimed. We will support a STIHL security questionnaire or third-party review at any time.</li>
+    </ul>
+    <h3>13.3 · The MOU</h3>
+    <p>We understand the agreement with STIHL New Zealand to be a two-year Memorandum of Understanding establishing F925 as preferred website partner, with the brand, compliance and governance requirements that apply, renewable by mutual agreement after review. We are ready to sign on 13 November. We would propose the MOU also record: STIHL’s nominated contact for brand rulings; the introduction activities STIHL intends (§2.3); and the quarterly report we will provide (§14).</p>
+  </div>
+</section>
+
+<section id="review">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">14</span><h2>The two-year review</h2></div>
+    <p class="lede">Mark said STIHL will review adoption, compliance outcomes and network requirements before deciding to renew, extend, replace or re-tender. We would like that review to take an afternoon, not a month. Every quarter STIHL receives one page:</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>What STIHL will review</th><th>What we report, every quarter</th></tr></thead>
+      <tbody>
+        <tr><td>Dealer adoption</td><td>Dealers live, in onboarding, and previewed; against the plan in §2.4</td></tr>
+        <tr><td>Compliance outcomes</td><td>Automated checks passed per site; exceptions and resolutions; brand rulings requested</td></tr>
+        <tr><td>Network requirements</td><td>Uptime per site against 99.9%; support volumes and SLA attainment; national campaigns deployed and on-time rate; dealer satisfaction</td></tr>
+        <tr><td>Network performance</td><td>Aggregate visits, contacts generated, search visibility trend, click-throughs to stihlshop.co.nz</td></tr>
+      </tbody>
+    </table></div>
+    <p>The numbers come from the same systems that run the service — the platform’s operations dashboard and the per-dealer analytics — so they are always current and never hand-assembled. If at any point the network is not adopting, STIHL will know from us first, with our view of why.</p>
+    <div class="callout green">
+      <h4>What we are asking STIHL New Zealand for</h4>
+      <ol>
+        <li>The preferred partner appointment under the two-year MOU.</li>
+        <li>A nominated contact for brand rulings and pilot selection.</li>
+        <li>The introduction activities described in Mark’s answer — using the kit we provide, so it costs STIHL an hour.</li>
+        <li>Nothing else. No funding, no administration, no risk.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section id="internal">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">⚠</span><h2>Internal appendix — remove before sending</h2></div>
+    <div class="callout internal">
+      <h4>Why this document is shaped the way it is</h4>
+      <p>Written 18 Sep after Mark’s two answers (see <a href="/wtf.html">WTF</a>). Customer = dealer; STIHL = channel; win = adoption. Evaluation weights: Strategy 20 (§1–2), Design/CX 20 (§3), Governance 20 (§4), Support 15 (§5), Technical 15 (§6–7), Cost 10 (§11). The old V2 is superseded, not edited; anything worth keeping from it (performance appendix, capacity numbers) gets pulled in as appendices.</p>
+      <h4>Decisions needed before 9 Oct</h4>
+      <ul>
+        <li><b>Pilot pricing</b> — waive the $2,500 setup for pilot dealers? (A-04). Recommendation: yes; it is the cheapest reference we will ever buy.</li>
+        <li><b>Volume bands</b> 600/500/400 at 1–20 / 21–50 / 51+ — confirm with Mike from the dealer side.</li>
+        <li><b>24/7 Critical response</b> — can two people across NZ and Argentina honestly hold a 2-hour Critical at 3am NZT? If not, say “business hours + best effort” and lose a little on Support.</li>
+        <li><b>Preview-from-public-data</b> (§2.2) — build it or drop it. Recommendation: build; it is the adoption engine and mostly reuses the wizard.</li>
+        <li><b>Independence note</b> (§12) — Mike’s wording. Non-negotiable that it is in.</li>
+        <li><b>The dealer-facing page/domain</b> (§2.3) — name it.</li>
+        <li><b>Optional services menu</b> (D-03) — photography price, BRANDKIT add-on price.</li>
+        <li><b>Bios</b> — three, two lines each; Leo’s and Mike’s titles.</li>
+      </ul>
+      <h4>Claims gated on work that is not done</h4>
+      <ul>
+        <li>Uptime monitoring (I-01), managed DB with PITR (I-03), DR rehearsal (I-09), staging + second instance (I-xmu0hw5a2) — all described as commitments with tbd chips. Every one must be true before the pilot, ideally before the presentation.</li>
+        <li>Network-level report (§7.2, R-05) and the campaign scheduling UI (§4.1, B-05) — not built.</li>
+        <li>NZ Lighthouse numbers (S-13) for §3.1.</li>
+        <li>Merge and deploy Leo’s open PRs (forms, reCAPTCHA, cookies) so §3.2 Contact and §6.3 are literally true.</li>
+      </ul>
+      <h4>Still to add</h4>
+      <p>Appendix A: measured performance (from V2, refreshed). Appendix B: capacity at 100 dealers (one page from the capacity report). Appendix C: screenshots — portal wizard, change request, helpdesk with UAT approve, Your website analytics, Tauranga on phone.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>F925 Limited</strong> · hello@f925.works · f925.works — <em>Preferred</em>, response to the STIHL SHOP Dealer Website Platform RFP (v1.0, 4 September 2026), written against STIHL New Zealand’s clarifications of 17 September. Internal draft 1 of 18 September 2026 — not for distribution.</p>
+  </div>
+</footer>
+
+
+<style>
+/* ---------- review layer ---------- */
+.rdock{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);padding:6px 12px;font-size:12.5px;max-width:calc(100vw - 28px)}
+.rdock .rdl{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.rdock .idbtn{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.05em;text-transform:uppercase;background:var(--surface2);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:2px 11px;cursor:pointer}
+.rdock .idbtn.active{color:#fff}
+.rdock .idbtn.pa.active{background:var(--accent);border-color:var(--accent)}
+.rdock .idbtn.pb.active{background:var(--sup);border-color:var(--sup)}
+.rdock .idbtn.pc.active{background:var(--part);border-color:var(--part)}
+.rdock .rstat{color:var(--muted);white-space:nowrap}
+.rdock .rlive{font-weight:600;white-space:nowrap;color:var(--muted)}
+.rdock .rlive.live{color:var(--sup)}
+.rdock .rlive.local{color:var(--gap)}
+.rdock.pulse{animation:rdpulse .45s ease 2}
+@keyframes rdpulse{50%{transform:scale(1.05)}}
+@media (prefers-reduced-motion: reduce){.rdock.pulse{animation:none}}
+.rw{display:inline-flex;align-items:center;gap:5px;margin-left:10px;vertical-align:middle;font-family:"IBM Plex Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none}
+.rw button{font-size:11.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 8px;cursor:pointer;line-height:1.5}
+.rw .rwf.on{color:#fff;background:var(--gap);border-color:var(--gap)}
+.rw .rwc.has{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);font-weight:700;background:var(--accent-soft)}
+.rw-flagged{box-shadow:0 0 0 2px var(--gap);border-radius:8px}
+.rw-panel{margin:10px 0 4px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:10px 12px;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13.5px;font-weight:400;letter-spacing:0;text-transform:none;text-align:left;line-height:1.55}
+.rw-panel .citem{border-bottom:1px solid var(--line);padding:6px 0}
+.rw-panel .citem:last-child{border-bottom:none}
+.rw-panel .citem b{font-size:13px}
+.rw-panel .citem time{font-size:11.5px;color:var(--muted);margin-left:6px}
+.rw-panel .citem p{margin:.15em 0 0;font-size:13.5px;white-space:pre-wrap}
+.rw-panel .cform{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
+.rw-panel .cform input,.rw-panel .cform textarea{flex:1;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);min-width:0;resize:none;line-height:1.45}
+.rw-panel .cform button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.rw-panel .cnote{font-size:12.5px;color:var(--gap);margin:.4em 0 0}
+.rw-panel .cflag{font-size:12px;color:var(--gap);font-weight:600;margin:0 0 .3em}
+</style>
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+<script>
+(function(){
+  var API='/api/state?page=preferred', APIKEY='XPFmcH2RSsza';
+  var PEOPLE=[
+    {id:'martin', name:'Martin', cls:'pa'},
+    {id:'leonel', name:'Leonel', cls:'pb'},
+    {id:'mike',   name:'Mike',   cls:'pc'}
+  ];
+  var NAME={}; PEOPLE.forEach(function(p){NAME[p.id]=p.name;});
+  var me=(window.WR?WR.me:'');
+  if(window.WR)WR.onIdentity(function(id){me=id;});
+  var mode='connecting';
+  var marks={}, comments={}, items={};
+  var lastRev='', applied=false, pendingWrites=0, chain=Promise.resolve();
+  function enqueue(op){
+    pendingWrites++;
+    var p=chain.then(function(){return apiPost(op);});
+    chain=p.then(function(){pendingWrites--;if(pendingWrites===0)refresh();},function(){pendingWrites--;setMode('local');});
+    return p;
+  }
+
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function san(t){return String(t).trim().replace(/[^A-Za-z0-9_.~:@+-]+/g,'_').replace(/^[_.]+|[_.]+$/g,'').slice(0,60)||'x';}
+  function slug(t){return san(String(t).toLowerCase().replace(/\s+/g,'-'));}
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(undefined,{day:'numeric',month:'short'});}catch(e){return '';}}
+
+  function apiGet(){
+    return fetch(API,{headers:{'x-warroom-key':APIKEY}}).then(function(r){
+      if(!r.ok)throw new Error('http '+r.status);
+      return r.json();
+    });
+  }
+  function apiPost(op){
+    return fetch(API,{method:'POST',headers:{'x-warroom-key':APIKEY,'content-type':'application/json'},body:JSON.stringify(op)}).then(function(r){
+      if(!r.ok)throw new Error('http '+r.status);
+      return r.json();
+    });
+  }
+
+  /* ---------- dock (totals + live; identity lives in the wr-shell header) ---------- */
+  var dock=document.createElement('div');
+  dock.className='rdock';
+  dock.innerHTML='<span class="rstat" id="rd-stat">⚑ 0 · 💬 0</span><span class="rlive" id="rd-live">Connecting…</span>';
+  document.body.appendChild(dock);
+  function needIdentity(noteEl,msg){
+    if(me)return false;
+    if(noteEl){noteEl.textContent=msg;noteEl.hidden=false;}
+    if(window.WR)WR.nudge();
+    return true;
+  }
+  function setMode(m){
+    mode=m;
+    var el=document.getElementById('rd-live');
+    el.className='rlive '+m;
+    el.textContent = m==='live'?'● Live':(m==='local'?'○ Offline — read-only':'Connecting…');
+  }
+
+  /* ---------- targets ---------- */
+  function addTarget(key,label,widgetHost,panelAnchor,block){
+    if(items[key]||!widgetHost)return;
+    var w=document.createElement('span');
+    w.className='rw';
+    w.innerHTML='<button type="button" class="rwf" title="Flag for attention">⚑</button><button type="button" class="rwc" title="Comments">💬 <span>0</span></button>';
+    widgetHost.appendChild(w);
+    var panel=document.createElement('div');
+    panel.className='rw-panel'; panel.hidden=true;
+    panel.innerHTML='<p class="cflag" hidden></p><div class="clist"></div>'
+      +'<form class="cform"><textarea rows="1" placeholder="Comment on '+esc(label)+'… (Shift+Enter for a new line)" aria-label="Comment on '+esc(label)+'"></textarea><button type="submit">Post</button></form>'
+      +'<p class="cnote" hidden></p>';
+    if(panelAnchor&&panelAnchor!==widgetHost){panelAnchor.insertAdjacentElement('afterend',panel);}
+    else{widgetHost.appendChild(panel);}
+    if(window.WR)WR.wireCommentBox(panel.querySelector('.cform textarea'));
+    var fbtn=w.querySelector('.rwf'), cbtn=w.querySelector('.rwc');
+    var note=panel.querySelector('.cnote');
+    fbtn.addEventListener('click',function(){
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.')){panel.hidden=false;return;}
+      var cur=marks[key]||{};
+      var next=!cur.flagged;
+      marks[key]={flagged:next,by:me,at:new Date().toISOString()};
+      render(key); renderTotals();
+      enqueue({t:'mark',key:key,flagged:next,by:me}).catch(function(){});
+    });
+    cbtn.addEventListener('click',function(){panel.hidden=!panel.hidden;});
+    panel.querySelector('form').addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var inp=panel.querySelector('textarea');
+      var txt=inp.value.trim();
+      if(!txt)return;
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.'))return;
+      note.hidden=true;
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString()};
+      (comments[key]=comments[key]||[]).push(temp);
+      render(key); renderTotals();
+      inp.value='';
+      enqueue({t:'comment',key:key,author:me,text:txt})
+        .catch(function(){
+          var arr=comments[key]||[], ix=arr.indexOf(temp);
+          if(ix>=0)arr.splice(ix,1);
+          render(key); renderTotals();
+          note.textContent='Could not post — try again in a moment.';note.hidden=false;
+        });
+    });
+    items[key]={w:w,fbtn:fbtn,cbtn:cbtn,cnum:cbtn.querySelector('span'),panel:panel,clist:panel.querySelector('.clist'),cflag:panel.querySelector('.cflag'),block:block||widgetHost};
+  }
+
+  
+  document.querySelectorAll('section[id]').forEach(function(sec){
+    var head=sec.querySelector('.sec-head');
+    if(!head)return;
+    var h2=head.querySelector('h2');
+    addTarget('sec-'+san(sec.id),(h2?h2.textContent:sec.id),head,head,head);
+  });
+  document.querySelectorAll('section h3').forEach(function(h3){
+    var t=h3.textContent.trim();
+    var m=t.match(/^(\d+(?:\.\d+)?)/);
+    var key='h3-'+(m?san(m[1]):slug(t).slice(0,40));
+    addTarget(key,t.slice(0,60),h3,h3,h3);
+  });
+
+
+  /* ---------- rendering ---------- */
+  function render(key){
+    var it=items[key]; if(!it)return;
+    var m=marks[key]||{};
+    it.fbtn.classList.toggle('on',!!m.flagged);
+    it.block.classList.toggle('rw-flagged',!!m.flagged);
+    it.cflag.hidden=!m.flagged;
+    if(m.flagged)it.cflag.textContent='⚑ Flagged by '+(NAME[m.by]||m.by||'?')+(m.at?' · '+fmtDate(m.at):'');
+    var cm=comments[key]||[];
+    it.cnum.textContent=cm.length;
+    it.cbtn.classList.toggle('has',cm.length>0);
+    if(!it.clist.querySelector('.ceform'))it.clist.innerHTML=window.WR?WR.commentListHTML(cm,key):'';
+  }
+  function renderAll(){Object.keys(items).forEach(render);renderTotals();}
+  function renderTotals(){
+    var f=0,c=0;
+    Object.keys(items).forEach(function(k){
+      if(marks[k]&&marks[k].flagged)f++;
+      c+=(comments[k]||[]).length;
+    });
+    document.getElementById('rd-stat').textContent='⚑ '+f+' · 💬 '+c;
+  }
+
+  /* ---------- sync loop ---------- */
+  function applyState(data,fromPost){
+    if(!data||typeof data!=='object')return;
+    var rev=(typeof data.rev==='string')?data.rev:'';
+    if(applied&&rev&&rev<lastRev)return;
+    if(!fromPost&&pendingWrites>0)return;
+    if(rev>lastRev)lastRev=rev; applied=true;
+    marks=data.marks||{};
+    var by={};
+    (data.comments||[]).forEach(function(c){
+      if(!c.key)return;
+      (by[c.key]=by[c.key]||[]).push(c);
+    });
+    comments=by;
+    setMode('live');
+    renderAll();
+  }
+  function refresh(){
+    if(pendingWrites>0)return;
+    apiGet().then(function(d){applyState(d,false);}).catch(function(){setMode('local');});
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cdel'); if(!b)return;
+    if(!confirm('Delete this comment for everyone?'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[];
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id){arr.splice(i,1);break;}}
+    render(key); renderTotals();
+    enqueue({t:'comment-del',id:id,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crply'); if(!b)return;
+    var citem=b.closest('.citem');
+    if(citem.querySelector('.crform'))return;
+    var key=b.dataset.key, pid=b.dataset.cid;
+    var f=document.createElement('form');
+    f.className='cform ceform crform';
+    f.innerHTML='<textarea rows="1" placeholder="Reply… (Shift+Enter for a new line)" aria-label="Reply"></textarea><button type="submit">Reply</button><button type="button" class="cancel">Cancel</button>';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea');
+    ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key); renderTotals();});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim();
+      if(!txt)return;
+      if(!me){if(window.WR)WR.nudge();return;}
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString(),parent:pid};
+      (comments[key]=comments[key]||[]).push(temp);
+      f.remove();
+      render(key); renderTotals();
+      enqueue({t:'comment',key:key,author:me,text:txt,parent:pid})
+        .catch(function(){
+          var arr=comments[key]||[], ix=arr.indexOf(temp);
+          if(ix>=0)arr.splice(ix,1);
+          render(key); renderTotals();
+        });
+    });
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crb'); if(!b)return;
+    if(!me){if(window.WR)WR.nudge();return;}
+    var id=b.dataset.cid, key=b.dataset.key, e=b.dataset.remoji;
+    var arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    c.reactions=c.reactions||{};
+    var l=c.reactions[e]=c.reactions[e]||[];
+    var ix=l.indexOf(me);
+    if(ix>=0)l.splice(ix,1); else l.push(me);
+    render(key);
+    enqueue({t:'react',id:id,emoji:e,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cedit'); if(!b)return;
+    var citem=b.closest('.citem');
+    if(citem.querySelector('.ceform'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    var f=document.createElement('form');
+    f.className='cform ceform';
+    f.innerHTML='<textarea rows="1" aria-label="Edit comment"></textarea><button type="submit">Save</button><button type="button" class="cancel">Cancel</button>';
+    f.querySelector('textarea').value=c.text||'';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea');
+    ta.dispatchEvent(new Event('input')); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim();
+      if(!txt)return;
+      c.text=txt; c.edited=new Date().toISOString();
+      f.remove();
+      render(key); renderTotals();
+      enqueue({t:'comment-edit',id:id,by:me,text:txt}).catch(function(){});
+    });
+  });
+  if(window.WR)WR.registerLocator(function(key){
+    var it=items[key]; if(!it)return false;
+    it.panel.hidden=false;
+    var el=it.block||it.w;
+    el.scrollIntoView({block:'center'});
+    el.classList.remove('wr-flash'); void el.offsetWidth; el.classList.add('wr-flash');
+    return true;
+  });
+  setMode('connecting');
+  renderTotals();
+  refresh();
+  setInterval(refresh,12000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh();});
+})();
+</script>
+</body>
+</html>

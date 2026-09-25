@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>WTF</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --code-bg:#EFE9DD; --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+  --p-a:#6847B8; --p-a-bg:#EDE7FA; --p-b:#0A6C4F; --p-b-bg:#DCF2E9; --p-c:#1B5FAE; --p-c-bg:#DDEAF8;
+  --wire:#B9AE97;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+    --p-a:#A78BFA; --p-a-bg:#2A2340; --p-b:#4CC9A2; --p-b-bg:#12352A; --p-c:#6FB1F0; --p-c-bg:#172A40;
+    --wire:#5E5644;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  --p-a:#A78BFA; --p-a-bg:#2A2340; --p-b:#4CC9A2; --p-b-bg:#12352A; --p-c:#6FB1F0; --p-c-bg:#172A40;
+  --wire:#5E5644;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+.narrow{max-width:880px}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+code{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+h1,h2,h3,h4{font-family:"Barlow Condensed",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:.5em 0}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:9px;padding-bottom:9px}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+header{padding:50px 0 10px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-size:clamp(36px,5.6vw,56px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:70ch;margin-top:12px}
+.status{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--part-bg);color:var(--part);border-radius:5px;padding:2px 9px;vertical-align:middle;margin-left:8px}
+.srcnote{margin:18px 0 0;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--part);border-radius:8px;padding:12px 16px;font-size:14px;box-shadow:var(--shadow)}
+main{padding:10px 0 40px}
+h2.gh{font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:7px;margin:38px 0 6px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+h2.gh .gdesc{width:100%;font-family:"IBM Plex Sans",sans-serif;font-size:13.5px;color:var(--muted);font-weight:400;text-transform:none;margin-top:-2px}
+h3{font-size:21px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin:24px 0 6px}
+/* ---- the tree ---- */
+.tree{margin:22px 0 10px}
+.node{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:12px 16px}
+.node .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.06em}
+.node h4{font-size:19px;text-transform:uppercase;letter-spacing:.02em;margin:2px 0 4px}
+.node p{margin:.25em 0;font-size:13.5px;color:var(--muted)}
+.node .kv{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:13px;margin-top:8px}
+.node .kv b{color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:11px;padding-top:2px}
+.node .kv span{color:var(--ink)}
+.node.root{max-width:560px;margin:0 auto;border-left:5px solid var(--accent);text-align:left}
+.node.root h4{font-size:22px}
+.node.branch{border-top:4px solid var(--part)}
+.node.leaf{border-top:4px solid var(--sup)}
+.node.leaf.risky{border-top-color:var(--gap)}
+.node .money{font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:700;color:var(--ink);line-height:1.1;margin-top:8px}
+.node .money small{display:block;font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;color:var(--muted);font-weight:500}
+.level{display:grid;grid-template-columns:1fr 1fr;gap:28px;position:relative;margin-top:44px}
+.level::before{content:"";position:absolute;top:-22px;left:25%;right:25%;height:2px;background:var(--wire)}
+.tree .stem{width:2px;height:22px;background:var(--wire);margin:0 auto}
+.branchcol{position:relative}
+.branchcol::before{content:"";position:absolute;top:-22px;left:50%;width:2px;height:22px;background:var(--wire)}
+.leaves{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative;margin-top:40px}
+.leaves::before{content:"";position:absolute;top:-20px;left:25%;right:25%;height:2px;background:var(--wire)}
+.leaves .leafcol{position:relative}
+.leaves .leafcol::before{content:"";position:absolute;top:-20px;left:50%;width:2px;height:20px;background:var(--wire)}
+.branchcol .stem2{width:2px;height:20px;background:var(--wire);margin:0 auto}
+.arrowlbl{position:absolute;top:-38px;left:50%;transform:translateX(-50%);font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);background:var(--paper);padding:0 6px;white-space:nowrap}
+@media (max-width:760px){
+  .level,.leaves{grid-template-columns:1fr;gap:14px;margin-top:14px}
+  .level::before,.leaves::before,.branchcol::before,.leaves .leafcol::before,.tree .stem,.branchcol .stem2{display:none}
+  .arrowlbl{display:none}
+}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:14px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+blockquote{margin:.6em 0;padding:8px 14px;border-left:4px solid var(--line);background:var(--surface2);border-radius:0 8px 8px 0;font-size:14.5px;color:var(--ink)}
+blockquote b{color:var(--gap)}
+.note{font-size:13px;color:var(--muted);border-left:3px solid var(--part);padding-left:10px}
+/* ---- prose blocks ---- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:16px 20px;margin:16px 0}
+.card h3{margin-top:0}
+.card.idea{border-left:5px solid var(--accent)}
+.card.open{border-left:5px solid var(--part)}
+.card ul{margin:.5em 0;padding-left:22px} .card li{margin:.35em 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:var(--shadow);margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th{font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:var(--muted);padding:10px 14px;border-bottom:2px solid var(--line);background:var(--surface2)}
+td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+td b.num{font-family:"Barlow Condensed",sans-serif;font-size:19px;font-weight:700}
+.math{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0}
+.math .m{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.math .m .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.math .m .v{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:700;line-height:1.1;margin:2px 0}
+.math .m .v.good{color:var(--sup)} .math .m .v.meh{color:var(--part)} .math .m .v.ghost{color:var(--muted);text-decoration:line-through}
+.math .m p{font-size:12.5px;color:var(--muted);margin:.2em 0 0}
+.callout{border-left:4px solid var(--part);background:var(--part-bg);border-radius:0 8px 8px 0;padding:8px 12px;margin:.6em 0;font-size:14.5px}
+.callout .ct{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--part);margin-bottom:1px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 42px;color:var(--muted);font-size:13px}
+/* review layer */
+.rdock{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);padding:6px 12px;font-size:12.5px;max-width:calc(100vw - 28px)}
+.rdock .rstat{color:var(--muted);white-space:nowrap}
+.rdock .rlive{font-weight:600;white-space:nowrap;color:var(--muted)}
+.rdock .rlive.live{color:var(--sup)} .rdock .rlive.local{color:var(--gap)}
+.rw{display:inline-flex;align-items:center;gap:5px;margin-left:10px;vertical-align:middle}
+.rw button{font-size:11.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 8px;cursor:pointer;line-height:1.5;font-family:"IBM Plex Sans",system-ui,sans-serif}
+.rw .rwf.on{color:#fff;background:var(--gap);border-color:var(--gap)}
+.rw .rwc.has{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);font-weight:700;background:var(--accent-soft)}
+.rw-flagged{box-shadow:0 0 0 2px var(--gap);border-radius:10px}
+.rw-panel{margin:10px 0 4px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:10px 12px;font-size:13.5px;line-height:1.55}
+.node .rw-panel{margin:10px -4px 0}
+.rw-panel .citem{border-bottom:1px solid var(--line);padding:6px 0}
+.rw-panel .citem:last-child{border-bottom:none}
+.rw-panel .citem b{font-size:13px}
+.rw-panel .citem time{font-size:11.5px;color:var(--muted);margin-left:6px}
+.rw-panel .citem p{margin:.15em 0 0;font-size:13.5px;white-space:pre-wrap;color:var(--ink)}
+.rw-panel .cform{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
+.rw-panel .cform textarea{flex:1;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);min-width:0;resize:none;line-height:1.45}
+.rw-panel .cform button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.rw-panel .cnote{font-size:12.5px;color:var(--gap);margin:.4em 0 0}
+.rw-panel .cflag{font-size:12px;color:var(--gap);font-weight:600;margin:0 0 .3em}
+html{scroll-behavior:smooth}
+@media (max-width:600px){.wrap{padding:0 16px}}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="wtf">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">U4R <em>·</em> WTF</span>
+    <div class="wrs-menu">
+      <button type="button" class="wrs-menubtn" aria-haspopup="true">Sections ▾</button>
+      <nav class="wrs-drop" aria-label="Sections">
+        <a href="#rfp">What the RFP says (verbatim)</a>
+        <a href="#answers">What Mark answered (verbatim)</a>
+        <a href="#contradiction">The contradiction</a>
+        <a href="#readings">Three readings</a>
+        <a href="#followup">The follow up we send</a>
+      </nav>
+    </div>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap narrow">
+    <p class="eyebrow">F925 internal · STIHL RFP 2026 · after Mark's answers of 17 Sep</p>
+    <h1>WTF?<span class="status" style="background:var(--gap-bg);color:var(--gap)">read before Thursday</span></h1>
+    <p class="sub">STIHL answered our four questions in a day. The commercial answer is clear: <b>optional, dealer pays, STIHL does nothing to drive it.</b> But that answer does not fit the RFP they wrote two weeks ago, which has a contract, a pilot and a "network rollout". This page puts the two documents side by side, verbatim, and asks the question we still have to ask. Flag ⚑ or comment 💬 on any block.</p>
+  </div>
+</header>
+
+<main><div class="wrap">
+
+<h2 class="gh" id="rfp">1 · What the RFP says<span class="gdesc">Verbatim, from <a href="/docs/stihl-rfp-2026.pdf">"STIHL SHOP Dealer Website Platform — Request for Proposal", v1.0, issued 4 September 2026</a>.</span></h2>
+
+<div class="card" data-key="wtf-rfp-dates">
+  <h3>Key dates (p.1)</h3>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Activity</th><th>Date</th></tr></thead>
+    <tbody>
+      <tr><td>RFP Released</td><td>4 September 2026</td></tr>
+      <tr><td>Vendor Confirmation of Participation</td><td>11 September 2026</td></tr>
+      <tr><td>Vendor Questions Due</td><td>18 September 2026</td></tr>
+      <tr><td>STIHL SHOP Response to Questions</td><td>25 September 2026</td></tr>
+      <tr><td>Vendor Proposal Submission</td><td>9 October 2026</td></tr>
+      <tr><td>Shortlist Selection</td><td>16 October 2026</td></tr>
+      <tr><td>Vendor Presentations</td><td>22-23 October 2026</td></tr>
+      <tr><td><b>Preferred Vendor Selected</b></td><td>30 October 2026</td></tr>
+      <tr><td><b>Contract Finalisation</b></td><td><b>13 November 2026</b></td></tr>
+      <tr><td><b>Pilot Store Deployment</b></td><td><b>December 2026</b></td></tr>
+      <tr><td><b>Network Rollout Commences</b></td><td><b>January 2027</b></td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="card" data-key="wtf-rfp-intro">
+  <h3>1. Introduction (p.2)</h3>
+  <blockquote>"STIHL SHOP seeks proposals from experienced digital agencies and platform providers capable of delivering a <b>managed dealer website framework</b> aligned to the national STIHL SHOP digital strategy."</blockquote>
+  <blockquote>"Individual stores maintain their own websites to promote their local business […] These websites serve primarily as local marketing and information platforms […] They are not intended to function as e-commerce sites."</blockquote>
+</div>
+
+<div class="card" data-key="wtf-rfp-background">
+  <h3>2. Project background (p.2–3)</h3>
+  <blockquote>"Dealer websites currently vary significantly across the network. Differences exist in: Website quality · User experience · Brand compliance · Mobile optimisation · Search engine performance · Content consistency · Promotion management · Technical support. <b>This inconsistency creates customer confusion and reduces the effectiveness of the STIHL SHOP brand online.</b>"</blockquote>
+  <blockquote>"The purpose of this initiative is to establish a <b>consistent national framework</b> while allowing dealers some flexibility to personalise their local presence."</blockquote>
+</div>
+
+<div class="card" data-key="wtf-rfp-objectives">
+  <h3>3. Project objectives (p.3)</h3>
+  <blockquote>"The successful vendor will assist STIHL SHOP to: <b>Brand Consistency</b> — Maintain a common STIHL SHOP look and feel <b>across all dealer websites</b>. <b>Customer Experience</b> — Deliver a premium digital experience consistent with stihlshop.co.nz. <b>Dealer Flexibility</b> — Allow dealers to personalise approved content areas. <b>Governance</b> — Provide <b>central control</b> of standards and brand compliance. <b>Reduced Administration</b> — Minimise website management requirements for dealers. <b>Performance</b> — Improve SEO, visibility, website speed and customer engagement."</blockquote>
+</div>
+
+<div class="card" data-key="wtf-rfp-dealers">
+  <h3>4. Current digital environment — Dealer websites (p.4)</h3>
+  <blockquote>"For those that <b>choose to have a website</b>, dealers maintain local websites which: Promote their business · Provide workshop information · Promote local events · Display approved supplier products · Provide contact information · Promote local expertise."</blockquote>
+  <p class="note">Careful with this one: the section is titled <b>Current</b> Digital Environment. "Those that choose to have a website" describes who has one <i>today</i> — it is a description of the status quo, not a policy for the framework. The RFP's forward-looking sections (§3, §9, §19) all say "all dealer websites", "network-wide", "nationally consistent". Nothing in the RFP said the new framework would be optional.</p>
+</div>
+
+<div class="card" data-key="wtf-rfp-governance">
+  <h3>5. Website governance model (p.4)</h3>
+  <blockquote>"<b>National Ownership</b> — STIHL SHOP will retain ownership of: Brand standards · Website structure · Templates · Navigation standards · STIHL product presentation · Digital compliance requirements · Approved supplier standards."</blockquote>
+  <blockquote>"<b>Dealer Ownership</b> — Dealers may maintain: Store information · Team profiles · Service capabilities · Community involvement · Local promotions · Approved supplier content. All local content must comply with STIHL SHOP standards."</blockquote>
+</div>
+
+<div class="card" data-key="wtf-rfp-content">
+  <h3>9. Content management (p.6)</h3>
+  <blockquote>"The preferred vendor should provide a managed content service […] The supplier should be responsible for: Website content updates, <b>including national promotions and campaigns</b> · <b>Seasonal campaign deployment across all dealer websites</b> · Image and digital asset management · Promotional content updates · SEO optimisation and ongoing performance improvements · <b>Brand compliance monitoring and reporting</b> · <b>Network-wide content updates and maintenance</b> where changes apply across multiple or all dealer websites."</blockquote>
+</div>
+
+<div class="card" data-key="wtf-rfp-plan">
+  <h3>14. Implementation plan (p.8)</h3>
+  <blockquote>"Vendors should provide: Phase 1 – Discovery and platform design · Phase 2 – <b>Pilot deployment</b> · Phase 3 – Dealer onboarding · Phase 4 – <b>Network rollout</b> · Phase 5 – Ongoing optimisation and support."</blockquote>
+</div>
+
+<div class="card" data-key="wtf-rfp-eval">
+  <h3>16. Evaluation criteria · 18. Legal · 19. Desired outcome (p.8–9)</h3>
+  <blockquote>"Digital Strategy Alignment 20% · Design &amp; Customer Experience 20% · Governance &amp; Compliance 20% · Support Model 15% · Technical Capability 15% · Cost &amp; Commercials 10%."</blockquote>
+  <blockquote>"STIHL SHOP will retain ownership of: Branding · Customer data · Dealer content · Digital assets."</blockquote>
+  <blockquote>"The preferred solution will provide a <b>nationally consistent, professionally managed dealer website ecosystem</b> that: Strengthens the STIHL SHOP brand · Complements stihlshop.co.nz · Provides dealers with local flexibility · Delivers a superior customer experience · Requires minimal dealer administration · Supports future growth of both STIHL and approved supplier brands."</blockquote>
+</div>
+
+<h2 class="gh" id="answers">2 · What Mark answered<span class="gdesc">Verbatim, Mark Ballantine, Retail Network Manager, 17 Sep 2026, replying to our letter of 15 Sep.</span></h2>
+
+<div class="card" data-key="wtf-ans-1">
+  <h3>1. Brand standard or optional programme</h3>
+  <blockquote>"Dealer websites will be <b>optional</b>. Many STIHL SHOP dealers do not currently operate their own website and instead rely on the national website, stihlshop.co.nz, as their primary digital presence. Dealers who choose to have their own website may elect to use the approved website framework resulting from this RFP. <b>Dealers will be responsible for all costs</b> associated with the establishment, hosting, maintenance and ongoing management of their website through the selected vendor. <b>STIHL New Zealand will not centrally contract or fund dealer websites.</b> Vendors should therefore base their proposals on an opt-in model, with individual dealers engaging and paying for the service directly."</blockquote>
+</div>
+<div class="card" data-key="wtf-ans-2">
+  <h3>2. Existing sites</h3>
+  <blockquote>"Dealers who choose to adopt the approved website framework may elect to migrate content from their existing website. Vendors should outline their recommended migration approach, including any associated costs, responsibilities, and assumptions. Any migration services would be arranged and funded by the participating dealer."</blockquote>
+</div>
+<div class="card" data-key="wtf-ans-3">
+  <h3>3. Brand assets and STIHL sign-off</h3>
+  <blockquote>"STIHL New Zealand will provide access to approved STIHL SHOP logos and brand assets as required. Approved STIHL product imagery is already available to dealers through STIHL's internal dealer portal and may be used in accordance with existing guidelines. The proposed website framework should be developed in alignment with STIHL SHOP branding; however, <b>STIHL New Zealand does not intend to undertake formal design certification or approval processes</b> prior to pilot deployment. Vendors should demonstrate how their proposed solution aligns with STIHL SHOP brand standards as part of their submission. Any non-STIHL supplier imagery, content, or brand assets will need to be provided by the relevant dealer or supplier."</blockquote>
+</div>
+<div class="card" data-key="wtf-ans-4">
+  <h3>4. Cybersecurity standards</h3>
+  <blockquote>"STIHL New Zealand does not mandate a specific cybersecurity framework or certification. Vendors are expected to ensure their proposed solution complies with all applicable cybersecurity, privacy and data protection requirements and follows recognised industry best practices. <b>Responsibility for maintaining appropriate security controls, monitoring, vulnerability management, backup and recovery processes, and ongoing compliance rests with the vendor.</b> Vendors should outline any relevant certifications, standards or security frameworks they currently maintain as part of their proposal."</blockquote>
+</div>
+
+<h2 class="gh" id="contradiction">3 · The contradiction<span class="gdesc">It is not one we invented. It sits between their own RFP and their own answer.</span></h2>
+
+<div class="card open" data-key="wtf-sidebyside">
+  <div class="tablewrap"><table>
+    <thead><tr><th style="width:38%">What the RFP says</th><th>What Mark answered</th></tr></thead>
+    <tbody>
+      <tr><td><b>Contract Finalisation — 13 November</b></td><td>STIHL "will not centrally contract or fund dealer websites". So a contract between whom and whom? About what?</td></tr>
+      <tr><td><b>Pilot Store Deployment — December</b></td><td>A pilot with which dealers, paid by whom, evaluated by whom, against what success criteria? If the dealer pays and decides, that is not a pilot. That is a customer.</td></tr>
+      <tr><td><b>Network Rollout Commences — January 2027</b></td><td>There is no network. There are individual dealers who might buy, whenever they like. A rollout is something somebody pushes.</td></tr>
+      <tr><td><b>"Across all dealer websites" · "central control" · "network-wide content updates" · "seasonal campaign deployment across all dealer websites"</b></td><td>Only reachable if all dealers are on the framework. Under opt-in, "all" means "the ones who bought".</td></tr>
+      <tr><td><b>"A nationally consistent, professionally managed dealer website ecosystem" (§19 Desired Outcome) · "This inconsistency creates customer confusion" (§2)</b></td><td><b>Consistency is the whole stated purpose of the RFP — and consistency needs many dealers on the same thing.</b> If a handful opt in and the rest stay on whatever they have (or on nothing), the inconsistency the RFP opens with is untouched. So either STIHL intends to get most dealers onto it (which is a programme, whatever they call it) or the RFP cannot deliver its own desired outcome. Under the answer as given, we are being asked to invent a product for dealers, not to solve STIHL's stated problem.</td></tr>
+      <tr><td><b>Evaluation panel, weightings, shortlist, presentations 22–23 Oct</b></td><td>All that apparatus to… recommend a supplier who then sells on their own.</td></tr>
+    </tbody>
+  </table></div>
+  <p>An RFP with a panel, a contract, a pilot and a rollout is the process of a <b>purchase</b>. Yesterday's answer describes a <b>recommendation</b>. Both cannot be true at the same time.</p>
+</div>
+
+<h2 class="gh" id="readings">4 · Three possible readings<span class="gdesc">We cannot write the proposal without knowing which one it is.</span></h2>
+
+<div class="card" data-key="wtf-reading-1">
+  <h3>Reading 1 — Mark answered the commercial model, not the programme</h3>
+  <p>A framework agreement between vendor and STIHL may well exist (exclusivity, brand licence, term), a pilot STIHL nominates, and a rollout STIHL communicates — and "we don't fund" only means "the dealers pay the monthly fee". This is the optimistic reading, and it is plausible: he is the Retail Network Manager and answered from the dealer's angle.</p>
+</div>
+<div class="card" data-key="wtf-reading-2">
+  <h3>Reading 2 — The RFP was written with an ambition that has since been walked back internally</h3>
+  <p>Someone wrote "network rollout" thinking of a mandate; along the way they decided they cannot interfere with what each independent dealer does. The skeleton of the process is left without its content.</p>
+</div>
+<div class="card" data-key="wtf-reading-3">
+  <h3>Reading 3 — It is a process to have an "approved supplier" on a list, and nothing more</h3>
+  <p>Contract, pilot and rollout are words inherited from a template.</p>
+</div>
+
+<div class="card open" data-key="wtf-what-it-means">
+  <h3>What it means either way</h3>
+  <ul>
+    <li><b>Guaranteed revenue from winning: $0.</b> The addressable market is the dealers who already want a site — "many dealers do not currently operate their own website".</li>
+    <li>The network-programme pricing table is dead. Volume bands survive only as an incentive to dealers, not a lever for STIHL.</li>
+    <li>"F925 does not sell; adoption is STIHL's job" was right for a mandate and is <b>wrong</b> for this: under opt-in, if we don't create demand nobody does.</li>
+    <li>What the win is still worth: "approved supplier to STIHL SHOP dealers" on every pitch, a real pilot as a reference, and the badge for every other dealer network we go after next.</li>
+    <li>§6 has to stand alone (no standard to point at) — the I-group (monitoring, backups, restore drill) just became proposal-critical.</li>
+  </ul>
+</div>
+
+<h2 class="gh" id="followup">5 · The follow up we send<span class="gdesc">Their own document, quoted back. Warm, obvious, no way out: either there is a programme (and they say which) or there is not (and they admit it in writing).</span></h2>
+
+<div class="card idea" data-key="wtf-followup">
+  <h3>Follow up: the pilot, the contract and the rollout</h3>
+  <p>Hi Mark,</p>
+  <p>Thank you for coming back so quickly. The commercial model is now clear: optional, dealer funded, dealer engaged.</p>
+  <p>Reading your answers against the RFP, we want to make sure we are responding to the right brief, because the two documents describe different things.</p>
+  <p>The RFP asks for a managed framework that maintains "a common STIHL SHOP look and feel across all dealer websites", with "central control of standards and brand compliance", "seasonal campaign deployment across all dealer websites" and "network wide content updates". Its desired outcome is "a nationally consistent, professionally managed dealer website ecosystem", and the problem it opens with is that today's inconsistency "creates customer confusion and reduces the effectiveness of the STIHL SHOP brand online". The timeline then has a contract in November, a pilot in December and a network rollout in January.</p>
+  <p>Your answer describes something else: individual dealers who may or may not choose a supplier, at their own cost, with no central involvement.</p>
+  <p>We can respond to either. But they are not the same proposal, and the second one cannot deliver the first one's outcome: consistency across the network only happens if most of the network is on the same framework. If a handful of dealers opt in and the rest stay where they are, the inconsistency the RFP sets out to fix is untouched.</p>
+  <p>So that we write the right proposal, could you help us with three things from the RFP timeline:</p>
+  <ul>
+    <li><b>Contract finalisation, 13 November.</b> If STIHL NZ does not contract for dealer websites, what is the agreement signed on that date between STIHL NZ and the vendor, and what does it cover: term, exclusivity, obligations on each side?</li>
+    <li><b>Pilot store deployment, December.</b> Which dealers, nominated by whom, funded by whom, and what does STIHL NZ evaluate before the next phase?</li>
+    <li><b>Network rollout, January 2027.</b> With adoption optional and dealer led, what does STIHL NZ mean by a network rollout, and what part does STIHL NZ play in it?</li>
+  </ul>
+  <p>And, from the vendor's side, what the appointment actually consists of:</p>
+  <ul>
+    <li><b>Exclusivity.</b> Is the appointed vendor the sole approved website supplier for STIHL SHOP dealers, or one of several on a list?</li>
+    <li><b>Term.</b> How long does the appointment last, and what happens at the end of it?</li>
+    <li><b>Introduction to dealers.</b> Does STIHL NZ introduce the appointed vendor to the network in any way: a listing on stihlshop.co.nz or the dealer portal, a mention in dealer communications, a place in new dealer onboarding? Or is the vendor expected to find and approach each dealer on its own?</li>
+    <li><b>The pilot.</b> Who pays for the December pilot, STIHL NZ or the participating dealers, and how many stores does STIHL NZ intend to put in it?</li>
+  </ul>
+  <p>The proposal for an appointed, introduced supplier delivering a consistent network is a different document from the proposal for an option dealers might find on their own. We would rather write the one you actually want.</p>
+  <p>Kind regards,<br>Michael McLarnon<br>F925</p>
+</div>
+
+<div class="card open" data-key="wtf-second-question">
+  <h3>Why it is written this way</h3>
+  <ul>
+    <li>Every claim about what STIHL wants is <b>their own words</b>, quoted. We add nothing; we only put the RFP next to the answer.</li>
+    <li>The tone stays warm ("thank you for coming back so quickly", "we would rather write the one you actually want") while the middle paragraph makes the gap impossible to miss: <i>you asked for network wide consistency; your answer removes every mechanism that could produce it.</i></li>
+    <li>No hyphens anywhere in the letter, per the house style.</li>
+    <li>Honest read: about even odds Mark answered the commercial question in a hurry and the programme still exists in someone's head. Either way, this forces the answer into writing. Send today, signed by Mike, as a reply on the same thread.</li>
+  </ul>
+</div>
+
+</div></main>
+
+<footer>
+  <div class="wrap narrow">
+    <p>F925 internal · 17 Sep 2026 · sources: <a href="/docs/stihl-rfp-2026.pdf">the RFP (PDF)</a> · Mark Ballantine's email of 17 Sep · related: <a href="/vendor-questions.html">vendor questions</a> · <a href="/scenarios.html">scenarios</a> (this is scenario D).</p>
+  </div>
+</footer>
+
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+<script>
+(function(){
+  var API='/api/state?page=wtf', APIKEY='XPFmcH2RSsza';
+  var PEOPLE=[{id:'martin',name:'Martin',cls:'pa'},{id:'leonel',name:'Leo',cls:'pb'},{id:'mike',name:'Mike',cls:'pc'}];
+  var NAME={}; PEOPLE.forEach(function(p){NAME[p.id]=p.name;});
+  var me=(window.WR?WR.me:'');
+  if(window.WR)WR.onIdentity(function(id){me=id;renderAll();});
+  var marks={}, comments={}, items={};
+  var lastRev='', applied=false, pendingWrites=0, chain=Promise.resolve();
+  function enqueue(op){
+    pendingWrites++;
+    var p=chain.then(function(){return apiPost(op);});
+    chain=p.then(function(){pendingWrites--;if(pendingWrites===0)refresh();},function(){pendingWrites--;setMode('local');});
+    return p;
+  }
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(undefined,{day:'numeric',month:'short'});}catch(e){return '';}}
+  function apiGet(){return fetch(API,{headers:{'x-warroom-key':APIKEY}}).then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();});}
+  function apiPost(op){return fetch(API,{method:'POST',headers:{'x-warroom-key':APIKEY,'content-type':'application/json'},body:JSON.stringify(op)}).then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();});}
+  var dock=document.createElement('div'); dock.className='rdock';
+  dock.innerHTML='<span class="rstat" id="rd-stat">⚑ 0 · 💬 0</span><span class="rlive" id="rd-live">Connecting…</span>';
+  document.body.appendChild(dock);
+  function needIdentity(noteEl,msg){if(me)return false;if(noteEl){noteEl.textContent=msg;noteEl.hidden=false;}if(window.WR)WR.nudge();return true;}
+  function setMode(m){var el=document.getElementById('rd-live');el.className='rlive '+m;el.textContent=m==='live'?'● Live':(m==='local'?'○ Offline — read-only':'Connecting…');}
+
+  /* targets: every [data-key] node/card; table rows get a panel row inserted after them */
+  function addTarget(host){
+    var key=host.dataset.key; if(items[key])return;
+    var isRow=host.tagName==='TR';
+    var label=(host.querySelector('h4,h3')||host.querySelector('td')||host).textContent.trim().slice(0,60);
+    var w=document.createElement('span'); w.className='rw';
+    w.innerHTML='<button type="button" class="rwf" title="Flag for attention">⚑</button><button type="button" class="rwc" title="Comments">💬 <span>0</span></button>';
+    var anchor=host.querySelector('h4,h3')||(isRow?host.querySelector('td'):host);
+    anchor.appendChild(w);
+    var panel=document.createElement('div'); panel.className='rw-panel'; panel.hidden=true;
+    panel.innerHTML='<p class="cflag" hidden></p><div class="clist"></div>'
+      +'<form class="cform"><textarea rows="1" placeholder="Comment on “'+esc(label)+'” (Shift+Enter for a new line)" aria-label="Comment"></textarea><button type="submit">Post</button></form><p class="cnote" hidden></p>';
+    var block=host;
+    if(isRow){
+      var tr=document.createElement('tr'); tr.className='rw-panelrow'; tr.hidden=true;
+      var td=document.createElement('td'); td.colSpan=host.children.length; td.appendChild(panel); tr.appendChild(td);
+      host.after(tr); block=host; panel.hidden=false; var rowPanel=tr;
+    }else host.appendChild(panel);
+    if(window.WR)WR.wireCommentBox(panel.querySelector('.cform textarea'));
+    var fbtn=w.querySelector('.rwf'), cbtn=w.querySelector('.rwc'), note=panel.querySelector('.cnote');
+    var toggle=function(force){ if(isRow){rowPanel.hidden=force===undefined?!rowPanel.hidden:!force;} else {panel.hidden=force===undefined?!panel.hidden:!force;} };
+    fbtn.addEventListener('click',function(){
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.')){toggle(true);return;}
+      var next=!(marks[key]&&marks[key].flagged);
+      marks[key]={flagged:next,by:me,at:new Date().toISOString()};
+      render(key); renderTotals();
+      enqueue({t:'mark',key:key,flagged:next,by:me}).catch(function(){});
+    });
+    cbtn.addEventListener('click',function(){toggle();});
+    panel.querySelector('form').addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var inp=panel.querySelector('textarea'), txt=inp.value.trim(); if(!txt)return;
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.'))return;
+      note.hidden=true;
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString()};
+      (comments[key]=comments[key]||[]).push(temp);
+      render(key); renderTotals(); inp.value='';
+      enqueue({t:'comment',key:key,author:me,text:txt}).catch(function(){
+        var arr=comments[key]||[], ix=arr.indexOf(temp); if(ix>=0)arr.splice(ix,1);
+        render(key); renderTotals(); note.textContent='Could not post — try again in a moment.'; note.hidden=false;
+      });
+    });
+    items[key]={block:block,fbtn:fbtn,cbtn:cbtn,cnum:cbtn.querySelector('span'),panel:panel,clist:panel.querySelector('.clist'),cflag:panel.querySelector('.cflag'),open:function(){toggle(true);}};
+  }
+  document.querySelectorAll('[data-key]').forEach(addTarget);
+
+  function render(key){
+    var it=items[key]; if(!it)return;
+    var m=marks[key]||{};
+    it.fbtn.classList.toggle('on',!!m.flagged);
+    it.block.classList.toggle('rw-flagged',!!m.flagged);
+    it.cflag.hidden=!m.flagged;
+    if(m.flagged)it.cflag.textContent='⚑ Flagged by '+(NAME[m.by]||m.by||'?')+(m.at?' · '+fmtDate(m.at):'');
+    var cm=comments[key]||[];
+    it.cnum.textContent=cm.length;
+    it.cbtn.classList.toggle('has',cm.length>0);
+    if(!it.clist.querySelector('.ceform'))it.clist.innerHTML=window.WR?WR.commentListHTML(cm,key):'';
+  }
+  function renderAll(){Object.keys(items).forEach(render);renderTotals();}
+  function renderTotals(){
+    var f=0,c=0;
+    Object.keys(items).forEach(function(k){if(marks[k]&&marks[k].flagged)f++;c+=(comments[k]||[]).length;});
+    document.getElementById('rd-stat').textContent='⚑ '+f+' · 💬 '+c;
+  }
+
+  /* comment delete / reply / react / edit */
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cdel'); if(!b)return;
+    if(!confirm('Delete this comment for everyone?'))return;
+    var id=b.dataset.cid, key=b.dataset.key, arr=comments[key]||[];
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id){arr.splice(i,1);break;}}
+    render(key); renderTotals();
+    enqueue({t:'comment-del',id:id,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crply'); if(!b)return;
+    var citem=b.closest('.citem'); if(citem.querySelector('.crform'))return;
+    var key=b.dataset.key, pid=b.dataset.cid;
+    var f=document.createElement('form'); f.className='cform ceform crform';
+    f.innerHTML='<textarea rows="1" placeholder="Reply… (Shift+Enter for a new line)" aria-label="Reply"></textarea><button type="submit">Reply</button><button type="button" class="cancel">Cancel</button>';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea'); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);renderTotals();});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim(); if(!txt)return;
+      if(!me){if(window.WR)WR.nudge();return;}
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString(),parent:pid};
+      (comments[key]=comments[key]||[]).push(temp);
+      f.remove(); render(key); renderTotals();
+      enqueue({t:'comment',key:key,author:me,text:txt,parent:pid}).catch(function(){
+        var arr=comments[key]||[], ix=arr.indexOf(temp); if(ix>=0)arr.splice(ix,1); render(key); renderTotals();
+      });
+    });
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crb'); if(!b)return;
+    if(!me){if(window.WR)WR.nudge();return;}
+    var id=b.dataset.cid, key=b.dataset.key, e=b.dataset.remoji, arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    c.reactions=c.reactions||{}; var l=c.reactions[e]=c.reactions[e]||[]; var ix=l.indexOf(me);
+    if(ix>=0)l.splice(ix,1); else l.push(me);
+    render(key);
+    enqueue({t:'react',id:id,emoji:e,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cedit'); if(!b)return;
+    var citem=b.closest('.citem'); if(citem.querySelector('.ceform'))return;
+    var id=b.dataset.cid, key=b.dataset.key, arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    var f=document.createElement('form'); f.className='cform ceform';
+    f.innerHTML='<textarea rows="1" aria-label="Edit comment"></textarea><button type="submit">Save</button><button type="button" class="cancel">Cancel</button>';
+    f.querySelector('textarea').value=c.text||'';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea'); ta.dispatchEvent(new Event('input')); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim(); if(!txt)return;
+      c.text=txt; c.edited=new Date().toISOString();
+      f.remove(); render(key); renderTotals();
+      enqueue({t:'comment-edit',id:id,by:me,text:txt}).catch(function(){});
+    });
+  });
+
+  if(window.WR)WR.registerLocator(function(key){
+    var it=items[key]; if(!it)return false;
+    it.open();
+    it.block.scrollIntoView({block:'center'});
+    it.block.classList.remove('wr-flash'); void it.block.offsetWidth; it.block.classList.add('wr-flash');
+    return true;
+  });
+
+  function applyState(data,fromPost){
+    if(!data||typeof data!=='object')return;
+    var rev=(typeof data.rev==='string')?data.rev:'';
+    if(applied&&rev&&rev<lastRev)return;
+    if(!fromPost&&pendingWrites>0)return;
+    if(rev>lastRev)lastRev=rev; applied=true;
+    marks=data.marks||{};
+    var by={};
+    (data.comments||[]).forEach(function(c){if(!c.key)return;(by[c.key]=by[c.key]||[]).push(c);});
+    comments=by;
+    setMode('live'); renderAll();
+  }
+  function refresh(){if(pendingWrites>0)return;apiGet().then(function(d){applyState(d,false);}).catch(function(){setMode('local');});}
+  setMode('connecting'); renderAll(); refresh();
+  setInterval(refresh,12000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh();});
+})();
+</script>
+</body>
+</html>

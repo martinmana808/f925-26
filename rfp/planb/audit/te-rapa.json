@@ -1,0 +1,46 @@
+{
+  "slug": "te-rapa",
+  "url": "https://stihlshop-terapa.co.nz",
+  "at": "2026-09-21T18:15:35.073Z",
+  "reasons": [
+    "-10 only 0 internal pages",
+    "+5 substantial content",
+    "-5 no contact form",
+    "-5 no opening hours found",
+    "+5 STIHL branding present",
+    "0 speed and layout not measured (site geo-blocks non-NZ visitors, no Wayback copy; text read via r.jina.ai)"
+  ],
+  "loadMs": null,
+  "finalUrl": "https://stihlshop-terapa.co.nz/",
+  "status": 403,
+  "https": true,
+  "geoBlocked": true,
+  "via": "jina",
+  "tech": "WordPress",
+  "title": "Stihl Shop Te Rapa - Hamilton's Stihl Specialist",
+  "viewport": true,
+  "pagesLinked": 0,
+  "navItems": [],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": false,
+  "hasHours": false,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 0,
+  "localCatalogue": false,
+  "copyrightYear": null,
+  "newestYear": null,
+  "wordCount": 677,
+  "images": 2,
+  "h1": "",
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "liveText": true,
+  "mobile": {
+    "unknown": true
+  },
+  "score": 40
+}

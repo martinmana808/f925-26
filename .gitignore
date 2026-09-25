@@ -37,3 +37,15 @@ yarn-error.log*
 ehthumbs.db
 Thumbs.db 
 .vercel
+
+# Local Netlify folder
+.netlify
+
+# Plan B scraping intermediates — regenerable and not worth the weight.
+# rejected/ is what the filters threw out (360° panoramas, duplicates Google served
+# under two URLs); the logs and caches are per-run noise. Everything else under
+# rfp/planb — dealers.json, the photos, the audit screenshots — is the data itself.
+rfp/planb/images-extra/*/rejected/
+rfp/planb/*.log
+rfp/planb/__pycache__/
+rfp/planb/dealers.backup-*.json

@@ -1,0 +1,1351 @@
+{
+ "checkedAt": "2026-09-23T19:28:05Z",
+ "source": "whois.irs.net.nz",
+ "results": [
+  {
+   "slug": "albany",
+   "store": "STIHL SHOP Albany",
+   "shortName": "Albany",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopalbany.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "alexandra",
+   "store": "STIHL SHOP Alexandra",
+   "shortName": "Alexandra",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopalexandra.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "amberley",
+   "store": "STIHL SHOP Amberley",
+   "shortName": "Amberley",
+   "category": 4,
+   "currentWebsite": "https://stihlshopamberley.co.nz",
+   "domain": "stihlshopamberley.co.nz",
+   "status": "registered",
+   "created": "2025-12-17",
+   "updated": "2026-03-02",
+   "registrar": "Dreamscape Networks International Pte Ltd t/a Crazy Domains",
+   "nameServers": [
+    "gloria.ns.cloudflare.com",
+    "nikon.ns.cloudflare.com"
+   ],
+   "dnsHost": "Cloudflare",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "ashburton",
+   "store": "STIHL SHOP Ashburton",
+   "shortName": "Ashburton",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopashburton.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "balclutha",
+   "store": "STIHL SHOP Balclutha",
+   "shortName": "Balclutha",
+   "category": 4,
+   "currentWebsite": "https://ewanallan.co.nz/pages/stihl-shop",
+   "domain": "stihlshopbalclutha.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "blenheim",
+   "store": "STIHL SHOP Blenheim",
+   "shortName": "Blenheim",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopblenheim.co.nz",
+   "status": "registered",
+   "created": "2017-11-19",
+   "updated": "2025-11-24",
+   "registrar": "1st Domains Limited",
+   "nameServers": [
+    "ns1.1stdomains.net.nz",
+    "ns2.1stdomains.net.nz"
+   ],
+   "dnsHost": "1stdomains.net.nz",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "botany",
+   "store": "STIHL SHOP Botany",
+   "shortName": "Botany",
+   "category": 2,
+   "currentWebsite": "https://stihlshopbotany.co.nz",
+   "domain": "stihlshopbotany.co.nz",
+   "status": "registered",
+   "created": "2012-03-10",
+   "updated": "2026-04-24",
+   "registrar": "OpenSRS",
+   "nameServers": [
+    "ns1.siteground.net",
+    "ns2.siteground.net"
+   ],
+   "dnsHost": "ns1.siteground.net",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "browns-bay",
+   "store": "STIHL SHOP Browns Bay",
+   "shortName": "Browns Bay",
+   "category": 2,
+   "currentWebsite": "https://stihlshopbrownsbay.co.nz",
+   "domain": "stihlshopbrownsbay.co.nz",
+   "status": "registered",
+   "created": "2026-05-04",
+   "updated": "2026-05-09",
+   "registrar": "Dreamscape Networks International Pte Ltd t/a Crazy Domains",
+   "nameServers": [
+    "ns1.secureparkme.com",
+    "ns2.secureparkme.com"
+   ],
+   "dnsHost": "ns1.secureparkme.com",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "cambridge",
+   "store": "STIHL SHOP Cambridge",
+   "shortName": "Cambridge",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopcambridge.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "cromwell",
+   "store": "STIHL SHOP Cromwell",
+   "shortName": "Cromwell",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopcromwell.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "dargaville",
+   "store": "STIHL SHOP Dargaville",
+   "shortName": "Dargaville",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopdargaville.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "drury",
+   "store": "STIHL SHOP Drury",
+   "shortName": "Drury",
+   "category": 4,
+   "currentWebsite": "https://stihlshopdrury.co.nz",
+   "domain": "stihlshopdrury.co.nz",
+   "status": "registered",
+   "created": "2019-04-29",
+   "updated": "2026-09-04",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns47.domaincontrol.com",
+    "ns48.domaincontrol.com"
+   ],
+   "dnsHost": "GoDaddy",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "dunedin",
+   "store": "STIHL SHOP Dunedin",
+   "shortName": "Dunedin",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopdunedin.co.nz",
+   "status": "registered",
+   "created": "2015-05-03",
+   "updated": "2026-07-01",
+   "registrar": "Sitetech Solutions Ltd T/A SiteName",
+   "nameServers": [
+    "ns1.sitehost.co.nz",
+    "ns2.sitehost.co.nz",
+    "ns3.sitehost.co.nz"
+   ],
+   "dnsHost": "SiteHost (NZ)",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "east-tamaki",
+   "store": "STIHL SHOP East Tamaki",
+   "shortName": "East Tamaki",
+   "category": 2,
+   "currentWebsite": "https://www.stihlshopeasttamaki.co.nz",
+   "domain": "stihlshopeasttamaki.co.nz",
+   "status": "registered",
+   "created": "2020-11-19",
+   "updated": "2025-11-25",
+   "registrar": "Dreamscape Networks International Pte Ltd t/a Crazy Domains",
+   "nameServers": [
+    "ns1.ramsu.co.nz",
+    "ns2.ramsu.co.nz"
+   ],
+   "dnsHost": "ramsu.co.nz",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "ellerslie",
+   "store": "STIHL SHOP Ellerslie",
+   "shortName": "Ellerslie",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopellerslie.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "feilding",
+   "store": "STIHL SHOP Feilding",
+   "shortName": "Feilding",
+   "category": 3,
+   "currentWebsite": "https://stihlshopfeilding.co.nz",
+   "domain": "stihlshopfeilding.co.nz",
+   "status": "registered",
+   "created": "2019-06-05",
+   "updated": "2026-09-15",
+   "registrar": "Synergy Wholesale Accreditations Pty Ltd",
+   "nameServers": [
+    "ns1.nameserver.net.au",
+    "ns2.nameserver.net.au",
+    "ns3.nameserver.net.au"
+   ],
+   "dnsHost": "nameserver.net.au",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "ferrymead",
+   "store": "STIHL SHOP Ferrymead",
+   "shortName": "Ferrymead",
+   "category": 3,
+   "currentWebsite": "https://www.stihlshopferrymead.com",
+   "domain": "stihlshopferrymead.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "fosters",
+   "store": "STIHL SHOP Fosters",
+   "shortName": "Fosters",
+   "category": 3,
+   "currentWebsite": "https://stihlshopfosters.co.nz",
+   "domain": "stihlshopfosters.co.nz",
+   "status": "registered",
+   "created": "2019-05-15",
+   "updated": "2026-05-19",
+   "registrar": "Freeparking Limited t/a DiscountDomains",
+   "nameServers": [
+    "ns1.discountdomains.co.nz",
+    "ns2.discountdomains.co.nz",
+    "ns3.discountdomains.co.nz"
+   ],
+   "dnsHost": "Discount Domains (NZ)",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "gisborne",
+   "store": "STIHL SHOP Gisborne",
+   "shortName": "Gisborne",
+   "category": 2,
+   "currentWebsite": "https://www.stihlshopgisborne.co.nz",
+   "domain": "stihlshopgisborne.co.nz",
+   "status": "registered",
+   "created": "2024-01-22",
+   "updated": "2026-01-25",
+   "registrar": "Affordable Domains",
+   "nameServers": [
+    "ns1.ramsu.co.nz",
+    "ns2.ramsu.co.nz"
+   ],
+   "dnsHost": "ramsu.co.nz",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "glen-eden",
+   "store": "STIHL SHOP Glen Eden",
+   "shortName": "Glen Eden",
+   "category": 3,
+   "currentWebsite": "https://mcgilloutdoors.co.nz",
+   "domain": "stihlshopgleneden.co.nz",
+   "status": "registered",
+   "created": "2026-05-01",
+   "updated": "2026-05-06",
+   "registrar": "OpenSRS",
+   "nameServers": [
+    "ns-cloud-d1.googledomains.com",
+    "ns-cloud-d2.googledomains.com",
+    "ns-cloud-d3.googledomains.com",
+    "ns-cloud-d4.googledomains.com"
+   ],
+   "dnsHost": "Google Domains",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "glenfield",
+   "store": "STIHL SHOP Glenfield",
+   "shortName": "Glenfield",
+   "category": 2,
+   "currentWebsite": "https://stihlshopglenfield.co.nz",
+   "domain": "stihlshopglenfield.co.nz",
+   "status": "registered",
+   "created": "2025-11-03",
+   "updated": "2026-08-09",
+   "registrar": "Affordable Domains",
+   "nameServers": [
+    "ns1.ramsu.co.nz",
+    "ns2.ramsu.co.nz"
+   ],
+   "dnsHost": "ramsu.co.nz",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "gore",
+   "store": "STIHL SHOP Gore",
+   "shortName": "Gore",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopgore.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "greenmeadows",
+   "store": "STIHL SHOP Greenmeadows",
+   "shortName": "Greenmeadows",
+   "category": 3,
+   "currentWebsite": "https://stihlshopgreenmeadows.co.nz",
+   "domain": "stihlshopgreenmeadows.co.nz",
+   "status": "registered",
+   "created": "2017-01-18",
+   "updated": "2025-12-23",
+   "registrar": "1st Domains Limited",
+   "nameServers": [
+    "ns1.1stdomains.net.nz",
+    "ns2.1stdomains.net.nz"
+   ],
+   "dnsHost": "1stdomains.net.nz",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "greymouth",
+   "store": "STIHL SHOP Greymouth",
+   "shortName": "Greymouth",
+   "category": 3,
+   "currentWebsite": "https://www.stihlshopgreymouth.com",
+   "domain": "stihlshopgreymouth.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "greytown",
+   "store": "STIHL SHOP Greytown",
+   "shortName": "Greytown",
+   "category": 3,
+   "currentWebsite": "https://www.stihlshopgreytown.co.nz",
+   "domain": "stihlshopgreytown.co.nz",
+   "status": "registered",
+   "created": "2012-07-31",
+   "updated": "2026-07-27",
+   "registrar": "1st Domains Limited",
+   "nameServers": [
+    "ns1.1stdomains.net.nz",
+    "ns2.1stdomains.net.nz"
+   ],
+   "dnsHost": "1stdomains.net.nz",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "hamilton-east",
+   "store": "STIHL SHOP Hamilton East",
+   "shortName": "Hamilton East",
+   "category": 2,
+   "currentWebsite": "https://www.stihlshophameast.co.nz",
+   "domain": "stihlshophamiltoneast.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "hastings",
+   "store": "STIHL SHOP Hastings",
+   "shortName": "Hastings",
+   "category": 2,
+   "currentWebsite": "https://stihlshophastings.co.nz",
+   "domain": "stihlshophastings.co.nz",
+   "status": "registered",
+   "created": "2017-02-22",
+   "updated": "2026-02-24",
+   "registrar": "Dreamscape Networks International Pte Ltd t/a Crazy Domains",
+   "nameServers": [
+    "ns1.ramsu.co.nz",
+    "ns2.ramsu.co.nz"
+   ],
+   "dnsHost": "ramsu.co.nz",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "hawera",
+   "store": "STIHL SHOP Hawera",
+   "shortName": "Hawera",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshophawera.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "howick",
+   "store": "STIHL SHOP Howick",
+   "shortName": "Howick",
+   "category": 2,
+   "currentWebsite": "https://stihlshophowick.co.nz",
+   "domain": "stihlshophowick.co.nz",
+   "status": "registered",
+   "created": "2020-12-05",
+   "updated": "2025-11-22",
+   "registrar": "Instra Corporation Pty Ltd.",
+   "nameServers": [
+    "ns1.onlydomains.com",
+    "ns2.onlydomains.com",
+    "ns3.onlydomains.com"
+   ],
+   "dnsHost": "ns1.onlydomains.com",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "huntly",
+   "store": "STIHL SHOP Huntly",
+   "shortName": "Huntly",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshophuntly.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "invercargill",
+   "store": "STIHL SHOP Invercargill",
+   "shortName": "Invercargill",
+   "category": 2,
+   "currentWebsite": "https://www.stihlshopinvercargill.co.nz",
+   "domain": "stihlshopinvercargill.co.nz",
+   "status": "registered",
+   "created": "2015-12-08",
+   "updated": "2026-02-21",
+   "registrar": "Sitetech Solutions Ltd T/A SiteName",
+   "nameServers": [
+    "ns1.sitehost.co.nz",
+    "ns2.sitehost.co.nz",
+    "ns3.sitehost.co.nz"
+   ],
+   "dnsHost": "SiteHost (NZ)",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "kaitaia",
+   "store": "STIHL SHOP Kaitaia",
+   "shortName": "Kaitaia",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopkaitaia.co.nz",
+   "status": "registered",
+   "created": "2014-10-15",
+   "updated": "2026-03-15",
+   "registrar": "Freeparking Limited t/a DiscountDomains",
+   "nameServers": [
+    "ns.freeparking.co.nz",
+    "ns2.freeparking.co.nz"
+   ],
+   "dnsHost": "Freeparking (NZ)",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "kapiti",
+   "store": "STIHL SHOP Kapiti",
+   "shortName": "Kapiti",
+   "category": 3,
+   "currentWebsite": "https://www.stihlshopkapiti.nz",
+   "domain": "stihlshopkapiti.co.nz",
+   "status": "registered",
+   "created": "2017-08-30",
+   "updated": "2026-03-07",
+   "registrar": "Sitetech Solutions Ltd T/A SiteName",
+   "nameServers": [
+    "ns1.sitehost.co.nz",
+    "ns2.sitehost.co.nz",
+    "ns3.sitehost.co.nz"
+   ],
+   "dnsHost": "SiteHost (NZ)",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "kumeu",
+   "store": "STIHL SHOP Kumeu",
+   "shortName": "Kumeu",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopkumeu.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "lakelands",
+   "store": "STIHL SHOP Lakelands",
+   "shortName": "Lakelands",
+   "category": 3,
+   "currentWebsite": "https://stihlshoplakelands.co.nz",
+   "domain": "stihlshoplakelands.co.nz",
+   "status": "registered",
+   "created": "2024-07-07",
+   "updated": "2026-07-10",
+   "registrar": "OpenSRS",
+   "nameServers": [
+    "ns1.siteground.net",
+    "ns2.siteground.net"
+   ],
+   "dnsHost": "ns1.siteground.net",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "levin",
+   "store": "STIHL SHOP Levin",
+   "shortName": "Levin",
+   "category": 4,
+   "currentWebsite": "https://www.hondahoro.co.nz",
+   "domain": "stihlshoplevin.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "masterton",
+   "store": "STIHL SHOP Masterton",
+   "shortName": "Masterton",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopmasterton.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "matamata",
+   "store": "STIHL SHOP Matamata",
+   "shortName": "Matamata",
+   "category": 2,
+   "currentWebsite": "https://stihlshopmatamata.co.nz",
+   "domain": "stihlshopmatamata.co.nz",
+   "status": "registered",
+   "created": "2018-06-10",
+   "updated": "2025-05-09",
+   "registrar": "Metaname",
+   "nameServers": [
+    "cory.ns.cloudflare.com",
+    "sima.ns.cloudflare.com"
+   ],
+   "dnsHost": "Cloudflare",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "milton",
+   "store": "STIHL SHOP Milton",
+   "shortName": "Milton",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopmilton.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "morrinsville",
+   "store": "STIHL SHOP McLaren Rural Services Limited",
+   "shortName": "Morrinsville (McLarens Rural)",
+   "category": 4,
+   "currentWebsite": "https://mclarensrural.co.nz",
+   "domain": "stihlshopmorrinsvillemclarensrural.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "mosgiel",
+   "store": "STIHL SHOP Mosgiel",
+   "shortName": "Mosgiel",
+   "category": 2,
+   "currentWebsite": "https://stihlshopmosgiel.co.nz",
+   "domain": "stihlshopmosgiel.co.nz",
+   "status": "registered",
+   "created": "2025-08-04",
+   "updated": "2026-08-07",
+   "registrar": "Affordable Domains",
+   "nameServers": [
+    "ns1.ramsu.co.nz",
+    "ns2.ramsu.co.nz"
+   ],
+   "dnsHost": "ramsu.co.nz",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "motueka",
+   "store": "STIHL SHOP Motueka",
+   "shortName": "Motueka",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopmotueka.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "mt-albert",
+   "store": "STIHL SHOP Mt Albert",
+   "shortName": "Mt Albert",
+   "category": 3,
+   "currentWebsite": "https://mcgilloutdoors.co.nz",
+   "domain": "stihlshopmtalbert.co.nz",
+   "status": "registered",
+   "created": "2026-08-17",
+   "updated": "2026-08-22",
+   "registrar": "OpenSRS",
+   "nameServers": [
+    "ns-cloud-e1.googledomains.com",
+    "ns-cloud-e2.googledomains.com",
+    "ns-cloud-e3.googledomains.com",
+    "ns-cloud-e4.googledomains.com"
+   ],
+   "dnsHost": "Google Domains",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "mt-maunganui",
+   "store": "STIHL SHOP Mt Maunganui",
+   "shortName": "Mt Maunganui",
+   "category": 3,
+   "currentWebsite": "https://www.stihlshopmtmaunganui.co.nz",
+   "domain": "stihlshopmtmaunganui.co.nz",
+   "status": "registered",
+   "created": "2021-06-22",
+   "updated": "2026-08-26",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns45.domaincontrol.com",
+    "ns46.domaincontrol.com"
+   ],
+   "dnsHost": "GoDaddy",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "napier",
+   "store": "STIHL SHOP Napier",
+   "shortName": "Napier",
+   "category": 3,
+   "currentWebsite": "https://stihlshopnapier.co.nz",
+   "domain": "stihlshopnapier.co.nz",
+   "status": "registered",
+   "created": "2014-04-08",
+   "updated": "2026-04-11",
+   "registrar": "Synergy Wholesale Accreditations Pty Ltd",
+   "nameServers": [
+    "ns1.nameserver.net.au",
+    "ns2.nameserver.net.au",
+    "ns3.nameserver.net.au"
+   ],
+   "dnsHost": "nameserver.net.au",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "nelson",
+   "store": "STIHL SHOP Nelson",
+   "shortName": "Nelson",
+   "category": 3,
+   "currentWebsite": "https://www.nelsonstihlshop.co.nz",
+   "domain": "stihlshopnelson.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "new-plymouth",
+   "store": "STIHL SHOP New Plymouth",
+   "shortName": "New Plymouth",
+   "category": 3,
+   "currentWebsite": "https://stihlshopnewplymouth.co.nz",
+   "domain": "stihlshopnewplymouth.co.nz",
+   "status": "registered",
+   "created": "2018-07-27",
+   "updated": "2025-07-02",
+   "registrar": "Sitetech Solutions Ltd T/A SiteName",
+   "nameServers": [
+    "ns1.nectarinehosting.com",
+    "ns2.nectarinehosting.com",
+    "ns3.nectarinehosting.com"
+   ],
+   "dnsHost": "ns1.nectarinehosting.com",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "northwood",
+   "store": "STIHL SHOP Northwood",
+   "shortName": "Northwood",
+   "category": 4,
+   "currentWebsite": "https://stihlshopfosters.co.nz",
+   "domain": "stihlshopnorthwood.co.nz",
+   "status": "registered",
+   "created": "2019-05-15",
+   "updated": "2026-05-19",
+   "registrar": "Freeparking Limited t/a DiscountDomains",
+   "nameServers": [
+    "ns1.discountdomains.co.nz",
+    "ns2.discountdomains.co.nz",
+    "ns3.discountdomains.co.nz"
+   ],
+   "dnsHost": "Discount Domains (NZ)",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "oamaru",
+   "store": "STIHL SHOP Oamaru",
+   "shortName": "Oamaru",
+   "category": 4,
+   "currentWebsite": "https://www.oamaruhonda.co.nz",
+   "domain": "stihlshopoamaru.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "onehunga",
+   "store": "STIHL SHOP Onehunga",
+   "shortName": "Onehunga",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshoponehunga.co.nz",
+   "status": "registered",
+   "created": "2012-05-25",
+   "updated": "2026-09-04",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns1.digitalocean.com",
+    "ns2.digitalocean.com",
+    "ns3.digitalocean.com"
+   ],
+   "dnsHost": "DigitalOcean (us)",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "otorohanga",
+   "store": "STIHL SHOP Otorohanga",
+   "shortName": "Otorohanga",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopotorohanga.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "pahiatua",
+   "store": "STIHL SHOP Pahiatua",
+   "shortName": "Pahiatua",
+   "category": 4,
+   "currentWebsite": "https://www.bissethonda.co.nz",
+   "domain": "stihlshoppahiatua.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "palmerston-north",
+   "store": "STIHL SHOP Palmerston North",
+   "shortName": "Palmerston North",
+   "category": 3,
+   "currentWebsite": "https://www.stihlshoppalmerstonnorth.co.nz",
+   "domain": "stihlshoppalmerstonnorth.co.nz",
+   "status": "registered",
+   "created": "2022-09-21",
+   "updated": "2026-08-07",
+   "registrar": "Sitetech Solutions Ltd T/A SiteName",
+   "nameServers": [
+    "ns1.sitehost.co.nz",
+    "ns2.sitehost.co.nz",
+    "ns3.sitehost.co.nz",
+    "ns4.sitehost.co.nz"
+   ],
+   "dnsHost": "SiteHost (NZ)",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "petone",
+   "store": "STIHL SHOP Petone",
+   "shortName": "Petone",
+   "category": 3,
+   "currentWebsite": "https://www.stihlshoppetone.co.nz",
+   "domain": "stihlshoppetone.co.nz",
+   "status": "registered",
+   "created": "2024-09-04",
+   "updated": "2026-09-05",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns45.domaincontrol.com",
+    "ns46.domaincontrol.com"
+   ],
+   "dnsHost": "GoDaddy",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "porirua",
+   "store": "STIHL SHOP Porirua",
+   "shortName": "Porirua",
+   "category": 2,
+   "currentWebsite": "https://www.stihlshopporirua.co.nz",
+   "domain": "stihlshopporirua.co.nz",
+   "status": "registered",
+   "created": "2024-09-04",
+   "updated": "2026-09-05",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns45.domaincontrol.com",
+    "ns46.domaincontrol.com"
+   ],
+   "dnsHost": "GoDaddy",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "pukekohe",
+   "store": "STIHL SHOP Pukekohe",
+   "shortName": "Pukekohe",
+   "category": 2,
+   "currentWebsite": "https://www.stihlshoppukekohe.co.nz",
+   "domain": "stihlshoppukekohe.co.nz",
+   "status": "registered",
+   "created": "2012-02-06",
+   "updated": "2026-03-19",
+   "registrar": "Dreamscape Networks International Pte Ltd t/a Crazy Domains",
+   "nameServers": [
+    "ns.freeparking.co.nz",
+    "ns2.freeparking.co.nz"
+   ],
+   "dnsHost": "Freeparking (NZ)",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "putaruru",
+   "store": "STIHL SHOP Putaruru",
+   "shortName": "Putaruru",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopputaruru.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "queenstown",
+   "store": "STIHL SHOP Queenstown",
+   "shortName": "Queenstown",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopqueenstown.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "rangiora",
+   "store": "STIHL SHOP Rangiora",
+   "shortName": "Rangiora",
+   "category": 4,
+   "currentWebsite": "https://stihlshopfosters.co.nz",
+   "domain": "stihlshoprangiora.co.nz",
+   "status": "registered",
+   "created": "2019-05-15",
+   "updated": "2026-05-19",
+   "registrar": "Freeparking Limited t/a DiscountDomains",
+   "nameServers": [
+    "ns1.discountdomains.co.nz",
+    "ns2.discountdomains.co.nz",
+    "ns3.discountdomains.co.nz"
+   ],
+   "dnsHost": "Discount Domains (NZ)",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "richmond",
+   "store": "STIHL SHOP Richmond",
+   "shortName": "Richmond",
+   "category": 3,
+   "currentWebsite": "https://stihlshoprichmond.nz",
+   "domain": "stihlshoprichmond.co.nz",
+   "status": "registered",
+   "created": "2013-03-26",
+   "updated": "2026-09-20",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns1.partnerconsole.net",
+    "ns2.partnerconsole.net",
+    "ns3.partnerconsole.net"
+   ],
+   "dnsHost": "ns1.partnerconsole.net",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "rolleston",
+   "store": "STIHL SHOP Rolleston",
+   "shortName": "Rolleston",
+   "category": 2,
+   "currentWebsite": "https://www.stihlshoprolleston.co.nz",
+   "domain": "stihlshoprolleston.co.nz",
+   "status": "registered",
+   "created": "2022-04-22",
+   "updated": "2026-03-19",
+   "registrar": "Dreamscape Networks International Pte Ltd t/a Crazy Domains",
+   "nameServers": [
+    "ns.freeparking.co.nz",
+    "ns2.freeparking.co.nz"
+   ],
+   "dnsHost": "Freeparking (NZ)",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "rotorua",
+   "store": "STIHL SHOP Rotorua",
+   "shortName": "Rotorua",
+   "category": 5,
+   "currentWebsite": "https://stihlshoprotorua.co.nz",
+   "domain": "stihlshoprotorua.co.nz",
+   "status": "registered",
+   "created": "2026-08-10",
+   "updated": "2026-09-09",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns1.digitalocean.com",
+    "ns2.digitalocean.com",
+    "ns3.digitalocean.com"
+   ],
+   "dnsHost": "DigitalOcean (us)",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "silverdale",
+   "store": "STIHL SHOP Silverdale",
+   "shortName": "Silverdale",
+   "category": 2,
+   "currentWebsite": "https://stihlshopsilverdale.co.nz",
+   "domain": "stihlshopsilverdale.co.nz",
+   "status": "registered",
+   "created": "2015-10-08",
+   "updated": "2026-03-19",
+   "registrar": "Dreamscape Networks International Pte Ltd t/a Crazy Domains",
+   "nameServers": [
+    "ns.freeparking.co.nz",
+    "ns2.freeparking.co.nz"
+   ],
+   "dnsHost": "Freeparking (NZ)",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "stratford",
+   "store": "STIHL SHOP Stratford",
+   "shortName": "Stratford",
+   "category": 4,
+   "currentWebsite": "https://stihlshopnewplymouth.co.nz",
+   "domain": "stihlshopstratford.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "sydenham",
+   "store": "STIHL SHOP Sydenham",
+   "shortName": "Sydenham",
+   "category": 4,
+   "currentWebsite": "https://www.stihlshopferrymead.com",
+   "domain": "stihlshopsydenham.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "taihape",
+   "store": "STIHL SHOP Taihape",
+   "shortName": "Taihape",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshoptaihape.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "taumarunui",
+   "store": "STIHL SHOP Taumarunui",
+   "shortName": "Taumarunui",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshoptaumarunui.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "taupo",
+   "store": "STIHL SHOP Taupo",
+   "shortName": "Taupo",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshoptaupo.co.nz",
+   "status": "registered",
+   "created": "2024-06-04",
+   "updated": "2026-09-17",
+   "registrar": "Dreamscape Networks International Pte Ltd t/a Crazy Domains",
+   "nameServers": [
+    "ns1.secureparkme.com",
+    "ns2.secureparkme.com"
+   ],
+   "dnsHost": "ns1.secureparkme.com",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "tauranga",
+   "store": "STIHL SHOP Tauranga",
+   "shortName": "Tauranga",
+   "category": 5,
+   "currentWebsite": "https://stihlshoptauranga.co.nz",
+   "domain": "stihlshoptauranga.co.nz",
+   "status": "registered",
+   "created": "2025-08-26",
+   "updated": "2026-09-20",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns1.digitalocean.com",
+    "ns2.digitalocean.com",
+    "ns3.digitalocean.com"
+   ],
+   "dnsHost": "DigitalOcean (us)",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "te-anau",
+   "store": "STIHL SHOP Te Anau",
+   "shortName": "Te Anau",
+   "category": 4,
+   "currentWebsite": "https://www.fiordlandmarine.co.nz",
+   "domain": "stihlshopteanau.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "te-aro",
+   "store": "STIHL SHOP Te Aro",
+   "shortName": "Te Aro",
+   "category": 4,
+   "currentWebsite": "https://ellmers.co.nz",
+   "domain": "stihlshoptearo.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "te-awamutu",
+   "store": "STIHL SHOP Te Awamutu",
+   "shortName": "Te Awamutu",
+   "category": 2,
+   "currentWebsite": "https://www.stihlshopta.co.nz",
+   "domain": "stihlshopteawamutu.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "te-puke",
+   "store": "STIHL SHOP Te Puke",
+   "shortName": "Te Puke",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshoptepuke.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "te-rapa",
+   "store": "STIHL SHOP Te Rapa",
+   "shortName": "Te Rapa",
+   "category": 2,
+   "currentWebsite": "https://stihlshop-terapa.co.nz",
+   "domain": "stihlshopterapa.co.nz",
+   "status": "registered",
+   "created": "2014-04-02",
+   "updated": "2026-05-17",
+   "registrar": "Dreamscape Networks International Pte Ltd t/a Crazy Domains",
+   "nameServers": [
+    "ns.freeparking.co.nz",
+    "ns2.freeparking.co.nz"
+   ],
+   "dnsHost": "Freeparking (NZ)",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "thames",
+   "store": "STIHL SHOP Thames",
+   "shortName": "Thames",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopthames.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "timaru",
+   "store": "STIHL SHOP Timaru",
+   "shortName": "Timaru",
+   "category": 2,
+   "currentWebsite": "https://stihlshoptimaru.co.nz",
+   "domain": "stihlshoptimaru.co.nz",
+   "status": "registered",
+   "created": "2016-11-30",
+   "updated": "2026-09-01",
+   "registrar": "Dreamscape Networks International Pte Ltd t/a Crazy Domains",
+   "nameServers": [
+    "ns.freeparking.co.nz",
+    "ns2.freeparking.co.nz"
+   ],
+   "dnsHost": "Freeparking (NZ)",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "tokoroa",
+   "store": "STIHL SHOP Tokoroa",
+   "shortName": "Tokoroa",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshoptokoroa.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "upper-hutt",
+   "store": "STIHL SHOP Upper Hutt",
+   "shortName": "Upper Hutt",
+   "category": 3,
+   "currentWebsite": "https://www.stihlshopupperhutt.co.nz",
+   "domain": "stihlshopupperhutt.co.nz",
+   "status": "registered",
+   "created": "2024-09-04",
+   "updated": "2026-09-05",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns31.domaincontrol.com",
+    "ns32.domaincontrol.com"
+   ],
+   "dnsHost": "GoDaddy",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "waiheke",
+   "store": "STIHL SHOP Waiheke",
+   "shortName": "Waiheke",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopwaiheke.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "waihi",
+   "store": "STIHL SHOP Waihi",
+   "shortName": "Waihi",
+   "category": 5,
+   "currentWebsite": "https://stihlshopwaihi.co.nz",
+   "domain": "stihlshopwaihi.co.nz",
+   "status": "registered",
+   "created": "2026-06-20",
+   "updated": "2026-09-18",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns1.digitalocean.com",
+    "ns2.digitalocean.com",
+    "ns3.digitalocean.com"
+   ],
+   "dnsHost": "DigitalOcean (us)",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "waipapa",
+   "store": "STIHL SHOP Waipapa",
+   "shortName": "Waipapa",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopwaipapa.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "waipukurau",
+   "store": "STIHL SHOP Waipukurau",
+   "shortName": "Waipukurau",
+   "category": 4,
+   "currentWebsite": "https://www.millshonda.co.nz",
+   "domain": "stihlshopwaipukurau.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "wairoa",
+   "store": "STIHL SHOP Wairoa",
+   "shortName": "Wairoa",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopwairoa.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "wanaka",
+   "store": "STIHL SHOP Wanaka",
+   "shortName": "Wanaka",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopwanaka.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "wanganui",
+   "store": "STIHL SHOP Wanganui",
+   "shortName": "Wanganui",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopwanganui.co.nz",
+   "status": "registered",
+   "created": "2012-03-29",
+   "updated": "2026-04-03",
+   "registrar": "Metaname",
+   "nameServers": [
+    "ns1.bdm.microsoftonline.com",
+    "ns2.bdm.microsoftonline.com",
+    "ns3.bdm.microsoftonline.com",
+    "ns4.bdm.microsoftonline.com"
+   ],
+   "dnsHost": "bdm.microsoftonline.com",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "warkworth",
+   "store": "STIHL SHOP Warkworth",
+   "shortName": "Warkworth",
+   "category": 2,
+   "currentWebsite": "https://www.stihlshopwarkworth.co.nz",
+   "domain": "stihlshopwarkworth.co.nz",
+   "status": "registered",
+   "created": "2016-04-21",
+   "updated": "2026-09-11",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns10.wixdns.net",
+    "ns11.wixdns.net"
+   ],
+   "dnsHost": "Wix",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "westgate",
+   "store": "STIHL SHOP Westgate",
+   "shortName": "Westgate",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopwestgate.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "westport",
+   "store": "STIHL SHOP Westport",
+   "shortName": "Westport",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopwestport.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "whakatane",
+   "store": "STIHL SHOP Whakatane",
+   "shortName": "Whakatane",
+   "category": 2,
+   "currentWebsite": "https://stihlshopwhakatane.co.nz",
+   "domain": "stihlshopwhakatane.co.nz",
+   "status": "registered",
+   "created": "2023-06-06",
+   "updated": "2026-06-09",
+   "registrar": "1st Domains Limited",
+   "nameServers": [
+    "ns1.1stdomains.net.nz",
+    "ns2.1stdomains.net.nz"
+   ],
+   "dnsHost": "1stdomains.net.nz",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "whangamata",
+   "store": "STIHL SHOP Whangamata",
+   "shortName": "Whangamata",
+   "category": 1,
+   "currentWebsite": null,
+   "domain": "stihlshopwhangamata.co.nz",
+   "status": "available",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "whangarei",
+   "store": "STIHL SHOP Whangarei",
+   "shortName": "Whangarei",
+   "category": 3,
+   "currentWebsite": "https://stihlshopwhangarei.co.nz",
+   "domain": "stihlshopwhangarei.co.nz",
+   "status": "registered",
+   "created": "2025-10-09",
+   "updated": "2025-10-14",
+   "registrar": "Affordable Domains",
+   "nameServers": [
+    "ns1.ramsu.co.nz",
+    "ns2.ramsu.co.nz"
+   ],
+   "dnsHost": "ramsu.co.nz",
+   "isDealersOwn": true
+  },
+  {
+   "slug": "whitianga",
+   "store": "STIHL SHOP Whitianga - CURRENTLY CLOSED",
+   "shortName": "Whitianga",
+   "category": 0,
+   "currentWebsite": null,
+   "domain": "stihlshopwhitianga.co.nz",
+   "status": "registered",
+   "created": "2020-09-09",
+   "updated": "2026-09-09",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "dakota.ns.cloudflare.com",
+    "vita.ns.cloudflare.com"
+   ],
+   "dnsHost": "Cloudflare",
+   "isDealersOwn": false
+  },
+  {
+   "slug": "winton",
+   "store": "STIHL SHOP Winton",
+   "shortName": "Winton",
+   "category": 3,
+   "currentWebsite": "https://www.stihlshopwinton.co.nz",
+   "domain": "stihlshopwinton.co.nz",
+   "status": "registered",
+   "created": "2020-06-24",
+   "updated": "2026-09-22",
+   "registrar": "Key-Systems GmbH",
+   "nameServers": [
+    "ns69.domaincontrol.com",
+    "ns70.domaincontrol.com"
+   ],
+   "dnsHost": "GoDaddy",
+   "isDealersOwn": true
+  }
+ ]
+}

@@ -1,0 +1,656 @@
+{
+ "checkedAt": "2026-09-23T21:53:54+00:00",
+ "results": {
+  "albany": {
+   "slug": "albany",
+   "host": "albany.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "alexandra": {
+   "slug": "alexandra",
+   "host": "alexandra.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "amberley": {
+   "slug": "amberley",
+   "host": "amberley.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "ashburton": {
+   "slug": "ashburton",
+   "host": "ashburton.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "balclutha": {
+   "slug": "balclutha",
+   "host": "balclutha.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "blenheim": {
+   "slug": "blenheim",
+   "host": "blenheim.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "botany": {
+   "slug": "botany",
+   "host": "botany.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "browns-bay": {
+   "slug": "browns-bay",
+   "host": "browns-bay.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "cambridge": {
+   "slug": "cambridge",
+   "host": "cambridge.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "cromwell": {
+   "slug": "cromwell",
+   "host": "cromwell.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "dargaville": {
+   "slug": "dargaville",
+   "host": "dargaville.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "drury": {
+   "slug": "drury",
+   "host": "drury.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "dunedin": {
+   "slug": "dunedin",
+   "host": "dunedin.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "east-tamaki": {
+   "slug": "east-tamaki",
+   "host": "east-tamaki.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "ellerslie": {
+   "slug": "ellerslie",
+   "host": "ellerslie.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "feilding": {
+   "slug": "feilding",
+   "host": "feilding.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "ferrymead": {
+   "slug": "ferrymead",
+   "host": "ferrymead.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "fosters": {
+   "slug": "fosters",
+   "host": "fosters.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "gisborne": {
+   "slug": "gisborne",
+   "host": "gisborne.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "glen-eden": {
+   "slug": "glen-eden",
+   "host": "glen-eden.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "glenfield": {
+   "slug": "glenfield",
+   "host": "glenfield.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "gore": {
+   "slug": "gore",
+   "host": "gore.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "greenmeadows": {
+   "slug": "greenmeadows",
+   "host": "greenmeadows.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "greymouth": {
+   "slug": "greymouth",
+   "host": "greymouth.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "greytown": {
+   "slug": "greytown",
+   "host": "greytown.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "hamilton-east": {
+   "slug": "hamilton-east",
+   "host": "hamilton-east.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "hastings": {
+   "slug": "hastings",
+   "host": "hastings.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "hawera": {
+   "slug": "hawera",
+   "host": "hawera.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "howick": {
+   "slug": "howick",
+   "host": "howick.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "huntly": {
+   "slug": "huntly",
+   "host": "huntly.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "invercargill": {
+   "slug": "invercargill",
+   "host": "invercargill.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "kaitaia": {
+   "slug": "kaitaia",
+   "host": "kaitaia.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "kapiti": {
+   "slug": "kapiti",
+   "host": "kapiti.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "kumeu": {
+   "slug": "kumeu",
+   "host": "kumeu.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "lakelands": {
+   "slug": "lakelands",
+   "host": "lakelands.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "levin": {
+   "slug": "levin",
+   "host": "levin.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "masterton": {
+   "slug": "masterton",
+   "host": "masterton.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "matamata": {
+   "slug": "matamata",
+   "host": "matamata.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "milton": {
+   "slug": "milton",
+   "host": "milton.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "morrinsville": {
+   "slug": "morrinsville",
+   "host": "morrinsville.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "mosgiel": {
+   "slug": "mosgiel",
+   "host": "mosgiel.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "motueka": {
+   "slug": "motueka",
+   "host": "motueka.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "mt-albert": {
+   "slug": "mt-albert",
+   "host": "mt-albert.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "mt-maunganui": {
+   "slug": "mt-maunganui",
+   "host": "mt-maunganui.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "napier": {
+   "slug": "napier",
+   "host": "napier.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "nelson": {
+   "slug": "nelson",
+   "host": "nelson.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "new-plymouth": {
+   "slug": "new-plymouth",
+   "host": "new-plymouth.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "northwood": {
+   "slug": "northwood",
+   "host": "northwood.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "oamaru": {
+   "slug": "oamaru",
+   "host": "oamaru.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "onehunga": {
+   "slug": "onehunga",
+   "host": "onehunga.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "otorohanga": {
+   "slug": "otorohanga",
+   "host": "otorohanga.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "pahiatua": {
+   "slug": "pahiatua",
+   "host": "pahiatua.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "palmerston-north": {
+   "slug": "palmerston-north",
+   "host": "palmerston-north.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "petone": {
+   "slug": "petone",
+   "host": "petone.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "porirua": {
+   "slug": "porirua",
+   "host": "porirua.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "pukekohe": {
+   "slug": "pukekohe",
+   "host": "pukekohe.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "putaruru": {
+   "slug": "putaruru",
+   "host": "putaruru.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "queenstown": {
+   "slug": "queenstown",
+   "host": "queenstown.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "rangiora": {
+   "slug": "rangiora",
+   "host": "rangiora.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "richmond": {
+   "slug": "richmond",
+   "host": "richmond.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "rolleston": {
+   "slug": "rolleston",
+   "host": "rolleston.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "rotorua": {
+   "slug": "rotorua",
+   "host": "rotorua.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": false
+  },
+  "silverdale": {
+   "slug": "silverdale",
+   "host": "silverdale.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "stratford": {
+   "slug": "stratford",
+   "host": "stratford.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "sydenham": {
+   "slug": "sydenham",
+   "host": "sydenham.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "taihape": {
+   "slug": "taihape",
+   "host": "taihape.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "taumarunui": {
+   "slug": "taumarunui",
+   "host": "taumarunui.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "taupo": {
+   "slug": "taupo",
+   "host": "taupo.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "tauranga": {
+   "slug": "tauranga",
+   "host": "tauranga.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": false
+  },
+  "te-anau": {
+   "slug": "te-anau",
+   "host": "te-anau.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "te-aro": {
+   "slug": "te-aro",
+   "host": "te-aro.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "te-awamutu": {
+   "slug": "te-awamutu",
+   "host": "te-awamutu.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "te-puke": {
+   "slug": "te-puke",
+   "host": "te-puke.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "te-rapa": {
+   "slug": "te-rapa",
+   "host": "te-rapa.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "thames": {
+   "slug": "thames",
+   "host": "thames.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "timaru": {
+   "slug": "timaru",
+   "host": "timaru.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "tokoroa": {
+   "slug": "tokoroa",
+   "host": "tokoroa.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "upper-hutt": {
+   "slug": "upper-hutt",
+   "host": "upper-hutt.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "waiheke": {
+   "slug": "waiheke",
+   "host": "waiheke.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "waihi": {
+   "slug": "waihi",
+   "host": "waihi.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": false
+  },
+  "waipapa": {
+   "slug": "waipapa",
+   "host": "waipapa.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "waipukurau": {
+   "slug": "waipukurau",
+   "host": "waipukurau.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "wairoa": {
+   "slug": "wairoa",
+   "host": "wairoa.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "wanaka": {
+   "slug": "wanaka",
+   "host": "wanaka.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "wanganui": {
+   "slug": "wanganui",
+   "host": "wanganui.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "warkworth": {
+   "slug": "warkworth",
+   "host": "warkworth.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "westgate": {
+   "slug": "westgate",
+   "host": "westgate.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "westport": {
+   "slug": "westport",
+   "host": "westport.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "whakatane": {
+   "slug": "whakatane",
+   "host": "whakatane.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "whangamata": {
+   "slug": "whangamata",
+   "host": "whangamata.preview.f925.works",
+   "live": true,
+   "status": 200,
+   "hasOffer": true
+  },
+  "whangarei": {
+   "slug": "whangarei",
+   "host": "whangarei.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "whitianga": {
+   "slug": "whitianga",
+   "host": "whitianga.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  },
+  "winton": {
+   "slug": "winton",
+   "host": "winton.preview.f925.works",
+   "live": false,
+   "status": 404,
+   "hasOffer": false
+  }
+ }
+}

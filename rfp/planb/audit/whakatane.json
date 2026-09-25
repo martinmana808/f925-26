@@ -1,0 +1,56 @@
+{
+  "slug": "whakatane",
+  "url": "https://stihlshopwhakatane.co.nz",
+  "at": "2026-09-21T18:03:37.471Z",
+  "reasons": [
+    "+10 8 internal pages",
+    "-5 no contact form",
+    "-5 no opening hours found",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "-10 slow load 11.8s"
+  ],
+  "loadMs": 11828,
+  "finalUrl": "https://stihlshopwhakatane.co.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "WordPress",
+  "bytes": 74411,
+  "title": "STIHL SHOP Whakatane – Right into Outdoor Power Equipment",
+  "description": "",
+  "viewport": true,
+  "pagesLinked": 8,
+  "navItems": [
+    "/contact-us",
+    "/",
+    "/products",
+    "/products/safety-equipment",
+    "/products/other-products",
+    "/service-repairs",
+    "/news-specials",
+    "/wp-admin"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": false,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 20,
+  "localCatalogue": false,
+  "copyrightYear": null,
+  "newestYear": null,
+  "wordCount": 253,
+  "images": 18,
+  "h1": "Welcome to STIHL SHOP Whakatane",
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "about": "",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 50
+}

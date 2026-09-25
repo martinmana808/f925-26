@@ -1,0 +1,53 @@
+{
+  "slug": "timaru",
+  "url": "https://stihlshoptimaru.co.nz",
+  "at": "2026-09-21T18:02:49.073Z",
+  "reasons": [
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "-12 stale (newest year on page 2021)"
+  ],
+  "loadMs": 4389,
+  "finalUrl": "https://stihlshoptimaru.co.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "WordPress",
+  "bytes": 52135,
+  "title": "StihlShop Timaru – Your local outdoor power equipment solutions provider",
+  "description": "",
+  "viewport": true,
+  "pagesLinked": 6,
+  "navItems": [
+    "/",
+    "/promotions",
+    "/products",
+    "/ride-on-mowers",
+    "/service",
+    "/contact-us"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 1,
+  "localCatalogue": false,
+  "copyrightYear": 2021,
+  "newestYear": 2021,
+  "wordCount": 440,
+  "images": 3,
+  "h1": "home",
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "about": "Ask about our range of battery-powered equipment including lawnmowers, hedge cutters, trimmers, blower vacs & chainsaws which are extremely popular with homeowners.\n\nOur fully equipped workshop and trained technicians give us the ability to stand firmly behind every product we sell. You will receive expert service and we are committed to making your experience the best it can be, right from pre-delivery through to after-sales service.",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 46
+}

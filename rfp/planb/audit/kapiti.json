@@ -1,0 +1,57 @@
+{
+  "slug": "kapiti",
+  "url": "https://www.stihlshopkapiti.nz",
+  "at": "2026-09-21T17:51:55.429Z",
+  "reasons": [
+    "+10 8 internal pages",
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "+4 current year on page",
+    "-10 slow load 7.0s"
+  ],
+  "loadMs": 7034,
+  "finalUrl": "https://www.stihlshopkapiti.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "Custom / unknown",
+  "bytes": 38640,
+  "title": "Kapiti Chainsaw, Lawnmower, Garden Machinery Sales, Service & Repairs",
+  "description": "",
+  "viewport": true,
+  "pagesLinked": 8,
+  "navItems": [
+    "/",
+    "/about-us",
+    "/service",
+    "/products",
+    "/specials",
+    "/contact-us",
+    "/stihl",
+    "/sitemap.php"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": false,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 4,
+  "localCatalogue": false,
+  "copyrightYear": 2026,
+  "newestYear": 2026,
+  "wordCount": 168,
+  "images": 21,
+  "h1": "STIHL SHOP Kapiti - Garden Machinery Retail & Repair",
+  "social": {
+    "facebook": "https://www.facebook.com/StihlShopKapiti/",
+    "instagram": ""
+  },
+  "about": "",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 62
+}

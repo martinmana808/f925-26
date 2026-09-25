@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>The Rant, Answered</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --code-bg:#EFE9DD; --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+  --p-a:#6847B8; --p-a-bg:#EDE7FA; --p-b:#0A6C4F; --p-b-bg:#DCF2E9; --p-c:#1B5FAE; --p-c-bg:#DDEAF8;
+  --wire:#B9AE97;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+    --p-a:#A78BFA; --p-a-bg:#2A2340; --p-b:#4CC9A2; --p-b-bg:#12352A; --p-c:#6FB1F0; --p-c-bg:#172A40;
+    --wire:#5E5644;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  --p-a:#A78BFA; --p-a-bg:#2A2340; --p-b:#4CC9A2; --p-b-bg:#12352A; --p-c:#6FB1F0; --p-c-bg:#172A40;
+  --wire:#5E5644;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+.narrow{max-width:880px}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+code{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+h1,h2,h3,h4{font-family:"Barlow Condensed",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:.5em 0}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:9px;padding-bottom:9px}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+header{padding:50px 0 10px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-size:clamp(36px,5.6vw,56px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:70ch;margin-top:12px}
+.status{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--part-bg);color:var(--part);border-radius:5px;padding:2px 9px;vertical-align:middle;margin-left:8px}
+.srcnote{margin:18px 0 0;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--part);border-radius:8px;padding:12px 16px;font-size:14px;box-shadow:var(--shadow)}
+main{padding:10px 0 40px}
+h2.gh{font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:7px;margin:38px 0 6px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+h2.gh .gdesc{width:100%;font-family:"IBM Plex Sans",sans-serif;font-size:13.5px;color:var(--muted);font-weight:400;text-transform:none;margin-top:-2px}
+h3{font-size:21px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin:24px 0 6px}
+/* ---- the tree ---- */
+.tree{margin:22px 0 10px}
+.node{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:12px 16px}
+.node .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.06em}
+.node h4{font-size:19px;text-transform:uppercase;letter-spacing:.02em;margin:2px 0 4px}
+.node p{margin:.25em 0;font-size:13.5px;color:var(--muted)}
+.node .kv{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:13px;margin-top:8px}
+.node .kv b{color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:11px;padding-top:2px}
+.node .kv span{color:var(--ink)}
+.node.root{max-width:560px;margin:0 auto;border-left:5px solid var(--accent);text-align:left}
+.node.root h4{font-size:22px}
+.node.branch{border-top:4px solid var(--part)}
+.node.leaf{border-top:4px solid var(--sup)}
+.node.leaf.risky{border-top-color:var(--gap)}
+.node .money{font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:700;color:var(--ink);line-height:1.1;margin-top:8px}
+.node .money small{display:block;font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;color:var(--muted);font-weight:500}
+.level{display:grid;grid-template-columns:1fr 1fr;gap:28px;position:relative;margin-top:44px}
+.level::before{content:"";position:absolute;top:-22px;left:25%;right:25%;height:2px;background:var(--wire)}
+.tree .stem{width:2px;height:22px;background:var(--wire);margin:0 auto}
+.branchcol{position:relative}
+.branchcol::before{content:"";position:absolute;top:-22px;left:50%;width:2px;height:22px;background:var(--wire)}
+.leaves{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative;margin-top:40px}
+.leaves::before{content:"";position:absolute;top:-20px;left:25%;right:25%;height:2px;background:var(--wire)}
+.leaves .leafcol{position:relative}
+.leaves .leafcol::before{content:"";position:absolute;top:-20px;left:50%;width:2px;height:20px;background:var(--wire)}
+.branchcol .stem2{width:2px;height:20px;background:var(--wire);margin:0 auto}
+.arrowlbl{position:absolute;top:-38px;left:50%;transform:translateX(-50%);font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);background:var(--paper);padding:0 6px;white-space:nowrap}
+@media (max-width:760px){
+  .level,.leaves{grid-template-columns:1fr;gap:14px;margin-top:14px}
+  .level::before,.leaves::before,.branchcol::before,.leaves .leafcol::before,.tree .stem,.branchcol .stem2{display:none}
+  .arrowlbl{display:none}
+}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:14px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+blockquote{margin:.6em 0;padding:8px 14px;border-left:4px solid var(--line);background:var(--surface2);border-radius:0 8px 8px 0;font-size:14.5px;color:var(--ink)}
+blockquote b{color:var(--gap)}
+.note{font-size:13px;color:var(--muted);border-left:3px solid var(--part);padding-left:10px}
+/* ---- prose blocks ---- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:16px 20px;margin:16px 0}
+.card h3{margin-top:0}
+.card.idea{border-left:5px solid var(--accent)}
+.card.open{border-left:5px solid var(--part)}
+.card ul{margin:.5em 0;padding-left:22px} .card li{margin:.35em 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:var(--shadow);margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th{font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:var(--muted);padding:10px 14px;border-bottom:2px solid var(--line);background:var(--surface2)}
+td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+td b.num{font-family:"Barlow Condensed",sans-serif;font-size:19px;font-weight:700}
+.math{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0}
+.math .m{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.math .m .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.math .m .v{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:700;line-height:1.1;margin:2px 0}
+.math .m .v.good{color:var(--sup)} .math .m .v.meh{color:var(--part)} .math .m .v.ghost{color:var(--muted);text-decoration:line-through}
+.math .m p{font-size:12.5px;color:var(--muted);margin:.2em 0 0}
+.callout{border-left:4px solid var(--part);background:var(--part-bg);border-radius:0 8px 8px 0;padding:8px 12px;margin:.6em 0;font-size:14.5px}
+.callout .ct{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--part);margin-bottom:1px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 42px;color:var(--muted);font-size:13px}
+/* review layer */
+.rdock{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);padding:6px 12px;font-size:12.5px;max-width:calc(100vw - 28px)}
+.rdock .rstat{color:var(--muted);white-space:nowrap}
+.rdock .rlive{font-weight:600;white-space:nowrap;color:var(--muted)}
+.rdock .rlive.live{color:var(--sup)} .rdock .rlive.local{color:var(--gap)}
+.rw{display:inline-flex;align-items:center;gap:5px;margin-left:10px;vertical-align:middle}
+.rw button{font-size:11.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 8px;cursor:pointer;line-height:1.5;font-family:"IBM Plex Sans",system-ui,sans-serif}
+.rw .rwf.on{color:#fff;background:var(--gap);border-color:var(--gap)}
+.rw .rwc.has{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);font-weight:700;background:var(--accent-soft)}
+.rw-flagged{box-shadow:0 0 0 2px var(--gap);border-radius:10px}
+.rw-panel{margin:10px 0 4px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:10px 12px;font-size:13.5px;line-height:1.55}
+.node .rw-panel{margin:10px -4px 0}
+.rw-panel .citem{border-bottom:1px solid var(--line);padding:6px 0}
+.rw-panel .citem:last-child{border-bottom:none}
+.rw-panel .citem b{font-size:13px}
+.rw-panel .citem time{font-size:11.5px;color:var(--muted);margin-left:6px}
+.rw-panel .citem p{margin:.15em 0 0;font-size:13.5px;white-space:pre-wrap;color:var(--ink)}
+.rw-panel .cform{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
+.rw-panel .cform textarea{flex:1;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);min-width:0;resize:none;line-height:1.45}
+.rw-panel .cform button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.rw-panel .cnote{font-size:12.5px;color:var(--gap);margin:.4em 0 0}
+.rw-panel .cflag{font-size:12px;color:var(--gap);font-weight:600;margin:0 0 .3em}
+html{scroll-behavior:smooth}
+@media (max-width:600px){.wrap{padding:0 16px}}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="rant">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">U4R <em>·</em> The Rant</span>
+    <div class="wrs-menu">
+      <button type="button" class="wrs-menubtn" aria-haspopup="true">Sections ▾</button>
+      <nav class="wrs-drop" aria-label="Sections">
+        <a href="#rant">The rant</a>
+        <a href="#right">Where it is right</a>
+        <a href="#careful">Where to be careful</a>
+        <a href="#asymmetry">The asymmetry</a>
+        <a href="#rocket">The Little Rocket test</a>
+        <a href="#worth">What the badge is worth</a>
+        <a href="#do">What to do with it</a>
+      </nav>
+    </div>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap narrow">
+    <p class="eyebrow">F925 internal · STIHL RFP 2026 · 18 Sep, after Mark’s second answer</p>
+    <h1>The rant, answered</h1>
+    <p class="sub">Martin’s reaction to STIHL’s answers, taken seriously: where it is right on the facts, where its conclusions would cost us, what it is actually asking for, and the one question the whole bid now hinges on. Not for STIHL. For the three of us, before anyone sends anything.</p>
+  </div>
+</header>
+
+<main><div class="wrap">
+
+<h2 class="gh" id="rant">The rant<span class="gdesc">Martin, 18 Sep, lightly tidied, nothing softened.</span></h2>
+<div class="card" data-key="rant-text">
+  <blockquote>I would think that this is for you. Each dealer is your salesman: the more they sell, the more you make. If they do well, you do better. You thinking the dealerships could do better is the reason an RFP was sent out. So the success of this matters to you. Not enough to pay for it, fine. But enough to help us come up with a proper pricing. We have to work together to get the best outcome, and you have information that would be handy: you know the market, how much they make, how much they could pay. 80% of the dealerships on our platform is better than 5%, so you should care about this.</blockquote>
+  <blockquote>All these requirements, all this process, meetings, calls, emails, just to recommend us? It feels as if we were dealing <i>against</i> STIHL. If we are going to do everything on our own anyway — promote, advertise, sell, contract — nothing changes much. What you have, STIHL, is wishful thinking. You know what consistency and compliance are; we know how much you care about the physical shops. You give them their shelves, their prints, their uniforms. Why wouldn’t you give them their websites? You think that in 2026 that is not important? So in the end, whether we get this or not, it means nothing but a “recommended by STIHL NZ” on our website. If we don’t get it and Vendor X does, the next day we can still go guns blazing into the market. Do you really care about the dealerships? Do you really want consistency? It doesn’t sound like it.</blockquote>
+  <blockquote>Dealers are farmers. You are first-world company owners. Do you realise a dealer will never care about a website? What does a website give him? Nothing, honestly. But what do 90 websites give <i>you</i>? Exposure, brand consistency, instant communication, unified criteria, unified messages.</blockquote>
+  <blockquote>Has Little Rocket ever asked permission, or had STIHL’s blessing, to build ten sites? No. So what is this all about? An RFP, people working, to be what — acknowledged? By someone who won’t pay? This is it: STIHL will recommend F925 to the dealers, for the dealers to pay, and STIHL will do nothing for F925. It is very weird. Everything is.</blockquote>
+</div>
+
+<h2 class="gh" id="right">Where it is right<span class="gdesc">On the facts, all of it holds.</span></h2>
+<div class="card" data-key="rant-right">
+  <ul>
+    <li><b>The RFP is incoherent with its own answer.</b> It diagnoses a brand problem, prescribes a fix that only works with mass adoption, then removes every lever that produces mass adoption. The rant names it better than any of our pages did: <i>you fit out their shops, print their signage, dress their staff — why is the website the one thing you will only recommend?</i></li>
+    <li><b>“Recommended by STIHL NZ” is, in cash terms, the whole prize.</b> If Vendor X wins, we can still sell to dealers the next morning. The badge is worth something — probably a lot, in a franchise-minded network — but it is not a contract and it does not pay the pilot.</li>
+    <li><b>STIHL has information we need and cannot get:</b> how many dealers, how many have sites, what they spend, what they would bear. Asking for it is legitimate.</li>
+    <li><b>Little Rocket never asked permission.</b> Neither did we for Tauranga. Under the model as described nobody will need it tomorrow either: “dealers remain free to choose their own website provider.” The RFP does not gate the market. It never did.</li>
+  </ul>
+</div>
+
+<h2 class="gh" id="careful">Where to be careful<span class="gdesc">Three conclusions in the rant that would cost us if they reached STIHL.</span></h2>
+<div class="card open" data-key="rant-careful-1">
+  <h3>“Each dealer is your salesman, the more they sell the more you make”</h3>
+  <p>True in general — but a dealer <i>website</i> does not move STIHL’s revenue much, and Mark knows it. Sales happen on stihlshop.co.nz. To STIHL, dealer sites are a brand-hygiene problem, not a revenue lever. That is exactly why they will recommend but not pay. Arguing revenue at them loses; arguing <b>brand</b> at them is where we hold the high ground.</p>
+</div>
+<div class="card open" data-key="rant-careful-2">
+  <h3>“Do you really care?”</h3>
+  <p>The moment we ask that, a procurement contact becomes an adversary, six weeks before he scores our proposal. And Mark almost certainly did not decide the model. Retail Network Managers execute; someone above him said “we cannot fund 90 dealer sites and cannot compel independents.” He is the messenger. Making him defend it in writing gets us a defensive email and a mark against F925 in the room.</p>
+</div>
+<div class="card open" data-key="rant-careful-3">
+  <h3>“Nothing changes much” / “for the dealers to pay more so STIHL gets way more”</h3>
+  <p>Not quite, on either. The MOU gives us: the right to say “STIHL SHOP preferred partner”, STIHL sending the introduction, a jointly selected pilot, the compliance sentence (“your site must comply regardless of provider”) to point at, and a seat at the two-year review. None of that exists if Vendor X wins. It is not 92 sites; it is also not nothing. And STIHL does not get money out of this — it gets brand hygiene and the ability to say internally “we did something about the websites”. That is cheaper than it sounds for them and worth less than it sounds to us. Weird, yes. A scheme, no: a low-effort fix by people who do not rate the problem as highly as their own RFP says.</p>
+</div>
+
+<h2 class="gh" id="asymmetry">The asymmetry<span class="gdesc">The strongest point in the rant — and it indicts the model, not just the attitude.</span></h2>
+<div class="card" data-key="rant-asymmetry">
+  <p><b>The value is asymmetric and STIHL priced it backwards.</b> One dealer website gives the dealer very little: a few more phone calls, hours on Google, a nicer link on stihlshop.co.nz. Ninety consistent dealer websites give <b>STIHL</b> everything the RFP lists: brand consistency, national campaigns pushed in one action, unified messaging, instant communication to the whole network, search presence in every town. The party that gets the value is STIHL. The party being asked to pay is the dealer. That mismatch is the whole reason adoption will be low under opt-in, and Mark’s answer walks straight into it.</p>
+  <p><b>A farmer will not pay $600 a month for something that does nothing for him</b> — not because he is wrong, because he is right. Under the model as given, our pricing has to answer a question the RFP never asked: <i>what does the dealer get that he would actually pay for?</i> The honest answers are small and local: the phone rings a bit more, the workshop shows up on Google Maps, the hours are right, someone else handles it. In a farmer’s head that supports maybe <b>$200–300 a month</b>, not $600 — or it supports $600 only if STIHL puts real weight behind it.</p>
+  <p>Two things follow:</p>
+  <ol>
+    <li><b>STIHL either shares the cost or shares the push.</b> If they will not fund, the push has to be real — a compliance date, nominated pilot dealers, a slot in dealer onboarding, a listing on the portal — because the dealer alone has no reason to buy. The farmer line is why that ask is fair: <i>you are asking a farmer to buy a billboard that advertises your brand.</i></li>
+    <li><b>Our pricing needs a floor a farmer says yes to.</b> Something like $250–300/month for site + hours + contact form, with the managed content, campaigns and SEO layer above it for dealers who want more. One $600 price makes the adoption plan in PREFERRED §2.4 fiction under this model. Better to price for the farmer and let the network be the upside than price for the network and get five farmers. <span class="pill" style="background:var(--part-bg);color:var(--part)">decision — A-04</span></li>
+  </ol>
+</div>
+
+<h2 class="gh" id="rocket">The Little Rocket test<span class="gdesc">If the market is open with or without the badge, what is the RFP for?</span></h2>
+<div class="card" data-key="rant-rocket">
+  <p>Take STIHL’s perspective for a second, cold. About 90 independent dealers, wildly inconsistent sites, no legal power to compel any of them, and — apparently — no wish to pay. What can they do? Exactly one thing: put a stamp on one supplier and tell dealers “this one meets our standard”. The RFP is the process that lets them put the stamp on someone without being accused of favouritism. <b>The process is heavy because it is procurement theatre, not because the prize is heavy.</b> That is the “acknowledged by someone who won’t pay” — accurate.</p>
+</div>
+
+<h2 class="gh" id="worth">What the badge is worth to F925<span class="gdesc">The real question is about us, not about STIHL.</span></h2>
+<div class="card" data-key="rant-worth">
+  <ul>
+    <li><b>Worth a lot if the push is real:</b> STIHL introduces us to 90 dealers we would otherwise find one by one, hands us pilot dealers, and gives us a compliance sentence to point at. That is two years of business development done by someone else’s email list. That is the prize, and the only prize.</li>
+    <li><b>Worth almost nothing if the push is a paragraph in a newsletter.</b> Then Little Rocket’s model — just go build sites — is strictly better: no MOU obligations, no evaluation panel.</li>
+  </ul>
+  <p>So the bid hinges on one thing we can still find out before 9 October: <b>how real is the introduction?</b> Not “will you promote us” — Mark already said yes — but <i>specifically what</i>: a named slot in the dealer onboarding pack, a listing on the dealer portal, a date by which non-compliant sites must comply, STIHL naming the pilot dealers. If those are yes, we bid at full effort. If they are vague, we bid a lean proposal that costs us two days and put the real energy into selling directly — which we can do either way, starting tomorrow, exactly like Little Rocket.</p>
+</div>
+
+<h2 class="gh" id="do">What to do with it<span class="gdesc">Same argument, three destinations.</span></h2>
+<div class="card idea" data-key="rant-do">
+  <h3>In an email this week — warm, short, three asks</h3>
+  <ol>
+    <li><b>Numbers.</b> How many STIHL SHOP dealers; how many have a website today; roughly what they spend on it. We are pricing blind and STIHL is not.</li>
+    <li><b>A pricing conversation, not a pricing guess.</b> “Help us set a price the network will actually take up — you know what a dealer will bear, and 80% adoption serves your consistency goal far more than 5% does.” Collaborative, and it flatters their stated objective.</li>
+    <li><b>Skin in the game short of funding.</b> Not money: the compliance requirement with a date, pilot dealers nominated by STIHL, a slot in new-dealer onboarding, the “preferred” listing on stihlshop.co.nz / the dealer portal. Costs STIHL nothing; it is the difference between a recommendation and a programme.</li>
+  </ol>
+  <p>The farmer argument goes in as one calm sentence: <i>“A dealer’s website benefits STIHL SHOP as a brand more than it benefits any individual dealer; the pricing and the introduction need to reflect that, or adoption will stay low, which serves neither of us.”</i> Frame the whole thing as sizing our investment: <i>“To size our investment in this programme, we need to know what the introduction consists of.”</i></p>
+  <h3>In the room, 22–23 October — to the people who set the model</h3>
+  <p>“You standardise the shopfront, the signage, the uniform, because the brand is the sum of every touchpoint. In 2026 the website is the shopfront most customers see first. Dealers are farmers; you are asking a farmer to pay for your billboard. We are not asking you to pay for it. We are asking you to treat it the way you treat the shelves.” That is where the shelves, the uniforms and the farmer land — at the moment they can change something.</p>
+  <h3>Nowhere</h3>
+  <p>“Do you really care?” It is how we feel, it is fair, and it costs us the room.</p>
+</div>
+
+</div></main>
+
+<footer>
+  <div class="wrap narrow">
+    <p>F925 internal · 18 Sep 2026 · related: <a href="/wtf.html">WTF (the answers, verbatim)</a> · <a href="/preferred.html">PREFERRED (the proposal)</a> · <a href="/scenarios.html">scenarios</a>.</p>
+  </div>
+</footer>
+
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+<script>
+(function(){
+  var API='/api/state?page=rant', APIKEY='XPFmcH2RSsza';
+  var PEOPLE=[{id:'martin',name:'Martin',cls:'pa'},{id:'leonel',name:'Leo',cls:'pb'},{id:'mike',name:'Mike',cls:'pc'}];
+  var NAME={}; PEOPLE.forEach(function(p){NAME[p.id]=p.name;});
+  var me=(window.WR?WR.me:'');
+  if(window.WR)WR.onIdentity(function(id){me=id;renderAll();});
+  var marks={}, comments={}, items={};
+  var lastRev='', applied=false, pendingWrites=0, chain=Promise.resolve();
+  function enqueue(op){
+    pendingWrites++;
+    var p=chain.then(function(){return apiPost(op);});
+    chain=p.then(function(){pendingWrites--;if(pendingWrites===0)refresh();},function(){pendingWrites--;setMode('local');});
+    return p;
+  }
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(undefined,{day:'numeric',month:'short'});}catch(e){return '';}}
+  function apiGet(){return fetch(API,{headers:{'x-warroom-key':APIKEY}}).then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();});}
+  function apiPost(op){return fetch(API,{method:'POST',headers:{'x-warroom-key':APIKEY,'content-type':'application/json'},body:JSON.stringify(op)}).then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();});}
+  var dock=document.createElement('div'); dock.className='rdock';
+  dock.innerHTML='<span class="rstat" id="rd-stat">⚑ 0 · 💬 0</span><span class="rlive" id="rd-live">Connecting…</span>';
+  document.body.appendChild(dock);
+  function needIdentity(noteEl,msg){if(me)return false;if(noteEl){noteEl.textContent=msg;noteEl.hidden=false;}if(window.WR)WR.nudge();return true;}
+  function setMode(m){var el=document.getElementById('rd-live');el.className='rlive '+m;el.textContent=m==='live'?'● Live':(m==='local'?'○ Offline — read-only':'Connecting…');}
+
+  /* targets: every [data-key] node/card; table rows get a panel row inserted after them */
+  function addTarget(host){
+    var key=host.dataset.key; if(items[key])return;
+    var isRow=host.tagName==='TR';
+    var label=(host.querySelector('h4,h3')||host.querySelector('td')||host).textContent.trim().slice(0,60);
+    var w=document.createElement('span'); w.className='rw';
+    w.innerHTML='<button type="button" class="rwf" title="Flag for attention">⚑</button><button type="button" class="rwc" title="Comments">💬 <span>0</span></button>';
+    var anchor=host.querySelector('h4,h3')||(isRow?host.querySelector('td'):host);
+    anchor.appendChild(w);
+    var panel=document.createElement('div'); panel.className='rw-panel'; panel.hidden=true;
+    panel.innerHTML='<p class="cflag" hidden></p><div class="clist"></div>'
+      +'<form class="cform"><textarea rows="1" placeholder="Comment on “'+esc(label)+'” (Shift+Enter for a new line)" aria-label="Comment"></textarea><button type="submit">Post</button></form><p class="cnote" hidden></p>';
+    var block=host;
+    if(isRow){
+      var tr=document.createElement('tr'); tr.className='rw-panelrow'; tr.hidden=true;
+      var td=document.createElement('td'); td.colSpan=host.children.length; td.appendChild(panel); tr.appendChild(td);
+      host.after(tr); block=host; panel.hidden=false; var rowPanel=tr;
+    }else host.appendChild(panel);
+    if(window.WR)WR.wireCommentBox(panel.querySelector('.cform textarea'));
+    var fbtn=w.querySelector('.rwf'), cbtn=w.querySelector('.rwc'), note=panel.querySelector('.cnote');
+    var toggle=function(force){ if(isRow){rowPanel.hidden=force===undefined?!rowPanel.hidden:!force;} else {panel.hidden=force===undefined?!panel.hidden:!force;} };
+    fbtn.addEventListener('click',function(){
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.')){toggle(true);return;}
+      var next=!(marks[key]&&marks[key].flagged);
+      marks[key]={flagged:next,by:me,at:new Date().toISOString()};
+      render(key); renderTotals();
+      enqueue({t:'mark',key:key,flagged:next,by:me}).catch(function(){});
+    });
+    cbtn.addEventListener('click',function(){toggle();});
+    panel.querySelector('form').addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var inp=panel.querySelector('textarea'), txt=inp.value.trim(); if(!txt)return;
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.'))return;
+      note.hidden=true;
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString()};
+      (comments[key]=comments[key]||[]).push(temp);
+      render(key); renderTotals(); inp.value='';
+      enqueue({t:'comment',key:key,author:me,text:txt}).catch(function(){
+        var arr=comments[key]||[], ix=arr.indexOf(temp); if(ix>=0)arr.splice(ix,1);
+        render(key); renderTotals(); note.textContent='Could not post — try again in a moment.'; note.hidden=false;
+      });
+    });
+    items[key]={block:block,fbtn:fbtn,cbtn:cbtn,cnum:cbtn.querySelector('span'),panel:panel,clist:panel.querySelector('.clist'),cflag:panel.querySelector('.cflag'),open:function(){toggle(true);}};
+  }
+  document.querySelectorAll('[data-key]').forEach(addTarget);
+
+  function render(key){
+    var it=items[key]; if(!it)return;
+    var m=marks[key]||{};
+    it.fbtn.classList.toggle('on',!!m.flagged);
+    it.block.classList.toggle('rw-flagged',!!m.flagged);
+    it.cflag.hidden=!m.flagged;
+    if(m.flagged)it.cflag.textContent='⚑ Flagged by '+(NAME[m.by]||m.by||'?')+(m.at?' · '+fmtDate(m.at):'');
+    var cm=comments[key]||[];
+    it.cnum.textContent=cm.length;
+    it.cbtn.classList.toggle('has',cm.length>0);
+    if(!it.clist.querySelector('.ceform'))it.clist.innerHTML=window.WR?WR.commentListHTML(cm,key):'';
+  }
+  function renderAll(){Object.keys(items).forEach(render);renderTotals();}
+  function renderTotals(){
+    var f=0,c=0;
+    Object.keys(items).forEach(function(k){if(marks[k]&&marks[k].flagged)f++;c+=(comments[k]||[]).length;});
+    document.getElementById('rd-stat').textContent='⚑ '+f+' · 💬 '+c;
+  }
+
+  /* comment delete / reply / react / edit */
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cdel'); if(!b)return;
+    if(!confirm('Delete this comment for everyone?'))return;
+    var id=b.dataset.cid, key=b.dataset.key, arr=comments[key]||[];
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id){arr.splice(i,1);break;}}
+    render(key); renderTotals();
+    enqueue({t:'comment-del',id:id,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crply'); if(!b)return;
+    var citem=b.closest('.citem'); if(citem.querySelector('.crform'))return;
+    var key=b.dataset.key, pid=b.dataset.cid;
+    var f=document.createElement('form'); f.className='cform ceform crform';
+    f.innerHTML='<textarea rows="1" placeholder="Reply… (Shift+Enter for a new line)" aria-label="Reply"></textarea><button type="submit">Reply</button><button type="button" class="cancel">Cancel</button>';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea'); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);renderTotals();});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim(); if(!txt)return;
+      if(!me){if(window.WR)WR.nudge();return;}
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString(),parent:pid};
+      (comments[key]=comments[key]||[]).push(temp);
+      f.remove(); render(key); renderTotals();
+      enqueue({t:'comment',key:key,author:me,text:txt,parent:pid}).catch(function(){
+        var arr=comments[key]||[], ix=arr.indexOf(temp); if(ix>=0)arr.splice(ix,1); render(key); renderTotals();
+      });
+    });
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crb'); if(!b)return;
+    if(!me){if(window.WR)WR.nudge();return;}
+    var id=b.dataset.cid, key=b.dataset.key, e=b.dataset.remoji, arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    c.reactions=c.reactions||{}; var l=c.reactions[e]=c.reactions[e]||[]; var ix=l.indexOf(me);
+    if(ix>=0)l.splice(ix,1); else l.push(me);
+    render(key);
+    enqueue({t:'react',id:id,emoji:e,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cedit'); if(!b)return;
+    var citem=b.closest('.citem'); if(citem.querySelector('.ceform'))return;
+    var id=b.dataset.cid, key=b.dataset.key, arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    var f=document.createElement('form'); f.className='cform ceform';
+    f.innerHTML='<textarea rows="1" aria-label="Edit comment"></textarea><button type="submit">Save</button><button type="button" class="cancel">Cancel</button>';
+    f.querySelector('textarea').value=c.text||'';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea'); ta.dispatchEvent(new Event('input')); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim(); if(!txt)return;
+      c.text=txt; c.edited=new Date().toISOString();
+      f.remove(); render(key); renderTotals();
+      enqueue({t:'comment-edit',id:id,by:me,text:txt}).catch(function(){});
+    });
+  });
+
+  if(window.WR)WR.registerLocator(function(key){
+    var it=items[key]; if(!it)return false;
+    it.open();
+    it.block.scrollIntoView({block:'center'});
+    it.block.classList.remove('wr-flash'); void it.block.offsetWidth; it.block.classList.add('wr-flash');
+    return true;
+  });
+
+  function applyState(data,fromPost){
+    if(!data||typeof data!=='object')return;
+    var rev=(typeof data.rev==='string')?data.rev:'';
+    if(applied&&rev&&rev<lastRev)return;
+    if(!fromPost&&pendingWrites>0)return;
+    if(rev>lastRev)lastRev=rev; applied=true;
+    marks=data.marks||{};
+    var by={};
+    (data.comments||[]).forEach(function(c){if(!c.key)return;(by[c.key]=by[c.key]||[]).push(c);});
+    comments=by;
+    setMode('live'); renderAll();
+  }
+  function refresh(){if(pendingWrites>0)return;apiGet().then(function(d){applyState(d,false);}).catch(function(){setMode('local');});}
+  setMode('connecting'); renderAll(); refresh();
+  setInterval(refresh,12000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh();});
+})();
+</script>
+</body>
+</html>

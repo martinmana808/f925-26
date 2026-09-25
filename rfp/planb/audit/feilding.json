@@ -1,0 +1,57 @@
+{
+  "slug": "feilding",
+  "url": "https://stihlshopfeilding.co.nz",
+  "at": "2026-09-21T17:47:10.774Z",
+  "reasons": [
+    "+10 8 internal pages",
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "+4 current year on page",
+    "-10 slow load 6.6s"
+  ],
+  "loadMs": 6633,
+  "finalUrl": "https://stihlshopfeilding.co.nz/",
+  "status": 200,
+  "https": true,
+  "tech": "WordPress",
+  "bytes": 65261,
+  "title": "StihlShop Feilding – Your local outdoor power equipment solutions provider",
+  "description": "",
+  "viewport": true,
+  "pagesLinked": 8,
+  "navItems": [
+    "/",
+    "/promotions",
+    "/products",
+    "/ride-on-mowers",
+    "/lawn-push-mowers",
+    "/service",
+    "/tools",
+    "/contact-us"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": true,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 2,
+  "localCatalogue": false,
+  "copyrightYear": 2026,
+  "newestYear": 2026,
+  "wordCount": 540,
+  "images": 4,
+  "h1": "home",
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "about": "Ask about our range of battery-powered equipment including lawnmowers, hedge cutters, trimmers, blower vacs & chainsaws which are extremely popular with homeowners. Our fully equipped workshop and trained technicians give us the ability to stand firmly behind every product we sell. You will receive expert service and we are committed to making your experience the best it can be, right from pre-delivery through to after-sales service.",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 62
+}

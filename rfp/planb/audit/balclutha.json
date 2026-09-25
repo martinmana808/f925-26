@@ -1,0 +1,60 @@
+{
+  "slug": "balclutha",
+  "url": "https://ewanallan.co.nz/pages/stihl-shop",
+  "at": "2026-09-21T18:42:16.562Z",
+  "reasons": [
+    "+10 12 internal pages",
+    "-5 no contact form",
+    "+3 hours shown",
+    "+5 STIHL branding present",
+    "+5 links to stihlshop.co.nz",
+    "+4 current year on page"
+  ],
+  "loadMs": 3102,
+  "finalUrl": "https://www.ewanallan.co.nz/pages/stihl-shop",
+  "status": 200,
+  "https": true,
+  "tech": "Shopify",
+  "bytes": 214847,
+  "title": "Ewan Allan Stihl Shop chainsaws, brushcutters, blowers, hedge trimmers and outdoor power equipment – Ewan Allan Honda",
+  "description": "Shop STIHL at Ewan Allan Honda for quality chainsaws, brushcutters, blowers, hedge trimmers and outdoor power equipment. Great products, parts and service.",
+  "viewport": true,
+  "pagesLinked": 12,
+  "navItems": [
+    "/pages/stihl-shop",
+    "/",
+    "/collections/all",
+    "/pages/honda-off-road",
+    "/pages/honda-road",
+    "/pages/honda-outdoors",
+    "/collections/honda-marine",
+    "/blogs/news",
+    "/pages/used-stock",
+    "/pages/contact",
+    "/customer_authentication/redirect",
+    "/cart"
+  ],
+  "hasForm": false,
+  "hasMap": false,
+  "hasPhone": true,
+  "hasHours": true,
+  "stihlLogo": false,
+  "stihlShopWordmark": true,
+  "linksToStihlshop": 2,
+  "localCatalogue": false,
+  "copyrightYear": 2026,
+  "newestYear": 2026,
+  "wordCount": 357,
+  "images": 13,
+  "h1": "STIHL SHOP",
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "about": "VISIT US!\n\nStihl Shop Balclutha\n\nAddress: 88 Clyde St, Balclutha 9230\n\nPhone: 03 418 0626\n\nEmail: sales@balcluthahonda.co.nz\n\n---------------------------------------\n\nStihl Shop Mosgiel\n\nAddress: 119 Dukes Road North, Mosgiel\n\nPhone: 03 486 1222\n\nEmail: :  mosgiel@stihlshop.co.nz\n\nSTORE HOURS\n\nMonday - Friday\n7.30am -5.30pm\n\nSaturday (Balclutha)\n\n8.00am - 12.00pm\n\nSaturday (Mosgiel)\n\n8.30am - 1.00pm\n\nClosed Sunday",
+  "mobile": {
+    "horizontalOverflow": false,
+    "fontTiny": false
+  },
+  "score": 72
+}

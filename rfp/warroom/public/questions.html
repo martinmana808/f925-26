@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Mike's Big List of Questions</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --code-bg:#EFE9DD; --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+h1,h2,h3,h4{font-family:"Barlow Condensed",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:.5em 0}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:9px;padding-bottom:9px}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+header{padding:50px 0 10px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-size:clamp(36px,5.6vw,56px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:66ch;margin-top:12px}
+.srcnote{margin:18px 0 0;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--part);border-radius:8px;padding:12px 16px;font-size:14px;box-shadow:var(--shadow)}
+.filters2{position:sticky;top:var(--wr-topbar-h,46px);z-index:40;background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(8px);padding:12px 0;border-bottom:1px solid var(--line);margin-top:20px}
+.filters2 .wrap{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-right:4px}
+.fbtn{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;background:var(--surface);border:1px solid var(--line);color:var(--muted);border-radius:6px;padding:3px 11px;cursor:pointer}
+.fbtn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.fbtn.st.active{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.fsep{width:1px;align-self:stretch;background:var(--line);margin:0 6px}
+main{padding:10px 0 40px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);margin:16px 0;padding:16px 20px}
+.q .qhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px}
+.q .qid{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--accent);font-weight:500}
+.q h3{font-size:20px;font-weight:700}
+.q .tags{margin-left:auto;display:flex;gap:6px}
+.tag{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:5px;padding:1px 8px}
+.tag.topic{background:var(--surface2);color:var(--muted);border:1px solid var(--line)}
+.tag.verified{background:var(--sup-bg);color:var(--sup)}
+.tag.partial{background:var(--part-bg);color:var(--part)}
+.tag.notyet{background:var(--gap-bg);color:var(--gap)}
+.tag.team{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}
+.tag.na{background:var(--surface2);color:var(--muted);border:1px solid var(--line)}
+.qgh{font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:7px;margin:34px 0 4px}
+.qgh small{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);font-weight:400;text-transform:none;letter-spacing:0}
+.q .a{margin-top:8px;font-size:14.5px}
+.q .a b{color:var(--ink)}
+.q .a ul{margin:.4em 0;padding-left:20px}
+.q .a li{margin:.25em 0}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 42px;color:var(--muted);font-size:13px}
+/* review layer (same as audit/proposal) */
+.rdock{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);padding:6px 12px;font-size:12.5px;max-width:calc(100vw - 28px)}
+.rdock .rstat{color:var(--muted);white-space:nowrap}
+.rdock .rlive{font-weight:600;white-space:nowrap;color:var(--muted)}
+.rdock .rlive.live{color:var(--sup)}
+.rdock .rlive.local{color:var(--gap)}
+.rw{display:inline-flex;align-items:center;gap:5px;margin-left:10px;vertical-align:middle}
+.rw button{font-size:11.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 8px;cursor:pointer;line-height:1.5;font-family:"IBM Plex Sans",system-ui,sans-serif}
+.rw .rwf.on{color:#fff;background:var(--gap);border-color:var(--gap)}
+.rw .rwc.has{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);font-weight:700;background:var(--accent-soft)}
+.rw-flagged{box-shadow:0 0 0 2px var(--gap);border-radius:10px}
+.rw-panel{margin:10px 0 4px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:10px 12px;font-size:13.5px;line-height:1.55}
+.rw-panel .citem{border-bottom:1px solid var(--line);padding:6px 0}
+.rw-panel .citem:last-child{border-bottom:none}
+.rw-panel .citem b{font-size:13px}
+.rw-panel .citem time{font-size:11.5px;color:var(--muted);margin-left:6px}
+.rw-panel .citem p{margin:.15em 0 0;font-size:13.5px;white-space:pre-wrap}
+.rw-panel .cform{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
+.rw-panel .cform input,.rw-panel .cform textarea{flex:1;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);min-width:0;resize:none;line-height:1.45}
+.rw-panel .cform button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.rw-panel .cnote{font-size:12.5px;color:var(--gap);margin:.4em 0 0}
+.rw-panel .cflag{font-size:12px;color:var(--gap);font-weight:600;margin:0 0 .3em}
+html{scroll-behavior:smooth}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="questions">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">U4R <em>·</em> Mike's Questions</span>
+    <div class="wrs-menu">
+      <button type="button" class="wrs-menubtn" aria-haspopup="true">Pages ▾</button>
+      <nav class="wrs-drop" aria-label="Pages">
+        <a href="/board.html">→ The runbook</a>
+        <a href="/audit.html">→ The audit</a>
+        <a href="/proposal.html">→ The proposal</a>
+        <a href="/capacity.html">→ Capacity report</a>
+        <a href="/wk1-report.html">→ Week 1 report</a>
+      </nav>
+    </div>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <p class="eyebrow">F925 internal · STIHL RFP 2026 · technical Q&amp;A</p>
+    <h1>Mike's big list<br>of questions</h1>
+    <p class="sub">All 74 of Mike’s technical questions, with Leo’s answers and an honest status on each — imported in full on 11 Sep. Flag ⚑ anything you dispute; comment 💬 with corrections; type <b>@</b> to tag someone.</p>
+    <div class="srcnote" style="border-left-color:var(--sup)"><b>Related:</b> <a href="/process.html">The Process</a> — the dealer lifecycle (onboarding, changes, support) as we intend to run it, with the open questions collected. Editable in place.</div>
+    <div class="srcnote"><b>Source:</b> Leo’s full answers document (<a href="https://claude.ai/code/artifact/c1506eca-bfb8-40ec-8964-24affd6c78f2" target="_blank" rel="noopener">artifact</a>), imported verbatim 11 Sep. Statuses are Leo’s own: <span class="tag verified">Verified</span> checked directly · <span class="tag partial">Partial</span> true with caveats · <span class="tag notyet">Not yet</span> doesn’t exist yet · <span class="tag team">Team call</span> needs a business decision, not code. Flag ⚑ anything that changed; comment 💬 on the exact question.</div>
+  </div>
+</header>
+
+<div class="filters2"><div class="wrap">
+  <span class="fl">Topic</span>
+  <button type="button" class="fbtn tp active" data-topic="all">All</button>
+  <button type="button" class="fbtn tp" data-topic="hosting">Hosting</button><button type="button" class="fbtn tp" data-topic="auth">Auth</button><button type="button" class="fbtn tp" data-topic="deploy">Deploy</button><button type="button" class="fbtn tp" data-topic="backup">Backups</button><button type="button" class="fbtn tp" data-topic="uptime">Uptime</button><button type="button" class="fbtn tp" data-topic="support">Support</button><button type="button" class="fbtn tp" data-topic="security">Security</button><button type="button" class="fbtn tp" data-topic="privacy">Privacy</button><button type="button" class="fbtn tp" data-topic="seo">SEO</button><button type="button" class="fbtn tp" data-topic="onboard">Onboarding</button><button type="button" class="fbtn tp" data-topic="legal">Legal</button><button type="button" class="fbtn tp" data-topic="scale">Scale</button>
+  <span class="fsep"></span>
+  <span class="fl">Status</span>
+  <button type="button" class="fbtn st active" data-status="all">All</button>
+  <button type="button" class="fbtn st" data-status="verified">Verified</button>
+  <button type="button" class="fbtn st" data-status="partial">Partial</button>
+  <button type="button" class="fbtn st" data-status="notyet">Not yet</button>
+  <button type="button" class="fbtn st" data-status="team">Team call</button>
+  <button type="button" class="fbtn st" data-status="na">N/A</button>
+</div></div>
+
+<main><div class="wrap">
+
+<h2 class="qgh" data-topic="hosting">Hosting &amp; infrastructure <small>Q1–6</small></h2>
+
+<div class="q" data-key="q-01" data-topic="hosting" data-status="verified">
+  <div class="qhead"><span class="qid">Q-01</span><h3>Actual production hosting architecture?</h3>
+    <span class="tags"><span class="tag topic">Hosting</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Cloudflare's global edge network in front of a single DigitalOcean App Platform origin, DigitalOcean Managed PostgreSQL, and DigitalOcean Spaces for uploaded images. Two separate deployed apps: <b>unify-platform</b> (admin + dealer portal) and <b>unify-dealer-site</b> (the public dealer websites, one codebase serving every dealer by domain). No physical servers, no per-dealer infrastructure. One caveat worth knowing internally: the Cloudflare layer is DigitalOcean's own managed edge, not a separately-purchased Cloudflare account — same protection, just not a line item we control independently.</p></div>
+</div>
+
+<div class="q" data-key="q-02" data-topic="hosting" data-status="verified">
+  <div class="qhead"><span class="qid">Q-02</span><h3>Where is the application hosted?</h3>
+    <span class="tags"><span class="tag topic">Hosting</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>DigitalOcean App Platform, Sydney region.</p></div>
+</div>
+
+<div class="q" data-key="q-03" data-topic="hosting" data-status="verified">
+  <div class="qhead"><span class="qid">Q-03</span><h3>Where is the database hosted?</h3>
+    <span class="tags"><span class="tag topic">Hosting</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>DigitalOcean Managed PostgreSQL 16, Sydney. Currently a single node (no standby/failover replica — see Q29–31).</p></div>
+</div>
+
+<div class="q" data-key="q-04" data-topic="hosting" data-status="verified">
+  <div class="qhead"><span class="qid">Q-04</span><h3>What providers/services are involved?</h3>
+    <span class="tags"><span class="tag topic">Hosting</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><ul><li><b>DigitalOcean</b> — compute, database, object storage/CDN</li><li><b>Cloudflare</b> — edge/TLS (via DO, see Q1)</li><li><b>Resend</b> — transactional email (portal OTPs, invites, notifications)</li><li><b>Web3Forms</b> — dealer website contact form (third party, see Q51)</li><li><b>Google</b> — Maps/Places API, Analytics (GA4)</li><li><b>Groq</b> — AI provider for the site chat assistant (currently disabled)</li><li><b>GoDaddy</b> — domain/DNS registrar</li><li><b>GitHub</b> — source control, CI</li></ul></div>
+</div>
+
+<div class="q" data-key="q-05" data-topic="hosting" data-status="verified">
+  <div class="qhead"><span class="qid">Q-05</span><h3>What regions/countries is data stored or processed in?</h3>
+    <span class="tags"><span class="tag topic">Hosting</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>All storage and processing — app compute, database, file storage — is in <b>Sydney, Australia</b>. Cloudflare's edge terminates TLS at whichever point-of-presence is nearest the visitor (e.g. Auckland for NZ traffic), but that's connection handling, not data storage — no customer data is stored there. Practically: dealer and customer data lives outside New Zealand, in Australia. Worth flagging to whoever writes the privacy policy (Q67) since this has Privacy Act implications we're not qualified to rule on ourselves.</p></div>
+</div>
+
+<div class="q" data-key="q-06" data-topic="hosting" data-status="verified">
+  <div class="qhead"><span class="qid">Q-06</span><h3>Is all traffic HTTPS with auto-renewed SSL?</h3>
+    <span class="tags"><span class="tag topic">Hosting</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Yes, for every domain currently live — confirmed on the platform domain and dealer domains (e.g. stihlshoptauranga.co.nz) with valid, auto-renewing certificates via DigitalOcean's managed TLS. One nuance: adding a new dealer's domain to the app today is a manual admin step, not an automated onboarding pipeline — but once added, cert issuance and renewal are fully automatic from then on.</p></div>
+</div>
+
+<h2 class="qgh" data-topic="auth">Authentication &amp; access control <small>Q7–18</small></h2>
+
+<div class="q" data-key="q-07" data-topic="auth" data-status="verified">
+  <div class="qhead"><span class="qid">Q-07</span><h3>How does dealer authentication work?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Email + password, then a one-time email code as a second factor, then a signed JWT session token.</p></div>
+</div>
+
+<div class="q" data-key="q-08" data-topic="auth" data-status="verified">
+  <div class="qhead"><span class="qid">Q-08</span><h3>What technology/provider handles 2FA?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Self-built email OTP — a time-limited code generated server-side, delivered via Resend, verified server-side. Not a dedicated 2FA provider like Twilio/Authy.</p></div>
+</div>
+
+<div class="q" data-key="q-09" data-topic="auth" data-status="verified">
+  <div class="qhead"><span class="qid">Q-09</span><h3>Are passwords ever stored directly by F925?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Passwords are hashed with argon2 (a modern, industry-standard password hashing algorithm) before storage — never stored or logged in plaintext, and not reversible.</p></div>
+</div>
+
+<div class="q" data-key="q-10" data-topic="auth" data-status="partial">
+  <div class="qhead"><span class="qid">Q-10</span><h3>Is access controlled server-side so one dealer can&#x27;t see another&#x27;s data?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Every dealer route scopes its database queries by the dealer ID carried in the authenticated session token, and the pattern is consistent everywhere we've checked. We have not run a dedicated line-by-line authorization audit of every single endpoint to formally certify there's no gap — reasonably confident based on the pattern, not yet formally verified end-to-end.</p></div>
+</div>
+
+<div class="q" data-key="q-11" data-topic="auth" data-status="partial">
+  <div class="qhead"><span class="qid">Q-11</span><h3>What user roles currently exist?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Checked directly against the production database: two role types exist structurally — <b>admin</b> (F925 staff; one active account in production, hello@f925.works) and <b>dealer</b> (3 accounts in production — Tauranga, Waihi, Rotorua). Admin vs. dealer isn't a data field, it's structural — separate tables, separate login flow, separate session claim. Doesn't exist yet: a STIHL-level role (e.g. read-only network-wide view) — buildable on top of the existing role system, but not there today.</p></div>
+</div>
+
+<div class="q" data-key="q-12" data-topic="auth" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-12</span><h3>Are authentication/login attempts logged?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>No dedicated login-attempt audit log exists today. Buildable before rollout.</p></div>
+</div>
+
+<div class="q" data-key="q-13" data-topic="auth" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-13</span><h3>Is there brute-force/rate-limit protection?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>Not currently implemented on login endpoints. Already on our own list to build.</p></div>
+</div>
+
+<div class="q" data-key="q-14" data-topic="auth" data-status="verified">
+  <div class="qhead"><span class="qid">Q-14</span><h3>How are password resets handled?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Token-based, time-limited reset link sent by email via Resend.</p></div>
+</div>
+
+<div class="q" data-key="q-15" data-topic="auth" data-status="partial">
+  <div class="qhead"><span class="qid">Q-15</span><h3>How quickly can a compromised dealer account be disabled?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>An admin can disable a dealer account immediately from the dashboard, which blocks all future logins right away. We haven't independently verified whether an already-issued session token is invalidated instantly on disable, or simply expires naturally on its own timer — worth confirming before stating a guaranteed "instant" cutoff.</p></div>
+</div>
+
+<div class="q" data-key="q-16" data-topic="auth" data-status="verified">
+  <div class="qhead"><span class="qid">Q-16</span><h3>Where are API keys/DB credentials/secrets stored?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>DigitalOcean App Platform environment variables, encrypted at rest by DO. Confirmed no secrets are committed to either repository — full source sweep done, nothing hardcoded found.</p></div>
+</div>
+
+<div class="q" data-key="q-17" data-topic="auth" data-status="team">
+  <div class="qhead"><span class="qid">Q-17</span><h3>Who has access to production credentials?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Not something answerable from the code — this is about who holds logins to the DigitalOcean account and GitHub org, which is organizational knowledge, not a technical fact.</p></div>
+</div>
+
+<div class="q" data-key="q-18" data-topic="auth" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-18</span><h3>Who can deploy changes to production?</h3>
+    <span class="tags"><span class="tag topic">Auth</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>Right now: anyone with push access to either GitHub repo's main branch — every push auto-deploys. We set up branch protection (PR review required) this week, but discovered it can't actually be enforced on our current GitHub plan for private repos — it needs a GitHub Team upgrade to be a real gate rather than an honor system. Worth deciding before rollout if this needs to be a hard requirement.</p></div>
+</div>
+
+<h2 class="qgh" data-topic="deploy">Deployment &amp; change control <small>Q19–22</small></h2>
+
+<div class="q" data-key="q-19" data-topic="deploy" data-status="verified">
+  <div class="qhead"><span class="qid">Q-19</span><h3>Where is source control hosted?</h3>
+    <span class="tags"><span class="tag topic">Deploy</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>GitHub, private repositories under the f925-limited organization.</p></div>
+</div>
+
+<div class="q" data-key="q-20" data-topic="deploy" data-status="verified">
+  <div class="qhead"><span class="qid">Q-20</span><h3>Is production automatically deployed from source control?</h3>
+    <span class="tags"><span class="tag topic">Deploy</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Yes — every push to main on either repo triggers an automatic DigitalOcean deploy. Watched this happen live multiple times this week.</p></div>
+</div>
+
+<div class="q" data-key="q-21" data-topic="deploy" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-21</span><h3>Is there a separate staging/test environment?</h3>
+    <span class="tags"><span class="tag topic">Deploy</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>No — only two apps exist on the DigitalOcean account, and both are production. Every change is tested locally/manually before pushing, not against a live staging copy.</p></div>
+</div>
+
+<div class="q" data-key="q-22" data-topic="deploy" data-status="partial">
+  <div class="qhead"><span class="qid">Q-22</span><h3>Can a bad production release be rolled back quickly?</h3>
+    <span class="tags"><span class="tag topic">Deploy</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>DigitalOcean App Platform keeps a full deployment history and supports redeploying a previous version — this is a standard platform capability, confirmed the history exists. We haven't personally had to execute a real rollback yet to confirm exact timing in practice.</p></div>
+</div>
+
+<h2 class="qgh" data-topic="backup">Backups &amp; disaster recovery <small>Q23–30</small></h2>
+
+<div class="q" data-key="q-23" data-topic="backup" data-status="verified">
+  <div class="qhead"><span class="qid">Q-23</span><h3>What automated backups currently exist?</h3>
+    <span class="tags"><span class="tag topic">Backups</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Checked directly against the live database: automated daily backups are running as a built-in part of DigitalOcean's managed Postgres service. <b>This corrects an earlier internal assumption that backups weren't running at all</b> — they are, and have been. What's still missing is a documented, tested restore process (Q28–30).</p></div>
+</div>
+
+<div class="q" data-key="q-24" data-topic="backup" data-status="verified">
+  <div class="qhead"><span class="qid">Q-24</span><h3>How frequently is the database backed up?</h3>
+    <span class="tags"><span class="tag topic">Backups</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Daily — confirmed one snapshot per day.</p></div>
+</div>
+
+<div class="q" data-key="q-25" data-topic="backup" data-status="partial">
+  <div class="qhead"><span class="qid">Q-25</span><h3>How long are backups retained?</h3>
+    <span class="tags"><span class="tag topic">Backups</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>At least 8 days of daily backups currently visible on the account. That's an observation, not a confirmed contractual retention policy from DigitalOcean's documentation — worth stating as "at least a week" rather than a precise guaranteed number until confirmed against DO's plan-specific policy.</p></div>
+</div>
+
+<div class="q" data-key="q-26" data-topic="backup" data-status="verified">
+  <div class="qhead"><span class="qid">Q-26</span><h3>Are dealer-uploaded images/assets backed up too?</h3>
+    <span class="tags"><span class="tag topic">Backups</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Yes. Uploaded images live in DigitalOcean Spaces, itself redundant, durable object storage by design. On top of that, object versioning is now enabled on the images bucket (turned on and confirmed live this week) — any overwrite or delete at the storage level keeps the previous version recoverable, at no extra cost (included in the existing $5/mo Spaces plan; well under its 250 GiB storage allowance). Worth knowing separately: the app's own upload/delete code already avoids this risk by design — every upload gets a unique filename rather than overwriting one, and removing a photo in the portal only unlinks it from the dealer's profile rather than deleting the file, so nothing is actually destroyed by normal use in the first place. Versioning covers the remaining case: a direct deletion or overwrite at the storage level itself.</p></div>
+</div>
+
+<div class="q" data-key="q-27" data-topic="backup" data-status="verified">
+  <div class="qhead"><span class="qid">Q-27</span><h3>Where are backups stored?</h3>
+    <span class="tags"><span class="tag topic">Backups</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Within DigitalOcean's managed database service, same Sydney region.</p></div>
+</div>
+
+<div class="q" data-key="q-28" data-topic="backup" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-28</span><h3>Have restores from backup actually been tested?</h3>
+    <span class="tags"><span class="tag topic">Backups</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>No — the backups exist and run automatically, but no one has performed and logged an actual test restore. This is the honest gap: backups existing isn't the same as a proven, rehearsed recovery process.</p></div>
+</div>
+
+<div class="q" data-key="q-29" data-topic="backup" data-status="partial">
+  <div class="qhead"><span class="qid">Q-29</span><h3>Realistic RPO — maximum recent data loss in a catastrophic event?</h3>
+    <span class="tags"><span class="tag topic">Backups</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Based on daily backups alone, worst case is up to 24 hours of data loss (everything since the last nightly snapshot). This could be tightened significantly with point-in-time recovery, which DigitalOcean's managed Postgres supports but isn't currently confirmed as configured — worth checking before quoting a tighter number.</p></div>
+</div>
+
+<div class="q" data-key="q-30" data-topic="backup" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-30</span><h3>Realistic RTO — how quickly could we restore service after a major failure?</h3>
+    <span class="tags"><span class="tag topic">Backups</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>No tested/timed answer exists yet, because no restore has been rehearsed (Q28). Any number stated today would be a guess, not something we've proven. This should be one of the first things run before making an RTO commitment.</p></div>
+</div>
+
+<h2 class="qgh" data-topic="uptime">Uptime &amp; monitoring <small>Q31–37</small></h2>
+
+<div class="q" data-key="q-31" data-topic="uptime" data-status="partial">
+  <div class="qhead"><span class="qid">Q-31</span><h3>Can we confidently commit to STIHL&#x27;s 99.9% uptime?</h3>
+    <span class="tags"><span class="tag topic">Uptime</span><span class="tag partial">Partial — priced, not yet built</span></span></div>
+  <div class="a"><p>Not on the current setup — both the app and the database run as a single instance with no standby/failover, and there's no uptime monitoring to measure against a target (Q33). But the path to a genuine commitment is concrete and priced, checked against DigitalOcean's actual current rates:</p><ul><li><b>App redundancy</b> — a second App Platform instance for the dealer-facing site: $12/mo → $24/mo total (+$12/mo). DO load-balances across both automatically; losing one is invisible to visitors.</li><li><b>Database redundancy</b> — our current tier only supports 1 node at all (no standby option exists on it). A standby requires moving up one tier: DO's published minimum for that is $30/mo primary + $30/mo standby = $60/mo total, versus $15/mo today (+$45/mo).</li></ul><p><b>Total: +$57/month</b> to make 99.9% a real, backed claim rather than a target — plus choosing and wiring up an actual uptime-monitoring tool (Q33), which is a decision to make, not priced here. Recommendation: quote this as "committing to 99.9% as part of rollout, with the infrastructure spend built into the proposal" rather than promising it on what's running today.</p></div>
+</div>
+
+<div class="q" data-key="q-32" data-topic="uptime" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-32</span><h3>How would uptime be measured?</h3>
+    <span class="tags"><span class="tag topic">Uptime</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>No measurement tool exists today to answer this with — would need a real uptime-monitoring service in place before this question has a solid answer.</p></div>
+</div>
+
+<div class="q" data-key="q-33" data-topic="uptime" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-33</span><h3>What system currently monitors uptime?</h3>
+    <span class="tags"><span class="tag topic">Uptime</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>None. DigitalOcean runs an internal health check against /api/health to decide whether to restart the app container — but that's DO's own internal orchestration, not a customer-facing monitoring/alerting system.</p></div>
+</div>
+
+<div class="q" data-key="q-34" data-topic="uptime" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-34</span><h3>Does monitoring check backend/DB/API, not just page loads?</h3>
+    <span class="tags"><span class="tag topic">Uptime</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>The one health check that exists doesn't even check the database — it just confirms the Node process itself is alive. A real monitoring setup checking DB connectivity and API responses, not just "does a page load," still needs to be built.</p></div>
+</div>
+
+<div class="q" data-key="q-35" data-topic="uptime" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-35</span><h3>Who receives an alert if the platform goes down?</h3>
+    <span class="tags"><span class="tag topic">Uptime</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>No one automatically — there's no alerting system in place yet.</p></div>
+</div>
+
+<div class="q" data-key="q-36" data-topic="uptime" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-36</span><h3>Is outage monitoring active outside business hours?</h3>
+    <span class="tags"><span class="tag topic">Uptime</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>No — follows from Q33–35: there's nothing running at all right now, business hours or not.</p></div>
+</div>
+
+<div class="q" data-key="q-37" data-topic="uptime" data-status="team">
+  <div class="qhead"><span class="qid">Q-37</span><h3>What would our escalation process be for a critical outage?</h3>
+    <span class="tags"><span class="tag topic">Uptime</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Not documented anywhere today — this needs to be defined by the team (who's on call, in what order, how they're contacted), not something derivable from the codebase.</p></div>
+</div>
+
+<h2 class="qgh" data-topic="support">Support &amp; SLA <small>Q38–42</small></h2>
+
+<div class="q" data-key="q-38" data-topic="support" data-status="team">
+  <div class="qhead"><span class="qid">Q-38</span><h3>Can we commit to STIHL&#x27;s response times (2h / 4h / 1BD / 3BD)?</h3>
+    <span class="tags"><span class="tag topic">Support</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>This is a staffing/capacity commitment — whether we have people able to respond within those windows — not something verifiable technically. Needs Martin and Mike's honest read on team bandwidth.</p></div>
+</div>
+
+<div class="q" data-key="q-39" data-topic="support" data-status="team">
+  <div class="qhead"><span class="qid">Q-39</span><h3>Should these be response times, not resolution times?</h3>
+    <span class="tags"><span class="tag topic">Support</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Framing/contract-language decision — flagging it's a reasonable and common distinction to make, but it's your call to agree to, not a technical fact.</p></div>
+</div>
+
+<div class="q" data-key="q-40" data-topic="support" data-status="team">
+  <div class="qhead"><span class="qid">Q-40</span><h3>What support hours are we actually offering?</h3>
+    <span class="tags"><span class="tag topic">Support</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Business/staffing decision, not in the code.</p></div>
+</div>
+
+<div class="q" data-key="q-41" data-topic="support" data-status="team">
+  <div class="qhead"><span class="qid">Q-41</span><h3>What would the emergency/out-of-hours process be?</h3>
+    <span class="tags"><span class="tag topic">Support</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Not defined yet — needs the team to decide and document.</p></div>
+</div>
+
+<div class="q" data-key="q-42" data-topic="support" data-status="verified">
+  <div class="qhead"><span class="qid">Q-42</span><h3>What turnaround for normal content-update requests?</h3>
+    <span class="tags"><span class="tag topic">Support</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>There's already a stated internal target of 48 hours for content changes, which lines up with what the dealer portal's own design brief specifies.</p></div>
+</div>
+
+<h2 class="qgh" data-topic="security">Security <small>Q43–49</small></h2>
+
+<div class="q" data-key="q-43" data-topic="security" data-status="partial">
+  <div class="qhead"><span class="qid">Q-43</span><h3>What security monitoring currently exists?</h3>
+    <span class="tags"><span class="tag topic">Security</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Cloudflare's bot-management protection is active by default at the edge (confirmed present on every request). No application-level security monitoring (intrusion detection, error/exception tracking) exists yet — that layer still needs to be built.</p></div>
+</div>
+
+<div class="q" data-key="q-44" data-topic="security" data-status="verified">
+  <div class="qhead"><span class="qid">Q-44</span><h3>Are dependencies automatically checked for known vulnerabilities?</h3>
+    <span class="tags"><span class="tag topic">Security</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Yes, as of this week — GitHub Dependabot alerts and automated security-update PRs are now enabled on both repositories. Already proven working: real vulnerabilities were found and patched through this exact pipeline in the last few days.</p></div>
+</div>
+
+<div class="q" data-key="q-45" data-topic="security" data-status="verified">
+  <div class="qhead"><span class="qid">Q-45</span><h3>What tools/services do we use for that?</h3>
+    <span class="tags"><span class="tag topic">Security</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>GitHub Dependabot, plus manual npm audit checks.</p></div>
+</div>
+
+<div class="q" data-key="q-46" data-topic="security" data-status="team">
+  <div class="qhead"><span class="qid">Q-46</span><h3>Who is responsible for application/security patching?</h3>
+    <span class="tags"><span class="tag topic">Security</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Currently handled ad hoc rather than as a formally assigned, ongoing responsibility — worth deciding who owns this before rollout.</p></div>
+</div>
+
+<div class="q" data-key="q-47" data-topic="security" data-status="team">
+  <div class="qhead"><span class="qid">Q-47</span><h3>Reasonable commitment for patching a critical vulnerability?</h3>
+    <span class="tags"><span class="tag topic">Security</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Not a technical fact to derive — this week's real high-severity vulnerabilities were fixed the same day they were identified, which is a data point, not a guaranteed ongoing commitment.</p></div>
+</div>
+
+<div class="q" data-key="q-48" data-topic="security" data-status="verified">
+  <div class="qhead"><span class="qid">Q-48</span><h3>Is stored database data encrypted at rest?</h3>
+    <span class="tags"><span class="tag topic">Security</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Yes — this is a standard, published feature of DigitalOcean's managed database service.</p></div>
+</div>
+
+<div class="q" data-key="q-49" data-topic="security" data-status="verified">
+  <div class="qhead"><span class="qid">Q-49</span><h3>Is data encrypted in transit?</h3>
+    <span class="tags"><span class="tag topic">Security</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Yes. All visitor-facing traffic is HTTPS (confirmed live on every domain checked). The database connection itself requires SSL — confirmed directly, the app cannot connect to the database at all without it.</p></div>
+</div>
+
+<h2 class="qgh" data-topic="privacy">Data &amp; privacy <small>Q50–58</small></h2>
+
+<div class="q" data-key="q-50" data-topic="privacy" data-status="verified">
+  <div class="qhead"><span class="qid">Q-50</span><h3>What customer personal information does the platform actually store?</h3>
+    <span class="tags"><span class="tag topic">Privacy</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Dealer-side: names, emails, phone numbers, business addresses, login credentials (hashed). End-customer data from the contact form currently isn't stored by us at all — see Q51, it goes straight to a third party.</p></div>
+</div>
+
+<div class="q" data-key="q-51" data-topic="privacy" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-51</span><h3>Are enquiry form submissions stored, emailed, or both?</h3>
+    <span class="tags"><span class="tag topic">Privacy</span><span class="tag notyet">Not yet (stored)</span></span></div>
+  <div class="a"><p>Emailed only, via a third-party service (Web3Forms) — not stored in our own database at all. The form submits directly from the visitor's browser to Web3Forms, bypassing our backend entirely, using one access key shared across all dealer sites with no per-dealer routing. This is a known gap we're already planning to fix (route through our own backend with proper per-dealer delivery and, optionally, storage).</p></div>
+</div>
+
+<div class="q" data-key="q-52" data-topic="privacy" data-status="na">
+  <div class="qhead"><span class="qid">Q-52</span><h3>If stored, how long retained?</h3>
+    <span class="tags"><span class="tag topic">Privacy</span><span class="tag na">N/A</span></span></div>
+  <div class="a"><p>Not applicable today, since nothing is stored (Q51). Would need a retention policy defined if/when first-party storage is built.</p></div>
+</div>
+
+<div class="q" data-key="q-53" data-topic="privacy" data-status="partial">
+  <div class="qhead"><span class="qid">Q-53</span><h3>Who can access that information?</h3>
+    <span class="tags"><span class="tag topic">Privacy</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Whoever has access to the shared Web3Forms account today — not scoped per dealer.</p></div>
+</div>
+
+<div class="q" data-key="q-54" data-topic="privacy" data-status="verified">
+  <div class="qhead"><span class="qid">Q-54</span><h3>What analytics platform are we using?</h3>
+    <span class="tags"><span class="tag topic">Privacy</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Google Analytics 4 — each dealer site has its own GA4 property ID configured.</p></div>
+</div>
+
+<div class="q" data-key="q-55" data-topic="privacy" data-status="verified">
+  <div class="qhead"><span class="qid">Q-55</span><h3>Does that use cookies or transfer data outside NZ?</h3>
+    <span class="tags"><span class="tag topic">Privacy</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Yes to both — GA4 uses cookies by default, and Google's analytics infrastructure processes data on its own global systems, not NZ-only. Standard for GA4, relevant for the privacy policy.</p></div>
+</div>
+
+<div class="q" data-key="q-56" data-topic="privacy" data-status="partial">
+  <div class="qhead"><span class="qid">Q-56</span><h3>Can we provide dealer-level AND network-level analytics?</h3>
+    <span class="tags"><span class="tag topic">Privacy</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Dealer-level data is already being collected (each site has its own GA4 property). No aggregated network-wide view exists yet — this is the single biggest gap on the analytics side and needs to be built (a rollup dashboard pulling from all dealer properties).</p></div>
+</div>
+
+<div class="q" data-key="q-57" data-topic="privacy" data-status="partial">
+  <div class="qhead"><span class="qid">Q-57</span><h3>Can individual dealers only see their own analytics?</h3>
+    <span class="tags"><span class="tag topic">Privacy</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Since each dealer has a separate GA4 property, isolation is natural at the data level. No dashboard currently exists in the portal itself to surface this to a dealer — they'd need direct GA4 access today, which isn't how it should work long-term.</p></div>
+</div>
+
+<div class="q" data-key="q-58" data-topic="privacy" data-status="partial">
+  <div class="qhead"><span class="qid">Q-58</span><h3>What metrics can we comfortably provide?</h3>
+    <span class="tags"><span class="tag topic">Privacy</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Traffic and page views are collectable today via GA4's standard tracking. Traffic sources and popular pages likewise, once a reporting layer is built. Enquiry numbers and click-throughs to stihlshop.co.nz are not currently instrumented — those need specific event tracking added, not just page-view collection.</p></div>
+</div>
+
+<h2 class="qgh" data-topic="seo">SEO <small>Q59</small></h2>
+
+<div class="q" data-key="q-59" data-topic="seo" data-status="verified">
+  <div class="qhead"><span class="qid">Q-59</span><h3>What technical SEO features are already built in?</h3>
+    <span class="tags"><span class="tag topic">SEO</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Checked live on a real dealer site just now: per-page meta titles/descriptions, a working sitemap.xml and robots.txt (both reachable), Open Graph tags, a canonical URL tag, and structured LocalBusiness schema markup — all present and correctly populated, not placeholder text.</p></div>
+</div>
+
+<h2 class="qgh" data-topic="onboard">Onboarding, migration &amp; commercial <small>Q60–64</small></h2>
+
+<div class="q" data-key="q-60" data-topic="onboard" data-status="partial">
+  <div class="qhead"><span class="qid">Q-60</span><h3>How are existing dealer domains, DNS and SSL handled when onboarding?</h3>
+    <span class="tags"><span class="tag topic">Onboarding</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Once a domain is pointed at us and added to the app (a manual admin step today, see Q6), TLS is fully automatic from then on. The domain pointing/DNS handoff itself is a manual, per-dealer coordination step, not an automated pipeline.</p></div>
+</div>
+
+<div class="q" data-key="q-61" data-topic="onboard" data-status="team">
+  <div class="qhead"><span class="qid">Q-61</span><h3>What does the $2,500 + GST setup fee technically include?</h3>
+    <span class="tags"><span class="tag topic">Onboarding</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>This is a commercial/pricing scoping decision, not something derivable from the code — needs to be defined by whoever owns the commercial terms.</p></div>
+</div>
+
+<div class="q" data-key="q-62" data-topic="onboard" data-status="team">
+  <div class="qhead"><span class="qid">Q-62</span><h3>Would migrating an existing website ever cost extra?</h3>
+    <span class="tags"><span class="tag topic">Onboarding</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Commercial scoping decision. Worth knowing as context: migration effort hasn't been priced at all yet on our side, and we don't currently know how many of the ~88 dealers have existing sites, on what platforms — that's one of the open vendor questions for STIHL.</p></div>
+</div>
+
+<div class="q" data-key="q-63" data-topic="onboard" data-status="team">
+  <div class="qhead"><span class="qid">Q-63</span><h3>What happens to a dealer&#x27;s content/data if they leave the platform?</h3>
+    <span class="tags"><span class="tag topic">Onboarding</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Policy decision to be made, not currently documented anywhere.</p></div>
+</div>
+
+<div class="q" data-key="q-64" data-topic="onboard" data-status="partial">
+  <div class="qhead"><span class="qid">Q-64</span><h3>Can their content/data be exported?</h3>
+    <span class="tags"><span class="tag topic">Onboarding</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Technically yes — it's all in a standard Postgres database, straightforward to export per dealer. No self-serve export feature exists in the portal today; it would be a manual pull on request.</p></div>
+</div>
+
+<h2 class="qgh" data-topic="legal">IP, ownership &amp; legal <small>Q65–69</small></h2>
+
+<div class="q" data-key="q-65" data-topic="legal" data-status="team">
+  <div class="qhead"><span class="qid">Q-65</span><h3>Comfortable agreeing STIHL owns branding, customer data, dealer content and digital assets?</h3>
+    <span class="tags"><span class="tag topic">Legal</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Legal/commercial decision, not a technical one.</p></div>
+</div>
+
+<div class="q" data-key="q-66" data-topic="legal" data-status="team">
+  <div class="qhead"><span class="qid">Q-66</span><h3>What platform/code/IP would remain owned by F925?</h3>
+    <span class="tags"><span class="tag topic">Legal</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Same — legal/commercial scoping decision.</p></div>
+</div>
+
+<div class="q" data-key="q-67" data-topic="legal" data-status="verified">
+  <div class="qhead"><span class="qid">Q-67</span><h3>We don&#x27;t have a platform privacy policy — what are the actual data flows?</h3>
+    <span class="tags"><span class="tag topic">Legal</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Full list, so it can be written properly: dealer/admin data → our own Postgres database (Sydney) → Resend (email delivery only). Dealer-uploaded images → DigitalOcean Spaces (Sydney). Site visitors → Google Analytics (GA4, cookies, processed outside NZ) and, currently, Web3Forms for contact-form submissions (a third party we don't currently store a copy from). No customer payment data is ever handled — there's no checkout/cart anywhere in this platform by design.</p></div>
+</div>
+
+<div class="q" data-key="q-68" data-topic="legal" data-status="verified">
+  <div class="qhead"><span class="qid">Q-68</span><h3>Any subcontractors or third-party processors STIHL should be told about?</h3>
+    <span class="tags"><span class="tag topic">Legal</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Every third-party service actually in use is listed in Q4: DigitalOcean, Cloudflare (via DO), Resend, Web3Forms, Google (Maps/Analytics), Groq (currently disabled feature), GoDaddy, GitHub.</p></div>
+</div>
+
+<div class="q" data-key="q-69" data-topic="legal" data-status="team">
+  <div class="qhead"><span class="qid">Q-69</span><h3>Does F925 hold professional indemnity, cyber liability or public liability insurance?</h3>
+    <span class="tags"><span class="tag topic">Legal</span><span class="tag team">Team call</span></span></div>
+  <div class="a"><p>Needs a direct answer from whoever handles F925's business insurance — no technical visibility into this.</p></div>
+</div>
+
+<h2 class="qgh" data-topic="scale">Scale &amp; shared-platform risk <small>Q70–74</small></h2>
+
+<div class="q" data-key="q-70" data-topic="scale" data-status="verified">
+  <div class="qhead"><span class="qid">Q-70</span><h3>Anything technically preventing scaling from 3 dealers to ~92?</h3>
+    <span class="tags"><span class="tag topic">Scale</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>No — the architecture is already built for this (one codebase serving every dealer by domain lookup, one database with per-dealer rows). Scaling to 92 is a matter of onboarding volume, not an architectural limit.</p></div>
+</div>
+
+<div class="q" data-key="q-71" data-topic="scale" data-status="partial">
+  <div class="qhead"><span class="qid">Q-71</span><h3>Does that scale create meaningful hosting cost/limitation changes?</h3>
+    <span class="tags"><span class="tag topic">Scale</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Current compute/database tiers are sized for a handful of dealers, not 92 — instance size and database tier will need upgrading as real traffic grows, which has a real (but not yet quoted) cost impact. Nothing structural blocks it, just needs the resource tier bumped alongside rollout.</p></div>
+</div>
+
+<div class="q" data-key="q-72" data-topic="scale" data-status="verified">
+  <div class="qhead"><span class="qid">Q-72</span><h3>Could an issue with one dealer affect the wider network?</h3>
+    <span class="tags"><span class="tag topic">Scale</span><span class="tag verified">Verified</span></span></div>
+  <div class="a"><p>Honest answer: yes, in principle — it's a shared codebase and shared compute/database, so a bug affecting the shared code path or an outage on the shared app instance affects everyone, not just one dealer. This is the direct tradeoff of "one deploy updates every dealer at once," which is also the platform's core strength (see Q73 for what limits the blast radius).</p></div>
+</div>
+
+<div class="q" data-key="q-73" data-topic="scale" data-status="partial">
+  <div class="qhead"><span class="qid">Q-73</span><h3>What controls/isolation exist to minimise that risk?</h3>
+    <span class="tags"><span class="tag topic">Scale</span><span class="tag partial">Partial</span></span></div>
+  <div class="a"><p>Data is isolated per dealer at the database level (Q10) — one dealer's data or content changes can't corrupt another's. What's not yet in place: the redundancy (Q31) that would stop a full outage from taking down every dealer at once, and a staging environment (Q21) to catch a bad shared-code change before it reaches production.</p></div>
+</div>
+
+<div class="q" data-key="q-74" data-topic="scale" data-status="notyet">
+  <div class="qhead"><span class="qid">Q-74</span><h3>What&#x27;s the actual disaster-recovery process, start to finish?</h3>
+    <span class="tags"><span class="tag topic">Scale</span><span class="tag notyet">Not yet</span></span></div>
+  <div class="a"><p>Honestly: there isn't a documented, rehearsed one today. What exists: automated daily database backups (Q23) and a redeployable app via DO's deployment history (Q22). What's missing: a written runbook, a tested restore (Q28), and a proven RTO/RPO (Q29–30). This is the single most important gap to close before making any DR claim to STIHL.</p></div>
+</div>
+
+</div></main>
+
+<footer>
+  <div class="wrap">
+    <p>F925 internal · 74 questions imported 11 Sep 2026 from Leo’s answers · <span class="tag verified">verified</span> checked directly · <span class="tag partial">partial</span> true with caveats · <span class="tag notyet">not yet</span> missing · <span class="tag team">team call</span> business decision · flags and threads sync live for the whole team.</p>
+  </div>
+</footer>
+
+<script src="/wr-shell.js"></script>
+<script>
+(function(){
+  var API='/api/state?page=questions', APIKEY='XPFmcH2RSsza';
+  var PEOPLE=[
+    {id:'martin', name:'Martin', cls:'pa'},
+    {id:'leonel', name:'Leonel', cls:'pb'},
+    {id:'mike',   name:'Mike',   cls:'pc'}
+  ];
+  var NAME={}; PEOPLE.forEach(function(p){NAME[p.id]=p.name;});
+  var me=(window.WR?WR.me:'');
+  if(window.WR)WR.onIdentity(function(id){me=id;});
+  var mode='connecting';
+  var marks={}, comments={}, items={};
+  var lastRev='', applied=false, pendingWrites=0, chain=Promise.resolve();
+  function enqueue(op){
+    pendingWrites++;
+    var p=chain.then(function(){return apiPost(op);});
+    chain=p.then(function(){pendingWrites--;if(pendingWrites===0)refresh();},function(){pendingWrites--;setMode('local');});
+    return p;
+  }
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(undefined,{day:'numeric',month:'short'});}catch(e){return '';}}
+  function apiGet(){
+    return fetch(API,{headers:{'x-warroom-key':APIKEY}}).then(function(r){
+      if(!r.ok)throw new Error('http '+r.status);
+      return r.json();
+    });
+  }
+  function apiPost(op){
+    return fetch(API,{method:'POST',headers:{'x-warroom-key':APIKEY,'content-type':'application/json'},body:JSON.stringify(op)}).then(function(r){
+      if(!r.ok)throw new Error('http '+r.status);
+      return r.json();
+    });
+  }
+
+  /* dock */
+  var dock=document.createElement('div');
+  dock.className='rdock';
+  dock.innerHTML='<span class="rstat" id="rd-stat">⚑ 0 · 💬 0</span><span class="rlive" id="rd-live">Connecting…</span>';
+  document.body.appendChild(dock);
+  function needIdentity(noteEl,msg){
+    if(me)return false;
+    if(noteEl){noteEl.textContent=msg;noteEl.hidden=false;}
+    if(window.WR)WR.nudge();
+    return true;
+  }
+  function setMode(m){
+    mode=m;
+    var el=document.getElementById('rd-live');
+    el.className='rlive '+m;
+    el.textContent = m==='live'?'● Live':(m==='local'?'○ Offline — read-only':'Connecting…');
+  }
+
+  /* targets: one per question card */
+  function addTarget(key,label,host,block){
+    if(items[key]||!host)return;
+    var w=document.createElement('span');
+    w.className='rw';
+    w.innerHTML='<button type="button" class="rwf" title="Flag for attention">⚑</button><button type="button" class="rwc" title="Comments">💬 <span>0</span></button>';
+    host.querySelector('h3').appendChild(w);
+    var panel=document.createElement('div');
+    panel.className='rw-panel'; panel.hidden=true;
+    panel.innerHTML='<p class="cflag" hidden></p><div class="clist"></div>'
+      +'<form class="cform"><textarea rows="1" placeholder="Comment on '+esc(label)+'… (Shift+Enter for a new line)" aria-label="Comment on '+esc(label)+'"></textarea><button type="submit">Post</button></form>'
+      +'<p class="cnote" hidden></p>';
+    host.appendChild(panel);
+    if(window.WR)WR.wireCommentBox(panel.querySelector('.cform textarea'));
+    var fbtn=w.querySelector('.rwf'), cbtn=w.querySelector('.rwc');
+    var note=panel.querySelector('.cnote');
+    fbtn.addEventListener('click',function(){
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.')){panel.hidden=false;return;}
+      var cur=marks[key]||{};
+      var next=!cur.flagged;
+      marks[key]={flagged:next,by:me,at:new Date().toISOString()};
+      render(key); renderTotals();
+      enqueue({t:'mark',key:key,flagged:next,by:me}).catch(function(){});
+    });
+    cbtn.addEventListener('click',function(){panel.hidden=!panel.hidden;});
+    panel.querySelector('form').addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var inp=panel.querySelector('textarea');
+      var txt=inp.value.trim();
+      if(!txt)return;
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.'))return;
+      note.hidden=true;
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString()};
+      (comments[key]=comments[key]||[]).push(temp);
+      render(key); renderTotals();
+      inp.value='';
+      enqueue({t:'comment',key:key,author:me,text:txt})
+        .catch(function(){
+          var arr=comments[key]||[], ix=arr.indexOf(temp);
+          if(ix>=0)arr.splice(ix,1);
+          render(key); renderTotals();
+          note.textContent='Could not post — try again in a moment.';note.hidden=false;
+        });
+    });
+    items[key]={w:w,fbtn:fbtn,cbtn:cbtn,cnum:cbtn.querySelector('span'),panel:panel,clist:panel.querySelector('.clist'),cflag:panel.querySelector('.cflag'),block:block||host};
+  }
+  document.querySelectorAll('.q[data-key]').forEach(function(el){
+    addTarget(el.dataset.key,el.dataset.key.toUpperCase(),el,el);
+  });
+
+  function render(key){
+    var it=items[key]; if(!it)return;
+    var m=marks[key]||{};
+    it.fbtn.classList.toggle('on',!!m.flagged);
+    it.block.classList.toggle('rw-flagged',!!m.flagged);
+    it.cflag.hidden=!m.flagged;
+    if(m.flagged)it.cflag.textContent='⚑ Flagged by '+(NAME[m.by]||m.by||'?')+(m.at?' · '+fmtDate(m.at):'');
+    var cm=comments[key]||[];
+    it.cnum.textContent=cm.length;
+    it.cbtn.classList.toggle('has',cm.length>0);
+    if(!it.clist.querySelector('.ceform'))it.clist.innerHTML=window.WR?WR.commentListHTML(cm,key):'';
+  }
+  function renderAll(){Object.keys(items).forEach(render);renderTotals();}
+  function renderTotals(){
+    var f=0,c=0;
+    Object.keys(items).forEach(function(k){
+      if(marks[k]&&marks[k].flagged)f++;
+      c+=(comments[k]||[]).length;
+    });
+    document.getElementById('rd-stat').textContent='⚑ '+f+' · 💬 '+c;
+  }
+
+  /* comment delete + edit (same pattern as the other pages) */
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cdel'); if(!b)return;
+    if(!confirm('Delete this comment for everyone?'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[];
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id){arr.splice(i,1);break;}}
+    render(key); renderTotals();
+    enqueue({t:'comment-del',id:id,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crply'); if(!b)return;
+    var citem=b.closest('.citem');
+    if(citem.querySelector('.crform'))return;
+    var key=b.dataset.key, pid=b.dataset.cid;
+    var f=document.createElement('form');
+    f.className='cform ceform crform';
+    f.innerHTML='<textarea rows="1" placeholder="Reply… (Shift+Enter for a new line)" aria-label="Reply"></textarea><button type="submit">Reply</button><button type="button" class="cancel">Cancel</button>';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea');
+    ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key); renderTotals();});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim();
+      if(!txt)return;
+      if(!me){if(window.WR)WR.nudge();return;}
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString(),parent:pid};
+      (comments[key]=comments[key]||[]).push(temp);
+      f.remove();
+      render(key); renderTotals();
+      enqueue({t:'comment',key:key,author:me,text:txt,parent:pid})
+        .catch(function(){
+          var arr=comments[key]||[], ix=arr.indexOf(temp);
+          if(ix>=0)arr.splice(ix,1);
+          render(key); renderTotals();
+        });
+    });
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crb'); if(!b)return;
+    if(!me){if(window.WR)WR.nudge();return;}
+    var id=b.dataset.cid, key=b.dataset.key, e=b.dataset.remoji;
+    var arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    c.reactions=c.reactions||{};
+    var l=c.reactions[e]=c.reactions[e]||[];
+    var ix=l.indexOf(me);
+    if(ix>=0)l.splice(ix,1); else l.push(me);
+    render(key);
+    enqueue({t:'react',id:id,emoji:e,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cedit'); if(!b)return;
+    var citem=b.closest('.citem');
+    if(citem.querySelector('.ceform'))return;
+    var id=b.dataset.cid, key=b.dataset.key;
+    var arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    var f=document.createElement('form');
+    f.className='cform ceform';
+    f.innerHTML='<textarea rows="1" aria-label="Edit comment"></textarea><button type="submit">Save</button><button type="button" class="cancel">Cancel</button>';
+    f.querySelector('textarea').value=c.text||'';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea');
+    ta.dispatchEvent(new Event('input')); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim();
+      if(!txt)return;
+      c.text=txt; c.edited=new Date().toISOString();
+      f.remove();
+      render(key); renderTotals();
+      enqueue({t:'comment-edit',id:id,by:me,text:txt}).catch(function(){});
+    });
+  });
+
+  /* filters */
+  var topic='all', status='all';
+  function applyFilters(){
+    document.querySelectorAll('.q[data-key]').forEach(function(el){
+      var ok=true;
+      if(topic!=='all'&&el.dataset.topic!==topic)ok=false;
+      if(status!=='all'&&el.dataset.status!==status)ok=false;
+      el.hidden=!ok;
+    });
+    document.querySelectorAll('.qgh').forEach(function(h){
+      var any=false, el=h.nextElementSibling;
+      while(el&&!el.classList.contains('qgh')){
+        if(el.classList&&el.classList.contains('q')&&!el.hidden)any=true;
+        el=el.nextElementSibling;
+      }
+      h.hidden=!any;
+    });
+  }
+  document.querySelectorAll('.fbtn.tp').forEach(function(b){
+    b.addEventListener('click',function(){
+      topic=b.dataset.topic;
+      document.querySelectorAll('.fbtn.tp').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      applyFilters();
+    });
+  });
+  document.querySelectorAll('.fbtn.st').forEach(function(b){
+    b.addEventListener('click',function(){
+      status=b.dataset.status;
+      document.querySelectorAll('.fbtn.st').forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      applyFilters();
+    });
+  });
+
+  if(window.WR)WR.registerLocator(function(key){
+    var it=items[key]; if(!it)return false;
+    var el=it.block;
+    el.hidden=false;
+    it.panel.hidden=false;
+    el.scrollIntoView({block:'center'});
+    el.classList.remove('wr-flash'); void el.offsetWidth; el.classList.add('wr-flash');
+    return true;
+  });
+
+  /* sync loop */
+  function applyState(data,fromPost){
+    if(!data||typeof data!=='object')return;
+    var rev=(typeof data.rev==='string')?data.rev:'';
+    if(applied&&rev&&rev<lastRev)return;
+    if(!fromPost&&pendingWrites>0)return;
+    if(rev>lastRev)lastRev=rev; applied=true;
+    marks=data.marks||{};
+    var by={};
+    (data.comments||[]).forEach(function(c){
+      if(!c.key)return;
+      (by[c.key]=by[c.key]||[]).push(c);
+    });
+    comments=by;
+    setMode('live');
+    renderAll();
+  }
+  function refresh(){
+    if(pendingWrites>0)return;
+    apiGet().then(function(d){applyState(d,false);}).catch(function(){setMode('local');});
+  }
+  setMode('connecting');
+  renderTotals();
+  refresh();
+  setInterval(refresh,12000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh();});
+})();
+</script>
+</body>
+</html>

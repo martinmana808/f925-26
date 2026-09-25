@@ -1,0 +1,581 @@
+<title>Unify at 100 Dealers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --ground: #EEF1EF;
+    --panel: #FFFFFF;
+    --panel-2: #F6F8F7;
+    --ink: #17211E;
+    --ink-2: #3E4A46;
+    --muted: #5B6763;
+    --line: #D3DAD6;
+    --line-2: #E4E9E6;
+    --accent: #1F6B7A;
+    --accent-ink: #FFFFFF;
+    --ok: #0ca30c;
+    --warn: #b8780a;
+    --crit: #d03b3b;
+    --ok-bg: #E4F4E4;
+    --warn-bg: #FBF0D6;
+    --crit-bg: #F9E2E2;
+    --series: #2a78d6;
+    --series-soft: #cde2fb;
+    --code-bg: #1B2623;
+    --code-ink: #DCE6E2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #0F1513;
+      --panel: #171E1B;
+      --panel-2: #1D2622;
+      --ink: #E4EAE7;
+      --ink-2: #C0CAC5;
+      --muted: #97A39E;
+      --line: #2A3430;
+      --line-2: #222B27;
+      --accent: #5FB3C4;
+      --accent-ink: #0F1513;
+      --ok: #3fbf3f;
+      --warn: #e0a838;
+      --crit: #e66767;
+      --ok-bg: #16301A;
+      --warn-bg: #352A12;
+      --crit-bg: #3A1B1B;
+      --series: #3987e5;
+      --series-soft: #1c3d66;
+      --code-bg: #0B100E;
+      --code-ink: #CDD8D3;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #0F1513;
+    --panel: #171E1B;
+    --panel-2: #1D2622;
+    --ink: #E4EAE7;
+    --ink-2: #C0CAC5;
+    --muted: #97A39E;
+    --line: #2A3430;
+    --line-2: #222B27;
+    --accent: #5FB3C4;
+    --accent-ink: #0F1513;
+    --ok: #3fbf3f;
+    --warn: #e0a838;
+    --crit: #e66767;
+    --ok-bg: #16301A;
+    --warn-bg: #352A12;
+    --crit-bg: #3A1B1B;
+    --series: #3987e5;
+    --series-soft: #1c3d66;
+    --code-bg: #0B100E;
+    --code-ink: #CDD8D3;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    padding-inline: clamp(16px, 4vw, 40px);
+    padding-block: 0 96px;
+  }
+  .wrap { max-width: 76ch; margin: 0 auto; }
+  h1, h2, h3 {
+    font-family: "Archivo", "Arial Narrow", Arial, sans-serif;
+    font-stretch: 75%;
+    text-wrap: balance;
+    margin: 0;
+    line-height: 1.05;
+  }
+  h1 { font-size: clamp(40px, 7vw, 68px); font-weight: 800; letter-spacing: -0.01em; }
+  h2 { font-size: 30px; font-weight: 700; margin-top: 64px; padding-top: 20px; border-top: 2px solid var(--ink); }
+  h3 { font-size: 20px; font-weight: 700; margin-top: 32px; }
+  p { margin: 12px 0; max-width: 68ch; }
+  a { color: var(--accent); }
+  .eyebrow { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .masthead { padding-block: 48px 24px; border-bottom: 1px solid var(--line); }
+  .masthead .meta { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 18px; font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--muted); }
+  .lede { font-size: 19px; color: var(--ink-2); max-width: 62ch; margin-top: 20px; }
+
+  .verdict { margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+  .verdict .tile { background: var(--panel); border: 1px solid var(--line); padding: 16px 18px; }
+  .verdict .tile .k { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .verdict .tile .v { font-family: "Archivo", sans-serif; font-stretch: 75%; font-weight: 700; font-size: 28px; margin-top: 6px; line-height: 1.1; }
+  .verdict .tile .s { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+  .pill { display: inline-flex; align-items: center; gap: 6px; font-family: "IBM Plex Mono", monospace; font-size: 12px; padding: 2px 8px; border-radius: 3px; white-space: nowrap; }
+  .pill.ok { background: var(--ok-bg); color: var(--ok); }
+  .pill.warn { background: var(--warn-bg); color: var(--warn); }
+  .pill.crit { background: var(--crit-bg); color: var(--crit); }
+  .pill.na { background: var(--panel-2); color: var(--muted); }
+
+  .tbl-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); background: var(--panel); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { text-align: left; padding: 9px 12px; vertical-align: top; border-bottom: 1px solid var(--line-2); }
+  th { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); background: var(--panel-2); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: "IBM Plex Mono", monospace; font-size: 13px; white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  td small, p small { color: var(--muted); }
+  .mono { font-family: "IBM Plex Mono", monospace; font-size: 0.92em; }
+
+  pre { background: var(--code-bg); color: var(--code-ink); padding: 14px 16px; overflow-x: auto; font-family: "IBM Plex Mono", monospace; font-size: 13px; line-height: 1.5; margin: 12px 0; border-left: 3px solid var(--accent); }
+  code { font-family: "IBM Plex Mono", monospace; font-size: 0.92em; }
+  p code, li code, td code { background: var(--panel-2); padding: 1px 5px; border-radius: 3px; }
+
+  ol, ul { padding-left: 22px; max-width: 70ch; }
+  li { margin: 6px 0; }
+  li b { font-weight: 600; }
+
+  .topo { background: var(--panel); border: 1px solid var(--line); padding: 8px; margin: 16px 0; overflow-x: auto; }
+  .topo svg { display: block; width: 100%; height: auto; min-width: 640px; font-family: "IBM Plex Sans", sans-serif; }
+  .topo .box { fill: var(--panel-2); stroke: var(--line); }
+  .topo .box.core { fill: var(--panel); stroke: var(--accent); stroke-width: 1.5; }
+  .topo text { fill: var(--ink); font-size: 12px; }
+  .topo text.t { font-weight: 600; font-size: 13px; }
+  .topo text.s { fill: var(--muted); font-size: 11px; font-family: "IBM Plex Mono", monospace; }
+  .topo .edge { stroke: var(--ink-2); stroke-width: 1.2; fill: none; }
+  .topo .edge.soft { stroke: var(--muted); stroke-dasharray: 4 3; }
+
+  .chart { background: var(--panel); border: 1px solid var(--line); padding: 16px 18px 8px; margin: 16px 0; }
+  .chart .row { display: grid; grid-template-columns: minmax(150px, 1.1fr) minmax(160px, 2fr) auto; gap: 10px; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--line-2); }
+  .chart .row:last-child { border-bottom: 0; }
+  .chart .lbl { font-size: 13px; line-height: 1.25; }
+  .chart .lbl small { display: block; color: var(--muted); font-family: "IBM Plex Mono", monospace; font-size: 11px; margin-top: 2px; }
+  .chart .track { position: relative; height: 14px; background: var(--panel-2); border-radius: 0 4px 4px 0; overflow: visible; }
+  .chart .fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--series); border-radius: 0 4px 4px 0; }
+  .chart .fill.over { background: var(--crit); }
+  .chart .lim { position: absolute; top: -4px; bottom: -4px; width: 0; border-left: 2px solid var(--ink); }
+  .chart .lim::after { content: "limit"; position: absolute; top: -14px; left: -14px; font-family: "IBM Plex Mono", monospace; font-size: 9px; color: var(--muted); letter-spacing: 0.08em; }
+  .chart .val { font-family: "IBM Plex Mono", monospace; font-size: 12px; font-variant-numeric: tabular-nums; min-width: 4.5ch; text-align: right; }
+  .chart .note { font-size: 12px; color: var(--muted); margin: 10px 0 4px; }
+  @media (max-width: 520px) { .chart .row { grid-template-columns: 1fr; gap: 4px; } .chart .val { text-align: left; } }
+
+  .calc { background: var(--panel); border: 1px solid var(--line); padding: 18px; margin: 16px 0; }
+  .calc .inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px 16px; }
+  .calc label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); font-family: "IBM Plex Mono", monospace; letter-spacing: 0.03em; }
+  .calc input, .calc select { font: 14px "IBM Plex Mono", monospace; padding: 7px 9px; border: 1px solid var(--line); background: var(--panel-2); color: var(--ink); border-radius: 3px; }
+  .calc input:focus-visible, .calc select:focus-visible, button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .calc .totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 18px; }
+  .calc .totals .t { border-top: 2px solid var(--ink); padding-top: 8px; }
+  .calc .totals .t .k { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; }
+  .calc .totals .t .v { font-family: "Archivo", sans-serif; font-stretch: 75%; font-weight: 800; font-size: 30px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .calc .totals .t .s { font-size: 12px; color: var(--muted); }
+
+  .step { display: grid; grid-template-columns: 2.4rem 1fr; gap: 10px; margin: 18px 0; }
+  .step .n { font-family: "Archivo", sans-serif; font-stretch: 75%; font-weight: 800; font-size: 26px; color: var(--accent); line-height: 1; padding-top: 2px; }
+  .step h3 { margin-top: 0; }
+  .pass { margin-top: 8px; padding: 8px 12px; background: var(--panel-2); border-left: 3px solid var(--ok); font-size: 14px; }
+  .pass b { color: var(--ok); font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 12px; letter-spacing: 0.06em; }
+
+  .callout { border: 1px solid var(--line); border-left: 4px solid var(--accent); background: var(--panel); padding: 12px 16px; margin: 16px 0; max-width: 70ch; }
+  .callout.crit { border-left-color: var(--crit); }
+  .callout.warn { border-left-color: var(--warn); }
+  .toc { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 18px; font-size: 14px; }
+  .toc a { text-decoration: none; border-bottom: 1px solid var(--line); color: var(--ink-2); }
+  .sources { font-size: 13px; color: var(--muted); }
+  .sources a { color: var(--muted); }
+  @media (prefers-reduced-motion: no-preference) { .chart .fill { transition: width 400ms ease; } }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">F925 · Unify platform · capacity and cost review</div>
+    <h1>Unify at 100 Dealers</h1>
+    <p class="lede">Can the infrastructure behind stihlshoptauranga.co.nz, waihi and rotorua carry the whole STIHL SHOP network? Measured on 10 September 2026 against production and against a local copy seeded with 106 dealers.</p>
+    <div class="meta">
+      <span>repos: f925-limited/multi-tenancy @ 7e71245 · stihl-dealers-website-template @ e87372f</span>
+      <span>tested by: Claude for Martin</span>
+    </div>
+    <nav class="toc" aria-label="Sections">
+      <a href="#verdict">Verdict</a><a href="#topology">What runs where</a><a href="#inventory">Every service we depend on</a><a href="#results">Test results</a><a href="#changes">Changes before 100</a><a href="#cost">Cost at 100 dealers</a><a href="#runbook">Runbook to repeat this</a><a href="#unverified">Not verified</a>
+    </nav>
+  </header>
+
+  <section id="verdict">
+    <h2>Verdict</h2>
+    <p><b>Yes, with four changes.</b> The architecture already treats 100 dealers as 100 domains on one shared site application, not 100 separate deployments, so adding a dealer costs a DNS record and a database row. The public traffic path has real headroom today. The parts that do not survive a 100-dealer rollout untouched are image uploads on the platform instance, the free email tier on onboarding days, the free AI and weather quotas behind the “shop is open” widget, and the absence of any monitoring.</p>
+    <div class="verdict">
+      <div class="tile"><div class="k">Public API ceiling</div><div class="v">~120 req/s</div><div class="s">platform site payload, production, zero errors at 150 connections. 100 dealers need ≈ 3 req/s.</div></div>
+      <div class="tile"><div class="k">Dealer site ceiling</div><div class="v">~35 pages/s</div><div class="s">SSR homepage on the current 1 shared vCPU. 100 dealers average ≈ 0.4/s, campaign peaks ≈ 5–10/s.</div></div>
+      <div class="tile"><div class="k">One photo upload</div><div class="v">≈ 70 CPU-s</div><div class="s">24 derivatives encoded in-process; peak memory 570–720 MB on a 1 GB instance.</div></div>
+      <div class="tile"><div class="k">Infra cost, today</div><div class="v">≈ US$44 /mo</div><div class="s">Recommended shape at 100 dealers ≈ US$240 /mo. See the calculator.</div></div>
+    </div>
+    <div class="callout crit"><b>Blocking before an onboarding wave:</b> move derivative generation off the request path (or serialize it) and give the platform instance 2 GB; upgrade Resend from the free plan (100 emails per day cap); add uptime and error monitoring. Everything else is a tuning knob.</div>
+  </section>
+
+  <section id="topology">
+    <h2>What runs where</h2>
+    <p>Two DigitalOcean App Platform services in Sydney, one Postgres database, one Spaces bucket, and a ring of third-party APIs. Every dealer domain points at the same site application, which asks the platform for that dealer’s content by hostname and caches it for 30 seconds.</p>
+    <div class="topo">
+      <svg viewBox="0 0 900 420" role="img" aria-label="Topology: browsers reach the DigitalOcean edge, which routes dealer domains to the unify-dealer-site app and the platform domain to the unify-platform app; the platform talks to Postgres, Spaces, Resend and Google Places; the site talks to Groq, open-meteo, Spaces CDN and Web3Forms">
+        <rect class="box" x="20" y="30" width="170" height="60" rx="3"/>
+        <text class="t" x="35" y="55">Dealer customers</text>
+        <text class="s" x="35" y="74">100 × dealer .co.nz domains</text>
+        <rect class="box" x="20" y="120" width="170" height="60" rx="3"/>
+        <text class="t" x="35" y="145">Dealers + F925 admin</text>
+        <text class="s" x="35" y="164">stihlshop-platform.f925.works</text>
+
+        <rect class="box" x="240" y="30" width="150" height="150" rx="3"/>
+        <text class="t" x="255" y="55">DO edge (Cloudflare)</text>
+        <text class="s" x="255" y="74">TLS, DDoS, HTTP/2</text>
+        <text class="s" x="255" y="92">HTML: cache BYPASS</text>
+        <text class="s" x="255" y="110">/img: cached 1 year</text>
+        <text class="s" x="255" y="128">DNS: DO (dealers)</text>
+        <text class="s" x="255" y="146">GoDaddy (f925.works)</text>
+
+        <rect class="box core" x="440" y="20" width="200" height="82" rx="3"/>
+        <text class="t" x="455" y="42">unify-dealer-site</text>
+        <text class="s" x="455" y="60">SvelteKit SSR · Node 20</text>
+        <text class="s" x="455" y="76">1 × apps-s-1vcpu-1gb · syd</text>
+        <text class="s" x="455" y="92">sharp /img proxy · 30 s site cache</text>
+
+        <rect class="box core" x="440" y="130" width="200" height="82" rx="3"/>
+        <text class="t" x="455" y="152">unify-platform</text>
+        <text class="s" x="455" y="170">Express API + React · Node 20</text>
+        <text class="s" x="455" y="186">1 × apps-s-1vcpu-1gb · syd</text>
+        <text class="s" x="455" y="202">SSE realtime · sharp derivatives</text>
+
+        <rect class="box" x="700" y="130" width="180" height="60" rx="3"/>
+        <text class="t" x="715" y="152">PostgreSQL</text>
+        <text class="s" x="715" y="170">DATABASE_URL (DO secret)</text>
+        <text class="s" x="715" y="184">type not confirmed</text>
+
+        <rect class="box" x="700" y="30" width="180" height="60" rx="3"/>
+        <text class="t" x="715" y="52">DO Spaces + CDN</text>
+        <text class="s" x="715" y="70">f925-dealer-images · syd1</text>
+        <text class="s" x="715" y="84">248 MB today</text>
+
+        <rect class="box" x="440" y="250" width="95" height="44" rx="3"/><text class="t" x="450" y="268">Resend</text><text class="s" x="450" y="284">OTP, invites</text>
+        <rect class="box" x="545" y="250" width="95" height="44" rx="3"/><text class="t" x="555" y="268">Google</text><text class="s" x="555" y="284">Places API</text>
+        <rect class="box" x="650" y="250" width="110" height="44" rx="3"/><text class="t" x="660" y="268">Groq</text><text class="s" x="660" y="284">16-model cascade</text>
+        <rect class="box" x="770" y="250" width="110" height="44" rx="3"/><text class="t" x="780" y="268">open-meteo</text><text class="s" x="780" y="284">weather, free tier</text>
+        <rect class="box" x="440" y="310" width="95" height="44" rx="3"/><text class="t" x="450" y="328">Web3Forms</text><text class="s" x="450" y="344">contact form</text>
+        <rect class="box" x="545" y="310" width="95" height="44" rx="3"/><text class="t" x="555" y="328">ImageKit</text><text class="s" x="555" y="344">product photos</text>
+        <rect class="box" x="650" y="310" width="110" height="44" rx="3"/><text class="t" x="660" y="328">GA4 + Meta Pixel</text><text class="s" x="660" y="344">after consent</text>
+        <rect class="box" x="770" y="310" width="110" height="44" rx="3"/><text class="t" x="780" y="328">GitHub</text><text class="s" x="780" y="344">CI, Dependabot, Qodo</text>
+
+        <path class="edge" d="M190 60 H240"/>
+        <path class="edge" d="M190 150 H240"/>
+        <path class="edge" d="M390 60 H440"/>
+        <path class="edge" d="M390 170 H440"/>
+        <path class="edge" d="M540 102 V130"/>
+        <text class="s" x="548" y="120">/api/public/site?host=</text>
+        <path class="edge" d="M640 170 H700"/>
+        <path class="edge" d="M640 150 C670 150, 670 60, 700 60"/>
+        <path class="edge soft" d="M640 40 C670 40, 670 45, 700 45"/>
+        <path class="edge soft" d="M487 212 V250"/>
+        <path class="edge soft" d="M592 212 V250"/>
+        <path class="edge soft" d="M600 102 C620 120, 700 200, 705 250"/>
+        <path class="edge soft" d="M620 102 C660 140, 800 200, 825 250"/>
+        <path class="edge soft" d="M470 102 C420 180, 420 300, 440 332"/>
+        <text class="s" x="20" y="400">solid = every request · dashed = per event (upload, login, widget refresh, form)</text>
+      </svg>
+    </div>
+    <p>Two things follow from this shape. First, the <b>dealer-site instance is the customer-facing bottleneck</b>: every page of every dealer is rendered on that one shared vCPU, and nothing is cached at the edge except images. Second, the <b>platform instance is a shared dependency</b>: if it is busy encoding a dealer’s photos, the 30-second cache is all that stands between a slow upload and slow pages on every dealer site.</p>
+  </section>
+
+  <section id="inventory">
+    <h2>Every service we depend on</h2>
+    <p>Pulled from both repos (app specs, env templates, server code, workflows) and confirmed with DNS and HTTP probes. “Owner” is who holds the account or key, as far as the code shows.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Service</th><th>Used for</th><th>Where in code</th><th>Plan today</th><th>At 100 dealers</th></tr></thead>
+      <tbody>
+        <tr><td><b>DigitalOcean App Platform</b> · unify-platform</td><td>Admin + dealer portal, public site API, image uploads</td><td><code>multi-tenancy/.do/app.yaml</code></td><td class="num">apps-s-1vcpu-1gb · $12</td><td><span class="pill warn">resize</span> 2 GB and serialized uploads</td></tr>
+        <tr><td><b>DigitalOcean App Platform</b> · unify-dealer-site</td><td>All dealer websites (host-based), /img proxy, shop-status, Gary</td><td><code>stihl-dealers-website-template/.do/app.yaml</code></td><td class="num">apps-s-1vcpu-1gb · $12</td><td><span class="pill warn">2 instances</span> 500-domain limit per app is fine</td></tr>
+        <tr><td><b>PostgreSQL</b></td><td>All dealer, request, message and campaign data</td><td><code>platform/server/db.ts</code></td><td class="num">unknown ($7 dev or $15 managed)</td><td><span class="pill warn">confirm</span> managed + standby; 22 conns at 1 GB</td></tr>
+        <tr><td><b>DigitalOcean Spaces + CDN</b></td><td>Dealer photos and the 24 pre-generated sizes per photo</td><td><code>platform/server/spaces.ts</code>, <code>imageDerivatives.ts</code></td><td class="num">$5 · 250 GiB</td><td><span class="pill ok">fits</span> ≈ 12 GB at 100 dealers</td></tr>
+        <tr><td><b>DigitalOcean DNS</b></td><td>Dealer .co.nz zones (tauranga, waihi, rotorua)</td><td>app spec <code>zone:</code> entries</td><td class="num">free</td><td><span class="pill ok">fits</span> 100 zones; dealers keep registrar ownership</td></tr>
+        <tr><td><b>GoDaddy</b> + <b>Vercel</b></td><td>f925.works DNS; apex serves the F925 marketing site</td><td>DNS: ns15/16.domaincontrol.com; A → 76.76.21.21</td><td class="num">domain + hobby/pro</td><td><span class="pill na">outside</span> wildcard *.preview.f925.works is on DO</td></tr>
+        <tr><td><b>Resend</b></td><td>Admin/dealer OTP, invites, password reset, F925 notifications</td><td><code>platform/server/email.ts</code></td><td class="num">free · 3,000/mo · 100/day</td><td><span class="pill crit">upgrade</span> 100/day cap breaks on invite days → Pro $20</td></tr>
+        <tr><td><b>Google Maps Platform</b> (Places)</td><td>Address autocomplete during onboarding, via server proxy</td><td><code>platform/server/routes/places.ts</code></td><td class="num">pay-as-you-go</td><td><span class="pill ok">fits</span> ≈ $10 one-off for 100 onboardings</td></tr>
+        <tr><td><b>Groq</b></td><td>“Shop open” AI sentence every 5 min per dealer; Gary chat (off); PR reviews</td><td><code>frontend/src/lib/server/services/ai.ts</code>, <code>.pr_agent.toml</code></td><td class="num">free tier</td><td><span class="pill crit">quota</span> up to 28,800 calls/day → Developer tier + longer cache</td></tr>
+        <tr><td><b>open-meteo</b></td><td>Weather for the shop-status widget</td><td><code>routes/api/shop-status/+server.ts</code></td><td class="num">free, non-commercial</td><td><span class="pill crit">licence</span> 10,000/day cap and commercial use needs a paid plan</td></tr>
+        <tr><td><b>Web3Forms</b></td><td>Contact-form delivery (shared key)</td><td><code>routes/contact/+page.svelte</code></td><td class="num">free</td><td><span class="pill warn">replace</span> already decided: route through Resend</td></tr>
+        <tr><td><b>ImageKit</b></td><td>STIHL product imagery in blog posts (ik.imagekit.io/mf4kktmyvw)</td><td>84 references in <code>src/lib/posts</code></td><td class="num">free · 20–25 GB/mo</td><td><span class="pill warn">watch</span> shared across all dealers; move to Spaces if it trips</td></tr>
+        <tr><td><b>Google Analytics 4</b> + <b>Meta Pixel</b></td><td>Per-dealer analytics after cookie consent</td><td><code>src/lib/analytics.ts</code>, layout</td><td class="num">free</td><td><span class="pill ok">fits</span> one GA property per dealer to manage</td></tr>
+        <tr><td><b>GitHub</b> (org f925-limited)</td><td>Both private repos, Actions CI, Dependabot, nightly image-cache warmer</td><td><code>.github/workflows/*</code></td><td class="num">free org</td><td><span class="pill ok">fits</span> 2,000 Actions minutes/mo; warmer must list 100 domains</td></tr>
+        <tr><td><b>Qodo PR-Agent</b></td><td>AI code review on PRs (runs on the Groq key)</td><td><code>.github/workflows/pr_agent.yml</code></td><td class="num">free action</td><td><span class="pill ok">fits</span></td></tr>
+        <tr><td><b>Axiom</b></td><td>Log shipping for Gary usage (code exists, no key in prod)</td><td><code>services/logger.ts</code></td><td class="num">not configured</td><td><span class="pill na">unused</span> logs currently go to the container disk</td></tr>
+        <tr><td><b>Uptime / error tracking</b></td><td>None. No Sentry, no uptime checks, no alert rules found</td><td>—</td><td class="num">—</td><td><span class="pill crit">add</span> RFP asks for it (runbook I-01…I-03)</td></tr>
+      </tbody>
+    </table></div>
+    <p><small>Local ingredients the team must also have: Node 20 (both repos pin <code>&gt;=20 &lt;23</code>), PostgreSQL 14+, the DO Spaces and Google keys in <code>platform/.env</code>, and <code>doctl</code> for spec exports. Dealer domains are registered by the dealers; F925 only hosts the zone.</small></p>
+  </section>
+
+  <section id="results">
+    <h2>Test results</h2>
+    <p>Two test beds. <b>Production</b> was hit read-only (GET only, no emails, no uploads) from Santiago, so absolute latency carries ≈ 500 ms of distance; throughput and error counts are the signal. <b>Local</b> was a fresh clone of both repos, the platform capped at 800 MB heap, a copy of the dev database seeded to 106 dealers (with domains, five change requests and five messages each), and the site pointed at it. Local CPU is Apple Silicon; the production run showed a DO shared vCPU delivers about <b>1/4.6</b> of it (5.4 ms local per homepage predicted 40 pages/s; production measured 34–36).</p>
+
+    <h3>Production, read-only</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Target</th><th class="num">Conns</th><th class="num">req/s</th><th class="num">p50</th><th class="num">p97.5</th><th class="num">non-2xx</th><th class="num">timeouts</th><th>Read</th></tr></thead>
+      <tbody>
+        <tr><td>platform <span class="mono">/api/public/site</span> (133 KB)</td><td class="num">10</td><td class="num">14.2</td><td class="num">624 ms</td><td class="num">2.2 s</td><td class="num">0</td><td class="num">0</td><td>latency-bound by distance</td></tr>
+        <tr><td>platform <span class="mono">/api/public/site</span></td><td class="num">50</td><td class="num">59.3</td><td class="num">717 ms</td><td class="num">2.4 s</td><td class="num">0</td><td class="num">0</td><td>clean</td></tr>
+        <tr><td>platform <span class="mono">/api/public/site</span></td><td class="num">150</td><td class="num">115.7</td><td class="num">1.14 s</td><td class="num">2.7 s</td><td class="num">0</td><td class="num">1</td><td>near ceiling, still healthy</td></tr>
+        <tr><td>platform <span class="mono">/api/public/site</span></td><td class="num">300</td><td class="num">127.6</td><td class="num">1.98 s</td><td class="num">4.5 s</td><td class="num">0</td><td class="num">31</td><td><b>ceiling ≈ 120–128 req/s</b>, queues rather than fails</td></tr>
+        <tr><td>dealer homepage (323 KB HTML)</td><td class="num">10</td><td class="num">12.3</td><td class="num">686 ms</td><td class="num">3.0 s</td><td class="num">0</td><td class="num">0</td><td>clean</td></tr>
+        <tr><td>dealer homepage</td><td class="num">50</td><td class="num">35.8</td><td class="num">1.22 s</td><td class="num">3.6 s</td><td class="num">0</td><td class="num">0</td><td>CPU-bound, p50 doubles</td></tr>
+        <tr><td>dealer homepage</td><td class="num">150</td><td class="num">33.6</td><td class="num">1.66 s</td><td class="num">3.5 s</td><td class="num">0</td><td class="num">217</td><td><b>ceiling ≈ 35 pages/s</b>; 18 % of requests waited &gt; 10 s</td></tr>
+        <tr><td>dealer <span class="mono">/products</span> (464 KB)</td><td class="num">50</td><td class="num">33.6</td><td class="num">1.18 s</td><td class="num">4.1 s</td><td class="num">0</td><td class="num">0</td><td>same ceiling as homepage</td></tr>
+        <tr><td>dealer <span class="mono">/api/shop-status</span></td><td class="num">50</td><td class="num">88.4</td><td class="num">503 ms</td><td class="num">3.0 s</td><td class="num">0</td><td class="num">0</td><td>served from the 5-minute cache</td></tr>
+      </tbody>
+    </table></div>
+    <p>Health checks on both apps answered within 0.55–0.72 s throughout, and the sites stayed up. No 5xx was produced at any stage.</p>
+
+    <h3>Local, 106 dealers, writes and realtime</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Scenario</th><th class="num">Conns</th><th class="num">req/s</th><th class="num">p50</th><th class="num">CPU/req (local)</th><th class="num">CPU/req (DO est.)</th><th>Read</th></tr></thead>
+      <tbody>
+        <tr><td>public site payload, 100 different hosts</td><td class="num">100</td><td class="num">735</td><td class="num">131 ms</td><td class="num">1.4 ms</td><td class="num">≈ 6.5 ms</td><td>matches the 120 req/s seen in production</td></tr>
+        <tr><td>admin dealer list (106 rows)</td><td class="num">20</td><td class="num">98</td><td class="num">165 ms</td><td class="num">1.9 ms</td><td class="num">≈ 9 ms</td><td>fine</td></tr>
+        <tr><td>admin pending change requests</td><td class="num">20</td><td class="num">330</td><td class="num">57 ms</td><td class="num">3.7 ms</td><td class="num">≈ 17 ms</td><td>fine</td></tr>
+        <tr><td>admin messages inbox</td><td class="num">20</td><td class="num">421</td><td class="num">45 ms</td><td class="num">2.4 ms</td><td class="num">≈ 11 ms</td><td>fine</td></tr>
+        <tr><td>cross-dealer <span class="mono">/report</span></td><td class="num">20</td><td class="num">35</td><td class="num">550 ms</td><td class="num">42 ms</td><td class="num">≈ 190 ms</td><td>heavy but admin-only; RSS grew to 238 MB</td></tr>
+        <tr><td>dealer portal mix (me, profile, requests, messages)</td><td class="num">200</td><td class="num">1,886</td><td class="num">107 ms</td><td class="num">0.7 ms</td><td class="num">≈ 3 ms</td><td>200 dealers logged in at once is trivial</td></tr>
+        <tr><td>dealer draft autosave (JSONB write)</td><td class="num">50</td><td class="num">4,216</td><td class="num">10 ms</td><td class="num">0.2 ms</td><td class="num">≈ 1 ms</td><td>fine</td></tr>
+        <tr><td>SSE realtime: 200 open dealer tabs, 1 broadcast</td><td class="num">200</td><td class="num">—</td><td class="num">107 ms</td><td class="num">—</td><td class="num">—</td><td>all 200 received</td></tr>
+        <tr><td>SSE realtime: 500 open tabs, 1 broadcast</td><td class="num">500</td><td class="num">—</td><td class="num">25 ms</td><td class="num">—</td><td class="num">—</td><td>all 500 received; memory flat</td></tr>
+        <tr><td>argon2 password verify (login)</td><td class="num">—</td><td class="num">—</td><td class="num">36 ms</td><td class="num">128 ms</td><td class="num">≈ 0.6 s</td><td>100 simultaneous logins ≈ 1 CPU-minute; acceptable</td></tr>
+        <tr><td>boot with 106 dealers (rewrites every profile on start)</td><td class="num">—</td><td class="num">—</td><td class="num">4.2 s</td><td class="num">—</td><td class="num">≈ 15 s</td><td>within the DO health-check window; grows linearly</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>Local, dealer site SSR across 100 hosts</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Page</th><th class="num">Conns</th><th class="num">pages/s</th><th class="num">p50</th><th class="num">CPU/page (local)</th><th class="num">DO est. ceiling</th></tr></thead>
+      <tbody>
+        <tr><td>/ (homepage, 205 KB)</td><td class="num">20</td><td class="num">227</td><td class="num">75 ms</td><td class="num">5.4 ms</td><td class="num">≈ 40 /s</td></tr>
+        <tr><td>/products</td><td class="num">20</td><td class="num">165</td><td class="num">105 ms</td><td class="num">7.0 ms</td><td class="num">≈ 31 /s</td></tr>
+        <tr><td>/about</td><td class="num">20</td><td class="num">362</td><td class="num">48 ms</td><td class="num">3.3 ms</td><td class="num">≈ 66 /s</td></tr>
+        <tr><td>/ with 100 connections</td><td class="num">100</td><td class="num">272</td><td class="num">296 ms</td><td class="num">4.6 ms</td><td class="num">≈ 45 /s</td></tr>
+      </tbody>
+    </table></div>
+    <p>The 30-second site cache holds 200 hosts, so 100 dealers fit; the platform spent only 2.5 CPU-seconds serving 4,545 site pages. The site never re-fetches the platform more than twice a minute per dealer.</p>
+
+    <h3>Local, one photo upload</h3>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Case</th><th class="num">Wall (local)</th><th class="num">CPU</th><th class="num">Peak RSS</th><th class="num">Written</th><th>Read</th></tr></thead>
+      <tbody>
+        <tr><td>1 upload, 4.8 MB photo, 8 threads</td><td class="num">2.5 s</td><td class="num">15.7 s</td><td class="num">573 MB</td><td class="num">24 files · 2.7 MB</td><td>on DO: ≈ 70 CPU-seconds on the one vCPU</td></tr>
+        <tr><td>3 uploads at once</td><td class="num">7.1 s</td><td class="num">47.3 s</td><td class="num">719 MB</td><td class="num">72 files · 8.2 MB</td><td><b>+ ~150 MB server baseline ≈ the 1 GB limit</b></td></tr>
+        <tr><td>1 upload, 1 thread (≈ 1 vCPU)</td><td class="num">17.6 s</td><td class="num">15.0 s</td><td class="num">357 MB</td><td class="num">24 files</td><td>the request holds the connection the whole time</td></tr>
+      </tbody>
+    </table></div>
+    <p>This is the one place the numbers point at a failure, not a slowdown. A dealer uploading ten photos during onboarding ties up the platform’s only vCPU for roughly ten minutes; two or three dealers uploading in the same minute can push the 1 GB instance into an out-of-memory restart, which would also drop every open admin and dealer realtime connection and, for up to 30 seconds, the content feed to all 100 sites.</p>
+
+    <h3>Headroom at 100 dealers</h3>
+    <div class="chart" role="img" aria-label="Bar chart: expected 100-dealer load as a percentage of each measured or documented limit. Platform API 3 percent, dealer site SSR at peak 29 percent, Spaces storage 5 percent, database size under 1 percent, Postgres connections 91 percent, platform memory with two concurrent uploads 85 percent, Resend daily emails on an invite day 200 percent, Groq free daily calls 200 percent, open-meteo free daily calls 288 percent.">
+      <div class="row"><div class="lbl">Platform API<small>3 req/s of ≈120</small></div><div class="track"><div class="fill" style="width:3%"></div><div class="lim" style="left:50%"></div></div><div class="val">3 %</div></div>
+      <div class="row"><div class="lbl">Dealer site SSR, campaign peak<small>10 pages/s of ≈35</small></div><div class="track"><div class="fill" style="width:14.5%"></div><div class="lim" style="left:50%"></div></div><div class="val">29 %</div></div>
+      <div class="row"><div class="lbl">Spaces storage<small>≈12 GB of 250 GB</small></div><div class="track"><div class="fill" style="width:2.5%"></div><div class="lim" style="left:50%"></div></div><div class="val">5 %</div></div>
+      <div class="row"><div class="lbl">Database size<small>19 MB at 106 dealers</small></div><div class="track"><div class="fill" style="width:0.5%"></div><div class="lim" style="left:50%"></div></div><div class="val">&lt;1 %</div></div>
+      <div class="row"><div class="lbl">Postgres connections<small>2 instances × pool 10 of 22 (1 GB managed)</small></div><div class="track"><div class="fill" style="width:45.5%"></div><div class="lim" style="left:50%"></div></div><div class="val">91 %</div></div>
+      <div class="row"><div class="lbl">Platform memory, 2 uploads at once<small>≈870 MB of 1,024 MB</small></div><div class="track"><div class="fill" style="width:42.5%"></div><div class="lim" style="left:50%"></div></div><div class="val">85 %</div></div>
+      <div class="row"><div class="lbl">Resend, invite day<small>≈200 emails of 100/day (free)</small></div><div class="track"><div class="fill over" style="width:100%"></div><div class="lim" style="left:50%"></div></div><div class="val">▲ 200 %</div></div>
+      <div class="row"><div class="lbl">Groq free tier, daily calls<small>up to 28,800 of 14,400</small></div><div class="track"><div class="fill over" style="width:100%"></div><div class="lim" style="left:50%"></div></div><div class="val">▲ 200 %</div></div>
+      <div class="row"><div class="lbl">open-meteo free tier, daily calls<small>up to 28,800 of 10,000</small></div><div class="track"><div class="fill over" style="width:100%"></div><div class="lim" style="left:50%"></div></div><div class="val">▲ 288 %</div></div>
+      <p class="note">Bar = expected load at 100 dealers as a share of the limit; the tick is 100 %. Red with ▲ = over the limit. Assumes 1,500 visits per dealer per month and every dealer refreshing the shop-status widget every 5 minutes; both are editable in the calculator.</p>
+    </div>
+  </section>
+
+  <section id="changes">
+    <h2>Changes before 100 dealers</h2>
+    <p>Ordered by what breaks first. The first three are needed before the pilot in December; the rest before the January rollout.</p>
+    <ol>
+      <li><b>Take image derivatives off the request path.</b> <code>uploadDealerAsset()</code> in <code>platform/server/spaces.ts</code> runs 24 sharp encodes before answering. Return after the original is stored, and generate derivatives in a queue with concurrency 1 (a <code>setImmediate</code> loop over a table of pending keys is enough at this scale). The site’s <code>/img</code> proxy already falls back to on-demand resizing, so nothing breaks while a derivative is missing. Also resize the platform to <code>apps-s-1vcpu-2gb</code> or <code>apps-d-1vcpu-2gb</code>. <span class="pill crit">critical</span></li>
+      <li><b>Resend Pro.</b> The free plan’s 100 emails per day is below one onboarding day (100 invites plus 100 OTP logins). $20/month. <span class="pill crit">critical</span></li>
+      <li><b>Monitoring, alerts, error tracking.</b> Uptime checks on all dealer domains plus both health endpoints; DO alert rules for CPU, memory and restarts; an error tracker in both apps. These are runbook items I-01 to I-03 and the RFP scores them. <span class="pill crit">critical</span></li>
+      <li><b>Second dealer-site instance with request-based autoscaling.</b> Today one deploy, one crash or one crawler burst affects all 100 sites at once. Two instances (min 2, max 4) give zero-downtime deploys and ~70 pages/s. Dedicated CPU also unlocks CPU-based autoscaling. <span class="pill warn">high</span></li>
+      <li><b>Rate-limit the auth and proxy routes.</b> There is no rate limiting on <code>/api/dealer/login</code>, <code>/forgot-password</code>, the OTP endpoints, Places proxy or <code>/img</code>. Each login costs ≈ 0.6 CPU-seconds and one Resend email; a script can burn the email quota and the vCPU. Add per-IP limits (express-rate-limit or the DO WAF). <span class="pill warn">high</span></li>
+      <li><b>Cut the shop-status refresh.</b> Raise <code>STATUS_CACHE_TTL_MS</code> from 5 to 30–60 minutes and move Groq to the Developer tier; either license open-meteo commercially or swap in a free-for-commercial weather source. This also removes the “AI sentence” cost line from the model. <span class="pill warn">high</span></li>
+      <li><b>Confirm the database is a managed cluster</b> and add a standby node. Point-in-time recovery is 7 days on managed; a $7 dev database has no backups. Keep the platform to one instance or add a pooler: managed 1 GB allows 22 connections and each platform instance opens up to 10. <span class="pill warn">high</span></li>
+      <li><b>Realtime is in-memory.</b> SSE clients live in a Map inside the process, so a second platform instance would split dealers and admins across two islands. Either keep the platform vertically scaled (recommended) or fan out through Postgres <code>LISTEN/NOTIFY</code>. <span class="pill warn">medium</span></li>
+      <li><b>Per-route body limits.</b> <code>express.json({ limit: '100mb' })</code> applies before authentication on every route. Move the large limit to the two upload routes only. <span class="pill warn">medium</span></li>
+      <li><b>Ephemeral files.</b> Newsletter sign-ups append to <code>subscribers.txt</code> and Gary logs to disk inside the site container; both vanish on every deploy. Already tracked as the lead-capture gap; worth closing before the pilot because it is a visible data loss. <span class="pill warn">medium</span></li>
+      <li><b>Housekeeping that grows with dealers.</b> The boot-time profile rewrite (<code>syncStoredDealerProfiles</code>) took 4 s at 106 dealers and runs on every deploy; the image-cache warmer and the shop-status town table hardcode the three current dealers; the site’s host cache holds 200 entries. All fine at 100, all worth a note in the roadmap. <span class="pill na">low</span></li>
+    </ol>
+  </section>
+
+  <section id="cost">
+    <h2>Cost at 100 dealers</h2>
+    <p>Prices are the providers’ published list prices in US dollars as of September 2026 (sources at the end). The calculator recomputes with your own assumptions; nothing here is a quote.</p>
+    <div class="calc">
+      <div class="inputs">
+        <label>dealers <input id="dealers" type="number" min="1" max="500" value="100"></label>
+        <label>visits / dealer / month <input id="visits" type="number" min="0" step="100" value="1500"></label>
+        <label>pages / visit <input id="ppv" type="number" min="1" step="0.5" value="3"></label>
+        <label>page weight (MB, incl. images) <input id="mb" type="number" min="0.1" step="0.1" value="1.2"></label>
+        <label>photos uploaded / dealer <input id="photos" type="number" min="0" value="15"></label>
+        <label>shop-status cache (minutes) <input id="ttl" type="number" min="1" value="5"></label>
+        <label>share of 5-min windows with a visit <input id="share" type="number" min="0" max="1" step="0.05" value="0.4"></label>
+        <label>Groq price, blended $/M tokens <input id="tok" type="number" min="0" step="0.05" value="0.30"></label>
+        <label>USD → NZD <input id="fx" type="number" min="0.5" step="0.01" value="1.65"></label>
+        <label>platform instance
+          <select id="plat">
+            <option value="12">apps-s-1vcpu-1gb (today) — $12</option>
+            <option value="25" selected>apps-s-1vcpu-2gb — $25</option>
+            <option value="39">apps-d-1vcpu-2gb — $39</option>
+            <option value="49">apps-d-1vcpu-4gb — $49</option>
+          </select></label>
+        <label>dealer-site instances
+          <select id="site">
+            <option value="12">1 × apps-s-1vcpu-1gb (today) — $12</option>
+            <option value="24">2 × apps-s-1vcpu-1gb — $24</option>
+            <option value="68" selected>2 × apps-d-1vcpu-1gb — $68</option>
+            <option value="78">2 × apps-d-1vcpu-2gb — $78</option>
+          </select></label>
+        <label>database
+          <select id="db">
+            <option value="7">DO dev database (no backups) — $7</option>
+            <option value="15">Managed 1 GB, single node — $15</option>
+            <option value="30" selected>Managed 1 GB + standby — $30</option>
+            <option value="60">Managed 2 GB + standby — $60</option>
+          </select></label>
+      </div>
+      <div class="tbl-wrap" style="margin-top:16px"><table id="costTable">
+        <thead><tr><th>Line</th><th>Basis</th><th class="num">Today</th><th class="num">At scale</th></tr></thead>
+        <tbody></tbody>
+      </table></div>
+      <div class="totals">
+        <div class="t"><div class="k">Today, per month</div><div class="v" id="tToday">—</div><div class="s">2 shared instances, managed DB assumed, Spaces</div></div>
+        <div class="t"><div class="k">At scale, per month</div><div class="v" id="tScale">—</div><div class="s" id="tScaleNzd">—</div></div>
+        <div class="t"><div class="k">Per dealer, per month</div><div class="v" id="tPer">—</div><div class="s">against NZ$600 + GST monthly fee</div></div>
+      </div>
+    </div>
+    <p>The infrastructure bill is under one percent of the platform fee at any of these shapes. The real cost of 100 dealers is people: the onboarding reviews, change requests and messages that the platform routes to the F925 inbox. At the seeded rate (five requests and five messages per dealer) that is 1,000 items of admin work, which no instance size changes.</p>
+  </section>
+
+  <section id="runbook">
+    <h2>Runbook to repeat this</h2>
+    <p>Everything below is in <code>rfp/loadtest/</code> in the f925-26 repo with a README. Read-only production tests are safe at these levels; run them outside NZ business hours and keep the DigitalOcean Insights tab open on both apps. Never run the local upload or email scenarios against production.</p>
+
+    <div class="step"><div class="n">1</div><div>
+      <h3>Read-only load on production</h3>
+      <pre>cd rfp/loadtest && npm install
+node prod.mjs "https://stihlshop-platform.f925.works/api/public/site?host=stihlshoptauranga.co.nz" 50 30
+node prod.mjs "https://stihlshop-platform.f925.works/api/public/site?host=stihlshoptauranga.co.nz" 150 30
+node prod.mjs "https://stihlshoptauranga.co.nz/" 50 30
+node prod.mjs "https://stihlshoptauranga.co.nz/" 150 30</pre>
+      <div class="pass"><b>PASS</b> zero non-2xx at every stage; platform p97.5 under 3 s at 150; homepage p97.5 under 4 s at 50; health endpoints answer during the run; no restart shown in DO Insights.</div>
+    </div></div>
+
+    <div class="step"><div class="n">2</div><div>
+      <h3>100 seeded dealers, locally</h3>
+      <pre># in multi-tenancy/platform with local Postgres
+createdb -T stihl_mt_leo stihl_lt
+cp ../../f925-26/rfp/loadtest/seedLoadTest.ts scripts/ && npx tsx scripts/seedLoadTest.ts   # 100 dealers
+NODE_OPTIONS=--max-old-space-size=800 npx tsx server/index.ts &      # same 1 GB cap as DO
+cd ../../f925-26/rfp/loadtest && bash runall.sh                      # all scenarios + SSE fan-out</pre>
+      <div class="pass"><b>PASS</b> every scenario reports non2xx 0; SSE fan-out delivers to all 200 and 500 tabs; RSS stays under 400 MB; <code>cpuMsPerReq</code> × 4.6 stays under 10 ms for every dealer-facing route.</div>
+    </div></div>
+
+    <div class="step"><div class="n">3</div><div>
+      <h3>Upload burst</h3>
+      <pre>cp ../../f925-26/rfp/loadtest/sharpBench.ts scripts/
+CONC=1 npx tsx scripts/sharpBench.ts
+CONC=3 npx tsx scripts/sharpBench.ts
+UV_THREADPOOL_SIZE=1 VIPS_CONCURRENCY=1 CONC=1 npx tsx scripts/sharpBench.ts</pre>
+      <div class="pass"><b>PASS (after change 1)</b> the upload request returns in under 2 s and <code>peakRssMB</code> for three concurrent uploads stays under 500 MB. Today this step fails.</div>
+    </div></div>
+
+    <div class="step"><div class="n">4</div><div>
+      <h3>Dealer-site SSR across 100 hosts</h3>
+      <pre># in stihl-dealers-website-template/frontend, platform running on :3101
+npm install && npm run build
+PLATFORM_API_URL=http://localhost:3101 PORT=3200 NODE_ENV=production node build/index.js &
+cd ../../f925-26/rfp/loadtest && node ssr.mjs / 20 20 100 && node ssr.mjs /products 20 20 100</pre>
+      <div class="pass"><b>PASS</b> non2xx 0 for all 100 hosts; <code>siteCpuMsPerReq</code> under 8 ms local (≈ 35 pages/s per DO shared vCPU); platform CPU during the run under 5 s.</div>
+    </div></div>
+
+    <div class="step"><div class="n">5</div><div>
+      <h3>Onboarding-day drill (manual, staging)</h3>
+      <p>Clone both DO apps to a staging app pair (<code>doctl apps create --spec .do/app.yaml</code> with new names and a copy of the database), then with three people: invite 20 dealers from the admin, activate 10 accounts within ten minutes, and have three of them upload 10 photos each at the same time while a fourth person reloads a dealer site every few seconds.</p>
+      <div class="pass"><b>PASS</b> every invite and OTP email arrives (watch the Resend dashboard for the daily cap), uploads complete, the platform does not restart (DO Insights), the dealer site keeps answering under 3 s, and the admin inbox shows all 20 onboarding requests.</div>
+    </div></div>
+
+    <div class="step"><div class="n">6</div><div>
+      <h3>What to check in the dashboards after any run</h3>
+      <ul>
+        <li>DigitalOcean → each app → Insights: CPU, memory, restarts, bandwidth used against the 150 GiB allowance.</li>
+        <li>DigitalOcean → Databases: confirm the cluster type, connections in use, backup schedule, PITR window.</li>
+        <li>Resend → Emails: delivered vs. bounced, daily count against the plan cap.</li>
+        <li>Groq console → Limits: requests per day used by the shop-status key.</li>
+        <li>Google Cloud → Maps Platform → Quotas: Places requests and spend.</li>
+      </ul>
+    </div></div>
+  </section>
+
+  <section id="unverified">
+    <h2>Not verified</h2>
+    <p>These need someone with DigitalOcean, Resend, Groq and Google console access. Installing <code>doctl</code> and running <code>doctl auth init</code> would let the next pass confirm most of them automatically.</p>
+    <ul>
+      <li>Whether <code>DATABASE_URL</code> points at a managed cluster (and its size, backups, PITR) or a $7 dev database. Nothing in either repo says.</li>
+      <li>Current DO bandwidth consumption on the dealer-site app; the 150 GiB allowance is the one line in the cost model that depends on real traffic.</li>
+      <li>Resend plan and whether contact.f925.works is verified with DKIM and a DMARC policy.</li>
+      <li>Groq tier for the site key and the Google Maps billing account behind the Places key.</li>
+      <li>Who owns the ImageKit account serving product photos, and its bandwidth to date.</li>
+      <li>Whether the App Platform apps have any alert policies configured (none are in the specs).</li>
+      <li>Behaviour of DigitalOcean’s edge under a real Australia/NZ-origin load; this test ran from Chile, which adds ≈ 500 ms per request but does not change the per-request server cost.</li>
+    </ul>
+    <h3>Sources</h3>
+    <p class="sources">DigitalOcean <a href="https://docs.digitalocean.com/products/app-platform/details/pricing/">App Platform pricing</a>, <a href="https://docs.digitalocean.com/products/app-platform/details/limits/">limits</a> (500 domains per app), <a href="https://docs.digitalocean.com/products/app-platform/how-to/scale-app/">scaling</a>, <a href="https://docs.digitalocean.com/products/databases/postgresql/details/limits/">PostgreSQL limits</a>, <a href="https://docs.digitalocean.com/products/spaces/details/pricing/">Spaces pricing</a>; <a href="https://resend.com/pricing">Resend pricing</a>; <a href="https://developers.google.com/maps/documentation/places/web-service/usage-and-billing">Places API billing</a>; <a href="https://www.cloudzero.com/blog/groq-pricing/">Groq pricing summary</a>; <a href="https://open-meteo.com/en/terms">open-meteo terms</a> and <a href="https://open-meteo.com/en/pricing">pricing</a>; <a href="https://imagekit.io/plans/">ImageKit plans</a>.</p>
+  </section>
+</div>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id)
+  const ids = ['dealers','visits','ppv','mb','photos','ttl','share','tok','fx','plat','site','db']
+  const fmt = (n) => '$' + Math.round(n).toLocaleString('en-US')
+  function calc () {
+    const D = +$('dealers').value || 0, V = +$('visits').value || 0, P = +$('ppv').value || 0, MB = +$('mb').value || 0
+    const photos = +$('photos').value || 0, ttl = Math.max(1, +$('ttl').value || 5), share = Math.min(1, Math.max(0, +$('share').value || 0))
+    const tok = +$('tok').value || 0, fx = +$('fx').value || 1
+    const plat = +$('plat').value, site = +$('site').value, db = +$('db').value
+    const pages = D * V * P
+    const egressGB = pages * MB / 1024
+    const includedGiB = site >= 68 ? 400 : (site >= 24 ? 300 : 150)   // dedicated 1gb = 200 GiB each, shared 1gb = 150 GiB each
+    const overGB = Math.max(0, egressGB - includedGiB)
+    const bandwidth = overGB * 0.02
+    const storageGB = D * photos * (4.8 + 2.7) / 1024   // original + derivatives per photo
+    const spaces = 5 + Math.max(0, storageGB - 250) * 0.02
+    const callsPerDay = D * (1440 / ttl) * share
+    const groqTokens = callsPerDay * 30 * 340 / 1e6
+    const groq = groqTokens * tok
+    const meteo = 32   // commercial use needs a paid plan regardless of volume
+    const emailsMo = D * 8 + 60 + D * 4 + D * 6
+    const resend = (emailsMo > 3000 || D >= 50) ? 20 : 0   // 100/day cap breaks on an invite day well before 50 dealers
+    const places = (D * 30 * 2.83 / 1000) / 12               // one-off spread over a year
+    const monitoring = 26
+    const rows = [
+      ['unify-platform (DO App Platform)', 'instance selected above', 12, plat],
+      ['unify-dealer-site (DO App Platform)', 'instances selected above', 12, site],
+      ['PostgreSQL', 'plan selected above (today: unconfirmed, $15 assumed)', 15, db],
+      ['DO Spaces', `$5 base · ≈ ${storageGB.toFixed(1)} GB used`, 5, spaces],
+      ['Bandwidth overage', `${Math.round(egressGB).toLocaleString()} GB/mo egress vs ${includedGiB} GiB included · $0.02/GiB`, 0, bandwidth],
+      ['Resend', `≈ ${emailsMo.toLocaleString()} emails/mo; Pro needed for the 100/day cap`, 0, resend],
+      ['Groq (shop-status sentence)', `≈ ${Math.round(callsPerDay).toLocaleString()} calls/day · ${groqTokens.toFixed(0)} M tokens/mo`, 0, groq],
+      ['open-meteo commercial plan', 'required for commercial use; verify price', 0, meteo],
+      ['Google Places', `≈ ${D * 30} autocomplete requests per onboarding cohort, spread over 12 months`, 0, places],
+      ['Uptime + error tracking', 'e.g. Better Stack + Sentry Team, or DO alerts + a free tier', 0, monitoring],
+      ['GitHub, DO DNS, GA4, Meta Pixel, Web3Forms/ImageKit free tiers', '', 0, 0],
+    ]
+    const tb = $('costTable').querySelector('tbody'); tb.innerHTML = ''
+    let today = 0, scale = 0
+    for (const [k, b, t, s] of rows) { today += t; scale += s; const tr = document.createElement('tr'); tr.innerHTML = `<td>${k}</td><td><small>${b}</small></td><td class="num">${fmt(t)}</td><td class="num">${fmt(s)}</td>`; tb.appendChild(tr) }
+    $('tToday').textContent = fmt(today)
+    $('tScale').textContent = fmt(scale)
+    $('tScaleNzd').textContent = `≈ NZ$${Math.round(scale * fx).toLocaleString()} at ${fx} · vs NZ$${(D * 600).toLocaleString()} monthly fees`
+    $('tPer').textContent = D ? fmt(scale / D) : '—'
+  }
+  ids.forEach((id) => $(id).addEventListener('input', calc))
+  calc()
+})()
+</script>

@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Status Report · 16 Sep</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+  --p-a:#6847B8; --p-b:#0A6C4F; --p-c:#1B5FAE;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+    --p-a:#A78BFA; --p-b:#4CC9A2; --p-c:#6FB1F0;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  --p-a:#A78BFA; --p-b:#4CC9A2; --p-c:#6FB1F0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:880px;margin:0 auto;padding:0 28px}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.86em;background:var(--surface2);padding:.1em .35em;border-radius:4px}
+h1,h2,h3{font-family:"Barlow Condensed",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;padding:9px 20px;max-width:none}
+.brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase}
+.brand em{color:var(--accent);font-style:normal}
+header{padding:46px 0 10px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+h1{font-size:clamp(36px,5.4vw,54px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:66ch;margin-top:10px}
+.big{margin:22px 0;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--part);border-radius:10px;box-shadow:var(--shadow);padding:16px 20px}
+.big h2{font-size:22px;text-transform:uppercase}
+.big p{margin:.4em 0 0}
+h2.sec{font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:7px;margin:30px 0 12px}
+h3{font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin:18px 0 6px;color:var(--accent)}
+ul{margin:.5em 0;padding-left:22px} li{margin:.4em 0}
+.who{font-weight:700} .who.pa{color:var(--p-a)}.who.pb{color:var(--p-b)}.who.pc{color:var(--p-c)}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:5px;padding:1px 8px;vertical-align:middle}
+.pill.done{background:var(--sup-bg);color:var(--sup)} .pill.red{background:var(--gap-bg);color:var(--gap)} .pill.amber{background:var(--part-bg);color:var(--part)} .pill.live{background:var(--sup);color:#fff}
+.next{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:11px 16px;margin:10px 0;box-shadow:var(--shadow)}
+.next b:first-child{font-family:"Barlow Condensed",sans-serif;font-size:16.5px;letter-spacing:.03em;text-transform:uppercase}
+.next p{margin:.25em 0 0;font-size:14px;color:var(--muted)} .next p strong{color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;box-shadow:var(--shadow)}
+.stat .k{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.stat .v{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:700;margin-top:2px}
+.stat .v small{font-family:"IBM Plex Sans",sans-serif;font-size:12px;font-weight:500;color:var(--muted)}
+.good{color:var(--sup)} .warn{color:var(--part)} .bad{color:var(--gap)}
+footer{border-top:1px solid var(--line);margin-top:42px;padding:20px 0 42px;color:var(--muted);font-size:13px}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="report">
+<div class="topbar"><div class="wrap">
+  <span class="brand">U4R <em>·</em> Status Report</span>
+  <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+</div></div>
+
+<header><div class="wrap">
+  <p class="eyebrow">F925 internal · STIHL RFP 2026 · Mon 15 → Tue 16 Sep · end of day</p>
+  <h1>Status — Tuesday 16 Sep</h1>
+  <p class="sub">Day 13 of 49. The questions are with STIHL, two helpdesk releases went to production with Leo testing live on a call, the first BRANDKIT post went out to a real dealer's socials, and dealers can now see their own website numbers inside the portal. The bid work moved in code today more than in documents.</p>
+</div></header>
+
+<div class="wrap">
+  <div class="big" style="border-left-color:var(--sup)">
+    <h2>Headline: questions sent, tickets v2 live, first social post published, dealer analytics + HQ built — and the platform's GA tag had been silently broken</h2>
+    <p>Runbook <b>33 of 107 (31%) at 27% of the runway</b> — 4 points ahead. Five PRs still waiting on merge (forms, reCAPTCHA, cookies, analytics + HQ). Still red: <b>I-01 uptime monitoring, day 13</b>, and dev + staging not started.</p>
+  </div>
+
+  <div class="grid">
+    <div class="stat"><div class="k">Runbook</div><div class="v">33<small> / 107 · 31%</small></div></div>
+    <div class="stat"><div class="k">Runway used</div><div class="v">27%<small> · 4 pts ahead</small></div></div>
+    <div class="stat"><div class="k">Questions</div><div class="v good">SENT<small> 15 Sep · answers ~25 Sep</small></div></div>
+    <div class="stat"><div class="k">Shipped to prod today</div><div class="v good">2<small> PRs · #14 · #18</small></div></div>
+    <div class="stat"><div class="k">Waiting on merge</div><div class="v">5<small> PRs</small></div></div>
+    <div class="stat"><div class="k">I-01 monitoring</div><div class="v bad">13<small> days late</small></div></div>
+  </div>
+
+  <h2 class="sec">Milestones</h2>
+  <ul>
+    <li><span class="pill done">15 Sep</span> <b>Vendor questions sent to STIHL</b>, signed by <span class="who pc">Mike</span> — four questions, the first one being the one that decides the business (brand standard vs optional programme). <a href="/docs/vendor-questions-sent-2026-09-15.pdf">PDF</a>.</li>
+    <li><span class="pill done">16 Sep</span> <b>First BRANDKIT post went live</b> on a real STIHL dealer's Facebook and Instagram — published by the platform, end to end, and it worked first time. Five weeks after the Meta verification saga started.</li>
+    <li><span class="pill done">16 Sep</span> <b>Helpdesk v2 in production</b> (PR #14), then the live-test feedback release (PR #18) the same evening — <span class="who pb">Leo</span> testing on a call, fixes pushed and merged as he found them. D-06 ticked.</li>
+    <li><span class="pill done">16 Sep</span> <b>Dealers can see their website numbers in the portal</b> (R-04, PR #19) — with the discovery that the Google Analytics ID field had been silently dropped on save since profiles moved to v2, so the dealer sites' GA tag was empty too. Fixed at the source.</li>
+  </ul>
+
+  <h2 class="sec">1 · What shipped today — production</h2>
+  <ul>
+    <li><b>PR #14 tickets v2</b>: rich text with inline screenshots, description-is-the-ticket, 8-state lifecycle (UAT link → dealer <i>Approve</i>, internal-only state masked from dealers), dealer attention list.</li>
+    <li><b>PR #18 live-test feedback</b> — everything <span class="who pb">Leo</span> and <span class="who pa">Martin</span> found on the call: Cmd+Enter on create; <b>file attachments</b> (any type, 5 per message, 10 MB); "Please test" / "Mark as approved" banner below the thread; red badges on both sides when the other party acts (a new <code>admin_seen_status_at</code> stamp); the status dropdown always lists every status; <b>resolved is final</b> (no dealer "confirm" step, explicit <i>Not fixed — reopen</i>, auto-close after 5 days on both sides); <b>ticket numbers from 0100</b>; admin list auto-refresh; dealers-with-tickets filter, Clear all filters, X on search.</li>
+    <li>Both deploys were confirmed by watching the live site serve the new bundle, not by trusting the deploy button.</li>
+  </ul>
+
+  <h2 class="sec">2 · Built today — in review</h2>
+  <ul>
+    <li><b>PR #19 — dealer analytics + HQ</b> (<span class="who pa">Martin</span>): "Your website" in the dealer portal — people who visited, first-time visitors, pages looked at, got in touch, visitors per day, top pages, how people found you, phone vs computer; 7/30/90 days. GA4 read through one F925 service account. "Ask us to switch it on" opens a pre-filled ticket. <b>HQ</b> (<code>/admin/hq</code>): 21 services with usage bars against every free-tier limit and paid plan, monthly cost, 70/90% alerts, product tags (platform / dealer sites / social posting), live from DigitalOcean, Spaces, Resend, Sentry, GitHub, ImageKit and GA4 once the tokens are set (task <a href="/board.html?wrgo=I-xmu9hq001">I-xmu9hq001</a>, Leo).</li>
+    <li><span class="who pb">Leo</span> corrected the GA setup assumption in code: the three existing dealers each have their <b>own</b> top-level GA account, so those three need an individual Viewer grant; every new dealer's property goes under one shared account from now on so one grant covers them all.</li>
+    <li>Still open from Monday (<span class="who pb">Leo</span>): platform #15 + template #24 (first-party contact form via Resend, Web3Forms key gone), platform #16 + template #25 (reCAPTCHA v3), template #23 (granular cookie consent). Merge order #15 → #24 → #16 → #25 → #23.</li>
+  </ul>
+
+  <h2 class="sec">3 · The RFP side</h2>
+  <ul>
+    <li>Questions went Monday; STIHL's answers expected ~25 Sep. Nothing to do on the questions until then.</li>
+    <li>Pricing is an <b>idea, not a decision</b> (<a href="/scenarios.html">scenarios page</a>): one product, two ways to buy it. Needs the three-way conversation before STIHL answers, especially what we'd give on ownership/exit for a mandate.</li>
+    <li>War room housekeeping: Gary removed at Leo's request; task references (A-03, S-13, I-xmu…) are now links everywhere; <a href="/ammo.html">Proposal Ammo</a> started (Gary's potential, CI/review discipline, 2×prod + staging topology, UAT flow as governance evidence, BRANDKIT live, analytics + HQ).</li>
+    <li>The 03:00 daily email did <b>not</b> go out this morning — the cloud run hit the org's usage limit. Prompt refreshed tonight; it will retry tomorrow.</li>
+  </ul>
+
+  <h2 class="sec">Still red</h2>
+  <ul>
+    <li><span class="pill red">day 13</span> <b>I-01 uptime monitoring</b> — unowned. Two to three hours. Same line as the last four reports.</li>
+    <li><span class="pill red">not started</span> <b>I-xmu0hw5a2 dev + staging</b> — five PRs went or will go straight to the live dealers without a rehearsal.</li>
+    <li><span class="pill amber">one tick</span> <b>D-xmtwhacfx legal review</b> (Mike) — conclusion is on the thread; tick it.</li>
+    <li><span class="pill amber">open</span> <b>A-04 pricing</b> — reopened as "idea on the table"; closes after STIHL answers.</li>
+  </ul>
+
+  <h2 class="sec">Next steps — in order</h2>
+  <div class="next"><b>1 · Leo: merge the five PRs (#15 → #24 → #16 → #25 → #23), then #19</b>
+    <p>Tick S-xmtrza0ot, S-xmtvmisnu, S-xmtwh1m6e and I-04 on merge; revoke the old Web3Forms key (I-06). After #19: the HQ tokens and the GA service account (I-xmu9hq001).</p></div>
+  <div class="next"><b>2 · I-01 uptime monitoring — Wednesday, whoever is free first</b> <span class="pill red">13 days</span></div>
+  <div class="next"><b>3 · Dev + staging (I-xmu0hw5a2)</b>
+    <p>Before the next batch of platform work lands on main.</p></div>
+  <div class="next"><b>4 · Martin: Lighthouse (S-xmtrzfe49) and the UX pass (S-xmu1tol95)</b></div>
+  <div class="next"><b>5 · The pricing conversation, all three, before 25 Sep</b></div>
+
+  <h2 class="sec">Open load</h2>
+  <ul>
+    <li><span class="who pa">Martin</span> — Lighthouse (S-xmtrzfe49), UX/UI pass (S-xmu1tol95).</li>
+    <li><span class="who pb">Leo</span> — five PR merges + #19, staging (I-xmu0hw5a2), HQ tokens (I-xmu9hq001), S-xmtrza0ot / S-xmtvmisnu / S-xmtwh1m6e ticks.</li>
+    <li><span class="who pc">Mike</span> — tick the legal review; scenarios walk-through.</li>
+    <li>Unassigned — I-01, I-03, I-07, I-09, A-04, stress test (H-xmtuhg576), D-group docs, W-group writing.</li>
+  </ul>
+</div>
+
+<footer><div class="wrap">
+  <p>Generated 16 Sep 2026 (end of day) from live warroom state + GitHub · <a href="/">dashboard</a> · <a href="/report-2026-09-14.html">previous report (14 Sep)</a> · STIHL answers ~25 Sep · proposal due <b>9 Oct</b> · presentations 22–23 Oct.</p>
+</div></footer>
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+</body>
+</html>

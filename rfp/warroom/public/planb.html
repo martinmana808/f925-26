@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Plan B</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F7F4EE; --surface:#FFFFFF; --surface2:#F1EDE3; --ink:#221D15; --muted:#6E6557;
+  --line:#E3DCCC; --accent:#C05F0A; --accent-soft:#F5E3CF;
+  --sup:#0A6C4F; --sup-bg:#DCF2E9; --part:#96660A; --part-bg:#F8EED2; --gap:#B3261E; --gap-bg:#F9E2DE;
+  --code-bg:#EFE9DD; --shadow:0 1px 3px rgba(34,29,21,.07),0 8px 24px rgba(34,29,21,.05);
+  --p-a:#6847B8; --p-a-bg:#EDE7FA; --p-b:#0A6C4F; --p-b-bg:#DCF2E9; --p-c:#1B5FAE; --p-c-bg:#DDEAF8;
+  --wire:#B9AE97;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+    --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+    --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+    --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+    --p-a:#A78BFA; --p-a-bg:#2A2340; --p-b:#4CC9A2; --p-b-bg:#12352A; --p-c:#6FB1F0; --p-c-bg:#172A40;
+    --wire:#5E5644;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16130D; --surface:#1F1B13; --surface2:#282318; --ink:#EDE7DA; --muted:#A89E8B;
+  --line:#3A3427; --accent:#F0913C; --accent-soft:#3D2C16;
+  --sup:#4CC9A2; --sup-bg:#12352A; --part:#E4B85B; --part-bg:#3A2E11; --gap:#F08579; --gap-bg:#43201A;
+  --code-bg:#2B261B; --shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
+  --p-a:#A78BFA; --p-a-bg:#2A2340; --p-b:#4CC9A2; --p-b-bg:#12352A; --p-c:#6FB1F0; --p-c-bg:#172A40;
+  --wire:#5E5644;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+.narrow{max-width:880px}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+code{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.86em;background:var(--code-bg);padding:.1em .35em;border-radius:4px}
+h1,h2,h3,h4{font-family:"Barlow Condensed",sans-serif;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:.5em 0}
+.topbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:16px;padding-top:9px;padding-bottom:9px}
+.topbar .brand{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:16px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.topbar .brand em{color:var(--accent);font-style:normal}
+header{padding:50px 0 10px}
+.eyebrow{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-size:clamp(36px,5.6vw,56px);font-weight:700;text-transform:uppercase}
+.sub{color:var(--muted);max-width:70ch;margin-top:12px}
+.status{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--part-bg);color:var(--part);border-radius:5px;padding:2px 9px;vertical-align:middle;margin-left:8px}
+.srcnote{margin:18px 0 0;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--part);border-radius:8px;padding:12px 16px;font-size:14px;box-shadow:var(--shadow)}
+main{padding:10px 0 40px}
+h2.gh{font-size:clamp(22px,3vw,30px);font-weight:700;text-transform:uppercase;border-bottom:2px solid var(--ink);padding-bottom:7px;margin:38px 0 6px;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+h2.gh .gdesc{width:100%;font-family:"IBM Plex Sans",sans-serif;font-size:13.5px;color:var(--muted);font-weight:400;text-transform:none;margin-top:-2px}
+h3{font-size:21px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin:24px 0 6px}
+/* ---- the tree ---- */
+.tree{margin:22px 0 10px}
+.node{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:12px 16px}
+.node .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--accent);letter-spacing:.06em}
+.node h4{font-size:19px;text-transform:uppercase;letter-spacing:.02em;margin:2px 0 4px}
+.node p{margin:.25em 0;font-size:13.5px;color:var(--muted)}
+.node .kv{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:13px;margin-top:8px}
+.node .kv b{color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:11px;padding-top:2px}
+.node .kv span{color:var(--ink)}
+.node.root{max-width:560px;margin:0 auto;border-left:5px solid var(--accent);text-align:left}
+.node.root h4{font-size:22px}
+.node.branch{border-top:4px solid var(--part)}
+.node.leaf{border-top:4px solid var(--sup)}
+.node.leaf.risky{border-top-color:var(--gap)}
+.node .money{font-family:"Barlow Condensed",sans-serif;font-size:22px;font-weight:700;color:var(--ink);line-height:1.1;margin-top:8px}
+.node .money small{display:block;font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;color:var(--muted);font-weight:500}
+.level{display:grid;grid-template-columns:1fr 1fr;gap:28px;position:relative;margin-top:44px}
+.level::before{content:"";position:absolute;top:-22px;left:25%;right:25%;height:2px;background:var(--wire)}
+.tree .stem{width:2px;height:22px;background:var(--wire);margin:0 auto}
+.branchcol{position:relative}
+.branchcol::before{content:"";position:absolute;top:-22px;left:50%;width:2px;height:22px;background:var(--wire)}
+.leaves{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative;margin-top:40px}
+.leaves::before{content:"";position:absolute;top:-20px;left:25%;right:25%;height:2px;background:var(--wire)}
+.leaves .leafcol{position:relative}
+.leaves .leafcol::before{content:"";position:absolute;top:-20px;left:50%;width:2px;height:20px;background:var(--wire)}
+.branchcol .stem2{width:2px;height:20px;background:var(--wire);margin:0 auto}
+.arrowlbl{position:absolute;top:-38px;left:50%;transform:translateX(-50%);font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--muted);background:var(--paper);padding:0 6px;white-space:nowrap}
+@media (max-width:760px){
+  .level,.leaves{grid-template-columns:1fr;gap:14px;margin-top:14px}
+  .level::before,.leaves::before,.branchcol::before,.leaves .leafcol::before,.tree .stem,.branchcol .stem2{display:none}
+  .arrowlbl{display:none}
+}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:14px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px}
+blockquote{margin:.6em 0;padding:8px 14px;border-left:4px solid var(--line);background:var(--surface2);border-radius:0 8px 8px 0;font-size:14.5px;color:var(--ink)}
+blockquote b{color:var(--gap)}
+.note{font-size:13px;color:var(--muted);border-left:3px solid var(--part);padding-left:10px}
+/* ---- prose blocks ---- */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:16px 20px;margin:16px 0}
+.card h3{margin-top:0}
+.card.idea{border-left:5px solid var(--accent)}
+.card.open{border-left:5px solid var(--part)}
+.card ul{margin:.5em 0;padding-left:22px} .card li{margin:.35em 0}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);box-shadow:var(--shadow);margin:14px 0}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th{font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:var(--muted);padding:10px 14px;border-bottom:2px solid var(--line);background:var(--surface2)}
+td{padding:9px 14px;border-bottom:1px solid var(--line);vertical-align:top;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:none}
+td b.num{font-family:"Barlow Condensed",sans-serif;font-size:19px;font-weight:700}
+.muted{color:var(--muted)} td.small{font-size:12.5px;line-height:1.4;max-width:380px}
+table.dir{min-width:980px} table.dir td:first-child{font-family:"Barlow Condensed",sans-serif;font-size:19px;font-weight:700}
+table.dir tr.cat1 td:first-child{color:var(--accent)} table.dir tr.cat2 td:first-child{color:var(--part)}
+[data-f]{margin-right:6px}
+.math{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:14px 0}
+.math .m{background:var(--surface2);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.math .m .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.math .m .v{font-family:"Barlow Condensed",sans-serif;font-size:28px;font-weight:700;line-height:1.1;margin:2px 0}
+.math .m .v.good{color:var(--sup)} .math .m .v.meh{color:var(--part)} .math .m .v.ghost{color:var(--muted);text-decoration:line-through}
+.math .m p{font-size:12.5px;color:var(--muted);margin:.2em 0 0}
+.callout{border-left:4px solid var(--part);background:var(--part-bg);border-radius:0 8px 8px 0;padding:8px 12px;margin:.6em 0;font-size:14.5px}
+.callout .ct{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--part);margin-bottom:1px}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 42px;color:var(--muted);font-size:13px}
+/* review layer */
+.rdock{position:fixed;right:14px;bottom:14px;z-index:80;display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;box-shadow:var(--shadow);padding:6px 12px;font-size:12.5px;max-width:calc(100vw - 28px)}
+.rdock .rstat{color:var(--muted);white-space:nowrap}
+.rdock .rlive{font-weight:600;white-space:nowrap;color:var(--muted)}
+.rdock .rlive.live{color:var(--sup)} .rdock .rlive.local{color:var(--gap)}
+.rw{display:inline-flex;align-items:center;gap:5px;margin-left:10px;vertical-align:middle}
+.rw button{font-size:11.5px;font-weight:600;background:none;border:1px solid var(--line);border-radius:5px;color:var(--muted);padding:1px 8px;cursor:pointer;line-height:1.5;font-family:"IBM Plex Sans",system-ui,sans-serif}
+.rw .rwf.on{color:#fff;background:var(--gap);border-color:var(--gap)}
+.rw .rwc.has{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent);font-weight:700;background:var(--accent-soft)}
+.rw-flagged{box-shadow:0 0 0 2px var(--gap);border-radius:10px}
+.rw-panel{margin:10px 0 4px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:10px 12px;font-size:13.5px;line-height:1.55}
+.node .rw-panel{margin:10px -4px 0}
+.rw-panel .citem{border-bottom:1px solid var(--line);padding:6px 0}
+.rw-panel .citem:last-child{border-bottom:none}
+.rw-panel .citem b{font-size:13px}
+.rw-panel .citem time{font-size:11.5px;color:var(--muted);margin-left:6px}
+.rw-panel .citem p{margin:.15em 0 0;font-size:13.5px;white-space:pre-wrap;color:var(--ink)}
+.rw-panel .cform{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
+.rw-panel .cform textarea{flex:1;font:inherit;font-size:13.5px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);min-width:0;resize:none;line-height:1.45}
+.rw-panel .cform button{font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:6px;padding:4px 14px;cursor:pointer}
+.rw-panel .cnote{font-size:12.5px;color:var(--gap);margin:.4em 0 0}
+.rw-panel .cflag{font-size:12px;color:var(--gap);font-weight:600;margin:0 0 .3em}
+html{scroll-behavior:smooth}
+@media (max-width:600px){.wrap{padding:0 16px}}
+</style>
+<link rel="stylesheet" href="/wr-shell.css">
+</head>
+<body data-wr-page="planb">
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">U4R <em>·</em> Plan B</span>
+    <div class="wrs-menu">
+      <button type="button" class="wrs-menubtn" aria-haspopup="true">Sections ▾</button>
+      <nav class="wrs-drop" aria-label="Sections">
+        <a href="#market">The market, from the directory</a>
+        <a href="#directory">The whole dealership, categorised</a>
+        <a href="#plan">Martin’s plan</a>
+        <a href="#changes">Three changes, one addition, one warning</a>
+        <a href="#build">The build, in order</a>
+        <a href="#offer">The offer</a>
+        <a href="#timing">Timing</a>
+        <a href="#live">LIVE — 55 previews up</a>
+        <a href="#leo">For Leo</a>
+      </nav>
+    </div>
+    <span class="wrs-right"><span class="wrs-id"></span><span class="wrs-bell"></span></span>
+  </div>
+</div>
+
+<header>
+  <div class="wrap narrow">
+    <p class="eyebrow">F925 internal · 18 Sep 2026 · with or without the RFP</p>
+    <h1>Plan B<span class="status">is also Plan A’s engine</span></h1>
+    <p class="sub">Go straight to the dealers. Build every dealer who has no website a real preview of theirs, from data we already have, and offer it at a price a farmer says yes to. If we win the RFP the same emails go out with “recommended by STIHL NZ” on them. If we don’t, they go out anyway. Build once; the RFP outcome changes one line.</p>
+  </div>
+</header>
+
+<main><div class="wrap">
+
+<h2 class="gh" id="market">The market, from the directory<span class="gdesc">90 STIHL SHOP dealers, hand-built by Martin about six months ago. Counted 18 Sep. Superseded by the <a href="#directory">whole-dealership categorisation</a> below (93, 21 Sep) — kept for the reasoning.</span></h2>
+<div class="card" data-key="pb-market">
+  <div class="tablewrap"><table>
+    <thead><tr><th>Segment</th><th>Count</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td><b>No website at all</b></td><td><b>47</b></td><td>They rely on stihlshop.co.nz. They have never seen “their” website. A preview is magic to them. <b>This is the market.</b></td></tr>
+      <tr><td>Have a website</td><td>41</td><td>Somebody already got paid (often a mate). ~8 are multi-brand trade names (Turf Force, Downs, Bisset Honda, Mills Honda, Fiordland Marine, McLarens Rural, City Honda…) where a STIHL SHOP template is the wrong product. Different email, later, compliance-angled, no draft.</td></tr>
+      <tr><td>Already ours</td><td>3</td><td>Tauranga, Waihi, Rotorua (Closed Won).</td></tr>
+      <tr><td>Warm</td><td>3</td><td>Kumeu, Albany, Te Awamutu — “Proposal Sent”. Kumeu wants to see pricing and how the platform works. These get previews immediately.</td></tr>
+    </tbody>
+  </table></div>
+  <p>Mark’s “many dealers do not currently operate their own website” is literally <b>more than half</b>. Regions: Northern 33 · Central 33 · Southern 24. Owners are named in the sheet for nearly all of them, with a direct <code>town@stihlshop.co.nz</code> address.</p>
+</div>
+
+<!-- directory:start -->
+<h2 class="gh" id="directory">The whole dealership, categorised<span class="gdesc">93 franchisees, three sources reconciled, every website audited, every Google listing read. 21 Sep.</span></h2>
+<div class="card open" data-key="pb-dir-summary">
+  <div class="tablewrap"><table>
+<thead><tr><th>#</th><th>Category</th><th>Count</th><th>What it means</th><th>Regions</th></tr></thead>
+<tbody><tr><td><b>1</b></td><td><b>No website</b></td><td><b>35</b></td><td>Nothing of their own online. A preview is magic to them. <b>Plan B market.</b></td><td class="muted">N 17 · C 7 · S 11</td></tr><tr><td><b>2</b></td><td><b>Weak website</b></td><td><b>20</b></td><td>Has a site, audit under 55/100: stale, thin, off-brand, slow, no HTTPS, or a template builder. Preview built from <i>their own</i> text. Second wave.</td><td class="muted">N 12 · C 4 · S 4</td></tr><tr><td><b>3</b></td><td><b>Decent website</b></td><td><b>20</b></td><td>Has a decent site. No draft; the later compliance-angled note ("STIHL SHOP standards, here is the easy way").</td><td class="muted">N 4 · C 10 · S 6</td></tr><tr><td><b>4</b></td><td><b>Multi-brand / shared site</b></td><td><b>14</b></td><td>The STIHL SHOP is one page on a Honda / Turf Force / Ellmers site, or a branch on a sibling's site. Wrong product for the template. Skip.</td><td class="muted">N 2 · C 5 · S 7</td></tr><tr><td><b>5</b></td><td><b>On UNIFY</b></td><td><b>3</b></td><td>Tauranga, Waihi, Rotorua.</td><td class="muted">N 2 · C 1 · S 0</td></tr><tr><td><b>0</b></td><td><b>Closed</b></td><td><b>1</b></td><td>Whitianga, locator says CURRENTLY CLOSED.</td><td class="muted">N 1 · C 0 · S 0</td></tr></tbody></table></div>
+  <ul>
+<li><b>93 STIHL SHOP franchisees</b> = union of three sources: Martin's sheet (90), the stihlshop.co.nz locator (92, incl. Whitianga closed) and STIHL's corporate dealer API on stihl.co.nz (91 STIHL SHOP entries + 12 approved non-franchise dealers). The corporate list added <b>Balclutha</b> (Ewan Allan Honda, new). Anything counted above 93 in the past was a duplicate (Mt Albert ×2, Greytown ×2), an approved dealer, or a closed store.</li>
+<li><b>Google:</b> 90 of 93 have a rated listing, avg <b>4.59★</b> over <b>6,551</b> reviews. <b>Facebook:</b> 88 pages, 63,169 followers combined. <b>Instagram:</b> 49.</li>
+<li><b>Sites audited:</b> 54 (every dealer with a site, incl. multi-brand). Stack: WordPress 28, Wix 6, Custom / unknown 5, Webflow 5, Shopify 4, Magento 3, Squarespace 2, Joomla 1. 9 geo-block visitors outside NZ (read through the Wayback Machine + a US reader). 14 are stale (newest year on the page ≤ 2024), 27 load in over 6 s, 2 break on a phone, 0 have no HTTPS, 2 run their own cart against §6 of the RFP.</li>
+<li>Score = 50 ± pages, content, contact form, hours, map, STIHL branding, franchise link, own cart, freshness, speed, builder, HTTPS, mobile. It is a sorting aid, not a verdict; the cut between 2 and 3 is 55 and any dealer can be pinned by hand in <code>categorize.py</code>.</li>
+</ul>
+  <p><a href="/directory.html"><b>Open the dealer directory →</b></a> — all 93 with screenshots, filters, map, per-dealer notes. Source of truth: <code>rfp/planb/dealers.json</code> (+ <code>dealers.csv</code> for mail merge). Per dealer: address, phone, email, owners, hours, store photo, brands, Google rating / review count / Maps link, Facebook + Instagram, the site audit (stack, pages, words, speed, mobile, HTTPS, branding, freshness, screenshot) and the generated preview copy. README in the same folder.</p>
+</div>
+<div class="card" data-key="pb-dir-table">
+  <h3>All 93, by category</h3>
+  <p class="muted">Filter: <a href="#" data-f="all">all</a> · <a href="#" data-f="1">1 no website</a> · <a href="#" data-f="2">2 weak</a> · <a href="#" data-f="3">3 decent</a> · <a href="#" data-f="4">4 multi-brand</a> · <a href="#" data-f="5">5 ours</a></p>
+  <div class="tablewrap"><table class="dir">
+<thead><tr><th>#</th><th>Dealer</th><th>Website · audit</th><th>Google</th><th>FB followers</th><th>Why this category</th><th></th></tr></thead>
+<tbody><tr class="cat1" data-cat="1"><td>1</td><td><b>Hawera</b><br><span class="muted">Central</span></td><td><span class="muted">none</span></td><td>4.6★ <span class="muted">(65)</span></td><td>335</td><td class="small">no website of their own · Google 4.6★ (65 reviews) with nowhere to send people · Facebook page with 335 followers is their only web presence</td><td><a href="https://hawera.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Masterton</b><br><span class="muted">Central</span></td><td><span class="muted">none</span></td><td>4.5★ <span class="muted">(111)</span></td><td>2754</td><td class="small">no website of their own · Google 4.5★ (111 reviews) with nowhere to send people · Facebook page with 2,754 followers is their only web presence</td><td><a href="https://masterton.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Taihape</b><br><span class="muted">Central</span></td><td><span class="muted">none</span></td><td>5★ <span class="muted">(4)</span></td><td>171</td><td class="small">no website of their own · Google 5★ (4 reviews) with nowhere to send people · Facebook page with 171 followers is their only web presence</td><td><a href="https://taihape.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Taumarunui</b><br><span class="muted">Central</span></td><td><span class="muted">none</span></td><td>4.7★ <span class="muted">(6)</span></td><td>88</td><td class="small">no website of their own · Google 4.7★ (6 reviews) with nowhere to send people · Facebook page with 88 followers is their only web presence</td><td><a href="https://taumarunui.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Taupo</b><br><span class="muted">Central</span></td><td><span class="muted">none</span></td><td>4.6★ <span class="muted">(50)</span></td><td>yes</td><td class="small">no website of their own · Google 4.6★ (50 reviews) with nowhere to send people · Facebook page is their only web presence</td><td><a href="https://taupo.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Wairoa</b><br><span class="muted">Central</span></td><td><span class="muted">none</span></td><td>4.4★ <span class="muted">(7)</span></td><td>279</td><td class="small">no website of their own · Google 4.4★ (7 reviews) with nowhere to send people · Facebook page with 279 followers is their only web presence</td><td><a href="https://wairoa.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Wanganui</b><br><span class="muted">Central</span></td><td><span class="muted">none</span></td><td>4.6★ <span class="muted">(60)</span></td><td>2117</td><td class="small">no website of their own · Google 4.6★ (60 reviews) with nowhere to send people · Facebook page with 2,117 followers is their only web presence</td><td><a href="https://wanganui.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Albany</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.6★ <span class="muted">(193)</span></td><td>1324</td><td class="small">no website of their own · Google 4.6★ (193 reviews) with nowhere to send people · Facebook page with 1,324 followers is their only web presence</td><td><a href="https://albany.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Cambridge</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.5★ <span class="muted">(83)</span></td><td>1811</td><td class="small">no website of their own · Google 4.5★ (83 reviews) with nowhere to send people · Facebook page with 1,811 followers is their only web presence</td><td><a href="https://cambridge.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Dargaville</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td class="small">no website of their own · not even a Facebook page found</td><td><a href="https://dargaville.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Ellerslie</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.6★ <span class="muted">(158)</span></td><td>130</td><td class="small">no website of their own · Google 4.6★ (158 reviews) with nowhere to send people · Facebook page with 130 followers is their only web presence</td><td><a href="https://ellerslie.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Huntly</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.1★ <span class="muted">(31)</span></td><td>224</td><td class="small">no website of their own · Google 4.1★ (31 reviews) with nowhere to send people · Facebook page with 224 followers is their only web presence</td><td><a href="https://huntly.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Kaitaia</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.6★ <span class="muted">(50)</span></td><td>853</td><td class="small">no website of their own · Google 4.6★ (50 reviews) with nowhere to send people · Facebook page with 853 followers is their only web presence</td><td><a href="https://kaitaia.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Kumeu</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.6★ <span class="muted">(68)</span></td><td>819</td><td class="small">no website of their own · Google 4.6★ (68 reviews) with nowhere to send people · Facebook page with 819 followers is their only web presence</td><td><a href="https://kumeu.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Onehunga</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.6★ <span class="muted">(107)</span></td><td>2182</td><td class="small">no website of their own · Google 4.6★ (107 reviews) with nowhere to send people · Facebook page with 2,182 followers is their only web presence</td><td><a href="https://onehunga.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Otorohanga</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.4★ <span class="muted">(10)</span></td><td>358</td><td class="small">no website of their own · Google 4.4★ (10 reviews) with nowhere to send people · Facebook page with 358 followers is their only web presence</td><td><a href="https://otorohanga.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Putaruru</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.5★ <span class="muted">(26)</span></td><td>yes</td><td class="small">no website of their own · Google 4.5★ (26 reviews) with nowhere to send people · Facebook page is their only web presence</td><td><a href="https://putaruru.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Te Puke</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.5★ <span class="muted">(83)</span></td><td>yes</td><td class="small">no website of their own · Google 4.5★ (83 reviews) with nowhere to send people · Facebook page is their only web presence</td><td><a href="https://te-puke.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Thames</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.8★ <span class="muted">(72)</span></td><td>234</td><td class="small">no website of their own · Google 4.8★ (72 reviews) with nowhere to send people · Facebook page with 234 followers is their only web presence</td><td><a href="https://thames.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Tokoroa</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.9★ <span class="muted">(57)</span></td><td>yes</td><td class="small">no website of their own · Google 4.9★ (57 reviews) with nowhere to send people · Facebook page is their only web presence</td><td><a href="https://tokoroa.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Waiheke</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>5★ <span class="muted">(7)</span></td><td>yes</td><td class="small">no website of their own · Google 5★ (7 reviews) with nowhere to send people · Facebook page is their only web presence</td><td><a href="https://waiheke.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Waipapa</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>3.9★ <span class="muted">(54)</span></td><td>74</td><td class="small">no website of their own · Google 3.9★ (54 reviews) with nowhere to send people · Facebook page with 74 followers is their only web presence</td><td><a href="https://waipapa.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Westgate</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.2★ <span class="muted">(33)</span></td><td>yes</td><td class="small">no website of their own · Google 4.2★ (33 reviews) with nowhere to send people · Facebook page is their only web presence</td><td><a href="https://westgate.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Whangamata</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td>4.2★ <span class="muted">(5)</span></td><td>60</td><td class="small">no website of their own · Google 4.2★ (5 reviews) with nowhere to send people · Facebook page with 60 followers is their only web presence</td><td><a href="https://whangamata.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Alexandra</b><br><span class="muted">Southern</span></td><td><span class="muted">none</span></td><td>3.5★ <span class="muted">(11)</span></td><td>1489</td><td class="small">no website of their own · Google 3.5★ (11 reviews) with nowhere to send people · Facebook page with 1,489 followers is their only web presence</td><td><a href="https://alexandra.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Ashburton</b><br><span class="muted">Southern</span></td><td><span class="muted">none</span></td><td>4.9★ <span class="muted">(37)</span></td><td>1323</td><td class="small">no website of their own · Google 4.9★ (37 reviews) with nowhere to send people · Facebook page with 1,323 followers is their only web presence</td><td><a href="https://ashburton.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Blenheim</b><br><span class="muted">Southern</span></td><td><span class="muted">none</span></td><td>4.4★ <span class="muted">(76)</span></td><td>626</td><td class="small">no website of their own · Google 4.4★ (76 reviews) with nowhere to send people · Facebook page with 626 followers is their only web presence</td><td><a href="https://blenheim.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Cromwell</b><br><span class="muted">Southern</span></td><td><span class="muted">none</span></td><td>5★ <span class="muted">(4)</span></td><td>234</td><td class="small">no website of their own · Google 5★ (4 reviews) with nowhere to send people · Facebook page with 234 followers is their only web presence</td><td><a href="https://cromwell.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Dunedin</b><br><span class="muted">Southern</span></td><td><span class="muted">none</span></td><td>4.4★ <span class="muted">(129)</span></td><td>723</td><td class="small">no website of their own · Google 4.4★ (129 reviews) with nowhere to send people · Facebook page with 723 followers is their only web presence</td><td><a href="https://dunedin.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Gore</b><br><span class="muted">Southern</span></td><td><span class="muted">none</span></td><td>4.7★ <span class="muted">(27)</span></td><td>yes</td><td class="small">no website of their own · Google 4.7★ (27 reviews) with nowhere to send people · Facebook page is their only web presence</td><td><a href="https://gore.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Milton</b><br><span class="muted">Southern</span></td><td><span class="muted">none</span></td><td>4.8★ <span class="muted">(30)</span></td><td>723</td><td class="small">no website of their own · Google 4.8★ (30 reviews) with nowhere to send people · Facebook page with 723 followers is their only web presence</td><td><a href="https://milton.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Motueka</b><br><span class="muted">Southern</span></td><td><span class="muted">none</span></td><td>4.5★ <span class="muted">(41)</span></td><td>yes</td><td class="small">no website of their own · Google 4.5★ (41 reviews) with nowhere to send people · Facebook page is their only web presence</td><td><a href="https://motueka.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Queenstown</b><br><span class="muted">Southern</span></td><td><span class="muted">none</span></td><td>4.4★ <span class="muted">(23)</span></td><td>141</td><td class="small">no website of their own · Google 4.4★ (23 reviews) with nowhere to send people · Facebook page with 141 followers is their only web presence</td><td><a href="https://queenstown.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Wanaka</b><br><span class="muted">Southern</span></td><td><span class="muted">none</span></td><td>4.8★ <span class="muted">(27)</span></td><td>3966</td><td class="small">no website of their own · Google 4.8★ (27 reviews) with nowhere to send people · Facebook page with 3,966 followers is their only web presence</td><td><a href="https://wanaka.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat1" data-cat="1"><td>1</td><td><b>Westport</b><br><span class="muted">Southern</span></td><td><span class="muted">none</span></td><td>5★ <span class="muted">(7)</span></td><td>259</td><td class="small">no website of their own · Google 5★ (7 reviews) with nowhere to send people · Facebook page with 259 followers is their only web presence</td><td><a href="https://westport.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Gisborne</b><br><span class="muted">Central</span></td><td><a href="https://www.stihlshopgisborne.co.nz" target="_blank" rel="noopener">www.stihlshopgisborne.co.nz</a><br><b>36</b>/100 · WordPress<br><a href="/planb-audit/gisborne.jpg" target="_blank">screenshot</a></td><td>4.7★ <span class="muted">(58)</span></td><td>1803</td><td class="small">audit 36/100 on WordPress · stale (newest year on page 2023) · slow load 8.5s · no contact form</td><td><a href="https://gisborne.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Hastings</b><br><span class="muted">Central</span></td><td><a href="https://stihlshophastings.co.nz" target="_blank" rel="noopener">stihlshophastings.co.nz</a><br><b>52</b>/100 · WordPress<br><a href="/planb-audit/hastings.jpg" target="_blank">screenshot</a></td><td>4.8★ <span class="muted">(119)</span></td><td>yes</td><td class="small">audit 52/100 on WordPress · slow load 10.1s · no contact form</td><td><a href="https://hastings.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Porirua</b><br><span class="muted">Central</span></td><td><a href="https://www.stihlshopporirua.co.nz" target="_blank" rel="noopener">www.stihlshopporirua.co.nz</a><br><b>48</b>/100 · Webflow<br><a href="/planb-audit/porirua.jpg" target="_blank">screenshot</a></td><td>4.9★ <span class="muted">(39)</span></td><td>525</td><td class="small">audit 48/100 on Webflow · stale (newest year on page 2024) · no contact form · no opening hours found</td><td><a href="https://porirua.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Whakatane</b><br><span class="muted">Central</span></td><td><a href="https://stihlshopwhakatane.co.nz" target="_blank" rel="noopener">stihlshopwhakatane.co.nz</a><br><b>50</b>/100 · WordPress<br><a href="/planb-audit/whakatane.jpg" target="_blank">screenshot</a></td><td>4.7★ <span class="muted">(48)</span></td><td>812</td><td class="small">audit 50/100 on WordPress · slow load 11.8s · no contact form · no opening hours found</td><td><a href="https://whakatane.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Botany</b><br><span class="muted">Northern</span></td><td><a href="https://stihlshopbotany.co.nz" target="_blank" rel="noopener">stihlshopbotany.co.nz</a><br><b>53</b>/100 · WordPress<br><a href="/planb-audit/botany.jpg" target="_blank">screenshot</a></td><td>4.5★ <span class="muted">(222)</span></td><td>2339</td><td class="small">audit 53/100 on WordPress (Elementor) · own product catalogue / cart (RFP §6 conflict) · no contact form · no opening hours found · seen via Wayback 2026-03-02 + live text (site geo-blocks non-NZ visitors)</td><td><a href="https://botany.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Browns Bay</b><br><span class="muted">Northern</span></td><td><a href="https://stihlshopbrownsbay.co.nz" target="_blank" rel="noopener">stihlshopbrownsbay.co.nz</a><br><b>52</b>/100 · WordPress<br><a href="/planb-audit/browns-bay.jpg" target="_blank">screenshot</a></td><td>4.8★ <span class="muted">(55)</span></td><td>493</td><td class="small">audit 52/100 on WordPress · slow load 7.1s · no contact form</td><td><a href="https://browns-bay.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>East Tamaki</b><br><span class="muted">Northern</span></td><td><a href="https://www.stihlshopeasttamaki.co.nz" target="_blank" rel="noopener">www.stihlshopeasttamaki.co.nz</a><br><b>36</b>/100 · WordPress<br><a href="/planb-audit/east-tamaki.jpg" target="_blank">screenshot</a></td><td>4.2★ <span class="muted">(145)</span></td><td>yes</td><td class="small">audit 36/100 on WordPress · stale (newest year on page 2020) · slow load 9.9s · no contact form</td><td><a href="https://east-tamaki.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Glenfield</b><br><span class="muted">Northern</span></td><td><a href="https://stihlshopglenfield.co.nz" target="_blank" rel="noopener">stihlshopglenfield.co.nz</a><br><b>48</b>/100 · WordPress<br><a href="/planb-audit/glenfield.jpg" target="_blank">screenshot</a></td><td>5★ <span class="muted">(17)</span></td><td>59</td><td class="small">audit 48/100 on WordPress · only 1 internal pages · no contact form · seen via Wayback 2026-01-21 + live text (site geo-blocks non-NZ visitors)</td><td><a href="https://glenfield.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Hamilton East</b><br><span class="muted">Northern</span></td><td><a href="https://www.stihlshophameast.co.nz" target="_blank" rel="noopener">www.stihlshophameast.co.nz</a><br><b>49</b>/100 · WordPress<br><a href="/planb-audit/hamilton-east.jpg" target="_blank">screenshot</a></td><td>4.4★ <span class="muted">(193)</span></td><td>2476</td><td class="small">audit 49/100 on WordPress (Elementor) · stale (newest year on page 2021) · slow load 13.0s · no contact form</td><td><a href="https://hamilton-east.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Howick</b><br><span class="muted">Northern</span></td><td><a href="https://stihlshophowick.co.nz" target="_blank" rel="noopener">stihlshophowick.co.nz</a><br><b>36</b>/100 · WordPress<br><a href="/planb-audit/howick.jpg" target="_blank">screenshot</a></td><td>4.9★ <span class="muted">(43)</span></td><td>325</td><td class="small">audit 36/100 on WordPress · stale (newest year on page 2014) · slow load 7.0s · no contact form</td><td><a href="https://howick.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Matamata</b><br><span class="muted">Northern</span></td><td><a href="https://stihlshopmatamata.co.nz" target="_blank" rel="noopener">stihlshopmatamata.co.nz</a><br><b>52</b>/100 · WordPress<br><a href="/planb-audit/matamata.jpg" target="_blank">screenshot</a></td><td>4.7★ <span class="muted">(49)</span></td><td>yes</td><td class="small">audit 52/100 on WordPress · slow load 6.6s · no contact form</td><td><a href="https://matamata.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Pukekohe</b><br><span class="muted">Northern</span></td><td><a href="https://www.stihlshoppukekohe.co.nz" target="_blank" rel="noopener">www.stihlshoppukekohe.co.nz</a><br><b>33</b>/100 · Custom / unknown<br><a href="/planb-audit/pukekohe.jpg" target="_blank">screenshot</a></td><td>4.5★ <span class="muted">(190)</span></td><td>17</td><td class="small">audit 33/100 on Custom / unknown · stale (newest year on page 2016) · slow load 6.0s · horizontal overflow on phone · no contact form</td><td><a href="https://pukekohe.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Silverdale</b><br><span class="muted">Northern</span></td><td><a href="https://stihlshopsilverdale.co.nz" target="_blank" rel="noopener">stihlshopsilverdale.co.nz</a><br><b>52</b>/100 · WordPress<br><a href="/planb-audit/silverdale.jpg" target="_blank">screenshot</a></td><td>4.8★ <span class="muted">(119)</span></td><td>yes</td><td class="small">audit 52/100 on WordPress · slow load 8.5s · no contact form</td><td><a href="https://silverdale.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Te Awamutu</b><br><span class="muted">Northern</span></td><td><a href="https://www.stihlshopta.co.nz" target="_blank" rel="noopener">www.stihlshopta.co.nz</a><br><b>54</b>/100 · WordPress<br><a href="/planb-audit/te-awamutu.jpg" target="_blank">screenshot</a></td><td>4.5★ <span class="muted">(112)</span></td><td>1119</td><td class="small">audit 54/100 on WordPress (Elementor) · stale (newest year on page 2021) · slow load 8.5s · no contact form</td><td><a href="https://te-awamutu.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Te Rapa</b><br><span class="muted">Northern</span></td><td><a href="https://stihlshop-terapa.co.nz" target="_blank" rel="noopener">stihlshop-terapa.co.nz</a><br><b>40</b>/100 · WordPress<br><a href="/planb-audit/te-rapa.jpg" target="_blank">screenshot</a></td><td>4.3★ <span class="muted">(229)</span></td><td>2284</td><td class="small">audit 40/100 on WordPress · only 0 internal pages · no contact form · no opening hours found</td><td><a href="https://te-rapa.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Warkworth</b><br><span class="muted">Northern</span></td><td><a href="https://www.stihlshopwarkworth.co.nz" target="_blank" rel="noopener">www.stihlshopwarkworth.co.nz</a><br><b>37</b>/100 · Wix<br><a href="/planb-audit/warkworth.jpg" target="_blank">screenshot</a></td><td>4.9★ <span class="muted">(94)</span></td><td>675</td><td class="small">audit 37/100 on Wix · stale (newest year on page 2023) · very little content · no contact form · no opening hours found</td><td><a href="https://warkworth.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Invercargill</b><br><span class="muted">Southern</span></td><td><a href="https://www.stihlshopinvercargill.co.nz" target="_blank" rel="noopener">www.stihlshopinvercargill.co.nz</a><br><b>49</b>/100 · Custom / unknown<br><a href="/planb-audit/invercargill.jpg" target="_blank">screenshot</a></td><td>3.8★ <span class="muted">(60)</span></td><td>yes</td><td class="small">audit 49/100 on Custom / unknown · stale (newest year on page 2019) · slow load 7.8s · no contact form</td><td><a href="https://invercargill.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Mosgiel</b><br><span class="muted">Southern</span></td><td><a href="https://stihlshopmosgiel.co.nz" target="_blank" rel="noopener">stihlshopmosgiel.co.nz</a><br><b>52</b>/100 · WordPress<br><a href="/planb-audit/mosgiel.jpg" target="_blank">screenshot</a></td><td>5★ <span class="muted">(8)</span></td><td>725</td><td class="small">audit 52/100 on WordPress · slow load 7.9s · no contact form</td><td><a href="https://mosgiel.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Rolleston</b><br><span class="muted">Southern</span></td><td><a href="https://www.stihlshoprolleston.co.nz" target="_blank" rel="noopener">www.stihlshoprolleston.co.nz</a><br><b>36</b>/100 · WordPress<br><a href="/planb-audit/rolleston.jpg" target="_blank">screenshot</a></td><td>4.9★ <span class="muted">(54)</span></td><td>837</td><td class="small">audit 36/100 on WordPress · stale (newest year on page 2023) · slow load 8.5s · no contact form</td><td><a href="https://rolleston.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat2" data-cat="2"><td>2</td><td><b>Timaru</b><br><span class="muted">Southern</span></td><td><a href="https://stihlshoptimaru.co.nz" target="_blank" rel="noopener">stihlshoptimaru.co.nz</a><br><b>46</b>/100 · WordPress<br><a href="/planb-audit/timaru.jpg" target="_blank">screenshot</a></td><td>4.7★ <span class="muted">(67)</span></td><td>1369</td><td class="small">audit 46/100 on WordPress · stale (newest year on page 2021) · no contact form</td><td><a href="https://timaru.preview.f925.works" target="_blank" rel="noopener">preview</a></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Feilding</b><br><span class="muted">Central</span></td><td><a href="https://stihlshopfeilding.co.nz" target="_blank" rel="noopener">stihlshopfeilding.co.nz</a><br><b>62</b>/100 · WordPress<br><a href="/planb-audit/feilding.jpg" target="_blank">screenshot</a></td><td>4.5★ <span class="muted">(51)</span></td><td>588</td><td class="small">audit 62/100 on WordPress · slow load 6.6s · no contact form · 8 internal pages · hours shown · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Greenmeadows</b><br><span class="muted">Central</span></td><td><a href="https://stihlshopgreenmeadows.co.nz" target="_blank" rel="noopener">stihlshopgreenmeadows.co.nz</a><br><b>72</b>/100 · WordPress<br><a href="/planb-audit/greenmeadows.jpg" target="_blank">screenshot</a></td><td>4.4★ <span class="muted">(97)</span></td><td>1516</td><td class="small">audit 72/100 on WordPress · no contact form · 24 internal pages · hours shown · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Greytown</b><br><span class="muted">Central</span></td><td><a href="https://www.stihlshopgreytown.co.nz" target="_blank" rel="noopener">www.stihlshopgreytown.co.nz</a><br><b>72</b>/100 · Webflow<br><a href="/planb-audit/greytown.jpg" target="_blank">screenshot</a></td><td>4.7★ <span class="muted">(71)</span></td><td>yes</td><td class="small">audit 72/100 on Webflow · no contact form · 16 internal pages · hours shown · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Kapiti</b><br><span class="muted">Central</span></td><td><a href="https://www.stihlshopkapiti.nz" target="_blank" rel="noopener">www.stihlshopkapiti.nz</a><br><b>62</b>/100 · Custom / unknown<br><a href="/planb-audit/kapiti.jpg" target="_blank">screenshot</a></td><td>4.6★ <span class="muted">(110)</span></td><td>1574</td><td class="small">audit 62/100 on Custom / unknown · slow load 7.0s · no contact form · 8 internal pages · hours shown · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Lakelands</b><br><span class="muted">Central</span></td><td><a href="https://stihlshoplakelands.co.nz" target="_blank" rel="noopener">stihlshoplakelands.co.nz</a><br><b>67</b>/100 · WordPress<br><a href="/planb-audit/lakelands.jpg" target="_blank">screenshot</a></td><td>4.8★ <span class="muted">(38)</span></td><td>623</td><td class="small">audit 67/100 on WordPress (Elementor) · no contact form · no opening hours found · 19 internal pages · map · STIHL branding present · seen via Wayback 2026-01-31 + live text (site geo-blocks non-NZ visitors)</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Napier</b><br><span class="muted">Central</span></td><td><a href="https://stihlshopnapier.co.nz" target="_blank" rel="noopener">stihlshopnapier.co.nz</a><br><b>58</b>/100 · WordPress<br><a href="/planb-audit/napier.jpg" target="_blank">screenshot</a></td><td>4.4★ <span class="muted">(58)</span></td><td>1516</td><td class="small">audit 58/100 on WordPress (Elementor) · slow load 17.2s · no contact form · 37 internal pages · hours shown · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>New Plymouth</b><br><span class="muted">Central</span></td><td><a href="https://stihlshopnewplymouth.co.nz" target="_blank" rel="noopener">stihlshopnewplymouth.co.nz</a><br><b>62</b>/100 · Squarespace<br><a href="/planb-audit/new-plymouth.jpg" target="_blank">screenshot</a></td><td>4.5★ <span class="muted">(82)</span></td><td>390</td><td class="small">audit 62/100 on Squarespace · slow load 6.8s · no contact form · 23 internal pages · hours shown · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Palmerston North</b><br><span class="muted">Central</span></td><td><a href="https://www.stihlshoppalmerstonnorth.co.nz" target="_blank" rel="noopener">www.stihlshoppalmerstonnorth.co.nz</a><br><b>58</b>/100 · WordPress<br><a href="/planb-audit/palmerston-north.jpg" target="_blank">screenshot</a></td><td>4.7★ <span class="muted">(186)</span></td><td><span class="muted">—</span></td><td class="small">audit 58/100 on WordPress (Elementor) · slow load 7.3s · no contact form · 12 internal pages · hours shown · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Petone</b><br><span class="muted">Central</span></td><td><a href="https://www.stihlshoppetone.co.nz" target="_blank" rel="noopener">www.stihlshoppetone.co.nz</a><br><b>57</b>/100 · Webflow<br><a href="/planb-audit/petone.jpg" target="_blank">screenshot</a></td><td>4.6★ <span class="muted">(160)</span></td><td>yes</td><td class="small">audit 57/100 on Webflow · stale (newest year on page 2024) · no contact form · no opening hours found · 47 internal pages · substantial content · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Upper Hutt</b><br><span class="muted">Central</span></td><td><a href="https://www.stihlshopupperhutt.co.nz" target="_blank" rel="noopener">www.stihlshopupperhutt.co.nz</a><br><b>60</b>/100 · Webflow<br><a href="/planb-audit/upper-hutt.jpg" target="_blank">screenshot</a></td><td>4.6★ <span class="muted">(166)</span></td><td>125</td><td class="small">audit 60/100 on Webflow · no contact form · no opening hours found · 42 internal pages · STIHL branding present · links to stihlshop.co.nz</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Glen Eden</b><br><span class="muted">Northern</span></td><td><a href="https://mcgilloutdoors.co.nz" target="_blank" rel="noopener">mcgilloutdoors.co.nz</a><br><b>70</b>/100 · Shopify<br><a href="/planb-audit/glen-eden.jpg" target="_blank">screenshot</a></td><td>4.6★ <span class="muted">(161)</span></td><td>1489</td><td class="small">audit 70/100 on Shopify · no opening hours found · 30 internal pages · contact form · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Mt Albert</b><br><span class="muted">Northern</span></td><td><a href="https://mcgilloutdoors.co.nz" target="_blank" rel="noopener">mcgilloutdoors.co.nz</a><br><b>74</b>/100 · Shopify<br><a href="/planb-audit/mt-albert.jpg" target="_blank">screenshot</a></td><td>4.2★ <span class="muted">(137)</span></td><td>495</td><td class="small">audit 74/100 on Shopify · no opening hours found · 30 internal pages · contact form · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Mt Maunganui</b><br><span class="muted">Northern</span></td><td><a href="https://www.stihlshopmtmaunganui.co.nz" target="_blank" rel="noopener">www.stihlshopmtmaunganui.co.nz</a><br><b>76</b>/100 · Webflow<br><a href="/planb-audit/mt-maunganui.jpg" target="_blank">screenshot</a></td><td>4.7★ <span class="muted">(115)</span></td><td>yes</td><td class="small">audit 76/100 on Webflow · no contact form · 35 internal pages · hours shown · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Whangarei</b><br><span class="muted">Northern</span></td><td><a href="https://stihlshopwhangarei.co.nz" target="_blank" rel="noopener">stihlshopwhangarei.co.nz</a><br><b>58</b>/100 · WordPress<br><a href="/planb-audit/whangarei.jpg" target="_blank">screenshot</a></td><td>4.2★ <span class="muted">(122)</span></td><td>920</td><td class="small">audit 58/100 on WordPress · slow load 10.2s · no contact form · 8 internal pages · hours shown · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Ferrymead</b><br><span class="muted">Southern</span></td><td><a href="https://www.stihlshopferrymead.com" target="_blank" rel="noopener">www.stihlshopferrymead.com</a><br><b>57</b>/100 · Wix<br><a href="/planb-audit/ferrymead.jpg" target="_blank">screenshot</a></td><td>5★ <span class="muted">(43)</span></td><td>550</td><td class="small">audit 57/100 on Wix · no contact form · builder: Wix · hours shown · STIHL branding present · links to stihlshop.co.nz</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Fosters</b><br><span class="muted">Southern</span></td><td><a href="https://stihlshopfosters.co.nz" target="_blank" rel="noopener">stihlshopfosters.co.nz</a><br><b>69</b>/100 · WordPress<br><a href="/planb-audit/fosters.jpg" target="_blank">screenshot</a></td><td>4.5★ <span class="muted">(198)</span></td><td>1389</td><td class="small">audit 69/100 on WordPress · slow load 7.0s · no opening hours found · 97 internal pages · substantial content · contact form</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Greymouth</b><br><span class="muted">Southern</span></td><td><a href="https://www.stihlshopgreymouth.com" target="_blank" rel="noopener">www.stihlshopgreymouth.com</a><br><b>57</b>/100 · Wix<br><a href="/planb-audit/greymouth.jpg" target="_blank">screenshot</a></td><td>4.9★ <span class="muted">(41)</span></td><td>324</td><td class="small">audit 57/100 on Wix · no contact form · builder: Wix · hours shown · STIHL branding present · links to stihlshop.co.nz</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Nelson</b><br><span class="muted">Southern</span></td><td><a href="https://www.nelsonstihlshop.co.nz" target="_blank" rel="noopener">www.nelsonstihlshop.co.nz</a><br><b>57</b>/100 · Joomla<br><a href="/planb-audit/nelson.jpg" target="_blank">screenshot</a></td><td>4.3★ <span class="muted">(73)</span></td><td>1312</td><td class="small">audit 57/100 on Joomla · slow load 9.1s · horizontal overflow on phone · no contact form · 13 internal pages · hours shown · map</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Richmond</b><br><span class="muted">Southern</span></td><td><a href="https://stihlshoprichmond.nz" target="_blank" rel="noopener">stihlshoprichmond.nz</a><br><b>72</b>/100 · Shopify<br><a href="/planb-audit/richmond.jpg" target="_blank">screenshot</a></td><td>4.5★ <span class="muted">(113)</span></td><td>741</td><td class="small">audit 72/100 on Shopify · contact form · hours shown · STIHL branding present</td><td></td></tr><tr class="cat3" data-cat="3"><td>3</td><td><b>Winton</b><br><span class="muted">Southern</span></td><td><a href="https://www.stihlshopwinton.co.nz" target="_blank" rel="noopener">www.stihlshopwinton.co.nz</a><br><b>77</b>/100 · Wix<br><a href="/planb-audit/winton.jpg" target="_blank">screenshot</a></td><td>4.7★ <span class="muted">(36)</span></td><td>yes</td><td class="small">audit 77/100 on Wix · builder: Wix · 21 internal pages · contact form · hours shown</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Levin</b><br><span class="muted">Central · City Honda Horowhenua</span></td><td><a href="https://www.hondahoro.co.nz" target="_blank" rel="noopener">www.hondahoro.co.nz</a><br><b>60</b>/100 · Magento<br><a href="/planb-audit/levin.jpg" target="_blank">screenshot</a></td><td>4.4★ <span class="muted">(81)</span></td><td><span class="muted">—</span></td><td class="small">trades as City Honda Horowhenua · their site scores 60/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Pahiatua</b><br><span class="muted">Central · Bisset Honda</span></td><td><a href="https://www.bissethonda.co.nz" target="_blank" rel="noopener">www.bissethonda.co.nz</a><br><b>60</b>/100 · Magento<br><a href="/planb-audit/pahiatua.jpg" target="_blank">screenshot</a></td><td>4.6★ <span class="muted">(8)</span></td><td><span class="muted">—</span></td><td class="small">trades as Bisset Honda · their site scores 60/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Stratford</b><br><span class="muted">Central</span></td><td><a href="https://stihlshopnewplymouth.co.nz" target="_blank" rel="noopener">stihlshopnewplymouth.co.nz</a><br><b>62</b>/100 · Squarespace<br><a href="/planb-audit/stratford.jpg" target="_blank">screenshot</a></td><td>5★ <span class="muted">(1)</span></td><td>390</td><td class="small">branch page on STIHL SHOP New Plymouth&#x27;s site · their site scores 62/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Te Aro</b><br><span class="muted">Central · Ellmers</span></td><td><a href="https://ellmers.co.nz" target="_blank" rel="noopener">ellmers.co.nz</a><br><b>58</b>/100 · WordPress<br><a href="/planb-audit/te-aro.jpg" target="_blank">screenshot</a></td><td>4.5★ <span class="muted">(111)</span></td><td>1119</td><td class="small">trades as Ellmers · their site scores 58/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Waipukurau</b><br><span class="muted">Central · Mills Honda</span></td><td><a href="https://www.millshonda.co.nz" target="_blank" rel="noopener">www.millshonda.co.nz</a><br><b>67</b>/100 · Custom / unknown<br><a href="/planb-audit/waipukurau.jpg" target="_blank">screenshot</a></td><td>4★ <span class="muted">(15)</span></td><td>yes</td><td class="small">trades as Mills Honda · their site scores 67/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Drury</b><br><span class="muted">Northern · Downs</span></td><td><a href="https://stihlshopdrury.co.nz" target="_blank" rel="noopener">stihlshopdrury.co.nz</a><br><b>36</b>/100 · Custom / unknown<br><a href="/planb-audit/drury.jpg" target="_blank">screenshot</a></td><td>4.4★ <span class="muted">(120)</span></td><td>1302</td><td class="small">trades as Downs · their site scores 36/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Morrinsville (McLarens Rural)</b><br><span class="muted">Northern · McLarens Rural Services</span></td><td><a href="https://mclarensrural.co.nz" target="_blank" rel="noopener">mclarensrural.co.nz</a><br><b>74</b>/100 · WordPress<br><a href="/planb-audit/morrinsville.jpg" target="_blank">screenshot</a></td><td>5★ <span class="muted">(2)</span></td><td>yes</td><td class="small">trades as McLarens Rural Services · their site scores 74/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Amberley</b><br><span class="muted">Southern · Turf Force</span></td><td><a href="https://stihlshopamberley.co.nz" target="_blank" rel="noopener">stihlshopamberley.co.nz</a><br><b>87</b>/100 · WordPress<br><a href="/planb-audit/amberley.jpg" target="_blank">screenshot</a></td><td>5★ <span class="muted">(6)</span></td><td>1522</td><td class="small">trades as Turf Force · their site scores 87/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Balclutha</b><br><span class="muted">Southern · Ewan Allan Honda</span></td><td><a href="https://ewanallan.co.nz/pages/stihl-shop" target="_blank" rel="noopener">ewanallan.co.nz/pages/stihl-shop</a><br><b>72</b>/100 · Shopify<br><a href="/planb-audit/balclutha.jpg" target="_blank">screenshot</a></td><td><span class="muted">—</span></td><td>yes</td><td class="small">trades as Ewan Allan Honda · their site scores 72/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Northwood</b><br><span class="muted">Southern</span></td><td><a href="https://stihlshopfosters.co.nz" target="_blank" rel="noopener">stihlshopfosters.co.nz</a><br><b>69</b>/100 · WordPress<br><a href="/planb-audit/northwood.jpg" target="_blank">screenshot</a></td><td>4.5★ <span class="muted">(104)</span></td><td>1389</td><td class="small">branch page on STIHL SHOP Fosters&#x27;s site · their site scores 69/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Oamaru</b><br><span class="muted">Southern · Oamaru Honda</span></td><td><a href="https://www.oamaruhonda.co.nz" target="_blank" rel="noopener">www.oamaruhonda.co.nz</a><br><b>45</b>/100 · Magento<br><a href="/planb-audit/oamaru.jpg" target="_blank">screenshot</a></td><td>4.7★ <span class="muted">(58)</span></td><td>1126</td><td class="small">trades as Oamaru Honda · their site scores 45/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Rangiora</b><br><span class="muted">Southern</span></td><td><a href="https://stihlshopfosters.co.nz" target="_blank" rel="noopener">stihlshopfosters.co.nz</a><br><b>69</b>/100 · WordPress<br><a href="/planb-audit/rangiora.jpg" target="_blank">screenshot</a></td><td>4.6★ <span class="muted">(88)</span></td><td>1389</td><td class="small">branch page on STIHL SHOP Fosters&#x27;s site · their site scores 69/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Sydenham</b><br><span class="muted">Southern</span></td><td><a href="https://www.stihlshopferrymead.com" target="_blank" rel="noopener">www.stihlshopferrymead.com</a><br><b>57</b>/100 · Wix<br><a href="/planb-audit/sydenham.jpg" target="_blank">screenshot</a></td><td>5★ <span class="muted">(43)</span></td><td>550</td><td class="small">branch page on STIHL SHOP Ferrymead&#x27;s site · their site scores 57/100</td><td></td></tr><tr class="cat4" data-cat="4"><td>4</td><td><b>Te Anau</b><br><span class="muted">Southern · Fiordland Marine</span></td><td><a href="https://www.fiordlandmarine.co.nz" target="_blank" rel="noopener">www.fiordlandmarine.co.nz</a><br><b>58</b>/100 · Wix<br><a href="/planb-audit/te-anau.jpg" target="_blank">screenshot</a></td><td>5★ <span class="muted">(1)</span></td><td>775</td><td class="small">trades as Fiordland Marine · their site scores 58/100</td><td></td></tr><tr class="cat5" data-cat="5"><td>5</td><td><b>Rotorua</b><br><span class="muted">Central</span></td><td><a href="https://stihlshoprotorua.co.nz" target="_blank" rel="noopener">stihlshoprotorua.co.nz</a></td><td>4.5★ <span class="muted">(88)</span></td><td>542</td><td class="small">live on UNIFY</td><td></td></tr><tr class="cat5" data-cat="5"><td>5</td><td><b>Tauranga</b><br><span class="muted">Northern</span></td><td><a href="https://stihlshoptauranga.co.nz" target="_blank" rel="noopener">stihlshoptauranga.co.nz</a></td><td>4.4★ <span class="muted">(63)</span></td><td>358</td><td class="small">live on UNIFY</td><td></td></tr><tr class="cat5" data-cat="5"><td>5</td><td><b>Waihi</b><br><span class="muted">Northern</span></td><td><a href="https://stihlshopwaihi.co.nz" target="_blank" rel="noopener">stihlshopwaihi.co.nz</a></td><td>4.2★ <span class="muted">(31)</span></td><td>yes</td><td class="small">live on UNIFY</td><td></td></tr><tr class="cat0" data-cat="0"><td>0</td><td><b>Whitianga</b><br><span class="muted">Northern</span></td><td><span class="muted">none</span></td><td><span class="muted">—</span></td><td><span class="muted">—</span></td><td class="small">locator says CURRENTLY CLOSED</td><td></td></tr></tbody></table></div>
+</div>
+<script>
+document.querySelectorAll('[data-f]').forEach(a=>a.addEventListener('click',ev=>{ev.preventDefault();const f=a.dataset.f;document.querySelectorAll('table.dir tbody tr').forEach(tr=>{tr.style.display=(f==='all'||tr.dataset.cat===f)?'':'none';});}));
+</script>
+<!-- directory:end -->
+
+<h2 class="gh" id="plan">Martin’s plan<span class="gdesc">As written, 18 Sep.</span></h2>
+<div class="card" data-key="pb-plan">
+  <ol>
+    <li>Grab the dealer directory. Tidy it up.</li>
+    <li>Feed it to Claude in multi-tenancy. Create a draft site for each dealer, using their imagery from the website scraped, and the info from their own website and our spreadsheet.</li>
+    <li>Deploy each one to a free URL — if our infrastructure can’t hold it, serve static sites for this one-time demo.</li>
+    <li>Create a landing page for UNIFY, better than <a href="https://f925.works/unify">f925.works/unify</a>.</li>
+    <li>Make a massive email list. Create good emailing.</li>
+    <li>Send each dealer their draft website (weird URL) and their “allow BRANDKIT posting” link.</li>
+    <li><b>$100 a month. No setup fee. Social BRANDKIT posting included.</b></li>
+  </ol>
+</div>
+
+<h2 class="gh" id="changes">Three changes, one addition, one warning<span class="gdesc">The instinct is right. These are the edits.</span></h2>
+<div class="card open" data-key="pb-change-1">
+  <h3>1 · Don’t build 90. Build 47.</h3>
+  <p>The 47 with no site are the ones for whom a preview lands: nothing to compare it to, nobody to offend. The 41 with sites paid someone; a draft that replaces their current site reads as an insult to whoever built it, and several are multi-brand shops where our template is wrong anyway. They get a different, later message — “your site will need to meet STIHL SHOP standards; here is the easy way” — and no draft.</p>
+</div>
+<div class="card open" data-key="pb-change-2">
+  <h3>2 · No scraping, no static sites. The platform already does this.</h3>
+  <p>For the 47 there is no website to scrape. What we have is enough: name, address, phone, email, owner names, town, region (the sheet) + Google Places (hours, photos, rating, review count) + their stihlshop.co.nz store page. Those are exactly the wizard’s fields. Generate one profile per dealer, load 47 tenants into UNIFY flagged <code>preview</code>, and serve them from the <b>existing</b> dealer-site app on a wildcard: <code>&lt;town&gt;.preview.f925.works</code>. One DNS record, one app, no second hosting stack. <code>noindex</code>, no login, a banner: “Preview · not live · Make this mine →”.</p>
+</div>
+<div class="card open" data-key="pb-change-3">
+  <h3>3 · $100/month is right for a farmer. Price it as an intro, not a list price.</h3>
+  <p>“<b>$100 a month for the first 12 months, no setup, cancel any time, social posting included</b>” is a yes. “$100 forever” undercuts the RFP proposal at $600 and becomes unexplainable if STIHL later asks why the preferred channel costs six times more. Intro now, standard price after year one; the intro cohort becomes the pilot cohort if the RFP lands. This is the farmer tier the <a href="/rant.html#asymmetry">rant</a> asked for.</p>
+</div>
+<div class="card idea" data-key="pb-addition">
+  <h3>The addition · this is Plan A’s engine too</h3>
+  <p>Same 47 previews, same email, sent with “recommended by STIHL NZ” if we win and without it if we don’t. Sections 2.2–2.4 of <a href="/preferred.html#adoption">PREFERRED</a> describe exactly this. And walking into the presentation on 22 October with “we have already built a site for every STIHL SHOP dealer that doesn’t have one — here are 47” is the most convincing thing anyone in that room will see. Build it once.</p>
+</div>
+<div class="card" data-key="pb-warning" style="border-left:5px solid var(--gap)">
+  <h3>The warning · timing and manners</h3>
+  <p>47 unsolicited “here is your website” emails to STIHL dealers, three weeks before STIHL picks its preferred vendor, reach Mark within a day. Allowed under the model he described — but it looks like going around the process while inside it, and the evaluation is 10% cost, 90% judgement. <b>Build now, send after 30 October</b> — as the preferred partner, or as Little Rocket would. Exception: Kumeu, Albany, Te Awamutu are warm and asked; they get theirs this week.</p>
+</div>
+
+<h2 class="gh" id="build">The build, in order<span class="gdesc">Mostly data work plus one DNS record. Owner in brackets.</span></h2>
+<div class="card" data-key="pb-build">
+  <ol>
+    <li><b>Tidy the directory → <code>dealers.json</code></b> (Martin/Claude, ½ day). 90 rows: normalised phone, email, URL; <code>hasSite</code>, <code>tradesAs</code>, <code>region</code>, <code>stage</code>, <code>ourDealer</code>, <code>ownerFirstNames</code>. Re-verify the 47 against stihlshop.co.nz (six months old; a few will have changed hands).</li>
+    <li><b>Enrich the 47</b> (Claude, 1 day). Google Places: hours, photos, rating, reviews, lat/lng. stihlshop.co.nz store page: anything extra. Store per dealer.</li>
+    <li><b>Generate 47 preview tenants</b> (Claude, 1 day). Reuse <code>dev:seed-dealer</code>: profile prefilled from steps 1–2, status <code>preview</code>, images uploaded to Spaces, one GA property each (so the preview’s own traffic is visible when they click). A <code>preview</code> flag in the platform: no login required to view, banner injected, <code>noindex</code>.</li>
+    <li><b>Preview hosting</b> (Leo, 2 h). <code>*.preview.f925.works</code> → the dealer-site app on DigitalOcean; Cloudflare wildcard; the app already resolves tenants by host. Capacity: 47 extra tenants on one instance is nothing (see the <a href="/capacity.html">capacity report</a>).</li>
+    <li><b>Preview banner + “Make this mine”</b> (Claude, ½ day). Banner on every preview: “This is a preview of your STIHL SHOP website. $100/mo for 12 months, no setup, social posting included. <b>Make it mine</b>” → a one-field form (email) that creates the real tenant from the preview and starts onboarding. Second button: “Connect Facebook & Instagram” → the BRANDKIT link for that dealer.</li>
+    <li><b>New UNIFY landing</b> (Claude, 1 day, after the previews exist so it shows real ones). One page, farmer language, three real screenshots, the offer, “see yours”. Replaces f925.works/unify.</li>
+    <li><b>Email</b> (Martin + Claude, ½ day). One template, merged per dealer: owner first name, town, preview link, BRANDKIT link. From a real person, via Resend, <b>10 a day</b> so replies are handleable, opens/clicks tracked, reply-to Mike. No blast. Follow-up at day 7 for non-openers, once.</li>
+    <li><b>The other 41</b> (later). Compliance-angled note, no draft, after the first ten yeses exist to point at.</li>
+  </ol>
+  <p>Steps 1–3 and 5–6 can start today. Step 4 is the only thing that needs Leo before previews are visible. Total: about a week of Claude time, two hours of Leo, and Martin’s judgement on the directory.</p>
+</div>
+
+<h2 class="gh" id="offer">The offer<span class="gdesc">What the email and the banner say.</span></h2>
+<div class="card idea" data-key="pb-offer">
+  <blockquote>Hi &lt;first name&gt;,<br><br>We built STIHL SHOP &lt;Town&gt; a website. It’s already done — have a look: <b>&lt;town&gt;.preview.f925.works</b><br><br>If you like it, it’s yours: <b>$100 a month for the first year, no setup fee, cancel any time.</b> That includes hosting, changes whenever you need them, and posting to your Facebook and Instagram for you.<br><br>Nothing to install, nothing to learn. Reply to this email or press the button on the site and we’ll have it live on your own address within the week.<br><br>Mike McLarnon<br>STIHL SHOP Tauranga · F925</blockquote>
+  <p>Signed by a dealer, to dealers. Short enough to read on a phone in a workshop. One link, one price, one action.</p>
+</div>
+
+<h2 class="gh" id="timing">Timing<span class="gdesc">Against the RFP calendar.</span></h2>
+<div class="card" data-key="pb-timing">
+  <div class="tablewrap"><table>
+    <thead><tr><th>When</th><th>What</th></tr></thead>
+    <tbody>
+      <tr><td>19–27 Sep</td><td>Directory tidied and re-verified; 47 enriched; preview tenants generated; wildcard live; Kumeu / Albany / Te Awamutu get their previews and the offer.</td></tr>
+      <tr><td>28 Sep – 9 Oct</td><td>Landing page; email template; the 47 previews screenshot into PREFERRED §2 and the presentation deck. Proposal submitted 9 Oct with “47 previews already built”.</td></tr>
+      <tr><td>22–23 Oct</td><td>Presentation: show the previews live.</td></tr>
+      <tr><td>30 Oct</td><td>Preferred vendor announced.</td></tr>
+      <tr><td><b>31 Oct →</b></td><td><b>Emails start, 10 a day</b>, with or without the badge. Won: “recommended by STIHL NZ”, pilot cohort from the first yeses. Lost: same email minus one line, guns blazing.</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<h2 class="gh" id="live">LIVE — all 55 previews are up<span class="gdesc">Seeded to production 23 Sep. Nothing here is pending.</span></h2>
+<div class="card open" data-key="pb-live">
+  <p><b>Every category 1 and 2 dealer now has a real website at <code>&lt;town&gt;.preview.f925.works</code></b> — 55 of them, each with the offer banner, their own store photo, their Google rating, their hours and copy written from their own facts. Try <a href="https://te-puke.preview.f925.works" target="_blank" rel="noopener">te-puke</a>, <a href="https://kumeu.preview.f925.works" target="_blank" rel="noopener">kumeu</a>, <a href="https://pukekohe.preview.f925.works" target="_blank" rel="noopener">pukekohe</a>, or any row in the <a href="/directory.html">directory</a>.</p>
+  <ul>
+    <li>Platform PRs <b>#19</b> (analytics + HQ) and <b>#22</b> (preview tenants, claim flow) and template <b>#30</b> + <b>#31</b> merged and deployed.</li>
+    <li>All 55 checked individually: HTTP 200, banner present, hero image on our own CDN, <code>noindex</code> set. The three real dealer sites are untouched.</li>
+    <li>"Make it mine" turns a preview into a pending account with the normal activation email — <a href="https://stihlshop-platform.f925.works/claim?dealer=5" target="_blank" rel="noopener">the claim page</a>.</li>
+    <li><b>Nothing is sent yet.</b> The hosts are unlisted and noindexed. Emails still wait for 31 Oct, except Kumeu / Albany / Te Awamutu.</li>
+  </ul>
+</div>
+
+<h2 class="gh" id="leo">For Leo<span class="gdesc">Two things outstanding — both unrelated to the previews.</span></h2>
+<div class="card" data-key="pb-leo">
+  <ul>
+    <li><b>GitHub Actions has been failing to start since 17 Sep</b> — every run, including on <code>main</code>, fails before executing a step. Looks account-level (minutes or a spending limit). All four PRs above were verified locally instead: typecheck, 107 tests, builds.</li>
+    <li><b>Landmine:</b> <code>initDb()</code> rewrites the admin password from the running process's <code>ADMIN_INITIAL_PASSWORD</code> on every boot. Any script run against production with a local <code>.env</code> loaded replaces the production admin login — it happened here on 23 Sep and was restored by a redeploy. The seed no longer calls it; making <code>initDb</code> only create the admin when missing would close it for good.</li>
+    <li><s>the wildcard — <code>*.preview.f925.works</code></s> — done in your PR #21; it resolves by <code>preview_slug</code>.</li>
+    <li><s>a <code>preview</code> status on tenants</s> — shipped in #22: full site, banner, <code>noindex</code>, excluded from admin and HQ dealer counts (reported separately as <code>previews</code>).</li>
+    <li><b>Don’t:</b> build a static-site pipeline, a second hosting stack, or a scraper. The platform is the point; the previews prove it.</li>
+    <li><b>Question for you:</b> is <code>f925.works</code> DNS on Cloudflare already, or do we need to move it first?</li>
+  </ul>
+</div>
+
+</div></main>
+
+<footer>
+  <div class="wrap narrow">
+    <p>F925 internal · 18 Sep 2026 · source: <a href="https://docs.google.com/spreadsheets/d/15L1oQQ9J8Nn3G_tXR6SqVaIBUJ-hXvELZ24dn4DqxaU/edit?usp=sharing">the dealer directory</a> (Martin, ~6 months old) · related: <a href="/preferred.html">PREFERRED §2</a> · <a href="/rant.html">the rant</a> · <a href="/wtf.html">WTF</a>.</p>
+  </div>
+</footer>
+
+<script src="/wr-library.js"></script>
+<script src="/wr-shell.js"></script>
+<script>
+(function(){
+  var API='/api/state?page=planb', APIKEY='XPFmcH2RSsza';
+  var PEOPLE=[{id:'martin',name:'Martin',cls:'pa'},{id:'leonel',name:'Leo',cls:'pb'},{id:'mike',name:'Mike',cls:'pc'}];
+  var NAME={}; PEOPLE.forEach(function(p){NAME[p.id]=p.name;});
+  var me=(window.WR?WR.me:'');
+  if(window.WR)WR.onIdentity(function(id){me=id;renderAll();});
+  var marks={}, comments={}, items={};
+  var lastRev='', applied=false, pendingWrites=0, chain=Promise.resolve();
+  function enqueue(op){
+    pendingWrites++;
+    var p=chain.then(function(){return apiPost(op);});
+    chain=p.then(function(){pendingWrites--;if(pendingWrites===0)refresh();},function(){pendingWrites--;setMode('local');});
+    return p;
+  }
+  function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function fmtDate(iso){try{return new Date(iso).toLocaleDateString(undefined,{day:'numeric',month:'short'});}catch(e){return '';}}
+  function apiGet(){return fetch(API,{headers:{'x-warroom-key':APIKEY}}).then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();});}
+  function apiPost(op){return fetch(API,{method:'POST',headers:{'x-warroom-key':APIKEY,'content-type':'application/json'},body:JSON.stringify(op)}).then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();});}
+  var dock=document.createElement('div'); dock.className='rdock';
+  dock.innerHTML='<span class="rstat" id="rd-stat">⚑ 0 · 💬 0</span><span class="rlive" id="rd-live">Connecting…</span>';
+  document.body.appendChild(dock);
+  function needIdentity(noteEl,msg){if(me)return false;if(noteEl){noteEl.textContent=msg;noteEl.hidden=false;}if(window.WR)WR.nudge();return true;}
+  function setMode(m){var el=document.getElementById('rd-live');el.className='rlive '+m;el.textContent=m==='live'?'● Live':(m==='local'?'○ Offline — read-only':'Connecting…');}
+
+  /* targets: every [data-key] node/card; table rows get a panel row inserted after them */
+  function addTarget(host){
+    var key=host.dataset.key; if(items[key])return;
+    var isRow=host.tagName==='TR';
+    var label=(host.querySelector('h4,h3')||host.querySelector('td')||host).textContent.trim().slice(0,60);
+    var w=document.createElement('span'); w.className='rw';
+    w.innerHTML='<button type="button" class="rwf" title="Flag for attention">⚑</button><button type="button" class="rwc" title="Comments">💬 <span>0</span></button>';
+    var anchor=host.querySelector('h4,h3')||(isRow?host.querySelector('td'):host);
+    anchor.appendChild(w);
+    var panel=document.createElement('div'); panel.className='rw-panel'; panel.hidden=true;
+    panel.innerHTML='<p class="cflag" hidden></p><div class="clist"></div>'
+      +'<form class="cform"><textarea rows="1" placeholder="Comment on “'+esc(label)+'” (Shift+Enter for a new line)" aria-label="Comment"></textarea><button type="submit">Post</button></form><p class="cnote" hidden></p>';
+    var block=host;
+    if(isRow){
+      var tr=document.createElement('tr'); tr.className='rw-panelrow'; tr.hidden=true;
+      var td=document.createElement('td'); td.colSpan=host.children.length; td.appendChild(panel); tr.appendChild(td);
+      host.after(tr); block=host; panel.hidden=false; var rowPanel=tr;
+    }else host.appendChild(panel);
+    if(window.WR)WR.wireCommentBox(panel.querySelector('.cform textarea'));
+    var fbtn=w.querySelector('.rwf'), cbtn=w.querySelector('.rwc'), note=panel.querySelector('.cnote');
+    var toggle=function(force){ if(isRow){rowPanel.hidden=force===undefined?!rowPanel.hidden:!force;} else {panel.hidden=force===undefined?!panel.hidden:!force;} };
+    fbtn.addEventListener('click',function(){
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.')){toggle(true);return;}
+      var next=!(marks[key]&&marks[key].flagged);
+      marks[key]={flagged:next,by:me,at:new Date().toISOString()};
+      render(key); renderTotals();
+      enqueue({t:'mark',key:key,flagged:next,by:me}).catch(function(){});
+    });
+    cbtn.addEventListener('click',function(){toggle();});
+    panel.querySelector('form').addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var inp=panel.querySelector('textarea'), txt=inp.value.trim(); if(!txt)return;
+      if(needIdentity(note,'Pick who you are first — "I am" in the header.'))return;
+      note.hidden=true;
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString()};
+      (comments[key]=comments[key]||[]).push(temp);
+      render(key); renderTotals(); inp.value='';
+      enqueue({t:'comment',key:key,author:me,text:txt}).catch(function(){
+        var arr=comments[key]||[], ix=arr.indexOf(temp); if(ix>=0)arr.splice(ix,1);
+        render(key); renderTotals(); note.textContent='Could not post — try again in a moment.'; note.hidden=false;
+      });
+    });
+    items[key]={block:block,fbtn:fbtn,cbtn:cbtn,cnum:cbtn.querySelector('span'),panel:panel,clist:panel.querySelector('.clist'),cflag:panel.querySelector('.cflag'),open:function(){toggle(true);}};
+  }
+  document.querySelectorAll('[data-key]').forEach(addTarget);
+
+  function render(key){
+    var it=items[key]; if(!it)return;
+    var m=marks[key]||{};
+    it.fbtn.classList.toggle('on',!!m.flagged);
+    it.block.classList.toggle('rw-flagged',!!m.flagged);
+    it.cflag.hidden=!m.flagged;
+    if(m.flagged)it.cflag.textContent='⚑ Flagged by '+(NAME[m.by]||m.by||'?')+(m.at?' · '+fmtDate(m.at):'');
+    var cm=comments[key]||[];
+    it.cnum.textContent=cm.length;
+    it.cbtn.classList.toggle('has',cm.length>0);
+    if(!it.clist.querySelector('.ceform'))it.clist.innerHTML=window.WR?WR.commentListHTML(cm,key):'';
+  }
+  function renderAll(){Object.keys(items).forEach(render);renderTotals();}
+  function renderTotals(){
+    var f=0,c=0;
+    Object.keys(items).forEach(function(k){if(marks[k]&&marks[k].flagged)f++;c+=(comments[k]||[]).length;});
+    document.getElementById('rd-stat').textContent='⚑ '+f+' · 💬 '+c;
+  }
+
+  /* comment delete / reply / react / edit */
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cdel'); if(!b)return;
+    if(!confirm('Delete this comment for everyone?'))return;
+    var id=b.dataset.cid, key=b.dataset.key, arr=comments[key]||[];
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id){arr.splice(i,1);break;}}
+    render(key); renderTotals();
+    enqueue({t:'comment-del',id:id,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crply'); if(!b)return;
+    var citem=b.closest('.citem'); if(citem.querySelector('.crform'))return;
+    var key=b.dataset.key, pid=b.dataset.cid;
+    var f=document.createElement('form'); f.className='cform ceform crform';
+    f.innerHTML='<textarea rows="1" placeholder="Reply… (Shift+Enter for a new line)" aria-label="Reply"></textarea><button type="submit">Reply</button><button type="button" class="cancel">Cancel</button>';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea'); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);renderTotals();});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim(); if(!txt)return;
+      if(!me){if(window.WR)WR.nudge();return;}
+      var temp={key:key,author:me,text:txt,at:new Date().toISOString(),parent:pid};
+      (comments[key]=comments[key]||[]).push(temp);
+      f.remove(); render(key); renderTotals();
+      enqueue({t:'comment',key:key,author:me,text:txt,parent:pid}).catch(function(){
+        var arr=comments[key]||[], ix=arr.indexOf(temp); if(ix>=0)arr.splice(ix,1); render(key); renderTotals();
+      });
+    });
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.crb'); if(!b)return;
+    if(!me){if(window.WR)WR.nudge();return;}
+    var id=b.dataset.cid, key=b.dataset.key, e=b.dataset.remoji, arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    c.reactions=c.reactions||{}; var l=c.reactions[e]=c.reactions[e]||[]; var ix=l.indexOf(me);
+    if(ix>=0)l.splice(ix,1); else l.push(me);
+    render(key);
+    enqueue({t:'react',id:id,emoji:e,by:me}).catch(function(){});
+  });
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.cedit'); if(!b)return;
+    var citem=b.closest('.citem'); if(citem.querySelector('.ceform'))return;
+    var id=b.dataset.cid, key=b.dataset.key, arr=comments[key]||[], c=null;
+    for(var i=0;i<arr.length;i++){if(arr[i].id===id)c=arr[i];}
+    if(!c)return;
+    var f=document.createElement('form'); f.className='cform ceform';
+    f.innerHTML='<textarea rows="1" aria-label="Edit comment"></textarea><button type="submit">Save</button><button type="button" class="cancel">Cancel</button>';
+    f.querySelector('textarea').value=c.text||'';
+    citem.appendChild(f);
+    if(window.WR)WR.wireCommentBox(f.querySelector('textarea'));
+    var ta=f.querySelector('textarea'); ta.dispatchEvent(new Event('input')); ta.focus();
+    f.querySelector('.cancel').addEventListener('click',function(){f.remove();render(key);});
+    f.addEventListener('submit',function(e2){
+      e2.preventDefault();
+      var txt=ta.value.trim(); if(!txt)return;
+      c.text=txt; c.edited=new Date().toISOString();
+      f.remove(); render(key); renderTotals();
+      enqueue({t:'comment-edit',id:id,by:me,text:txt}).catch(function(){});
+    });
+  });
+
+  if(window.WR)WR.registerLocator(function(key){
+    var it=items[key]; if(!it)return false;
+    it.open();
+    it.block.scrollIntoView({block:'center'});
+    it.block.classList.remove('wr-flash'); void it.block.offsetWidth; it.block.classList.add('wr-flash');
+    return true;
+  });
+
+  function applyState(data,fromPost){
+    if(!data||typeof data!=='object')return;
+    var rev=(typeof data.rev==='string')?data.rev:'';
+    if(applied&&rev&&rev<lastRev)return;
+    if(!fromPost&&pendingWrites>0)return;
+    if(rev>lastRev)lastRev=rev; applied=true;
+    marks=data.marks||{};
+    var by={};
+    (data.comments||[]).forEach(function(c){if(!c.key)return;(by[c.key]=by[c.key]||[]).push(c);});
+    comments=by;
+    setMode('live'); renderAll();
+  }
+  function refresh(){if(pendingWrites>0)return;apiGet().then(function(d){applyState(d,false);}).catch(function(){setMode('local');});}
+  setMode('connecting'); renderAll(); refresh();
+  setInterval(refresh,12000);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)refresh();});
+})();
+</script>
+</body>
+</html>
