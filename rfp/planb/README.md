@@ -41,6 +41,8 @@ Union = **93**: the 92 on the franchise locator (incl. Whitianga, closed) + **Ba
 | `fetch_images.mjs` | Harvests up to 5 photos per dealer from their Google listing → `images-extra/`. |
 | `link_images.py` | Writes `preview.heroImage` + `preview.heroImages` onto each dealer. |
 | `check_previews.py` | Asks every `<slug>.preview.f925.works` whether it is live → `preview-status.json`. |
+| `fetch_reviews_places.py` | Google reviews per dealer through the official Places API → `reviews/`. |
+| `link_reviews.py` | Folds them into `dealers.json`; only 4★+ with text reach the sites. |
 
 ## Pipeline
 
@@ -77,6 +79,33 @@ Each dealer's Google listing carries photos of their shopfront, interior and yar
 Coverage (23 Sep): **499 images across 93 dealers — 88 have 2 or more, 80 have 5.** Five have only the locator photo because their Google listing has no photos at all: Gore, Hawera, Mt Maunganui, Pahiatua and Whitianga (closed). Their hero stays a single image, which is the old behaviour.
 
 Filtering: `gps-cs-s` and `grass-cs` are the place-photo paths; reviewer avatars (`/a-/ALV-…` at 36px), Street View and map tiles are excluded, as is anything under 25 KB.
+
+## Reviews (`fetch_reviews_places.py`, `link_reviews.py`)
+
+Their own customers, on their own preview site.
+
+Scraping was the first attempt (`fetch_reviews.mjs`, kept as a fallback) and it is not
+good enough: Google hands a headless browser about three reviews, the full list behind
+the "N reviews" control needs a fight with their UI that breaks whenever they touch it,
+and they start throttling partway through 93 dealers. So the reviews come from the
+official **Places API (New)** instead: one Text Search per dealer, biased to the
+coordinates STIHL's own locator publishes so it cannot match a same-named shop in
+another town, and it flags any result whose business name looks wrong.
+
+    GOOGLE_MAPS_API_KEY=... python3 fetch_reviews_places.py     # → reviews/<slug>.json
+    python3 link_reviews.py                                     # → dealers.json
+
+**Five per place is the API's hard cap** — no tier returns more, so after filtering
+expect three to five usable ones per dealer. About $0.04 a call, so roughly $4 for the
+network, one-off; results are cached per dealer and only re-fetched with `--force`.
+
+`link_reviews.py` keeps **every** review on the record under `googleReviews.all` (a
+2-star review is a fact worth knowing before ringing a dealer) and puts only the ones
+worth showing — **4 stars and up, with text** — in `preview.reviews`. The seed writes
+those into the preview site's reviews block, capped at six.
+
+Needs Places API (New) enabled and billing on for the key's project. The same key does
+address autocomplete in dealer onboarding, so while billing is off that is failing too.
 
 ## The front end — war room `/directory.html`
 
